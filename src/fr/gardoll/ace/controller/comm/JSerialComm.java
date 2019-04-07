@@ -39,7 +39,7 @@ public class JSerialComm implements SerialCom
       case NON_BLOCKING:
       {
         this._readMode = SerialPort.TIMEOUT_NONBLOCKING ;
-        break;
+        break ;
       }
     }
     
@@ -75,7 +75,7 @@ public class JSerialComm implements SerialCom
     if (this._port != null)
     {
       String msg = String.format("the port '%s' is already openned.", portPath);
-      _LOG.error(msg);
+      _LOG.error(msg) ;
       return;
     }
     
@@ -85,26 +85,26 @@ public class JSerialComm implements SerialCom
     
     try
     {
-      this._port = SerialPort.getCommPort(portPath);
+      this._port = SerialPort.getCommPort(portPath) ;
       
       if (this._port.openPort())
       {
-        _LOG.debug(String.format("port '%s' is openned.", portPath));
+        _LOG.debug(String.format("port '%s' is openned.", portPath)) ;
       }
       else
       {
         String msg = String.format("fail to open port '%s'.", portPath);
-        _LOG.error(msg);
-        throw new SerialComException(msg);
+        _LOG.error(msg) ;
+        throw new SerialComException(msg) ;
       } 
     }
     catch(Exception e)
     {
-      this._port = null;
+      this._port = null ;
       String msg = String.format("unable to open port '%s': %s.", portPath,
-                                 e.getMessage());
+                                 e.getMessage()) ;
       _LOG.error(msg);
-      throw new SerialComException(msg, e);
+      throw new SerialComException(msg, e) ;
     }
   }
   
@@ -112,7 +112,7 @@ public class JSerialComm implements SerialCom
   public void setVitesse(int vitesse) throws SerialComException
   {
     _LOG.debug(String.format("setting the baud rate of port '%s' to '%s'",
-        this._name, vitesse));
+        this._name, vitesse)) ;
     this._port.setBaudRate(vitesse) ;
   }
 
@@ -120,7 +120,7 @@ public class JSerialComm implements SerialCom
   public void setParite(Parity choix) throws SerialComException
   {
     _LOG.debug(String.format("setting the parity of port '%s' to '%s'",
-        this._name, choix));
+        this._name, choix)) ;
     
     int _parity = -1 ;
      
@@ -129,19 +129,19 @@ public class JSerialComm implements SerialCom
       case NOPARITY:
       {
         _parity = SerialPort.NO_PARITY ;
-        break;
+        break ;
       }
        
       case EVENPARITY:
       {
         _parity = SerialPort.EVEN_PARITY ;
-        break;
+        break ;
       }
        
       case ODDPARITY:
       {
         _parity = SerialPort.ODD_PARITY ;
-        break;
+        break ;
       }
     }
      
@@ -152,7 +152,7 @@ public class JSerialComm implements SerialCom
   public void setStopBit(StopBit choix) throws SerialComException
   {
     _LOG.debug(String.format("setting the number of stop bit of port '%s' to '%s'",
-        this._name, choix));
+        this._name, choix)) ;
     int numStopBit = -1 ; 
     switch(choix)
     {
@@ -165,33 +165,33 @@ public class JSerialComm implements SerialCom
       case TWOSTOPBITS:
       {
         numStopBit = 2 ;
-        break;
+        break ;
       }      
     }
     
-    this._port.setNumStopBits(numStopBit);
+    this._port.setNumStopBits(numStopBit) ;
   }
 
   @Override
   public void setByteSize(short nbBit) throws SerialComException
   {
     _LOG.debug(String.format("setting the number of data bit of port '%s' to '%s'",
-        this._name, nbBit));
-    this._port.setNumDataBits(nbBit);
+        this._name, nbBit)) ;
+    this._port.setNumDataBits(nbBit) ;
   }
 
   @Override
   public void setControlFlux(FlowControl choix) throws SerialComException
   {
     _LOG.debug(String.format("setting the flow control of port '%s' to '%s'",
-        this._name, choix));
+        this._name, choix)) ;
     int _flowCtrl = -1 ;
     switch(choix)
     {
       case DISABLE:
       {
         _flowCtrl = SerialPort.FLOW_CONTROL_DISABLED ;
-        break;
+        break ;
       }
     
       case XON_XOFF:
@@ -205,7 +205,7 @@ public class JSerialComm implements SerialCom
       {
         _flowCtrl =  SerialPort.FLOW_CONTROL_RTS_ENABLED |
                      SerialPort.FLOW_CONTROL_CTS_ENABLED ;
-        break;
+        break ;
       }
     }
       
@@ -216,14 +216,14 @@ public class JSerialComm implements SerialCom
   public void setTimeOut(int delais) throws SerialComException
   {
     _LOG.debug(String.format("setting the timeout of port '%s' to '%s'", this._name,
-        delais));
-    this._port.setComPortTimeouts(this._mode, delais, delais);
+        delais)) ;
+    this._port.setComPortTimeouts(this._mode, delais, delais) ;
   }
 
   @Override
   public void ecrire(String ordre) throws SerialComException
   {
-    _LOG.debug(String.format("writing '%s' on port '%s'", ordre, this._name));
+    _LOG.debug(String.format("writing '%s' on port '%s'", ordre, this._name)) ;
     
     try
     {
@@ -257,8 +257,8 @@ public class JSerialComm implements SerialCom
   @Override
   public String lire() throws SerialComException
   {
-    _LOG.debug(String.format("reading on port '%s'", this._name));
-    StringBuilder sb = new StringBuilder();
+    _LOG.debug(String.format("reading on port '%s'", this._name)) ;
+    StringBuilder sb = new StringBuilder() ;
     
     boolean continue_to_read = true ;
     
@@ -272,13 +272,13 @@ public class JSerialComm implements SerialCom
       String intermediateResult = rawResult.replaceAll("\\s", "") ;
       
       // Add the intermediate result to the result.
-      sb.append(intermediateResult);
+      sb.append(intermediateResult) ;
       
       // Was the buffer full ?
       continue_to_read = buffer.getKey() == buffer.getValue().length ;
     }
     
-    return sb.toString();
+    return sb.toString() ;
   }
   
   private SimpleEntry<Integer, byte[]> internal_read() throws SerialComException
@@ -300,7 +300,7 @@ public class JSerialComm implements SerialCom
       else
       {
         String msg = String.format("error while reading on port '%s': %s",
-                                   this._name, e.getMessage());
+                                   this._name, e.getMessage()) ;
         throw new SerialComException(msg, e) ; 
       }
     }
