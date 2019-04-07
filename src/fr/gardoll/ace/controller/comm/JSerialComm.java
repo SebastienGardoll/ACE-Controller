@@ -5,8 +5,6 @@ import org.apache.logging.log4j.Logger;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import fr.gardoll.ace.controller.comm.FluxControl;
-
 public class JSerialComm implements SerialCom
 {
   private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
@@ -18,12 +16,12 @@ public class JSerialComm implements SerialCom
   {
     if (this._port != null)
     {
-      String msg = "the port is already openned: don't reuse this instance.";
+      String msg = "the port is already openned.";
       _LOG.error(msg);
-      throw new SerialComException(msg);
+      return;
     }
     
-    _LOG.debug(String.format("openning port '%s'", portPath));
+    _LOG.debug(String.format("openning port '%s'.", portPath));
     
     try
     {
@@ -31,11 +29,11 @@ public class JSerialComm implements SerialCom
       
       if (this._port.openPort())
       {
-        _LOG.debug(String.format("port '%s' is openned", portPath));
+        _LOG.debug(String.format("port '%s' is openned.", portPath));
       }
       else
       {
-        String msg = String.format("fail to open port '%s'", portPath);
+        String msg = String.format("fail to open port '%s'.", portPath);
         _LOG.error(msg);
         throw new SerialComException(msg);
       } 
@@ -43,7 +41,7 @@ public class JSerialComm implements SerialCom
     catch(Exception e)
     {
       this._port = null;
-      String msg = String.format("unable to open port '%s': %s", portPath,
+      String msg = String.format("unable to open port '%s': %s.", portPath,
                                  e.getMessage());
       _LOG.error(msg);
       throw new SerialComException(e);
@@ -53,15 +51,36 @@ public class JSerialComm implements SerialCom
   @Override
   public void setVitesse(int vitesse) throws SerialComException
   {
-    // TODO Auto-generated method stub
-
+    _port.setBaudRate(vitesse) ;
   }
 
   @Override
   public void setParite(Parity choix) throws SerialComException
   {
-    // TODO Auto-generated method stub
-
+     int _parity = -1 ;
+     
+     switch(choix)
+     {
+       case NOPARITY:
+       {
+         _parity = SerialPort.NO_PARITY ;
+         break;
+       }
+       
+       case EVENPARITY:
+       {
+         _parity = SerialPort.EVEN_PARITY ;
+         break;
+       }
+       
+       case ODDPARITY:
+       {
+         _parity = SerialPort.ODD_PARITY ;
+         break;
+       }
+     }
+     
+     _port.setParity(_parity) ;
   }
 
   @Override
@@ -114,19 +133,6 @@ public class JSerialComm implements SerialCom
   
   public static void main(String[] args)
   {
-
-    SerialPort sp = SerialPort.getCommPort("/dev/ttyp6");
-    sp.setComPortParameters(9600, 8, 1, 0); // default connection settings for
-                                            // Arduino
-    sp.setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 0); // block
-                                                                    // until
-                                                                    // bytes can
-                                                                    // be
-                                                                    // written
-    if (sp.openPort())
-      System.out.println("coucou");
-    else
-      System.out.println("nope");
-
+    
   }
 }
