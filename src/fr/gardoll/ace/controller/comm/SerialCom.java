@@ -1,6 +1,8 @@
 package fr.gardoll.ace.controller.comm;
 
-public interface SerialCom
+import java.io.Closeable;
+
+public interface SerialCom extends Closeable
 {
   public void setVitesse(int vitesse) throws SerialComException;
 
@@ -11,32 +13,38 @@ public interface SerialCom
   // Require 1<= nbBit <= 8
   public void setByteSize(short nbBit) throws SerialComException;
 
-  public void setControlFlux(FluxControl choix) throws SerialComException;
+  public void setControlFlux(FlowControl choix) throws SerialComException;
 
   public void setTimeOut(int delais) throws SerialComException;
 
   public void ecrire(String ordre) throws SerialComException;
 
+  // Read the serial port until the specified timeout.
   public String lire() throws SerialComException;
 
-  public void close() throws SerialComException;
+  public void close();
   
-  public void open(String portPath) throws SerialComException;
+  public void open(String portPath) throws SerialComException ;
 }
 
-enum FluxControl
+enum FlowControl
 {
-  XON_XOFF, HARDWARE;
+  DISABLE, XON_XOFF, RTS_CTS;
 }
 
 enum StopBit
 {
-  ONESTOPBIT, ONE5STOPBITS, TWOSTOPBITS;
+  ONESTOPBIT, TWOSTOPBITS;
 }
 
 enum Parity
 {
   NOPARITY, EVENPARITY, ODDPARITY;
+}
+
+enum SerialMode
+{
+  NON_BLOCKING, FULL_BLOCKING ;
 }
 
 class SerialComException extends Exception
@@ -48,8 +56,8 @@ class SerialComException extends Exception
     super(msg);
   }
     
-  public SerialComException(Exception e)
+  public SerialComException(String msg, Throwable e)
   {
-    super(e);
+    super(msg, e);
   }
 }
