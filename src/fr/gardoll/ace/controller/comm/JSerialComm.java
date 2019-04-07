@@ -17,9 +17,9 @@ public class JSerialComm implements SerialCom
   private Charset _charset    = null ;
   private int _sizeReadBuffer = -1 ;
   private String _name        = "not openned" ;
-  private int _readMode    = SerialPort.TIMEOUT_NONBLOCKING ;
-  private int _writeMode   = SerialPort.TIMEOUT_NONBLOCKING ;
-  private int _mode        = SerialPort.TIMEOUT_NONBLOCKING ;
+  private int _readMode       = SerialPort.TIMEOUT_NONBLOCKING ;
+  private int _writeMode      = SerialPort.TIMEOUT_NONBLOCKING ;
+  private int _mode           = SerialPort.TIMEOUT_NONBLOCKING ;
   
   public JSerialComm(SerialMode readMode, SerialMode writeMode,
                      Charset charset, int sizeReadBuffer)
@@ -240,8 +240,8 @@ public class JSerialComm implements SerialCom
       
       if (nb_byte_sent != buffer.length)
       {
-        String msg = String.format("only %s bytes sent out of %s while sending order '%s' on port '%s'",
-                                   nb_byte_sent, buffer.length, ordre, this._name) ;
+        String msg = String.format("transmission error while sending order '%s' on port '%s': only %s bytes sent out of %s",
+            ordre, this._name, nb_byte_sent, buffer.length) ;
         
         throw new SerialComException(msg) ;
       }
@@ -257,7 +257,7 @@ public class JSerialComm implements SerialCom
   @Override
   public String lire() throws SerialComException
   {
-    _LOG.debug(String.format("reading port '%s'", this._name));
+    _LOG.debug(String.format("reading on port '%s'", this._name));
     StringBuilder sb = new StringBuilder();
     
     boolean continue_to_read = true ;
@@ -288,7 +288,7 @@ public class JSerialComm implements SerialCom
     
     try
     {
-      // Blocking until timeout elapsed or read buffer length bytes. 
+      // Blocking until timeout elapsed or read the size of the buffer. 
       nb_byte_read = this._port.readBytes(buffer, buffer.length) ;
     }
     catch(Exception e)
