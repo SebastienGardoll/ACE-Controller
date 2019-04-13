@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortTimeoutException;
 
+import fr.gardoll.ace.controller.common.SerialComException ;
+
 public class JSerialComm implements SerialCom
 {
   private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
@@ -173,7 +175,7 @@ public class JSerialComm implements SerialCom
   }
 
   @Override
-  public void setByteSize(short nbBit) throws SerialComException
+  public void setByteSize(int nbBit) throws SerialComException
   {
     _LOG.debug(String.format("setting the number of data bit of port '%s' to '%s'",
         this._name, nbBit)) ;
