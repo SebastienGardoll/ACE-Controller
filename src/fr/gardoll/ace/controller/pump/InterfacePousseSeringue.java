@@ -1,6 +1,10 @@
 package fr.gardoll.ace.controller.pump;
 
 import java.io.Closeable;
+import java.math.RoundingMode ;
+import java.text.DecimalFormat ;
+import java.text.DecimalFormatSymbols ;
+import java.util.Locale ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -26,6 +30,22 @@ public class InterfacePousseSeringue  implements Closeable
   
   private static final Logger _LOG = LogManager.getLogger(InterfacePousseSeringue.class.getName());
   
+  private final static DecimalFormat[] _DOUBLE_FORMATTERS = new DecimalFormat[4];
+  
+  static
+  {
+    String[] formats = {"#.###", "##.##", "###.#", "####"} ;
+    DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
+    
+    for(int index=0 ; index < _DOUBLE_FORMATTERS.length ; index++)
+    {
+      _DOUBLE_FORMATTERS[index] = new DecimalFormat(formats[index]);
+      _DOUBLE_FORMATTERS[index].setRoundingMode(RoundingMode.FLOOR);
+      _DOUBLE_FORMATTERS[index].setDecimalSeparatorAlwaysShown(false);
+      _DOUBLE_FORMATTERS[index].setDecimalFormatSymbols(dfs);
+    }
+  }
+  
   public InterfacePousseSeringue(double diametreSeringue, SerialCom port)
       throws InitializationException
   {
@@ -48,57 +68,134 @@ public class InterfacePousseSeringue  implements Closeable
       _LOG.fatal(msg);
       throw new InitializationException(msg, e);
     }
-    
-    // contient le code de vérification.
-    this._debitMaxIntrinseque = debitMaxIntrinseque (diametreSeringue);
-    
-    dia(diametreSeringue);
+ 
+    try
+    {
+      // contient le code de vérification.
+      this._debitMaxIntrinseque = InterfacePousseSeringue.debitMaxIntrinseque (diametreSeringue);
+
+      this.dia(diametreSeringue);
+    }
+    catch(SerialComException e)
+    {
+      String msg = "error while initializing the pumpe";
+      _LOG.fatal(msg);
+      throw new InitializationException(msg, e);
+    }
   }
   
-  private void traitementReponse(String message)
+  private void traitementReponse(String message) throws SerialComException
   {
-    
+    if (message == "EE")
+    {
+      String msg = "pump serial communication failure" ;
+      _LOG.error(msg);
+      throw new SerialComException(msg) ;
+    }
+
+    else if (message == "NA::")
+    {
+      String msg = "unknown pump order" ;
+      _LOG.error(msg);
+      throw new SerialComException(msg) ;
+    }
+
+    else if (message == "")
+    {
+      String msg = "the pump did not acknowledgement the order" ;
+      _LOG.error(msg);
+      throw new SerialComException(msg) ;
+    }
   }
   
-  private String traitementOrdre(String ordre)
+  private String traitementOrdre(String ordre) throws SerialComException
   {
-    return null;
+    this._port.ecrire(ordre) ;
+
+    String reponse = this.lectureReponse() ;
+
+    this.traitementReponse(reponse) ;
+
+    return reponse  ;
   }
   
-  private String lectureReponse()
+  private String lectureReponse() throws SerialComException
   {
-    return null;
+    return this._port.lire();
   }
   
   private String formatage(double nombre)
   {
-    return null;
-  }
-  
-  public void run()
-  {
+    // le pousse seringue n'acceptant que des nombres à 4 chiffres au plus ,
+    // sans compter le séparateur décimal
+    // qui doit être un point, le paramètre nombre doit être formaté en conséquence.
     
-  }
-  
-  public void stop()
-  {
+    int truncatedValue = (int)nombre;
+    int index = 0;
     
+    if (truncatedValue < 10)
+    {
+      index = 0;
+    }
+    else if(truncatedValue < 100)
+    {
+      index = 1;
+    }
+    else if(truncatedValue < 1000)
+    {
+      index = 2;
+    }
+    else if(truncatedValue < 10000)
+    {
+      index = 3; 
+    }
+    else
+    {
+      String msg = String.format("unsupported format number '%s'", nombre);
+      _LOG.fatal(msg);
+      throw new RuntimeException(msg);
+    }
+    
+    return _DOUBLE_FORMATTERS[index].format(nombre);
   }
   
+  public void run() throws SerialComException
+  {
+    this.traitementOrdre( "run\r" );
+  }
+  
+  public void stop() throws SerialComException
+  {
+    this.traitementOrdre ("stop\r");
+  }
+  
+  // Don't throw any exception as it is an emergency method.
   public void arretUrgence()
   {
-    
+    //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
+    try
+    {
+      this._port.ecrire("stop\r") ;
+      String reponse = this.lectureReponse() ;
+      this.traitementReponse(reponse) ;
+    }
+    catch (SerialComException e)
+    {
+      String msg = "error while emergency stopping" ;
+      _LOG.error(msg);
+    }
   }
   
-  public void dia(double diametre)
+  public void dia(double diametre) throws SerialComException
   {
-    String ordre = String.format("dia %s\\r", formatage(diametre)) ;
-    traitementOrdre ( ordre );
+    String ordre = String.format("dia %s\r", formatage(diametre)) ;
+    this.traitementOrdre (ordre);
   }
   
-  public boolean running()
+  public boolean running() throws SerialComException
   {
-    return false;
+    boolean result = this.traitementOrdre("run?\r") != "::" ;
+    return result;
   }
   
   public double deliver()

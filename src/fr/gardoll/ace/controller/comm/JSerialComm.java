@@ -321,6 +321,6 @@ public class JSerialComm implements SerialCom
   
   public static void main(String[] args)
   {
-
+    
   }
 }
