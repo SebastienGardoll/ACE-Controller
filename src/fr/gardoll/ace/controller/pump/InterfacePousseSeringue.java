@@ -20,21 +20,22 @@ import fr.gardoll.ace.controller.common.SerialComException ;
 
 public class InterfacePousseSeringue  implements Closeable
 {
-  private final SerialCom _port;
-  
-  // dépendant uniquement du diametre du type de seringue utilisé.
-  private final int _debitMaxIntrinseque;
-
-  public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
-                                            new DecimalFormatSymbols(Locale.US);
   //caractéristique du pousse seringue en m/min
   public final static double COURCE_LINEAIRE_MAX = 0.1269 ;
   //diamètre de seringue maximum pour le pousse seringue en mm
   public final static int DIAMETRE_MAX = 140 ;
   
+  public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
+      new DecimalFormatSymbols(Locale.US);
+  
   private static final Logger _LOG = LogManager.getLogger(InterfacePousseSeringue.class.getName());
   
   private final static DecimalFormat[] _DOUBLE_FORMATTERS = new DecimalFormat[4];
+  
+  private final SerialCom _port;
+  
+  // dépendant uniquement du diametre du type de seringue utilisé.
+  private final int _debitMaxIntrinseque;
   
   static
   {
