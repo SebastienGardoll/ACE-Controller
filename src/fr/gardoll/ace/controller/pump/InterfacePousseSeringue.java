@@ -15,6 +15,7 @@ import fr.gardoll.ace.controller.comm.SerialCom;
 import fr.gardoll.ace.controller.comm.StopBit;
 import fr.gardoll.ace.controller.common.ConfigurationException ;
 import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.common.Naming ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 
 public class InterfacePousseSeringue  implements Closeable
@@ -22,7 +23,8 @@ public class InterfacePousseSeringue  implements Closeable
   private final SerialCom _port;
   private final int _debitMaxIntrinseque;
 
-  public final static char DecimalSeparator = '.' ;
+  public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
+                                            new DecimalFormatSymbols(Locale.US);
   //caractéristique du pousse seringue en m/min
   public final static double COURCE_LINEAIRE_MAX = 0.1269 ;
   //diamètre de seringue maximum pour le pousse seringue en mm
@@ -35,14 +37,13 @@ public class InterfacePousseSeringue  implements Closeable
   static
   {
     String[] formats = {"#.###", "##.##", "###.#", "####"} ;
-    DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
-    
+        
     for(int index=0 ; index < _DOUBLE_FORMATTERS.length ; index++)
     {
       _DOUBLE_FORMATTERS[index] = new DecimalFormat(formats[index]);
       _DOUBLE_FORMATTERS[index].setRoundingMode(RoundingMode.FLOOR);
       _DOUBLE_FORMATTERS[index].setDecimalSeparatorAlwaysShown(false);
-      _DOUBLE_FORMATTERS[index].setDecimalFormatSymbols(dfs);
+      _DOUBLE_FORMATTERS[index].setDecimalFormatSymbols(DECIMAL_SYMBOLS);
     }
   }
   
@@ -72,13 +73,13 @@ public class InterfacePousseSeringue  implements Closeable
     try
     {
       // contient le code de vérification.
-      this._debitMaxIntrinseque = InterfacePousseSeringue.debitMaxIntrinseque (diametreSeringue);
+      this._debitMaxIntrinseque = InterfacePousseSeringue.debitMaxIntrinseque(diametreSeringue);
 
       this.dia(diametreSeringue);
     }
     catch(SerialComException e)
     {
-      String msg = "error while initializing the pumpe";
+      String msg = "error while initializing the pump";
       _LOG.fatal(msg);
       throw new InitializationException(msg, e);
     }
@@ -198,39 +199,149 @@ public class InterfacePousseSeringue  implements Closeable
     return result;
   }
   
-  public double deliver()
+  public double deliver() throws SerialComException
   {
-    return 0;
+    char[] message_brute = this.traitementOrdre("del?\r").toCharArray() ;
+
+    // Attention ne revoie un réel que si le volume à délivré en est un.
+    // Ainsi : 1. ou 1.0 ne donnera pas de réponse en réel donc la réponse sera
+    // 0 puis 1 à la fin !!!! Il n'y a donc aucun intérêt.
+    // Parade : passer en micro litre quand < 10 mL.
+    
+    StringBuilder sb = new StringBuilder(); 
+    boolean micro_litre = false ;
+
+    for (int i = 1 ; i <= message_brute.length ; i++)
+    {
+      if (Character.isDigit(message_brute[i]))
+      {
+        sb.append(message_brute[i]) ;
+      }
+
+      if (message_brute[i] == DECIMAL_SYMBOLS.getDecimalSeparator())
+      {
+        sb.append(Naming.DECIMAL_SYMBOLS.getDecimalSeparator()) ;
+      }
+
+      if (message_brute[i] == 'u')
+      {
+        micro_litre = true ;
+      }
+    }
+
+    double raw_value = Double.valueOf(sb.toString());
+    
+    if (micro_litre)
+    {
+      return (raw_value/1000.) ;
+    }
+    else
+    {
+      return raw_value ;
+    }
   }
   
-  public void ratei(double debit)
+  public void ratei(double debit) throws SerialComException
   {
+    if (debit <= 0.)
+    {
+      String msg = String.format("the value of the rate (%s) cannot be negative or null",
+                                 debit);
+      _LOG.fatal(msg);
+      throw new RuntimeException(msg) ;
+    }
+    else if (debit > this._debitMaxIntrinseque)
+    {
+      String msg = String.format("the value of the rate (%s) cannot be superior than %s mL/min",
+                                 debit, this._debitMaxIntrinseque);
+      _LOG.fatal(msg);
+      throw new RuntimeException(msg) ;
+    }
     
+    String ordre = String.format("ratei %s ml/m\r", formatage(debit)) ;
+    this.traitementOrdre(ordre) ;
   }
   
-  public void ratew(double debit)
+  public void ratew(double debit) throws SerialComException
   {
-    
+    if (debit <= 0.)
+    {
+      String msg = String.format(
+          "the value of the rate (%s) cannot be negative or null", debit) ;
+      _LOG.fatal(msg) ;
+      throw new RuntimeException(msg) ;
+    }
+    else if (debit > this._debitMaxIntrinseque)
+    {
+      String msg = String.format(
+          "the value of the rate (%s) cannot be superior than %s mL/min", debit,
+          this._debitMaxIntrinseque) ;
+      _LOG.fatal(msg) ;
+      throw new RuntimeException(msg) ;
+    }
+
+    String ordre = String.format("ratew %s ml/m\r", formatage(debit));
+    this.traitementOrdre(ordre) ;
   }
   
-  public void voli(double volume)
+  public void voli(double volume) throws SerialComException
   {
-    
+    if (volume <= 0.)
+    {
+      String msg = String.format("the value of the volume (%s) cannot be negative or null",
+                                 volume);
+      _LOG.fatal(msg);
+      throw new RuntimeException(msg) ;
+    }
+
+    String ordre = null;
+
+    if (volume < 10.)
+    {
+      // permet le suivie du volume délivré si <1 ml voir la fonction deliver.
+      ordre = String.format("voli %s ul\r", formatage((volume * 1000))) ;
+    }
+    else
+    {
+      ordre = String.format("voli %s ml\r", formatage(volume));
+    }
+
+    this.traitementOrdre(ordre) ;
   }
   
-  public void volw(double volume)
+  public void volw(double volume) throws SerialComException
   {
-    
+    if (volume <= 0.)
+    {
+      String msg = String.format("the value of the volume (%s) cannot be negative or null",
+                                 volume);
+      _LOG.fatal(msg);
+      throw new RuntimeException(msg) ;
+    }
+
+    String ordre = null;
+
+    if (volume < 10.)
+    {
+      // permet le suivie du volume délivré si <1 ml voir la fonction deliver.
+      ordre = String.format("volw %s ul\r", formatage(volume * 1000));
+    }
+    else
+    {
+      ordre = String.format("volw %s ml\r", formatage(volume));
+    }
+
+    this.traitementOrdre(ordre) ;
   }
   
-  public void modeI()
+  public void modeI() throws SerialComException
   {
-    
+    this.traitementOrdre("mode i\r") ; 
   }
   
-  public void modeW()
+  public void modeW() throws SerialComException
   {
-    
+    this.traitementOrdre("mode w\r") ;
   }
   
   public static int debitMaxIntrinseque(double diametreSeringue)
@@ -263,7 +374,6 @@ public class InterfacePousseSeringue  implements Closeable
   
   public static void main(String[] args)
   {
-    // TODO Auto-generated method stub
-
+    
   }
 }
