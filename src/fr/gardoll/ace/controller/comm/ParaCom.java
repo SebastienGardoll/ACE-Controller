@@ -1,6 +1,8 @@
 package fr.gardoll.ace.controller.comm;
 
-public interface ParaCom
+import java.io.Closeable ;
+
+public interface ParaCom  extends Closeable
 {
   // Open a specific isolation valve (zero based number).
   public void ouvrir(int numEv) ; 
@@ -10,6 +12,8 @@ public interface ParaCom
 
   // ferme toutes les ev
   public void toutFermer() ;
+  
+  public void close() ;
 
   // en milisecondes
   public final int ATTENTE_EV = 200 ;
