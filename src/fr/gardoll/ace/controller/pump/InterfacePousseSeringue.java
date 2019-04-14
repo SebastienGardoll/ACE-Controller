@@ -181,6 +181,8 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // Don't throw any exception as it is an emergency method.
+  // précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
+  // précondition non vérifiée !!!
   public void arretUrgence()
   {
     //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
