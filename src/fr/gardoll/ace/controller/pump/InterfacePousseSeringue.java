@@ -195,7 +195,7 @@ public class InterfacePousseSeringue  implements Closeable
     }
     catch (SerialComException e)
     {
-      String msg = "error while emergency stopping" ;
+      String msg = String.format("error while emergency stopping: %s", e.getMessage()) ;
       _LOG.error(msg);
     }
   }
@@ -261,14 +261,14 @@ public class InterfacePousseSeringue  implements Closeable
   {
     if (debit <= 0.)
     {
-      String msg = String.format("the value of the rate (%s) cannot be negative or null",
+      String msg = String.format("the value of the rate '%s' cannot be negative or null",
                                  debit);
       _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
     }
     else if (debit > this._debitMaxIntrinseque)
     {
-      String msg = String.format("the value of the rate (%s) cannot be superior than %s mL/min",
+      String msg = String.format("the value of the rate '%s' cannot be greater than %s mL/min",
                                  debit, this._debitMaxIntrinseque);
       _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
@@ -284,14 +284,14 @@ public class InterfacePousseSeringue  implements Closeable
     if (debit <= 0.)
     {
       String msg = String.format(
-          "the value of the rate (%s) cannot be negative or null", debit) ;
+          "the value of the rate '%s' cannot be negative or null", debit) ;
       _LOG.fatal(msg) ;
       throw new RuntimeException(msg) ;
     }
     else if (debit > this._debitMaxIntrinseque)
     {
       String msg = String.format(
-          "the value of the rate (%s) cannot be superior than %s mL/min", debit,
+          "the value of the rate '%s' cannot be greater than %s mL/min", debit,
           this._debitMaxIntrinseque) ;
       _LOG.fatal(msg) ;
       throw new RuntimeException(msg) ;
@@ -307,7 +307,7 @@ public class InterfacePousseSeringue  implements Closeable
   {
     if (volume <= 0.)
     {
-      String msg = String.format("the value of the volume (%s) cannot be negative or null",
+      String msg = String.format("the value of the volume '%s' cannot be negative or null",
                                  volume);
       _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
@@ -334,7 +334,7 @@ public class InterfacePousseSeringue  implements Closeable
   {
     if (volume <= 0.)
     {
-      String msg = String.format("the value of the volume (%s) cannot be negative or null",
+      String msg = String.format("the value of the volume '%s' cannot be negative or null",
                                  volume);
       _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
@@ -369,14 +369,14 @@ public class InterfacePousseSeringue  implements Closeable
   {
     if (diametreSeringue <= 0)
     {
-      String msg = String.format("the value of the syringe diameter (%s) cannot be negative or null",
+      String msg = String.format("the value of the syringe diameter '%s' cannot be negative or null",
                                  diametreSeringue) ;
       _LOG.fatal(msg);
       throw new ConfigurationException(msg);
     }
     else if (diametreSeringue > DIAMETRE_MAX)
     {
-      String msg = String.format("the value of the syringe diameter (%s) cannot be superior than %s",
+      String msg = String.format("the value of the syringe diameter '%s' cannot be greater than %s",
                                  diametreSeringue, DIAMETRE_MAX);
       _LOG.fatal(msg);
       throw new ConfigurationException (msg);
