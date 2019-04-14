@@ -21,6 +21,8 @@ import fr.gardoll.ace.controller.common.SerialComException ;
 public class InterfacePousseSeringue  implements Closeable
 {
   private final SerialCom _port;
+  
+  // dépendant uniquement du diametre du type de seringue utilisé.
   private final int _debitMaxIntrinseque;
 
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
@@ -47,6 +49,7 @@ public class InterfacePousseSeringue  implements Closeable
     }
   }
   
+  // requires 0 < diametreSeringue <= DIAMETRE_MAX
   public InterfacePousseSeringue(double diametreSeringue, SerialCom port)
       throws InitializationException
   {
@@ -84,7 +87,8 @@ public class InterfacePousseSeringue  implements Closeable
       throw new InitializationException(msg, e);
     }
   }
-  
+
+  //traitement de la réponse de l'interface en cas d'erreur => exception.
   private void traitementReponse(String message) throws SerialComException
   {
     if (message == "EE")
@@ -109,6 +113,7 @@ public class InterfacePousseSeringue  implements Closeable
     }
   }
   
+  //renvoie la réponse de l'interface
   private String traitementOrdre(String ordre) throws SerialComException
   {
     this._port.ecrire(ordre) ;
@@ -125,6 +130,9 @@ public class InterfacePousseSeringue  implements Closeable
     return this._port.lire();
   }
   
+  // transforme float en string mais
+  // où , est transformée en .  (séparateur des réels)
+  // et format le nombre pour qu'il n'y ait que 4 chiffres au plus.
   private String formatage(double nombre)
   {
     // le pousse seringue n'acceptant que des nombres à 4 chiffres au plus ,
@@ -160,11 +168,13 @@ public class InterfacePousseSeringue  implements Closeable
     return _DOUBLE_FORMATTERS[index].format(nombre);
   }
   
+  //reprise ou démarrage
   public void run() throws SerialComException
   {
     this.traitementOrdre( "run\r" );
   }
   
+  // pause
   public void stop() throws SerialComException
   {
     this.traitementOrdre ("stop\r");
@@ -187,6 +197,7 @@ public class InterfacePousseSeringue  implements Closeable
     }
   }
   
+  // en mm requires diametre > 0
   public void dia(double diametre) throws SerialComException
   {
     String ordre = String.format("dia %s\r", formatage(diametre)) ;
@@ -199,6 +210,7 @@ public class InterfacePousseSeringue  implements Closeable
     return result;
   }
   
+  // en mL
   public double deliver() throws SerialComException
   {
     char[] message_brute = this.traitementOrdre("del?\r").toCharArray() ;
@@ -241,6 +253,7 @@ public class InterfacePousseSeringue  implements Closeable
     }
   }
   
+  // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   public void ratei(double debit) throws SerialComException
   {
     if (debit <= 0.)
@@ -262,6 +275,7 @@ public class InterfacePousseSeringue  implements Closeable
     this.traitementOrdre(ordre) ;
   }
   
+  //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   public void ratew(double debit) throws SerialComException
   {
     if (debit <= 0.)
@@ -284,6 +298,8 @@ public class InterfacePousseSeringue  implements Closeable
     this.traitementOrdre(ordre) ;
   }
   
+  // en mL seulement 4 caractères sans compter la virgule.
+  // requires volume > 0
   public void voli(double volume) throws SerialComException
   {
     if (volume <= 0.)
@@ -309,6 +325,8 @@ public class InterfacePousseSeringue  implements Closeable
     this.traitementOrdre(ordre) ;
   }
   
+  // en mL seulement 4 caractères sans compter la virgule.
+  // requires volume > 0
   public void volw(double volume) throws SerialComException
   {
     if (volume <= 0.)
