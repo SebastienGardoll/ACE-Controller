@@ -280,7 +280,10 @@ public class JSerialComm implements SerialCom
       continue_to_read = buffer.getKey() == buffer.getValue().length ;
     }
     
-    return sb.toString() ;
+    String result = sb.toString() ; 
+    _LOG.debug(String.format("read '%s'", result));
+
+    return result ;
   }
   
   private SimpleEntry<Integer, byte[]> internal_read() throws SerialComException
