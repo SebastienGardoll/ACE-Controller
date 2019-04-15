@@ -54,6 +54,8 @@ public class InterfacePousseSeringue  implements Closeable
   public InterfacePousseSeringue(double diametreSeringue, SerialCom port)
       throws InitializationException
   {
+    _LOG.info("initializing the pump interface");
+    
     this._port = port ;
     
     // Initializing the serial port.

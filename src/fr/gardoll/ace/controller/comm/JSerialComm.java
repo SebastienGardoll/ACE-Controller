@@ -26,6 +26,8 @@ public class JSerialComm implements SerialCom
   public JSerialComm(SerialMode readMode, SerialMode writeMode,
                      Charset charset, int sizeReadBuffer)
   {
+    _LOG.info("initializing the JSerialComm");
+    
     this._charset = charset ;
     this._sizeReadBuffer = sizeReadBuffer ;
     

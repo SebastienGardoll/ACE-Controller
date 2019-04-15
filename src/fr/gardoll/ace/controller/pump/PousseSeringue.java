@@ -71,6 +71,8 @@ public class PousseSeringue implements Closeable
                         double debitMaxPousseSeringue,
                         double volumeInitiale) throws InitializationException
   {
+    _LOG.info("initializing the pump");
+    
     this.interfacePousseSeringue = interfacePousseSeringue ;
     this.para = paraCom ;
     // attention les débits sont par défaut ceux en mémoire du pousse seringue.
