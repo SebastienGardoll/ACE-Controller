@@ -108,7 +108,6 @@ public class PousseSeringue implements Closeable
       _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
-          
 
     if (volumeInitiale < 0.)
     {
@@ -148,8 +147,6 @@ public class PousseSeringue implements Closeable
     this._volumeMaxSeringue = volumeMaxSeringue ;
 
     this._debitMaxPousseSeringue = debitMaxPousseSeringue ;
- 
-    /*** mettre sécurité sur diamètre seringue ici et dans configue interface ***/
   }
 
   public int nbSeringue()
@@ -172,6 +169,8 @@ public class PousseSeringue implements Closeable
   // requires 0 <= numEv <= NBEV_MAX
   public void aspiration(double volume, int numEv)
   { 
+    _LOG.debug(String.format("withdrawing volume '%s' from isolation valve '%s'",
+        volume, numEv));
     // amélioration de l'algo pour éviter les pertes !!!
     // considère le volume d'une seringue
     volume /= _nbSeringue ;   
@@ -199,12 +198,16 @@ public class PousseSeringue implements Closeable
   //requires 0 <= numEv <= NBEV_MAX
   public void refoulement(double volume , int numEv)
   {
+    _LOG.debug(String.format("infusing volume '%s' to the isolation valve '%s'",
+        volume, numEv));
     volume /= _nbSeringue ;
     this.algoRefoulement(volume, numEv) ;
   }
 
   public void algoAspiration(double volume, int numEv)
   { 
+    _LOG.debug(String.format("running withdrawing routine for volume '%s' from isolation valve '%s'",
+        volume, numEv));
     //attention un ordre comme voli ou volw 0 correspond à une aspi/infusion sans fin.
     if (Utils.isNearZero(volume)) return ;
 
@@ -251,6 +254,8 @@ public class PousseSeringue implements Closeable
   public void algoRefoulement(double volume, int numEv)
 
   { 
+    _LOG.debug(String.format("running the infusion routine for volume '%s' to the isolation valve '%s'",
+        volume, numEv));
     // attention un ordre comme voli ou volw 0 correspond à une aspi/infusion sans fin.
     // si y a un problème , il faut pouvoir le détecter.
     if (Utils.isNearZero(volume)) return ; 
@@ -301,6 +306,8 @@ public class PousseSeringue implements Closeable
   //volume n'est pas divisé par nbSeringue !!!
   public void rincageAspiration(double volume, int numEv)
   {
+    _LOG.debug(String.format("rinsing with volume '%s' from isolation valve '%s'",
+        volume, numEv));
     // attention si volume = _volumeMaxSeringue
     // volume + VOL_AJUSTEMENT > _volumeMaxSeringue
     // voir algoAspiration
@@ -319,6 +326,7 @@ public class PousseSeringue implements Closeable
   public void setDebitAspiration(double debit)
 
   { 
+    _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit)); 
     if (debit > this._debitMaxPousseSeringue )
     {
       String msg = String.format("the withdrawing rate '%s' cannot be greater than the maximum rate %s",
@@ -352,6 +360,7 @@ public class PousseSeringue implements Closeable
   // requires debit <= _debitMaxPousseSeringue
   public void setDebitRefoulement(double debit)
   {  
+    _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
     if(debit > this._debitMaxPousseSeringue)
     {
       String msg = String.format("the value of the infusion rate '%s' cannot be greater than the maximum rate %s",
@@ -383,6 +392,7 @@ public class PousseSeringue implements Closeable
   // attente de la fin de l'aspiration ou refoulement
   public void finPompage(boolean fermeture)
   {
+    _LOG.debug(String.format("waiting for the pump (close flag is '%s')", fermeture));
     boolean has_to_continue = false;
     do
     {
@@ -448,6 +458,7 @@ public class PousseSeringue implements Closeable
   {
     try
     {
+      _LOG.debug("stopping the pump (pause)");
       if (this.interfacePousseSeringue.running())
       {  
         this.interfacePousseSeringue.stop();
@@ -476,6 +487,7 @@ public class PousseSeringue implements Closeable
     { 
       try
       {
+        _LOG.debug("resuming the pump");
         this.para.ouvrir(this.numEvActuelle);
         this.interfacePousseSeringue.run();
         this._pause = false ;
@@ -488,6 +500,10 @@ public class PousseSeringue implements Closeable
         throw new RuntimeException(msg, e);
       }
     }
+    else
+    {
+      _LOG.debug("ignore resuming the pump");
+    }
   }
 
   // règle le diamètre de la seringue en mm.
@@ -495,6 +511,7 @@ public class PousseSeringue implements Closeable
   {
     try
     {
+      _LOG.debug(String.format("setting the syringe diameter to '%s'", diametre));
       this.interfacePousseSeringue.dia(diametre);
     }
     catch(SerialComException e)
@@ -511,7 +528,9 @@ public class PousseSeringue implements Closeable
   { 
     try
     {
-      return this.interfacePousseSeringue.deliver() * this._nbSeringue ;
+      double result = this.interfacePousseSeringue.deliver() * this._nbSeringue ;
+      _LOG.debug(String.format("getting '%s' of delivered volume", result));
+      return result ;
     }
     catch(SerialComException e)
     {
@@ -526,6 +545,7 @@ public class PousseSeringue implements Closeable
   // précondition non vérifiée !!!
   public void arretUrgence()
   {
+    _LOG.debug("pump emergency shutdown");
     //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
     this.interfacePousseSeringue.arretUrgence();
     // ferme ttes les ev
@@ -550,13 +570,16 @@ public class PousseSeringue implements Closeable
       volumeUtile -= VOL_SECU  ;
     }
 
-    return (volumeUtile  * _nbSeringue) ;                      
+    double result = (volumeUtile  * _nbSeringue) ;
+    _LOG.debug(String.format("total raiming volume is '%s'", result));
+    return result;                      
   }
 
   // vide la seringue entièrement même le volume de sécurité dans le tuyau de refoulement.
   // vide entièrement la seringue, volume de sécurité compris.
   public void vidange()  
   { 
+    _LOG.debug("draining the pump");
     // retour aux conditions initiales.
     this.flagVolSecu = false ;
     
@@ -579,7 +602,9 @@ public class PousseSeringue implements Closeable
   public double volumeMaxSeringueUtile()
   {  
     //volume Max utile pour les n seringues !
-    return  (this._nbSeringue * (this._volumeMaxSeringue - VOL_SECU - VOL_AJUSTEMENT ) ) ;
+    double result = (this._nbSeringue * (this._volumeMaxSeringue - VOL_SECU - VOL_AJUSTEMENT ) );
+    _LOG.debug(String.format("computed the maximum util volume is '%s'", result));
+    return  result ;
   }
 
   public double volumeAjustement()

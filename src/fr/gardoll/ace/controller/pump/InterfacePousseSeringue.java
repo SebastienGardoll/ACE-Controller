@@ -397,6 +397,9 @@ public class InterfacePousseSeringue  implements Closeable
     
     double result = Math.pow(diametreSeringue/2. , 2.) * Math.PI * COURCE_LINEAIRE_MAX  ;
     // arrondi par à l'entier inférieur à cause spec du pousse seringue .
+    
+    _LOG.debug(String.format("getting '%s' rounded to '%s'", result, (int)result));
+    
     return (int) (result) ;
   }
   
