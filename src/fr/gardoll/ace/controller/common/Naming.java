@@ -7,4 +7,6 @@ public class Naming
 {
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.FRANCE);
+  
+  public final static int NB_POSITION = 6 ;
 }
