@@ -58,10 +58,10 @@ public class InterfacePousseSeringue  implements Closeable
     
     this._port = port ;
     
-    // Initializing the serial port.
+    // Initializing the serial port (already opened).
     try
     {
-      _LOG.debug("setting the pump com port");
+      _LOG.debug(String.format("setting the pump com port '%s'", this._port.getId()));
       this._port.setVitesse(9600) ;
       this._port.setByteSize (8);
       this._port.setStopBit(StopBit.ONESTOPBIT);
