@@ -6,6 +6,8 @@ import fr.gardoll.ace.controller.common.SerialComException ;
 
 public interface SerialCom extends Closeable
 {
+  public String getId();
+  
   public void setVitesse(int vitesse) throws SerialComException ;
 
   public void setParite(Parity choix) throws SerialComException ;

@@ -1,5 +1,6 @@
 package fr.gardoll.ace.controller.comm;
 
+import java.io.File ;
 import java.nio.charset.Charset;
 import java.util.AbstractMap.SimpleEntry;
 
@@ -18,7 +19,7 @@ public class JSerialComm implements SerialCom
   private SerialPort _port    = null ;
   private Charset _charset    = null ;
   private int _sizeReadBuffer = -1 ;
-  private String _name        = "not openned" ;
+  private String _id          = "unknown" ;
   private int _readMode       = SerialPort.TIMEOUT_NONBLOCKING ;
   private int _writeMode      = SerialPort.TIMEOUT_NONBLOCKING ;
   private int _mode           = SerialPort.TIMEOUT_NONBLOCKING ;
@@ -85,7 +86,10 @@ public class JSerialComm implements SerialCom
     
     _LOG.debug(String.format("openning port '%s'.", portPath));
      
-    this._name = portPath ;
+    File file = new File(portPath);
+    this._id = file.getName() ;
+    
+    _LOG.debug(String.format("computed id of the port is '%s'.", this._id));
     
     try
     {
@@ -116,7 +120,7 @@ public class JSerialComm implements SerialCom
   public void setVitesse(int vitesse) throws SerialComException
   {
     _LOG.debug(String.format("setting the baud rate of port '%s' to '%s'",
-        this._name, vitesse)) ;
+        this._id, vitesse)) ;
     this._port.setBaudRate(vitesse) ;
   }
 
@@ -124,7 +128,7 @@ public class JSerialComm implements SerialCom
   public void setParite(Parity choix) throws SerialComException
   {
     _LOG.debug(String.format("setting the parity of port '%s' to '%s'",
-        this._name, choix)) ;
+        this._id, choix)) ;
     
     int _parity = -1 ;
      
@@ -156,7 +160,7 @@ public class JSerialComm implements SerialCom
   public void setStopBit(StopBit choix) throws SerialComException
   {
     _LOG.debug(String.format("setting the number of stop bit of port '%s' to '%s'",
-        this._name, choix)) ;
+        this._id, choix)) ;
     int numStopBit = -1 ; 
     switch(choix)
     {
@@ -180,7 +184,7 @@ public class JSerialComm implements SerialCom
   public void setByteSize(int nbBit) throws SerialComException
   {
     _LOG.debug(String.format("setting the number of data bit of port '%s' to '%s'",
-        this._name, nbBit)) ;
+        this._id, nbBit)) ;
     this._port.setNumDataBits(nbBit) ;
   }
 
@@ -188,7 +192,7 @@ public class JSerialComm implements SerialCom
   public void setControlFlux(FlowControl choix) throws SerialComException
   {
     _LOG.debug(String.format("setting the flow control of port '%s' to '%s'",
-        this._name, choix)) ;
+        this._id, choix)) ;
     int _flowCtrl = -1 ;
     switch(choix)
     {
@@ -219,7 +223,7 @@ public class JSerialComm implements SerialCom
   @Override
   public void setTimeOut(int delais) throws SerialComException
   {
-    _LOG.debug(String.format("setting the timeout of port '%s' to '%s'", this._name,
+    _LOG.debug(String.format("setting the timeout of port '%s' to '%s'", this._id,
         delais)) ;
     this._port.setComPortTimeouts(this._mode, delais, delais) ;
   }
@@ -227,7 +231,7 @@ public class JSerialComm implements SerialCom
   @Override
   public void ecrire(String ordre) throws SerialComException
   {
-    _LOG.debug(String.format("writing '%s' on port '%s'", ordre, this._name)) ;
+    _LOG.debug(String.format("writing '%s' on port '%s'", ordre, this._id)) ;
     
     try
     {
@@ -237,7 +241,7 @@ public class JSerialComm implements SerialCom
       if (nb_byte_sent < 0)
       {
         String msg = String.format("transmission error while sending order '%s' on port '%s'",
-                                   ordre, this._name) ;
+                                   ordre, this._id) ;
 
         throw new SerialComException(msg) ;
       }
@@ -245,7 +249,7 @@ public class JSerialComm implements SerialCom
       if (nb_byte_sent != buffer.length)
       {
         String msg = String.format("transmission error while sending order '%s' on port '%s': only %s bytes sent out of %s",
-            ordre, this._name, nb_byte_sent, buffer.length) ;
+            ordre, this._id, nb_byte_sent, buffer.length) ;
         
         throw new SerialComException(msg) ;
       }
@@ -253,7 +257,7 @@ public class JSerialComm implements SerialCom
     catch (Exception e)
     {
       String msg = String.format("transmission error while sending order '%s' one port '%s': %s",
-                                 ordre, this._name, e.getMessage()) ; 
+                                 ordre, this._id, e.getMessage()) ; 
       throw new SerialComException(msg, e) ;
     }
   }
@@ -261,7 +265,7 @@ public class JSerialComm implements SerialCom
   @Override
   public String lire() throws SerialComException
   {
-    _LOG.debug(String.format("reading on port '%s'", this._name)) ;
+    _LOG.debug(String.format("reading on port '%s'", this._id)) ;
     StringBuilder sb = new StringBuilder() ;
     
     boolean continue_to_read = true ;
@@ -307,7 +311,7 @@ public class JSerialComm implements SerialCom
       else
       {
         String msg = String.format("error while reading on port '%s': %s",
-                                   this._name, e.getMessage()) ;
+                                   this._id, e.getMessage()) ;
         throw new SerialComException(msg, e) ; 
       }
     }
@@ -320,12 +324,18 @@ public class JSerialComm implements SerialCom
   @Override
   public void close()
   {
-    _LOG.debug(String.format("closing port '%s'", this._name));
+    _LOG.debug(String.format("closing port '%s'", this._id));
     this._port.closePort() ;
   }
   
   public static void main(String[] args)
   {
     
+  }
+
+  @Override
+  public String getId()
+  {
+    return this._id;
   }
 }

@@ -6,6 +6,8 @@ import fr.gardoll.ace.controller.common.SerialComException ;
 
 public interface ParaCom  extends Closeable
 {
+  public String getId();
+  
   // Open a specific isolation valve (zero based number).
   // Openning with the id zero, will close all the isolation valve.
   public void ouvrir(int numEv)  throws SerialComException ;
