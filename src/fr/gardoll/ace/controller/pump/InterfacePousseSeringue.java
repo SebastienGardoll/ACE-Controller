@@ -61,6 +61,7 @@ public class InterfacePousseSeringue  implements Closeable
     // Initializing the serial port.
     try
     {
+      _LOG.debug("setting the pump com port");
       this._port.setVitesse(9600) ;
       this._port.setByteSize (8);
       this._port.setStopBit(StopBit.ONESTOPBIT);
@@ -80,7 +81,7 @@ public class InterfacePousseSeringue  implements Closeable
     {
       // contient le code de vérification.
       this._debitMaxIntrinseque = InterfacePousseSeringue.debitMaxIntrinseque(diametreSeringue);
-
+      _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
       this.dia(diametreSeringue);
     }
     catch(SerialComException e)
@@ -100,14 +101,12 @@ public class InterfacePousseSeringue  implements Closeable
       _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
-
     else if (message == "NA::")
     {
       String msg = "unknown pump order" ;
       _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
-
     else if (message == "")
     {
       String msg = "the pump did not acknowledgement the order" ;
@@ -120,11 +119,8 @@ public class InterfacePousseSeringue  implements Closeable
   private String traitementOrdre(String ordre) throws SerialComException
   {
     this._port.ecrire(ordre) ;
-
     String reponse = this.lectureReponse() ;
-
     this.traitementReponse(reponse) ;
-
     return reponse  ;
   }
   
@@ -168,7 +164,9 @@ public class InterfacePousseSeringue  implements Closeable
       throw new RuntimeException(msg);
     }
     
-    return _DOUBLE_FORMATTERS[index].format(nombre);
+    String result = _DOUBLE_FORMATTERS[index].format(nombre);
+    _LOG.debug(String.format("formatting: from '%s' to '%s'", nombre, result));
+    return result;
   }
   
   //reprise ou démarrage
@@ -191,6 +189,7 @@ public class InterfacePousseSeringue  implements Closeable
     //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
     try
     {
+      _LOG.debug("executing emergency shutdown");
       this._port.ecrire("stop\r") ;
       String reponse = this.lectureReponse() ;
       this.traitementReponse(reponse) ;
@@ -247,20 +246,25 @@ public class InterfacePousseSeringue  implements Closeable
     }
 
     double raw_value = Double.valueOf(sb.toString());
+    double result;
     
     if (micro_litre)
     {
-      return (raw_value/1000.) ;
+      result = (raw_value/1000.) ;
     }
     else
     {
-      return raw_value ;
+      result = raw_value ;
     }
+    
+    _LOG.debug(String.format("the delivered volume is %s", result));
+    return result;
   }
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   public void ratei(double debit) throws SerialComException
   {
+    _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
     if (debit <= 0.)
     {
       String msg = String.format("the value of the rate '%s' cannot be negative or null",
@@ -283,6 +287,7 @@ public class InterfacePousseSeringue  implements Closeable
   //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   public void ratew(double debit) throws SerialComException
   {
+    _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit));
     if (debit <= 0.)
     {
       String msg = String.format(
@@ -307,6 +312,7 @@ public class InterfacePousseSeringue  implements Closeable
   // requires volume > 0
   public void voli(double volume) throws SerialComException
   {
+    _LOG.debug(String.format("setting the infusion volume to '%s'", volume));
     if (volume <= 0.)
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
@@ -334,6 +340,7 @@ public class InterfacePousseSeringue  implements Closeable
   // requires volume > 0
   public void volw(double volume) throws SerialComException
   {
+    _LOG.debug(String.format("setting the withdrawing volume to '%s'", volume));
     if (volume <= 0.)
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
@@ -359,16 +366,20 @@ public class InterfacePousseSeringue  implements Closeable
   
   public void modeI() throws SerialComException
   {
+    _LOG.debug("setting the infusion mode");
     this.traitementOrdre("mode i\r") ; 
   }
   
   public void modeW() throws SerialComException
   {
+    _LOG.debug("setting the withdrawing mode");
     this.traitementOrdre("mode w\r") ;
   }
   
   public static int debitMaxIntrinseque(double diametreSeringue)
   {
+    _LOG.debug(String.format("computing the maxium rate based on the syringe diameter '%s'",
+        diametreSeringue));
     if (diametreSeringue <= 0)
     {
       String msg = String.format("the value of the syringe diameter '%s' cannot be negative or null",
@@ -392,6 +403,7 @@ public class InterfacePousseSeringue  implements Closeable
   @Override
   public void close()
   {
+    _LOG.debug(String.format("closing the port '%s'", this._port.getId()));
     this._port.close() ;
   }
   
