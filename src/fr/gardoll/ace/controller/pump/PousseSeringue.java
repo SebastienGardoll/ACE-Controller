@@ -58,7 +58,7 @@ public class PousseSeringue implements Closeable
   private boolean flagVolSecu ; 
 
   private int _nbSeringue ;
-                                   
+  
   //requires nombresSeringues <= 2
   //requires volumeMaxSeringue > 0
   //requires 0 < debitMaxPousseSeringue <=  debitMaxIntrinseque ( diametreSeringue )
@@ -388,7 +388,12 @@ public class PousseSeringue implements Closeable
       this.debitActuelRefoulement = debit ;
     }
   }
-
+  
+  public void finPompage()
+  {
+    this.finPompage(false);
+  }
+  
   // attente de la fin de l'aspiration ou refoulement
   public void finPompage(boolean fermeture)
   {

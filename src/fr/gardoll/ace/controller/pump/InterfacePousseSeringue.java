@@ -97,7 +97,7 @@ public class InterfacePousseSeringue  implements Closeable
   {
     if (message == "EE")
     {
-      String msg = "pump serial communication failure" ;
+      String msg = "pump failure" ;
       _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
@@ -109,7 +109,7 @@ public class InterfacePousseSeringue  implements Closeable
     }
     else if (message == "")
     {
-      String msg = "the pump did not acknowledgement the order" ;
+      String msg = "pump disconnection" ;
       _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
