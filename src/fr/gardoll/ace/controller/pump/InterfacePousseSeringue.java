@@ -181,24 +181,15 @@ public class InterfacePousseSeringue  implements Closeable
     this.traitementOrdre ("stop\r");
   }
   
-  // Don't throw any exception as it is an emergency method.
   // précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
   // précondition non vérifiée !!!
-  public void arretUrgence()
+  public void arretUrgence() throws SerialComException
   {
     //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
-    try
-    {
-      _LOG.debug("executing emergency shutdown");
-      this._port.ecrire("stop\r") ;
-      String reponse = this.lectureReponse() ;
-      this.traitementReponse(reponse) ;
-    }
-    catch (SerialComException e)
-    {
-      String msg = String.format("error while emergency stopping: %s", e.getMessage()) ;
-      _LOG.error(msg);
-    }
+    _LOG.debug("executing emergency shutdown");
+    this._port.ecrire("stop\r") ;
+    String reponse = this.lectureReponse() ;
+    this.traitementReponse(reponse) ;
   }
   
   // en mm requires diametre > 0

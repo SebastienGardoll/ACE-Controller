@@ -548,7 +548,7 @@ public class PousseSeringue implements Closeable
 
   // précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
   // précondition non vérifiée !!!
-  public void arretUrgence()
+  public void arretUrgence() throws SerialComException
   {
     _LOG.debug("pump emergency shutdown");
     //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant

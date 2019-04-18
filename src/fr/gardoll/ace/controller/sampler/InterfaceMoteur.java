@@ -144,7 +144,7 @@ public class InterfaceMoteur implements Closeable
 
   // avance jusqu'à fin de butée
   // 0 :pas bougé, 1 : butée positive, -1 : butée négative
-  public void movel(char axe1, char axe2) throws SerialComException
+  public void movel(int axe1, int axe2) throws SerialComException
   {  
     String ordre = String.format("movel (%s,%s)\r", axe1, axe2);
     this.traitementOrdre(ordre) ;
