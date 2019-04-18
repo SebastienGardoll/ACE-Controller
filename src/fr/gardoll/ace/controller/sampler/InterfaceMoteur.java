@@ -51,7 +51,6 @@ public class InterfaceMoteur implements Closeable
   
   public static void main(String[] args)
   {
-    // TODO Auto-generated method stub
 
   }
   
@@ -84,6 +83,13 @@ public class InterfaceMoteur implements Closeable
       
       // XXX untranslated code.
       // case 0   : { throw EInterfaceMoteur ( IM_ERREUR_RECEPTION_3 ) ; break ; }
+      
+      default:
+      {
+        String msg = String.format("unsupported reponse: %s", reponse);
+        _LOG.fatal(msg);
+        throw new RuntimeException(msg);
+      }
 
     }
   }
@@ -214,7 +220,10 @@ public class InterfaceMoteur implements Closeable
   
   public void singleLine(boolean choix) throws SerialComException
   { 
-    String ordre = String.format("singleline (%s)\r", choix); // XXX convertion of boolean
+    // XXX convertion of boolean. Checked 04/18/2019
+    char convertion = (choix) ? '1':'2';
+    
+    String ordre = String.format("singleline (%s)\r", convertion);
     this.traitementOrdre (ordre) ;
   }
   

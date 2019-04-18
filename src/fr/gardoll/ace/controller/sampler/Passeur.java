@@ -422,7 +422,6 @@ public class Passeur implements Closeable
   //dimension en mm en rapport avec le bras !
   public static int convertBras(double dimension)
   {
-    // XXX check JAVADOC
     double result = Math.ceil( (dimension * NB_PAS_TOUR_BRAS) / HAUTEUR_TOUR_BRAS ) ;
     return ((int) (result));
   }
@@ -432,7 +431,6 @@ public class Passeur implements Closeable
   //dimension en mm en rapport avec au carrousel !
   public int convertCarrousel(double dimension)
   {
-    // XXX check JAVADOC
     double result = (Math.asin(dimension / rayon) *  NB_PAS_TOUR_CARROUSEL) / ( 2 * Math.PI) ; 
     return ((int) (result));
   }
