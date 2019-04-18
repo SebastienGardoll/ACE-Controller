@@ -81,7 +81,6 @@ public class Passeur implements Closeable
   
   public static void main(String[] args)
   {
-    // TODO Auto-generated method stub
 
   }
   
