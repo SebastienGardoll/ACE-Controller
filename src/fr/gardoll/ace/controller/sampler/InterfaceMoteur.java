@@ -65,7 +65,7 @@ public class InterfaceMoteur implements Closeable
       throw new RuntimeException();
     }
     
-    switch (reponse.charAt(1)) // XXX Is it the right char to look at ?
+    switch (reponse.charAt(0))
     {  
       case '0': { break ; } // commande bien exécutée par l'interface
       
@@ -100,7 +100,7 @@ public class InterfaceMoteur implements Closeable
   {  
     String reponse = "";
     
-    this._port.ecrire( ordre ) ;
+    this._port.ecrire(ordre) ;
 
     try
     {
@@ -145,7 +145,7 @@ public class InterfaceMoteur implements Closeable
   {  
     String ordre = String.format("moving (%s)\r", axe);
     // valeur 1 ==> en mouvement
-    return  (this.traitementOrdre(ordre).charAt(1) == '1' ) ; // XXX Is it the right char to look at ? 
+    return  (this.traitementOrdre(ordre).charAt(0) == '1' ) ; 
   }
 
   // avance jusqu'à fin de butée
@@ -208,7 +208,7 @@ public class InterfaceMoteur implements Closeable
     }
 
     // long traitement par l'interface
-    this.traitementOrdre(ordre, 2000) ;
+    this.traitementOrdre(ordre, 2000l) ;
   }
 
   public void datum(TypeAxe axe) throws SerialComException
@@ -246,35 +246,48 @@ public class InterfaceMoteur implements Closeable
   { 
     // la temporisation dépend directement
     // de la vitesse de point et de la décéleration
-    this.traitementOrdre ("halt()\r" , 1500) ;
+    this.traitementOrdre ("halt()\r" , 1500l) ;
   } 
                                            
   public int where(TypeAxe axe) throws SerialComException
   {  
     String ordre = String.format("where (%s)\r", axe);
-    String response = this.traitementOrdre(ordre, 100);
+    String response = this.traitementOrdre(ordre, 100l);
     return Integer.valueOf(response);
   }
 
   //voir manuel de l'interface
-  public void out(byte octet) throws SerialComException // XXX Is it the right type ?
+  // 0 <= octet <= 255
+  public void out(int octet) throws SerialComException
   { 
-    String ordre = String.format("out(%s)\r", octet); // XXX check the man.
-    this.traitementOrdre(ordre);
-  }
-
-  //voir manuel de l'interface
-  public void out(int bit, boolean valeur) throws SerialComException // XXX Is it the right type ?
-  { 
-    if (bit > NB_BITS )
+    if (octet <= 255 && octet <= 0)
     {
-      String msg = String.format("the value of the bit '%s' cannot be greater than %s",
-          bit, NB_BITS);
+      String ordre = String.format("out(%s)\r", octet);
+      this.traitementOrdre(ordre);
+    }
+    else
+    {
+      String msg = String.format("the state of optocoupled outputs '%s' must be greater or equal than 0 but less or equal than 255)",
+          octet);
       _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
+  }
 
-    String ordre = String.format("out(%s,%s)\r", bit, valeur); // XXX check the man.
+  //voir manuel de l'interface
+  public void out(int bitPosition, boolean isOn) throws SerialComException
+  { 
+    if (bitPosition > NB_BITS )
+    {
+      String msg = String.format("the position of the bit '%s' cannot be greater than %s",
+          bitPosition, NB_BITS);
+      _LOG.fatal(msg);
+      throw new RuntimeException(msg);
+    }
+    
+    char value = (isOn) ? '1' : '0';
+    
+    String ordre = String.format("out(%s,%s)\r", bitPosition, value);
     this.traitementOrdre(ordre);
   }
 }
