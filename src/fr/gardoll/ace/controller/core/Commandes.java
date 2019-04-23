@@ -35,6 +35,8 @@ public class Commandes
     this.pousseSeringue.setDebitAspiration(parametresSession.debitMaxPousseSeringue());
   }
   
+  //rinçe la tuyauterie selon le volume de rinçage et le nombre de cycle de parametresSession
+  //requires numEv <= pousseSeringue.nbEvMax()
   public void rincage(int numEv)
   { 
     //le refoulement pour les rinçage se fait toujours au débit max.
@@ -100,6 +102,7 @@ public class Commandes
   }
   
   //XXX thread safe ?
+  //procédure d'arrêt d'urgence
   public void arretUrgence() throws SerialComException
   {
     this.passeur.arretUrgence();
@@ -108,6 +111,7 @@ public class Commandes
     // XXX disable the threadOrganiseur and threadSequence !
   }
   
+  //à la position de carrousel donnée
   public void deplacementPasseur(int position)
   {
     this.deplacementPasseur(position, 0);
@@ -121,7 +125,8 @@ public class Commandes
     this.passeur.moveCarrousel( position, modificateur );
     this.passeur.finMoveCarrousel();
   }
-
+  
+  //à la position de la poubelle , bras à l'intérieur de poubelle
   //le bras se retrouve dans la poubelle
   public void deplacementPasseurPoubelle()
   {
@@ -250,6 +255,8 @@ public class Commandes
     this.distribution(numColonne, volumeCible, numEv, nbColonneRestant, null);
   }
   
+  //requires volumeCible > 0
+  //requires numEV <= pousseSeringue.nbEvMax()
   public void distribution(int numColonne,
                            double volumeCible,
                            int numEv,
@@ -311,20 +318,25 @@ public class Commandes
     this.passeur.vibration(); 
   }
   
-  //revoye le nombre de pas à descendre dans la colonne pour le bras
+  // revoye le nombre de pas à descendre dans la colonne pour le bras
   // en fonction du volume d'éluant donné
   // volume en microLitre        
-  //requires volume > 0
+  // requires volume > 0
   public int calculsHauteur (double volume) //V doit être en mili litre !!!
   {  
     return Passeur.convertBras(this.colonne.calculsHauteur(volume)) ;
   }
   
+  //revoye le nombre de pas à deplacer dans la colonne pour le carrousel
+  //en fonction du volume d'acide donné
+  // volume en microLitre                       
+  //requires volume > 0
   public int calculsDeplacement(double volume) //V doit être en mili litre !!!
   {  
     return this.passeur.convertCarrousel(this.colonne.calculsDeplacementCarrousel(volume)) ;
   }
   
+  //procédures de fin de session.
   public void finSession()
   {  
     this.pousseSeringue.fermetureEv() ;
@@ -332,6 +344,10 @@ public class Commandes
     this.passeur.finMoveBras();
   }
 
+  //déplace le carrousel pour rendre accessible les côté du carrousel
+  //qui ne le sont pas
+  //attention si un thread est sur pause, l'appel par un autre thread
+  //de cette fonction sera piégé dans la boucle de finMoveBras !!!
   public void presentationPasseur(int sens)
   {
     this.passeur.moveButeBras();
