@@ -15,7 +15,7 @@ import fr.gardoll.ace.controller.comm.SerialCom;
 import fr.gardoll.ace.controller.comm.StopBit;
 import fr.gardoll.ace.controller.common.ConfigurationException ;
 import fr.gardoll.ace.controller.common.InitializationException ;
-import fr.gardoll.ace.controller.common.Naming ;
+import fr.gardoll.ace.controller.common.ParametresSession ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 
 public class InterfacePousseSeringue  implements Closeable
@@ -227,7 +227,7 @@ public class InterfacePousseSeringue  implements Closeable
 
       if (message_brute[i] == DECIMAL_SYMBOLS.getDecimalSeparator())
       {
-        sb.append(Naming.DECIMAL_SYMBOLS.getDecimalSeparator()) ;
+        sb.append(ParametresSession.DECIMAL_SYMBOLS.getDecimalSeparator()) ;
       }
 
       if (message_brute[i] == 'u')

@@ -3,6 +3,66 @@ package fr.gardoll.ace.controller.column;
 public class Colonne
 {
 
+  public int hauteurReservoir()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public int hauteurColonne()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public double volumeCritique1()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public double pousseSeringueDebitMin()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public double volumeCritique2()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public double pousseSeringueDebitInter()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public double pousseSeringueDebitMax()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public int hauteurMenisque()
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public double calculsHauteur(double volume)
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
+  public double calculsDeplacementCarrousel(double volume)
+  {
+    // TODO Auto-generated method stub
+    return 0 ;
+  }
+
 }
 
 /*
