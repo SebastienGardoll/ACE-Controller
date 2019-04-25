@@ -97,22 +97,13 @@ public class InterfaceMoteur implements Closeable
   
   // renvoie la réponse de l'interface. Temporisation en milisecondes.
   private String traitementOrdre(String ordre, long temporisation)
-                                 throws SerialComException
+                                 throws SerialComException, InterruptedException
   {  
     String reponse = "";
     
     this._port.ecrire(ordre) ;
 
-    try
-    {
-      Thread.sleep(temporisation);
-    }
-    catch (InterruptedException e)
-    {
-      String msg = String.format("interruption while waiting sampler response: %s",
-          e.getMessage());
-      _LOG.debug(msg);
-    }
+    Thread.sleep(temporisation);
 
     reponse = this.lectureReponse() ;
 
@@ -121,7 +112,8 @@ public class InterfaceMoteur implements Closeable
     return reponse  ;
   }
   
-  private String traitementOrdre(String ordre) throws SerialComException
+  private String traitementOrdre(String ordre)
+      throws SerialComException, InterruptedException
   {
     return this.traitementOrdre (ordre, 0l) ;
   }
@@ -135,14 +127,14 @@ public class InterfaceMoteur implements Closeable
     return message_renvoye ;
   }  
   
-  public void move(int nbPas1 , int nbPas2) throws SerialComException
+  public void move(int nbPas1 , int nbPas2) throws SerialComException, InterruptedException
   { 
     String ordre = String.format("move (%s,%s)\r", nbPas1, nbPas2) ;
     this.traitementOrdre (ordre) ;
   }
   
   //détection fin de mouvement
-  public boolean moving(TypeAxe axe) throws SerialComException
+  public boolean moving(TypeAxe axe) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("moving (%s)\r", axe);
     // valeur 1 ==> en mouvement
@@ -151,50 +143,42 @@ public class InterfaceMoteur implements Closeable
 
   // avance jusqu'à fin de butée
   // 0 :pas bougé, 1 : butée positive, -1 : butée négative
-  public void movel(int axe1, int axe2) throws SerialComException
+  public void movel(int axe1, int axe2) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("movel (%s,%s)\r", axe1, axe2);
     this.traitementOrdre(ordre) ;
   }
   
   //réinitialisation de l'interface
-  public void reset() throws SerialComException
+  public void reset() throws SerialComException, InterruptedException
 
   {
     this._port.ecrire("new\r") ;
 
     // attente obligatoire à cause de la lenteur de l'interface
     //  pour cette fonction . 800 ms
-    try
-    {
-      Thread.sleep(800);
-    }
-    catch (InterruptedException e)
-    {
-      String msg = String.format("interruption while waiting sampler reset: %s",
-          e.getMessage());
-      _LOG.debug(msg);
-    } 
+    Thread.sleep(800); 
 
     this.lectureReponse ();
 
     // ATTENTION PAS DE VERIFICATION REPONSE !!! 
   }
   
-  public void preSecale(int denominateur) throws SerialComException
+  public void preSecale(int denominateur) 
+      throws SerialComException, InterruptedException
   {  
     String ordre = String.format("prescale (%s)\r", denominateur);
     this.traitementOrdre (ordre) ;
   }
   
   public void param(TypeAxe axe, int base, int top, int accel)
-                                                       throws SerialComException
+                                                       throws SerialComException, InterruptedException
   {
     this.param(axe, base, top, accel, 0);
   }
   
   public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
-                                                       throws SerialComException
+                                                       throws SerialComException, InterruptedException
 
   {  
     String ordre = null;
@@ -212,14 +196,14 @@ public class InterfaceMoteur implements Closeable
     this.traitementOrdre(ordre, 2000l) ;
   }
 
-  public void datum(TypeAxe axe) throws SerialComException
+  public void datum(TypeAxe axe) throws SerialComException, InterruptedException
 
   {  
     String ordre = String.format("datum (%s)\r", axe);
     this.traitementOrdre (ordre) ;
   }
   
-  public void singleLine(boolean choix) throws SerialComException
+  public void singleLine(boolean choix) throws SerialComException, InterruptedException
   { 
     // XXX convertion of boolean. Checked 04/18/2019
     char convertion = (choix) ? '1':'2';
@@ -238,19 +222,19 @@ public class InterfaceMoteur implements Closeable
     this.traitementReponse ( reponse ) ;
   }
   
-  public void manual() throws SerialComException
+  public void manual() throws SerialComException, InterruptedException
   {  
     this.traitementOrdre("manual ()\r") ;
   }
 
-  public void halt() throws SerialComException
+  public void halt() throws SerialComException, InterruptedException
   { 
     // la temporisation dépend directement
     // de la vitesse de point et de la décéleration
     this.traitementOrdre ("halt()\r" , 1500l) ;
   } 
                                            
-  public int where(TypeAxe axe) throws SerialComException
+  public int where(TypeAxe axe) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("where (%s)\r", axe);
     String response = this.traitementOrdre(ordre, 100l);
@@ -259,7 +243,7 @@ public class InterfaceMoteur implements Closeable
 
   //voir manuel de l'interface
   // 0 <= octet <= 255
-  public void out(int octet) throws SerialComException
+  public void out(int octet) throws SerialComException, InterruptedException
   { 
     if (octet <= 255 && octet <= 0)
     {
@@ -276,7 +260,7 @@ public class InterfaceMoteur implements Closeable
   }
 
   //voir manuel de l'interface
-  public void out(int bitPosition, boolean isOn) throws SerialComException
+  public void out(int bitPosition, boolean isOn) throws SerialComException, InterruptedException
   { 
     if (bitPosition > NB_BITS )
     {

@@ -169,7 +169,7 @@ public class PousseSeringue implements Closeable
 
   // aspiration d'un volume exprimé en en mL.
   // requires 0 <= numEv <= NBEV_MAX
-  public void aspiration(double volume, int numEv)
+  public void aspiration(double volume, int numEv) throws InterruptedException
   { 
     _LOG.debug(String.format("withdrawing volume '%s' from isolation valve '%s'",
         volume, numEv));
@@ -391,28 +391,19 @@ public class PousseSeringue implements Closeable
     }
   }
   
-  public void finPompage()
+  public void finPompage() throws InterruptedException
   {
     this.finPompage(false);
   }
   
   // attente de la fin de l'aspiration ou refoulement
-  public void finPompage(boolean fermeture)
+  public void finPompage(boolean fermeture) throws InterruptedException
   {
     _LOG.debug(String.format("waiting for the pump (close flag is '%s')", fermeture));
     boolean has_to_continue = false;
     do
     {
-      try
-      {
-        Thread.sleep(100) ;
-      }
-      catch (InterruptedException e)
-      {
-        String msg = String.format("error while waiting for the pump: %s",
-            e.getMessage());
-        _LOG.error(msg);
-      }
+      Thread.sleep(100) ;
       
       try
       {
@@ -429,16 +420,7 @@ public class PousseSeringue implements Closeable
     while (has_to_continue) ;
 
     // équilibre de la pression dans les tuyaux.
-    try
-    {
-      Thread.sleep(ATTENTE_FERMETURE_EV) ;
-    }
-    catch (InterruptedException e)
-    {
-      String msg = String.format("error while waiting for the pump: %s",
-          e.getMessage());
-      _LOG.error(msg);
-    }
+    Thread.sleep(ATTENTE_FERMETURE_EV) ;
 
     if (fermeture)
     {
@@ -447,16 +429,7 @@ public class PousseSeringue implements Closeable
       // pendant distribution <=> perte précison
       numEvActuelle = 0 ;
       // équilibre de la pression dans les tuyaux
-      try
-      {
-        Thread.sleep(ATTENTE_FERMETURE_EV) ;
-      }
-      catch (InterruptedException e)
-      {
-        String msg = String.format("error while waiting for the pump: %s",
-            e.getMessage());
-        _LOG.error(msg);
-      }
+      Thread.sleep(ATTENTE_FERMETURE_EV) ;
     }
   }
 

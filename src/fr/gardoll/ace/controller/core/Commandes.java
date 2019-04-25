@@ -47,7 +47,7 @@ public class Commandes implements Closeable, Observable
   
   //rinçe la tuyauterie selon le volume de rinçage et le nombre de cycle de parametresSession
   //requires numEv <= pousseSeringue.nbEvMax()
-  public void rincage(int numEv)
+  public void rincage(int numEv) throws InterruptedException
   { 
     //le refoulement pour les rinçage se fait toujours au débit max.
     this.pousseSeringue.setDebitRefoulement(this.parametresSession.debitMaxPousseSeringue()); 
@@ -74,9 +74,9 @@ public class Commandes implements Closeable, Observable
     this.passeur.vibration();
   }
 
-  public void rincageH2O()
+  public void rincageH2O() throws InterruptedException
   { 
-    rincage(PousseSeringue.numEvH2O()) ;
+    this.rincage(PousseSeringue.numEvH2O()) ;
   }
   
   public void pause(ThreadSession session) throws InterruptedException
@@ -104,7 +104,7 @@ public class Commandes implements Closeable, Observable
   
   //XXX thread safe ?
   //procédure d'arrêt d'urgence
-  public void arretUrgence() throws SerialComException
+  public void arretUrgence() throws SerialComException, InterruptedException
   {
     this.passeur.arretUrgence();
     this.pousseSeringue.arretUrgence();
@@ -113,12 +113,12 @@ public class Commandes implements Closeable, Observable
   }
   
   //à la position de carrousel donnée
-  public void deplacementPasseur(int position)
+  public void deplacementPasseur(int position) throws InterruptedException
   {
     this.deplacementPasseur(position, 0);
   }
   
-  public void deplacementPasseur(int position, int modificateur)
+  public void deplacementPasseur(int position, int modificateur) throws InterruptedException
   {  
     //le bras est juste au dessus du réservoir de la colonne
     this.passeur.moveOrigineBras();
@@ -129,7 +129,7 @@ public class Commandes implements Closeable, Observable
   
   //à la position de la poubelle , bras à l'intérieur de poubelle
   //le bras se retrouve dans la poubelle
-  public void deplacementPasseurPoubelle()
+  public void deplacementPasseurPoubelle() throws InterruptedException
   {
     int correction = 0 ;
 
@@ -147,7 +147,7 @@ public class Commandes implements Closeable, Observable
   }
   
   //fixe l'origine du bras juste au dessus des colonne
-  public void referencementBras()
+  public void referencementBras() throws InterruptedException
   { //sans setOrigineBras() inclus ! 
     this.passeur.moveButeBras();
     this.passeur.finMoveBras() ;
@@ -165,6 +165,7 @@ public class Commandes implements Closeable, Observable
   //requires vol_demande > 0                  
   //requires numEv <= pousseSeringue.nbEvMax()                                                 
   public void remplissageSeringue(double vol_demande, int numEv)
+      throws InterruptedException
   {
     if (vol_demande <= this.pousseSeringue.volumeRestant())
     {
@@ -190,6 +191,7 @@ public class Commandes implements Closeable, Observable
   //requires vol_deja_delivre >= 0
   //requires vol_delivre > 0
   private void algoDistribution(double vol_delivre, double vol_deja_delivre)
+      throws InterruptedException
   {
     double vol_total = vol_delivre + vol_deja_delivre ;
 
@@ -213,15 +215,7 @@ public class Commandes implements Closeable, Observable
     {  
       while ((this.pousseSeringue.volumeDelivre() + vol_deja_delivre) < this.colonne.volumeCritique1())
       { 
-        try
-        {
-          Thread.sleep(100);
-        }
-        catch (InterruptedException e)
-        {
-          String msg = String.format("interrupted while waiting for distribution: %s", e.getMessage());
-          _LOG.debug(msg);
-        }
+        Thread.sleep(100);
       }
       
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitInter());
@@ -231,15 +225,7 @@ public class Commandes implements Closeable, Observable
     {  
       while ((this.pousseSeringue.volumeDelivre() + vol_deja_delivre) < this.colonne.volumeCritique2())
       { 
-        try
-        {
-          Thread.sleep(100) ;
-        }
-        catch (InterruptedException e)
-        {
-          String msg = String.format("interrupted while waiting for distribution: %s", e.getMessage());
-          _LOG.debug(msg);
-        }
+        Thread.sleep(100) ;
       }
       
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitMax());
@@ -251,7 +237,7 @@ public class Commandes implements Closeable, Observable
   public void distribution(int numColonne,
                            double volumeCible,
                            int numEv,
-                           int nbColonneRestant)
+                           int nbColonneRestant) throws InterruptedException
   {
     this.distribution(numColonne, volumeCible, numEv, nbColonneRestant, null);
   }
@@ -262,7 +248,7 @@ public class Commandes implements Closeable, Observable
                            double volumeCible,
                            int numEv,
                            int nbColonneRestant,
-                           ControlPanel panel)
+                           ControlPanel panel) throws InterruptedException
   {
     double vol_deja_delivre = 0. ;
 
@@ -338,7 +324,7 @@ public class Commandes implements Closeable, Observable
   }
   
   //procédures de fin de session.
-  public void finSession()
+  public void finSession() throws InterruptedException
   {  
     this.pousseSeringue.fermetureEv() ;
     this.passeur.moveButeBras();
@@ -349,7 +335,7 @@ public class Commandes implements Closeable, Observable
   //qui ne le sont pas
   //attention si un thread est sur pause, l'appel par un autre thread
   //de cette fonction sera piégé dans la boucle de finMoveBras !!!
-  public void presentationPasseur(int sens)
+  public void presentationPasseur(int sens) throws InterruptedException
   {
     this.passeur.moveButeBras();
     this.passeur.finMoveBras();

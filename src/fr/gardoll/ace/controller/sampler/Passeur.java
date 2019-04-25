@@ -54,7 +54,7 @@ public class Passeur implements Closeable
   //require nbPasCarrousel > 0
   //require diametre > 0
   public Passeur(InterfaceMoteur interfaceMoteur, int nbPasCarrousel, int diametre)
-      throws InitializationException
+      throws InitializationException, InterruptedException
   {
     this.interfaceMoteur = interfaceMoteur;
     this.reset() ;
@@ -87,7 +87,7 @@ public class Passeur implements Closeable
   
   public boolean isPaused () { return _pause; } ;
   
-  public void moveCarrousel(int position)
+  public void moveCarrousel(int position) throws InterruptedException
   {
     this.moveCarrousel(position, 0);
   }
@@ -95,7 +95,7 @@ public class Passeur implements Closeable
   //le numéro de la position. 0 => poubelle
   //modificateur => ajout d'un nombre de demi pas
   //modificateur ou en nombre de pas si position = 0
-  public void moveCarrousel(int position, int modificateur)
+  public void moveCarrousel(int position, int modificateur) throws InterruptedException
   {
     this.x = position * nbPasCarrousel + modificateur ;
     
@@ -113,7 +113,7 @@ public class Passeur implements Closeable
   }
 
   //en nombre de demi pas
-  public void moveBras(int nbPas)
+  public void moveBras(int nbPas) throws InterruptedException
   {
     this.y = nbPas ;
     
@@ -132,7 +132,7 @@ public class Passeur implements Closeable
   
   // effectue un mouvement simultané
   // fait car problème de temps de réponse car halt fait par interface
-  public void moveCarrouselEtBras (int position, int nbPas)
+  public void moveCarrouselEtBras (int position, int nbPas) throws InterruptedException
   {
     this.x = position * nbPasCarrousel ;
     this.y = nbPas ;
@@ -150,7 +150,7 @@ public class Passeur implements Closeable
   }
 
   //le bras revient à son origine
-  public void moveOrigineBras()
+  public void moveOrigineBras() throws InterruptedException
   {
     try
     {
@@ -167,7 +167,7 @@ public class Passeur implements Closeable
   }
 
   //avance le bras jusqu'à la butée haute sans setOrigineBras
-  public void moveButeBras()
+  public void moveButeBras() throws InterruptedException
   {  
     try
     {
@@ -184,21 +184,12 @@ public class Passeur implements Closeable
   }
   
   //attente de la fin de mouvement
-  public void finMoveCarrousel()
+  public void finMoveCarrousel() throws InterruptedException
   {
     boolean isMoving = true;
     do
     { 
-      try
-      {
-        Thread.sleep(100) ;
-      }
-      catch (InterruptedException e)
-      {
-        String msg = String.format("interruption while waiting for the end of the sampler plate move: %s",
-            e.getMessage());
-        _LOG.debug(msg);
-      }
+      Thread.sleep(100) ;
       
       try
       {
@@ -215,23 +206,14 @@ public class Passeur implements Closeable
   }
 
   //attente de la fin de mouvement
-  public void finMoveBras()
+  public void finMoveBras() throws InterruptedException
   {
     try
     {
       boolean isMoving = true;
       do
       { 
-        try
-        {
-          Thread.sleep (100) ;
-        }
-        catch (InterruptedException e)
-        {
-          String msg = String.format("interruption while waiting for the end of the sampler harm move: %s",
-              e.getMessage());
-          _LOG.debug(msg);
-        }
+        Thread.sleep (100) ;
         
         isMoving = this.interfaceMoteur.moving(TypeAxe.bras);
       }
@@ -256,14 +238,14 @@ public class Passeur implements Closeable
   
   //arrêt des moteurs net avec perte position
   //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
-  public void arretUrgence() throws SerialComException
+  public void arretUrgence() throws SerialComException, InterruptedException
   { 
     this.interfaceMoteur.stop();
     this.setOrigine();
   }
 
   //envoie la commande new à l'interface.
-  public void reset()
+  public void reset() throws InterruptedException
   { 
     try
     {
@@ -280,7 +262,7 @@ public class Passeur implements Closeable
   
   //la position courante devient l'origine du bras <=> y = 0
   //sav_y est recalculé dans le nouveau référenciel
-  public void setOrigineBras()
+  public void setOrigineBras() throws InterruptedException
   { 
     try
     {
@@ -298,7 +280,7 @@ public class Passeur implements Closeable
 
   //la position courante devient l'origine du carrousel <=> x = 0
   //sav_x est recalculé dans le nouveau référenciel
-  public void setOrigineCarrousel()
+  public void setOrigineCarrousel() throws InterruptedException
   { 
     try
     {
@@ -315,7 +297,7 @@ public class Passeur implements Closeable
   }
 
   //sur les deux axes
-  public void setOrigine()
+  public void setOrigine() throws InterruptedException
   { 
     this.setOrigineBras() ;
     this.setOrigineCarrousel() ;
@@ -323,7 +305,7 @@ public class Passeur implements Closeable
   
   // commande directe de l'interface, pas de
   // mémorisation des commandes envoyées.
-  public void setModeDirect()
+  public void setModeDirect() throws InterruptedException
   {  
     try
     {
@@ -338,7 +320,7 @@ public class Passeur implements Closeable
   }
 
   //permet d'utiliser le potentiomètre numérique
-  public void setModeManuel()
+  public void setModeManuel() throws InterruptedException
   { 
     try
     {
@@ -353,7 +335,7 @@ public class Passeur implements Closeable
   }
   
   //pause du passeur avec enregistrement de la position courante
-  public void pause()
+  public void pause() throws InterruptedException
   {
     try
     {
@@ -375,7 +357,7 @@ public class Passeur implements Closeable
   }
   
   //reprise sur pause avec retour à la position sauvegardée dans pause()
-  public void reprise(boolean brasFirst)
+  public void reprise(boolean brasFirst) throws InterruptedException
   {  
     if (this._pause)
     {
@@ -436,7 +418,7 @@ public class Passeur implements Closeable
     return ((int) (result));
   }
 
-  public void vibration()
+  public void vibration() throws InterruptedException
   {  
     try
     {
@@ -452,15 +434,10 @@ public class Passeur implements Closeable
       _LOG.fatal(msg);
       throw new RuntimeException(msg, e);
     }
-    catch(InterruptedException e)
-    {
-      String msg = String.format("interruption while vibrating the sampler harm: %s", e.getMessage());
-      _LOG.debug(msg);
-    }
   }
   
   //le carrousel revient à son point d'origine
-  public void moveOrigineCarrousel()
+  public void moveOrigineCarrousel() throws InterruptedException
   {
     try
     {
@@ -477,7 +454,7 @@ public class Passeur implements Closeable
   
   //bouge de nbPosition
   //!= moveCarrousel où on précise le numéro de la position par rapport à 0 
-  public void moveCarrouselRelatif(int nbPosition)
+  public void moveCarrouselRelatif(int nbPosition) throws InterruptedException
   {
      try
      {
@@ -505,7 +482,7 @@ public class Passeur implements Closeable
   //revient à la position enregistrée par saveCurrentPosition
   //détermine si le bras bouge avant le carrousel
   //appel obligatoire si l'on doit manipuler le passeur pendant une pause
-  public void returnSavedPosition(boolean brasFirst)
+  public void returnSavedPosition(boolean brasFirst) throws InterruptedException
   {
     if (brasFirst)
     {
