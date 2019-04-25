@@ -1,5 +1,10 @@
 package fr.gardoll.ace.controller.core;
 
+import java.io.Closeable ;
+import java.io.IOException ;
+import java.util.HashSet ;
+import java.util.Set ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -9,17 +14,22 @@ import fr.gardoll.ace.controller.common.SerialComException ;
 import fr.gardoll.ace.controller.common.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.sampler.Passeur ;
+import fr.gardoll.ace.controller.ui.Action ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
+import fr.gardoll.ace.controller.ui.Observable ;
 
-public class Commandes
+//TODO: singleton.
+public class Commandes implements Closeable, Observable
 {
-  private ParametresSession parametresSession = null;
+  private final ParametresSession parametresSession;
 
-  private Colonne colonne = null;
+  private final Colonne colonne;
 
-  private Passeur passeur = null;
+  private final Passeur passeur;
 
-  private PousseSeringue pousseSeringue = null;
+  private final PousseSeringue pousseSeringue;
+  
+  private final Set<ControlPanel> _ctrlPanels = new HashSet<>(); 
   
   private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
 
@@ -64,22 +74,28 @@ public class Commandes
     this.passeur.vibration();
   }
 
-
   public void rincageH2O()
   { 
     rincage(PousseSeringue.numEvH2O()) ;
   }
   
   //XXX thread safe ?
-  // évite l'interblocage. attendant la fin de l'execution d'un ordre passé sur
-  // le port serie. concurrence entre l'utilisateur, le thread sequence ou
-  // thread organiseur
-  public synchronized void pause(OrganiseurThreadSequence threadOrganiseur)
+  public void pause(OrganiseurThreadSequence threadOrganiseur)
   {  
+    // attend la fin de l'execution d'un ordre passé sur le port serie.
+    // Concurrence entre l'utilisateur, le thread sequence ou
+    // thread organiseur
+    //this.pousseSeringue.lock();
+    //this.passeur.lock();
+    
     ThreadSequence threadSequence = threadOrganiseur.adresseThreadSequence();
     
     threadOrganiseur.pause();
-    threadSequence.pause();
+    threadSequence.pause(); 
+    
+    //débloque les interfaces à partir de maintenant, il n'y a plus de concurrence.
+    //pousseSeringue.unLock(); 
+    //passeur.unLock();      
     
     this.pousseSeringue.pause();    
     this.passeur.pause();
@@ -188,7 +204,7 @@ public class Commandes
   //volume en mL
   //requires vol_deja_delivre >= 0
   //requires vol_delivre > 0
-  public void algoDistribution(double vol_delivre, double vol_deja_delivre)
+  private void algoDistribution(double vol_delivre, double vol_deja_delivre)
   {
     double vol_total = vol_delivre + vol_deja_delivre ;
 
@@ -267,13 +283,13 @@ public class Commandes
 
     double vol_delivre ;
 
-    panel.majActionActuelle("deplacement");
-
+    this.notifyObserver(Action.PLATE_MOVING);
     this.deplacementPasseur(numColonne , this.calculsDeplacement(volumeCible)) ;
 
     int nbPasBrasAtteindre = this.calculsHauteur(volumeCible) + Passeur.convertBras(this.colonne.hauteurMenisque() - this.colonne.hauteurReservoir());
     // calculs de nombre de pas à descendre cad hauteur max du liquide dans un réservoir cônique ou cylindrique
 
+    this.notifyObserver(Action.HARM_MOVING);
     this.passeur.moveBras(nbPasBrasAtteindre);
 
     this.passeur.finMoveBras();
@@ -284,7 +300,7 @@ public class Commandes
     {
       if (Utils.isNearZero(pousseSeringue.volumeRestant()))
       { 
-        panel.majActionActuelle("remplissage");
+        this.notifyObserver(Action.WITHDRAWING);
 
         if (nbColonneRestant == 0) 
         {
@@ -297,7 +313,7 @@ public class Commandes
       }
       else
       {  
-        panel.majActionActuelle("distributionEluant");
+        this.notifyObserver(Action.INFUSING);
 
         if (this.pousseSeringue.volumeRestant() < volumeCible - vol_deja_delivre)
         { 
@@ -322,7 +338,7 @@ public class Commandes
   // en fonction du volume d'éluant donné
   // volume en microLitre        
   // requires volume > 0
-  public int calculsHauteur (double volume) //V doit être en mili litre !!!
+  private int calculsHauteur (double volume) //V doit être en mili litre !!!
   {  
     return Passeur.convertBras(this.colonne.calculsHauteur(volume)) ;
   }
@@ -363,5 +379,33 @@ public class Commandes
     }
 
     this.passeur.finMoveCarrousel();
+  }
+
+  @Override
+  public void addObserver(ControlPanel panel)
+  {
+    this._ctrlPanels.add(panel);
+  }
+
+  @Override
+  public void removeObserver(ControlPanel panel)
+  {
+    this._ctrlPanels.remove(panel);
+  }
+
+  @Override
+  public void notifyObserver(Action action)
+  {
+    for(ControlPanel panel: this._ctrlPanels)
+    {
+      panel.majActionActuelle(action);
+    }
+  }
+
+  @Override
+  public void close() throws IOException
+  {
+    this.passeur.close();
+    this.pousseSeringue.close();
   }
 }
