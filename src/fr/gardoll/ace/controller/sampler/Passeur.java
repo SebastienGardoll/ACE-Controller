@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 
+//TODO: singleton.
 public class Passeur implements Closeable
 {
   public final static int RAPPORT_REDUCTEUR_MOTEUR = 40 ; //DEPENDANT DE LA MECANIQUE
@@ -32,9 +33,9 @@ public class Passeur implements Closeable
 
   private boolean sav_butee = false;//flag de butee enregistré
 
-  private int nbPasCarrousel = 0;
+  private final int nbPasCarrousel ;
 
-  private double rayon = 0.;
+  private final double rayon ;
 
   private boolean _pause = false;
 

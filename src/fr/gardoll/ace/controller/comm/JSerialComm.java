@@ -17,8 +17,8 @@ public class JSerialComm implements SerialCom
   private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
   
   private SerialPort _port    = null ;
-  private Charset _charset    = null ;
-  private int _sizeReadBuffer = -1 ;
+  private final Charset _charset ;
+  private final int _sizeReadBuffer ;
   private String _id          = "unknown" ;
   private int _readMode       = SerialPort.TIMEOUT_NONBLOCKING ;
   private int _writeMode      = SerialPort.TIMEOUT_NONBLOCKING ;

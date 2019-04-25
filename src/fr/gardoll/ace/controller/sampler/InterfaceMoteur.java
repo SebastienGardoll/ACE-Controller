@@ -13,6 +13,7 @@ import fr.gardoll.ace.controller.comm.StopBit ;
 import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 
+//TODO: singleton.
 public class InterfaceMoteur implements Closeable
 {
   // nombre de signaux en sortis de l'interface.

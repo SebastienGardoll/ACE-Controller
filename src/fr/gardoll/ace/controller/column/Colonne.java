@@ -11,23 +11,23 @@ public abstract class Colonne
 {
   private static final Logger _LOG = LogManager.getLogger(Colonne.class.getName());
   
-  protected File fichierColonne ;
+  protected final File fichierColonne ;
   
   // dimensions en mm
 
-  protected double _hauteurMenisque ; // hauteur du menisque dans le réservoir
+  protected final double _hauteurMenisque ; // hauteur du menisque dans le réservoir
 
-  protected double _hauteurColonne ; // hauteur dépassant du plateau
+  protected final double _hauteurColonne ; // hauteur dépassant du plateau
 
 
 
-  protected double _pousseSeringueDebitMin ; // débits utilisés pour l'algorithme de distribution d'éluant
-  protected double _pousseSeringueDebitMax ; // volume éluant < volumeCritique1 => debitMin
-  protected double _pousseSeringueDebitInter ; //  volumeCritique1<= volume éluant < volumeCritique2 => debitInter
+  protected final double _pousseSeringueDebitMin ; // débits utilisés pour l'algorithme de distribution d'éluant
+  protected final double _pousseSeringueDebitMax ; // volume éluant < volumeCritique1 => debitMin
+  protected final double _pousseSeringueDebitInter ; //  volumeCritique1<= volume éluant < volumeCritique2 => debitInter
          //en mL/min               // volumeCritique2 <= volume éluant => débit max
 
-  protected double _volumeCritique1 ;   // en mL   volume critique servent à modifier le débit
-  protected double _volumeCritique2 ;   // du pousse seringue
+  protected final double _volumeCritique1 ;   // en mL   volume critique servent à modifier le débit
+  protected final double _volumeCritique2 ;   // du pousse seringue
 
   public double hauteurColonne ()  {return this._hauteurColonne ;}
   public double hauteurMenisque () {return this._hauteurMenisque ;}

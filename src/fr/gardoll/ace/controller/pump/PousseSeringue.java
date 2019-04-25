@@ -11,6 +11,8 @@ import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 import fr.gardoll.ace.controller.common.Utils ;
 
+
+//TODO: singleton.
 public class PousseSeringue implements Closeable
 {
   // temps d'attente entre la détection d'une fin de pompage
@@ -44,9 +46,9 @@ public class PousseSeringue implements Closeable
 
   //dépendant de la section de tuyaux utilisé et le diamètre de seringue
   //différent de débitIntrinsèque qui dépend uniquement du diamètre de la seringue
-  private double _debitMaxPousseSeringue ; 
+  private final double _debitMaxPousseSeringue ; 
                                    
-  private double _volumeMaxSeringue ;
+  private final double _volumeMaxSeringue ;
   
   //numéro ev actuellement ouverte sert à la reprise d'une pause
   private int numEvActuelle ;  
@@ -57,7 +59,7 @@ public class PousseSeringue implements Closeable
   //info sur l'aspiration ou non du volume de sécurité, true : aspiré, false : refoulé
   private boolean flagVolSecu ; 
 
-  private int _nbSeringue ;
+  private final int _nbSeringue ;
   
   //requires nombresSeringues <= 2
   //requires volumeMaxSeringue > 0

@@ -18,6 +18,7 @@ import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.ParametresSession ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 
+//TODO: singleton.
 public class InterfacePousseSeringue  implements Closeable
 {
   //caractéristique du pousse seringue en m/min

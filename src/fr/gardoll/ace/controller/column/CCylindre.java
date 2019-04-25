@@ -9,11 +9,11 @@ import fr.gardoll.ace.controller.common.InitializationException ;
 
 public class CCylindre extends Colonne
 {
-  private double diametre ;  // diametre du cylindre en mm
+  private final double diametre ;  // diametre du cylindre en mm
 
-  private double hauteurCylindre ; // hauteur du reservoire en mm
+  private final double hauteurCylindre ; // hauteur du reservoire en mm
 
-  private double _volumeReservoir ; //volume du réservoir en mL
+  private final double _volumeReservoir ; //volume du réservoir en mL
     //en mL
   
   private static final Logger _LOG = LogManager.getLogger(CCylindre.class.getName());
@@ -36,9 +36,10 @@ public class CCylindre extends Colonne
       throw new InitializationException(msg);
     }
 
-    this._volumeReservoir =  Math.PI * Math.pow (this.diametre/2 , 2 ) * this.hauteurCylindre ;  //en µL
-
-    this._volumeReservoir /= 1000 ; //passage au mL
+    {
+      double tmp =  Math.PI * Math.pow (this.diametre/2 , 2 ) * this.hauteurCylindre ;  //en µL
+      this._volumeReservoir = tmp / 1000 ; //passage au mL
+    }
   }
   
   public double calculsHauteur(double volume)

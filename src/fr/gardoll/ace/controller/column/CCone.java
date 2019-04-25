@@ -9,15 +9,15 @@ import fr.gardoll.ace.controller.common.InitializationException ;
 
 public class CCone extends Colonne
 {
-  private double hauteurCone ;  // hauteur du réservoir
+  private final double hauteurCone ;  // hauteur du réservoir
 
-  private double diametreSup ; // diametre supérieure du réservoir conique ( tronc de cône )
+  private final double diametreSup ; // diametre supérieure du réservoir conique ( tronc de cône )
 
-  private double diametreInf ; // diametre inférieur
+  private final double diametreInf ; // diametre inférieur
 
-  private double a, b, c ;    // intermédiaire de résolution eq 3°
+  private final double a, b, c ;    // intermédiaire de résolution eq 3°
 
-  private double _volumeReservoir ; //volume du réservoir en mL
+  private final double _volumeReservoir ; //volume du réservoir en mL
     //en mL
   
   private static final Logger _LOG = LogManager.getLogger(CCone.class.getName());
@@ -55,9 +55,10 @@ public class CCone extends Colonne
     b = 3 * this.diametreInf * (this.diametreSup - this.diametreInf ) / this.hauteurCone ;
     c = 3 * Math.pow (this.diametreInf, 2);
 
-    this._volumeReservoir = Math.PI * this.hauteurCone * (Math.pow (this.diametreSup/2, 2) + (this.diametreSup * this.diametreInf)/4 + Math.pow (this.diametreInf/2, 2)) / 3; //en µL
-
-    this._volumeReservoir /= 1000 ; //passage au mL
+    {
+      double tmp = Math.PI * this.hauteurCone * (Math.pow (this.diametreSup/2, 2) + (this.diametreSup * this.diametreInf)/4 + Math.pow (this.diametreInf/2, 2)) / 3; //en µL
+      this._volumeReservoir = tmp / 1000 ; //passage au mL
+    }
   }
   
   public double calculsHauteur(double volume)

@@ -6,8 +6,8 @@ import fr.gardoll.ace.controller.common.InitializationException ;
 
 public class CHybride extends Colonne
 {
-  private CCone cone = null;
-  private CCylindre cylindre = null;
+  private final CCone cone ;
+  private final CCylindre cylindre ;
 
   public double volumeRetard ; // volume retard = volume cylindre - volume cône pour la même hauteur  en mL
   // en mL
