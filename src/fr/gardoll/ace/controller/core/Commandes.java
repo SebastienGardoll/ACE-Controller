@@ -79,42 +79,27 @@ public class Commandes implements Closeable, Observable
     rincage(PousseSeringue.numEvH2O()) ;
   }
   
-  //XXX thread safe ?
-  public void pause(OrganiseurThreadSequence threadOrganiseur)
+  public void pause(ThreadSession session) throws InterruptedException
   {  
     // attend la fin de l'execution d'un ordre passé sur le port serie.
     // Concurrence entre l'utilisateur, le thread sequence ou
     // thread organiseur
-    //this.pousseSeringue.lock();
-    //this.passeur.lock();
+    session.pause();
     
-    ThreadSequence threadSequence = threadOrganiseur.adresseThreadSequence();
-    
-    threadOrganiseur.pause();
-    threadSequence.pause(); 
-    
-    //débloque les interfaces à partir de maintenant, il n'y a plus de concurrence.
-    //pousseSeringue.unLock(); 
-    //passeur.unLock();      
-    
+    // A partir de maintenant, il n'y a plus de concurrence.
     this.pousseSeringue.pause();    
     this.passeur.pause();
   }
   
-  // XXX thread safe ?
-  public void reprise (OrganiseurThreadSequence threadOrganiseur)
+  public void reprise (ThreadSession session) throws InterruptedException
   {  
     this.passeur.reprise(false); 
 
     //attention la reprise du passeur avant celle du pousse seringue à
     //cause de la manipulation eventuelle de celui ci
     this.pousseSeringue.reprise(); 
-                               
-    ThreadSequence threadSequence = threadOrganiseur.adresseThreadSequence();
     
-    //relance le thread Sequence s'il existe encore
-    threadOrganiseur.unPause();
-    threadSequence.unPause();
+    session.unPause();
   }
   
   //XXX thread safe ?
