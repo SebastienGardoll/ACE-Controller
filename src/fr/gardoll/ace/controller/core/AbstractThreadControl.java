@@ -21,7 +21,7 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
     this.setDaemon(true);
   }
   
-  // Block until the sequence is paused.
+  // Block the caller until the thread is paused.
   @Override
   public void pause() throws InterruptedException
   {
@@ -34,20 +34,20 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
       {
         this._is_paused = true;
          
-        // The main thread wait for the sequence to pause.
-        // await must be called in a loop so as to prevent spurious wakeup.
+        // The caller wait for the thread to pause.
+        // The method await must be called in a loop so as to prevent spurious wakeup.
         while(false == this._is_synchronized)
         {
           // Release lock and make
-          // the main thread to wait until the sequence is paused.
+          // the caller to wait until the thread is paused.
           this._sync_cond.await(); 
         }
         
-        // When the main thread returns from the method await,
+        // When the caller returns from the method await,
         // it blocks until it retakes the lock.
-        // So it must unlock it (in the finally bloc).
+        // That why it must unlock it (in the finally bloc).
         
-        // At this point, the sequence is paused, so the main thread can
+        // At this point, the thread is paused, so the caller can
         // access to the sampler and the pump: they wont' be synchronized anymore.
         this._is_synchronized = false;
       }
@@ -58,7 +58,7 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
     }
   }
   
-  // Resume the sequence.
+  // Resume the thread.
   @Override
   public void unPause() throws InterruptedException
   {
@@ -70,9 +70,9 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
       
       if(this._is_paused)
       {
-        // Makes the sequence to quit it's await loop.
+        // Makes the thread to quit its await loop.
         this._is_paused = false;
-        // Wake up the sequence.
+        // Wake up the thread.
         this._sync_cond.signalAll();
       }
     }
@@ -82,6 +82,7 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
     }
   }
   
+  // Check point for the thread.
   protected void checkPause() throws InterruptedException
   {
     try
@@ -92,22 +93,22 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
       
       if(this._is_paused)
       {
-        // Makes the main thread to quit it's await loop.
+        // Makes the caller to quit its await loop.
         this._is_synchronized = true;
-        // Wake up the main thread that was waiting the sequence to pause.
+        // Wake up the caller that was waiting the thread to pause.
         this._sync_cond.signalAll();
         
-        // await must be called in a loop so as to prevent spurious wakeup.
+        // The method await must be called in a loop so as to prevent spurious wakeup.
         while(this._is_paused)
         {
-          // The sequence is waiting the main thread to wake it up.
-          // the method await makes the sequence to release the lock. 
+          // The thread is waiting the caller to wake it up.
+          // the method await makes the thread to release the lock. 
           this._sync_cond.await();
         }
         
-        // When the sequence returns from the method await,
+        // When the thread returns from the method await,
         // it blocks until it retakes the lock.
-        // So it must unlock it (in the finally bloc).
+        // That why it must unlock it (in the finally bloc).
       }
     }
     finally
