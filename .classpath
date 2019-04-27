@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/log4j-api-2.11.2.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-api-2.11.2.jar" sourcepath="lib/log4j-api-2.11.2-sources.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-core-2.11.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-configuration2-2.4.jar" sourcepath="lib/commons-configuration2-2.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jSerialComm-2.4.2.jar" sourcepath="lib/jSerialComm-2.4.2.zip"/>
