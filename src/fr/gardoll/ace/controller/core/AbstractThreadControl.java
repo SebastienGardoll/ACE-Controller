@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Condition ;
 import java.util.concurrent.locks.ReentrantLock ;
 
 // TODO: add logging
-public class ThreadSession extends Thread
+public abstract class AbstractThreadControl extends Thread implements ThreadControl
 {
   // Fairness is on so as to yield the lock.
   private final ReentrantLock _sync = new ReentrantLock(true);
@@ -14,7 +14,7 @@ public class ThreadSession extends Thread
   private boolean _is_paused       = false;
   private boolean _is_synchronized = false;
   
-  public ThreadSession()
+  public AbstractThreadControl()
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
@@ -22,6 +22,7 @@ public class ThreadSession extends Thread
   }
   
   // Block until the sequence is paused.
+  @Override
   public void pause() throws InterruptedException
   {
     try
@@ -58,6 +59,7 @@ public class ThreadSession extends Thread
   }
   
   // Resume the sequence.
+  @Override
   public void unPause() throws InterruptedException
   {
     try
@@ -112,10 +114,5 @@ public class ThreadSession extends Thread
     {
       this._sync.unlock();
     }
-  }
-  
-  public void run()
-  {
-    
   }
 }

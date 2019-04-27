@@ -83,19 +83,19 @@ public class Commandes implements Closeable, Observable
     this.rincage(PousseSeringue.numEvH2O()) ;
   }
   
-  public void pause(ThreadSession session) throws InterruptedException
+  public void pause(ThreadControl ctrl) throws InterruptedException
   {  
     // attend la fin de l'execution d'un ordre passé sur le port serie.
     // Concurrence entre l'utilisateur, le thread sequence ou
     // thread organiseur
-    session.pause();
+    ctrl.pause();
     
     // A partir de maintenant, il n'y a plus de concurrence.
     this.pousseSeringue.pause();    
     this.passeur.pause();
   }
   
-  public void reprise (ThreadSession session) throws InterruptedException
+  public void reprise (ThreadControl ctrl) throws InterruptedException
   {  
     this.passeur.reprise(false); 
 
@@ -103,7 +103,7 @@ public class Commandes implements Closeable, Observable
     //cause de la manipulation eventuelle de celui ci
     this.pousseSeringue.reprise(); 
     
-    session.unPause();
+    ctrl.unPause();
   }
   
   //XXX thread safe ?
