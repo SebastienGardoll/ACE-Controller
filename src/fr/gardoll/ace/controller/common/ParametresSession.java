@@ -13,7 +13,6 @@ import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.sampler.Passeur ;
 
@@ -29,8 +28,8 @@ public class ParametresSession
   
   private static ParametresSession _INSTANCE ;
   
+  // Lazy loading.
   private PousseSeringue _ps = null;
-  
   private Passeur _sampler = null;
   
   private final double _volumeMaxSeringue ;  // volume max du type de seringue en mL
@@ -162,19 +161,15 @@ public class ParametresSession
     }
   }
 
+  // Lazy loading.
   public PousseSeringue getPousseSeringue()
   {
     // TODO Auto-generated method stub
     return null ;
   }
-
+  
+  // Lazy loading.
   public Passeur getPasseur()
-  {
-    // TODO Auto-generated method stub
-    return null ;
-  }
-
-  public Colonne getColonne()
   {
     // TODO Auto-generated method stub
     return null ;

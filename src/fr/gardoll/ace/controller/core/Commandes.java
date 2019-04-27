@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
+import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.ParametresSession ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 import fr.gardoll.ace.controller.common.Utils ;
@@ -34,12 +35,14 @@ public class Commandes implements Closeable, Observable
   
   private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
 
-  //requires & colonne != NULL
-  public Commandes (ParametresSession parametresSession)
+  //requires colonne != NULL
+  public Commandes (Colonne colonne) throws InitializationException
   {
+    this.colonne = colonne;
+    ParametresSession parametresSession = ParametresSession.getInstance();
+    
     this.pousseSeringue = parametresSession.getPousseSeringue();
     this.passeur = parametresSession.getPasseur();
-    this.colonne = parametresSession.getColonne();
     this.parametresSession = parametresSession;
     
     //aspiration est toujours au débit max
