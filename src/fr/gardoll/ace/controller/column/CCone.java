@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.common.Names ;
 
 public class CCone extends Colonne
 {
@@ -26,13 +27,9 @@ public class CCone extends Colonne
   { 
     super(cheminFichierColonne);
     
-    /* XXX TODO
-    this.hauteurCone = fichierColonne->ReadFloat ( SEC_INFO_COL, SICOL_CLEF_H_CONE, -1.)  ;
-
-    this.diametreSup = fichierColonne->ReadFloat ( SEC_INFO_COL, SICOL_CLEF_DIA_SUP, -1.) ;
-
-    this.diametreInf = fichierColonne->ReadFloat ( SEC_INFO_COL, SICOL_CLEF_DIA_INF, -1.) ;
-    */
+    this.hauteurCone = this._colSection.getDouble(Names.SICOL_CLEF_H_CONE, -1.)  ;
+    this.diametreSup = this._colSection.getDouble(Names.SICOL_CLEF_DIA_SUP, -1.) ;
+    this.diametreInf = this._colSection.getDouble(Names.SICOL_CLEF_DIA_INF, -1.) ;
     
     if (this.diametreSup == this.diametreInf )
     {

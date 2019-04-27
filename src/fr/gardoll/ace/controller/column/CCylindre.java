@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.common.Names ;
 
 public class CCylindre extends Colonne
 {
@@ -22,11 +23,8 @@ public class CCylindre extends Colonne
   {
     super(cheminFichierColonne);
     
-    /* XXX TODO
-    this.hauteurCylindre= fichierColonne->ReadFloat ( SEC_INFO_COL, SICOL_CLEF_H_CYLINDRE, -1.)  ;
-
-    this.diametre = fichierColonne->ReadFloat ( SEC_INFO_COL, SICOL_CLEF_DIA, -1.)   ;
-    */
+    this.hauteurCylindre = this._colSection.getDouble(Names.SICOL_CLEF_H_CYLINDRE, -1.)  ;
+    this.diametre        = this._colSection.getDouble(Names.SICOL_CLEF_DIA, -1.)   ;
     
     if (this.hauteurCylindre < 0 ||
         this.diametre        < 0    )
