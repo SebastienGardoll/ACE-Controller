@@ -10,12 +10,14 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.common.Names ;
 
 public abstract class Colonne
 {
   private static final Logger _LOG = LogManager.getLogger(Colonne.class.getName());
   
-  protected final File fichierColonne ;
+  protected final File _fichierColonne ;
+  protected final INIConfiguration _iniConf;
   
   // dimensions en mm
 
@@ -62,9 +64,9 @@ public abstract class Colonne
   {         
     // attention dans le fichier init la virgule des réels est : .
     
-    this.fichierColonne = cheminFichierColonne ;
+    this._fichierColonne = cheminFichierColonne ;
     
-    if (! this.fichierColonne.isFile())
+    if (! this._fichierColonne.isFile())
     {
       String msg = String.format("cannot stat column metadata file '%s'", cheminFichierColonne);
       _LOG.fatal(msg);
@@ -75,14 +77,16 @@ public abstract class Colonne
     
     try
     {
-      INIConfiguration iniConf = configs.ini(cheminFichierColonne);
-      SubnodeConfiguration section = iniConf.getSection(SEC_INFO_COL);
-      this._hauteurColonne = section.getDouble(SICOL_CLEF_H_COLONNE, -1);
+      this._iniConf = configs.ini(cheminFichierColonne);
+      SubnodeConfiguration section = this._iniConf.getSection(Names.SEC_INFO_COL);
+      this._hauteurColonne = section.getDouble(Names.SICOL_CLEF_H_COLONNE, -1.);
     }
     catch (ConfigurationException e)
     {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      String msg = String.format("unable to read the column specifications in the file '%s': %s",
+          this._fichierColonne.toString(), e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new RuntimeException(msg,e);
     }
 
     /* XXX TODO
