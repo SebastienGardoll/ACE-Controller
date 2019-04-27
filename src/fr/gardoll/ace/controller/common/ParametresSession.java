@@ -7,6 +7,7 @@ import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.sampler.Passeur ;
 
+// TODO: add logging
 public class ParametresSession
 {
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =

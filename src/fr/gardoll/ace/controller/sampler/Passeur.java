@@ -10,6 +10,7 @@ import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 
 //TODO: singleton.
+//TODO: add logging
 public class Passeur implements Closeable
 {
   public final static int RAPPORT_REDUCTEUR_MOTEUR = 40 ; //DEPENDANT DE LA MECANIQUE

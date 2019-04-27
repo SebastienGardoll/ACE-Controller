@@ -3,6 +3,7 @@ package fr.gardoll.ace.controller.core;
 import java.util.concurrent.locks.Condition ;
 import java.util.concurrent.locks.ReentrantLock ;
 
+// TODO: add logging
 public class ThreadSession extends Thread
 {
   // Fairness is on so as to yield the lock.

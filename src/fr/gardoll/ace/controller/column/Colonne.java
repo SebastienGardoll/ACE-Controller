@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.Names ;
 
+// TODO: add logging
 public abstract class Colonne
 {
   private static final Logger _LOG = LogManager.getLogger(Colonne.class.getName());
