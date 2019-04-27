@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.column;
 
-import java.io.File ;
+import java.nio.file.Files ;
+import java.nio.file.Path ;
 
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
@@ -17,7 +18,7 @@ public abstract class Colonne
 {
   private static final Logger _LOG = LogManager.getLogger(Colonne.class.getName());
   
-  protected final File _fichierColonne ;
+  protected final Path _fichierColonne ;
   protected final SubnodeConfiguration _colSection;
   
   // dimensions en mm
@@ -57,15 +58,15 @@ public abstract class Colonne
   
   public abstract double hauteurReservoir() ;
   
-  public Colonne(File cheminFichierColonne) throws InitializationException
+  public Colonne(Path cheminFichierColonne) throws InitializationException
   {         
     // attention dans le fichier init la virgule des réels est : .
     
     this._fichierColonne = cheminFichierColonne ;
     
-    if (! this._fichierColonne.isFile())
+    if (! (Files.isReadable(this._fichierColonne) && Files.isRegularFile(this._fichierColonne)))
     {
-      String msg = String.format("cannot stat column metadata file '%s'", cheminFichierColonne);
+      String msg = String.format("cannot read column configuration file '%s'", cheminFichierColonne);
       _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
@@ -73,7 +74,7 @@ public abstract class Colonne
     Configurations configs = new Configurations();
     try
     {
-      INIConfiguration iniConf = configs.ini(cheminFichierColonne);
+      INIConfiguration iniConf = configs.ini(this._fichierColonne.toFile());
       this._colSection = iniConf.getSection(Names.SEC_INFO_COL);
       this._hauteurColonne           = this._colSection.getDouble(Names.SICOL_CLEF_H_COLONNE, -1.);
       this._hauteurMenisque          = this._colSection.getDouble(Names.SICOL_CLEF_H_MENISQUE, -1.);

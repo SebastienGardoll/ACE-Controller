@@ -1,6 +1,6 @@
 package fr.gardoll.ace.controller.column;
 
-import java.io.File ;
+import java.nio.file.Path ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -19,7 +19,7 @@ public class CCylindre extends Colonne
   
   private static final Logger _LOG = LogManager.getLogger(CCylindre.class.getName());
 
-  public CCylindre(File cheminFichierColonne ) throws InitializationException
+  public CCylindre(Path cheminFichierColonne ) throws InitializationException
   {
     super(cheminFichierColonne);
     

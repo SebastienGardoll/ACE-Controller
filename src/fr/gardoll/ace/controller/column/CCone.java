@@ -1,6 +1,6 @@
 package fr.gardoll.ace.controller.column;
 
-import java.io.File ;
+import java.nio.file.Path ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -23,7 +23,7 @@ public class CCone extends Colonne
   
   private static final Logger _LOG = LogManager.getLogger(CCone.class.getName());
   
-  public CCone(File cheminFichierColonne) throws InitializationException
+  public CCone(Path cheminFichierColonne) throws InitializationException
   { 
     super(cheminFichierColonne);
     
