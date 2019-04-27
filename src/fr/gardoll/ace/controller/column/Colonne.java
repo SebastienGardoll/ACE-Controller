@@ -2,6 +2,10 @@ package fr.gardoll.ace.controller.column;
 
 import java.io.File ;
 
+import org.apache.commons.configuration2.INIConfiguration ;
+import org.apache.commons.configuration2.SubnodeConfiguration ;
+import org.apache.commons.configuration2.builder.fluent.Configurations ;
+import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -65,6 +69,20 @@ public abstract class Colonne
       String msg = String.format("cannot stat column metadata file '%s'", cheminFichierColonne);
       _LOG.fatal(msg);
       throw new InitializationException(msg);
+    }
+    
+    Configurations configs = new Configurations();
+    
+    try
+    {
+      INIConfiguration iniConf = configs.ini(cheminFichierColonne);
+      SubnodeConfiguration section = iniConf.getSection(SEC_INFO_COL);
+      this._hauteurColonne = section.getDouble(SICOL_CLEF_H_COLONNE, -1);
+    }
+    catch (ConfigurationException e)
+    {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
 
     /* XXX TODO
