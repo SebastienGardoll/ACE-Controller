@@ -107,7 +107,7 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving the sampler plate to position '%s' with offset '%s': %s",
           position, modificateur, e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -125,7 +125,7 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving the sampler harm of '%s' steps: %s",
           nbPas, e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -144,7 +144,7 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving the sampler harm of '%s' steps and plate to position '%s': %s",
           nbPas, position, e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -161,7 +161,7 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving sampler harm to base: %s",
           e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -178,7 +178,7 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving sampler harm to upper limit: %s",
           e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -198,7 +198,7 @@ public class Passeur implements Closeable
       catch (SerialComException e)
       {
         String msg = String.format("error while waiting for the end of the sampler plate move: %s", e.getMessage());
-        _LOG.fatal(msg);
+        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
     }
@@ -231,7 +231,7 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = String.format("error while waiting the end of the sampler harm move: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -255,7 +255,7 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = String.format("error while resetting the sampler interface: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -273,7 +273,7 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = String.format("error while setting the sampler harm base: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -291,7 +291,7 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = String.format("error while setting the sampler plate base: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -314,7 +314,7 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = String.format("error while setting sampler direct mode: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -329,7 +329,7 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = String.format("error while setting sampler manual mode: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -351,7 +351,7 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = String.format("error while pausing the sampler: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -378,7 +378,7 @@ public class Passeur implements Closeable
           catch (SerialComException e)
           {
             String msg = String.format("error while resuming the sampler move: %s", e.getMessage());
-            _LOG.fatal(msg);
+            _LOG.fatal(msg, e);
             throw new RuntimeException(msg, e);
           }
         }
@@ -431,7 +431,7 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = String.format("error while vibrating the sampler harm: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -447,7 +447,7 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = String.format("error while moving the sampler plate to base: %s", e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -465,7 +465,7 @@ public class Passeur implements Closeable
      {
        String msg = String.format("error while moving the sampler plate to position '%s' (relative): %s",
            nbPosition, e.getMessage());
-       _LOG.fatal(msg);
+       _LOG.fatal(msg, e);
        throw new RuntimeException(msg, e);
      }
   }

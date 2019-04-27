@@ -91,7 +91,7 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while closing all the isolation valves: %s",
           e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
     
@@ -248,7 +248,7 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while withdrawing the volume '%s' from isolation valve '%s': %s",
           volume, numEv, e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -297,7 +297,7 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while infusing the volume '%s' to isolation valve '%s': %s",
           volume, numEv, e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -350,7 +350,7 @@ public class PousseSeringue implements Closeable
       {
         String msg = String.format("error while configuring the withdrawing rate '%s': %s",
             debit, e.getMessage());
-        _LOG.fatal(msg);
+        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
       
@@ -383,7 +383,7 @@ public class PousseSeringue implements Closeable
       {
         String msg = String.format("error while configuring the infusion rate '%s': %s",
             debit, e.getMessage());
-        _LOG.fatal(msg);
+        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
       
@@ -413,7 +413,7 @@ public class PousseSeringue implements Closeable
       {
         String msg = String.format("error while waiting for the pump: %s",
             e.getMessage());
-        _LOG.fatal(msg);
+        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
     }
@@ -455,7 +455,7 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while stopping (pause) the pump: %s",
           e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -476,7 +476,7 @@ public class PousseSeringue implements Closeable
       {
         String msg = String.format("error while resuming the pump: %s",
             e.getMessage());
-        _LOG.fatal(msg);
+        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
     }
@@ -498,7 +498,7 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while setting the diameter of the seringe '%s': %s",
           diametre, e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -516,7 +516,7 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while getting the delivered volume: %s",
           e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -608,7 +608,7 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while closing all the isolation valves: %s",
           e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg);
     }
   }  

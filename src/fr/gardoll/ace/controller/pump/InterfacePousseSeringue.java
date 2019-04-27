@@ -74,7 +74,7 @@ public class InterfacePousseSeringue  implements Closeable
     {
       String msg = String.format("error while initializing the pump serial port: %s",
           e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
  
@@ -88,7 +88,7 @@ public class InterfacePousseSeringue  implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while initializing the pump";
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }

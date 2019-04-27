@@ -39,7 +39,7 @@ public class InterfaceMoteur implements Closeable
     {
       String msg = String.format("error while initializing the port '%s': %s",
           this._port.getId(), e.getMessage());
-      _LOG.fatal(msg);
+      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }

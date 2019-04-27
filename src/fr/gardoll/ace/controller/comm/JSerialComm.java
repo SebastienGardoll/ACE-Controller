@@ -111,7 +111,7 @@ public class JSerialComm implements SerialCom
       this._port = null ;
       String msg = String.format("unable to open port '%s': %s.", portPath,
                                  e.getMessage()) ;
-      _LOG.error(msg);
+      _LOG.error(msg, e);
       throw new SerialComException(msg, e) ;
     }
   }
