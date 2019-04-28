@@ -5,5 +5,8 @@ public enum Action
   HARM_MOVING,
   PLATE_MOVING,
   WITHDRAWING,
-  INFUSING;
+  INFUSING,
+  END,
+  PAUSE,
+  CANCEL;
 }
