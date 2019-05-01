@@ -266,13 +266,19 @@ public class JSerialComm implements SerialCom
   public String lire() throws SerialComException
   {
     _LOG.debug(String.format("reading on port '%s'", this._id)) ;
-    StringBuilder sb = new StringBuilder() ;
+    StringBuilder sb = new StringBuilder("") ;
     
     boolean continue_to_read = true ;
     
     while(continue_to_read)
     {
       SimpleEntry<Integer, byte[]> buffer = internal_read() ;
+      
+      // Timeout occurs.
+      if(buffer.getKey() == 0)
+      {
+        break;
+      }
       
       String rawResult = new String(buffer.getValue(), this._charset) ;
       
@@ -299,7 +305,8 @@ public class JSerialComm implements SerialCom
     
     try
     {
-      // Blocking until timeout elapsed or read the size of the buffer. 
+      // Blocking until timeout elapsed or read the size of the buffer.
+      // SerialPortTimeoutException is not raised normally.
       nb_byte_read = this._port.readBytes(buffer, buffer.length) ;
     }
     catch(Exception e)
