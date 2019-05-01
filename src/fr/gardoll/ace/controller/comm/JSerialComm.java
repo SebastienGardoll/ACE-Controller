@@ -283,7 +283,7 @@ public class JSerialComm implements SerialCom
       SimpleEntry<Integer, byte[]> buffer = internal_read() ;
       
       // Timeout occurs.
-      if(buffer.getKey() == 0)
+      if(buffer.getKey() <= 0)
       {
         break;
       }
@@ -315,7 +315,15 @@ public class JSerialComm implements SerialCom
     {
       // Blocking until timeout elapsed or read the size of the buffer.
       // SerialPortTimeoutException is not raised normally.
+      // Return -1 on error.
       nb_byte_read = this._port.readBytes(buffer, buffer.length) ;
+      
+      if(nb_byte_read < 0)
+      {
+        String msg = String.format("error while reading on port '%s'",
+            this._id) ;
+        throw new SerialComException(msg) ;
+      }
     }
     catch(Exception e)
     {
@@ -363,7 +371,7 @@ public class JSerialComm implements SerialCom
       port.setParite(Parity.NOPARITY);
       port.setStopBit(StopBit.ONESTOPBIT);
       
-      String msg = "coucou\n";
+      String msg = "cou cou\n";
       System.out.println(String.format("sending: '%s'", msg)) ;
       port.ecrire(msg);
       
