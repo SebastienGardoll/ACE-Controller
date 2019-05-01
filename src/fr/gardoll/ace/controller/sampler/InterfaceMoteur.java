@@ -120,7 +120,7 @@ public class InterfaceMoteur implements Closeable
   
   private String lectureReponse() throws SerialComException
   {
-    String message_brute = this._port.lire() ;
+    String message_brute = this._port.lire().strip() ;
 
     String message_renvoye = message_brute.replaceAll("#", "") ;
     

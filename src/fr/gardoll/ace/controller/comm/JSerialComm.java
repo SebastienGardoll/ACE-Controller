@@ -290,11 +290,8 @@ public class JSerialComm implements SerialCom
       
       String rawResult = new String(buffer.getValue(), this._charset) ;
       
-      // Remove any space characters.
-      String intermediateResult = rawResult.strip();
-      
       // Add the intermediate result to the result.
-      sb.append(intermediateResult) ;
+      sb.append(rawResult) ;
       
       // Was the buffer full ?
       continue_to_read = buffer.getKey() == buffer.getValue().length ;

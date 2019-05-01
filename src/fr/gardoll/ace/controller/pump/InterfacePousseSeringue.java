@@ -127,7 +127,7 @@ public class InterfacePousseSeringue  implements Closeable
   
   private String lectureReponse() throws SerialComException
   {
-    return this._port.lire();
+    return this._port.lire().strip();
   }
   
   // transforme float en string mais
