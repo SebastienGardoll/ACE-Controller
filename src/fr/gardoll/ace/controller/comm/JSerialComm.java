@@ -14,6 +14,8 @@ import fr.gardoll.ace.controller.common.SerialComException ;
 
 public class JSerialComm implements SerialCom
 {
+  // Time (milliseconds) to wait after openning the port.
+  private static final int PORT_OPENNING_DELAY = 1000 ;
   private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
   
   private SerialPort _port    = null ;
@@ -75,7 +77,7 @@ public class JSerialComm implements SerialCom
   }
   
   @Override
-  public void open(String portPath) throws SerialComException
+  public void open(String portPath) throws SerialComException, InterruptedException
   {
     if (this._port != null)
     {
@@ -105,6 +107,12 @@ public class JSerialComm implements SerialCom
         _LOG.error(msg) ;
         throw new SerialComException(msg) ;
       } 
+      
+      Thread.sleep(JSerialComm.PORT_OPENNING_DELAY);
+    }
+    catch(InterruptedException e)
+    {
+      throw e;
     }
     catch(Exception e)
     {
