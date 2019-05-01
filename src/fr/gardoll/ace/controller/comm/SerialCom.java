@@ -24,6 +24,8 @@ public interface SerialCom extends Closeable
   public void ecrire(String ordre) throws SerialComException ;
 
   // Read the serial port until the specified timeout.
+  // Strip the white space characters (\n, \r, etc. ; strip) at the begining and the 
+  // end of the received string.
   public String lire() throws SerialComException ;
 
   public void close() ;
