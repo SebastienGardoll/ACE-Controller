@@ -345,7 +345,38 @@ public class JSerialComm implements SerialCom
   
   public static void main(String[] args)
   {
+    // To be modified.
+    String portPath = "/dev/cu.usbserial-A602K71L";
     
+    JSerialComm port = new JSerialComm(SerialMode.FULL_BLOCKING,
+        SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 1);
+    
+    try
+    {
+      System.out.println("begin") ;
+      
+      port.open(portPath);
+      
+      port.setVitesse(9600);
+      port.setTimeOut(10);
+      port.setByteSize(8);
+      port.setParite(Parity.NOPARITY);
+      port.setStopBit(StopBit.ONESTOPBIT);
+      
+      String msg = "coucou\n";
+      System.out.println(String.format("sending: '%s'", msg)) ;
+      port.ecrire(msg);
+      
+      String received = port.lire();
+      System.out.println(String.format("received: '%s'", received)) ;
+        
+      port.close();
+      System.out.println("end") ;
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 
   @Override
