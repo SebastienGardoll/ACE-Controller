@@ -291,7 +291,7 @@ public class JSerialComm implements SerialCom
       String rawResult = new String(buffer.getValue(), this._charset) ;
       
       // Remove any space characters.
-      String intermediateResult = rawResult.replaceAll("\\s", "") ;
+      String intermediateResult = rawResult.strip();
       
       // Add the intermediate result to the result.
       sb.append(intermediateResult) ;
@@ -357,7 +357,7 @@ public class JSerialComm implements SerialCom
     String portPath = "/dev/cu.usbserial-A602K71L";
     
     JSerialComm port = new JSerialComm(SerialMode.FULL_BLOCKING,
-        SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 1);
+        SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 10);
     
     try
     {
