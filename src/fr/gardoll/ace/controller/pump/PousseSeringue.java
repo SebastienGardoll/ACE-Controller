@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.comm.ParaCom ;
 import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.common.ParaComException ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 import fr.gardoll.ace.controller.common.Utils ;
 
@@ -71,7 +72,7 @@ public class PousseSeringue implements Closeable
                         double diametreSeringue,
                         double volumeMaxSeringue,
                         double debitMaxPousseSeringue,
-                        double volumeInitiale) throws InitializationException
+                        double volumeInitiale) throws InitializationException, InterruptedException
   {
     _LOG.info("initializing the pump");
     
@@ -87,7 +88,7 @@ public class PousseSeringue implements Closeable
     {
       this.para.toutFermer(); ;
     }
-    catch(SerialComException e)
+    catch(ParaComException e)
     {
       String msg = String.format("error while closing all the isolation valves: %s",
           e.getMessage());
@@ -198,7 +199,7 @@ public class PousseSeringue implements Closeable
 
   //refoulement d'un volume exprimé en en mL.
   //requires 0 <= numEv <= NBEV_MAX
-  public void refoulement(double volume , int numEv)
+  public void refoulement(double volume , int numEv) throws InterruptedException
   {
     _LOG.debug(String.format("infusing volume '%s' to the isolation valve '%s'",
         volume, numEv));
@@ -206,7 +207,7 @@ public class PousseSeringue implements Closeable
     this.algoRefoulement(volume, numEv) ;
   }
 
-  public void algoAspiration(double volume, int numEv)
+  public void algoAspiration(double volume, int numEv) throws InterruptedException
   { 
     _LOG.debug(String.format("running withdrawing routine for volume '%s' from isolation valve '%s'",
         volume, numEv));
@@ -244,7 +245,7 @@ public class PousseSeringue implements Closeable
 
       this.interfacePousseSeringue.run();
     }
-    catch(SerialComException e)
+    catch(SerialComException|ParaComException e)
     {
       String msg = String.format("error while withdrawing the volume '%s' from isolation valve '%s': %s",
           volume, numEv, e.getMessage());
@@ -253,7 +254,7 @@ public class PousseSeringue implements Closeable
     }
   }
 
-  public void algoRefoulement(double volume, int numEv)
+  public void algoRefoulement(double volume, int numEv) throws InterruptedException
 
   { 
     _LOG.debug(String.format("running the infusion routine for volume '%s' to the isolation valve '%s'",
@@ -293,7 +294,7 @@ public class PousseSeringue implements Closeable
 
       this.interfacePousseSeringue.run();
     }
-    catch(SerialComException e)
+    catch(SerialComException|ParaComException e)
     {
       String msg = String.format("error while infusing the volume '%s' to isolation valve '%s': %s",
           volume, numEv, e.getMessage());
@@ -306,7 +307,7 @@ public class PousseSeringue implements Closeable
   // volume n'est pas divisé par nbSeringue !!!!!!!! 
   // spécialement pour l'aspiration d'un cycle de rinçage
   //volume n'est pas divisé par nbSeringue !!!
-  public void rincageAspiration(double volume, int numEv)
+  public void rincageAspiration(double volume, int numEv) throws InterruptedException
   {
     _LOG.debug(String.format("rinsing with volume '%s' from isolation valve '%s'",
         volume, numEv));
@@ -434,7 +435,7 @@ public class PousseSeringue implements Closeable
   }
 
   // Arrête de la pompe
-  public void pause()
+  public void pause() throws InterruptedException
   {
     try
     {
@@ -461,7 +462,7 @@ public class PousseSeringue implements Closeable
   }
 
   // reprise après pause
-  public void reprise()
+  public void reprise() throws InterruptedException
   {  
     if (this._pause)
     { 
@@ -472,7 +473,7 @@ public class PousseSeringue implements Closeable
         this.interfacePousseSeringue.run();
         this._pause = false ;
       }
-      catch(SerialComException e)
+      catch(SerialComException|ParaComException e)
       {
         String msg = String.format("error while resuming the pump: %s",
             e.getMessage());
@@ -523,7 +524,7 @@ public class PousseSeringue implements Closeable
 
   // précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
   // précondition non vérifiée !!!
-  public void arretUrgence() throws SerialComException
+  public void arretUrgence() throws SerialComException, InterruptedException
   {
     _LOG.debug("pump emergency shutdown");
     //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
@@ -557,7 +558,7 @@ public class PousseSeringue implements Closeable
 
   // vide la seringue entièrement même le volume de sécurité dans le tuyau de refoulement.
   // vide entièrement la seringue, volume de sécurité compris.
-  public void vidange()  
+  public void vidange() throws InterruptedException  
   { 
     _LOG.debug("draining the pump");
     // retour aux conditions initiales.
@@ -598,13 +599,13 @@ public class PousseSeringue implements Closeable
   }
 
   // fermeture des Ev Commandées.
-  public void fermetureEv()
+  public void fermetureEv() throws InterruptedException
   {  
     try
     {
       this.para.toutFermer() ;
     }
-    catch(SerialComException e)
+    catch(ParaComException e)
     {
       String msg = String.format("error while closing all the isolation valves: %s",
           e.getMessage());
