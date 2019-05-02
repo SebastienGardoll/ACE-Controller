@@ -348,6 +348,42 @@ public class JSerialComm implements SerialCom
     this._port.closePort() ;
   }
   
+  @Override
+  public void write(byte[] ordre) throws SerialComException
+  {
+    
+    // TODO
+//    _LOG.debug(String.format("writing '%s' on port '%s'", ordre, this._id)) ;
+    try
+    {
+      int nb_byte_sent = this._port.writeBytes(ordre, ordre.length) ;
+      
+      if (nb_byte_sent < 0)
+      {
+//        TODO
+//        String msg = String.format("transmission error while sending order '%s' on port '%s'",
+//                                   ordre, this._id) ;
+
+//        throw new SerialComException(msg) ;
+      }
+      
+      if (nb_byte_sent != ordre.length)
+      {
+//        TODO
+//        String msg = String.format("transmission error while sending order '%s' on port '%s': only %s bytes sent out of %s",
+//            ordre, this._id, nb_byte_sent, ordre.length) ;
+        
+//        throw new SerialComException(msg) ;
+      }
+    }
+    catch (Exception e)
+    {
+      String msg = String.format("transmission error while sending order '%s' one port '%s': %s",
+                                 ordre, this._id, e.getMessage()) ; 
+      throw new SerialComException(msg, e) ;
+    }
+  }
+  
   public static void main(String[] args)
   {
     // To be modified.
