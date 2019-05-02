@@ -97,13 +97,13 @@ public class ArduinoParaCom implements ParaCom
       throw new ParaComException(msg, e);
     }
     
-    Thread.sleep(ATTENTE_EV) ; //temps d'attente de l'exécution mécanique de l'ordre
+    Thread.sleep(ArduinoParaCom.ATTENTE_EV) ; //temps d'attente de l'exécution mécanique de l'ordre
   }
 
   @Override
   public void ouvrirH2O() throws ParaComException, InterruptedException
   {
-    this.ouvrir(NUM_EV_H2O); 
+    this.ouvrir(ParaCom.NUM_EV_H2O); 
   }
 
   @Override
