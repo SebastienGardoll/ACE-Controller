@@ -61,7 +61,7 @@ public class InterfaceMoteur implements Closeable
   {
     if(reponse.isEmpty())
     {
-      String msg = "sampler disconnected";
+      String msg = "autosampler disconnected";
       _LOG.fatal(msg);
       throw new RuntimeException();
     }
@@ -74,7 +74,7 @@ public class InterfaceMoteur implements Closeable
 
       case 'E':
       { 
-        String msg = String.format("sampler failure: %s", reponse);
+        String msg = String.format("autosampler failure: %s", reponse);
         _LOG.fatal(msg);
         throw new RuntimeException(msg);
       }
