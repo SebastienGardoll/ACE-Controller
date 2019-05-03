@@ -16,6 +16,7 @@ import fr.gardoll.ace.controller.common.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.sampler.Passeur ;
 import fr.gardoll.ace.controller.ui.Action ;
+import fr.gardoll.ace.controller.ui.ActionType ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
 import fr.gardoll.ace.controller.ui.Observable ;
 
@@ -258,13 +259,13 @@ public class Commandes implements Closeable, Observable
 
     double vol_delivre ;
 
-    this.notifyObserver(Action.PLATE_MOVING);
+    this.notifyObserver(new Action(ActionType.CAROUSEL_MOVING, numColonne));
     this.deplacementPasseur(numColonne , this.calculsDeplacement(volumeCible)) ;
 
     int nbPasBrasAtteindre = this.calculsHauteur(volumeCible) + Passeur.convertBras(this.colonne.hauteurMenisque() - this.colonne.hauteurReservoir());
     // calculs de nombre de pas à descendre cad hauteur max du liquide dans un réservoir cônique ou cylindrique
 
-    this.notifyObserver(Action.HARM_MOVING);
+    this.notifyObserver(new Action(ActionType.ARM_MOVING, null));
     this.passeur.moveBras(nbPasBrasAtteindre);
 
     this.passeur.finMoveBras();
@@ -275,7 +276,7 @@ public class Commandes implements Closeable, Observable
     {
       if (Utils.isNearZero(pousseSeringue.volumeRestant()))
       { 
-        this.notifyObserver(Action.WITHDRAWING);
+        this.notifyObserver(new Action(ActionType.WITHDRAWING, null));
 
         if (nbColonneRestant == 0) 
         {
@@ -288,7 +289,7 @@ public class Commandes implements Closeable, Observable
       }
       else
       {  
-        this.notifyObserver(Action.INFUSING);
+        this.notifyObserver(new Action(ActionType.INFUSING, null));
 
         if (this.pousseSeringue.volumeRestant() < volumeCible - vol_deja_delivre)
         { 

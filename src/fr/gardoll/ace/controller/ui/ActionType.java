@@ -1,9 +1,9 @@
 package fr.gardoll.ace.controller.ui;
 
-public enum Action
+public enum ActionType
 {
-  HARM_MOVING,
-  PLATE_MOVING,
+  ARM_MOVING,
+  CAROUSEL_MOVING,
   WITHDRAWING,
   INFUSING,
   END,
