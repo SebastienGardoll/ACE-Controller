@@ -20,7 +20,7 @@ public class ArduinoParaCom implements ParaCom
   public ArduinoParaCom(String portPath) throws InitializationException, InterruptedException
   {
     this._port = new JSerialComm(SerialMode.FULL_BLOCKING,
-        SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 2);
+        SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 10);
     
     try
     {
@@ -107,7 +107,7 @@ public class ArduinoParaCom implements ParaCom
     try
     {
       String ack = this._port.lire() ;
-      if(false == ack.equals("E"))
+      if(ack.equals("E"))
       {
         String msg = "error while sending order to usb2valves";
         _LOG.fatal(msg);
