@@ -8,4 +8,8 @@ public interface ThreadControl
   
   // Resume the thread.
   public void unPause() throws InterruptedException;
+  
+  public void checkPause() throws InterruptedException;
+  
+  public void checkInterruption() throws InterruptedException ;
 }

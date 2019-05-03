@@ -3,9 +3,14 @@ package fr.gardoll.ace.controller.core;
 import java.util.concurrent.locks.Condition ;
 import java.util.concurrent.locks.ReentrantLock ;
 
+import org.apache.logging.log4j.LogManager ;
+import org.apache.logging.log4j.Logger ;
+
 // TODO: add logging
 public abstract class AbstractThreadControl extends Thread implements ThreadControl
 {
+  private static final Logger _LOG = LogManager.getLogger(AbstractThreadControl.class.getName());
+  
   // Fairness is on so as to yield the lock.
   private final ReentrantLock _sync = new ReentrantLock(true);
   private final Condition _sync_cond = _sync.newCondition();
@@ -83,7 +88,8 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
   }
   
   // Check point for the thread.
-  protected void checkPause() throws InterruptedException
+  @Override
+  public void checkPause() throws InterruptedException
   {
     try
     { 
@@ -114,6 +120,17 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
     finally
     {
       this._sync.unlock();
+    }
+  }
+  
+  @Override
+  public void checkInterruption() throws InterruptedException
+  {
+    if(this.isInterrupted())
+    {
+      String msg = "thread has been interrupted, throws InterruptedException";
+      _LOG.debug(msg);
+      throw new InterruptedException(msg);
     }
   }
 }
