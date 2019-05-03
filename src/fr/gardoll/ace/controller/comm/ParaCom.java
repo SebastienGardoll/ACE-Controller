@@ -20,6 +20,8 @@ public interface ParaCom  extends Closeable
   
   public void close() ;
 
+  public final int NUM_SHUT_IV = 0;
+  
   // numéro de l'électrovanne de l'eau
   public final int NUM_EV_H2O = 1 ;
 

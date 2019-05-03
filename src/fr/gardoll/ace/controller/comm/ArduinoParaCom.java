@@ -110,7 +110,7 @@ public class ArduinoParaCom implements ParaCom
   @Override
   public void toutFermer() throws ParaComException, InterruptedException
   {
-    this.ouvrir(0) ; 
+    this.ouvrir(ParaCom.NUM_SHUT_IV) ; 
   }
 
   @Override
