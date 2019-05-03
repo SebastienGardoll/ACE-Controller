@@ -49,7 +49,7 @@ void loop()
     if(nb_byte_read == BUFFER_SIZE)
     {
       process_byte(_buffer);
-      Serial.println(_buffer);
+      Serial.println("0");
     }
     else
     {
