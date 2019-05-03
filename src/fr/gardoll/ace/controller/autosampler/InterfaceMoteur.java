@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.sampler;
+package fr.gardoll.ace.controller.autosampler;
 
 import java.io.Closeable;
 import java.io.IOException;

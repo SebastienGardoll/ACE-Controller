@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.sampler;
+package fr.gardoll.ace.controller.autosampler;
 
 public enum TypeAxe
 {

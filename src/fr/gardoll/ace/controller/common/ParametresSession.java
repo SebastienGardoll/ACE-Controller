@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
-import fr.gardoll.ace.controller.sampler.Passeur ;
+import fr.gardoll.ace.controller.autosampler.Passeur ;
 
 // TODO: add logging
 public class ParametresSession

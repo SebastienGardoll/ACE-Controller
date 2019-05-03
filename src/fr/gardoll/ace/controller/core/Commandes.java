@@ -8,13 +8,13 @@ import java.util.Set ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.ParametresSession ;
 import fr.gardoll.ace.controller.common.SerialComException ;
 import fr.gardoll.ace.controller.common.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
-import fr.gardoll.ace.controller.sampler.Passeur ;
 import fr.gardoll.ace.controller.ui.Action ;
 import fr.gardoll.ace.controller.ui.ActionType ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
