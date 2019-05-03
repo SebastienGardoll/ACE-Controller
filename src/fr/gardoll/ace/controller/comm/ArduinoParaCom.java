@@ -106,7 +106,7 @@ public class ArduinoParaCom implements ParaCom
   {
     try
     {
-      String ack = this._port.lire() ;
+      String ack = this._port.lire().strip() ;
       if(ack.equals("E"))
       {
         String msg = "error while sending order to usb2valves";
