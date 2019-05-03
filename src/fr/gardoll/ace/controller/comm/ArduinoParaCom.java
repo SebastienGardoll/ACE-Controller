@@ -87,7 +87,8 @@ public class ArduinoParaCom implements ParaCom
     
     try
     {
-      this._port.write(Integer.valueOf(ordre).byteValue());
+      byte b = Integer.valueOf(ordre).byteValue();
+      this._port.write(new byte[] {b});
     }
     catch(SerialComException e)
     {

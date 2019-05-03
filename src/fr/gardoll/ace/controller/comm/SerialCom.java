@@ -22,6 +22,8 @@ public interface SerialCom extends Closeable
   public void setTimeOut(int delais) throws SerialComException ;
 
   public void ecrire(String ordre) throws SerialComException ;
+  
+  public void write(byte[] ordre) throws SerialComException ;
 
   // Read the serial port until the specified timeout.
   public String lire() throws SerialComException ;
