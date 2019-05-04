@@ -6,7 +6,6 @@ import java.util.concurrent.locks.ReentrantLock ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-// TODO: add logging
 public abstract class AbstractThreadControl extends Thread implements ThreadControl
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractThreadControl.class.getName());
