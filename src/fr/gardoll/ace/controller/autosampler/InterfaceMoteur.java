@@ -12,6 +12,7 @@ import fr.gardoll.ace.controller.comm.SerialCom;
 import fr.gardoll.ace.controller.comm.StopBit ;
 import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.SerialComException ;
+import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable
@@ -22,6 +23,8 @@ public class InterfaceMoteur implements Closeable
   private static final Logger _LOG = LogManager.getLogger(InterfaceMoteur.class.getName());
   
   private final SerialCom _port;
+  
+  private ThreadControl _threadCtrl = null;
   
   public InterfaceMoteur(SerialCom port) throws InitializationException
   {
@@ -50,9 +53,9 @@ public class InterfaceMoteur implements Closeable
     this._port.close() ;
   }
   
-  public static void main(String[] args)
+  public void setThreadControl(ThreadControl threadCtrl)
   {
-
+    this._threadCtrl = threadCtrl;
   }
   
   // traitement de la réponse de l'interface.
@@ -95,10 +98,21 @@ public class InterfaceMoteur implements Closeable
     }
   }
   
+  private void checkThreadCtrl() throws InterruptedException
+  {
+    if(this._threadCtrl != null)
+    {
+      this._threadCtrl.checkInterruption();
+      this._threadCtrl.checkPause();
+    }
+  }
+  
   // renvoie la réponse de l'interface. Temporisation en milisecondes.
   private String traitementOrdre(String ordre, long temporisation)
                                  throws SerialComException, InterruptedException
   {  
+    this.checkThreadCtrl();
+    
     String reponse = "";
     
     this._port.ecrire(ordre) ;

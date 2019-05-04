@@ -37,7 +37,7 @@ public class Commandes implements Closeable, Observable
   private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
 
   //requires colonne != NULL
-  public Commandes (Colonne colonne) throws InitializationException
+  public Commandes (Colonne colonne) throws InitializationException, InterruptedException
   {
     this.colonne = colonne;
     ParametresSession parametresSession = ParametresSession.getInstance();

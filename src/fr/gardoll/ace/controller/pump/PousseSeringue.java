@@ -326,7 +326,7 @@ public class PousseSeringue implements Closeable
 
   //réglage du débit à l'aspiration en ml / min
   //requires debit <= _debitMaxPousseSeringue
-  public void setDebitAspiration(double debit)
+  public void setDebitAspiration(double debit) throws InterruptedException
 
   { 
     _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit)); 
@@ -361,7 +361,7 @@ public class PousseSeringue implements Closeable
 
   // réglage du débit au refoulement en ml / min.
   // requires debit <= _debitMaxPousseSeringue
-  public void setDebitRefoulement(double debit)
+  public void setDebitRefoulement(double debit) throws InterruptedException
   {  
     _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
     if(debit > this._debitMaxPousseSeringue)
@@ -488,7 +488,7 @@ public class PousseSeringue implements Closeable
   }
 
   // règle le diamètre de la seringue en mm.
-  public void setDiametreSeringue(double diametre)
+  public void setDiametreSeringue(double diametre) throws InterruptedException
   {
     try
     {
@@ -505,7 +505,7 @@ public class PousseSeringue implements Closeable
   }
 
   // retourne le volume déjà délivré.
-  public double volumeDelivre() 
+  public double volumeDelivre() throws InterruptedException
   { 
     try
     {

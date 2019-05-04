@@ -17,6 +17,7 @@ import fr.gardoll.ace.controller.common.ConfigurationException ;
 import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.ParametresSession ;
 import fr.gardoll.ace.controller.common.SerialComException ;
+import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.
 public class InterfacePousseSeringue  implements Closeable
@@ -34,6 +35,8 @@ public class InterfacePousseSeringue  implements Closeable
   private final static DecimalFormat[] _DOUBLE_FORMATTERS = new DecimalFormat[4];
   
   private final SerialCom _port;
+  
+  private ThreadControl _threadCtrl = null;
   
   // dépendant uniquement du diametre du type de seringue utilisé.
   private final int _debitMaxIntrinseque;
@@ -85,14 +88,19 @@ public class InterfacePousseSeringue  implements Closeable
       _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
       this.dia(diametreSeringue);
     }
-    catch(SerialComException e)
+    catch(SerialComException|InterruptedException e)
     {
       String msg = "error while initializing the pump";
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }
-
+  
+  public void setThreadControl(ThreadControl threadCtrl)
+  {
+    this._threadCtrl = threadCtrl;
+  }
+  
   //traitement de la réponse de l'interface en cas d'erreur => exception.
   private void traitementReponse(String message) throws SerialComException
   {
@@ -116,9 +124,20 @@ public class InterfacePousseSeringue  implements Closeable
     }
   }
   
-  //renvoie la réponse de l'interface
-  private String traitementOrdre(String ordre) throws SerialComException
+  private void checkThreadCtrl() throws InterruptedException
   {
+    if(this._threadCtrl != null)
+    {
+      this._threadCtrl.checkInterruption();
+      this._threadCtrl.checkPause();
+    }
+  }
+  
+  //renvoie la réponse de l'interface
+  private String traitementOrdre(String ordre) throws SerialComException,
+                                                      InterruptedException
+  {
+    this.checkThreadCtrl();
     this._port.ecrire(ordre) ;
     String reponse = this.lectureReponse() ;
     this.traitementReponse(reponse) ;
@@ -171,13 +190,13 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   //reprise ou démarrage
-  public void run() throws SerialComException
+  public void run() throws SerialComException, InterruptedException
   {
     this.traitementOrdre( "run\r" );
   }
   
   // pause
-  public void stop() throws SerialComException
+  public void stop() throws SerialComException, InterruptedException
   {
     this.traitementOrdre ("stop\r");
   }
@@ -194,20 +213,20 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // en mm requires diametre > 0
-  public void dia(double diametre) throws SerialComException
+  public void dia(double diametre) throws SerialComException, InterruptedException
   {
     String ordre = String.format("dia %s\r", formatage(diametre)) ;
     this.traitementOrdre (ordre);
   }
   
-  public boolean running() throws SerialComException
+  public boolean running() throws SerialComException, InterruptedException
   {
     boolean result = this.traitementOrdre("run?\r") != "::" ;
     return result;
   }
   
   // en mL
-  public double deliver() throws SerialComException
+  public double deliver() throws SerialComException, InterruptedException
   {
     char[] message_brute = this.traitementOrdre("del?\r").toCharArray() ;
 
@@ -254,7 +273,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
-  public void ratei(double debit) throws SerialComException
+  public void ratei(double debit) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
     if (debit <= 0.)
@@ -277,7 +296,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
-  public void ratew(double debit) throws SerialComException
+  public void ratew(double debit) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit));
     if (debit <= 0.)
@@ -302,7 +321,7 @@ public class InterfacePousseSeringue  implements Closeable
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
-  public void voli(double volume) throws SerialComException
+  public void voli(double volume) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the infusion volume to '%s'", volume));
     if (volume <= 0.)
@@ -330,7 +349,7 @@ public class InterfacePousseSeringue  implements Closeable
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
-  public void volw(double volume) throws SerialComException
+  public void volw(double volume) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the withdrawing volume to '%s'", volume));
     if (volume <= 0.)
@@ -356,13 +375,13 @@ public class InterfacePousseSeringue  implements Closeable
     this.traitementOrdre(ordre) ;
   }
   
-  public void modeI() throws SerialComException
+  public void modeI() throws SerialComException, InterruptedException
   {
     _LOG.debug("setting the infusion mode");
     this.traitementOrdre("mode i\r") ; 
   }
   
-  public void modeW() throws SerialComException
+  public void modeW() throws SerialComException, InterruptedException
   {
     _LOG.debug("setting the withdrawing mode");
     this.traitementOrdre("mode w\r") ;
