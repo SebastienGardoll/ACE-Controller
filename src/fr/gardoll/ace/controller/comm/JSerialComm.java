@@ -11,6 +11,7 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortTimeoutException;
 
 import fr.gardoll.ace.controller.common.SerialComException ;
+import fr.gardoll.ace.controller.common.Utils ;
 
 public class JSerialComm implements SerialCom
 {
@@ -351,35 +352,32 @@ public class JSerialComm implements SerialCom
   @Override
   public void write(byte[] ordre) throws SerialComException
   {
-    
-    // TODO
-//    _LOG.debug(String.format("writing '%s' on port '%s'", ordre, this._id)) ;
+    String orderString = Utils.toString(ordre, ", ");
+    _LOG.debug(String.format("writing '%s' on port '%s'", orderString, this._id)) ;
     try
     {
       int nb_byte_sent = this._port.writeBytes(ordre, ordre.length) ;
       
       if (nb_byte_sent < 0)
       {
-//        TODO
-//        String msg = String.format("transmission error while sending order '%s' on port '%s'",
-//                                   ordre, this._id) ;
+        String msg = String.format("transmission error while sending order '%s' on port '%s'",
+            orderString, this._id) ;
 
-//        throw new SerialComException(msg) ;
+        throw new SerialComException(msg) ;
       }
       
       if (nb_byte_sent != ordre.length)
       {
-//        TODO
-//        String msg = String.format("transmission error while sending order '%s' on port '%s': only %s bytes sent out of %s",
-//            ordre, this._id, nb_byte_sent, ordre.length) ;
+        String msg = String.format("transmission error while sending order '%s' on port '%s': only %s bytes sent out of %s",
+            orderString, this._id, nb_byte_sent, ordre.length) ;
         
-//        throw new SerialComException(msg) ;
+        throw new SerialComException(msg) ;
       }
     }
     catch (Exception e)
     {
       String msg = String.format("transmission error while sending order '%s' one port '%s': %s",
-                                 ordre, this._id, e.getMessage()) ; 
+          orderString, this._id, e.getMessage()) ; 
       throw new SerialComException(msg, e) ;
     }
   }

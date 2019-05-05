@@ -24,4 +24,20 @@ public class Utils
     return result;
   }
   
+  public static String toString(byte[] value, String separator)
+  {
+    StringBuilder sb = new StringBuilder();
+    
+    for(byte b: value)
+    {
+      sb.append(b);
+      sb.append(separator);
+    }
+    
+    // Remove the last separator.
+    sb.setLength(sb.length()-separator.length());
+    
+    return sb.toString();
+  }
+  
 }
