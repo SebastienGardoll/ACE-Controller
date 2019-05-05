@@ -19,7 +19,7 @@ import fr.gardoll.ace.controller.ui.ActionType ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
 import fr.gardoll.ace.controller.ui.Observable ;
 
-//TODO: singleton.
+// TODO: singleton.
 // TODO: add logging
 public class Commandes implements Closeable, Observable
 {
