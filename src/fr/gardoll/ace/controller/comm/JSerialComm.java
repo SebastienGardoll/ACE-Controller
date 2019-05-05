@@ -22,12 +22,13 @@ public class JSerialComm implements SerialCom
   private SerialPort _port    = null ;
   private final Charset _charset ;
   private final int _sizeReadBuffer ;
+  private boolean _isOpened   = false;
   private String _id          = "unknown" ;
   private int _readMode       = SerialPort.TIMEOUT_NONBLOCKING ;
   private int _writeMode      = SerialPort.TIMEOUT_NONBLOCKING ;
   private int _mode           = SerialPort.TIMEOUT_NONBLOCKING ;
   
-  public JSerialComm(SerialMode readMode, SerialMode writeMode,
+  public JSerialComm(String portPath, SerialMode readMode, SerialMode writeMode,
                      Charset charset, int sizeReadBuffer)
   {
     _LOG.info("initializing the JSerialComm");
@@ -75,41 +76,44 @@ public class JSerialComm implements SerialCom
         break;
       }
     }
-  }
-  
-  @Override
-  public void open(String portPath) throws SerialComException, InterruptedException
-  {
-    if (this._port != null)
-    {
-      String msg = String.format("the port '%s' is already openned.", portPath);
-      _LOG.error(msg) ;
-      return;
-    }
     
     _LOG.debug(String.format("openning port '%s'.", portPath));
-     
+    
     File file = new File(portPath);
     this._id = file.getName() ;
     
     _LOG.debug(String.format("computed id of the port is '%s'.", this._id));
     
+    _LOG.debug("get comm port");
+    this._port = SerialPort.getCommPort(portPath) ;
+  }
+  
+  @Override
+  public void open() throws SerialComException, InterruptedException
+  {
+    if (this._isOpened)
+    {
+      String msg = String.format("the port '%s' is already openned.", this.getId());
+      _LOG.error(msg) ;
+      return;
+    }
+    
     try
     {
-      this._port = SerialPort.getCommPort(portPath) ;
-      
       if (this._port.openPort())
       {
-        _LOG.debug(String.format("port '%s' is openned.", portPath)) ;
+        _LOG.debug(String.format("port '%s' is openned.", this.getId())) ;
       }
       else
       {
-        String msg = String.format("fail to open port '%s'.", portPath);
+        String msg = String.format("fail to open port '%s'.", this.getId());
         _LOG.error(msg) ;
         throw new SerialComException(msg) ;
       } 
       
       Thread.sleep(JSerialComm.PORT_OPENNING_DELAY);
+      
+      this._isOpened = true;
     }
     catch(InterruptedException e)
     {
@@ -118,7 +122,7 @@ public class JSerialComm implements SerialCom
     catch(Exception e)
     {
       this._port = null ;
-      String msg = String.format("unable to open port '%s': %s.", portPath,
+      String msg = String.format("unable to open port '%s': %s.", this.getId(),
                                  e.getMessage()) ;
       _LOG.error(msg, e);
       throw new SerialComException(msg, e) ;
@@ -387,20 +391,20 @@ public class JSerialComm implements SerialCom
     // To be modified.
     String portPath = "/dev/cu.usbserial-A602K71L";
     
-    JSerialComm port = new JSerialComm(SerialMode.FULL_BLOCKING,
+    JSerialComm port = new JSerialComm(portPath, SerialMode.FULL_BLOCKING,
         SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 10);
     
     try
     {
       System.out.println("begin") ;
       
-      port.open(portPath);
-      
       port.setVitesse(9600);
       port.setTimeOut(10);
       port.setByteSize(8);
       port.setParite(Parity.NOPARITY);
       port.setStopBit(StopBit.ONESTOPBIT);
+      
+      port.open();
       
       String msg = "cou cou\n";
       System.out.println(String.format("sending: '%s'", msg)) ;

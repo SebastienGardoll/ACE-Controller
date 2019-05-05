@@ -30,5 +30,5 @@ public interface SerialCom extends Closeable
 
   public void close() ;
   
-  public void open(String portPath) throws SerialComException, InterruptedException ;
+  public void open() throws SerialComException, InterruptedException ;
 }

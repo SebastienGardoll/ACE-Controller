@@ -19,18 +19,17 @@ public class ArduinoParaCom implements ParaCom
 
   public ArduinoParaCom(String portPath) throws InitializationException, InterruptedException
   {
-    this._port = new JSerialComm(SerialMode.FULL_BLOCKING,
+    this._port = new JSerialComm(portPath, SerialMode.FULL_BLOCKING,
         SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 10);
     
     try
     {
-      this._port.open(portPath);
-      
       this._port.setVitesse(9600);
       this._port.setTimeOut(100);
       this._port.setByteSize(8);
       this._port.setParite(Parity.NOPARITY);
       this._port.setStopBit(StopBit.ONESTOPBIT);
+      this._port.open();
     }
     catch(SerialComException e)
     {
