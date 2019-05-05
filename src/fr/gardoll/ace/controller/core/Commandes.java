@@ -12,7 +12,6 @@ import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.ParametresSession ;
-import fr.gardoll.ace.controller.common.SerialComException ;
 import fr.gardoll.ace.controller.common.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.ui.Action ;
@@ -105,16 +104,6 @@ public class Commandes implements Closeable, Observable
     this.pousseSeringue.reprise(); 
     
     ctrl.unPause();
-  }
-  
-  //XXX thread safe ?
-  //procédure d'arrêt d'urgence
-  public void arretUrgence() throws SerialComException, InterruptedException
-  {
-    this.passeur.arretUrgence();
-    this.pousseSeringue.arretUrgence();
-    
-    // XXX disable the threadOrganiseur and threadSequence !
   }
   
   //à la position de carrousel donnée

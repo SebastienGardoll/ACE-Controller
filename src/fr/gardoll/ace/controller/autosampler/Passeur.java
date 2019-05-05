@@ -237,14 +237,6 @@ public class Passeur implements Closeable
     }
   }
   
-  //arrêt des moteurs net avec perte position
-  //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
-  public void arretUrgence() throws SerialComException, InterruptedException
-  { 
-    this.interfaceMoteur.stop();
-    this.setOrigine();
-  }
-
   //envoie la commande new à l'interface.
   public void reset() throws InterruptedException
   { 

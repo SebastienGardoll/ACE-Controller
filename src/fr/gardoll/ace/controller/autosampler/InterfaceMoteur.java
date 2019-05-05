@@ -226,14 +226,9 @@ public class InterfaceMoteur implements Closeable
     this.traitementOrdre (ordre) ;
   }
   
-  //précondition : le threadSequence doit être détruit ( threadterminate) ou inexistant
-  public void stop() throws SerialComException
+  public void stop() throws SerialComException, InterruptedException
   { 
-    this._port.ecrire("stop ()\r") ;
-
-    String reponse = lectureReponse() ;
-
-    this.traitementReponse ( reponse ) ;
+    this.traitementOrdre("stop ()\r") ;
   }
   
   public void manual() throws SerialComException, InterruptedException

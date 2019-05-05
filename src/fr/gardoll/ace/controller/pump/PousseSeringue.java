@@ -522,17 +522,6 @@ public class PousseSeringue implements Closeable
     }
   }
 
-  // précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
-  // précondition non vérifiée !!!
-  public void arretUrgence() throws SerialComException, InterruptedException
-  {
-    _LOG.debug("pump emergency shutdown");
-    //précondition : le threadSequence doit être détruit ( pthread_cancel ) ou inexistant
-    this.interfacePousseSeringue.arretUrgence();
-    // ferme ttes les ev
-    this.fermetureEv();
-  }
-
   //renvoie le débit max arrondi à l'inférieur.
   //ce débit est indépendant des caractéristiques de la tuyauterie
   //dépend uniquement du diamètre de la seringue
