@@ -17,6 +17,8 @@ import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 
 // TODO: add logging
+// TODO: singleton for autosampler and pump
+// TODO: factory for  autosampler and pump
 public class ParametresSession
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
