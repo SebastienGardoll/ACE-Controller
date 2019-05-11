@@ -21,6 +21,7 @@ public class Passeur implements Closeable
 
   public final static int VIB_ID = 2 ; //numéro du signal utilisé pour faire vibrer le bras
   public final static int VIBRATION_TEMPS = 500 ; //temps en ms de vibration
+  public final static int TRASH_POSITION = 0;
   
   private static final Logger _LOG = LogManager.getLogger(Passeur.class.getName());
   
@@ -93,9 +94,9 @@ public class Passeur implements Closeable
     this.moveCarrousel(position, 0);
   }
   
-  //le numéro de la position. 0 => poubelle
-  //modificateur => ajout d'un nombre de demi pas
-  //modificateur ou en nombre de pas si position = 0
+  // le numéro de la position. 0 => poubelle
+  // modificateur => ajout d'un nombre de demi pas
+  // modificateur ou en nombre de pas si position = 0
   public void moveCarrousel(int position, int modificateur) throws InterruptedException
   {
     this.x = position * nbPasCarrousel + modificateur ;
@@ -271,8 +272,8 @@ public class Passeur implements Closeable
     }
   }
 
-  //la position courante devient l'origine du carrousel <=> x = 0
-  //sav_x est recalculé dans le nouveau référenciel
+  // la position courante devient l'origine du carrousel <=> x = 0
+  // sav_x est recalculé dans le nouveau référenciel
   public void setOrigineCarrousel() throws InterruptedException
   { 
     try
@@ -344,6 +345,29 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = String.format("error while pausing the autosampler: %s", e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new RuntimeException(msg, e);
+    }
+  }
+  
+  // TODO: test.
+  public void returnToInit() throws InterruptedException
+  {
+    this.moveButeBras();
+    this.moveCarrousel(TRASH_POSITION);
+  }
+  
+  // TODO: test.
+  public void cancel() throws InterruptedException
+  {
+    try
+    {
+      this.interfaceMoteur.halt();
+      this.returnToInit();
+    }
+    catch(SerialComException e)
+    {
+      String msg = String.format("error while cancelling the autosampler: %s", e.getMessage());
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
