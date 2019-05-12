@@ -23,6 +23,7 @@ public abstract class AbstractThreadControl extends Thread
   
   // Shared ressources. Must take the lock so as to read & write them.
   private boolean _is_paused       = false;
+  private boolean _is_canceled     = false;
   private boolean _is_synchronized = false;
   
   public AbstractThreadControl()
@@ -43,7 +44,9 @@ public abstract class AbstractThreadControl extends Thread
       // Must take the lock so as to read the shared ressources and
       // await on the condition.
       this._sync.lockInterruptibly();
-      if(false == this._is_paused)
+      if(false == this._is_paused   &&
+         false == this._is_canceled &&
+         this.isAlive())
       {
         this._is_paused = true;
          
@@ -87,7 +90,9 @@ public abstract class AbstractThreadControl extends Thread
       // signalAll on the condition.
       this._sync.lockInterruptibly();
       
-      if(this._is_paused)
+      if(this._is_paused &&
+         false == this._is_canceled &&
+         this.isAlive())
       {
         // Makes the thread to quit its await loop.
         this._is_paused = false;
