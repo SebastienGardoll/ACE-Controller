@@ -248,50 +248,25 @@ class CarouselThread extends AbstractThreadControl
   
   private final Passeur _passeur;
   private final int _position;
-  private final ToolControl _toolCtrl ;
     
   public CarouselThread(ToolControl toolCtrl, Passeur passeur, int position)
   {
-    super();
+    super(toolCtrl);
     this._passeur  = passeur;
     this._position = position;
-    this._toolCtrl = toolCtrl;
   }
   
   @Override
-  protected void threadLogic()
+  protected void threadLogic() throws InterruptedException,
+                                      InitializationException,
+                                      CancellationException,
+                                      Exception
   {
-    try
-    {
-      _LOG.debug("run CarouselThread");
-      Action action = new Action(ActionType.CAROUSEL_MOVING, this._position);
-      this._toolCtrl.notifyAction(action);
-      this._passeur.moveCarrousel(this._position);
-      this._passeur.finMoveCarrousel();
-    }
-    catch(InterruptedException e)
-    {
-      String msg = "carousel thread has been interrupted";
-      _LOG.fatal(msg);
-      this.interrupt(); // Reset the interruption state of this thread.
-      return ; // Terminate the execution of the thread.
-    }
-    catch(CancellationException e)
-    {
-      _LOG.info("operations have been canceled");
-      return; // Terminate the execution of the thread.
-    }
-    catch(Exception e)
-    {
-      String msg = String.format("carousel thread has crashed: %s", e);
-      _LOG.fatal(msg, e);
-      this._toolCtrl.notifyError(msg, e);
-      return ; // Terminate the execution of the thread.
-    }
-    finally
-    {
-      this._toolCtrl.enableControlPanel(true);
-    }
+    _LOG.debug("run CarouselThread");
+    Action action = new Action(ActionType.CAROUSEL_MOVING, this._position);
+    this._toolCtrl.notifyAction(action);
+    this._passeur.moveCarrousel(this._position);
+    this._passeur.finMoveCarrousel();
   }
 }
 
@@ -305,125 +280,86 @@ class ArmThread extends AbstractThreadControl
   private final Passeur _passeur;
   private int _nbPas ;
   private final int _choix ;
-  private final ToolControl _toolCtrl ;
   private Colonne _colonne ;
     
   public ArmThread(ToolControl toolCtrl, Passeur passeur, int nbPas, int choix)
   {
-    super();
+    super(toolCtrl);
     this._passeur  = passeur;
     this._nbPas    = nbPas;
     this._choix    = choix;
-    this._toolCtrl = toolCtrl;
   }
   
   public ArmThread(ToolControl toolCtrl, Passeur passeur, Colonne colonne)
   {
-    super();
+    super(toolCtrl);
     this._passeur  = passeur;
     this._colonne  = colonne;
     this._choix    = 2;
-    this._toolCtrl = toolCtrl;
   }
   
   @Override
-  protected void threadLogic()
+  protected void threadLogic() throws InterruptedException,
+                                      CancellationException,
+                                      InitializationException,
+                                      Exception
   {
-    try
+    _LOG.debug("run ArmThread") ;
+
+    ParametresSession parametresSession = null ;
+    parametresSession = ParametresSession.getInstance() ;
+
+    _LOG.debug(String.format("run ArmThread with order '%s'", this._choix)) ;
+
+    Action action = new Action(ActionType.ARM_MOVING, null) ;
+    this._toolCtrl.notifyAction(action) ;
+
+    switch (this._choix)
     {
-      _LOG.debug("run ArmThread");
-            
-      ParametresSession parametresSession = null;
-      try
+      case 0:
       {
-        parametresSession = ParametresSession.getInstance() ;
+        this._passeur.moveButeBras() ;
+        break ;
       }
-      catch (InitializationException e)
+
+      case 1:
       {
-        String msg = e.getMessage();
-        _LOG.fatal(msg, e);
-        this._toolCtrl.notifyError(msg, e);
-        return; // Terminate the execution of the thread.
+        this._passeur.moveBras(this._nbPas) ;
+        break ;
       }
-      
-      try
+
+      case 2:
       {
-        _LOG.debug(String.format("run ArmThread with order '%s'", this._choix));
-        
-        Action action = new Action(ActionType.ARM_MOVING, null);
-        this._toolCtrl.notifyAction(action);
-        
-        switch (this._choix)
-        { 
-          case 0:
-          {
-            this._passeur.moveButeBras();
-            break ; 
-          }
-
-          case 1:
-          {
-            this._passeur.moveBras(this._nbPas);
-            break ;
-          }
-
-          case 2:
-          {
-            this._passeur.moveButeBras();
-            this._passeur.finMoveBras() ;
-            this._passeur.setOrigineBras();
-            this._passeur.moveBras(Passeur.convertBras(
-            this._colonne.hauteurColonne() + this._colonne.hauteurReservoir()  -
-                parametresSession.refCarrousel()));
-            break ;
-          }
-
-          case 3:
-          { 
-            this._passeur.moveButeBras();
-            this._passeur.finMoveBras() ;
-            this._passeur.setOrigineBras(); 
-            this._passeur.moveBras(Passeur.convertBras(
-                _COEFF * parametresSession.epaisseur() - 
-                parametresSession.refCarrousel()));
-            break ;
-          }
-
-          default:
-          { 
-            String msg = String.format("unsupported order '%s'", this._choix);
-            _LOG.fatal(msg);
-            this._toolCtrl.notifyError(msg, null);
-            return; // Terminate the execution of the thread.
-          }
-        }
-
+        this._passeur.moveButeBras() ;
         this._passeur.finMoveBras() ;
-        this._passeur.setOrigineBras();
+        this._passeur.setOrigineBras() ;
+        this._passeur.moveBras(Passeur.convertBras(
+            this._colonne.hauteurColonne() + this._colonne.hauteurReservoir()
+                - parametresSession.refCarrousel())) ;
+        break ;
       }
-      catch(InterruptedException e)
+
+      case 3:
       {
-        String msg = "arm thread has been interrupted";
-        _LOG.fatal(msg);
-        this.interrupt(); // Reset the interruption state of this thread.
+        this._passeur.moveButeBras() ;
+        this._passeur.finMoveBras() ;
+        this._passeur.setOrigineBras() ;
+        this._passeur
+            .moveBras(Passeur.convertBras(_COEFF * parametresSession.epaisseur()
+                - parametresSession.refCarrousel())) ;
+        break ;
+      }
+
+      default:
+      {
+        String msg = String.format("unsupported order '%s'", this._choix) ;
+        _LOG.fatal(msg) ;
+        this._toolCtrl.notifyError(msg, null) ;
         return ; // Terminate the execution of the thread.
       }
     }
-    catch(CancellationException e)
-    {
-      _LOG.info("operations have been canceled");
-      return; // Terminate the execution of the thread.
-    }
-    catch(Exception e)
-    {
-      String msg = String.format("arm thread has crashed: %s", e);
-      _LOG.fatal(msg, e);
-      this._toolCtrl.notifyError(msg, e);
-      return ; // Terminate the execution of the thread.
-    }
-    finally
-    {
-      this._toolCtrl.enableControlPanel(true);
-    }
+
+    this._passeur.finMoveBras() ;
+    this._passeur.setOrigineBras() ;
   }
 }

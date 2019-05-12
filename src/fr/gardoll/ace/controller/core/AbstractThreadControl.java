@@ -1,6 +1,5 @@
 package fr.gardoll.ace.controller.core;
 
-import java.util.Date ;
 import java.util.concurrent.locks.Condition ;
 import java.util.concurrent.locks.ReentrantLock ;
 
@@ -8,9 +7,11 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.common.CancellationException ;
+import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.ui.Action ;
+import fr.gardoll.ace.controller.ui.ActionType ;
+import fr.gardoll.ace.controller.ui.ToolControl ;
 
-// TODO:
-// - report msg.
 public abstract class AbstractThreadControl extends Thread
                                             implements ThreadControl
 {
@@ -25,11 +26,24 @@ public abstract class AbstractThreadControl extends Thread
   private boolean _is_canceled     = false;
   private boolean _is_synchronized = false;
 
+  protected ToolControl _toolCtrl ;
+
   public AbstractThreadControl()
+  {
+    this.init(null);
+  }
+  
+  private void init(ToolControl toolCtrl)
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
     this.setDaemon(true);
+    this._toolCtrl = toolCtrl;
+  }
+
+  public AbstractThreadControl(ToolControl toolCtrl)
+  {
+    this.init(toolCtrl);
   }
   
   // Make the run method impossible to override as the thread must
@@ -43,14 +57,48 @@ public abstract class AbstractThreadControl extends Thread
     {
       this.threadLogic();
     }
+    catch(InterruptedException e)
+    {
+      String msg = "operations have been interrupted";
+      _LOG.fatal(msg);
+      this.interrupt(); // Reset the interruption state of this thread.
+      return ; // Terminate the execution of the thread.
+    }
+    catch(CancellationException e)
+    {
+      _LOG.info("operations have been canceled");
+      if(this._toolCtrl != null)
+      {
+        this._toolCtrl.notifyAction(new Action(ActionType.CANCEL, null));
+      }
+      return; // Terminate the execution of the thread.
+    }
+    catch(InitializationException e)
+    {
+      String msg = String.format("initiallisation has crashed: %s", e);
+      _LOG.fatal(msg, e);
+      if(this._toolCtrl != null)
+      {
+        this._toolCtrl.notifyError(msg, e);
+      }
+      return ; // Terminate the execution of the thread.
+    }
     catch(Exception e)
     {
-      String msg = String.format("thread has crashed: %s", e);
+      String msg = String.format("operations have crashed: %s", e);
       _LOG.fatal(msg, e);
+      if(this._toolCtrl != null)
+      {
+        this._toolCtrl.notifyError(msg, e);
+      }
       return ; // Terminate the execution of the thread.
     }
     finally
     {
+      if(this._toolCtrl != null)
+      {
+        this._toolCtrl.enableControlPanel(true);
+      }
       // Someone may call cancel or pause at the end of the execution of the
       // thread and the thread may not check pause or cancel so the caller
       // will wait forever. Theses instructions release the pending callers.
@@ -61,7 +109,10 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  protected abstract void threadLogic() ;
+  protected abstract void threadLogic() throws InterruptedException,
+                                               CancellationException,
+                                               InitializationException,
+                                               Exception;
 
   // Block the caller until the thread is paused.
   @Override
@@ -316,30 +367,18 @@ public abstract class AbstractThreadControl extends Thread
     class TestAbstractThreadControl extends AbstractThreadControl
     {
       @Override
-      protected void threadLogic()
+      protected void threadLogic() throws InterruptedException,
+                                          CancellationException,
+                                          InitializationException,
+                                          Exception
       {
         for(int i = 0 ; i < 20 ; i++)
         {
-          try
-          {
-            System.out.println(String.format("--- alive %s ---", i)) ;
-            Thread.sleep(500);
-            this.checkInterruption();
-            this.checkCancel();
-            this.checkPause();
-          }
-          catch (InterruptedException e)
-          {
-            String msg = String.format("%s interrupted", new Date());
-            System.err.println(msg) ;
-            return;
-          }
-          catch(CancellationException e)
-          {
-            String msg = String.format("%s cancelled", new Date());
-            System.err.println(msg) ;
-            return;
-          }
+          System.out.println(String.format("--- alive %s ---", i)) ;
+          Thread.sleep(500);
+          this.checkInterruption();
+          this.checkCancel();
+          this.checkPause();
         }
       }
     }
