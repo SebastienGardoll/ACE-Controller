@@ -2,5 +2,5 @@ package fr.gardoll.ace.controller.ui;
 
 public interface ControlPanel
 {
-  public void majActionActuelle(Action action) ;
+  public void enableControl(boolean isEnable);
 }

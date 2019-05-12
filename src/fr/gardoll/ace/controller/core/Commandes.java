@@ -2,8 +2,6 @@ package fr.gardoll.ace.controller.core;
 
 import java.io.Closeable ;
 import java.io.IOException ;
-import java.util.HashSet ;
-import java.util.Set ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -16,12 +14,12 @@ import fr.gardoll.ace.controller.common.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.ui.Action ;
 import fr.gardoll.ace.controller.ui.ActionType ;
-import fr.gardoll.ace.controller.ui.ControlPanel ;
-import fr.gardoll.ace.controller.ui.Observable ;
+import fr.gardoll.ace.controller.ui.Observer ;
+import fr.gardoll.ace.controller.ui.ToolControl ;
 
 // TODO: singleton.
 // TODO: add logging
-public class Commandes implements Closeable, Observable
+public class Commandes implements Closeable
 {
   private final ParametresSession parametresSession;
 
@@ -31,14 +29,16 @@ public class Commandes implements Closeable, Observable
 
   private final PousseSeringue pousseSeringue;
   
-  private final Set<ControlPanel> _ctrlPanels = new HashSet<>(); 
+  private final ToolControl _toolCtrl ; 
   
   private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
 
   //requires colonne != NULL
-  public Commandes (Colonne colonne) throws InitializationException, InterruptedException
+  public Commandes (ToolControl toolCtrl, Colonne colonne)
+      throws InitializationException, InterruptedException
   {
-    this.colonne = colonne;
+    this.colonne   = colonne;
+    this._toolCtrl = toolCtrl;
     ParametresSession parametresSession = ParametresSession.getInstance();
     
     this.pousseSeringue = parametresSession.getPousseSeringue();
@@ -242,19 +242,19 @@ public class Commandes implements Closeable, Observable
                            double volumeCible,
                            int numEv,
                            int nbColonneRestant,
-                           ControlPanel panel) throws InterruptedException
+                           Observer panel) throws InterruptedException
   {
     double vol_deja_delivre = 0. ;
 
     double vol_delivre ;
 
-    this.notifyObserver(new Action(ActionType.CAROUSEL_MOVING, numColonne));
+    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_MOVING, numColonne));
     this.deplacementPasseur(numColonne , this.calculsDeplacement(volumeCible)) ;
 
     int nbPasBrasAtteindre = this.calculsHauteur(volumeCible) + Passeur.convertBras(this.colonne.hauteurMenisque() - this.colonne.hauteurReservoir());
     // calculs de nombre de pas à descendre cad hauteur max du liquide dans un réservoir cônique ou cylindrique
 
-    this.notifyObserver(new Action(ActionType.ARM_MOVING, null));
+    this._toolCtrl.notifyAction(new Action(ActionType.ARM_MOVING, null));
     this.passeur.moveBras(nbPasBrasAtteindre);
 
     this.passeur.finMoveBras();
@@ -265,7 +265,7 @@ public class Commandes implements Closeable, Observable
     {
       if (Utils.isNearZero(pousseSeringue.volumeRestant()))
       { 
-        this.notifyObserver(new Action(ActionType.WITHDRAWING, null));
+        this._toolCtrl.notifyAction(new Action(ActionType.WITHDRAWING, null));
 
         if (nbColonneRestant == 0) 
         {
@@ -278,7 +278,7 @@ public class Commandes implements Closeable, Observable
       }
       else
       {  
-        this.notifyObserver(new Action(ActionType.INFUSING, null));
+        this._toolCtrl.notifyAction(new Action(ActionType.INFUSING, null));
 
         if (this.pousseSeringue.volumeRestant() < volumeCible - vol_deja_delivre)
         { 
@@ -344,27 +344,6 @@ public class Commandes implements Closeable, Observable
     }
 
     this.passeur.finMoveCarrousel();
-  }
-
-  @Override
-  public void addObserver(ControlPanel panel)
-  {
-    this._ctrlPanels.add(panel);
-  }
-
-  @Override
-  public void removeObserver(ControlPanel panel)
-  {
-    this._ctrlPanels.remove(panel);
-  }
-
-  @Override
-  public void notifyObserver(Action action)
-  {
-    for(ControlPanel panel: this._ctrlPanels)
-    {
-      panel.majActionActuelle(action);
-    }
   }
 
   @Override
