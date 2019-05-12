@@ -65,7 +65,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     thread.start();
   }
   
-  void cancel()
+  void cancel() throws InterruptedException
   {
     if (this._currentThread != null && this._currentThread.isAlive())
     {
@@ -86,7 +86,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     }
   }
   
-  void close()
+  void close() throws InterruptedException
   {
     this.cancel();
   }

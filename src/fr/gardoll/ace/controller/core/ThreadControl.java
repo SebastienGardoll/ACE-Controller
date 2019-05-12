@@ -11,11 +11,11 @@ public interface ThreadControl
   // Resume the thread.
   public void unPause() throws InterruptedException;
   
-  public void cancel();
+  public void cancel() throws InterruptedException;
   
   public void checkInterruption() throws InterruptedException ;
   
-  public void checkCancel() throws CancellationException;
+  public void checkCancel() throws CancellationException, InterruptedException;
   
   public void checkPause() throws InterruptedException;
 }
