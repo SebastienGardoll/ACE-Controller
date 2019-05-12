@@ -40,6 +40,7 @@ public class CCylindre extends Colonne
     }
   }
   
+  @Override
   public double calculsHauteur(double volume)
   {  
     if (volume <= 0.)
@@ -54,6 +55,7 @@ public class CCylindre extends Colonne
     return ((4 * volume) /  (Math.PI * Math.pow (this.diametre, 2))) ;
   }
 
+  @Override
   public double calculsDeplacementCarrousel(double volume)
   {  
     //pas d'implémentation pour les formes cylindrique

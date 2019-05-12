@@ -20,22 +20,26 @@ public class CHybride extends Colonne
     this.volumeRetard = this.cone.volumeEquivalentCylindre() - this.cone.volumeReservoir() ;
   }
   
+  @Override
   public double volumeReservoir()
   { 
     return (this.cone.volumeReservoir() + this.cylindre.volumeReservoir());
   }
   
+  @Override
   public double hauteurReservoir()
   { 
     return (this.cone.hauteurReservoir() + this.cylindre.hauteurReservoir()) ;
   }
   
+  @Override
   public double calculsDeplacementCarrousel(double volume)
   { 
     //pas d'implémentation pour les formes hybrides
     return 0. ;
   } 
   
+  @Override
   public double calculsHauteur(double volume)
   { 
     if (volume > this.cone.volumeReservoir())

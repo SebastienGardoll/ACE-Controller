@@ -58,6 +58,7 @@ public class CCone extends Colonne
     }
   }
   
+  @Override
   public double calculsHauteur(double volume)
   {  
     if ( volume <= 0. )
@@ -80,6 +81,7 @@ public class CCone extends Colonne
     return  X - (this.b / (3 * this.a)) ;
   }
   
+  @Override
   public double calculsDeplacementCarrousel(double volume)
   {  
     if (volume <= 0.)

@@ -28,6 +28,7 @@ public interface SerialCom extends Closeable
   // Read the serial port until the specified timeout.
   public String lire() throws SerialComException ;
 
+  @Override
   public void close() ;
   
   public void open() throws SerialComException, InterruptedException ;

@@ -18,6 +18,7 @@ public interface ParaCom  extends Closeable
   // ferme toutes les ev
   public void toutFermer()  throws ParaComException, InterruptedException ;
   
+  @Override
   public void close() ;
 
   public final int NUM_SHUT_IV = 0;
