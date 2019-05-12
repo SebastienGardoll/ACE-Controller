@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.common.CancellationException ;
 
 // TODO:
-// - unblock threads that are wating the thread to pause or cancel, near the end.
 // - report msg.
 public abstract class AbstractThreadControl extends Thread
                                             implements ThreadControl
@@ -25,7 +24,7 @@ public abstract class AbstractThreadControl extends Thread
   private boolean _is_paused       = false;
   private boolean _is_canceled     = false;
   private boolean _is_synchronized = false;
-  
+
   public AbstractThreadControl()
   {
     // JVM will not wait until this thread ends.
@@ -33,6 +32,37 @@ public abstract class AbstractThreadControl extends Thread
     this.setDaemon(true);
   }
   
+  // Make the run method impossible to override as the thread must
+  // perform some last computation before ending.
+  // The only wait to give logic to this thread is to implement the threadLogic
+  // method.
+  @Override
+  public final void run()
+  {
+    try
+    {
+      this.threadLogic();
+    }
+    catch(Exception e)
+    {
+      String msg = String.format("thread has crashed: %s", e);
+      _LOG.fatal(msg, e);
+      return ; // Terminate the execution of the thread.
+    }
+    finally
+    {
+      // Someone may call cancel or pause at the end of the execution of the
+      // thread and the thread may not check pause or cancel so the caller
+      // will wait forever. Theses instructions release the pending callers.
+      this._sync.lock();
+      // Wake up the callers that was waiting the thread to pause or cancel.
+      this._sync_cond.signalAll();
+      this._sync.unlock();
+    }
+  }
+  
+  protected abstract void threadLogic() ;
+
   // Block the caller until the thread is paused.
   @Override
   public void pause() throws InterruptedException
@@ -41,7 +71,7 @@ public abstract class AbstractThreadControl extends Thread
     {
       _LOG.debug("pausing the thread");
       
-      // Must take the lock so as to read the shared ressources and
+      // Must take the lock so as to read the shared resources and
       // await on the condition.
       this._sync.lockInterruptibly();
       if(false == this._is_paused   &&
@@ -65,7 +95,7 @@ public abstract class AbstractThreadControl extends Thread
         _LOG.debug("thread is paused");
         
         // When the caller returns from the method await,
-        // it blocks until it retakes the lock.
+        // it blocks until it re-takes the lock.
         // That why it must unlock it (in the finally bloc).
         
         // At this point, the thread is paused, so the caller can
@@ -91,7 +121,7 @@ public abstract class AbstractThreadControl extends Thread
     {
       _LOG.debug("executing unpause");
       
-      // Must take the lock so as to read the shared ressources and
+      // Must take the lock so as to read the shared resources and
       // signalAll on the condition.
       this._sync.lockInterruptibly();
       
@@ -129,7 +159,7 @@ public abstract class AbstractThreadControl extends Thread
     { 
       _LOG.debug("checking the pause");
       
-      // Must take the lock so as to read the shared ressources and
+      // Must take the lock so as to read the shared resources and
       // signall on the condition.
       this._sync.lockInterruptibly();
       
@@ -153,7 +183,7 @@ public abstract class AbstractThreadControl extends Thread
         }
         
         // When the thread returns from the method await,
-        // it blocks until it retakes the lock.
+        // it blocks until it re-takes the lock.
         // That why it must unlock it (in the finally bloc).
         
         _LOG.debug("thread is resumed");
@@ -225,7 +255,7 @@ public abstract class AbstractThreadControl extends Thread
         _LOG.debug("thread is cancelled");
         
         // When the caller returns from the method await,
-        // it blocks until it retakes the lock.
+        // it blocks until it re-takes the lock.
         // That why it must unlock it (in the finally bloc).
         
         // At this point, the thread is paused, so the caller can
@@ -286,7 +316,7 @@ public abstract class AbstractThreadControl extends Thread
     class TestAbstractThreadControl extends AbstractThreadControl
     {
       @Override
-      public void run()
+      protected void threadLogic()
       {
         for(int i = 0 ; i < 20 ; i++)
         {

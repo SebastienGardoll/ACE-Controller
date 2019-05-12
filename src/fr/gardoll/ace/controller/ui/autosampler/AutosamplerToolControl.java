@@ -258,9 +258,8 @@ class CarouselThread extends AbstractThreadControl
     this._toolCtrl = toolCtrl;
   }
   
-  //TODO: report actions.
   @Override
-  public void run()
+  protected void threadLogic()
   {
     try
     {
@@ -327,9 +326,8 @@ class ArmThread extends AbstractThreadControl
     this._toolCtrl = toolCtrl;
   }
   
-  // TODO: report actions.
   @Override
-  public void run()
+  protected void threadLogic()
   {
     try
     {
