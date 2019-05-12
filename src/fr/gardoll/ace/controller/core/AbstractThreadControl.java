@@ -6,7 +6,14 @@ import java.util.concurrent.locks.ReentrantLock ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-public abstract class AbstractThreadControl extends Thread implements ThreadControl
+import fr.gardoll.ace.controller.common.CancellationException ;
+
+// TODO:
+// - reimplement cancel, same mechanism as pause
+// - don't pause or cancel when thread is terminated.
+// - report msg.
+public abstract class AbstractThreadControl extends Thread
+                                            implements ThreadControl
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractThreadControl.class.getName());
   
@@ -160,6 +167,18 @@ public abstract class AbstractThreadControl extends Thread implements ThreadCont
       _LOG.debug(msg);
       throw new InterruptedException(msg);
     }
+  }
+  
+  @Override
+  public void cancel()
+  {
+    // TODO: impl.
+  }
+  
+  @Override
+  public void checkCancel() throws CancellationException
+  {
+    // TODO: impl.
   }
   
   public static void main(String[] args)
