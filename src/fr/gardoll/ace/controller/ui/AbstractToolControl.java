@@ -67,34 +67,34 @@ public abstract class AbstractToolControl implements ToolControl
       _LOG.info("waiting for cancellation");
       this.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
       this._currentThread.cancel();
-      
-      try
-      {
-        _LOG.info("cancelling all operations");
-        this.notifyAction(new Action(ActionType.CANCEL, null));
-        
-        if(this._hasAutosampler)
-        {
-          this._passeur.cancel();
-        }
-        
-        if(this._hasPump)
-        {
-          this._pousseSeringue.cancel();
-        }
-        
-      }
-      catch (InterruptedException e)
-      {
-        String msg = "cancellation has been interrupted";
-        _LOG.fatal(msg);
-        return ;
-      }
     }
     else
     {
       String msg = "thread control is not alive or is null";
       _LOG.debug(msg);
+    }
+    
+    try
+    {
+      _LOG.info("cancelling all operations");
+      this.notifyAction(new Action(ActionType.CANCEL, null));
+      
+      if(this._hasAutosampler)
+      {
+        this._passeur.cancel();
+      }
+      
+      if(this._hasPump)
+      {
+        this._pousseSeringue.cancel();
+      }
+      
+    }
+    catch (InterruptedException e)
+    {
+      String msg = "cancellation has been interrupted";
+      _LOG.fatal(msg);
+      return ;
     }
   }
   
