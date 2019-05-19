@@ -7,6 +7,6 @@ public enum ActionType
   WITHDRAWING,
   INFUSING,
   END,
-  PAUSE,
-  CANCEL;
+  PAUSE, WAIT_PAUSE, RESUME,
+  CANCEL, WAIT_CANCEL;
 }
