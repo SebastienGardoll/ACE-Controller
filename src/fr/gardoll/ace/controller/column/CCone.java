@@ -25,7 +25,7 @@ public class CCone extends Colonne
   
   public CCone(Path cheminFichierColonne) throws InitializationException
   { 
-    super(cheminFichierColonne);
+    super(cheminFichierColonne, TypeColonne.CONE);
     
     this.hauteurCone = this._colSection.getDouble(Names.SICOL_CLEF_H_CONE, -1.)  ;
     this.diametreSup = this._colSection.getDouble(Names.SICOL_CLEF_DIA_SUP, -1.) ;

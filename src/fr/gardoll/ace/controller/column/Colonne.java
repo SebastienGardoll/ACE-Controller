@@ -1,7 +1,9 @@
 package fr.gardoll.ace.controller.column;
 
+import java.io.Closeable ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
+import java.nio.file.Paths ;
 
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
@@ -14,12 +16,14 @@ import fr.gardoll.ace.controller.common.InitializationException ;
 import fr.gardoll.ace.controller.common.Names ;
 
 // TODO: add logging
-public abstract class Colonne
+public abstract class Colonne implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(Colonne.class.getName());
   
   protected final Path _fichierColonne ;
   protected final SubnodeConfiguration _colSection;
+  
+  private final TypeColonne _type;
   
   // dimensions en mm
 
@@ -58,11 +62,12 @@ public abstract class Colonne
   
   public abstract double hauteurReservoir() ;
   
-  public Colonne(Path cheminFichierColonne) throws InitializationException
+  public Colonne(Path cheminFichierColonne, TypeColonne type) throws InitializationException
   {         
     // attention dans le fichier init la virgule des réels est : .
     
     this._fichierColonne = cheminFichierColonne ;
+    this._type = type;
     
     if (! (Files.isReadable(this._fichierColonne) && Files.isRegularFile(this._fichierColonne)))
     {
@@ -106,8 +111,62 @@ public abstract class Colonne
     }
   }
   
+  public TypeColonne getType()
+  {
+    return this._type;
+  }
+  
+  @Override
+  public void close()
+  {
+    this._colSection.close();
+  }
+  
   public static Colonne getInstance(String filePath) throws InitializationException
   {
-    return null ; // TODO
+    Path columnPath = Paths.get(filePath);
+    
+    if (! (Files.isReadable(columnPath) &&
+        Files.isRegularFile(columnPath)))
+    {
+      String msg = String.format("cannot read column configuration file '%s'", filePath);
+      _LOG.fatal(msg);
+      throw new InitializationException(msg);
+    }
+    
+    Configurations configs = new Configurations();
+    TypeColonne type = null;
+    SubnodeConfiguration section = null;
+    try
+    {
+      INIConfiguration iniConf = configs.ini(columnPath.toFile());
+      section = iniConf.getSection(Names.SEC_INFO_COL);
+      int typeValue = section.getInteger(Names.SICOL_CLEF_TYPE, 0) ;
+      type = TypeColonne.values()[typeValue];
+    }
+    catch (ConfigurationException e)
+    {
+      String msg = String.format("unable to read the column specifications in the file '%s': %s",
+          filePath, e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new InitializationException(msg,e);
+    }
+    finally
+    {
+      if(section != null)
+      {
+        section.close();
+      }
+    }
+    
+    Colonne colonne = null;
+    switch (type)
+    { 
+      case CYLINDRE : { colonne = new CCylindre (columnPath) ; break ; }
+      case CONE :     { colonne = new CCone (columnPath) ; break ; }
+      case HYBRIDE :  { colonne = new CHybride (columnPath) ; break ; }
+    }
+    
+    return colonne;
   }
 }

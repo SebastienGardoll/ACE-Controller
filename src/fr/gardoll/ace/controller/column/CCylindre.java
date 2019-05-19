@@ -21,7 +21,7 @@ public class CCylindre extends Colonne
 
   public CCylindre(Path cheminFichierColonne ) throws InitializationException
   {
-    super(cheminFichierColonne);
+    super(cheminFichierColonne, TypeColonne.CYLINDRE);
     
     this.hauteurCylindre = this._colSection.getDouble(Names.SICOL_CLEF_H_CYLINDRE, -1.)  ;
     this.diametre        = this._colSection.getDouble(Names.SICOL_CLEF_DIA, -1.)   ;

@@ -14,7 +14,7 @@ public class CHybride extends Colonne
   
   public CHybride(Path cheminFichierColonne) throws InitializationException
   {
-    super(cheminFichierColonne);
+    super(cheminFichierColonne, TypeColonne.HYBRIDE);
     this.cone = new CCone(cheminFichierColonne);
     this.cylindre = new CCylindre(cheminFichierColonne);
     this.volumeRetard = this.cone.volumeEquivalentCylindre() - this.cone.volumeReservoir() ;
