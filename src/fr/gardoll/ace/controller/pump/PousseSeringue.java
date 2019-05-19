@@ -433,6 +433,11 @@ public class PousseSeringue implements Closeable
       Thread.sleep(ATTENTE_FERMETURE_EV) ;
     }
   }
+  
+  public void cancel() throws InterruptedException
+  {
+    // Nothing to do, dummy method so as to call it.
+  }
 
   // Arrête de la pompe
   public void pause() throws InterruptedException
