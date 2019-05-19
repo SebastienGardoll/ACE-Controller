@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.common;
 
+import java.io.Closeable ;
+import java.io.IOException ;
 import java.net.URISyntaxException ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
@@ -13,13 +15,13 @@ import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
+import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
 // TODO: add logging
 // TODO: singleton for autosampler and pump
 // TODO: factory for  autosampler and pump
-public class ParametresSession
+public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
   
@@ -31,8 +33,8 @@ public class ParametresSession
   private static ParametresSession _INSTANCE ;
   
   // Lazy loading.
-  private PousseSeringue _ps = null;
-  private Passeur _sampler = null;
+  private PousseSeringue _pump = null;
+  private Passeur _autosampler = null;
   
   private final double _volumeMaxSeringue ;  // volume max du type de seringue en mL
 
@@ -230,6 +232,21 @@ public class ParametresSession
   public int nbMaxColonne()
   {
     return this._nbMaxColonne ;
+  }
+  
+  @Override
+  public void close()
+  {
+    try
+    {
+      this._pump.close();
+      this._autosampler.close();
+    }
+    catch (IOException e)
+    {
+      String msg = String.format(": %s", e.getMessage());
+      _LOG.error(msg, e);
+    }
   }
 }
 
