@@ -11,6 +11,8 @@ public interface ThreadControl
   // Resume the thread.
   public void unPause() throws InterruptedException;
   
+  // Block the caller until the thread is canceled.
+  // The thread has to define check points that where it can cancel.
   public void cancel() throws InterruptedException;
   
   public void checkInterruption() throws InterruptedException ;
@@ -18,4 +20,6 @@ public interface ThreadControl
   public void checkCancel() throws CancellationException, InterruptedException;
   
   public void checkPause() throws InterruptedException;
+
+  public boolean isAlive() ;
 }

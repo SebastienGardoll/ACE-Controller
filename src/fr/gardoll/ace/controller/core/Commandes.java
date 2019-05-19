@@ -1,8 +1,5 @@
 package fr.gardoll.ace.controller.core;
 
-import java.io.Closeable ;
-import java.io.IOException ;
-
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -19,7 +16,7 @@ import fr.gardoll.ace.controller.ui.ToolControl ;
 
 // TODO: singleton.
 // TODO: add logging
-public class Commandes implements Closeable
+public class Commandes
 {
   private final ParametresSession parametresSession;
 
@@ -82,30 +79,7 @@ public class Commandes implements Closeable
   { 
     this.rincage(PousseSeringue.numEvH2O()) ;
   }
-  
-  public void pause(ThreadControl ctrl) throws InterruptedException
-  {  
-    // attend la fin de l'execution d'un ordre passé sur le port serie.
-    // Concurrence entre l'utilisateur, le thread sequence ou
-    // thread organiseur
-    ctrl.pause();
     
-    // A partir de maintenant, il n'y a plus de concurrence.
-    this.pousseSeringue.pause();    
-    this.passeur.pause();
-  }
-  
-  public void reprise (ThreadControl ctrl) throws InterruptedException
-  {  
-    this.passeur.reprise(false); 
-
-    //attention la reprise du passeur avant celle du pousse seringue à
-    //cause de la manipulation eventuelle de celui ci
-    this.pousseSeringue.reprise(); 
-    
-    ctrl.unPause();
-  }
-  
   //à la position de carrousel donnée
   public void deplacementPasseur(int position) throws InterruptedException
   {
@@ -344,12 +318,5 @@ public class Commandes implements Closeable
     }
 
     this.passeur.finMoveCarrousel();
-  }
-
-  @Override
-  public void close() throws IOException
-  {
-    this.passeur.close();
-    this.pousseSeringue.close();
   }
 }

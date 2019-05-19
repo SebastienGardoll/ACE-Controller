@@ -17,28 +17,13 @@ import fr.gardoll.ace.controller.ui.ToolControl ;
 public class AutosamplerToolControl extends AbstractToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolControl.class.getName());
-  private final Passeur _passeur ;
   private Colonne colonne = null;
   private boolean flagGo = false ;
   // autorise la fermeture de la fenêtre ou non à cause des threads
-  private AbstractThreadControl _currentThread = null;
   
   public AutosamplerToolControl() throws InitializationException
   {
-    // Initialization checking.
-    ParametresSession parametresSession = null;
-    try
-    {
-      parametresSession = ParametresSession.getInstance() ;
-    }
-    catch (InitializationException e)
-    {
-      String msg = e.getMessage();
-      _LOG.fatal(msg, e);
-      throw e;
-    }
-    
-    this._passeur = parametresSession.getPasseur();
+    super(false, true);
   }
   
   void vibrate()
@@ -63,32 +48,6 @@ public class AutosamplerToolControl extends AbstractToolControl
     ArmThread thread = new ArmThread(this, _passeur, nbPas, 1);
     _LOG.debug(String.format("start arm thread for free move '%s'", value));
     thread.start();
-  }
-  
-  void cancel() throws InterruptedException
-  {
-    if (this._currentThread != null && this._currentThread.isAlive())
-    {
-      this._currentThread.cancel();
-    }
-    
-    try
-    {
-      _LOG.info("cancelling all operations");
-      this.notifyAction(new Action(ActionType.CANCEL, null));
-      this._passeur.cancel();
-    }
-    catch (InterruptedException e)
-    {
-      String msg = "cancellation has been interrupted";
-      _LOG.fatal(msg);
-      return ;
-    }
-  }
-  
-  void close() throws InterruptedException
-  {
-    this.cancel();
   }
 }
 
