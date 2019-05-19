@@ -2,10 +2,10 @@ package fr.gardoll.ace.controller.ui;
 
 public interface Observer
 {
-  // Must not block or be time consuming.
+  // Must not block and be time consuming.
   public void majActionActuelle(Action action) ;
   
-  // Must not block or be time consuming.
+  // May be blocking call.
   // The throwable parameter can be null.
   public void reportError(String msg, Throwable e);
   public void reportError(String msg);

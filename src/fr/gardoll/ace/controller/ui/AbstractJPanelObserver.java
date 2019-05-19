@@ -1,5 +1,6 @@
 package fr.gardoll.ace.controller.ui;
 
+import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
 import javax.swing.SwingUtilities ;
 
@@ -8,9 +9,6 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   private static final long serialVersionUID = -3914638188506779210L ;
 
   abstract protected void processAction(Action action);
-  
-  // Throwable can be null.
-  abstract protected void processError(String msg, Throwable e);
   
   @Override
   public void majActionActuelle(Action action)
@@ -25,36 +23,25 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     });
   }
 
+  // Throwable can be null.
   @Override
   public void reportError(String msg, Throwable e)
   {
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.processError(msg, e);
-      }
-    });
+    JOptionPane.showMessageDialog(null, msg, 
+        "Error",
+        JOptionPane.ERROR_MESSAGE);
   }
   
   @Override
   public void reportError(String msg)
   {
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.processError(msg, null);
-      }
-    });
+    this.reportError(msg, null);
   }
   
   @Override
   public void displayModalMessage(String msg)
   {
-    // TODO Auto-generated method stub
-    
+    JOptionPane.showMessageDialog(null, msg, "Information",
+        JOptionPane.INFORMATION_MESSAGE);
   }
 }

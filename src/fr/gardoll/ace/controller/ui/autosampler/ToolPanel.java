@@ -16,13 +16,6 @@ public class ToolPanel extends AbstractJPanelObserver implements ControlPanel, O
     
   }
 
-  // Throwable can be null.
-  @Override
-  protected void processError(String msg, Throwable e)
-  {
-    // TODO Auto-generated method stub
-  }
-  
   @Override
   public void enableControl(boolean isEnable)
   {
