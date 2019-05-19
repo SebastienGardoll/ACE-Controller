@@ -11,5 +11,4 @@ public class CarouselPanel implements ControlPanel
     // TODO Auto-generated method stub
     
   }
-
 }

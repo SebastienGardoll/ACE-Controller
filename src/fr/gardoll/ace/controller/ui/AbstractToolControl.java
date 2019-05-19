@@ -206,11 +206,29 @@ public abstract class AbstractToolControl implements ToolControl
   }
   
   @Override
+  public void displayControlPanelModalMessage(String msg)
+  {
+    for(Observer panel: this._observers)
+    {
+      panel.displayModalMessage(msg);
+    }
+  }
+  
+  @Override
   public void notifyError(String msg, Throwable e)
   {
     for(Observer panel: this._observers)
     {
       panel.reportError(msg, e);
+    }
+  }
+  
+  @Override
+  public void notifyError(String msg)
+  {
+    for(Observer panel: this._observers)
+    {
+      panel.reportError(msg);
     }
   }
 }

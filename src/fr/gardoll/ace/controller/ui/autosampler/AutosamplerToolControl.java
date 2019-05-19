@@ -18,7 +18,7 @@ public class AutosamplerToolControl extends AbstractToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolControl.class.getName());
   private Colonne colonne = null;
-  private boolean flagGo = false ;
+  private boolean hasColumn = false ;
   // autorise la fermeture de la fenêtre ou non à cause des threads
   
   public AutosamplerToolControl() throws InitializationException
@@ -37,6 +37,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     {
       String msg = "vibrating has been interrupted";
       _LOG.fatal(msg);
+      this.notifyError(msg, e);
       return ;
     }
   }
@@ -45,30 +46,98 @@ public class AutosamplerToolControl extends AbstractToolControl
   {
     int nbPas = Passeur.convertBras(value) ;
     this.enableControlPanel(false);
-    ArmThread thread = new ArmThread(this, _passeur, nbPas, 1);
+    ArmThread thread = new ArmThread(this, this._passeur, nbPas, 1);
     _LOG.debug(String.format("start arm thread for free move '%s'", value));
     thread.start();
   }
+  
+  void armGoButee()
+  {
+    this.enableControlPanel(false);
+    // zero pour le choix fin de butée
+    ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
+    _LOG.debug("start arm thread for go butée");
+    thread.start();        
+  }
+  
+  void armGoColonne()
+  {
+    if (this.hasColumn == false)
+    {
+      _LOG.debug("colonne not set");
+      return ;
+    }
+    else
+    {
+      this.enableControlPanel(false);
+      ArmThread thread = new ArmThread(this, this._passeur, this.colonne);
+      _LOG.debug("start arm thread for go to column");
+      thread.start();
+    }
+  }
+  
+  void armGoTrash()
+  {
+    this.enableControlPanel(false);
+    ArmThread thread = new ArmThread(this, this._passeur, 0, 3);
+    _LOG.debug("start arm thread for go to trash can");
+    thread.start(); 
+  }
+  
+  void carouselGoPosition(int position)
+  {
+    this.enableControlPanel(false);
+    CarouselThread thread = new CarouselThread(this, this._passeur, position);
+    _LOG.debug(String.format("start carousel thread for go to position '%s'", position));
+    thread.start();
+  }
+  
+  void carouselTurnLeft()
+  {
+    this.enableControlPanel(false);
+    
+    int nbPosition =  -1 * ParametresSession.NB_POSITION;
+    CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
+    _LOG.debug("start carousel thread for turn to left");
+    thread.start();        
+  }
+  
+  void carouselTurnRight()
+  {
+    this.enableControlPanel(false);
+    
+    int nbPosition =  ParametresSession.NB_POSITION;
+    CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
+    _LOG.debug("start carousel thread for turn to right");
+    thread.start();        
+  }
+  
+  void carouselFreeMove()
+  {
+    _LOG.debug("start carousel free move");
+    try
+    {
+      this._passeur.setModeManuel();
+      this.displayControlPanelModalMessage("Click on Ok to finish");
+      this._passeur.setOrigineCarrousel ();
+    }
+    catch (InterruptedException e)
+    {
+      String msg = "arm free move has been interrupted";
+      _LOG.fatal(msg);
+      this.notifyError(msg, e);
+      return ;
+    }
+  }
+  
+  
 }
 
 /*
 
 
 //---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnGoButeeClick(TObject *Sender)
-{
-   enableControl ( false ) ;
 
-   threadBras = new ThreadBras ( true ,
-                                 *this,
-                                 passeur,
-                                 parametresSession,
-                                 0,
-                                 0 );// zero pour le choix fin de butée
-
-   threadBras->FreeOnTerminate = false ;
-   threadBras->Resume();        
-}
 //---------------------------------------------------------------------------
 void __fastcall TF_ControlesPasseur::BitBtnOuvertureClick(TObject *Sender)
 {
@@ -84,123 +153,37 @@ void __fastcall TF_ControlesPasseur::BitBtnOuvertureClick(TObject *Sender)
 
   delete fichier ;
 }
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnGoColonneClick(TObject *Sender)
-{
-   if ( ! flagGo ) return ;
-
-   ChoixColonne  choix ( nomFichierColonne ) ;
-   colonne = choix.instanciation(); //initialisation de _colonne
-   
-   enableControl ( false ) ;
-
-   threadBras = new ThreadBras ( true,
-                                 * this,
-                                 passeur,
-                                 * colonne,
-                                 parametresSession  );
-
-   threadBras->FreeOnTerminate = false ;  //c'est le thread organiseur qui le delete 
-   threadBras->Resume();        
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnPoubelleClick(TObject *Sender)
-{
-   enableControl ( false ) ;
-
-   threadBras = new ThreadBras ( true,
-                                 *this,
-                                 passeur,
-                                 parametresSession,
-                                 0,
-                                 3 );// zero pour le choix poubelle
-                                 
-   threadBras->FreeOnTerminate = false ;
-   threadBras->Resume();
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnGoClick(TObject *Sender)
-{
-  enableControl ( false ) ;
-
-  threadCarrousel = new ThreadCarrousel ( true ,
-                                          * this,
-                                          passeur,
-                                          AdvSpinEditPosition->Value );
-  threadCarrousel->FreeOnTerminate = false ;
-  threadCarrousel->Resume();
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnGaucheClick(TObject *Sender)
-{
-   enableControl (false);
-
-   threadCarrouselRelatif = new ThreadCarrouselRelatif ( true ,
-                                                         * this,
-                                                         passeur,
-                                                         -1 * NB_POSITION  );
-   threadCarrouselRelatif->FreeOnTerminate = false ;
-   threadCarrouselRelatif->Resume();        
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnDroiteClick(TObject *Sender)
-{
-   enableControl (false);
-
-   threadCarrouselRelatif = new ThreadCarrouselRelatif ( true ,
-                                                         * this,
-                                                         passeur,
-                                                         NB_POSITION );
-   threadCarrouselRelatif->FreeOnTerminate = false ;
-   threadCarrouselRelatif->Resume();
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnArretUrgenceClick(
-      TObject *Sender)
-{
-   try {
-
-         try {
-               try { TerminateThread( (void*) threadCarrousel->Handle , 0 )  ; }
-               catch ( EAccessViolation  &e ) {;}  //protection si le thread n'existe pas ou plus
-
-               try { TerminateThread( (void*) threadCarrouselRelatif->Handle , 0 )  ;  }
-               catch ( EAccessViolation  &e ) {;}
-
-               try {  TerminateThread( (void*) threadBras->Handle , 0 )  ;  }
-               catch ( EAccessViolation  &e ) {;}
-
-             }   __finally {  passeur.arretUrgence();
-                              enableControl ( true );
-                           }
-
-        } catch ( Exception &e ) { MessageDlg (e.Message + ", arret d'urgence impossible, veuillez actionner le bouton coup de poing", mtError, TMsgDlgButtons() << mbOK , 0 );
-                                   abort();
-                                 }
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnRefClick(TObject *Sender)
-{
-   passeur.setModeManuel();
-   MessageDlg (FP_VISUEL_CARROUSEL, mtInformation, TMsgDlgButtons() << mbOK , 0 );
-   passeur.setOrigineCarrousel ();        
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnFermerClick(TObject *Sender)
-{
-   if ( fermeture ) this->ModalResult = mrOk ;
-   else  MessageDlg (C_FERMETURE, mtInformation, TMsgDlgButtons() << mbOK , 0 ) ;        
-}
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::FormCloseQuery(TObject *Sender,
-      bool &CanClose)
-{
-    if ( ! fermeture ) MessageDlg (C_FERMETURE, mtInformation, TMsgDlgButtons() << mbOK , 0 );
-
-   CanClose = fermeture ;        
-}
 
 */
+
+class CarouselRelativeThread extends AbstractThreadControl
+{
+  private static final Logger _LOG = LogManager.getLogger(CarouselRelativeThread.class.getName());
+  private final int _nbPosition ;
+  private final Passeur _passeur ;
+  
+  public CarouselRelativeThread(ToolControl toolCtrl, Passeur passeur, int nbPosition)
+  {
+    super(toolCtrl);
+    this._passeur  = passeur;
+    this._nbPosition = nbPosition;
+  }
+  
+  @Override
+  protected void threadLogic() throws InterruptedException,
+      CancellationException, InitializationException, Exception
+  {
+    _LOG.debug("run CarouselRelativeThread");
+    Action action = new Action(ActionType.CAROUSEL_MOVING, this._nbPosition);
+    this._toolCtrl.notifyAction(action);
+    
+    this._passeur.moveButeBras();
+    this._passeur.finMoveBras();
+    this._passeur.moveCarrouselRelatif(this._nbPosition);
+    this._passeur.finMoveCarrousel();
+  }
+}
+
 class CarouselThread extends AbstractThreadControl
 {
   private static final Logger _LOG = LogManager.getLogger(CarouselThread.class.getName());

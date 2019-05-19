@@ -9,6 +9,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
 
   abstract protected void processAction(Action action);
   
+  // Throwable can be null.
   abstract protected void processError(String msg, Throwable e);
   
   @Override
@@ -35,5 +36,25 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
         AbstractJPanelObserver.this.processError(msg, e);
       }
     });
+  }
+  
+  @Override
+  public void reportError(String msg)
+  {
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractJPanelObserver.this.processError(msg, null);
+      }
+    });
+  }
+  
+  @Override
+  public void displayModalMessage(String msg)
+  {
+    // TODO Auto-generated method stub
+    
   }
 }

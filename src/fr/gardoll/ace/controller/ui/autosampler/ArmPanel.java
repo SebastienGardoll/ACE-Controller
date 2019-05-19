@@ -11,7 +11,6 @@ public class ArmPanel implements ControlPanel
     // TODO Auto-generated method stub
     
   }
-
 }
 
 /*
@@ -36,5 +35,18 @@ void TF_ControlesPasseur::enableControl ( bool state )
 
   fermeture = state ;
 }
+
+*/
+
+/*
+
+void __fastcall TF_ControlesPasseur::FormCloseQuery(TObject *Sender,
+      bool &CanClose)
+{
+    if ( ! fermeture ) MessageDlg (C_FERMETURE, mtInformation, TMsgDlgButtons() << mbOK , 0 );
+
+   CanClose = fermeture ;        
+}
+
 
 */
