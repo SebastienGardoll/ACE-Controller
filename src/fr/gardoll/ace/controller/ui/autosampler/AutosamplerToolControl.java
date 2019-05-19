@@ -47,6 +47,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     int nbPas = Passeur.convertBras(value) ;
     this.enableControlPanel(false);
     ArmThread thread = new ArmThread(this, this._passeur, nbPas, 1);
+    this.setThread(thread);
     _LOG.debug(String.format("start arm thread for free move '%s'", value));
     thread.start();
   }
@@ -56,6 +57,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     this.enableControlPanel(false);
     // zero pour le choix fin de butée
     ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
+    this.setThread(thread);
     _LOG.debug("start arm thread for go butée");
     thread.start();        
   }
@@ -71,6 +73,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     {
       this.enableControlPanel(false);
       ArmThread thread = new ArmThread(this, this._passeur, this.colonne);
+      this.setThread(thread);
       _LOG.debug("start arm thread for go to column");
       thread.start();
     }
@@ -80,6 +83,7 @@ public class AutosamplerToolControl extends AbstractToolControl
   {
     this.enableControlPanel(false);
     ArmThread thread = new ArmThread(this, this._passeur, 0, 3);
+    this.setThread(thread);
     _LOG.debug("start arm thread for go to trash can");
     thread.start(); 
   }
@@ -88,6 +92,7 @@ public class AutosamplerToolControl extends AbstractToolControl
   {
     this.enableControlPanel(false);
     CarouselThread thread = new CarouselThread(this, this._passeur, position);
+    this.setThread(thread);
     _LOG.debug(String.format("start carousel thread for go to position '%s'", position));
     thread.start();
   }
@@ -98,6 +103,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     
     int nbPosition =  -1 * ParametresSession.NB_POSITION;
     CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
+    this.setThread(thread);
     _LOG.debug("start carousel thread for turn to left");
     thread.start();        
   }
@@ -108,6 +114,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     
     int nbPosition =  ParametresSession.NB_POSITION;
     CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
+    this.setThread(thread);
     _LOG.debug("start carousel thread for turn to right");
     thread.start();        
   }
@@ -130,31 +137,13 @@ public class AutosamplerToolControl extends AbstractToolControl
     }
   }
   
+  void openColumn(String filePath) throws InitializationException
+  {
+    this.colonne = Colonne.getInstance(filePath);
+    this.hasColumn = true;
+  }
   
 }
-
-/*
-
-
-//---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
-void __fastcall TF_ControlesPasseur::BitBtnOuvertureClick(TObject *Sender)
-{
-  if ( ! OpenDialog->Execute() ) return  ;
-
-  TIniFile * fichier = new TIniFile ( OpenDialog->FileName ) ;
-
-  EditColonne->Text = fichier->ReadString(SEC_INFO_COL , SICOL_NOM_COL , C_ERREUR_LECTURE );
-
-  nomFichierColonne = OpenDialog->FileName;
-
-  flagGo = true ;
-
-  delete fichier ;
-}
-
-*/
 
 class CarouselRelativeThread extends AbstractThreadControl
 {

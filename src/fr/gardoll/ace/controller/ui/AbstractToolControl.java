@@ -54,7 +54,12 @@ public abstract class AbstractToolControl implements ToolControl
     }
   }
 
-  private boolean checkThread()
+  protected void setThread(ThreadControl thread)
+  {
+    this._currentThread = thread;
+  }
+  
+  protected boolean checkThread()
   {
     return this._currentThread != null && this._currentThread.isAlive();
   }

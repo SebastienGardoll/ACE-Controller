@@ -105,4 +105,9 @@ public abstract class Colonne
       throw new InitializationException(msg);
     }
   }
+  
+  public static Colonne getInstance(String filePath) throws InitializationException
+  {
+    return null ; // TODO
+  }
 }
