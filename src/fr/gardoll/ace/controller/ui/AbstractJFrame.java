@@ -32,7 +32,15 @@ public abstract class AbstractJFrame extends JFrame
         if (choice == JOptionPane.OK_OPTION)
         {
           _LOG.debug("running the close operations");
-          AbstractJFrame.this.onCloseOperation();
+          try
+          {
+            AbstractJFrame.this.onCloseOperation();
+          }
+          catch(Exception ex)
+          {
+            _LOG.fatal("error while performing close operation", ex);
+          }
+          
           _LOG.debug("closing the main frame and shutting down the JVM");
           AbstractJFrame.this.dispose();
         }
