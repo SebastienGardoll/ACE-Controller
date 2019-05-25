@@ -1,10 +1,13 @@
 package fr.gardoll.ace.controller.ui.autosampler ;
 
+import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
+import fr.gardoll.ace.controller.ui.Action ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
+import fr.gardoll.ace.controller.ui.Observer ;
 
-public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlPanel
+public class AutosamplerToolPanel extends AbstractJPanelObserver
+    implements ControlPanel, Observer
 {
-
   private static final long serialVersionUID = -3286878572452437372L ;
 
   /**
@@ -25,6 +28,9 @@ public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlP
   {
     java.awt.GridBagConstraints gridBagConstraints ;
 
+    logPanel = new javax.swing.JPanel() ;
+    logTextScrollPane = new javax.swing.JScrollPane() ;
+    logTextArea = new javax.swing.JTextArea() ;
     buttonPanel = new javax.swing.JPanel() ;
     cancelButton = new javax.swing.JButton() ;
     pauseButton = new javax.swing.JButton() ;
@@ -58,6 +64,50 @@ public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlP
     toTrashBinButton = new javax.swing.JButton() ;
 
     setLayout(new java.awt.GridBagLayout()) ;
+
+    logPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Log",
+        javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+        javax.swing.border.TitledBorder.DEFAULT_POSITION,
+        new java.awt.Font("Lucida Grande", 0, 15))) ; // NOI18N
+    logPanel.setLayout(new java.awt.GridBagLayout()) ;
+
+    logTextScrollPane.setHorizontalScrollBarPolicy(
+        javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS) ;
+    logTextScrollPane.setVerticalScrollBarPolicy(
+        javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS) ;
+
+    logTextArea.setColumns(20) ;
+    logTextArea.setRows(5) ;
+    logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
+    {
+      @Override
+      public void mouseClicked(java.awt.event.MouseEvent evt)
+      {
+        logTextAreaMouseClicked(evt) ;
+      }
+    }) ;
+    logTextScrollPane.setViewportView(logTextArea) ;
+
+    gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 0 ;
+    gridBagConstraints.gridy = 0 ;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.ipadx = 221 ;
+    gridBagConstraints.ipady = 61 ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
+    logPanel.add(logTextScrollPane, gridBagConstraints) ;
+
+    gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 0 ;
+    gridBagConstraints.gridy = 1 ;
+    gridBagConstraints.gridwidth = 2 ;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
+    add(logPanel, gridBagConstraints) ;
 
     buttonPanel.setLayout(new java.awt.GridBagLayout()) ;
 
@@ -124,7 +174,7 @@ public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlP
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
-    gridBagConstraints.gridy = 1 ;
+    gridBagConstraints.gridy = 2 ;
     gridBagConstraints.gridwidth = 2 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
     gridBagConstraints.weightx = 1.0 ;
@@ -484,7 +534,7 @@ public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlP
 
   private void closeButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-
+    // TODO add your handling code here:
   }
 
   private void positionButtonMouseClicked(java.awt.event.MouseEvent evt)
@@ -547,6 +597,11 @@ public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlP
     // TODO add your handling code here:
   }
 
+  private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
+  {
+    // TODO add your handling code here:
+  }
+
   // Variables declaration - do not modify
   private javax.swing.JButton aboveColumnButton ;
   private javax.swing.JLabel aboveColumnLabel ;
@@ -562,6 +617,9 @@ public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlP
   private javax.swing.JPanel freePositionPanel ;
   private javax.swing.JSpinner freePositionSpinner ;
   private javax.swing.JButton leftButton ;
+  private javax.swing.JPanel logPanel ;
+  private javax.swing.JTextArea logTextArea ;
+  private javax.swing.JScrollPane logTextScrollPane ;
   private javax.swing.JButton manualButton ;
   private javax.swing.JPanel manualPanel ;
   private javax.swing.JButton openFileChooserButton ;
@@ -584,22 +642,13 @@ public class AutosamplerToolPanel extends javax.swing.JPanel implements ControlP
   public void enableControl(boolean isEnable)
   {
     // TODO Auto-generated method stub
-    
+    // Disable cancel and pause when controls are enable.
+  }
+
+  @Override
+  protected void processAction(Action action)
+  {
+    // TODO Auto-generated method stub
+
   }
 }
-
-/*
- * void TF_ControlesPasseur::enableControl ( bool state ) { BitBtnGo->Enabled =
- * state ; BitBtnFermer->Enabled = state ; BitBtnGauche->Enabled = state ;
- * BitBtnDroite->Enabled = state ; BitBtnRef->Enabled = state ;
- * BitBtnArretUrgence->Enabled = true ; BitBtnGoLibre->Enabled = state ;
- * BitBtnGoButee->Enabled = state ; BitBtnGoColonne->Enabled = state ;
- * BitBtnVibration->Enabled = state ; BitBtnPoubelle->Enabled = state ;
- * BitBtnFermer->Enabled = state ; fermeture = state ; }
- */
-
-/*
- * void __fastcall TF_ControlesPasseur::FormCloseQuery(TObject *Sender, bool
- * &CanClose) { if ( ! fermeture ) MessageDlg (C_FERMETURE, mtInformation,
- * TMsgDlgButtons() << mbOK , 0 ); CanClose = fermeture ; }
- */
