@@ -1,8 +1,17 @@
 package fr.gardoll.ace.controller.ui.autosampler ;
 
+import java.io.File ;
+import java.net.URISyntaxException ;
+
+import javax.swing.JFileChooser ;
+import javax.swing.filechooser.FileFilter ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.column.Colonne ;
+import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.common.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
 import fr.gardoll.ace.controller.ui.Action ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
@@ -15,11 +24,15 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolPanel.class.getName());
 
+  private final AutosamplerToolControl _ctrl ;
+
   /**
    * Creates new form AutosamplerToolPanel
    */
-  public AutosamplerToolPanel()
+  public AutosamplerToolPanel(AutosamplerToolControl ctrl)
   {
+    this._ctrl = ctrl;
+    initCustom();
     initComponents() ;
   }
 
@@ -60,8 +73,8 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     vibrationPanel = new javax.swing.JPanel() ;
     vibrationButton = new javax.swing.JButton() ;
     refPositionPanel = new javax.swing.JPanel() ;
-    toStopLabel = new javax.swing.JLabel() ;
-    toStopButton = new javax.swing.JButton() ;
+    toTopStopLabel = new javax.swing.JLabel() ;
+    toTopStopButton = new javax.swing.JButton() ;
     aboveColumnLabel = new javax.swing.JLabel() ;
     openFileChooserButton = new javax.swing.JButton() ;
     aboveColumnButton = new javax.swing.JButton() ;
@@ -83,6 +96,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
     logTextArea.setEditable(false);
     logTextArea.setColumns(20) ;
+    logTextArea.setLineWrap(true);
     logTextArea.setRows(5) ;
     logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
     {
@@ -423,21 +437,21 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
         javax.swing.BorderFactory.createTitledBorder("Referenced position")) ;
     refPositionPanel.setLayout(new java.awt.GridBagLayout()) ;
 
-    toStopLabel.setText("to top stop:") ;
+    toTopStopLabel.setText("to top stop:") ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 1 ;
     gridBagConstraints.gridy = 0 ;
     gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    refPositionPanel.add(toStopLabel, gridBagConstraints) ;
+    refPositionPanel.add(toTopStopLabel, gridBagConstraints) ;
 
-    toStopButton.setText("go") ;
-    toStopButton.addMouseListener(new java.awt.event.MouseAdapter()
+    toTopStopButton.setText("go") ;
+    toTopStopButton.addMouseListener(new java.awt.event.MouseAdapter()
     {
       @Override
       public void mouseClicked(java.awt.event.MouseEvent evt)
       {
-        toStopButtonMouseClicked(evt) ;
+        toTopStopButtonMouseClicked(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -447,7 +461,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    refPositionPanel.add(toStopButton, gridBagConstraints) ;
+    refPositionPanel.add(toTopStopButton, gridBagConstraints) ;
 
     aboveColumnLabel.setText("above column:") ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -538,74 +552,154 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     add(armPanel, gridBagConstraints) ;
   }// </editor-fold>
 
+  private void handleException(String msg, Exception e)
+  {
+    this.reportError(msg, e);
+  }
+  
   private void closeButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    try
+    {
+      this._ctrl.close();
+    }
+    catch(Exception e)
+    {
+      String msg = String.format("error while closing the panel: %s", e.getMessage());
+      _LOG.error(msg, e);
+      this.handleException("error while closing the panel", e);
+    }
   }
 
   private void positionButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    Integer position = null;
+    try
+    {
+      this.positionSpinner.commitEdit();
+      position = (Integer) this.positionSpinner.getValue();
+    }
+    catch(Exception e)
+    {
+      _LOG.error(String.format("error while fetching the position spinner value: %s", e.getMessage()));
+      this.positionSpinner.setValue(0);
+      return;
+    }
+    
+    this._ctrl.carouselGoPosition(position);
   }
 
   private void leftButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    this._ctrl.carouselTurnLeft();
   }
 
   private void rightButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    this._ctrl.carouselTurnRight();
   }
 
   private void manualButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    this._ctrl.carouselFreeMove();
   }
 
   private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    try
+    {
+      this._ctrl.cancel();
+    }
+    catch (Exception e)
+    {
+      String msg = String.format("error while cancelling: %s", e.getMessage());
+      _LOG.error(msg, e);
+      this.handleException("error while cancelling", e);
+    }
   }
 
   private void pauseButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    try
+    {
+      this._ctrl.pause();
+    }
+    catch (Exception e)
+    {
+      String msg = String.format("error while pausing: %s", e.getMessage());
+      _LOG.error(msg, e);
+      this.handleException("error while pausing", e);
+    }
   }
 
   private void freePositionButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    Integer position = null;
+    try
+    {
+      this.freePositionSpinner.commitEdit();
+      position = (Integer) this.freePositionSpinner.getValue();
+    }
+    catch(Exception e)
+    {
+      _LOG.error(String.format("error while fetching the position spinner value: %s", e.getMessage()));
+      this.freePositionSpinner.setValue(0);
+      return;
+    }
+    
+    this._ctrl.armFreeMove(position);
   }
 
   private void vibrationButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    this._ctrl.vibrate();
   }
 
-  private void toStopButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void toTopStopButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    this._ctrl.armGoButee();
   }
 
   private void openFileChooserButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    int returnValue = fileChooser.showOpenDialog(this);
+    if(returnValue == JFileChooser.APPROVE_OPTION)
+    {
+      File file = fileChooser.getSelectedFile().getAbsoluteFile();
+      _LOG.info(String.format("selected column file: '%s'", file));
+      try
+      {
+        this._ctrl.openColumn(file.toPath());
+      }
+      catch (InitializationException e)
+      {
+        String msg = "error while openning column file";
+        _LOG.error(String.format("%s: %s", msg, e.getMessage()));
+        this.handleException(msg, e);
+      }
+    }
+    else
+    {
+      _LOG.debug("cancel column file openning");
+    }
   }
 
   private void aboveColumnButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    this._ctrl.armGoColonne();
   }
 
   private void toTrashBinButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    this._ctrl.armGoTrash();
   }
 
   private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    if(evt.getClickCount() == 2)
+    {
+      logTextArea.setText(null);
+    }
   }
 
   // Variables declaration - do not modify
@@ -636,14 +730,16 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   private javax.swing.JSpinner positionSpinner ;
   private javax.swing.JPanel refPositionPanel ;
   private javax.swing.JButton rightButton ;
-  private javax.swing.JButton toStopButton ;
-  private javax.swing.JLabel toStopLabel ;
+  private javax.swing.JButton toTopStopButton ;
+  private javax.swing.JLabel toTopStopLabel ;
   private javax.swing.JButton toTrashBinButton ;
   private javax.swing.JLabel toTrashBinLabel ;
   private javax.swing.JButton vibrationButton ;
   private javax.swing.JPanel vibrationPanel ;
   // End of variables declaration
-
+  
+  private final JFileChooser fileChooser = new JFileChooser();
+  
   @Override
   public void enableControl(boolean isEnable)
   {
@@ -654,7 +750,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     openFileChooserButton.setEnabled(isEnable);
     positionButton.setEnabled(isEnable);
     rightButton.setEnabled(isEnable);
-    toStopButton.setEnabled(isEnable);
+    toTopStopButton.setEnabled(isEnable);
     toTrashBinButton.setEnabled(isEnable);
     vibrationButton.setEnabled(isEnable);
     closeButton.setEnabled(isEnable);
@@ -664,6 +760,37 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     pauseButton.setEnabled( ! isEnable);
   }
 
+  private void initCustom()
+  {
+    this.fileChooser.setDialogTitle("select column file");
+    try
+    {
+      this.fileChooser.setCurrentDirectory(Utils.getRootDir(this).toFile());
+    }
+    catch (URISyntaxException e)
+    {
+      // Nothing to do.
+    }
+    this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+    this.fileChooser.setMultiSelectionEnabled(false);
+    this.fileChooser.setFileFilter(new FileFilter() 
+    {
+      @Override
+      public boolean accept(File f)
+      {
+        String fileName = f.getName();
+        String file_extention = Utils.getFileExtention(fileName);
+        return Colonne.COLUMN_FILE_EXTENTION.equals(file_extention);
+      }
+
+      @Override
+      public String getDescription()
+      {
+        return String.format("column file *.%s", Colonne.COLUMN_FILE_EXTENTION);
+      }
+    });
+  }
+  
   private void addToUi(String msg)
   {
     this.logTextArea.append(msg);
