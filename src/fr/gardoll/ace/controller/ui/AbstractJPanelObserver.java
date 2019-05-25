@@ -4,6 +4,8 @@ import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
 import javax.swing.SwingUtilities ;
 
+import fr.gardoll.ace.controller.common.Utils ;
+
 public abstract class AbstractJPanelObserver extends JPanel implements Observer, ControlPanel
 {
   private static final long serialVersionUID = -3914638188506779210L ;
@@ -27,24 +29,13 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   @Override
   public void reportError(String msg, Throwable e)
   {
-    String displayedMsg = null;
-    if (e != null)
-    {
-      displayedMsg = String.format("%s: %s", msg, e.getMessage());
-    }
-    else
-    {
-      displayedMsg = msg;
-    }
-     
-    JOptionPane.showMessageDialog(null, displayedMsg, "Error",
-        JOptionPane.ERROR_MESSAGE);
+    Utils.reportError(msg, e);
   }
   
   @Override
   public void reportError(String msg)
   {
-    this.reportError(msg, null);
+    Utils.reportError(msg, null);
   }
   
   @Override
