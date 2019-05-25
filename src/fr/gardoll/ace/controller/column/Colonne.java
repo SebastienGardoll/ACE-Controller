@@ -18,6 +18,8 @@ import fr.gardoll.ace.controller.common.Names ;
 // TODO: add logging
 public abstract class Colonne implements Closeable
 {
+  public static final String COLUMN_FILE_EXTENTION = "cln";
+  
   private static final Logger _LOG = LogManager.getLogger(Colonne.class.getName());
   
   protected final Path _fichierColonne ;
@@ -125,11 +127,15 @@ public abstract class Colonne implements Closeable
   public static Colonne getInstance(String filePath) throws InitializationException
   {
     Path columnPath = Paths.get(filePath);
-    
+    return getInstance(columnPath);
+  }
+  
+  public static Colonne getInstance(Path columnPath) throws InitializationException
+  {
     if (! (Files.isReadable(columnPath) &&
         Files.isRegularFile(columnPath)))
     {
-      String msg = String.format("cannot read column configuration file '%s'", filePath);
+      String msg = String.format("cannot read column configuration file '%s'", columnPath);
       _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
@@ -147,7 +153,7 @@ public abstract class Colonne implements Closeable
     catch (ConfigurationException e)
     {
       String msg = String.format("unable to read the column specifications in the file '%s': %s",
-          filePath, e.getMessage());
+          columnPath, e.getMessage());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg,e);
     }
