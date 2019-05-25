@@ -28,7 +28,7 @@ public abstract class AbstractJFrame extends JFrame
       public void windowClosing(WindowEvent e)
       {
         int choice = JOptionPane.showConfirmDialog(AbstractJFrame.this,
-            "Do you want to exit (eventually cancel the running operations) ?") ;
+            "Do you want to exit (and cancel the running operations) ?") ;
         if (choice == JOptionPane.OK_OPTION)
         {
           _LOG.debug("running the close operations");
