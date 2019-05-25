@@ -39,5 +39,19 @@ public class Utils
     
     return sb.toString();
   }
+   
+  // May return empty String object.
+  public static String getFileExtention(String fileName)
+  {
+    int index = fileName.lastIndexOf('.');
+    if(index > 0 &&  index < fileName.length() - 1)
+    {
+      return fileName.substring(index+1).toLowerCase();
+    }
+    else
+    {
+      return "";
+    }
+  }
   
 }
