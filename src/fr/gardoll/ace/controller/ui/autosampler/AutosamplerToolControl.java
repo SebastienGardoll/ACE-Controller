@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.ui.autosampler;
 
+import java.nio.file.Path ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -137,7 +139,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     }
   }
   
-  void openColumn(String filePath) throws InitializationException
+  void openColumn(Path filePath) throws InitializationException
   {
     this.colonne = Colonne.getInstance(filePath);
     this.hasColumn = true;
