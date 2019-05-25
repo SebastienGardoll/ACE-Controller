@@ -641,8 +641,21 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   @Override
   public void enableControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
+    aboveColumnButton.setEnabled(isEnable);
+    freePositionButton.setEnabled(isEnable);
+    leftButton.setEnabled(isEnable);
+    manualButton.setEnabled(isEnable);
+    openFileChooserButton.setEnabled(isEnable);
+    positionButton.setEnabled(isEnable);
+    rightButton.setEnabled(isEnable);
+    toStopButton.setEnabled(isEnable);
+    toTrashBinButton.setEnabled(isEnable);
+    vibrationButton.setEnabled(isEnable);
+    
     // Disable cancel and pause when controls are enable.
+    cancelButton.setEnabled(! isEnable);
+    closeButton.setEnabled( ! isEnable);
+    pauseButton.setEnabled( ! isEnable);
   }
 
   @Override
