@@ -22,6 +22,7 @@ public abstract class AbstractToolControl implements ToolControl
   protected ThreadControl _currentThread = null;
   protected final PousseSeringue _pousseSeringue ;
   protected final Passeur _passeur ;
+  protected boolean _hasEverMoved = false;
 
   private boolean _hasAutosampler ;
 
@@ -57,6 +58,7 @@ public abstract class AbstractToolControl implements ToolControl
   protected void setThread(ThreadControl thread)
   {
     this._currentThread = thread;
+    this._hasEverMoved = true;
   }
   
   protected boolean checkThread()
@@ -67,6 +69,13 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void cancel() throws InterruptedException
   {
+    if(false == this._hasEverMoved)
+    {
+      _LOG.debug("don't cancel");
+      // Early exit.
+      return;
+    }
+    
     if (this.checkThread())
     {
       _LOG.info("waiting for cancellation");
@@ -106,6 +115,13 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void pause() throws InterruptedException
   {  
+    if(false == this._hasEverMoved)
+    {
+      _LOG.debug("don't pause");
+      // Early exit.
+      return;
+    }
+    
     if(this.checkThread())
     {
       _LOG.info("waiting for pause");
@@ -136,6 +152,13 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void unPause() throws InterruptedException
   {  
+    if(false == this._hasEverMoved)
+    {
+      _LOG.debug("don't resume");
+      // Early exit.
+      return;
+    }
+    
     if(this.checkThread())
     {
       _LOG.info("resuming from pause");
@@ -165,7 +188,11 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void close() throws InterruptedException
   {
-    this.cancel();
+    if(this._hasEverMoved)
+    {
+      _LOG.debug("performing close operation");
+      this.cancel();
+    }
   }
   
   @Override
