@@ -657,10 +657,10 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     toStopButton.setEnabled(isEnable);
     toTrashBinButton.setEnabled(isEnable);
     vibrationButton.setEnabled(isEnable);
+    closeButton.setEnabled(isEnable);
     
     // Disable cancel and pause when controls are enable.
     cancelButton.setEnabled(! isEnable);
-    closeButton.setEnabled( ! isEnable);
     pauseButton.setEnabled( ! isEnable);
   }
 
