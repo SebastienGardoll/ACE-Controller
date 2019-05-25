@@ -1,5 +1,8 @@
 package fr.gardoll.ace.controller.ui.autosampler ;
 
+import org.apache.logging.log4j.LogManager ;
+import org.apache.logging.log4j.Logger ;
+
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
 import fr.gardoll.ace.controller.ui.Action ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
@@ -9,6 +12,8 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     implements ControlPanel, Observer
 {
   private static final long serialVersionUID = -3286878572452437372L ;
+  
+  private static final Logger _LOG = LogManager.getLogger(AutosamplerToolPanel.class.getName());
 
   /**
    * Creates new form AutosamplerToolPanel
@@ -76,6 +81,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     logTextScrollPane.setVerticalScrollBarPolicy(
         javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS) ;
 
+    logTextArea.setEditable(false);
     logTextArea.setColumns(20) ;
     logTextArea.setRows(5) ;
     logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
@@ -658,10 +664,70 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     pauseButton.setEnabled( ! isEnable);
   }
 
+  private void addToUi(String msg)
+  {
+    this.logTextArea.append(msg);
+  }
+  
   @Override
   protected void processAction(Action action)
   {
-    // TODO Auto-generated method stub
+    String msg = null;
+    
+    switch(action.type)
+    {
+      case ARM_MOVING:
+      {
+        msg = "arm is moving";
+        break ;
+      }
+      
+      case CANCEL:
+      {
+        msg = "cancel";
+        break ;
+      }
+      
+      case CAROUSEL_MOVING:
+      {
+        msg = String.format("carousel is moving to position %s", action.data);
+        break ;
+      }
+      
+      case PAUSE:
+      {
+        msg = "pause";
+        break ;
+      }
+      
+      case RESUME:
+      {
+        msg = "resuming";
+        break ;
+      }
+      
+      case WAIT_CANCEL:
+      {
+        msg = "waiting for cancellation";
+        break ;
+      }
+      
+      case WAIT_PAUSE:
+      {
+        msg = "waiting for pause";
+        break ;
+      }
 
+      case WITHDRAWING:
+      case INFUSING:
+      case END:
+      default:
+      {
+        _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
+        return ;
+      }
+    }
+    
+    this.addToUi(String.format("> %s\n", msg));
   }
 }
