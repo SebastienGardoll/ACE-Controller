@@ -27,8 +27,17 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   @Override
   public void reportError(String msg, Throwable e)
   {
-    JOptionPane.showMessageDialog(null, msg, 
-        "Error",
+    String displayedMsg = null;
+    if (e != null)
+    {
+      displayedMsg = String.format("%s: %s", msg, e.getMessage());
+    }
+    else
+    {
+      displayedMsg = msg;
+    }
+     
+    JOptionPane.showMessageDialog(null, displayedMsg, "Error",
         JOptionPane.ERROR_MESSAGE);
   }
   
