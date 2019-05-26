@@ -29,7 +29,7 @@ public abstract class AbstractToolControl implements ToolControl
   private boolean _hasPump ;
   
   public AbstractToolControl(boolean hasPump, boolean hasAutosampler)
-      throws InitializationException
+      throws InitializationException, InterruptedException
   {
     // Initialization checking.
     ParametresSession parametresSession = ParametresSession.getInstance();

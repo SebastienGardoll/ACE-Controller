@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.core;
 
 import java.io.Closeable ;
 import java.io.IOException ;
+import java.lang.reflect.Constructor ;
 import java.net.URISyntaxException ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
@@ -15,7 +16,11 @@ import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.autosampler.InterfaceMoteur ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
+import fr.gardoll.ace.controller.com.ParaCom ;
+import fr.gardoll.ace.controller.com.SerialCom ;
+import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
 // TODO: add logging
@@ -32,7 +37,7 @@ public class ParametresSession implements Closeable
   
   private static ParametresSession _INSTANCE ;
   
-  // Lazy loading.
+  // Lazy loading and singleton.
   private PousseSeringue _pump = null;
   private Passeur _autosampler = null;
   
@@ -57,6 +62,20 @@ public class ParametresSession implements Closeable
   private final int _epaisseur ;//epaisseur du plateau sup du carrousel
 
   private final int _nbMaxColonne ; //nombre d'emplacement max de colonnes sur le carrousel choisi
+
+  private final String _pumpSerialComClassPath ;
+
+  private final String _pumpPortPath ;
+
+  private final String _autosamplerSerialComClassPath ;
+
+  private final String _autosamplerPortPath ;
+
+  private final String _paraComClassPath ;
+
+  private final String _paraComSerialComClassPath ;
+
+  private final String _paraComPortPath ;
   
   public static ParametresSession getInstance() throws InitializationException
   {
@@ -100,7 +119,10 @@ public class ParametresSession implements Closeable
       Configurations configs = new Configurations();
       INIConfiguration iniConf = configs.ini(configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_POUSSE_SERINGUE);
-
+      
+      this._pumpSerialComClassPath = section.getString(Names.SIPS_CLEF_SERIAL_COM_CLASS_PATH);
+      this._pumpPortPath           = section.getString(Names.SIPS_CLEF_PORT_PATH);
+      
       this._volumeMaxSeringue      = section.getDouble(Names.SIPS_CLEF_VOL_MAX, -1.0) ;
       this._volumeRincage          = section.getDouble(Names.SIPS_CLEF_VOL_RINCAGE, -1.0) ;
       this._nbRincage              = section.getInteger(Names.SIPS_CLEF_NB_RINCAGE, -1) ;
@@ -133,6 +155,9 @@ public class ParametresSession implements Closeable
       INIConfiguration iniConf = configs.ini(configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
       
+      this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
+      this._autosamplerPortPath           = section.getString(Names.SIC_CLEF_PORT_PATH);
+      
       this._nbPasCarrousel    = section.getInteger(Names.SIC_CLEF_NB_DEMI_PAS, -1) ;
       this._refCarrousel      = section.getInteger(Names.SIC_CLEF_REF_CARROUSEL, -1);
       this._diametreCarrousel = section.getInteger(Names.SIC_CLEF_DIA, -1);
@@ -142,6 +167,24 @@ public class ParametresSession implements Closeable
     catch (ConfigurationException e)
     {
       String msg = String.format("unable to read the plate configuration file '%s': %s",
+          configurationFile.toString(), e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new InitializationException(msg, e);
+    }
+    
+    try
+    {
+      Configurations configs = new Configurations();
+      INIConfiguration iniConf = configs.ini(configurationFile.toFile());
+      SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_PARA_COM);
+      
+      this._paraComClassPath = section.getString(Names.SIPC_CLEF_PARA_COM_CLASS_PATH);
+      this._paraComSerialComClassPath = section.getString(Names.SIPC_CLEF_SERIAL_COM_CLASS_PATH);
+      this._paraComPortPath = section.getString(Names.SIPC_CLEF_PORT_PATH);
+    }
+    catch (ConfigurationException e)
+    {
+      String msg = String.format("unable to read the paracom configuration file '%s': %s",
           configurationFile.toString(), e.getMessage());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
@@ -165,18 +208,119 @@ public class ParametresSession implements Closeable
     }
   }
 
-  // Lazy loading.
-  public PousseSeringue getPousseSeringue()
+  private SerialCom instantiateSerialCom(String classPath, String portPath) throws InitializationException
   {
-    // TODO Auto-generated method stub
-    return null ;
+    try
+    {
+      @SuppressWarnings("unchecked")
+      Class<SerialCom> serialComClass = (Class<SerialCom>) Class.forName(classPath);
+      Constructor<SerialCom> constructor = serialComClass.getConstructor(String.class);
+      SerialCom port = constructor.newInstance(portPath);
+      return port;
+    }
+    catch(Exception e)
+    {
+      String msg = String.format("cannot instantiate the SerialCom object '%s' with the given parameter '%s': %s",
+          classPath, portPath, e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new InitializationException(msg, e);
+    }
+  }
+  
+  private ParaCom instantiateParaCom(String paraComClassPath, SerialCom paraComPort)
+      throws InitializationException
+  {
+    try
+    {
+      @SuppressWarnings("unchecked")
+      Class<ParaCom> paraComClass = (Class<ParaCom>) Class.forName(paraComClassPath);
+      Constructor<ParaCom> constructor = paraComClass.getConstructor(SerialCom.class);
+      ParaCom paraCom = constructor.newInstance(paraComPort);
+      return paraCom;
+    }
+    catch(Exception e)
+    {
+      String msg = String.format("cannot instantiate the ParaCom object '%s' with the given parameter '%s': %s",
+          paraComClassPath, paraComPort.getPath(), e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new InitializationException(msg, e);
+    }
+  }
+
+  private String getParaComSerialComClassPath()
+  {
+    return this._paraComSerialComClassPath;
+  }
+
+  private String getParaComPortPath()
+  {
+    return this._paraComPortPath;
+  }
+
+  private String getParaComClassPath()
+  {
+    return this._paraComClassPath;
+  }
+
+  private String getPumpPortPath()
+  {
+    return this._pumpPortPath;
+  }
+
+  private String getPumpSerialComClassPath()
+  {
+    return this._pumpSerialComClassPath;
+  }
+
+  private String getAutosamplerSerialComClassPath()
+  {
+    return this._autosamplerSerialComClassPath;
+  }
+
+  private String getAutosamplerPortPath()
+  {
+    return this._autosamplerPortPath;
   }
   
   // Lazy loading.
-  public Passeur getPasseur()
+  public PousseSeringue getPousseSeringue() throws InitializationException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    return null ;
+    if(this._pump == null)
+    {
+      String paraComSerialComClassPath = this.getParaComSerialComClassPath();
+      String paraComPortPath  = this.getParaComPortPath();
+      SerialCom paraComPort   = this.instantiateSerialCom(paraComSerialComClassPath, paraComPortPath);
+      
+      String paraComClassPath = this.getParaComClassPath();
+      ParaCom paraCom = this.instantiateParaCom(paraComClassPath, paraComPort);
+      
+      String pumpSerialComClassPath = this.getPumpSerialComClassPath();
+      String pumpPortPath  = this.getPumpPortPath();
+      SerialCom pumpPort   = this.instantiateSerialCom(pumpSerialComClassPath, pumpPortPath);
+      InterfacePousseSeringue pumpCommands = new InterfacePousseSeringue(pumpPort,
+          this.diametreSeringue());
+      this._pump = new PousseSeringue(pumpCommands, paraCom, this.nbSeringue(), 
+          this.diametreSeringue(), this.volumeMaxSeringue(),
+          this.debitMaxPousseSeringue(), 0.);
+    }
+    
+    return this._pump;
+  }
+  
+  // Lazy loading.
+  public Passeur getPasseur() throws InitializationException, InterruptedException
+  {
+    if(this._autosampler == null)
+    {
+      String classPath = this.getAutosamplerSerialComClassPath();
+      String portPath  = this.getAutosamplerPortPath();
+      SerialCom autosamplerPort = this.instantiateSerialCom(classPath, portPath);
+      InterfaceMoteur autosamplerCommands = new InterfaceMoteur(autosamplerPort);
+      this._autosampler = new Passeur(autosamplerCommands, this.nbPasCarrousel(),
+          this.diametreCarrousel());
+    }
+    
+    return this._autosampler;
   }
 
   public double volumeMaxSeringue()
@@ -249,14 +393,3 @@ public class ParametresSession implements Closeable
     }
   }
 }
-
-
-/*
-
-  : pousseSeringue (parametresSession.nbSeringue() , parametresSession.diametreSeringue(),
-                    parametresSession.volumeMaxSeringue() , parametresSession.debitMaxPousseSeringue() )  ,
-
-    passeur (parametresSession.nbPasCarrousel(), parametresSession.diametreCarrousel())
-
-
-*/

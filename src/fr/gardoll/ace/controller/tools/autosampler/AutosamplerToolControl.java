@@ -23,7 +23,7 @@ public class AutosamplerToolControl extends AbstractToolControl
   private boolean hasColumn = false ;
   // autorise la fermeture de la fenêtre ou non à cause des threads
   
-  public AutosamplerToolControl() throws InitializationException
+  public AutosamplerToolControl() throws InitializationException, InterruptedException
   {
     super(false, true);
   }

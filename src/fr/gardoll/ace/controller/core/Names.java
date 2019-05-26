@@ -24,6 +24,10 @@ public class Names
 
   public static final String SEC_INFO_POUSSE_SERINGUE          = "informationsPousseSeringue";
 
+  public static final String SIPS_CLEF_SERIAL_COM_CLASS_PATH   = "serialComClassPath";
+  
+  public static final String SIPS_CLEF_PORT_PATH               = "portPath";
+  
   public static final String SIPS_CLEF_VOL_MAX                 = "volumeMax";
 
   public static final String SIPS_CLEF_VOL_RINCAGE             = "volumeRincage";
@@ -40,6 +44,10 @@ public class Names
 
   public static final String SEC_INFO_CARROUSEL                = "informationsCarrousel";
 
+  public static final String SIC_CLEF_SERIAL_COM_CLASS_PATH    = "serialComClassPath";
+  
+  public static final String SIC_CLEF_PORT_PATH                = "portPath";
+  
   public static final String SIC_CLEF_CHEMIN_FICHIER_CARROUSEL = "cheminFichierCarrousel";
 
   public static final String SIC_CLEF_NOM_CARROUSEL            = "nomCarrousel";
@@ -109,4 +117,14 @@ public class Names
   public static final String SIP_CLEF_TEMPS                    = "temps";
 
   public static final String SIP_CLEF_PAUSE                    = "pause?";
+
+  //----------------------------
+
+  public static final String SEC_INFO_PARA_COM                 = "informationsParacom";
+
+  public static final String SIPC_CLEF_PARA_COM_CLASS_PATH     = "paraComClassPath";
+  
+  public static final String SIPC_CLEF_SERIAL_COM_CLASS_PATH   = "serialComClassPath";
+  
+  public static final String SIPC_CLEF_PORT_PATH               = "portPath";
 }
