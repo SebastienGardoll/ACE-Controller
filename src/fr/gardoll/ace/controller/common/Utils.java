@@ -55,7 +55,8 @@ public class Utils
       return "";
     }
   }
-
+  
+  // Throwable can be null.
   public static void reportError(String msg, Throwable e)
   {
     String displayedMsg = null;
