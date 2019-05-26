@@ -11,6 +11,8 @@ import javax.swing.WindowConstants ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.common.Utils ;
+
 public abstract class AbstractJFrame extends JFrame
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractJFrame.class.getName());
@@ -38,7 +40,9 @@ public abstract class AbstractJFrame extends JFrame
           }
           catch(Exception ex)
           {
-            _LOG.fatal("error while performing close operation", ex);
+            String msg = "error while performing close operation";
+            _LOG.fatal(String.format("%s: %s", msg, ex.getMessage()), ex);
+            Utils.reportError(msg, ex);
           }
           
           _LOG.debug("closing the main frame and shutting down the JVM");
