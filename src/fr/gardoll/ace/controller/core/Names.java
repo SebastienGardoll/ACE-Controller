@@ -4,15 +4,12 @@ public class Names
 {
   private Names() {}
   
+  public static final String CONFIG_DIRNAME    = "conf";
   public static final String CONFIG_FILENAME   = "configuration.ini";
   
   public static final String LOG_DIRNAME       = "journaux"; 
-  
   public static final String PROTOCOLE_DIRNAME = "protocoles";
-  
   public static final String COLUMN_DIRNAME    = "colonnes";
-  
-  public static final String PLATE_DIRNAME     = "carrousels";
   
   //*********************** Fichier configuration  ************************** //
 
