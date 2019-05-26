@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.pump;
 
 import java.io.Closeable;
 import java.math.RoundingMode ;
+import java.nio.charset.Charset ;
 import java.text.DecimalFormat ;
 import java.text.DecimalFormatSymbols ;
 import java.util.Locale ;
@@ -12,6 +13,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.com.FlowControl ;
 import fr.gardoll.ace.controller.com.Parity ;
 import fr.gardoll.ace.controller.com.SerialCom ;
+import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
@@ -55,7 +57,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // requires 0 < diametreSeringue <= DIAMETRE_MAX
-  public InterfacePousseSeringue(double diametreSeringue, SerialCom port)
+  public InterfacePousseSeringue(SerialCom port, double diametreSeringue)
       throws InitializationException
   {
     _LOG.info("initializing the pump interface");
@@ -66,6 +68,9 @@ public class InterfacePousseSeringue  implements Closeable
     try
     {
       _LOG.debug(String.format("setting the pump com port '%s'", this._port.getId()));
+      this._port.setReadBufferSize(256);
+      this._port.setMode(SerialMode.FULL_BLOCKING, SerialMode.FULL_BLOCKING);
+      this._port.setCharset(Charset.forName("ASCII"));
       this._port.setVitesse(9600) ;
       this._port.setByteSize (8);
       this._port.setStopBit(StopBit.ONESTOPBIT);

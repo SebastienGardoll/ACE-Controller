@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.autosampler;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.nio.charset.Charset ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -9,6 +10,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.com.FlowControl ;
 import fr.gardoll.ace.controller.com.Parity ;
 import fr.gardoll.ace.controller.com.SerialCom;
+import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
@@ -31,6 +33,10 @@ public class InterfaceMoteur implements Closeable
     this._port = port ;
     try
     {
+      _LOG.debug(String.format("setting the autosampler com port '%s'", this._port.getId()));
+      this._port.setReadBufferSize(256);
+      this._port.setMode(SerialMode.FULL_BLOCKING, SerialMode.FULL_BLOCKING);
+      this._port.setCharset(Charset.forName("ASCII"));
       this._port.setVitesse(9600) ;
       this._port.setByteSize(8);
       this._port.setStopBit(StopBit.ONESTOPBIT);
