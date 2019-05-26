@@ -6,10 +6,10 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.comm.FlowControl ;
-import fr.gardoll.ace.controller.comm.Parity ;
-import fr.gardoll.ace.controller.comm.SerialCom;
-import fr.gardoll.ace.controller.comm.StopBit ;
+import fr.gardoll.ace.controller.com.FlowControl ;
+import fr.gardoll.ace.controller.com.Parity ;
+import fr.gardoll.ace.controller.com.SerialCom;
+import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;

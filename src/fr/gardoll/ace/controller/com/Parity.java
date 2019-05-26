@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.comm;
+package fr.gardoll.ace.controller.com;
 
 public enum Parity
 {

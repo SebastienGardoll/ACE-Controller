@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.comm;
+package fr.gardoll.ace.controller.com;
 
 import java.nio.charset.Charset ;
 
