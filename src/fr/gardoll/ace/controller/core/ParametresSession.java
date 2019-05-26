@@ -23,9 +23,6 @@ import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
-// TODO: add logging
-// TODO: singleton for autosampler and pump
-// TODO: factory for  autosampler and pump
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
@@ -94,6 +91,7 @@ public class ParametresSession implements Closeable
     Path rootDir = null ;
     try
     {
+      _LOG.debug("fetch root dir");
       rootDir = Utils.getRootDir(this);
     }
     catch (URISyntaxException e)
@@ -117,6 +115,8 @@ public class ParametresSession implements Closeable
     
     try
     {
+      _LOG.debug("read pump configuration");
+      
       Configurations configs = new Configurations();
       INIConfiguration iniConf = configs.ini(configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_POUSSE_SERINGUE);
@@ -152,6 +152,8 @@ public class ParametresSession implements Closeable
     
     try
     {
+      _LOG.debug("read autosampler configuration");
+      
       Configurations configs = new Configurations();
       INIConfiguration iniConf = configs.ini(configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
@@ -175,6 +177,8 @@ public class ParametresSession implements Closeable
     
     try
     {
+      _LOG.debug("read paracom configuration");
+      
       Configurations configs = new Configurations();
       INIConfiguration iniConf = configs.ini(configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_PARA_COM);
@@ -191,6 +195,7 @@ public class ParametresSession implements Closeable
       throw new InitializationException(msg, e);
     }
     
+    _LOG.debug("performing data checking");
     if (this._volumeMaxSeringue      < 0 ||
         this._volumeRincage          < 0 ||
         this._nbRincage              < 0 ||
