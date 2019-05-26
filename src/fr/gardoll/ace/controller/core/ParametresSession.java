@@ -145,7 +145,7 @@ public class ParametresSession implements Closeable
     if (Files.isReadable(plateConfFile)    == false ||
         Files.isRegularFile(plateConfFile) == false)
     {
-      String msg = String.format("unable to read the plate configuration file '%s'", configurationFile);
+      String msg = String.format("unable to read the plate configuration file '%s'", plateConfFile);
       _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
