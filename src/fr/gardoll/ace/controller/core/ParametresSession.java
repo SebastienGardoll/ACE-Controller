@@ -103,7 +103,8 @@ public class ParametresSession implements Closeable
       throw new InitializationException(msg, e);
     }
     
-    Path configurationFile = rootDir.resolve(Names.CONFIG_FILENAME);
+    Path configurationFile = rootDir.resolve(Names.CONFIG_DIRNAME)
+                                    .resolve(Names.CONFIG_FILENAME);
     Path plateConfFile = null;
     
     if (Files.isReadable(configurationFile)    == false ||
