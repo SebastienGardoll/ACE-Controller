@@ -46,6 +46,7 @@ public abstract class AbstractJFrame extends JFrame
         }
       }
     }) ;
+    this.setLocationRelativeTo(null) ;
   }
   
   protected abstract void onCloseOperation();
