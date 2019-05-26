@@ -4,7 +4,7 @@ import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
 import javax.swing.SwingUtilities ;
 
-import fr.gardoll.ace.controller.common.Utils ;
+import fr.gardoll.ace.controller.core.Utils ;
 
 public abstract class AbstractJPanelObserver extends JPanel implements Observer, ControlPanel
 {

@@ -7,10 +7,10 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.comm.ParaCom ;
-import fr.gardoll.ace.controller.common.InitializationException ;
-import fr.gardoll.ace.controller.common.ParaComException ;
-import fr.gardoll.ace.controller.common.SerialComException ;
-import fr.gardoll.ace.controller.common.Utils ;
+import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.ParaComException ;
+import fr.gardoll.ace.controller.core.SerialComException ;
+import fr.gardoll.ace.controller.core.Utils ;
 
 
 //TODO: singleton.

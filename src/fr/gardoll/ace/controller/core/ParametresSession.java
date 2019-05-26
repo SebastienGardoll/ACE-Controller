@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.common;
+package fr.gardoll.ace.controller.core;
 
 import java.io.Closeable ;
 import java.io.IOException ;

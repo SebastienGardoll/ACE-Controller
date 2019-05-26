@@ -13,10 +13,10 @@ import fr.gardoll.ace.controller.comm.FlowControl ;
 import fr.gardoll.ace.controller.comm.Parity ;
 import fr.gardoll.ace.controller.comm.SerialCom;
 import fr.gardoll.ace.controller.comm.StopBit;
-import fr.gardoll.ace.controller.common.ConfigurationException ;
-import fr.gardoll.ace.controller.common.InitializationException ;
-import fr.gardoll.ace.controller.common.ParametresSession ;
-import fr.gardoll.ace.controller.common.SerialComException ;
+import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.

@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.common;
+package fr.gardoll.ace.controller.core;
 
 public class CancellationException extends RuntimeException
 {

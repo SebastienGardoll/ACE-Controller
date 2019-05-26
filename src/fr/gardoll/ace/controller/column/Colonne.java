@@ -12,8 +12,8 @@ import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.common.InitializationException ;
-import fr.gardoll.ace.controller.common.Names ;
+import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Names ;
 
 // TODO: add logging
 public abstract class Colonne implements Closeable

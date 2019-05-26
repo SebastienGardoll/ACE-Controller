@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.common;
+package fr.gardoll.ace.controller.core;
 
 import java.net.URISyntaxException ;
 import java.net.URL ;

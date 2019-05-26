@@ -6,8 +6,8 @@ import java.io.IOException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.common.InitializationException ;
-import fr.gardoll.ace.controller.common.SerialComException ;
+import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.SerialComException ;
 
 //TODO: singleton.
 //TODO: add logging

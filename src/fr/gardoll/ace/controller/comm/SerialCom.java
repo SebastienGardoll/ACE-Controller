@@ -2,7 +2,7 @@ package fr.gardoll.ace.controller.comm;
 
 import java.io.Closeable ;
 
-import fr.gardoll.ace.controller.common.SerialComException ;
+import fr.gardoll.ace.controller.core.SerialComException ;
 
 public interface SerialCom extends Closeable
 {

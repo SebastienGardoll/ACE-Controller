@@ -11,7 +11,7 @@ import javax.swing.WindowConstants ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.common.Utils ;
+import fr.gardoll.ace.controller.core.Utils ;
 
 public abstract class AbstractJFrame extends JFrame
 {

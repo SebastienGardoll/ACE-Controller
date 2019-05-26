@@ -2,7 +2,7 @@ package fr.gardoll.ace.controller.comm;
 
 import java.io.Closeable ;
 
-import fr.gardoll.ace.controller.common.ParaComException ;
+import fr.gardoll.ace.controller.core.ParaComException ;
 
 public interface ParaCom  extends Closeable
 {

@@ -3,8 +3,8 @@ package fr.gardoll.ace.controller.tools.autosampler;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.common.InitializationException ;
-import fr.gardoll.ace.controller.common.Utils ;
+import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractJFrame ;
 
 public class AutosamplerToolStandalone extends AbstractJFrame

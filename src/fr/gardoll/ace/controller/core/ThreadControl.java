@@ -1,7 +1,5 @@
 package fr.gardoll.ace.controller.core;
 
-import fr.gardoll.ace.controller.common.CancellationException ;
-
 public interface ThreadControl
 {
   // Block the caller until the thread is paused.

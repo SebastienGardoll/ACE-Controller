@@ -2,7 +2,7 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
-import fr.gardoll.ace.controller.common.InitializationException ;
+import fr.gardoll.ace.controller.core.InitializationException ;
 
 public class CHybride extends Colonne
 {
