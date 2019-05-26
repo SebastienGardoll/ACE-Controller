@@ -15,67 +15,24 @@ import fr.gardoll.ace.controller.core.Utils ;
 
 public class JSerialComm implements SerialCom
 {
-  // Time (milliseconds) to wait after openning the port.
-  private static final int PORT_OPENNING_DELAY = 1000 ;
+  
   private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
   
   private SerialPort _port    = null ;
-  private final Charset _charset ;
-  private final int _sizeReadBuffer ;
+  private Charset _charset = Charset.forName("ASCII"); // DEFAULT
+  private int _sizeReadBuffer = 256; // DEFAULT
   private boolean _isOpened   = false;
   private String _id          = "unknown" ;
-  private int _readMode       = SerialPort.TIMEOUT_NONBLOCKING ;
-  private int _writeMode      = SerialPort.TIMEOUT_NONBLOCKING ;
-  private int _mode           = SerialPort.TIMEOUT_NONBLOCKING ;
+  private int _readMode       = SerialPort.TIMEOUT_READ_BLOCKING ;
+  private int _writeMode      = SerialPort.TIMEOUT_WRITE_BLOCKING ;
+  private int _mode           = this._readMode | this._writeMode ;
+  private final String _portPath ;
   
-  public JSerialComm(String portPath, SerialMode readMode, SerialMode writeMode,
-                     Charset charset, int sizeReadBuffer)
+  public JSerialComm(String portPath)
   {
     _LOG.info("initializing the JSerialComm");
     
-    this._charset = charset ;
-    this._sizeReadBuffer = sizeReadBuffer ;
-    
-    switch(readMode)
-    {
-      case FULL_BLOCKING:
-      {
-        this._readMode = SerialPort.TIMEOUT_READ_BLOCKING ;
-        this._mode     = this._readMode ;
-        break;
-      }
-    
-      case NON_BLOCKING:
-      {
-        this._readMode = SerialPort.TIMEOUT_NONBLOCKING ;
-        break ;
-      }
-    }
-    
-    switch(writeMode)
-    {
-      case FULL_BLOCKING:
-      {
-        this._writeMode =  SerialPort.TIMEOUT_WRITE_BLOCKING ;
-        
-        if (this._mode == SerialPort.TIMEOUT_NONBLOCKING)
-        {
-          this._mode = this._writeMode ;
-        }
-        else
-        {
-          this._mode = this._mode | this._writeMode ;
-        }
-        
-        break;
-      }
-    
-      case NON_BLOCKING:
-      {
-        this._writeMode = SerialPort.TIMEOUT_NONBLOCKING ;
-        break;
-      }
-    }
+    this._portPath = portPath;
     
     _LOG.debug(String.format("openning port '%s'.", portPath));
     
@@ -88,8 +45,9 @@ public class JSerialComm implements SerialCom
     this._port = SerialPort.getCommPort(portPath) ;
   }
   
+  // Time (milliseconds) to wait after opening the port.
   @Override
-  public void open() throws SerialComException, InterruptedException
+  public void open(int openingDelay) throws SerialComException, InterruptedException
   {
     if (this._isOpened)
     {
@@ -111,7 +69,7 @@ public class JSerialComm implements SerialCom
         throw new SerialComException(msg) ;
       } 
       
-      Thread.sleep(JSerialComm.PORT_OPENNING_DELAY);
+      Thread.sleep(openingDelay);
       
       this._isOpened = true;
     }
@@ -386,25 +344,96 @@ public class JSerialComm implements SerialCom
     }
   }
   
+  @Override
+  public String getId()
+  {
+    return this._id;
+  }
+
+  @Override
+  public void setMode(SerialMode readMode, SerialMode writeMode)
+  {
+    switch(readMode)
+    {
+      case FULL_BLOCKING:
+      {
+        this._readMode = SerialPort.TIMEOUT_READ_BLOCKING ;
+        this._mode     = this._readMode ;
+        break;
+      }
+    
+      case NON_BLOCKING:
+      {
+        this._readMode = SerialPort.TIMEOUT_NONBLOCKING ;
+        break ;
+      }
+    }
+    
+    switch(writeMode)
+    {
+      case FULL_BLOCKING:
+      {
+        this._writeMode =  SerialPort.TIMEOUT_WRITE_BLOCKING ;
+        
+        if (this._mode == SerialPort.TIMEOUT_NONBLOCKING)
+        {
+          this._mode = this._writeMode ;
+        }
+        else
+        {
+          this._mode = this._mode | this._writeMode ;
+        }
+        
+        break;
+      }
+    
+      case NON_BLOCKING:
+      {
+        this._writeMode = SerialPort.TIMEOUT_NONBLOCKING ;
+        break;
+      }
+    }
+  }
+
+  @Override
+  public void setCharset(Charset charset)
+  {
+    this._charset = charset;
+  }
+
+  @Override
+  public void setReadBufferSize(int nbOfBytes)
+  {
+    this._sizeReadBuffer = nbOfBytes;
+  }
+
+  @Override
+  public String getPath()
+  {
+    return this._portPath;
+  }
+  
   public static void main(String[] args)
   {
     // To be modified.
     String portPath = "/dev/cu.usbserial-A602K71L";
     
-    JSerialComm port = new JSerialComm(portPath, SerialMode.FULL_BLOCKING,
-        SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 10);
+    JSerialComm port = new JSerialComm(portPath);
     
     try
     {
       System.out.println("begin") ;
       
+      port.setReadBufferSize(10);
+      port.setMode(SerialMode.FULL_BLOCKING, SerialMode.FULL_BLOCKING);
+      port.setCharset(Charset.forName("ASCII"));
       port.setVitesse(9600);
       port.setTimeOut(10);
       port.setByteSize(8);
       port.setParite(Parity.NOPARITY);
       port.setStopBit(StopBit.ONESTOPBIT);
       
-      port.open();
+      port.open(1000);
       
       String msg = "cou cou\n";
       System.out.println(String.format("sending: '%s'", msg)) ;
@@ -420,11 +449,5 @@ public class JSerialComm implements SerialCom
     {
       e.printStackTrace();
     }
-  }
-
-  @Override
-  public String getId()
-  {
-    return this._id;
   }
 }

@@ -1,12 +1,15 @@
 package fr.gardoll.ace.controller.com;
 
 import java.io.Closeable ;
+import java.nio.charset.Charset ;
 
 import fr.gardoll.ace.controller.core.SerialComException ;
 
 public interface SerialCom extends Closeable
 {
   public String getId();
+  
+  public String getPath();
   
   public void setVitesse(int vitesse) throws SerialComException ;
 
@@ -31,5 +34,12 @@ public interface SerialCom extends Closeable
   @Override
   public void close() ;
   
-  public void open() throws SerialComException, InterruptedException ;
+  // Time (milliseconds) to wait after opening the port.
+  public void open(int openingDelay) throws SerialComException, InterruptedException ;
+  
+  public void setMode(SerialMode readMode, SerialMode writeMode);
+  
+  public void setCharset(Charset charset);
+  
+  public void setReadBufferSize(int nbOfBytes);
 }

@@ -11,30 +11,34 @@ import fr.gardoll.ace.controller.core.SerialComException ;
 
 public class ArduinoParaCom implements ParaCom
 {
+  private static final int OPENING_DELAY = 1000;
+  
   private static final int ATTENTE_EV = 200 ; // en milisecondes
   
   private static final Logger _LOG = LogManager.getLogger(ArduinoParaCom.class.getName());
   
-  private final JSerialComm _port;
+  private final SerialCom _port;
 
-  public ArduinoParaCom(String portPath) throws InitializationException, InterruptedException
+  public ArduinoParaCom(SerialCom port) throws InitializationException, InterruptedException
   {
-    this._port = new JSerialComm(portPath, SerialMode.FULL_BLOCKING,
-        SerialMode.FULL_BLOCKING, Charset.forName("ASCII"), 10);
+    this._port = port;
     
     try
     {
+      this._port.setReadBufferSize(10);
+      this._port.setMode(SerialMode.FULL_BLOCKING, SerialMode.FULL_BLOCKING);
+      this._port.setCharset(Charset.forName("ASCII"));
       this._port.setVitesse(9600);
       this._port.setTimeOut(100);
       this._port.setByteSize(8);
       this._port.setParite(Parity.NOPARITY);
       this._port.setStopBit(StopBit.ONESTOPBIT);
-      this._port.open();
+      this._port.open(ArduinoParaCom.OPENING_DELAY);
     }
     catch(SerialComException e)
     {
       String msg = String.format("error while initializing the port '%s': %s",
-          portPath, e.getMessage());
+          this._port.getPath(), e.getMessage());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
