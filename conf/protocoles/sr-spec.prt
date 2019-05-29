@@ -2,7 +2,7 @@
 nomProtocole=Sr - SPEC
 auteur=Sebastien GARDOLL
 date=11/05/2006
-cheminFichierColonne=.\conf\colonnes\nouvelle colonne.cln
+cheminFichierColonne=./conf/colonnes/nouvelle colonne.cln
 commentaires=Protocole d'extraction du Sr par la resine Sr-SPEC ( Eichrom ). Attentes non optimisees : elles correspondent  aux attentes des colonnes entonnoirs.
 
 [1]

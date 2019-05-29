@@ -2,7 +2,7 @@
 nomProtocole=Purification de l'U
 auteur=Jonathan PRUNIER
 date=27/04/2010
-cheminFichierColonne=.\conf\colonnes\biorad 0.6 ml.cln
+cheminFichierColonne=./conf/colonnes/biorad 0.6 ml.cln
 commentaires=Temps d'elution a calibrer
 
 [1]

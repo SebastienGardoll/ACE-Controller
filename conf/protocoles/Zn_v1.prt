@@ -2,7 +2,7 @@
 nomProtocole=Zn_v1
 auteur=Henry Manuel
 date=19/03/2019
-cheminFichierColonne=.\conf\colonnes\Cu_Fe_Zn_column.cln
+cheminFichierColonne=./conf/colonnes/Cu_Fe_Zn_column.cln
 commentaires=Chimie "maison" SB GET v1 : recuperation du Zn seulement
 
 [1]

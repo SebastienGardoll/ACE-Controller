@@ -2,7 +2,7 @@
 nomProtocole=U-Th
 auteur=Jonathan PRUNIER
 date=23/04/2010
-cheminFichierColonne=.\conf\colonnes\biorad 2 ml.cln
+cheminFichierColonne=./conf/colonnes/biorad 2 ml.cln
 commentaires=Extraction de l'Uranium et du Th de la matrice (temps d'attente a definir plus exactement). Il n'y a pas les lavages de la resine qui sont effectues dans ce protocole. A voir si on les ajoute ou non
 
 [1]
