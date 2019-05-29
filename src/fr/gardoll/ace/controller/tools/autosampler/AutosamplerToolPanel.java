@@ -1,7 +1,6 @@
 package fr.gardoll.ace.controller.tools.autosampler ;
 
 import java.io.File ;
-import java.net.URISyntaxException ;
 
 import javax.swing.JFileChooser ;
 import javax.swing.filechooser.FileFilter ;
@@ -763,14 +762,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   private void initCustom()
   {
     this.fileChooser.setDialogTitle("select column file");
-    try
-    {
-      this.fileChooser.setCurrentDirectory(Utils.getRootDir(this).toFile());
-    }
-    catch (URISyntaxException e)
-    {
-      // Nothing to do.
-    }
+    this.fileChooser.setCurrentDirectory(Utils.getRootDir(this).toFile());
     this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
     this.fileChooser.setMultiSelectionEnabled(false);
     this.fileChooser.setFileFilter(new FileFilter() 

@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.core;
 import java.io.Closeable ;
 import java.io.IOException ;
 import java.lang.reflect.Constructor ;
-import java.net.URISyntaxException ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
 import java.text.DecimalFormatSymbols ;
@@ -89,17 +88,8 @@ public class ParametresSession implements Closeable
     _LOG.info("fetch the configuration");
     
     Path rootDir = null ;
-    try
-    {
-      _LOG.debug("fetch root dir");
-      rootDir = Utils.getRootDir(this);
-    }
-    catch (URISyntaxException e)
-    {
-      String msg = String.format("unable to fetch the path of the application: %s", e.getMessage());
-      _LOG.fatal(msg, e);
-      throw new InitializationException(msg, e);
-    }
+    _LOG.debug("fetch root dir");
+    rootDir = Utils.getRootDir(this);
     
     Path configurationFile = rootDir.resolve(Names.CONFIG_DIRNAME)
                                     .resolve(Names.CONFIG_FILENAME);
