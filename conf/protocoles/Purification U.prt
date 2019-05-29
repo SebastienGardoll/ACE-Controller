@@ -1,0 +1,98 @@
+[informationsProtocole]
+nomProtocole=Purification de l'U
+auteur=Jonathan PRUNIER
+date=27/04/2010
+cheminFichierColonne=.\conf\colonnes\biorad 0.6 ml.cln
+commentaires=Temps d'elution a calibrer
+
+[1]
+acide=HCl 0.5 N
+numeroEv=4
+volume=5
+temps=3000
+pause?=0
+
+[2]
+acide=HCl 6 N
+numeroEv=3
+volume=2
+temps=2000
+pause?=0
+
+[3]
+acide=HCl 6 N
+numeroEv=3
+volume=2
+temps=2000
+pause?=1
+
+[4]
+acide=HCl 6 N
+numeroEv=3
+volume=0.6
+temps=400
+pause?=0
+
+[5]
+acide=HCl 6 N
+numeroEv=3
+volume=0.6
+temps=400
+pause?=0
+
+[6]
+acide=Ac�tone + HCl 6 N
+numeroEv=6
+volume=0.6
+temps=400
+pause?=0
+
+[7]
+acide=Ac�tone + HCl 6 N
+numeroEv=6
+volume=0.6
+temps=400
+pause?=0
+
+[8]
+acide=Ac�tone + HCl 6 N
+numeroEv=6
+volume=4
+temps=2500
+pause?=0
+
+[9]
+acide=HCl 6 N
+numeroEv=3
+volume=0.6
+temps=400
+pause?=0
+
+[10]
+acide=HCl 6 N
+numeroEv=3
+volume=0.6
+temps=400
+pause?=1
+
+[11]
+acide=HCl 0.5 N
+numeroEv=4
+volume=0.4
+temps=300
+pause?=0
+
+[12]
+acide=HCl 0.5 N
+numeroEv=4
+volume=0.4
+temps=300
+pause?=0
+
+[13]
+acide=HCl 0.5 N
+numeroEv=4
+volume=4
+temps=2500
+pause?=1
+

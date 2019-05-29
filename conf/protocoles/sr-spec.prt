@@ -1,0 +1,119 @@
+[informationsProtocole]
+nomProtocole=Sr - SPEC
+auteur=Sebastien GARDOLL
+date=11/05/2006
+cheminFichierColonne=.\conf\colonnes\nouvelle colonne.cln
+commentaires=Protocole d'extraction du Sr par la resine Sr-SPEC ( Eichrom ). Attentes non optimisees : elles correspondent  aux attentes des colonnes entonnoirs.
+
+[1]
+acide=HCl 6N
+numeroEv=3
+volume=1
+temps=900
+pause?=0
+
+[2]
+acide=HNO3 0,05N
+numeroEv=2
+volume=2
+temps=1800
+pause?=0
+
+[3]
+acide=HNO3 0,05N
+numeroEv=2
+volume=2
+temps=1800
+pause?=0
+
+[4]
+acide=HNO3 2N
+numeroEv=4
+volume=0.5
+temps=480
+pause?=0
+
+[5]
+acide=HNO3 2N
+numeroEv=4
+volume=0.5
+temps=480
+pause?=1
+
+[6]
+acide=HNO3 2N
+numeroEv=4
+volume=0.2
+temps=300
+pause?=0
+
+[7]
+acide=HNO3 2N
+numeroEv=4
+volume=0.2
+temps=300
+pause?=0
+
+[8]
+acide=HNO3 7N
+numeroEv=5
+volume=0.25
+temps=300
+pause?=0
+
+[9]
+acide=HNO3 7N
+numeroEv=5
+volume=0.25
+temps=300
+pause?=0
+
+[10]
+acide=HNO3 7N
+numeroEv=5
+volume=1
+temps=900
+pause?=0
+
+[11]
+acide=HNO3 2N
+numeroEv=4
+volume=0.1
+temps=180
+pause?=0
+
+[12]
+acide=HNO3 2N
+numeroEv=4
+volume=0.1
+temps=180
+pause?=0
+
+[13]
+acide=HNO3 2N
+numeroEv=4
+volume=0.1
+temps=180
+pause?=1
+
+[14]
+acide=HNO3 0,05N
+numeroEv=2
+volume=0.25
+temps=300
+pause?=0
+
+[15]
+acide=HNO3 0,05N
+numeroEv=2
+volume=0.25
+temps=300
+pause?=0
+
+[16]
+acide=HNO3 0,05N
+numeroEv=2
+volume=0.5
+temps=480
+pause?=0
+

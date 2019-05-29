@@ -1,0 +1,105 @@
+[informationsProtocole]
+nomProtocole=Separation de U-Th
+auteur=Jonathan PRUNIER
+date=26/04/2010
+cheminFichierColonne=.\conf\colonnes\biorad 0.6 ml.cln
+commentaires=Temps d'attente pour l'elution a modifier car pas calibrer
+
+[1]
+acide=HNO3 0.25 N
+numeroEv=2
+volume=5
+temps=3000
+pause?=0
+
+[2]
+acide=HNO3 0.25 N
+numeroEv=2
+volume=5
+temps=3000
+pause?=0
+
+[3]
+acide=HNO3 7.5 N
+numeroEv=5
+volume=2
+temps=2000
+pause?=0
+
+[4]
+acide=HNO3 7.5 N
+numeroEv=5
+volume=2
+temps=2000
+pause?=1
+
+[5]
+acide=HNO3 7.5 N
+numeroEv=5
+volume=0.4
+temps=300
+pause?=0
+
+[6]
+acide=HNO3 7.5 N
+numeroEv=5
+volume=0.4
+temps=300
+pause?=0
+
+[7]
+acide=HNO3 7.5 N
+numeroEv=5
+volume=0.4
+temps=300
+pause?=0
+
+[8]
+acide=HNO3 7.5 N
+numeroEv=5
+volume=0.4
+temps=300
+pause?=1
+
+[9]
+acide=HNO3 7.5 N
+numeroEv=5
+volume=4
+temps=2500
+pause?=1
+
+[10]
+acide=H2O MQ
+numeroEv=1
+volume=0.5
+temps=350
+pause?=0
+
+[11]
+acide=HCl 6 N
+numeroEv=3
+volume=0.5
+temps=350
+pause?=0
+
+[12]
+acide=HCl 6 N
+numeroEv=3
+volume=0.5
+temps=350
+pause?=0
+
+[13]
+acide=HCl 6 N
+numeroEv=3
+volume=4
+temps=2500
+pause?=1
+
+[14]
+acide=HCl 0.5 N
+numeroEv=4
+volume=5
+temps=3500
+pause?=1
+
