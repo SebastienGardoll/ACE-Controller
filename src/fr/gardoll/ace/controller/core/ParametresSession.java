@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.core;
 
 import java.io.Closeable ;
+import java.io.FileNotFoundException ;
 import java.io.IOException ;
 import java.lang.reflect.Constructor ;
 import java.nio.file.Files ;
@@ -122,7 +123,17 @@ public class ParametresSession implements Closeable
       this._diametreSeringue       = section.getDouble(Names.SIPS_CLEF_DIA_SERINGUE,-1.0);
       
       section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
-      plateConfFile = Path.of(section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR"));
+      String plateConfFilePathString = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
+      try
+      {
+        plateConfFile = Utils.resolvePath(plateConfFilePathString);
+      }
+      catch (FileNotFoundException e)
+      {
+        String msg = String.format("unable to locate plate conf file '%s'", plateConfFilePathString);
+        _LOG.fatal(msg, e);
+        throw new InitializationException(msg, e);
+      }
     }
     catch (ConfigurationException e)
     {
@@ -145,7 +156,7 @@ public class ParametresSession implements Closeable
       _LOG.debug("read autosampler configuration");
       
       Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(configurationFile.toFile());
+      INIConfiguration iniConf = configs.ini(plateConfFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
       
       this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
@@ -160,7 +171,7 @@ public class ParametresSession implements Closeable
     catch (ConfigurationException e)
     {
       String msg = String.format("unable to read the plate configuration file '%s': %s",
-          configurationFile.toString(), e.getMessage());
+          plateConfFile.toString(), e.getMessage());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
