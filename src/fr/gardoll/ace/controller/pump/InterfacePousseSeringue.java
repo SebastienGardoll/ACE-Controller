@@ -79,7 +79,7 @@ public class InterfacePousseSeringue  implements Closeable
       this._port.setStopBit(StopBit.ONESTOPBIT);
       this._port.setParite(Parity.NOPARITY);
       this._port.setControlFlux(FlowControl.XON_XOFF);
-      this._port.setTimeOut(300) ;
+      this._port.setTimeOut(50) ;
       this._port.open(OPENING_DELAY);
       
     }
