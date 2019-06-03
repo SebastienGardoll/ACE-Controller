@@ -19,6 +19,8 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable
 {
+  private static final int OPENING_DELAY = 1000;
+  
   // nombre de signaux en sortis de l'interface.
   private final static int NB_BITS = 7 ;
   
@@ -43,8 +45,9 @@ public class InterfaceMoteur implements Closeable
       this._port.setParite(Parity.NOPARITY);
       this._port.setControlFlux(FlowControl.XON_XOFF);
       this._port.setTimeOut(100) ;
+      this._port.open(OPENING_DELAY);
     }
-    catch(SerialComException e)
+    catch(SerialComException | InterruptedException e)
     {
       String msg = String.format("error while initializing the port '%s': %s",
           this._port.getId(), e.getMessage());

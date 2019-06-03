@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.FlowControl ;
+import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.Parity ;
 import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.com.SerialMode ;
@@ -24,6 +25,8 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 //TODO: singleton.
 public class InterfacePousseSeringue  implements Closeable
 {
+  private static final int OPENING_DELAY = 1000;
+  
   //caractéristique du pousse seringue en m/min
   public final static double COURCE_LINEAIRE_MAX = 0.1269 ;
   //diamètre de seringue maximum pour le pousse seringue en mm
@@ -77,8 +80,10 @@ public class InterfacePousseSeringue  implements Closeable
       this._port.setParite(Parity.NOPARITY);
       this._port.setControlFlux(FlowControl.XON_XOFF);
       this._port.setTimeOut(300) ;
+      this._port.open(OPENING_DELAY);
+      
     }
-    catch(SerialComException e)
+    catch(SerialComException | InterruptedException e)
     {
       String msg = String.format("error while initializing the pump serial port: %s",
           e.getMessage());
@@ -417,6 +422,18 @@ public class InterfacePousseSeringue  implements Closeable
   
   public static void main(String[] args)
   {
+    // To be modified.
+    String portPath = "/dev/ttyUSB1";//"/dev/cu.usbserial-A602K71L";
+    JSerialComm port = new JSerialComm(portPath);
     
+    try(InterfacePousseSeringue pump = new InterfacePousseSeringue(port, 14.25))
+    {
+      boolean isRunning = pump.running();
+      System.out.println(String.format("is runnning: %s", isRunning)) ;
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 }
