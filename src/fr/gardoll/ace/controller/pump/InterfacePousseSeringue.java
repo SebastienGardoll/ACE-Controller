@@ -441,6 +441,7 @@ public class InterfacePousseSeringue  implements Closeable
       
       double voli = 5. ;
       _LOG.info(String.format("set the voli to %f", voli));
+      pump.voli(voli);
       
       _LOG.info("run");
       pump.run();
