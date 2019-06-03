@@ -114,13 +114,13 @@ public class InterfacePousseSeringue  implements Closeable
   //traitement de la réponse de l'interface en cas d'erreur => exception.
   private void traitementReponse(String message) throws SerialComException
   {
-    if (message == "EE")
+    if (message.matches("E+"))
     {
       String msg = "pump failure" ;
       _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
-    else if (message == "NA::")
+    else if (message.matches("NA\\s+:"))
     {
       String msg = "unknown pump order" ;
       _LOG.error(msg);
@@ -237,7 +237,7 @@ public class InterfacePousseSeringue  implements Closeable
     
     StringBuilder sb = new StringBuilder(); 
     boolean micro_litre = false ;
-
+    
     for (int i = 1 ; i <= message_brute.length ; i++)
     {
       if (Character.isDigit(message_brute[i]))
