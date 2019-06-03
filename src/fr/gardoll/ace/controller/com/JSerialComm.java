@@ -251,7 +251,20 @@ public class JSerialComm implements SerialCom
         break;
       }
       
-      String rawResult = new String(buffer.getValue(), this._charset) ;
+      // Truncate the buffer after the meeting the first termination byte (code zero).
+      int length = 0;
+      for(int index = 0; index < buffer.getValue().length ; index++)
+      {
+        if(buffer.getValue()[index] != 0)
+        {
+          length++;
+        }
+        else
+        {
+          break;
+        }
+      }
+      String rawResult = new String(buffer.getValue(), 0, length, this._charset) ;
       
       // Add the intermediate result to the result.
       sb.append(rawResult) ;
