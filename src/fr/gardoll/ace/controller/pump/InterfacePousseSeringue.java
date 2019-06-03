@@ -220,7 +220,8 @@ public class InterfacePousseSeringue  implements Closeable
   
   public boolean running() throws SerialComException, InterruptedException
   {
-    boolean result = this.traitementOrdre("run?\r") != "::" ;
+    String ack = this.traitementOrdre("run?\r");
+    boolean result = false == ack.equals(":") ;
     return result;
   }
   
