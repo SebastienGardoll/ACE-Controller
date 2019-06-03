@@ -6,6 +6,8 @@ import java.nio.charset.Charset ;
 import java.text.DecimalFormat ;
 import java.text.DecimalFormatSymbols ;
 import java.util.Locale ;
+import java.util.regex.Matcher ;
+import java.util.regex.Pattern ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -18,7 +20,6 @@ import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 
@@ -34,6 +35,9 @@ public class InterfacePousseSeringue  implements Closeable
   
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.US);
+  
+  private static final Pattern _DELIVER_PATTERN = Pattern.compile("([0-9.]+)\\s+(u|m)l\\s+(:|>|<)");
+  private static final Pattern _NA_PATTERN = Pattern.compile("NA\\s+(:|>|<)");
   
   private static final Logger _LOG = LogManager.getLogger(InterfacePousseSeringue.class.getName());
   
@@ -120,7 +124,7 @@ public class InterfacePousseSeringue  implements Closeable
       _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
-    else if (message.matches("NA\\s+(:|>|<)"))
+    else if (_NA_PATTERN.matcher(message).matches())
     {
       String msg = "unknown pump order" ;
       _LOG.error(msg);
@@ -226,49 +230,42 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // en mL
+  //Attention ne revoie un réel que si le volume à délivré en est un.
+  // Ainsi : 1. ou 1.0 ne donnera pas de réponse en réel donc la réponse sera
+  // 0 puis 1 à la fin !!!! Il n'y a donc aucun intérêt.
+  // Parade : passer en micro litre quand < 10 mL.
   public double deliver() throws SerialComException, InterruptedException
   {
-    char[] message_brute = this.traitementOrdre("del?\r").toCharArray() ;
-
-    // Attention ne revoie un réel que si le volume à délivré en est un.
-    // Ainsi : 1. ou 1.0 ne donnera pas de réponse en réel donc la réponse sera
-    // 0 puis 1 à la fin !!!! Il n'y a donc aucun intérêt.
-    // Parade : passer en micro litre quand < 10 mL.
+    String rawMessage = this.traitementOrdre("del?\r");
+    return innerDeliver(rawMessage);
+  }
+  
+  private static double innerDeliver(String rawMessage) throws SerialComException
+  {
+    _LOG.debug(String.format("delivered brut msg: '%s'", rawMessage));
     
-    StringBuilder sb = new StringBuilder(); 
-    boolean micro_litre = false ;
+    Matcher m = _DELIVER_PATTERN.matcher(rawMessage);
     
-    for (int i = 1 ; i <= message_brute.length ; i++)
+    double result = 0.;
+    
+    if(m.matches())
     {
-      if (Character.isDigit(message_brute[i]))
+      result = Double.valueOf(m.group(1));
+      
+      if(m.group(2).equals("u"))
       {
-        sb.append(message_brute[i]) ;
+        result /= 1000. ;
       }
-
-      if (message_brute[i] == DECIMAL_SYMBOLS.getDecimalSeparator())
-      {
-        sb.append(ParametresSession.DECIMAL_SYMBOLS.getDecimalSeparator()) ;
-      }
-
-      if (message_brute[i] == 'u')
-      {
-        micro_litre = true ;
-      }
-    }
-
-    double raw_value = Double.valueOf(sb.toString());
-    double result;
-    
-    if (micro_litre)
-    {
-      result = (raw_value/1000.) ;
     }
     else
     {
-      result = raw_value ;
+      String msg = String.format("cannot interpret delivered volume '%s'", rawMessage);
+      _LOG.fatal(msg);
+      throw new SerialComException(msg);
     }
     
     _LOG.debug(String.format("the delivered volume is %s", result));
+    
     return result;
   }
   
@@ -435,12 +432,12 @@ public class InterfacePousseSeringue  implements Closeable
       _LOG.info("set mode infusion") ;
       pump.modeI();
       
-      double ratei = 1. ;
-      _LOG.debug(String.format("set ratei to %f", ratei));
+      double ratei = 15. ;
+      _LOG.debug(String.format("set ratei to %s", ratei));
       pump.ratei(ratei);
       
-      double voli = 5. ;
-      _LOG.info(String.format("set the voli to %f", voli));
+      double voli = 11. ;
+      _LOG.info(String.format("set the voli to %s", voli));
       pump.voli(voli);
       
       _LOG.info("run");
@@ -452,7 +449,7 @@ public class InterfacePousseSeringue  implements Closeable
       Thread.sleep(1000);
       
       double deliver = pump.deliver();
-      _LOG.info(String.format("deliver: %f", deliver));
+      _LOG.info(String.format("deliver: %s", deliver));
     }
     catch(Exception e)
     {
