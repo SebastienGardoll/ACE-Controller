@@ -120,7 +120,7 @@ public class InterfacePousseSeringue  implements Closeable
       _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
-    else if (message.matches("NA\\s+:"))
+    else if (message.matches("NA\\s+(:|>|<)"))
     {
       String msg = "unknown pump order" ;
       _LOG.error(msg);
@@ -424,13 +424,34 @@ public class InterfacePousseSeringue  implements Closeable
   public static void main(String[] args)
   {
     // To be modified.
-    String portPath = "/dev/ttyUSB1";//"/dev/cu.usbserial-A602K71L";
+    String portPath = "/dev/ttyUSB1";
     JSerialComm port = new JSerialComm(portPath);
     
     try(InterfacePousseSeringue pump = new InterfacePousseSeringue(port, 14.25))
     {
       boolean isRunning = pump.running();
-      System.out.println(String.format("is runnning: %s", isRunning)) ;
+      _LOG.info(String.format("is runnning: %s", isRunning)) ;
+      
+      _LOG.info("set mode infusion") ;
+      pump.modeI();
+      
+      double ratei = 1. ;
+      _LOG.debug(String.format("set ratei to %f", ratei));
+      pump.ratei(ratei);
+      
+      double voli = 5. ;
+      _LOG.info(String.format("set the voli to %f", voli));
+      
+      _LOG.info("run");
+      pump.run();
+      
+      isRunning = pump.running();
+      _LOG.info(String.format("is runnning: %s", isRunning)) ;
+      
+      Thread.sleep(1000);
+      
+      double deliver = pump.deliver();
+      _LOG.info(String.format("deliver: %f", deliver));
     }
     catch(Exception e)
     {
