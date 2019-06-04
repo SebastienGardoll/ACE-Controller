@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.FlowControl ;
+import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.Parity ;
 import fr.gardoll.ace.controller.com.SerialCom;
 import fr.gardoll.ace.controller.com.SerialMode ;
@@ -15,6 +16,7 @@ import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
+import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable
@@ -69,7 +71,7 @@ public class InterfaceMoteur implements Closeable
   
   // traitement de la réponse de l'interface.
   // en cas d'erreur => exception
-  private void traitementReponse(String reponse)
+  private void traitementReponse(String reponse) throws SerialComException
   {
     _LOG.debug(String.format("ack received: '%s'", reponse));
     
@@ -77,7 +79,7 @@ public class InterfaceMoteur implements Closeable
     {
       String msg = "autosampler disconnected";
       _LOG.fatal(msg);
-      throw new RuntimeException();
+      throw new SerialComException(msg);
     }
     
     switch (reponse.charAt(0))
@@ -90,7 +92,7 @@ public class InterfaceMoteur implements Closeable
       { 
         String msg = String.format("autosampler failure: %s", reponse);
         _LOG.fatal(msg);
-        throw new RuntimeException(msg);
+        throw new SerialComException(msg);
       }
 
       // attention incompatibilité avec where et position négative !!!
@@ -103,7 +105,7 @@ public class InterfaceMoteur implements Closeable
       {
         String msg = String.format("unsupported reponse: %s", reponse);
         _LOG.fatal(msg);
-        throw new RuntimeException(msg);
+        throw new SerialComException(msg);
       }
 
     }
@@ -294,5 +296,26 @@ public class InterfaceMoteur implements Closeable
     
     String ordre = String.format("out(%s,%s)\r", bitPosition, value);
     this.traitementOrdre(ordre);
+  }
+  
+  public static void main(String[] args)
+  {
+    String portPath = "/dev/ttyUSB0"; // To be modified.
+    JSerialComm port = new JSerialComm(portPath);
+    
+    try(InterfaceMoteur autoSamplerInt = new InterfaceMoteur(port))
+    {
+      autoSamplerInt.singleLine(true);
+      
+      boolean isArmMoving = autoSamplerInt.moving(TypeAxe.bras);
+      _LOG.info(String.format("is arm moving: %s", isArmMoving));
+      
+      boolean isCarouselMoving = autoSamplerInt.moving(TypeAxe.carrousel);
+      _LOG.info(String.format("is carousel moving: %s", isCarouselMoving));
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 }
