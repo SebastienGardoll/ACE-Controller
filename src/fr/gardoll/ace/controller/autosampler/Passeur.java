@@ -61,6 +61,7 @@ public class Passeur implements Closeable
   {
     this.interfaceMoteur = interfaceMoteur;
     this.reset() ;
+    this.setModeDirect();
 
     if (nbPasCarrousel <= 0 || diametre  <= 0)
     {
