@@ -16,7 +16,6 @@ import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
-import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable
@@ -48,6 +47,8 @@ public class InterfaceMoteur implements Closeable
       this._port.setControlFlux(FlowControl.XON_XOFF);
       this._port.setTimeOut(100) ;
       this._port.open(OPENING_DELAY);
+      
+      this.singleLine(true); // ack processing supposes to get single line ack.
     }
     catch(SerialComException | InterruptedException e)
     {
@@ -305,13 +306,17 @@ public class InterfaceMoteur implements Closeable
     
     try(InterfaceMoteur autoSamplerInt = new InterfaceMoteur(port))
     {
-      autoSamplerInt.singleLine(true);
-      
       boolean isArmMoving = autoSamplerInt.moving(TypeAxe.bras);
       _LOG.info(String.format("is arm moving: %s", isArmMoving));
       
       boolean isCarouselMoving = autoSamplerInt.moving(TypeAxe.carrousel);
       _LOG.info(String.format("is carousel moving: %s", isCarouselMoving));
+      
+      int whereIsArm = autoSamplerInt.where(TypeAxe.bras);
+      _LOG.debug(String.format("the arm is at '%s'", whereIsArm));
+      
+      int whereIsCarousel = autoSamplerInt.where(TypeAxe.carrousel);
+      _LOG.debug(String.format("the carousel is at '%s'", whereIsCarousel));
     }
     catch(Exception e)
     {
