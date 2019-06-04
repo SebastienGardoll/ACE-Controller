@@ -206,18 +206,21 @@ public class InterfacePousseSeringue  implements Closeable
   //reprise ou démarrage
   public void run() throws SerialComException, InterruptedException
   {
+    _LOG.debug("running the pump");
     this.traitementOrdre( "run\r" );
   }
   
   // pause
   public void stop() throws SerialComException, InterruptedException
   {
+    _LOG.debug("stopping the pump");
     this.traitementOrdre ("stop\r");
   }
   
   // en mm requires diametre > 0
   public void dia(double diametre) throws SerialComException, InterruptedException
   {
+    _LOG.debug(String.format("setting the diameter to '%s'", diametre));
     String ordre = String.format("dia %s\r", formatage(diametre)) ;
     this.traitementOrdre (ordre);
   }
@@ -226,6 +229,7 @@ public class InterfacePousseSeringue  implements Closeable
   {
     String ack = this.traitementOrdre("run?\r");
     boolean result = false == ack.equals(":") ;
+    _LOG.debug(String.format("is pump running: %s", result));
     return result;
   }
   
@@ -450,6 +454,41 @@ public class InterfacePousseSeringue  implements Closeable
       
       double deliver = pump.deliver();
       _LOG.info(String.format("deliver: %s", deliver));
+      
+      Thread.sleep(1000);
+      
+      _LOG.info("stopping pump");
+      pump.stop();
+      
+      isRunning = pump.running();
+      _LOG.info(String.format("is runnning: %s", isRunning)) ;
+      
+      _LOG.info("set mode withdrawal") ;
+      pump.modeW();
+      
+      double ratew = 1. ;
+      _LOG.debug(String.format("set ratew to %s", ratew));
+      pump.ratew(ratew);
+      
+      double volw = 9. ;
+      _LOG.info(String.format("set the volw to %s", volw));
+      pump.volw(volw);
+      
+      _LOG.info("run");
+      pump.run();
+      
+      isRunning = pump.running();
+      _LOG.info(String.format("is runnning: %s", isRunning)) ;
+      
+      Thread.sleep(1200);
+      
+      deliver = pump.deliver();
+      _LOG.info(String.format("deliver: %s", deliver));
+      
+      Thread.sleep(1000);
+      
+      _LOG.info("stopping pump");
+      pump.stop();
     }
     catch(Exception e)
     {
