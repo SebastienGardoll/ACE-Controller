@@ -6,6 +6,7 @@ import java.io.IOException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 
@@ -79,11 +80,6 @@ public class Passeur implements Closeable
   public void close() throws IOException
   {
     this.interfaceMoteur.close();
-  }
-  
-  public static void main(String[] args)
-  {
-
   }
   
   public boolean isPaused () { return _pause; } ;
@@ -532,6 +528,64 @@ public class Passeur implements Closeable
       }
       
       finMoveBras() ;
+    }
+  }
+  
+  public static void main(String[] args)
+  {
+    String portPath = "/dev/ttyUSB0"; // To be modified.
+    JSerialComm port = new JSerialComm(portPath);
+    
+    try(InterfaceMoteur autoSamplerInt = new InterfaceMoteur(port) ;
+        Passeur autosampler = new Passeur(autoSamplerInt, 640, 360))
+    {
+      int carouselPosition = 4;
+      _LOG.info(String.format("moving carousel to position %s", carouselPosition));
+      autosampler.moveCarrousel(carouselPosition);
+      
+      _LOG.info("waiting for the carousel");
+      autosampler.finMoveCarrousel();
+      
+      _LOG.info(String.format("moving carousel back"));
+      autosampler.moveCarrousel(0);
+      
+      _LOG.info("waiting for the carousel");
+      autosampler.finMoveCarrousel();
+      
+      int armNbStep = 30;
+      _LOG.info(String.format("moving arm to %s nb of step", armNbStep));
+      autosampler.moveBras(armNbStep);
+      
+      _LOG.info("waiting for the arm");
+      autosampler.finMoveBras();
+      
+      _LOG.info(String.format("moving arm back"));
+      autosampler.moveButeBras();
+      
+      _LOG.info("waiting for the arm");
+      autosampler.finMoveBras();
+      
+      _LOG.info(String.format("moving carousel to position %s and arm to %s nb of step", carouselPosition, armNbStep));
+      autosampler.moveCarrousel(carouselPosition, armNbStep);
+      
+      Thread.sleep(500);
+      
+      _LOG.debug("pausing");
+      autosampler.pause();
+      
+      Thread.sleep(1500);
+      
+      _LOG.debug("resuming");
+      autosampler.reprise(true);
+      
+      Thread.sleep(200);
+      
+      _LOG.debug("cancelling");
+      autosampler.cancel();      
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
     }
   }
 }
