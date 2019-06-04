@@ -71,6 +71,8 @@ public class InterfaceMoteur implements Closeable
   // en cas d'erreur => exception
   private void traitementReponse(String reponse)
   {
+    _LOG.debug(String.format("ack received: '%s'", reponse));
+    
     if(reponse.isEmpty())
     {
       String msg = "autosampler disconnected";

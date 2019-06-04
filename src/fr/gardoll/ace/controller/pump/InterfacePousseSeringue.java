@@ -118,6 +118,8 @@ public class InterfacePousseSeringue  implements Closeable
   //traitement de la réponse de l'interface en cas d'erreur => exception.
   private void traitementReponse(String message) throws SerialComException
   {
+    _LOG.debug(String.format("ack received: '%s'", message));
+    
     if (message.matches("E+"))
     {
       String msg = "pump failure" ;
