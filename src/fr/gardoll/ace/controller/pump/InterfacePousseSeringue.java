@@ -426,71 +426,70 @@ public class InterfacePousseSeringue  implements Closeable
   
   public static void main(String[] args)
   {
-    // To be modified.
-    String portPath = "/dev/ttyUSB1";
+    String portPath = "/dev/ttyUSB1"; // To be modified.
     JSerialComm port = new JSerialComm(portPath);
     
-    try(InterfacePousseSeringue pump = new InterfacePousseSeringue(port, 14.25))
+    try(InterfacePousseSeringue pumpInt = new InterfacePousseSeringue(port, 14.25))
     {
-      boolean isRunning = pump.running();
+      boolean isRunning = pumpInt.running();
       _LOG.info(String.format("is runnning: %s", isRunning)) ;
       
       _LOG.info("set mode infusion") ;
-      pump.modeI();
+      pumpInt.modeI();
       
       double ratei = 15. ;
       _LOG.debug(String.format("set ratei to %s", ratei));
-      pump.ratei(ratei);
+      pumpInt.ratei(ratei);
       
       double voli = 11. ;
       _LOG.info(String.format("set the voli to %s", voli));
-      pump.voli(voli);
+      pumpInt.voli(voli);
       
       _LOG.info("run");
-      pump.run();
+      pumpInt.run();
       
-      isRunning = pump.running();
+      isRunning = pumpInt.running();
       _LOG.info(String.format("is runnning: %s", isRunning)) ;
       
       Thread.sleep(1000);
       
-      double deliver = pump.deliver();
+      double deliver = pumpInt.deliver();
       _LOG.info(String.format("deliver: %s", deliver));
       
       Thread.sleep(1000);
       
       _LOG.info("stopping pump");
-      pump.stop();
+      pumpInt.stop();
       
-      isRunning = pump.running();
+      isRunning = pumpInt.running();
       _LOG.info(String.format("is runnning: %s", isRunning)) ;
       
       _LOG.info("set mode withdrawal") ;
-      pump.modeW();
+      pumpInt.modeW();
       
       double ratew = 1. ;
       _LOG.debug(String.format("set ratew to %s", ratew));
-      pump.ratew(ratew);
+      pumpInt.ratew(ratew);
       
       double volw = 9. ;
       _LOG.info(String.format("set the volw to %s", volw));
-      pump.volw(volw);
+      pumpInt.volw(volw);
       
       _LOG.info("run");
-      pump.run();
+      pumpInt.run();
       
-      isRunning = pump.running();
+      isRunning = pumpInt.running();
       _LOG.info(String.format("is runnning: %s", isRunning)) ;
       
       Thread.sleep(1200);
       
-      deliver = pump.deliver();
+      deliver = pumpInt.deliver();
       _LOG.info(String.format("deliver: %s", deliver));
       
       Thread.sleep(1000);
       
       _LOG.info("stopping pump");
-      pump.stop();
+      pumpInt.stop();
     }
     catch(Exception e)
     {
