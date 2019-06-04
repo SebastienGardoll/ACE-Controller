@@ -228,7 +228,7 @@ public class InterfaceMoteur implements Closeable
   
   public void singleLine(boolean choix) throws SerialComException, InterruptedException
   { 
-    // XXX convertion of boolean. Checked 04/18/2019
+    // XXX conversion of boolean. Checked 04/18/2019
     char convertion = (choix) ? '1':'2';
     
     String ordre = String.format("singleline (%s)\r", convertion);
