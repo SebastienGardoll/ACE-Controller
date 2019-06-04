@@ -418,8 +418,11 @@ public class Passeur implements Closeable
   //dimension en mm en rapport avec le bras !
   public static int convertBras(double dimension)
   {
-    double result = Math.ceil( (dimension * NB_PAS_TOUR_BRAS) / HAUTEUR_TOUR_BRAS ) ;
-    return ((int) (result));
+    double raw = Math.ceil( (dimension * NB_PAS_TOUR_BRAS) / HAUTEUR_TOUR_BRAS ) ;
+    int result = ((int) (raw));
+    _LOG.debug(String.format("convert %s millimeter into %s number of steps",
+                             dimension, result));
+    return result;
   }
   
   //converti une dimension exprimée en mm en nombre de demi pas pour le carrousel.
@@ -553,7 +556,7 @@ public class Passeur implements Closeable
       _LOG.info("waiting for the carousel");
       autosampler.finMoveCarrousel();
       
-      int armNbStep = 30;
+      int armNbStep = Passeur.convertBras(30); // Convert 30 millimeter into number of steps.
       _LOG.info(String.format("moving arm to %s nb of step", armNbStep));
       autosampler.moveBras(armNbStep);
       
@@ -582,7 +585,7 @@ public class Passeur implements Closeable
       Thread.sleep(200);
       
       _LOG.debug("cancelling");
-      autosampler.cancel();      
+      autosampler.cancel();
     }
     catch(Exception e)
     {
