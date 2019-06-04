@@ -33,6 +33,8 @@ public class InterfaceMoteur implements Closeable
   
   public InterfaceMoteur(SerialCom port) throws InitializationException
   {
+    _LOG.debug(String.format("initializing the autosampler interface with the serial port %s",
+        port.getId()));
     this._port = port ;
     try
     {
@@ -62,6 +64,7 @@ public class InterfaceMoteur implements Closeable
   @Override
   public void close() throws IOException
   {
+    _LOG.debug(String.format("closing the port '%s'", this._port.getId()));
     this._port.close() ;
   }
   

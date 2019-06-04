@@ -74,8 +74,9 @@ public class PousseSeringue implements Closeable
                         double debitMaxPousseSeringue,
                         double volumeInitiale) throws InitializationException, InterruptedException
   {
-    _LOG.info("initializing the pump");
-    
+    _LOG.debug(String.format("initializing the pump with %s number of syringe, %s syringe diameter, %s syringe max volume, %s max rate, %s initial volume",
+        nombreSeringue, diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
+        volumeInitiale));
     this.interfacePousseSeringue = interfacePousseSeringue ;
     this.para = paraCom ;
     // attention les débits sont par défaut ceux en mémoire du pousse seringue.
@@ -611,6 +612,7 @@ public class PousseSeringue implements Closeable
   @Override
   public void close() throws IOException
   {
+    _LOG.debug("closing the pump");
     this.interfacePousseSeringue.close();
     this.para.close();
   }

@@ -9,6 +9,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParaComException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 
+// TODO add logging.
 public class ArduinoParaCom implements ParaCom
 {
   private static final int OPENING_DELAY = 1000;
@@ -21,6 +22,7 @@ public class ArduinoParaCom implements ParaCom
 
   public ArduinoParaCom(SerialCom port) throws InitializationException, InterruptedException
   {
+    _LOG.debug(String.format("initialiazing arduino with the port '%s'", port.getId()));
     this._port = port;
     
     try
@@ -141,6 +143,7 @@ public class ArduinoParaCom implements ParaCom
   @Override
   public void close()
   {
+    _LOG.debug(String.format("closing the port '%s'", this._port.getId()));
     this._port.close();
   }
 }

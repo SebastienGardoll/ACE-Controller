@@ -11,7 +11,6 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 
 //TODO: singleton.
-//TODO: add logging
 public class Passeur implements Closeable
 {
   public final static int RAPPORT_REDUCTEUR_MOTEUR = 40 ; //DEPENDANT DE LA MECANIQUE
@@ -59,6 +58,8 @@ public class Passeur implements Closeable
   public Passeur(InterfaceMoteur interfaceMoteur, int nbPasCarrousel, int diametre)
       throws InitializationException, InterruptedException
   {
+    _LOG.debug(String.format("initializing the autosampler with %s number of carousel steps and %s diameter",
+        nbPasCarrousel, diametre));
     this.interfaceMoteur = interfaceMoteur;
     this.reset() ;
     this.setModeDirect();
@@ -80,6 +81,7 @@ public class Passeur implements Closeable
   @Override
   public void close() throws IOException
   {
+    _LOG.debug("close the autosampler interface");
     this.interfaceMoteur.close();
   }
   
@@ -95,6 +97,8 @@ public class Passeur implements Closeable
   // modificateur ou en nombre de pas si position = 0
   public void moveCarrousel(int position, int modificateur) throws InterruptedException
   {
+    _LOG.debug(String.format("move the carousel to the position %s with %s offset",
+        position, modificateur));
     this.x = position * nbPasCarrousel + modificateur ;
     
     try
@@ -113,6 +117,7 @@ public class Passeur implements Closeable
   //en nombre de demi pas
   public void moveBras(int nbPas) throws InterruptedException
   {
+    _LOG.debug(String.format("move the arm of %s steps", nbPas));
     this.y = nbPas ;
     
     try
@@ -132,6 +137,8 @@ public class Passeur implements Closeable
   // fait car problème de temps de réponse car halt fait par interface
   public void moveCarrouselEtBras (int position, int nbPas) throws InterruptedException
   {
+    _LOG.debug(String.format("move the carousel to position %s and arm of %s steps",
+        position, nbPas));
     this.x = position * nbPasCarrousel ;
     this.y = nbPas ;
     try
@@ -152,6 +159,7 @@ public class Passeur implements Closeable
   {
     try
     {
+      _LOG.debug("move the arm to its origin");
       this.interfaceMoteur.move(this.x, 0);
       this.y = 0 ;
     }
@@ -169,6 +177,7 @@ public class Passeur implements Closeable
   {  
     try
     {
+      _LOG.debug("move the arm to the stop");
       this.interfaceMoteur.movel(0, 1);
       this._butee = true ;
     }
@@ -184,6 +193,7 @@ public class Passeur implements Closeable
   //attente de la fin de mouvement
   public void finMoveCarrousel() throws InterruptedException
   {
+    _LOG.debug("waiting for the end of the carousel operation");
     boolean isMoving = true;
     do
     { 
@@ -208,6 +218,7 @@ public class Passeur implements Closeable
   {
     try
     {
+      _LOG.debug("waiting for the end of arm operation");
       boolean isMoving = true;
       do
       { 
@@ -239,6 +250,7 @@ public class Passeur implements Closeable
   { 
     try
     {
+      _LOG.debug("resetting the autosampler interface");
       this.interfaceMoteur.reset();
       this.x = 0 ; this.y = 0 ;
     }
@@ -256,6 +268,7 @@ public class Passeur implements Closeable
   { 
     try
     {
+      _LOG.debug("setting the origin for the arm");
       this.interfaceMoteur.datum(TypeAxe.bras);
       this.sav_y = 0 - this.y + this.sav_y ;
       this.y = 0 ;
@@ -274,6 +287,7 @@ public class Passeur implements Closeable
   { 
     try
     {
+      _LOG.debug("setting the origin for the carousel");
       this.interfaceMoteur.datum(TypeAxe.carrousel);
       this.sav_x = 0 - this.x + this.sav_x ;
       this.x = 0 ;
@@ -289,6 +303,7 @@ public class Passeur implements Closeable
   //sur les deux axes
   public void setOrigine() throws InterruptedException
   { 
+    _LOG.debug("setting the origin for the arm and the carousel");
     this.setOrigineBras() ;
     this.setOrigineCarrousel() ;
   }
@@ -299,6 +314,7 @@ public class Passeur implements Closeable
   {  
     try
     {
+      _LOG.debug("setting the ack single line mode");
       this.interfaceMoteur.singleLine(true);
     }
     catch (SerialComException e)
@@ -314,6 +330,7 @@ public class Passeur implements Closeable
   { 
     try
     {
+      _LOG.debug("setting the autosampler manual mode");
       this.interfaceMoteur.manual() ;
     }
     catch (SerialComException e)
@@ -329,6 +346,7 @@ public class Passeur implements Closeable
   {
     try
     {
+      _LOG.debug("pausing the autosampler operations");
       if (this.interfaceMoteur.moving(TypeAxe.carrousel) ||
           this.interfaceMoteur.moving(TypeAxe.bras))
       { 
@@ -349,6 +367,7 @@ public class Passeur implements Closeable
   // TODO: test.
   public void returnToInit() throws InterruptedException
   {
+    _LOG.debug("returning to the initial position");
     this.moveButeBras();
     this.moveCarrousel(TRASH_POSITION);
   }
@@ -358,6 +377,7 @@ public class Passeur implements Closeable
   {
     try
     {
+      _LOG.debug("cancelling the autosampler operations");
       this.interfaceMoteur.halt();
       this.returnToInit();
     }
@@ -372,6 +392,7 @@ public class Passeur implements Closeable
   //reprise sur pause avec retour à la position sauvegardée dans pause()
   public void reprise(boolean brasFirst) throws InterruptedException
   {  
+    _LOG.debug(String.format("resuming the autosampler with arm first: %s", brasFirst));
     if (this._pause)
     {
       //cas où il n'y a pas eu de manip sur le passeur
@@ -420,7 +441,7 @@ public class Passeur implements Closeable
   {
     double raw = Math.ceil( (dimension * NB_PAS_TOUR_BRAS) / HAUTEUR_TOUR_BRAS ) ;
     int result = ((int) (raw));
-    _LOG.debug(String.format("convert %s millimeter into %s number of steps",
+    _LOG.debug(String.format("convert %s millimeter into %s number of arm steps",
                              dimension, result));
     return result;
   }
@@ -430,14 +451,18 @@ public class Passeur implements Closeable
   //dimension en mm en rapport avec au carrousel !
   public int convertCarrousel(double dimension)
   {
-    double result = (Math.asin(dimension / rayon) *  NB_PAS_TOUR_CARROUSEL) / ( 2 * Math.PI) ; 
-    return ((int) (result));
+    double raw = (Math.asin(dimension / rayon) *  NB_PAS_TOUR_CARROUSEL) / ( 2 * Math.PI) ; 
+    int result = ((int) (raw));
+    _LOG.debug(String.format("convert %s millimeter into %s number of carousel steps",
+                              dimension, result));
+    return result;
   }
 
   public void vibration() throws InterruptedException
   {  
     try
     {
+      _LOG.debug("vibrate the arm");
       this.interfaceMoteur.out(VIB_ID, true);
 
       Thread.sleep(VIBRATION_TEMPS) ;
@@ -457,6 +482,7 @@ public class Passeur implements Closeable
   {
     try
     {
+      _LOG.debug("move carousel to its origin");
       this.interfaceMoteur.move(0 , this.y);
       this.x = 0 ;
     }
@@ -474,6 +500,7 @@ public class Passeur implements Closeable
   {
      try
      {
+       _LOG.debug(String.format("move carousel to the relative position %s", nbPosition));
        this.x += nbPosition * this.nbPasCarrousel  ;
        this.interfaceMoteur.move(this.x , this.y);
      }
@@ -492,6 +519,8 @@ public class Passeur implements Closeable
   //appel obligatoire si l'on doit manipuler le passeur pendant une pause
   public void saveCurrentPosition()
   {  
+    _LOG.debug(String.format("save the current position: x = %s ; y = %s ; stop = %s",
+        this.x, this.y, this._butee));
     this.sav_x = this.x ; this.sav_y = this.y ; this.sav_butee = this._butee ;
   }
 
@@ -500,6 +529,8 @@ public class Passeur implements Closeable
   //appel obligatoire si l'on doit manipuler le passeur pendant une pause
   public void returnSavedPosition(boolean brasFirst) throws InterruptedException
   {
+    _LOG.debug(String.format("return to the saved position with bras first: %s", brasFirst));
+    
     if (brasFirst)
     {
       if (this.sav_butee)
