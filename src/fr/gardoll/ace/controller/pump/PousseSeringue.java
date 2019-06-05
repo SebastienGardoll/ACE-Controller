@@ -674,7 +674,13 @@ public class PousseSeringue implements Closeable
       
       _LOG.info(String.format("withdrawing %s mL to valve %s", volume, numEv));
       pump.aspiration(volume, numEv);
+      pump.finPompage();
       
+      _LOG.info(String.format("infusing %s mL to valve %s", volume, numEv));
+      pump.refoulement(volume, numEv);
+      
+      // We can't test pause when withdrawing because the algorithm of withdrawing 
+      // waits until the pump is done.
       Thread.sleep(1500);
       _LOG.info("pausing");
       pump.pause();
@@ -685,10 +691,19 @@ public class PousseSeringue implements Closeable
       Thread.sleep(5000);
       _LOG.info("resuming");
       pump.reprise();
+      pump.finPompage();
       
-      Thread.sleep(1500);
+      delivered = pumpInt.deliver();
+      _LOG.info(String.format("delivered %s mL", delivered));
+      
+      _LOG.info(String.format("withdrawing %s mL to valve %s", volume, numEv));
+      pump.aspiration(volume, numEv);
+      pump.finPompage();
+      
+      // We can't test cancellation when infusing or withdrawing because
+      // this._realVolume is assigned before the pump realizes the operation.
       _LOG.info("cancelling");
-      pump.cancel();
+      pump.cancel(); // In fact, it drains the volume plus the security volume.
       
       delivered = pumpInt.deliver();
       _LOG.info(String.format("delivered %s mL", delivered));
