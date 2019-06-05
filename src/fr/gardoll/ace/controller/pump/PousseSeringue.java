@@ -447,6 +447,7 @@ public class PousseSeringue implements Closeable
       }
       
       this.vidange();
+      this.finPompage();
     }
     catch(SerialComException e)
     {
@@ -578,7 +579,6 @@ public class PousseSeringue implements Closeable
     
     // vidange.
     this.algoRefoulement(PousseSeringue._volumeReel, ParaCom.NUM_EV_REFOULEMENT);
-    this.finPompage();
   }
 
   public static int numEvRefoulement()
