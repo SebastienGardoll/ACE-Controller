@@ -118,7 +118,7 @@ public class InterfacePousseSeringue  implements Closeable
   //traitement de la réponse de l'interface en cas d'erreur => exception.
   private void traitementReponse(String message) throws SerialComException
   {
-    _LOG.debug(String.format("ack received: '%s'", message));
+    _LOG.trace(String.format("ack received: '%s'", message));
     
     if (message.matches("E+"))
     {
@@ -231,7 +231,7 @@ public class InterfacePousseSeringue  implements Closeable
   {
     String ack = this.traitementOrdre("run?\r");
     boolean result = false == ack.equals(":") ;
-    _LOG.debug(String.format("is pump running: %s", result));
+    _LOG.trace(String.format("is pump running: %s", result));
     return result;
   }
   

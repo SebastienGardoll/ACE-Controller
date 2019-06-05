@@ -202,7 +202,7 @@ public class JSerialComm implements SerialCom
   @Override
   public void ecrire(String ordre) throws SerialComException
   {
-    _LOG.debug(String.format("writing '%s' on port '%s'", ordre, this._id)) ;
+    _LOG.trace(String.format("writing '%s' on port '%s'", ordre, this._id)) ;
     
     try
     {
@@ -236,7 +236,7 @@ public class JSerialComm implements SerialCom
   @Override
   public String lire() throws SerialComException
   {
-    _LOG.debug(String.format("reading on port '%s'", this._id)) ;
+    _LOG.trace(String.format("reading on port '%s'", this._id)) ;
     StringBuilder sb = new StringBuilder("") ;
     
     boolean continue_to_read = true ;
@@ -274,7 +274,7 @@ public class JSerialComm implements SerialCom
     }
     
     String result = sb.toString() ; 
-    _LOG.debug(String.format("read '%s'", result));
+    _LOG.trace(String.format("read '%s'", result));
 
     return result ;
   }
