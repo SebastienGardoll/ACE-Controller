@@ -149,4 +149,30 @@ public class ArduinoParaCom implements ParaCom
     _LOG.debug(String.format("closing the port '%s'", this._port.getId()));
     this._port.close();
   }
+  
+  public static void main(String[] args)
+  {
+    String portPath = "/dev/ttyUSB0"; // To be modified.
+    JSerialComm port = new JSerialComm(portPath);
+    
+    try(ArduinoParaCom paraCom = new ArduinoParaCom(port))
+    {
+      Thread.sleep(2000);
+      _LOG.info("begin");
+      
+      for(int valveId = 1 ; valveId < 8 ; valveId++)
+      {
+        paraCom.ouvrir(valveId);
+        Thread.sleep(2000);
+      }
+      
+      paraCom.toutFermer();
+      
+      _LOG.info("end");
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
+  }
 }
