@@ -175,7 +175,7 @@ public class PousseSeringue implements Closeable
   // requires 0 <= numEv <= NBEV_MAX
   public void aspiration(double volume, int numEv) throws InterruptedException
   { 
-    _LOG.debug(String.format("withdrawing volume '%s' from isolation valve '%s'",
+    _LOG.debug(String.format("withdrawing volume '%s' from valve '%s'",
         volume, numEv));
     // amélioration de l'algo pour éviter les pertes !!!
     // considère le volume d'une seringue
@@ -204,7 +204,7 @@ public class PousseSeringue implements Closeable
   //requires 0 <= numEv <= NBEV_MAX
   public void refoulement(double volume , int numEv) throws InterruptedException
   {
-    _LOG.debug(String.format("infusing volume '%s' to the isolation valve '%s'",
+    _LOG.debug(String.format("infusing volume '%s' to the valve '%s'",
         volume, numEv));
     volume /= _nbSeringue ;
     this.algoRefoulement(volume, numEv) ;
@@ -212,7 +212,7 @@ public class PousseSeringue implements Closeable
 
   public void algoAspiration(double volume, int numEv) throws InterruptedException
   { 
-    _LOG.debug(String.format("running withdrawing routine for volume '%s' from isolation valve '%s'",
+    _LOG.debug(String.format("running withdrawing subroutine for volume '%s' from valve '%s'",
         volume, numEv));
     //attention un ordre comme voli ou volw 0 correspond à une aspi/infusion sans fin.
     if (Utils.isNearZero(volume)) return ;
@@ -260,7 +260,7 @@ public class PousseSeringue implements Closeable
   public void algoRefoulement(double volume, int numEv) throws InterruptedException
 
   { 
-    _LOG.debug(String.format("running the infusion routine for volume '%s' to the isolation valve '%s'",
+    _LOG.debug(String.format("running the infusion subroutine for volume '%s' to the valve '%s'",
         volume, numEv));
     // attention un ordre comme voli ou volw 0 correspond à une aspi/infusion sans fin.
     // si y a un problème , il faut pouvoir le détecter.
@@ -312,7 +312,7 @@ public class PousseSeringue implements Closeable
   //volume n'est pas divisé par nbSeringue !!!
   public void rincageAspiration(double volume, int numEv) throws InterruptedException
   {
-    _LOG.debug(String.format("rinsing with volume '%s' from isolation valve '%s'",
+    _LOG.debug(String.format("rinsing with volume '%s' from valve '%s'",
         volume, numEv));
     // attention si volume = _volumeMaxSeringue
     // volume + VOL_AJUSTEMENT > _volumeMaxSeringue
@@ -462,7 +462,7 @@ public class PousseSeringue implements Closeable
   {
     try
     {
-      _LOG.debug("stopping the pump (pause)");
+      _LOG.debug("pausing the pump");
       if (this.interfacePousseSeringue.running())
       {  
         this.interfacePousseSeringue.stop();
@@ -613,6 +613,7 @@ public class PousseSeringue implements Closeable
   // fermeture des Ev Commandées.
   public void fermetureEv() throws InterruptedException
   {  
+    _LOG.debug("closing the valves");
     try
     {
       this.para.toutFermer() ;
