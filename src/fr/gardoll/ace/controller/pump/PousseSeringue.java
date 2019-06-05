@@ -578,6 +578,7 @@ public class PousseSeringue implements Closeable
     
     // vidange.
     this.algoRefoulement(PousseSeringue._volumeReel, ParaCom.NUM_EV_REFOULEMENT);
+    this.finPompage();
   }
 
   public static int numEvRefoulement()
@@ -655,8 +656,13 @@ public class PousseSeringue implements Closeable
             diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
             volumeInitiale))
     {
-      double volume = 5.;
+      double volume = 3.;
       int numEv = 0;
+      double rate = 10.;
+      
+      _LOG.info(String.format("setting rate to '%s'", rate));
+      pump.setDebitAspiration(rate);
+      pump.setDebitRefoulement(rate);      
       
       _LOG.info(String.format("withdrawing %s mL to valve %s", volume, numEv));
       pump.aspiration(volume, numEv);
