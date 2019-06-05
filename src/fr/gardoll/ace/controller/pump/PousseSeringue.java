@@ -657,7 +657,7 @@ public class PousseSeringue implements Closeable
             volumeInitiale))
     {
       double volume = 3.;
-      int numEv = 0;
+      int numEv = PousseSeringue.numEvH2O();
       double rate = 10.;
       
       _LOG.info(String.format("setting rate to '%s'", rate));
