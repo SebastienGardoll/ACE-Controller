@@ -115,11 +115,36 @@ public class ArduinoParaCom implements ParaCom
     {
       String ack = this._port.lire().strip() ;
       _LOG.debug(String.format("checking ack '%s'", ack));
-      if(ack.equals("E"))
+      
+      switch(ack)
       {
-        String msg = "error while sending order to usb2valves";
-        _LOG.fatal(msg);
-        throw new ParaComException(msg);
+        case "E":
+        {
+          String msg = "error while sending order to usb2valves";
+          _LOG.fatal(msg);
+          throw new ParaComException(msg);
+        }
+        
+        case "0":
+        {
+          // Everything is OK.
+          break;
+        }
+        
+        case "":
+        {
+          String msg = String.format("arduino is disconnected (port is %s)",
+                                     this._port.getId());
+          _LOG.fatal(msg);
+          throw new ParaComException(msg);
+        }
+        
+        default:
+        {
+          String msg = String.format("unsupported ack '%s'", ack);
+          _LOG.fatal(msg);
+          throw new ParaComException(msg);
+        }
       }
     }
     catch (SerialComException e)
