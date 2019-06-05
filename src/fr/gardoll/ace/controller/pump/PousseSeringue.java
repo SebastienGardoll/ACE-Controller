@@ -6,6 +6,8 @@ import java.io.IOException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.com.ArduinoParaCom ;
+import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.ParaCom ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParaComException ;
@@ -437,7 +439,22 @@ public class PousseSeringue implements Closeable
   
   public void cancel() throws InterruptedException
   {
-    // Nothing to do, dummy method so as to call it.
+    try
+    {
+      if (this.interfacePousseSeringue.running())
+      {  
+        this.interfacePousseSeringue.stop();
+      }
+      
+      this.vidange();
+    }
+    catch(SerialComException e)
+    {
+      String msg = String.format("error while cancelling the pump operations: %s",
+          e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new RuntimeException(msg, e);
+    }
   }
 
   // Arrête de la pompe
@@ -619,6 +636,59 @@ public class PousseSeringue implements Closeable
   
   public static void main(String[] args)
   {
-
+    String pumpPortPath = "/dev/ttyUSB1"; // To be modified.
+    JSerialComm pumpPort = new JSerialComm(pumpPortPath);
+    
+    String paraComPortPath = "/dev/ttyUSB0"; // To be modified.
+    JSerialComm paraComPort = new JSerialComm(paraComPortPath);
+    
+    int nombreSeringue = 1;
+    double diametreSeringue = 14.25;
+    double volumeMaxSeringue = 10.;
+    double debitMaxPousseSeringue = 10.;
+    double volumeInitiale = 0.;
+    
+    try(InterfacePousseSeringue pumpInt = new InterfacePousseSeringue(pumpPort, diametreSeringue);
+        ArduinoParaCom paraCom = new ArduinoParaCom(paraComPort);
+        PousseSeringue pump = new PousseSeringue(pumpInt, paraCom, nombreSeringue,
+            diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
+            volumeInitiale))
+    {
+      double volume = 5.;
+      int numEv = 0;
+      
+      _LOG.info(String.format("withdrawing %s mL to valve %s", volume, numEv));
+      pump.aspiration(volume, numEv);
+      pump.finPompage();
+      
+      _LOG.info(String.format("infusing %s mL to valve %s", volume, numEv));
+      pump.refoulement(volume, numEv);
+      pump.finPompage();
+      
+      _LOG.info(String.format("withdrawing %s mL to valve %s", volume, numEv));
+      pump.aspiration(volume, numEv);
+      
+      Thread.sleep(1500);
+      _LOG.info("pausing");
+      pump.pause();
+      
+      double delivered = pumpInt.deliver();
+      _LOG.info(String.format("delivered %s mL", delivered));
+      
+      Thread.sleep(5000);
+      _LOG.info("resuming");
+      pump.reprise();
+      
+      Thread.sleep(1500);
+      _LOG.info("cancelling");
+      pump.cancel();
+      
+      delivered = pumpInt.deliver();
+      _LOG.info(String.format("delivered %s mL", delivered));
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 }
