@@ -85,12 +85,12 @@ public class InterfaceMoteur implements Closeable
       _LOG.fatal(msg);
       throw new SerialComException(msg);
     }
-    
+
     switch (reponse.charAt(0))
     {  
-      case '0': { break ; } // commande bien exécutée par l'interface
-      
-      case '1': { break ; } // toujours en mouvement pour la fonction moving
+      // FYI
+      //case '0': { break ; } // commande bien exécutée par l'interface
+      //case '1': { break ; } // toujours en mouvement pour la fonction moving
 
       case 'E':
       { 
@@ -98,20 +98,6 @@ public class InterfaceMoteur implements Closeable
         _LOG.fatal(msg);
         throw new SerialComException(msg);
       }
-
-      // attention incompatibilité avec where et position négative !!!
-      // case '-' : { throw EInterfaceMoteur (IM_ERREUR_RECEPTION_2) ; break ;}
-      
-      // XXX untranslated code.
-      // case 0   : { throw EInterfaceMoteur ( IM_ERREUR_RECEPTION_3 ) ; break ; }
-      
-      default:
-      {
-        String msg = String.format("unsupported reponse: %s", reponse);
-        _LOG.fatal(msg);
-        throw new SerialComException(msg);
-      }
-
     }
   }
   
