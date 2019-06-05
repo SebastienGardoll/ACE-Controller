@@ -109,6 +109,26 @@ public class ArduinoParaCom implements ParaCom
     Thread.sleep(ArduinoParaCom.ATTENTE_EV) ; //temps d'attente de l'exécution mécanique de l'ordre
   }
   
+  public void sendOrder(byte order) throws ParaComException, InterruptedException
+  {
+    _LOG.debug(String.format("sending order '%s'", order));
+    
+    try
+    {
+      this._port.write(new byte[] {order});
+    }
+    catch(SerialComException e)
+    {
+      String msg = String.format("error while writing on port '%s': %s",
+          this._port.getId(), e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new ParaComException(msg, e);
+    }
+    
+    this.check();
+    Thread.sleep(ArduinoParaCom.ATTENTE_EV) ; //temps d'attente de l'exécution mécanique de l'ordre
+  }
+  
   private void check() throws ParaComException
   {
     try
@@ -190,6 +210,19 @@ public class ArduinoParaCom implements ParaCom
         paraCom.ouvrir(valveId);
         Thread.sleep(2000);
       }
+      
+      Thread.sleep(2000);
+      _LOG.info("begin");
+      
+      for(int ordre = 1 ; ordre < 65 ; ordre++)
+      {
+        paraCom.sendOrder(Integer.valueOf(ordre).byteValue());
+        Thread.sleep(1000);
+      }
+      
+      paraCom.toutFermer();
+      
+      _LOG.info("end");
       
       paraCom.toutFermer();
       
