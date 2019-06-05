@@ -576,6 +576,8 @@ public class Passeur implements Closeable
         Passeur autosampler = new Passeur(autoSamplerInt, 640, 360))
     {
       int carouselPosition = 10;
+      int armNbStep = Passeur.convertBras(-50); // Convert -50 millimeter into number of steps.
+      
       _LOG.info(String.format("moving carousel to position %s", carouselPosition));
       autosampler.moveCarrousel(carouselPosition);
       
@@ -588,7 +590,6 @@ public class Passeur implements Closeable
       _LOG.info("waiting for the carousel");
       autosampler.finMoveCarrousel();
       
-      int armNbStep = Passeur.convertBras(-50); // Convert -50 millimeter into number of steps.
       _LOG.info(String.format("moving arm to %s nb of step", armNbStep));
       autosampler.moveBras(armNbStep);
       
@@ -604,7 +605,7 @@ public class Passeur implements Closeable
       _LOG.info(String.format("moving carousel to position %s and arm to %s nb of step", carouselPosition, armNbStep));
       autosampler.moveCarrouselEtBras(carouselPosition, armNbStep);
       
-      Thread.sleep(2000);
+      Thread.sleep(1000);
       
       _LOG.debug("pausing");
       autosampler.pause();
@@ -619,8 +620,14 @@ public class Passeur implements Closeable
       
       Thread.sleep(1500);
       
+      _LOG.info(String.format("where arm: %s", autoSamplerInt.where(TypeAxe.bras)));
+      _LOG.info(String.format("where carousel: %s", autoSamplerInt.where(TypeAxe.carrousel)));
+      
       _LOG.debug("cancelling");
       autosampler.cancel();
+      
+      _LOG.info(String.format("where arm: %s", autoSamplerInt.where(TypeAxe.bras)));
+      _LOG.info(String.format("where carousel: %s", autoSamplerInt.where(TypeAxe.carrousel)));
     }
     catch(Exception e)
     {
