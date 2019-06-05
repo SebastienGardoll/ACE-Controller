@@ -364,12 +364,13 @@ public class Passeur implements Closeable
     }
   }
   
-  // TODO: test.
   public void returnToInit() throws InterruptedException
   {
     _LOG.debug("returning to the initial position");
     this.moveButeBras();
+    this.finMoveBras();
     this.moveCarrousel(TRASH_POSITION);
+    this.finMoveCarrousel();
   }
   
   // TODO: test.
@@ -377,7 +378,7 @@ public class Passeur implements Closeable
   {
     try
     {
-      _LOG.debug("cancelling the autosampler operations");
+      _LOG.debug("halting the autosampler operations");
       this.interfaceMoteur.halt();
       this.returnToInit();
     }
@@ -574,7 +575,7 @@ public class Passeur implements Closeable
     try(InterfaceMoteur autoSamplerInt = new InterfaceMoteur(port) ;
         Passeur autosampler = new Passeur(autoSamplerInt, 640, 360))
     {
-      int carouselPosition = 4;
+      int carouselPosition = 10;
       _LOG.info(String.format("moving carousel to position %s", carouselPosition));
       autosampler.moveCarrousel(carouselPosition);
       
@@ -587,7 +588,7 @@ public class Passeur implements Closeable
       _LOG.info("waiting for the carousel");
       autosampler.finMoveCarrousel();
       
-      int armNbStep = Passeur.convertBras(30); // Convert 30 millimeter into number of steps.
+      int armNbStep = Passeur.convertBras(-50); // Convert -50 millimeter into number of steps.
       _LOG.info(String.format("moving arm to %s nb of step", armNbStep));
       autosampler.moveBras(armNbStep);
       
@@ -601,19 +602,22 @@ public class Passeur implements Closeable
       autosampler.finMoveBras();
       
       _LOG.info(String.format("moving carousel to position %s and arm to %s nb of step", carouselPosition, armNbStep));
-      autosampler.moveCarrousel(carouselPosition, armNbStep);
+      autosampler.moveCarrouselEtBras(carouselPosition, armNbStep);
       
-      Thread.sleep(500);
+      Thread.sleep(2000);
       
       _LOG.debug("pausing");
       autosampler.pause();
       
-      Thread.sleep(1500);
+      _LOG.info(String.format("where arm: %s", autoSamplerInt.where(TypeAxe.bras)));
+      _LOG.info(String.format("where carousel: %s", autoSamplerInt.where(TypeAxe.carrousel)));
+      
+      Thread.sleep(5000);
       
       _LOG.debug("resuming");
       autosampler.reprise(true);
       
-      Thread.sleep(200);
+      Thread.sleep(1500);
       
       _LOG.debug("cancelling");
       autosampler.cancel();
