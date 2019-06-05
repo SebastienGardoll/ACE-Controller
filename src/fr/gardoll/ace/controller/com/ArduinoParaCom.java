@@ -9,7 +9,6 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParaComException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 
-// TODO add logging.
 public class ArduinoParaCom implements ParaCom
 {
   private static final int OPENING_DELAY = 1000;
@@ -55,6 +54,8 @@ public class ArduinoParaCom implements ParaCom
   @Override
   public void ouvrir(int numEv) throws ParaComException, InterruptedException
   {
+    _LOG.debug(String.format("openning valve '%s'", numEv));
+    
     if (numEv < 0)
     {
       String msg = String.format("isolation valve number '%s' cannot be negative", numEv);
@@ -93,6 +94,7 @@ public class ArduinoParaCom implements ParaCom
     try
     {
       byte b = Integer.valueOf(ordre).byteValue();
+      _LOG.debug(String.format("sending order '%s'", ordre));
       this._port.write(new byte[] {b});
     }
     catch(SerialComException e)
@@ -112,6 +114,7 @@ public class ArduinoParaCom implements ParaCom
     try
     {
       String ack = this._port.lire().strip() ;
+      _LOG.debug(String.format("checking ack '%s'", ack));
       if(ack.equals("E"))
       {
         String msg = "error while sending order to usb2valves";
