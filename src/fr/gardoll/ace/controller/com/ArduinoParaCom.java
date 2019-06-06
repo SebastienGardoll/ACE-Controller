@@ -82,6 +82,8 @@ public class ArduinoParaCom implements ParaCom
       case 6 : { ordre = 32 ; break ; }
 
       case 7 : { ordre = 64 ; break ; }
+      
+      case 8 : { ordre = -128 ; break;}
 
       default :
       {
