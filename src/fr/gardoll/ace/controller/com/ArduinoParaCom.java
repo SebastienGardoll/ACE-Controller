@@ -210,8 +210,12 @@ public class ArduinoParaCom implements ParaCom
       for(int valveId = 1 ; valveId < 8 ; valveId++)
       {
         paraCom.ouvrir(valveId);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
       }
+      
+      paraCom.toutFermer();
+      
+      _LOG.info("end");
       
       Thread.sleep(2000);
       _LOG.info("begin");
@@ -221,10 +225,6 @@ public class ArduinoParaCom implements ParaCom
         paraCom.sendOrder(Integer.valueOf(ordre).byteValue());
         Thread.sleep(1000);
       }
-      
-      paraCom.toutFermer();
-      
-      _LOG.info("end");
       
       paraCom.toutFermer();
       
