@@ -426,6 +426,8 @@ public class InterfacePousseSeringue  implements Closeable
   
   public static void main(String[] args)
   {
+    // Windows 10: "COM5"
+    // CentOS   7: "/dev/ttyUSB1"
     String portPath = "/dev/ttyUSB1"; // To be modified.
     JSerialComm port = new JSerialComm(portPath);
     

@@ -638,6 +638,8 @@ public class PousseSeringue implements Closeable
   
   public static void main(String[] args)
   {
+    // Windows 10: "COM5"
+    // CentOS   7: "/dev/ttyUSB1"
     String pumpPortPath = "/dev/ttyUSB1"; // To be modified.
     JSerialComm pumpPort = new JSerialComm(pumpPortPath);
     
