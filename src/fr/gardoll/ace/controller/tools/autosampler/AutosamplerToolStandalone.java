@@ -44,6 +44,7 @@ public class AutosamplerToolStandalone extends AbstractJFrame
     {
       AutosamplerToolControl ctrl = new AutosamplerToolControl();
       AutosamplerToolPanel toolPanel = new AutosamplerToolPanel(ctrl);
+      ctrl.addControlPanel(toolPanel);
       AutosamplerToolStandalone tool = new AutosamplerToolStandalone(toolPanel, ctrl);
       tool.setVisible(true);
     }
