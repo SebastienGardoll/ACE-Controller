@@ -199,6 +199,8 @@ public class ArduinoParaCom implements ParaCom
   
   public static void main(String[] args)
   {
+    // Windows 10: "COM6"
+    // CentOS   7: "/dev/ttyUSB0"
     String portPath = "/dev/ttyUSB0"; // To be modified.
     JSerialComm port = new JSerialComm(portPath);
     
