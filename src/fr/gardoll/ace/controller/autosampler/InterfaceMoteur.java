@@ -20,7 +20,7 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable
 {
-  private static final int OPENING_DELAY = 1000;
+  private static final int OPENING_DELAY = 2000;
   
   // nombre de signaux en sortis de l'interface.
   private final static int NB_BITS = 7 ;

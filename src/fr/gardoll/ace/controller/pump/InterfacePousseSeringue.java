@@ -26,7 +26,7 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 //TODO: singleton.
 public class InterfacePousseSeringue  implements Closeable
 {
-  private static final int OPENING_DELAY = 1000;
+  private static final int OPENING_DELAY = 2000;
   
   //caractéristique du pousse seringue en m/min
   public final static double COURCE_LINEAIRE_MAX = 0.1269 ;
