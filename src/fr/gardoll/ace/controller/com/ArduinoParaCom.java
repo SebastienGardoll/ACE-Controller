@@ -213,22 +213,9 @@ public class ArduinoParaCom implements ParaCom
       {
         paraCom.ouvrir(valveId);
         Thread.sleep(3000);
+        paraCom.toutFermer();
+        Thread.sleep(2000);
       }
-      
-      paraCom.toutFermer();
-      
-      _LOG.info("end");
-      
-      Thread.sleep(2000);
-      _LOG.info("begin");
-      
-      for(int ordre = 1 ; ordre < 65 ; ordre++)
-      {
-        paraCom.sendOrder(Integer.valueOf(ordre).byteValue());
-        Thread.sleep(1000);
-      }
-      
-      paraCom.toutFermer();
       
       _LOG.info("end");
     }
