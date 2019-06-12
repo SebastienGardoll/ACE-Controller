@@ -11,7 +11,7 @@ import fr.gardoll.ace.controller.core.SerialComException ;
 
 public class ArduinoParaCom implements ParaCom
 {
-  private static final int OPENING_DELAY = 1000;
+  private static final int OPENING_DELAY = 2000;
   
   private static final int ATTENTE_EV = 200 ; // en milisecondes
   
