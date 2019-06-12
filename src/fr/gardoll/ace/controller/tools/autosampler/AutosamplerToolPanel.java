@@ -762,7 +762,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   private void initCustom()
   {
     this.fileChooser.setDialogTitle("select column file");
-    this.fileChooser.setCurrentDirectory(Utils.getRootDir(this).toFile());
+    this.fileChooser.setCurrentDirectory(Utils.getInstance().getRootDir().toFile());
     this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
     this.fileChooser.setMultiSelectionEnabled(false);
     this.fileChooser.setFileFilter(new FileFilter() 
