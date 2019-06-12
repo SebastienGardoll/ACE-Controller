@@ -23,8 +23,8 @@ import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
-// TODO: default null for any string.
-// TODO: check for null strings then throw exception.
+// TODO: default "READ ERROR" for any string.
+// TODO: check for "READ ERROR" strings then throw exception.
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
@@ -125,7 +125,9 @@ public class ParametresSession implements Closeable
       this._diametreSeringue       = section.getDouble(Names.SIPS_CLEF_DIA_SERINGUE,-1.0);
       
       section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
-      String plateConfFilePathString = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
+      String plateConfFilePathString      = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
+      this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
+      this._autosamplerPortPath           = section.getString(Names.SIC_CLEF_PORT_PATH);
       try
       {
         plateConfFile = Utils.getInstance().resolvePath(plateConfFilePathString);
@@ -160,9 +162,6 @@ public class ParametresSession implements Closeable
       Configurations configs = new Configurations();
       INIConfiguration iniConf = configs.ini(plateConfFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
-      
-      this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
-      this._autosamplerPortPath           = section.getString(Names.SIC_CLEF_PORT_PATH);
       
       this._nbPasCarrousel    = section.getInteger(Names.SIC_CLEF_NB_DEMI_PAS, -1) ;
       this._refCarrousel      = section.getInteger(Names.SIC_CLEF_REF_CARROUSEL, -1);
