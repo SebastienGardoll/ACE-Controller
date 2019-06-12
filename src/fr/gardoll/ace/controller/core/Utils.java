@@ -16,6 +16,9 @@ public class Utils
 {
   private static final Logger _LOG = LogManager.getLogger(Utils.class.getName());
   
+  // Must be singleton as getRootDir must fetch the file of this class (or any
+  // classes of this Java project).
+  private static Utils _INSTANCE = null ;
   private Utils() {}
   
   public static double EPSILON = 0.00001 ;
@@ -25,8 +28,18 @@ public class Utils
     return (value <= EPSILON);
   }
   
+  public static Utils getInstance()
+  {
+    if(_INSTANCE == null)
+    {
+      _INSTANCE = new Utils();
+    }
+    
+    return _INSTANCE;
+  }
+  
   // Resolve the given string parameter to a system dependent absolute path. 
-  public static Path resolvePath(String path) throws FileNotFoundException
+  public Path resolvePath(String path) throws FileNotFoundException
   {
     Path p = Paths.get(path);
     Path result = null;
@@ -36,7 +49,7 @@ public class Utils
     }
     else
     {
-      Path rootDir = Utils.getRootDir(path) ;
+      Path rootDir = this.getRootDir() ;
       result = rootDir.resolve(p);
     }
     
@@ -50,11 +63,11 @@ public class Utils
   
   // Return the path of the directory of the application (not the current
   // directory !).
-  public static Path getRootDir(Object obj)
+  public Path getRootDir()
   {
     try
     {
-      URL u = obj.getClass().getProtectionDomain().getCodeSource().getLocation();
+      URL u = this.getClass().getProtectionDomain().getCodeSource().getLocation();
       Path result = Path.of(u.toURI()).getParent() ;
       return result;
     }

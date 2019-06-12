@@ -23,6 +23,8 @@ import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
+// TODO: default null for any string.
+// TODO: check for null strings then throw exception.
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
@@ -90,7 +92,7 @@ public class ParametresSession implements Closeable
     
     Path rootDir = null ;
     _LOG.debug("fetch root dir");
-    rootDir = Utils.getRootDir(this);
+    rootDir = Utils.getInstance().getRootDir();
     
     Path configurationFile = rootDir.resolve(Names.CONFIG_DIRNAME)
                                     .resolve(Names.CONFIG_FILENAME);
@@ -126,7 +128,7 @@ public class ParametresSession implements Closeable
       String plateConfFilePathString = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
       try
       {
-        plateConfFile = Utils.resolvePath(plateConfFilePathString);
+        plateConfFile = Utils.getInstance().resolvePath(plateConfFilePathString);
       }
       catch (FileNotFoundException e)
       {
