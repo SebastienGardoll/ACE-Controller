@@ -553,11 +553,6 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     add(armPanel, gridBagConstraints) ;
   }// </editor-fold>
 
-  private void handleException(String msg, Exception e)
-  {
-    this.reportError(msg, e);
-  }
-  
   private void closeButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
     this.close((JFrame) this.getParent());
@@ -598,16 +593,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
   private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    try
-    {
-      this._ctrl.cancel();
-    }
-    catch (Exception e)
-    {
-      String msg = String.format("error while cancelling: %s", e.getMessage());
-      _LOG.error(msg, e);
-      this.handleException("error while cancelling", e);
-    }
+    this.cancel();
   }
 
   private void pauseButtonMouseClicked(java.awt.event.MouseEvent evt)

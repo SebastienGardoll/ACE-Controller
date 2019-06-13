@@ -24,8 +24,41 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     this._ctrl = ctrl;
   }
   
-  @Override
-  public boolean close(JFrame parent)
+  protected void handleException(String msg, Exception e)
+  {
+    this.reportError(msg, e);
+  }
+  
+  protected boolean cancel()
+  {
+    int choice = JOptionPane.showConfirmDialog(this,
+        "Do you want to cancel the running operations (and returning to the initial position) ?") ;
+    
+    if (choice == JOptionPane.OK_OPTION)
+    {
+      _LOG.debug("running the panel cancelling operations") ;
+      
+      try
+      {
+        this._ctrl.cancel();
+      }
+      catch (Exception e)
+      {
+        String msg = String.format("error while cancelling: %s", e.getMessage());
+        _LOG.error(msg, e);
+        this.handleException("error while cancelling", e);
+      }
+      
+      return true;
+    }
+    else
+    {
+      _LOG.debug("the panel cancelling operations has been skipped") ;
+      return false;
+    }
+  }
+  
+  protected boolean close(JFrame parent)
   {
     if(false == this.isClosed())
     {
@@ -63,8 +96,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     }
   }
 
-  @Override
-  public boolean isClosed()
+  protected boolean isClosed()
   {
     return this._isClosed ;
   }
