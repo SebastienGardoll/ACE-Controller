@@ -30,6 +30,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
    */
   public AutosamplerToolPanel(AutosamplerToolControl ctrl)
   {
+    super(ctrl);
     this._ctrl = ctrl;
     initCustom();
     initComponents() ;
@@ -560,7 +561,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   {
     try
     {
-      this._ctrl.close();
+      this.close();
     }
     catch(Exception e)
     {

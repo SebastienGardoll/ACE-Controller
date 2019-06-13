@@ -12,32 +12,13 @@ public class AutosamplerToolStandalone extends AbstractJFrame
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolStandalone.class.getName());
   private static final long serialVersionUID = -6062838678688858409L ;
-  private final AutosamplerToolControl _ctrl ;
-  private final AutosamplerToolPanel _toolPanel ;
 
   public AutosamplerToolStandalone(AutosamplerToolPanel toolPanel,
                                    AutosamplerToolControl ctrl)
   {
     super(toolPanel) ;
-    this._ctrl = ctrl;
-    this._toolPanel = toolPanel;
   }
 
-  @Override
-  protected void onCloseOperation()
-  {
-    try
-    {
-      this._ctrl.close();
-    }
-    catch (InterruptedException e)
-    {
-      String msg = "error while closing the tool";
-      _LOG.error(String.format("%s: %s", msg, e.getMessage()));
-      this._toolPanel.reportError(msg, e);
-    }
-  }
-  
   // TODO: to be tested.
   public static void main(String[] args)
   {
@@ -56,5 +37,4 @@ public class AutosamplerToolStandalone extends AbstractJFrame
       Utils.reportError(msg, e);
     }
   }
-
 }
