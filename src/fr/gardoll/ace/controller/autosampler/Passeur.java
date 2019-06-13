@@ -45,7 +45,7 @@ public class Passeur implements Closeable
   // s'arrêter à une butée ( donc pas de x ou y précisé ) ou non
   private boolean _butee = false; 
   
-  private final InterfaceMoteur interfaceMoteur;
+  private final MotorController interfaceMoteur;
   
   /* ne pas inclure d'attente de fin de mouvement dans les procédures de mouvement
   car incompatible avec le système de pause */ 
@@ -55,7 +55,7 @@ public class Passeur implements Closeable
 
   //require nbPasCarrousel > 0
   //require diametre > 0
-  public Passeur(InterfaceMoteur interfaceMoteur, int nbPasCarrousel, int diametre)
+  public Passeur(MotorController interfaceMoteur, int nbPasCarrousel, int diametre)
       throws InitializationException, InterruptedException
   {
     _LOG.debug(String.format("initializing the autosampler with %s number of carousel steps and %s diameter",
