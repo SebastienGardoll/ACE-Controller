@@ -26,27 +26,22 @@ public abstract class AbstractJFrame extends JFrame
       @Override
       public void windowClosing(WindowEvent e)
       {
-        boolean closeDialog = false;
-        
         if(false == mainPanel.isClosed())
         {
-          closeDialog = mainPanel.close() ;
+          if(mainPanel.close(AbstractJFrame.this))
+          {
+            _LOG.debug("the frame has been closed");
+          }
+          else
+          {
+            _LOG.debug("closing the frame has been cancelled");
+          }
         }
         else 
         {
           // Main panel is already close. Just shutdown the dialog.
           _LOG.debug("main panel is already closed");
-          closeDialog = true;
-        }
-        
-        if(closeDialog)
-        {
-          _LOG.debug("closing the dialog and may shutdown the JVM");
           AbstractJFrame.this.dispose();
-        }
-        else
-        {
-          _LOG.debug("closing has been cancelled");
         }
       }
     }) ;

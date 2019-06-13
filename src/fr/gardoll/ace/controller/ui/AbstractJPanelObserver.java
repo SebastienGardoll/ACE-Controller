@@ -1,5 +1,6 @@
 package fr.gardoll.ace.controller.ui;
 
+import javax.swing.JFrame ;
 import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
 import javax.swing.SwingUtilities ;
@@ -24,7 +25,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   }
   
   @Override
-  public boolean close()
+  public boolean close(JFrame parent)
   {
     if(false == this.isClosed())
     {
@@ -36,6 +37,11 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
         try
         {
           this._ctrl.close();
+          if(parent != null)
+          {
+            _LOG.debug("closing the parent frame and may shutdown the JVM");
+            parent.dispose();
+          }
         }
         catch (Exception ex)
         {

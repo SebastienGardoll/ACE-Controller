@@ -3,6 +3,7 @@ package fr.gardoll.ace.controller.tools.autosampler ;
 import java.io.File ;
 
 import javax.swing.JFileChooser ;
+import javax.swing.JFrame ;
 import javax.swing.filechooser.FileFilter ;
 
 import org.apache.logging.log4j.LogManager ;
@@ -559,16 +560,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   
   private void closeButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    try
-    {
-      this.close();
-    }
-    catch(Exception e)
-    {
-      String msg = String.format("error while closing the panel: %s", e.getMessage());
-      _LOG.error(msg, e);
-      this.handleException("error while closing the panel", e);
-    }
+    this.close((JFrame) this.getParent());
   }
 
   private void positionButtonMouseClicked(java.awt.event.MouseEvent evt)
