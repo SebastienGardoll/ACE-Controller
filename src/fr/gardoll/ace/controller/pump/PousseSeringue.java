@@ -37,7 +37,7 @@ public class PousseSeringue implements Closeable
   
   private static final Logger _LOG = LogManager.getLogger(PousseSeringue.class.getName());
   
-  private final InterfacePousseSeringue interfacePousseSeringue ;
+  private final PumpController interfacePousseSeringue ;
 
   private final ParaCom para ;
 
@@ -68,7 +68,7 @@ public class PousseSeringue implements Closeable
   //requires volumeMaxSeringue > 0
   //requires 0 < debitMaxPousseSeringue <=  debitMaxIntrinseque ( diametreSeringue )
   //requires volumeInitiale >= 0
-  public PousseSeringue(InterfacePousseSeringue interfacePousseSeringue,
+  public PousseSeringue(PumpController interfacePousseSeringue,
                         ParaCom paraCom,
                         int nombreSeringue,
                         double diametreSeringue,
@@ -551,7 +551,7 @@ public class PousseSeringue implements Closeable
   //dépend uniquement du diamètre de la seringue
   public static int debitMaxIntrinseque ( double diametreSeringue )
   {  
-    return  InterfacePousseSeringue.debitMaxIntrinseque(diametreSeringue);
+    return  PumpController.debitMaxIntrinseque(diametreSeringue);
   }
 
   // volume utile total des seringues.

@@ -4,8 +4,6 @@ import java.io.Closeable;
 import java.math.RoundingMode ;
 import java.nio.charset.Charset ;
 import java.text.DecimalFormat ;
-import java.text.DecimalFormatSymbols ;
-import java.util.Locale ;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 
@@ -18,23 +16,14 @@ import fr.gardoll.ace.controller.com.Parity ;
 import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
-import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.
-public class InterfacePousseSeringue  implements Closeable
+public class InterfacePousseSeringue  implements Closeable, PumpController
 {
   private static final int OPENING_DELAY = 2000;
-  
-  //caractéristique du pousse seringue en m/min
-  public final static double COURCE_LINEAIRE_MAX = 0.1269 ;
-  //diamètre de seringue maximum pour le pousse seringue en mm
-  public final static int DIAMETRE_MAX = 140 ;
-  
-  public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
-      new DecimalFormatSymbols(Locale.US);
   
   private static final Pattern _DELIVER_PATTERN = Pattern.compile("([0-9.]+)\\s+(u|m)l\\s+(:|>|<)");
   private static final Pattern _NA_PATTERN = Pattern.compile("NA\\s+(:|>|<)");
@@ -98,7 +87,7 @@ public class InterfacePousseSeringue  implements Closeable
     try
     {
       // contient le code de vérification.
-      this._debitMaxIntrinseque = InterfacePousseSeringue.debitMaxIntrinseque(diametreSeringue);
+      this._debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametreSeringue);
       _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
       this.dia(diametreSeringue);
     }
@@ -110,6 +99,7 @@ public class InterfacePousseSeringue  implements Closeable
     }
   }
   
+  @Override
   public void setThreadControl(ThreadControl threadCtrl)
   {
     this._threadCtrl = threadCtrl;
@@ -206,6 +196,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   //reprise ou démarrage
+  @Override
   public void run() throws SerialComException, InterruptedException
   {
     _LOG.debug("running the pump");
@@ -213,6 +204,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // pause
+  @Override
   public void stop() throws SerialComException, InterruptedException
   {
     _LOG.debug("stopping the pump");
@@ -220,6 +212,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // en mm requires diametre > 0
+  @Override
   public void dia(double diametre) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the diameter to '%s'", diametre));
@@ -227,6 +220,7 @@ public class InterfacePousseSeringue  implements Closeable
     this.traitementOrdre (ordre);
   }
   
+  @Override
   public boolean running() throws SerialComException, InterruptedException
   {
     String ack = this.traitementOrdre("run?\r");
@@ -240,6 +234,7 @@ public class InterfacePousseSeringue  implements Closeable
   // Ainsi : 1. ou 1.0 ne donnera pas de réponse en réel donc la réponse sera
   // 0 puis 1 à la fin !!!! Il n'y a donc aucun intérêt.
   // Parade : passer en micro litre quand < 10 mL.
+  @Override
   public double deliver() throws SerialComException, InterruptedException
   {
     String rawMessage = this.traitementOrdre("del?\r");
@@ -276,6 +271,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
+  @Override
   public void ratei(double debit) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
@@ -299,6 +295,7 @@ public class InterfacePousseSeringue  implements Closeable
   }
   
   //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
+  @Override
   public void ratew(double debit) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit));
@@ -324,6 +321,7 @@ public class InterfacePousseSeringue  implements Closeable
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
+  @Override
   public void voli(double volume) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the infusion volume to '%s'", volume));
@@ -352,6 +350,7 @@ public class InterfacePousseSeringue  implements Closeable
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
+  @Override
   public void volw(double volume) throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("setting the withdrawing volume to '%s'", volume));
@@ -378,43 +377,18 @@ public class InterfacePousseSeringue  implements Closeable
     this.traitementOrdre(ordre) ;
   }
   
+  @Override
   public void modeI() throws SerialComException, InterruptedException
   {
     _LOG.debug("setting the infusion mode");
     this.traitementOrdre("mode i\r") ; 
   }
   
+  @Override
   public void modeW() throws SerialComException, InterruptedException
   {
     _LOG.debug("setting the withdrawing mode");
     this.traitementOrdre("mode w\r") ;
-  }
-  
-  public static int debitMaxIntrinseque(double diametreSeringue)
-  {
-    _LOG.debug(String.format("computing the maxium rate based on the syringe diameter '%s'",
-        diametreSeringue));
-    if (diametreSeringue <= 0)
-    {
-      String msg = String.format("the value of the syringe diameter '%s' cannot be negative or null",
-                                 diametreSeringue) ;
-      _LOG.fatal(msg);
-      throw new ConfigurationException(msg);
-    }
-    else if (diametreSeringue > DIAMETRE_MAX)
-    {
-      String msg = String.format("the value of the syringe diameter '%s' cannot be greater than %s",
-                                 diametreSeringue, DIAMETRE_MAX);
-      _LOG.fatal(msg);
-      throw new ConfigurationException (msg);
-    }
-    
-    double result = Math.pow(diametreSeringue/2. , 2.) * Math.PI * COURCE_LINEAIRE_MAX  ;
-    // arrondi par à l'entier inférieur à cause spec du pousse seringue .
-    
-    _LOG.debug(String.format("getting '%s' rounded to '%s'", result, (int)result));
-    
-    return (int) (result) ;
   }
   
   @Override
