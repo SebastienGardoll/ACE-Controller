@@ -17,7 +17,7 @@ public abstract class AbstractJFrame extends JDialog
   
   public AbstractJFrame(AbstractJPanelObserver mainPanel)
   {
-    this.setModalityType(ModalityType.APPLICATION_MODAL);
+    super(null, ModalityType.APPLICATION_MODAL);
     this.getContentPane().add(mainPanel);
     
     // Manage the closing operations.
