@@ -378,8 +378,14 @@ public class Passeur implements Closeable
   {
     try
     {
-      _LOG.debug("halting the autosampler operations");
-      this.interfaceMoteur.halt();
+      _LOG.debug("cancelling the autosampler operations");
+      if (this.interfaceMoteur.moving(TypeAxe.bras) ||
+          this.interfaceMoteur.moving(TypeAxe.carrousel))
+      {
+        _LOG.debug("halting the autosampler operations");
+        this.interfaceMoteur.halt();
+      }
+      
       this.returnToInit();
     }
     catch(SerialComException e)

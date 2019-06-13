@@ -55,5 +55,4 @@ public abstract class AbstractJFrame extends JFrame
   }
   
   protected abstract void onCloseOperation();
-
 }
