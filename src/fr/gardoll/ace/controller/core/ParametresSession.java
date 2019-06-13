@@ -391,8 +391,15 @@ public class ParametresSession implements Closeable
   {
     try
     {
-      this._pump.close();
-      this._autosampler.close();
+      if(this._pump != null)
+      {
+        this._pump.close();
+      }
+          
+      if(this._autosampler != null)
+      {
+        this._autosampler.close();
+      }
     }
     catch (IOException e)
     {
