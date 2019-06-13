@@ -3,13 +3,13 @@ package fr.gardoll.ace.controller.ui;
 import java.awt.event.WindowAdapter ;
 import java.awt.event.WindowEvent ;
 
-import javax.swing.JFrame ;
+import javax.swing.JDialog ;
 import javax.swing.WindowConstants ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-public abstract class AbstractJFrame extends JFrame
+public abstract class AbstractJFrame extends JDialog
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractJFrame.class.getName());
   
@@ -17,6 +17,7 @@ public abstract class AbstractJFrame extends JFrame
   
   public AbstractJFrame(AbstractJPanelObserver mainPanel)
   {
+    this.setModalityType(ModalityType.APPLICATION_MODAL);
     this.getContentPane().add(mainPanel);
     
     // Manage the closing operations.
