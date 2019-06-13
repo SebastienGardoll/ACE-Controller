@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.tools.autosampler ;
 import java.io.File ;
 
 import javax.swing.JFileChooser ;
-import javax.swing.JFrame ;
 import javax.swing.filechooser.FileFilter ;
 
 import org.apache.logging.log4j.LogManager ;
@@ -16,6 +15,7 @@ import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
 import fr.gardoll.ace.controller.ui.Action ;
 import fr.gardoll.ace.controller.ui.ControlPanel ;
 import fr.gardoll.ace.controller.ui.Observer ;
+import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class AutosamplerToolPanel extends AbstractJPanelObserver
     implements ControlPanel, Observer
@@ -555,7 +555,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
   private void closeButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    this.close((JFrame) this.getParent());
+    this.close(UiUtils.getParentFrame(this));
   }
 
   private void positionButtonMouseClicked(java.awt.event.MouseEvent evt)
