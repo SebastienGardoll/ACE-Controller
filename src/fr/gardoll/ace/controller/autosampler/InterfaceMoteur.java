@@ -18,7 +18,7 @@ import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.
-public class InterfaceMoteur implements Closeable
+public class InterfaceMoteur implements Closeable, MotorController
 {
   private static final int OPENING_DELAY = 2000;
   
@@ -68,6 +68,7 @@ public class InterfaceMoteur implements Closeable
     this._port.close() ;
   }
   
+  @Override
   public void setThreadControl(ThreadControl threadCtrl)
   {
     this._threadCtrl = threadCtrl;
@@ -144,6 +145,7 @@ public class InterfaceMoteur implements Closeable
     return message_renvoye ;
   }  
   
+  @Override
   public void move(int nbPas1 , int nbPas2) throws SerialComException, InterruptedException
   { 
     String ordre = String.format("move (%s,%s)\r", nbPas1, nbPas2) ;
@@ -151,6 +153,7 @@ public class InterfaceMoteur implements Closeable
   }
   
   //détection fin de mouvement
+  @Override
   public boolean moving(TypeAxe axe) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("moving (%s)\r", axe);
@@ -160,6 +163,7 @@ public class InterfaceMoteur implements Closeable
 
   // avance jusqu'à fin de butée
   // 0 :pas bougé, 1 : butée positive, -1 : butée négative
+  @Override
   public void movel(int axe1, int axe2) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("movel (%s,%s)\r", axe1, axe2);
@@ -167,6 +171,7 @@ public class InterfaceMoteur implements Closeable
   }
   
   //réinitialisation de l'interface
+  @Override
   public void reset() throws SerialComException, InterruptedException
 
   {
@@ -181,6 +186,7 @@ public class InterfaceMoteur implements Closeable
     // ATTENTION PAS DE VERIFICATION REPONSE !!! 
   }
   
+  @Override
   public void preSecale(int denominateur) 
       throws SerialComException, InterruptedException
   {  
@@ -188,12 +194,14 @@ public class InterfaceMoteur implements Closeable
     this.traitementOrdre (ordre) ;
   }
   
+  @Override
   public void param(TypeAxe axe, int base, int top, int accel)
                                                        throws SerialComException, InterruptedException
   {
     this.param(axe, base, top, accel, 0);
   }
   
+  @Override
   public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
                                                        throws SerialComException, InterruptedException
 
@@ -213,6 +221,7 @@ public class InterfaceMoteur implements Closeable
     this.traitementOrdre(ordre, 2000l) ;
   }
 
+  @Override
   public void datum(TypeAxe axe) throws SerialComException, InterruptedException
 
   {  
@@ -220,25 +229,28 @@ public class InterfaceMoteur implements Closeable
     this.traitementOrdre (ordre) ;
   }
   
+  @Override
   public void singleLine(boolean choix) throws SerialComException, InterruptedException
   { 
-    // XXX conversion of boolean. Checked 04/18/2019
     char convertion = (choix) ? '1':'2';
     
     String ordre = String.format("singleline (%s)\r", convertion);
     this.traitementOrdre (ordre) ;
   }
   
+  @Override
   public void stop() throws SerialComException, InterruptedException
   { 
     this.traitementOrdre("stop ()\r") ;
   }
   
+  @Override
   public void manual() throws SerialComException, InterruptedException
   {  
     this.traitementOrdre("manual ()\r") ;
   }
 
+  @Override
   public void halt() throws SerialComException, InterruptedException
   { 
     // la temporisation dépend directement
@@ -246,6 +258,7 @@ public class InterfaceMoteur implements Closeable
     this.traitementOrdre ("halt()\r" , 1500l) ;
   } 
                                            
+  @Override
   public int where(TypeAxe axe) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("where (%s)\r", axe);
@@ -255,6 +268,7 @@ public class InterfaceMoteur implements Closeable
 
   //voir manuel de l'interface
   // 0 <= octet <= 255
+  @Override
   public void out(int octet) throws SerialComException, InterruptedException
   { 
     if (octet <= 255 && octet <= 0)
@@ -272,6 +286,7 @@ public class InterfaceMoteur implements Closeable
   }
 
   //voir manuel de l'interface
+  @Override
   public void out(int bitPosition, boolean isOn) throws SerialComException, InterruptedException
   { 
     if (bitPosition > NB_BITS )
