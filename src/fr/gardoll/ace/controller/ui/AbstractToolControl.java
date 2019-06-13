@@ -188,11 +188,8 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void close() throws InterruptedException
   {
-    if(this._hasEverMoved)
-    {
-      _LOG.debug("performing close operation");
-      this.cancel();
-    }
+    _LOG.debug("performing close operation");
+    this.cancel();
   }
   
   @Override
