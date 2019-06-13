@@ -33,8 +33,8 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   {
     super(ctrl);
     this._ctrl = ctrl;
-    initCustom();
     initComponents() ;
+    initCustom();
   }
 
   /**
@@ -760,6 +760,8 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
         return String.format("column file *.%s", Colonne.COLUMN_FILE_EXTENTION);
       }
     });
+    
+    this.enableControl(true);
   }
   
   private void addToUi(String msg)
