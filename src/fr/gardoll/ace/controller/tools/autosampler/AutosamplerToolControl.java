@@ -23,9 +23,10 @@ public class AutosamplerToolControl extends AbstractToolControl
   private boolean hasColumn = false ;
   // autorise la fermeture de la fenêtre ou non à cause des threads
   
-  public AutosamplerToolControl() throws InitializationException, InterruptedException
+  public AutosamplerToolControl(ParametresSession parametresSession)
+      throws InitializationException, InterruptedException
   {
-    super(false, true);
+    super(parametresSession, false, true);
   }
   
   void vibrate()

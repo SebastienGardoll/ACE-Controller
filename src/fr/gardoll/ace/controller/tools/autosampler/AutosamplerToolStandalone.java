@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractJFrame ;
 
@@ -40,9 +41,9 @@ public class AutosamplerToolStandalone extends AbstractJFrame
   // TODO: to be tested.
   public static void main(String[] args)
   {
-    try
+    try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
-      AutosamplerToolControl ctrl = new AutosamplerToolControl();
+      AutosamplerToolControl ctrl = new AutosamplerToolControl(parametresSession);
       AutosamplerToolPanel toolPanel = new AutosamplerToolPanel(ctrl);
       ctrl.addControlPanel(toolPanel);
       AutosamplerToolStandalone tool = new AutosamplerToolStandalone(toolPanel, ctrl);
