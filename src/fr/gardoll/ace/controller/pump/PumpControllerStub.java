@@ -16,11 +16,11 @@ public class PumpControllerStub implements Closeable, PumpController
   private static final String _INFUSION    = "infusion" ;
   private static final String _WITHDRAWING = "withdrawing" ;
   
-  // deliver 1 mL at the rate of 10 mL/min in 10 seconds for period of 0.1 seconds :
+  // deliver 1 mL at the rate of 10 mL/min in 2 seconds for period of 0.1 seconds :
   // volume * _TIME_FACTOR = rate * elasting_time / period
   // _TIME_FACTOR = rate * elasting_time / (volume * period)
   // volume / period = rate / _TIME_FACTOR
-  private static double _TIME_FACTOR = 1000. ;
+  private static double _TIME_FACTOR = 200. ;
   
   private boolean _isRunning ;
   
@@ -107,7 +107,7 @@ public class PumpControllerStub implements Closeable, PumpController
       }
     }
     
-    _LOG.debug(String.format("stubbing command running: %s", this._isRunning));
+    _LOG.trace(String.format("stubbing command running: %s", this._isRunning));
     
     return this._isRunning;
   }
