@@ -71,6 +71,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
         try
         {
           this._ctrl.close();
+          this._isClosed = true;
           if(parent != null)
           {
             _LOG.debug("closing the parent frame and may shutdown the JVM");
