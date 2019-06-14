@@ -16,11 +16,11 @@ public class PumpControllerStub implements Closeable, PumpController
   private static final String _INFUSION    = "infusion" ;
   private static final String _WITHDRAWING = "withdrawing" ;
   
-  // deliver 1 mL at the rate of 10 mL/min in 2 seconds for period of 0.1 seconds :
+  // deliver 1 mL at the rate of 10 mL/min in 1 second for period of 0.1 seconds :
   // volume * _TIME_FACTOR = rate * elasting_time / period
   // _TIME_FACTOR = rate * elasting_time / (volume * period)
   // volume / period = rate / _TIME_FACTOR
-  private static double _TIME_FACTOR = 200. ;
+  private static double _TIME_FACTOR = 100. ;
   
   private boolean _isRunning ;
   
@@ -30,10 +30,8 @@ public class PumpControllerStub implements Closeable, PumpController
 
   private double _currentVolI ;
   
-  private double _deliveredVolI;
+  private double _delivered;
   
-  private double _deliveredVolW;
-
   private double _currentRateI ;
 
   private double _currentRateW ;
@@ -75,35 +73,31 @@ public class PumpControllerStub implements Closeable, PumpController
   {
     if(this._isRunning)
     {
+      double targetedVolume = 0.;
+      double rate = 0.;
+      
       if(this._currentMode.equals(_INFUSION))
       {
-        double deliveredVolume = computeDeliveredVolume(this._currentVolI, this._currentRateI);
-        this._deliveredVolI += deliveredVolume;
-        
-        if(this._deliveredVolI >= this._currentVolI)
-        {
-          this._deliveredVolI = 0.;
-          this._isRunning = false;
-        }
-        else
-        {
-          this._isRunning = true;
-        }
+        targetedVolume = this._currentVolI;
+        rate = this._currentRateI;
       }
       else
       {
-        double deliveredVolume = computeDeliveredVolume(this._currentVolW, this._currentRateW);
-        this._deliveredVolW += deliveredVolume;
-        
-        if(this._deliveredVolW >= this._currentVolW)
-        {
-          this._deliveredVolW = 0.;
-          this._isRunning = false;
-        }
-        else
-        {
-          this._isRunning = true;
-        }
+        targetedVolume = this._currentVolW;
+        rate = this._currentRateW;
+      }
+      
+      double deliveredVolume = computeDeliveredVolume(targetedVolume, rate);
+      this._delivered += deliveredVolume;
+      
+      if(this._delivered >= targetedVolume)
+      {
+        this._isRunning = false;
+        this._delivered = targetedVolume;
+      }
+      else
+      {
+        this._isRunning = true;
       }
     }
     
@@ -115,20 +109,8 @@ public class PumpControllerStub implements Closeable, PumpController
   @Override
   public double deliver() throws SerialComException, InterruptedException
   {
-    double result = 0.;
-    
-    if(this._currentMode.equals(_INFUSION))
-    {
-      result = this._deliveredVolI;
-    }
-    else
-    {
-      result = this._deliveredVolW;
-    }
-    
-    _LOG.debug(String.format("stubbing command deliver %s", result));
-    
-    return result;
+    _LOG.debug(String.format("stubbing command deliver %s", this._delivered));
+    return this._delivered;
   }
 
   @Override
@@ -168,6 +150,7 @@ public class PumpControllerStub implements Closeable, PumpController
   {
     _LOG.debug("stubbing command modeI");
     this._currentMode = _INFUSION;
+    this._delivered = 0.;
   }
 
   @Override
@@ -175,6 +158,7 @@ public class PumpControllerStub implements Closeable, PumpController
   {
     _LOG.debug("stubbing command modeW");
     this._currentMode = _WITHDRAWING;
+    this._delivered = 0.;
   }
 
   @Override
