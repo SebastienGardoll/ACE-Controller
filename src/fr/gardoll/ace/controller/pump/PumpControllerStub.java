@@ -22,8 +22,6 @@ public class PumpControllerStub implements Closeable, PumpController
   // volume / period = rate / _TIME_FACTOR
   private static double _TIME_FACTOR = 1000. ;
   
-  private ThreadControl _threadCtrl = null;
-
   private boolean _isRunning ;
   
   private String _currentMode ;
@@ -31,6 +29,10 @@ public class PumpControllerStub implements Closeable, PumpController
   private double _currentVolW ;
 
   private double _currentVolI ;
+  
+  private double _deliveredVolI;
+  
+  private double _deliveredVolW;
 
   private double _currentRateI ;
 
@@ -40,7 +42,6 @@ public class PumpControllerStub implements Closeable, PumpController
   public void setThreadControl(ThreadControl threadCtrl)
   {
     _LOG.debug("stubbing command setThreadControl");
-    this._threadCtrl = threadCtrl;
   }
 
   @Override
@@ -54,6 +55,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void stop() throws SerialComException, InterruptedException
   {
     _LOG.debug("stubbing command stop");
+    this._isRunning = false;
   }
 
   @Override
@@ -63,47 +65,70 @@ public class PumpControllerStub implements Closeable, PumpController
     _LOG.debug("stubbing command dia");
   }
 
-  private double innerRunning(double volume, double rate)
+  private double computeDeliveredVolume(double volume, double rate)
   {
-    return (volume - (rate / _TIME_FACTOR));
+    return (rate / _TIME_FACTOR);
   }
   
   @Override
   public boolean running() throws SerialComException, InterruptedException
   {
-    boolean result = false;
-    if(false == this._isRunning)
+    if(this._isRunning)
     {
-      result = false ;
-    }
-    else
-    {
-      double volume = 0.;
-      
       if(this._currentMode.equals(_INFUSION))
       {
-        this._currentVolI = innerRunning(this._currentVolI, this._currentRateI);
-        volume = this._currentVolI;
+        double deliveredVolume = computeDeliveredVolume(this._currentVolI, this._currentRateI);
+        this._deliveredVolI += deliveredVolume;
+        
+        if(this._deliveredVolI >= this._currentVolI)
+        {
+          this._deliveredVolI = 0.;
+          this._isRunning = false;
+        }
+        else
+        {
+          this._isRunning = true;
+        }
       }
       else
       {
-        this._currentVolW = innerRunning(this._currentVolW, this._currentRateW);
-        volume = this._currentVolW;
+        double deliveredVolume = computeDeliveredVolume(this._currentVolW, this._currentRateW);
+        this._deliveredVolW += deliveredVolume;
+        
+        if(this._deliveredVolW >= this._currentVolW)
+        {
+          this._deliveredVolW = 0.;
+          this._isRunning = false;
+        }
+        else
+        {
+          this._isRunning = true;
+        }
       }
-      
-      result = volume <= 0. ;
     }
     
-    _LOG.debug(String.format("stubbing command running: %s", result));
+    _LOG.debug(String.format("stubbing command running: %s", this._isRunning));
     
-    return result;
+    return this._isRunning;
   }
 
   @Override
   public double deliver() throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    return 0 ;
+    double result = 0.;
+    
+    if(this._currentMode.equals(_INFUSION))
+    {
+      result = this._deliveredVolI;
+    }
+    else
+    {
+      result = this._deliveredVolW;
+    }
+    
+    _LOG.debug(String.format("stubbing command deliver: %s", result));
+    
+    return result;
   }
 
   @Override
