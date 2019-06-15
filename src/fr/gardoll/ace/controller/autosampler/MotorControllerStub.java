@@ -61,12 +61,20 @@ public class MotorControllerStub implements MotorController, Closeable
       this._carouselDirection = this._currentCarouselPosition < nbPas1 ? 1 : -1 ;
       this._isCarouselMoving = true;
     }
+    else
+    {
+      _LOG.debug("carousel didn't move");
+    }
     
     if(nbPas2 != this._currentArmPosition)
     {
       this._targetedArmPosition = nbPas2;
       this._armDirection = this._currentArmPosition < nbPas2 ? 1 : -1 ;
       this._isArmMoving = true;
+    }
+    else
+    {
+      _LOG.debug("arm didn't move");
     }
   }
 
