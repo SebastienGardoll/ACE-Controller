@@ -422,7 +422,7 @@ public class PousseSeringue implements Closeable
       }
     }
     while (has_to_continue) ;
-
+    
     // équilibre de la pression dans les tuyaux.
     Thread.sleep(ATTENTE_FERMETURE_EV) ;
 
@@ -435,6 +435,8 @@ public class PousseSeringue implements Closeable
       // équilibre de la pression dans les tuyaux
       Thread.sleep(ATTENTE_FERMETURE_EV) ;
     }
+    
+    _LOG.debug("pump delivered the volume");
   }
   
   public void cancel() throws InterruptedException

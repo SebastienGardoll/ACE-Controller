@@ -211,6 +211,8 @@ public class Passeur implements Closeable
       }
     }
     while (isMoving) ;
+    
+    _LOG.debug("carousel reached the position");
   }
 
   //attente de la fin de mouvement
@@ -243,6 +245,8 @@ public class Passeur implements Closeable
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
+    
+    _LOG.debug("arm reached the position");
   }
   
   //envoie la commande new à l'interface.
