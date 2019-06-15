@@ -17,6 +17,8 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.InterfaceMoteur ;
+import fr.gardoll.ace.controller.autosampler.MotorController ;
+import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.com.ParaCom ;
 import fr.gardoll.ace.controller.com.SerialCom ;
@@ -347,12 +349,22 @@ public class ParametresSession implements Closeable
   {
     if(this._autosampler == null)
     {
-      String classPath = this.getAutosamplerSerialComClassPath();
-      String portPath  = this.getAutosamplerPortPath();
-      SerialCom autosamplerPort = this.instantiateSerialCom(classPath, portPath);
-      InterfaceMoteur autosamplerCommands = new InterfaceMoteur(autosamplerPort);
-      this._autosampler = new Passeur(autosamplerCommands, this.nbPasCarrousel(),
-          this.diametreCarrousel());
+      MotorController motorCtrl = null;
+      
+      if(this.isDebug())
+      {
+        motorCtrl = new MotorControllerStub(this.nbPasCarrousel());
+      }
+      else
+      {
+        String classPath = this.getAutosamplerSerialComClassPath();
+        String portPath  = this.getAutosamplerPortPath();
+        SerialCom autosamplerPort = this.instantiateSerialCom(classPath, portPath);
+        motorCtrl = new InterfaceMoteur(autosamplerPort);
+      }
+      
+      this._autosampler = new Passeur(motorCtrl, this.nbPasCarrousel(),
+                                      this.diametreCarrousel());
     }
     
     return this._autosampler;
