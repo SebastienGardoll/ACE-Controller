@@ -53,7 +53,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     logTextArea = new javax.swing.JTextArea() ;
     buttonPanel = new javax.swing.JPanel() ;
     cancelButton = new javax.swing.JButton() ;
-    pauseButton = new javax.swing.JButton() ;
+    pauseToggleButton = new javax.swing.JToggleButton() ;
     closeButton = new javax.swing.JButton() ;
     buttonFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
         new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0)) ;
@@ -150,13 +150,13 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     buttonPanel.add(cancelButton, gridBagConstraints) ;
 
-    pauseButton.setText("pause") ;
-    pauseButton.addMouseListener(new java.awt.event.MouseAdapter()
+    pauseToggleButton.setText("pause") ;
+    pauseToggleButton.addMouseListener(new java.awt.event.MouseAdapter()
     {
       @Override
       public void mouseClicked(java.awt.event.MouseEvent evt)
       {
-        pauseButtonMouseClicked(evt) ;
+        pauseToggleButtonMouseClicked(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -165,7 +165,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    buttonPanel.add(pauseButton, gridBagConstraints) ;
+    buttonPanel.add(pauseToggleButton, gridBagConstraints) ;
 
     closeButton.setText("close") ;
     closeButton.addMouseListener(new java.awt.event.MouseAdapter()
@@ -597,7 +597,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     this.cancel();
   }
 
-  private void pauseButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void pauseToggleButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
     try
     {
@@ -702,7 +702,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   private javax.swing.JButton manualButton ;
   private javax.swing.JPanel manualPanel ;
   private javax.swing.JButton openFileChooserButton ;
-  private javax.swing.JButton pauseButton ;
+  private javax.swing.JToggleButton pauseToggleButton ;
   private javax.swing.JButton positionButton ;
   private javax.swing.JLabel positionLabel ;
   private javax.swing.JPanel positionPanel ;
@@ -736,7 +736,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     
     // Disable cancel and pause when controls are enable.
     cancelButton.setEnabled(! isEnable);
-    pauseButton.setEnabled( ! isEnable);
+    pauseToggleButton.setEnabled( ! isEnable);
   }
 
   private void initCustom()
