@@ -16,20 +16,20 @@ public class MotorControllerStub implements MotorController, Closeable
   private int _currentCarouselPosition  = 0;
   private int _targetedCarouselPosition = 0;
   private int _carouselDirection        = 0;
+  private boolean _isCarouselMoving     = false ;
+
   private int _currentArmPosition       = 0;
   private int _targetedArmPosition      = 0;
   private int _armDirection             = 0;
+  private boolean _isArmMoving          = false ;
   
   // Number of steps per period.
   // Moving to 1 position in 0.2 seconds considering period of 0.1 second.
   private int _carouselTimeInc = 5 ;
   
   // Number of steps per period.
-  // Moving 10 mm in 0.2 seconds considering period of 0.1 second.
-  private static int _ARM_TIME_INC = (int) (Passeur.convertBras(10.) / 0.2); 
-  
-  private boolean _isCarouselMoving = false ;
-  private boolean _isArmMoving      = false ;
+  // Moving 10 mm in 0.5 seconds considering period of 0.1 second.
+  private static int _ARM_TIME_INC = (int) (Passeur.convertBras(10.) / 0.5); 
 
   public MotorControllerStub(int nbStepPosition)
   {
@@ -53,10 +53,20 @@ public class MotorControllerStub implements MotorController, Closeable
       throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("stubbing command move(%s, %s)", nbPas1, nbPas2));
-    this._targetedCarouselPosition = nbPas1;
-    this._carouselDirection = this._currentCarouselPosition < nbPas1 ? 1 : -1 ;
-    this._targetedArmPosition      = nbPas2;
-    this._armDirection = this._currentArmPosition < nbPas2 ? 1 : -1 ;
+    
+    if(nbPas1 != this._currentCarouselPosition)
+    {
+      this._targetedCarouselPosition = nbPas1;
+      this._carouselDirection = this._currentCarouselPosition < nbPas1 ? 1 : -1 ;
+      this._isCarouselMoving = true;
+    }
+    
+    if(nbPas2 != this._currentArmPosition)
+    {
+      this._targetedArmPosition = nbPas2;
+      this._armDirection = this._currentArmPosition < nbPas2 ? 1 : -1 ;
+      this._isArmMoving = true;
+    }
   }
 
   @Override
@@ -144,7 +154,12 @@ public class MotorControllerStub implements MotorController, Closeable
       throw new RuntimeException("unexpected moving to the limit of the arm");
     }
     
-    this._targetedArmPosition      = 0;
+    if(this._currentArmPosition != 0)
+    {
+      this._targetedArmPosition = 0;
+      this._armDirection = this._currentArmPosition < 0 ? 1 : -1 ;
+      this._isArmMoving = true;
+    }
   }
 
   @Override
@@ -155,6 +170,8 @@ public class MotorControllerStub implements MotorController, Closeable
     this._targetedCarouselPosition = 0;
     this._currentArmPosition       = 0;
     this._targetedArmPosition      = 0;
+    this._carouselDirection        = 0;
+    this._armDirection             = 0;
   }
 
   @Override
