@@ -85,6 +85,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     }
     else
     {
+      _LOG.debug("the panel closing has been cancelled") ;
       return false;
     }
   }

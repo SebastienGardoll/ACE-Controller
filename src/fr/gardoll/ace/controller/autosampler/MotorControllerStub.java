@@ -33,6 +33,7 @@ public class MotorControllerStub implements MotorController, Closeable
 
   public MotorControllerStub(int nbStepPosition)
   {
+    _LOG.debug(String.format("instanciating motor controller stub with %s number of steps by carousel position", nbStepPosition));
     this._carouselTimeInc = nbStepPosition/5;
   }
   

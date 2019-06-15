@@ -30,7 +30,6 @@ import fr.gardoll.ace.controller.pump.PumpControllerStub ;
 
 // TODO: default "READ ERROR" for any string.
 // TODO: check for "READ ERROR" strings then throw exception.
-// TODO: loggs for pump & autosampler instantiation.
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
@@ -334,7 +333,6 @@ public class ParametresSession implements Closeable
       
       if(this.isDebug())
       {
-        _LOG.debug("instanciating paracom & pump controller stubs");
         paraCom = new ParaComStub();
         pumpCtrl = new PumpControllerStub();
       }
@@ -342,13 +340,16 @@ public class ParametresSession implements Closeable
       {
         String paraComSerialComClassPath = this.getParaComSerialComClassPath();
         String paraComPortPath  = this.getParaComPortPath();
+        _LOG.debug(String.format("instantiating paracom port (%s, %s)", paraComPortPath, paraComSerialComClassPath)) ;
         SerialCom paraComPort   = this.instantiateSerialCom(paraComSerialComClassPath, paraComPortPath);
         
         String paraComClassPath = this.getParaComClassPath();
+        _LOG.debug(String.format("instantiating paracom (%s)", paraComClassPath)) ;
         paraCom = this.instantiateParaCom(paraComClassPath, paraComPort);
         
         String pumpSerialComClassPath = this.getPumpSerialComClassPath();
         String pumpPortPath  = this.getPumpPortPath();
+        _LOG.debug(String.format("instantiating pump port (%s, %s)", pumpPortPath, pumpSerialComClassPath)) ;
         SerialCom pumpPort   = this.instantiateSerialCom(pumpSerialComClassPath, pumpPortPath);
         pumpCtrl = new InterfacePousseSeringue(pumpPort, this.diametreSeringue());
       }
@@ -370,13 +371,13 @@ public class ParametresSession implements Closeable
       
       if(this.isDebug())
       {
-        _LOG.debug("instanciating motor controller stub");
         motorCtrl = new MotorControllerStub(this.nbPasCarrousel());
       }
       else
       {
         String classPath = this.getAutosamplerSerialComClassPath();
         String portPath  = this.getAutosamplerPortPath();
+        _LOG.debug(String.format("instantiating autosampler port (%s, %s)", portPath, classPath));
         SerialCom autosamplerPort = this.instantiateSerialCom(classPath, portPath);
         motorCtrl = new InterfaceMoteur(autosamplerPort);
       }

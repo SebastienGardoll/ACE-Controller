@@ -6,9 +6,14 @@ import java.awt.event.WindowEvent ;
 import javax.swing.JDialog ;
 import javax.swing.WindowConstants ;
 
+import org.apache.logging.log4j.LogManager ;
+import org.apache.logging.log4j.Logger ;
+
 public abstract class AbstractJFrame extends JDialog
 {
   private static final long serialVersionUID = -2440934563391351769L ;
+  
+  private static final Logger _LOG = LogManager.getLogger(AbstractJFrame.class.getName());
   
   public AbstractJFrame(AbstractJPanelObserver mainPanel)
   {
@@ -22,6 +27,7 @@ public abstract class AbstractJFrame extends JDialog
       @Override
       public void windowClosing(WindowEvent e)
       {
+        _LOG.debug("windowClosing");
         mainPanel.close(AbstractJFrame.this);
       }
     }) ;

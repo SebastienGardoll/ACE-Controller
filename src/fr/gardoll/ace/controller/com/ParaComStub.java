@@ -9,6 +9,10 @@ public class ParaComStub implements ParaCom
 {
   private static final Logger _LOG = LogManager.getLogger(ParaComStub.class.getName());
   
+  public ParaComStub()
+  {
+    _LOG.debug("instanciating paracom stub");
+  }
   @Override
   public String getId()
   {

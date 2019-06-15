@@ -69,6 +69,7 @@ public abstract class AbstractToolControl implements ToolControl
   
   protected void setThread(ThreadControl thread)
   {
+    _LOG.debug(String.format("setting thread '%s'", thread)) ;
     this._currentThread = thread;
     this._hasEverMoved = true;
   }
@@ -148,7 +149,7 @@ public abstract class AbstractToolControl implements ToolControl
       
       this._currentThread.pause();
       
-      _LOG.info("pausing");
+      _LOG.info("running pause operations");
       this.notifyAction(new Action(ActionType.PAUSE, null));
       
       if(this._hasPump)

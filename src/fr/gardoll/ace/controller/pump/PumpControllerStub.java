@@ -36,6 +36,11 @@ public class PumpControllerStub implements Closeable, PumpController
 
   private double _currentRateW ;
   
+  public PumpControllerStub()
+  {
+    _LOG.debug("instanciating pump controller stub");
+  }
+  
   @Override
   public void setThreadControl(ThreadControl threadCtrl)
   {
