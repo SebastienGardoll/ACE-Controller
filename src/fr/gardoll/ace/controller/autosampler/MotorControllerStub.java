@@ -143,7 +143,7 @@ public class MotorControllerStub implements MotorController, Closeable
       }
     }
     
-    _LOG.trace(String.format("stubbing command moving %s: %s", axe, result));
+    _LOG.trace(String.format("stubbing command moving for %s: %s", axe.name(), result));
     return result;
   }
 
@@ -208,6 +208,7 @@ public class MotorControllerStub implements MotorController, Closeable
   @Override
   public void datum(TypeAxe axe) throws SerialComException, InterruptedException
   {
+    _LOG.debug(String.format("stubbing command datum for %s", axe.name()));
     switch(axe)
     {
       case bras:
@@ -272,6 +273,7 @@ public class MotorControllerStub implements MotorController, Closeable
         break ;
       }
     }
+    _LOG.debug(String.format("stubbing command where for %s: %s", axe.name(), result));
     
     return result;
   }

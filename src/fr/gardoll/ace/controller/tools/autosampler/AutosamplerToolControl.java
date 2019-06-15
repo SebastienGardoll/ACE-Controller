@@ -129,7 +129,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     {
       this._passeur.setModeManuel();
       this.displayControlPanelModalMessage("Click on Ok to finish");
-      this._passeur.setOrigineCarrousel ();
+      this._passeur.setOrigineCarrousel();
     }
     catch (InterruptedException e)
     {
