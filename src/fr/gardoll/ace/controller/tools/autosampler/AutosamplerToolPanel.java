@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
 import fr.gardoll.ace.controller.ui.Action ;
@@ -733,7 +734,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   private void initCustom()
   {
     this.fileChooser.setDialogTitle("select column file");
-    this.fileChooser.setCurrentDirectory(Utils.getInstance().getRootDir().toFile());
+    this.fileChooser.setCurrentDirectory(ParametresSession.COLUMN_DIR_PATH.toFile());
     this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
     this.fileChooser.setMultiSelectionEnabled(false);
     this.fileChooser.setFileFilter(new FileFilter() 

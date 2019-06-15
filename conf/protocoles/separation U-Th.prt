@@ -2,7 +2,7 @@
 nomProtocole=Separation de U-Th
 auteur=Jonathan PRUNIER
 date=26/04/2010
-cheminFichierColonne=./conf/colonnes/biorad 0.6 ml.cln
+cheminFichierColonne=./conf/columns/biorad 0.6 ml.cln
 commentaires=Temps d'attente pour l'elution a modifier car pas calibrer
 
 [1]

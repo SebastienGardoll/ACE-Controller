@@ -85,6 +85,9 @@ public class ParametresSession implements Closeable
 
   private final boolean _isDebug ;
   
+  public final static Path COLUMN_DIR_PATH = 
+      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.COLUMN_DIRNAME);
+  
   public static ParametresSession getInstance() throws InitializationException
   {
     if (ParametresSession._INSTANCE == null)
