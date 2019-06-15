@@ -50,6 +50,7 @@ public class Commandes
   //requires numEv <= pousseSeringue.nbEvMax()
   public void rincage(int numEv) throws InterruptedException
   { 
+    _LOG.info(String.format("rincing with valve %s", numEv));
     //le refoulement pour les rinçage se fait toujours au débit max.
     this.pousseSeringue.setDebitRefoulement(this.parametresSession.debitMaxPousseSeringue()); 
                                                                                     
