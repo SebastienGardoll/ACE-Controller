@@ -13,25 +13,27 @@ public class MotorControllerStub implements MotorController, Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(MotorControllerStub.class.getName());
   
-  private int _currentCarouselPosition = 0;
-  private int _currentArmPosition      = 0;
+  private int _currentCarouselPosition  = 0;
+  private int _targetedCarouselPosition = 0;
+  private int _carouselDirection        = 0;
+  private int _currentArmPosition       = 0;
+  private int _targetedArmPosition      = 0;
+  private int _armDirection             = 0;
   
   // Number of steps per period.
   // Moving to 1 position in 0.2 seconds considering period of 0.1 second.
-  private static double _CAROUSEL_TIME_FACTOR = 5. ;
+  private int _carouselTimeInc = 5 ;
   
   // Number of steps per period.
   // Moving 10 mm in 0.2 seconds considering period of 0.1 second.
-  private static double _ARM_TIME_FACTOR = Passeur.convertBras(10.) / 0.2; 
+  private static int _ARM_TIME_INC = (int) (Passeur.convertBras(10.) / 0.2); 
   
   private boolean _isCarouselMoving = false ;
   private boolean _isArmMoving      = false ;
 
-  private final int _nbStepPosition ;
-
   public MotorControllerStub(int nbStepPosition)
   {
-    this._nbStepPosition = nbStepPosition;
+    this._carouselTimeInc = nbStepPosition/5;
   }
   
   @Override
@@ -51,14 +53,79 @@ public class MotorControllerStub implements MotorController, Closeable
       throws SerialComException, InterruptedException
   {
     _LOG.debug(String.format("stubbing command move(%s, %s)", nbPas1, nbPas2));
+    this._targetedCarouselPosition = nbPas1;
+    this._carouselDirection = this._currentCarouselPosition < nbPas1 ? 1 : -1 ;
+    this._targetedArmPosition      = nbPas2;
+    this._armDirection = this._currentArmPosition < nbPas2 ? 1 : -1 ;
   }
 
   @Override
   public boolean moving(TypeAxe axe)
       throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    return false ;
+    boolean result = false;
+
+    switch(axe)
+    {
+      case bras:
+      {
+        if(this._isArmMoving)
+        {
+          if(this._armDirection > 0)
+          {
+            this._currentArmPosition += _ARM_TIME_INC;
+            if(this._currentArmPosition >= this._targetedArmPosition)
+            {
+              this._currentArmPosition = this._targetedArmPosition;
+              this._isArmMoving = false;
+            }
+          }
+          else
+          {
+            this._currentArmPosition -= _ARM_TIME_INC;
+            if(this._currentArmPosition <= this._targetedArmPosition)
+            {
+              this._currentArmPosition = this._targetedArmPosition;
+              this._isArmMoving = false;
+            }
+          }
+        }
+        
+        result = this._isArmMoving;
+        break ;
+      }
+      
+      case carrousel:
+      {
+        if(this._isCarouselMoving)
+        {
+          if(this._carouselDirection > 0)
+          {
+            this._currentCarouselPosition += this._carouselTimeInc;
+            if(this._currentCarouselPosition >= this._targetedCarouselPosition)
+            {
+              this._currentCarouselPosition = this._targetedCarouselPosition;
+              this._isCarouselMoving = false;
+            }
+          }
+          else
+          {
+            this._currentCarouselPosition -= this._carouselTimeInc;
+            if(this._currentCarouselPosition <= this._targetedCarouselPosition)
+            {
+              this._currentCarouselPosition = this._targetedCarouselPosition;
+              this._isCarouselMoving = false;
+            }
+          }
+        }
+        
+        result = this._isCarouselMoving;
+        break ;
+      }
+    }
+    
+    _LOG.debug(String.format("stubbing command moving %s: %s", axe, result));
+    return result;
   }
 
   @Override
@@ -76,94 +143,123 @@ public class MotorControllerStub implements MotorController, Closeable
     {
       throw new RuntimeException("unexpected moving to the limit of the arm");
     }
+    
+    this._targetedArmPosition      = 0;
   }
 
   @Override
   public void reset() throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug("stubbing command reset");
+    this._currentCarouselPosition  = 0;
+    this._targetedCarouselPosition = 0;
+    this._currentArmPosition       = 0;
+    this._targetedArmPosition      = 0;
   }
 
   @Override
   public void preSecale(int denominateur)
       throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug(String.format("stubbing command preSecale %s", denominateur));
   }
 
   @Override
   public void param(TypeAxe axe, int base, int top, int accel)
       throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    this.param(axe, base, top, accel, 0);
   }
 
   @Override
   public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
       throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug(String.format("stubbing command param(%s, %s, %s, %s, %s)",
+        axe, base, top, accel, deaccel));
   }
 
   @Override
   public void datum(TypeAxe axe) throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    switch(axe)
+    {
+      case bras:
+      {
+        this._currentArmPosition = 0;
+        break ;
+      }
+      
+      case carrousel:
+      {
+        this._currentCarouselPosition = 0;
+        break ;
+      }
+    }
   }
 
   @Override
   public void singleLine(boolean choix)
       throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug(String.format("stubbing command singleline %s", choix));
   }
 
   @Override
   public void stop() throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug("stubbing command stop");
+    this._isArmMoving      = false;
+    this._isCarouselMoving = false;
   }
 
   @Override
   public void manual() throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug("stubbing command manual");
   }
 
   @Override
   public void halt() throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug("stubbing command halt");
+    this._isArmMoving      = false;
+    this._isCarouselMoving = false;
   }
 
   @Override
   public int where(TypeAxe axe) throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    return 0 ;
+    int result = 0;
+    
+    switch(axe)
+    {
+      case bras:
+      {
+        result = this._currentArmPosition;
+        break ;
+      }
+      
+      case carrousel:
+      {
+        result = this._currentCarouselPosition;
+        break ;
+      }
+    }
+    
+    return result;
   }
 
   @Override
   public void out(int octet) throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug(String.format("stubbing command out %s", octet));
   }
 
   @Override
   public void out(int bitPosition, boolean isOn)
       throws SerialComException, InterruptedException
   {
-    // TODO Auto-generated method stub
-    
+    _LOG.debug(String.format("stubbing command out(%s, %s)", bitPosition, isOn));
   }
 }
