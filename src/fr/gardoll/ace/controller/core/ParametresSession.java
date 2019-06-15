@@ -21,9 +21,12 @@ import fr.gardoll.ace.controller.autosampler.MotorController ;
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.com.ParaCom ;
+import fr.gardoll.ace.controller.com.ParaComStub ;
 import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.pump.PumpController ;
+import fr.gardoll.ace.controller.pump.PumpControllerStub ;
 
 // TODO: default "READ ERROR" for any string.
 // TODO: check for "READ ERROR" strings then throw exception.
@@ -324,19 +327,30 @@ public class ParametresSession implements Closeable
   {
     if(this._pump == null)
     {
-      String paraComSerialComClassPath = this.getParaComSerialComClassPath();
-      String paraComPortPath  = this.getParaComPortPath();
-      SerialCom paraComPort   = this.instantiateSerialCom(paraComSerialComClassPath, paraComPortPath);
+      PumpController pumpCtrl = null;
+      ParaCom paraCom         = null;
       
-      String paraComClassPath = this.getParaComClassPath();
-      ParaCom paraCom = this.instantiateParaCom(paraComClassPath, paraComPort);
+      if(this.isDebug())
+      {
+        paraCom = new ParaComStub();
+        pumpCtrl = new PumpControllerStub();
+      }
+      else
+      {
+        String paraComSerialComClassPath = this.getParaComSerialComClassPath();
+        String paraComPortPath  = this.getParaComPortPath();
+        SerialCom paraComPort   = this.instantiateSerialCom(paraComSerialComClassPath, paraComPortPath);
+        
+        String paraComClassPath = this.getParaComClassPath();
+        paraCom = this.instantiateParaCom(paraComClassPath, paraComPort);
+        
+        String pumpSerialComClassPath = this.getPumpSerialComClassPath();
+        String pumpPortPath  = this.getPumpPortPath();
+        SerialCom pumpPort   = this.instantiateSerialCom(pumpSerialComClassPath, pumpPortPath);
+        pumpCtrl = new InterfacePousseSeringue(pumpPort, this.diametreSeringue());
+      }
       
-      String pumpSerialComClassPath = this.getPumpSerialComClassPath();
-      String pumpPortPath  = this.getPumpPortPath();
-      SerialCom pumpPort   = this.instantiateSerialCom(pumpSerialComClassPath, pumpPortPath);
-      InterfacePousseSeringue pumpCommands = new InterfacePousseSeringue(pumpPort,
-          this.diametreSeringue());
-      this._pump = new PousseSeringue(pumpCommands, paraCom, this.nbSeringue(), 
+      this._pump = new PousseSeringue(pumpCtrl, paraCom, this.nbSeringue(), 
           this.diametreSeringue(), this.volumeMaxSeringue(),
           this.debitMaxPousseSeringue(), 0.);
     }
