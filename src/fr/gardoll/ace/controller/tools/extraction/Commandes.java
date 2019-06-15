@@ -16,6 +16,7 @@ import fr.gardoll.ace.controller.ui.ToolControl ;
 
 // TODO: singleton.
 // TODO: add logging
+// TODO: add user logging (high level)
 public class Commandes
 {
   private final ParametresSession parametresSession;

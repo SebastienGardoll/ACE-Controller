@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.ui;
 
 import java.awt.Window ;
+import java.text.SimpleDateFormat ;
 
 import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
@@ -15,8 +16,13 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
 {
   private static final long serialVersionUID = -3914638188506779210L ;
   private static final Logger _LOG = LogManager.getLogger(AbstractJPanelObserver.class.getName());
+  
+  protected static final SimpleDateFormat _DATE_FORMATTER = new SimpleDateFormat("HH:mm:ss");
+  
   private final AbstractToolControl _ctrl ;
 
+  
+  
   abstract protected void processAction(Action action);
   
   public AbstractJPanelObserver(AbstractToolControl ctrl)

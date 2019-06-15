@@ -165,13 +165,14 @@ class CarouselRelativeThread extends AbstractThreadControl
       CancellationException, InitializationException, Exception
   {
     _LOG.debug("run CarouselRelativeThread");
-    Action action = new Action(ActionType.CAROUSEL_MOVING, this._nbPosition);
+    Action action = new Action(ActionType.CAROUSEL_RELATIVE_MOVING, this._nbPosition);
     this._toolCtrl.notifyAction(action);
     
     this._passeur.moveButeBras();
     this._passeur.finMoveBras();
     this._passeur.moveCarrouselRelatif(this._nbPosition);
     this._passeur.finMoveCarrousel();
+    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_END_MOVING, null)) ;
   }
 }
 
@@ -200,6 +201,7 @@ class CarouselThread extends AbstractThreadControl
     this._toolCtrl.notifyAction(action);
     this._passeur.moveCarrousel(this._position);
     this._passeur.finMoveCarrousel();
+    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_END_MOVING, null)) ;
   }
 }
 
@@ -293,6 +295,7 @@ class ArmThread extends AbstractThreadControl
     }
 
     this._passeur.finMoveBras() ;
+    this._toolCtrl.notifyAction(new Action(ActionType.ARM_END_MOVING, null)) ;
     this._passeur.setOrigineBras() ;
   }
 }

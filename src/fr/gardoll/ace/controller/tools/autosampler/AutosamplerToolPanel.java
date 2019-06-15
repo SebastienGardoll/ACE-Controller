@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.tools.autosampler ;
 
 import java.io.File ;
+import java.util.Date ;
 
 import javax.swing.JFileChooser ;
 import javax.swing.filechooser.FileFilter ;
@@ -782,6 +783,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
         break ;
       }
       
+      case ARM_END_MOVING:
+      {
+        msg = "arm reached the position";
+        break;
+      }
+      
       case CANCEL:
       {
         msg = "cancel";
@@ -792,6 +799,18 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       {
         msg = String.format("carousel is moving to position %s", action.data);
         break ;
+      }
+      
+      case CAROUSEL_RELATIVE_MOVING:
+      {
+        msg = String.format("carousel is moving %s positions", action.data);
+        break;
+      }
+      
+      case CAROUSEL_END_MOVING:
+      {
+        msg = "carousel reached the position";
+        break;
       }
       
       case PAUSE:
@@ -828,6 +847,6 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       }
     }
     
-    this.addToUi(String.format("> %s\n", msg));
+    this.addToUi(String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg));
   }
 }
