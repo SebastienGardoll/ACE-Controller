@@ -134,7 +134,7 @@ public class MotorControllerStub implements MotorController, Closeable
       }
     }
     
-    _LOG.debug(String.format("stubbing command moving %s: %s", axe, result));
+    _LOG.trace(String.format("stubbing command moving %s: %s", axe, result));
     return result;
   }
 
