@@ -11,12 +11,20 @@ public class Names
   public static final String PROTOCOLE_DIRNAME = "protocoles";
   public static final String COLUMN_DIRNAME    = "colonnes";
   
+  public static final String TRUE  = "true";
+  public static final String FALSE = "false";
+  
   //*********************** Fichier configuration  ************************** //
 
   // COMMUN
 
   public static final String CLEF_DATE                         = "date";
 
+  //----------------------------
+  
+  public static final String SEC_ACE_CONTROLLER                = "ace_controller_settings";
+  public static final String  SAC_IS_DEBUG                     = "is_debug";
+  
   //----------------------------
 
   public static final String SEC_INFO_POUSSE_SERINGUE          = "informationsPousseSeringue";

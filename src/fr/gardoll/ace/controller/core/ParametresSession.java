@@ -29,6 +29,8 @@ public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
   
+  private static final String DEFAULT_STRING_VALUE = "READ_ERROR";
+  
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.FRANCE);
   
@@ -75,6 +77,8 @@ public class ParametresSession implements Closeable
   private final String _paraComSerialComClassPath ;
 
   private final String _paraComPortPath ;
+
+  private final boolean _isDebug ;
   
   public static ParametresSession getInstance() throws InitializationException
   {
@@ -104,6 +108,24 @@ public class ParametresSession implements Closeable
       String msg = String.format("unable to read the configuration file '%s'", configurationFile);
       _LOG.fatal(msg);
       throw new InitializationException(msg);
+    }
+    
+    try
+    {
+      _LOG.debug("read ace controller configuration");
+      
+      Configurations configs = new Configurations();
+      INIConfiguration iniConf = configs.ini(configurationFile.toFile());
+      SubnodeConfiguration section = iniConf.getSection(Names.SEC_ACE_CONTROLLER);
+      
+      this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, DEFAULT_STRING_VALUE));
+    }
+    catch (ConfigurationException e)
+    {
+      String msg = String.format("unable to read the ace controller configuration '%s': %s",
+          configurationFile.toString(), e.getMessage());
+      _LOG.fatal(msg, e);
+      throw new InitializationException(msg, e);
     }
     
     try
@@ -141,7 +163,7 @@ public class ParametresSession implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the configuration file '%s': %s",
+      String msg = String.format("unable to read the pump configuration '%s': %s",
           configurationFile.toString(), e.getMessage());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
@@ -216,6 +238,11 @@ public class ParametresSession implements Closeable
     }
   }
 
+  public boolean isDebug()
+  {
+    return this._isDebug;
+  }
+  
   private SerialCom instantiateSerialCom(String classPath, String portPath) throws InitializationException
   {
     try
