@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat ;
 
 import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
+import javax.swing.JToggleButton ;
 import javax.swing.SwingUtilities ;
 
 import org.apache.logging.log4j.LogManager ;
@@ -21,8 +22,6 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   
   private final AbstractToolControl _ctrl ;
 
-  
-  
   abstract protected void processAction(Action action);
   
   public AbstractJPanelObserver(AbstractToolControl ctrl)
@@ -33,6 +32,39 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   protected void handleException(String msg, Exception e)
   {
     this.reportError(msg, e);
+  }
+  
+  protected void pauseAndResume(JToggleButton pauseToggleButton)
+  {
+    if(pauseToggleButton.isSelected())
+    {
+      _LOG.debug("running the resume operations");
+      try
+      {
+        this._ctrl.unPause();
+        pauseToggleButton.setText("pause");
+      }
+      catch (Exception e)
+      {
+        String msg = String.format("error while resuming operations: %s", e.getMessage());
+        _LOG.error(msg, e);
+        this.handleException("error while resuming", e);
+      }
+    }
+    else
+    {
+      try
+      {
+        this._ctrl.pause();
+        pauseToggleButton.setText("resume");
+      }
+      catch (Exception e)
+      {
+        String msg = String.format("error while pausing: %s", e.getMessage());
+        _LOG.error(msg, e);
+        this.handleException("error while pausing", e);
+      }
+    }
   }
   
   protected boolean cancel()

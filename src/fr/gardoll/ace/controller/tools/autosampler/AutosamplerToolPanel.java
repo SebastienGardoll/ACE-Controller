@@ -599,19 +599,10 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
   private void pauseToggleButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
-    try
-    {
-      this._ctrl.pause();
-    }
-    catch (Exception e)
-    {
-      String msg = String.format("error while pausing: %s", e.getMessage());
-      _LOG.error(msg, e);
-      this.handleException("error while pausing", e);
-    }
+    this.pauseAndResume(this.pauseToggleButton);
   }
 
-  private void freePositionButtonMouseClicked(java.awt.event.MouseEvent evt)
+    private void freePositionButtonMouseClicked(java.awt.event.MouseEvent evt)
   {
     Integer position = null;
     try
