@@ -4,6 +4,8 @@ public enum ActionType
 {
   ARM_MOVING,
   CAROUSEL_MOVING,
+  ARM_END_MOVE,
+  CAROUSEL_END_MOVE,
   WITHDRAWING,
   INFUSING,
   END,
