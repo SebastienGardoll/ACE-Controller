@@ -16,7 +16,6 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   private static final long serialVersionUID = -3914638188506779210L ;
   private static final Logger _LOG = LogManager.getLogger(AbstractJPanelObserver.class.getName());
   private final AbstractToolControl _ctrl ;
-  private boolean _isClosed = false;
 
   abstract protected void processAction(Action action);
   
@@ -61,48 +60,35 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   
   protected boolean close(Window parent)
   {
-    if(false == this.isClosed())
+    int choice = JOptionPane.showConfirmDialog(this,
+        "Do you want to exit (and cancel the running operations) ?") ;
+    if (choice == JOptionPane.OK_OPTION)
     {
-      int choice = JOptionPane.showConfirmDialog(this,
-          "Do you want to exit (and cancel the running operations) ?") ;
-      if (choice == JOptionPane.OK_OPTION)
+      _LOG.debug("running the panel closing operations") ;
+      try
       {
-        _LOG.debug("running the panel closing operations") ;
-        try
+        this._ctrl.close();
+        if(parent != null)
         {
-          this._ctrl.close();
-          this._isClosed = true;
-          if(parent != null)
-          {
-            _LOG.debug("closing the parent frame and may shutdown the JVM");
-            parent.dispose();
-          }
+          _LOG.debug("closing the parent frame and may shutdown the JVM");
+          parent.dispose();
         }
-        catch (Exception ex)
-        {
-          String msg = "error while performing close operation" ;
-          _LOG.fatal(String.format("%s: %s", msg, ex.getMessage()), ex) ;
-          Utils.reportError(msg, ex) ;
-        }
-        
-        return true;
       }
-      else
+      catch (Exception ex)
       {
-        return false;
+        String msg = "error while performing close operation" ;
+        _LOG.fatal(String.format("%s: %s", msg, ex.getMessage()), ex) ;
+        Utils.reportError(msg, ex) ;
       }
+      
+      return true;
     }
     else
     {
-      return true;
+      return false;
     }
   }
 
-  protected boolean isClosed()
-  {
-    return this._isClosed ;
-  }
-  
   @Override
   public void majActionActuelle(Action action)
   {

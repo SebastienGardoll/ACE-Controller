@@ -22,11 +22,12 @@ public abstract class AbstractToolControl implements ToolControl
   protected ThreadControl _currentThread = null;
   protected final PousseSeringue _pousseSeringue ;
   protected final Passeur _passeur ;
-  protected boolean _hasEverMoved = false;
-
-  private boolean _hasAutosampler ;
-
-  private boolean _hasPump ;
+  
+  private boolean _hasEverMoved   = false;
+  private boolean _hasAutosampler = false;
+  private boolean _hasPump        = false;
+  private boolean _isClosed       = false;
+  private boolean _isPaused       = false;
   
   public AbstractToolControl(ParametresSession parametresSession,
                              boolean hasPump, boolean hasAutosampler)
@@ -54,6 +55,18 @@ public abstract class AbstractToolControl implements ToolControl
     }
   }
 
+  @Override
+  public boolean isClosed()
+  {
+    return this._isClosed;
+  }
+
+  @Override
+  public boolean isPaused()
+  {
+    return this._isPaused;
+  }
+  
   protected void setThread(ThreadControl thread)
   {
     this._currentThread = thread;
@@ -70,7 +83,7 @@ public abstract class AbstractToolControl implements ToolControl
   {
     if(false == this._hasEverMoved)
     {
-      _LOG.debug("don't cancel");
+      _LOG.debug("ACE has not ever moved: don't cancel");
       // Early exit.
       return;
     }
@@ -114,9 +127,16 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void pause() throws InterruptedException
   {  
+    if(this._isPaused)
+    {
+      _LOG.debug("controller is already paused");
+      // Early exit.
+      return;
+    }
+    
     if(false == this._hasEverMoved)
     {
-      _LOG.debug("don't pause");
+      _LOG.debug("ACE has not ever moved: don't pause");
       // Early exit.
       return;
     }
@@ -151,9 +171,16 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void unPause() throws InterruptedException
   {  
+    if(false == this._isPaused)
+    {
+      _LOG.debug("controller is not paused: don't resume");
+      // Early exit.
+      return;
+    }
+    
     if(false == this._hasEverMoved)
     {
-      _LOG.debug("don't resume");
+      _LOG.debug("ACE has not ever moved: don't resume");
       // Early exit.
       return;
     }
@@ -187,8 +214,16 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void close() throws InterruptedException
   {
-    _LOG.debug("performing close operation");
-    this.cancel();
+    if(false == this._isClosed)
+    {
+      _LOG.debug("performing close operation");
+      this.cancel();
+      this._isClosed = true;
+    }
+    else
+    {
+      _LOG.debug("control is already closed");
+    }
   }
   
   @Override

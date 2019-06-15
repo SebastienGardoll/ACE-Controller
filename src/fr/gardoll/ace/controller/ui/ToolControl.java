@@ -17,4 +17,8 @@ public interface ToolControl extends Observable
   public void cancel() throws InterruptedException;
   
   public void close() throws InterruptedException;
+  
+  public boolean isClosed();
+  
+  public boolean isPaused();
 }

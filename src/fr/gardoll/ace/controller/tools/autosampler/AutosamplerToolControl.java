@@ -144,8 +144,7 @@ public class AutosamplerToolControl extends AbstractToolControl
   {
     this.colonne = Colonne.getInstance(filePath);
     this.hasColumn = true;
-  }
-  
+  }  
 }
 
 class CarouselRelativeThread extends AbstractThreadControl
