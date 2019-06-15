@@ -30,6 +30,7 @@ import fr.gardoll.ace.controller.pump.PumpControllerStub ;
 
 // TODO: default "READ ERROR" for any string.
 // TODO: check for "READ ERROR" strings then throw exception.
+// TODO: loggs for pump & autosampler instantiation.
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
@@ -124,6 +125,7 @@ public class ParametresSession implements Closeable
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_ACE_CONTROLLER);
       
       this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, DEFAULT_STRING_VALUE));
+      _LOG.debug(String.format("setting isDebug to %s", this._isDebug));
     }
     catch (ConfigurationException e)
     {
@@ -332,6 +334,7 @@ public class ParametresSession implements Closeable
       
       if(this.isDebug())
       {
+        _LOG.debug("instanciating paracom & pump controller stubs");
         paraCom = new ParaComStub();
         pumpCtrl = new PumpControllerStub();
       }
@@ -367,6 +370,7 @@ public class ParametresSession implements Closeable
       
       if(this.isDebug())
       {
+        _LOG.debug("instanciating motor controller stub");
         motorCtrl = new MotorControllerStub(this.nbPasCarrousel());
       }
       else
