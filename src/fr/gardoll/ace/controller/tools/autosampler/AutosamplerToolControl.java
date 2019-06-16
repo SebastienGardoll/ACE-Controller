@@ -69,7 +69,8 @@ public class AutosamplerToolControl extends AbstractToolControl
   {
     if (this.hasColumn == false)
     {
-      _LOG.debug("colonne not set");
+      _LOG.error("colonne not set");
+      this.notifyError("Column file not set, open one before. Aborted.");
       return ;
     }
     else
