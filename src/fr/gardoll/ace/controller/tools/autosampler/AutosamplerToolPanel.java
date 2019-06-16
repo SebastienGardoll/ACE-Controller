@@ -97,9 +97,9 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     logTextScrollPane.setVerticalScrollBarPolicy(
         javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS) ;
 
-    logTextArea.setEditable(false);
+    logTextArea.setEditable(false) ;
     logTextArea.setColumns(20) ;
-    logTextArea.setLineWrap(true);
+    logTextArea.setLineWrap(true) ;
     logTextArea.setRows(5) ;
     logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
     {
@@ -135,15 +135,17 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     buttonPanel.setLayout(new java.awt.GridBagLayout()) ;
 
     cancelButton.setText("cancel") ;
-    cancelButton.addMouseListener(new java.awt.event.MouseAdapter()
+    cancelButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        cancelButtonMouseClicked(evt) ;
+        cancelButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 0 ;
+    gridBagConstraints.gridy = 0 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
     gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START ;
     gridBagConstraints.weightx = 1.0 ;
@@ -152,29 +154,28 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     buttonPanel.add(cancelButton, gridBagConstraints) ;
 
     pauseToggleButton.setText("pause") ;
-    pauseToggleButton.addMouseListener(new java.awt.event.MouseAdapter()
+    pauseToggleButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        pauseToggleButtonMouseClicked(evt) ;
+        pauseToggleButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 1 ;
+    gridBagConstraints.gridy = 0 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
-    gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START ;
-    gridBagConstraints.weightx = 1.0 ;
-    gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     buttonPanel.add(pauseToggleButton, gridBagConstraints) ;
 
     closeButton.setText("close") ;
-    closeButton.addMouseListener(new java.awt.event.MouseAdapter()
+    closeButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        closeButtonMouseClicked(evt) ;
+        closeButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -225,6 +226,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     positionPanel.add(positionLabel, gridBagConstraints) ;
+
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 1 ;
@@ -236,12 +238,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
     positionButton.setText("go") ;
     positionButton.setPreferredSize(new java.awt.Dimension(34, 26)) ;
-    positionButton.addMouseListener(new java.awt.event.MouseAdapter()
+    positionButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        positionButtonMouseClicked(evt) ;
+        positionButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -267,12 +269,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     arrowPanel.setLayout(new java.awt.GridBagLayout()) ;
 
     leftButton.setText("<<") ;
-    leftButton.addMouseListener(new java.awt.event.MouseAdapter()
+    leftButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        leftButtonMouseClicked(evt) ;
+        leftButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -285,12 +287,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     arrowPanel.add(leftButton, gridBagConstraints) ;
 
     rightButton.setText(">>") ;
-    rightButton.addMouseListener(new java.awt.event.MouseAdapter()
+    rightButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        rightButtonMouseClicked(evt) ;
+        rightButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -316,12 +318,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     manualPanel.setLayout(new java.awt.GridBagLayout()) ;
 
     manualButton.setText("activate") ;
-    manualButton.addMouseListener(new java.awt.event.MouseAdapter()
+    manualButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        manualButtonMouseClicked(evt) ;
+        manualButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -369,6 +371,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     freePositionPanel.add(freePositionLabel, gridBagConstraints) ;
+
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 1 ;
@@ -379,12 +382,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     freePositionPanel.add(freePositionSpinner, gridBagConstraints) ;
 
     freePositionButton.setText("go") ;
-    freePositionButton.addMouseListener(new java.awt.event.MouseAdapter()
+    freePositionButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        freePositionButtonMouseClicked(evt) ;
+        freePositionButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -410,12 +413,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     vibrationPanel.setLayout(new java.awt.GridBagLayout()) ;
 
     vibrationButton.setText("activate") ;
-    vibrationButton.addMouseListener(new java.awt.event.MouseAdapter()
+    vibrationButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        vibrationButtonMouseClicked(evt) ;
+        vibrationButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -449,12 +452,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     refPositionPanel.add(toTopStopLabel, gridBagConstraints) ;
 
     toTopStopButton.setText("go") ;
-    toTopStopButton.addMouseListener(new java.awt.event.MouseAdapter()
+    toTopStopButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        toTopStopButtonMouseClicked(evt) ;
+        toTopStopButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -475,12 +478,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     refPositionPanel.add(aboveColumnLabel, gridBagConstraints) ;
 
     openFileChooserButton.setText("open") ;
-    openFileChooserButton.addMouseListener(new java.awt.event.MouseAdapter()
+    openFileChooserButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        openFileChooserButtonMouseClicked(evt) ;
+        openFileChooserButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -493,12 +496,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     refPositionPanel.add(openFileChooserButton, gridBagConstraints) ;
 
     aboveColumnButton.setText("go") ;
-    aboveColumnButton.addMouseListener(new java.awt.event.MouseAdapter()
+    aboveColumnButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        aboveColumnButtonMouseClicked(evt) ;
+        aboveColumnButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -519,12 +522,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     refPositionPanel.add(toTrashBinLabel, gridBagConstraints) ;
 
     toTrashBinButton.setText("go") ;
-    toTrashBinButton.addMouseListener(new java.awt.event.MouseAdapter()
+    toTrashBinButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
+      public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        toTrashBinButtonMouseClicked(evt) ;
+        toTrashBinButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -555,12 +558,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     add(armPanel, gridBagConstraints) ;
   }// </editor-fold>
 
-  private void closeButtonMouseClicked(java.awt.event.MouseEvent evt)
-  {
-    this.close(UiUtils.getParentFrame(this));
-  }
-
-  private void positionButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void positionButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     Integer position = null;
     try
@@ -578,32 +576,22 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     this._ctrl.carouselGoPosition(position);
   }
 
-  private void leftButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void leftButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     this._ctrl.carouselTurnLeft();
   }
 
-  private void rightButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void rightButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     this._ctrl.carouselTurnRight();
   }
 
-  private void manualButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void manualButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     this._ctrl.carouselFreeMove();
   }
 
-  private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt)
-  {
-    this.cancel();
-  }
-
-  private void pauseToggleButtonMouseClicked(java.awt.event.MouseEvent evt)
-  {
-    this.pauseAndResume(this.pauseToggleButton);
-  }
-
-    private void freePositionButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void freePositionButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     Integer position = null;
     try
@@ -621,17 +609,18 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     this._ctrl.armFreeMove(position);
   }
 
-  private void vibrationButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void vibrationButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     this._ctrl.vibrate();
   }
 
-  private void toTopStopButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void toTopStopButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     this._ctrl.armGoButee();
   }
 
-  private void openFileChooserButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void openFileChooserButtonActionPerformed(
+      java.awt.event.ActionEvent evt)
   {
     int returnValue = fileChooser.showOpenDialog(this);
     if(returnValue == JFileChooser.APPROVE_OPTION)
@@ -655,16 +644,31 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     }
   }
 
-  private void aboveColumnButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void aboveColumnButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     this._ctrl.armGoColonne();
   }
 
-  private void toTrashBinButtonMouseClicked(java.awt.event.MouseEvent evt)
+  private void toTrashBinButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
     this._ctrl.armGoTrash();
   }
 
+  private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt)
+  {
+    this.cancel();
+  }
+
+  private void pauseToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
+  {
+    this.pauseAndResume(this.pauseToggleButton);
+  }
+
+  private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
+  {
+    this.close(UiUtils.getParentFrame(this));
+  }
+  
   private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
   {
     if(evt.getClickCount() == 2)
@@ -707,8 +711,8 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   private javax.swing.JLabel toTrashBinLabel ;
   private javax.swing.JButton vibrationButton ;
   private javax.swing.JPanel vibrationPanel ;
-  // End of variables declaration
-  
+  // End of variables declaration                   
+
   private final JFileChooser fileChooser = new JFileChooser();
   
   @Override
