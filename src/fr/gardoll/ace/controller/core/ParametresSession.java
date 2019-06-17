@@ -88,14 +88,23 @@ public class ParametresSession implements Closeable
   public final static Path COLUMN_DIR_PATH = 
       Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.COLUMN_DIRNAME);
   
-  public static ParametresSession getInstance() throws InitializationException
+  public static ParametresSession getInstance()
   {
-    if (ParametresSession._INSTANCE == null)
+    try
     {
-      ParametresSession._INSTANCE = new ParametresSession(); 
+      if (ParametresSession._INSTANCE == null)
+      {
+        ParametresSession._INSTANCE = new ParametresSession(); 
+      }
+      
+      return ParametresSession._INSTANCE ;
     }
-    
-    return ParametresSession._INSTANCE ;
+    catch (InitializationException e)
+    {
+      String msg = String.format("error while initializing the session: %s", e.getMessage());
+      _LOG.fatal(msg);
+      throw new RuntimeException(msg, e);
+    }
   }
   
   private ParametresSession() throws InitializationException

@@ -25,7 +25,7 @@ public class MotorControllerStub implements MotorController, Closeable
   
   // Number of steps per period.
   // Moving to 1 position in 0.2 seconds considering period of 0.1 second.
-  private static int _CAROUSEL_TIME_INC_FACTOR = 5;
+  private static int _CAROUSEL_TIME_INC_FACTOR = 15;
   private int _carouselTimeInc = 1 ;
   
   // Number of steps per period.

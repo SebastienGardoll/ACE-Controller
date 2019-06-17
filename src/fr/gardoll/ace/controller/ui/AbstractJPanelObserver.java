@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 
 public abstract class AbstractJPanelObserver extends JPanel implements Observer, ControlPanel
@@ -69,8 +70,13 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   
   protected boolean cancel()
   {
-    int choice = JOptionPane.showConfirmDialog(this,
-        "Do you want to cancel the running operations (and returning to the initial position) ?") ;
+    int choice = JOptionPane.OK_OPTION;
+    
+    if(false == ParametresSession.getInstance().isDebug())
+    {
+      choice = JOptionPane.showConfirmDialog(this,
+          "Do you want to cancel the running operations (and returning to the initial position) ?") ;
+    }
     
     if (choice == JOptionPane.OK_OPTION)
     {
@@ -98,8 +104,14 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   
   protected boolean close(Window parent)
   {
-    int choice = JOptionPane.showConfirmDialog(this,
-        "Do you want to exit (and cancel the running operations) ?") ;
+    int choice = JOptionPane.OK_OPTION;
+    
+    if(false == ParametresSession.getInstance().isDebug())
+    {
+      choice = JOptionPane.showConfirmDialog(this,
+          "Do you want to exit (and cancel the running operations) ?") ;
+    }
+    
     if (choice == JOptionPane.OK_OPTION)
     {
       _LOG.debug("running the panel closing operations") ;
