@@ -739,16 +739,22 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   {
     this.fileChooser.setDialogTitle("select column file");
     this.fileChooser.setCurrentDirectory(ParametresSession.COLUMN_DIR_PATH.toFile());
-    this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
     this.fileChooser.setMultiSelectionEnabled(false);
     this.fileChooser.setFileFilter(new FileFilter() 
     {
       @Override
       public boolean accept(File f)
       {
-        String fileName = f.getName();
-        String file_extention = Utils.getFileExtention(fileName);
-        return Colonne.COLUMN_FILE_EXTENTION.equals(file_extention);
+        if(f.isDirectory())
+        {
+          return true;
+        }
+        else
+        {
+          String fileName = f.getName();
+          String file_extention = Utils.getFileExtention(fileName);
+          return Colonne.COLUMN_FILE_EXTENTION.equals(file_extention);
+        }
       }
 
       @Override
