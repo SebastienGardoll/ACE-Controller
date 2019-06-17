@@ -25,7 +25,8 @@ public class MotorControllerStub implements MotorController, Closeable
   
   // Number of steps per period.
   // Moving to 1 position in 0.2 seconds considering period of 0.1 second.
-  private int _carouselTimeInc = 5 ;
+  private static int _CAROUSEL_TIME_INC_FACTOR = 5;
+  private int _carouselTimeInc = 1 ;
   
   // Number of steps per period.
   // Moving 10 mm in 0.5 seconds considering period of 0.1 second.
@@ -34,7 +35,7 @@ public class MotorControllerStub implements MotorController, Closeable
   public MotorControllerStub(int nbStepPosition)
   {
     _LOG.debug(String.format("instanciating motor controller stub with %s number of steps by carousel position", nbStepPosition));
-    this._carouselTimeInc = nbStepPosition/5;
+    this._carouselTimeInc = nbStepPosition/_CAROUSEL_TIME_INC_FACTOR;
   }
   
   @Override
