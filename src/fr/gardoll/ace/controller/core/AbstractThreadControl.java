@@ -93,10 +93,6 @@ public abstract class AbstractThreadControl extends Thread
     }
     finally
     {
-      if(this._toolCtrl != null)
-      {
-        this._toolCtrl.enableControlPanel(true);
-      }
       // Someone may call cancel or pause at the end of the execution of the
       // thread and the thread may not check pause or cancel so the caller
       // will wait forever. Theses instructions release the pending callers.
@@ -104,6 +100,11 @@ public abstract class AbstractThreadControl extends Thread
       // Wake up the callers that was waiting the thread to pause or cancel.
       this._sync_cond.signalAll();
       this._sync.unlock();
+      
+      if(this._toolCtrl != null)
+      {
+        this._toolCtrl.enableControlPanel(true);
+      }
     }
   }
   
@@ -141,7 +142,7 @@ public abstract class AbstractThreadControl extends Thread
           this._sync_cond.await(); 
         }
         
-        _LOG.debug("thread is paused");
+        _LOG.debug("main thread is synchronized");
         
         // When the caller returns from the method await,
         // it blocks until it re-takes the lock.
@@ -301,7 +302,7 @@ public abstract class AbstractThreadControl extends Thread
           this._sync_cond.await(); 
         }
         
-        _LOG.debug("thread is cancelled");
+        _LOG.debug("main thread is synchronized");
         
         // When the caller returns from the method await,
         // it blocks until it re-takes the lock.
