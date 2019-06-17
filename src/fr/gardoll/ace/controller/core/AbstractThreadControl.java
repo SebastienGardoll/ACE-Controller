@@ -97,7 +97,10 @@ public abstract class AbstractThreadControl extends Thread
       // thread and the thread may not check pause or cancel so the caller
       // will wait forever. Theses instructions release the pending callers.
       this._sync.lock();
-      // Wake up the callers that was waiting the thread to pause or cancel.
+      // Makes the caller to quit its await loop.
+      this._is_synchronized = true;
+      _LOG.debug("signaling to all threads that are waiting this thread to cancel or pause");
+      // Wake up the caller that was waiting the thread to pause or cancel.
       this._sync_cond.signalAll();
       this._sync.unlock();
       
@@ -249,9 +252,9 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  //Check point for the thread.
- // Make the instance of the AbstractThreadControl to interrupt if another thread
- // call the interrupt method to do so.
+  // Check point for the thread.
+  // Make the instance of the AbstractThreadControl to interrupt if another thread
+  // call the interrupt method to do so.
   @Override
   public void checkInterruption() throws InterruptedException
   {
