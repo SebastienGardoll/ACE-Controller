@@ -38,6 +38,20 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   {
     if(pauseToggleButton.isSelected())
     {
+      try
+      {
+        this._ctrl.pause();
+        pauseToggleButton.setText("resume");
+      }
+      catch (Exception e)
+      {
+        String msg = String.format("error while pausing: %s", e.getMessage());
+        _LOG.error(msg, e);
+        this.handleException("error while pausing", e);
+      }
+    }
+    else
+    {
       _LOG.debug("running the resume operations");
       try
       {
@@ -49,20 +63,6 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
         String msg = String.format("error while resuming operations: %s", e.getMessage());
         _LOG.error(msg, e);
         this.handleException("error while resuming", e);
-      }
-    }
-    else
-    {
-      try
-      {
-        this._ctrl.pause();
-        pauseToggleButton.setText("resume");
-      }
-      catch (Exception e)
-      {
-        String msg = String.format("error while pausing: %s", e.getMessage());
-        _LOG.error(msg, e);
-        this.handleException("error while pausing", e);
       }
     }
   }
