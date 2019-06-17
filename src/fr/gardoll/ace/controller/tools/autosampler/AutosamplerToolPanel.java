@@ -817,7 +817,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       
       case PAUSE:
       {
-        msg = "pause";
+        msg = "paused";
         break ;
       }
       
