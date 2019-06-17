@@ -31,10 +31,20 @@ public class AutosamplerToolStandalone extends AbstractJFrame
       AutosamplerToolStandalone tool = new AutosamplerToolStandalone(toolPanel, ctrl);
       tool.setVisible(true);
     }
-    catch (InitializationException | InterruptedException e)
+    catch (Exception e)
     {
-      String msg = "error while initialisating the tool";
-      _LOG.error(String.format("%s: %s", msg, e.getMessage()));
+      String msg = null;
+      
+      if(e.getCause() instanceof InitializationException)
+      {
+        msg = "error while initialisating the tool";
+      }
+      else
+      {
+        msg = "error while operating the tool";
+      }
+      
+      _LOG.fatal(String.format("%s: %s", msg, e.getMessage()));
       Utils.reportError(msg, e);
     }
   }
