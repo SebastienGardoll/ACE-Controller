@@ -793,7 +793,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       
       case CANCEL:
       {
-        msg = "cancel";
+        msg = "cancelled";
         break ;
       }
       
