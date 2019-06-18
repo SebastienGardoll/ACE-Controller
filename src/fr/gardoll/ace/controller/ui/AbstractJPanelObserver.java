@@ -10,6 +10,10 @@ import javax.swing.SwingUtilities ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.AbstractToolControl ;
+import fr.gardoll.ace.controller.core.Action ;
+import fr.gardoll.ace.controller.core.ControlPanel ;
+import fr.gardoll.ace.controller.core.Observer ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 

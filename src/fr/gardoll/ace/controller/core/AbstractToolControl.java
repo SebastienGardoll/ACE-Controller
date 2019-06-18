@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.ui;
+package fr.gardoll.ace.controller.core;
 
 import java.util.HashSet ;
 import java.util.Set ;
@@ -8,9 +8,6 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
-import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
-import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
 public abstract class AbstractToolControl implements ToolControl

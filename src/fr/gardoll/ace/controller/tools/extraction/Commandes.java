@@ -5,14 +5,14 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.column.Colonne ;
+import fr.gardoll.ace.controller.core.Action ;
+import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Observer ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
-import fr.gardoll.ace.controller.ui.Action ;
-import fr.gardoll.ace.controller.ui.ActionType ;
-import fr.gardoll.ace.controller.ui.Observer ;
-import fr.gardoll.ace.controller.ui.ToolControl ;
 
 // TODO: singleton.
 // TODO: add logging

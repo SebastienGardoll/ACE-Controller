@@ -6,10 +6,6 @@ import java.util.concurrent.locks.ReentrantLock ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.ui.Action ;
-import fr.gardoll.ace.controller.ui.ActionType ;
-import fr.gardoll.ace.controller.ui.ToolControl ;
-
 public abstract class AbstractThreadControl extends Thread
                                             implements ThreadControl
 {

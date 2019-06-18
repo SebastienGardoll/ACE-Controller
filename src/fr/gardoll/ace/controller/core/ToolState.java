@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.ui;
+package fr.gardoll.ace.controller.core;
 
 import java.util.Collections ;
 import java.util.Set ;
