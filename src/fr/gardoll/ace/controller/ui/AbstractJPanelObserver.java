@@ -31,6 +31,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   protected boolean _isResetEnable  = false;
   protected boolean _isCancelEnable = false;
   protected boolean _isStartEnable  = false;
+  protected boolean _isCloseEnable = false;
   
   protected abstract void processAction(Action action);
   protected abstract void enableReinitControl(boolean isEnable) ;
@@ -38,6 +39,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   protected abstract void enableResumeControl(boolean isEnable) ;
   protected abstract void enableCancelControl(boolean isEnable) ;
   protected abstract void enableStartControl(boolean isEnable) ;
+  protected abstract void enableCloseControl(boolean isEnable) ;
   
   public AbstractJPanelObserver(AbstractToolControl ctrl)
   {
@@ -53,35 +55,84 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   public final void enablePause(boolean isEnable)
   {
     this._isPauseEnable = isEnable;
-    this.enablePauseControl(isEnable);
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractJPanelObserver.this.enablePauseControl(isEnable);
+      }
+    });
+  }
+  
+  @Override
+  public void enableClose(boolean isEnable)
+  {
+    this._isCloseEnable = isEnable;
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractJPanelObserver.this.enableCloseControl(isEnable);
+      }
+    });
   }
   
   @Override
   public final void enableResume(boolean isEnable)
   {
     this._isResumeEnable = isEnable;
-    this.enableResumeControl(isEnable);
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractJPanelObserver.this.enableResumeControl(isEnable);
+      }
+    });
   }
   
   @Override
   public final void enableCancel(boolean isEnable)
   {
     this._isCancelEnable = isEnable;
-    this.enableCancelControl(isEnable);
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractJPanelObserver.this.enableCancelControl(isEnable);
+      }
+    });
   }
 
   @Override
   public final void enableReinit(boolean isEnable)
   {
     this._isResetEnable = isEnable;
-    this.enableReinitControl(isEnable);
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractJPanelObserver.this.enableReinitControl(isEnable);
+      }
+    });
   }
   
   @Override
   public final void enableStart(boolean isEnable)
   {
     this._isStartEnable = isEnable;
-    this.enableStartControl(isEnable);
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractJPanelObserver.this.enableStartControl(isEnable);
+      }
+    });
   }
 
   protected void pauseAndResume()
