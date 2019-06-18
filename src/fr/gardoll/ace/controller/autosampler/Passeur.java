@@ -368,7 +368,8 @@ public class Passeur implements Closeable
     }
   }
   
-  public void returnToInit() throws InterruptedException
+  // TODO: to stop or to trash bin so as to drain the pump ?
+  public void reinit() throws InterruptedException
   {
     _LOG.debug("returning to the initial position");
     this.moveButeBras();
@@ -390,7 +391,7 @@ public class Passeur implements Closeable
         this.interfaceMoteur.halt();
       }
       
-      this.returnToInit();
+      this.reinit();
     }
     catch(SerialComException e)
     {

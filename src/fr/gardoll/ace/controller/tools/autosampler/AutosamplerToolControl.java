@@ -48,7 +48,6 @@ public class AutosamplerToolControl extends AbstractToolControl
   void armFreeMove(int value)
   {
     int nbPas = Passeur.convertBras(value) ;
-    this.enableControlPanel(false);
     ArmThread thread = new ArmThread(this, this._passeur, nbPas, 1);
     this.setThread(thread);
     _LOG.debug(String.format("start arm thread for free move '%s'", value));
@@ -57,7 +56,6 @@ public class AutosamplerToolControl extends AbstractToolControl
   
   void armGoButee()
   {
-    this.enableControlPanel(false);
     // zero pour le choix fin de butée
     ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
     this.setThread(thread);
@@ -75,7 +73,6 @@ public class AutosamplerToolControl extends AbstractToolControl
     }
     else
     {
-      this.enableControlPanel(false);
       ArmThread thread = new ArmThread(this, this._passeur, this.colonne);
       this.setThread(thread);
       _LOG.debug("start arm thread for go to column");
@@ -85,7 +82,6 @@ public class AutosamplerToolControl extends AbstractToolControl
   
   void armGoTrash()
   {
-    this.enableControlPanel(false);
     ArmThread thread = new ArmThread(this, this._passeur, 0, 3);
     this.setThread(thread);
     _LOG.debug("start arm thread for go to trash can");
@@ -94,7 +90,6 @@ public class AutosamplerToolControl extends AbstractToolControl
   
   void carouselGoPosition(int position)
   {
-    this.enableControlPanel(false);
     CarouselThread thread = new CarouselThread(this, this._passeur, position);
     this.setThread(thread);
     _LOG.debug(String.format("start carousel thread for go to position '%s'", position));
@@ -103,8 +98,6 @@ public class AutosamplerToolControl extends AbstractToolControl
   
   void carouselTurnLeft()
   {
-    this.enableControlPanel(false);
-    
     int nbPosition =  -1 * ParametresSession.NB_POSITION;
     CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
     this.setThread(thread);
@@ -114,8 +107,6 @@ public class AutosamplerToolControl extends AbstractToolControl
   
   void carouselTurnRight()
   {
-    this.enableControlPanel(false);
-    
     int nbPosition =  ParametresSession.NB_POSITION;
     CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
     this.setThread(thread);

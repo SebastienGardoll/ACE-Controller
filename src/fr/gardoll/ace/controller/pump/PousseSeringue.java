@@ -448,8 +448,7 @@ public class PousseSeringue implements Closeable
         this.interfacePousseSeringue.stop();
       }
       
-      this.vidange();
-      this.finPompage();
+      this.reinit();
     }
     catch(SerialComException e)
     {
@@ -458,6 +457,12 @@ public class PousseSeringue implements Closeable
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
+  }
+  
+  public void reinit() throws InterruptedException
+  {
+    this.vidange();
+    this.finPompage();
   }
 
   // Arrête de la pompe

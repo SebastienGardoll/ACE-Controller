@@ -53,6 +53,10 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     {
+      if(this._toolCtrl != null)
+      {
+        this._toolCtrl.getState().start();
+      }
       this.threadLogic();
     }
     catch(InterruptedException e)
@@ -106,7 +110,7 @@ public abstract class AbstractThreadControl extends Thread
       
       if(this._toolCtrl != null)
       {
-        this._toolCtrl.enableControlPanel(true);
+        this._toolCtrl.getState().done();
       }
     }
   }

@@ -4,6 +4,7 @@ import java.io.File ;
 import java.util.Date ;
 
 import javax.swing.JFileChooser ;
+import javax.swing.SwingUtilities ;
 import javax.swing.filechooser.FileFilter ;
 
 import org.apache.logging.log4j.LogManager ;
@@ -656,12 +657,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
   private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    this.cancel();
+    this.cancelAndReinit();
   }
 
   private void pauseToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    this.pauseAndResume(this.pauseToggleButton);
+    this.pauseAndResume();
   }
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
@@ -715,26 +716,6 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
   private final JFileChooser fileChooser = new JFileChooser();
   
-  @Override
-  public void enableControl(boolean isEnable)
-  {
-    aboveColumnButton.setEnabled(isEnable);
-    freePositionButton.setEnabled(isEnable);
-    leftButton.setEnabled(isEnable);
-    manualButton.setEnabled(isEnable);
-    openFileChooserButton.setEnabled(isEnable);
-    positionButton.setEnabled(isEnable);
-    rightButton.setEnabled(isEnable);
-    toTopStopButton.setEnabled(isEnable);
-    toTrashBinButton.setEnabled(isEnable);
-    vibrationButton.setEnabled(isEnable);
-    closeButton.setEnabled(isEnable);
-    
-    // Disable cancel and pause when controls are enable.
-    cancelButton.setEnabled(! isEnable);
-    pauseToggleButton.setEnabled( ! isEnable);
-  }
-
   private void initCustom()
   {
     this.fileChooser.setDialogTitle("select column file");
@@ -763,8 +744,6 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
         return String.format("column file *.%s", Colonne.COLUMN_FILE_EXTENTION);
       }
     });
-    
-    this.enableControl(true);
   }
   
   private void addToUi(String msg)
@@ -838,6 +817,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
         msg = "waiting for pause";
         break ;
       }
+      
+      case REINIT:
+      {
+        msg = "reinitializing";
+        break;
+      }
 
       case WITHDRAWING:
       case INFUSING:
@@ -850,5 +835,108 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     }
     
     this.addToUi(String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg));
+  }
+
+  @Override
+  public void enableClose(boolean isEnable)
+  {
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        closeButton.setEnabled(isEnable);
+      }
+    });
+  }
+
+  @Override
+  public void enablePauseControl(boolean isEnable)
+  {
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        pauseToggleButton.setEnabled(isEnable);
+        if(isEnable)
+        {
+          pauseToggleButton.setText("pause");
+        }
+      }
+    });
+  }
+
+  @Override
+  public void enableResumeControl(boolean isEnable)
+  {
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        pauseToggleButton.setEnabled(isEnable);
+        if(isEnable)
+        {
+          pauseToggleButton.setText("resume");
+        }
+      }
+    });
+  }
+
+  @Override
+  public void enableCancelControl(boolean isEnable)
+  {
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        cancelButton.setEnabled(isEnable);
+        if(isEnable)
+        {
+          cancelButton.setText("cancel");
+        }
+      }
+    });
+  }
+
+  @Override
+  public void enableReinitControl(boolean isEnable)
+  {
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        cancelButton.setEnabled(isEnable);
+        if(isEnable)
+        {
+          cancelButton.setText("reset");
+        }
+      }
+    });
+  }
+  
+  @Override
+  public void enableStartControl(boolean isEnable)
+  {
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        aboveColumnButton.setEnabled(isEnable);
+        freePositionButton.setEnabled(isEnable);
+        leftButton.setEnabled(isEnable);
+        manualButton.setEnabled(isEnable);
+        openFileChooserButton.setEnabled(isEnable);
+        positionButton.setEnabled(isEnable);
+        rightButton.setEnabled(isEnable);
+        toTopStopButton.setEnabled(isEnable);
+        toTrashBinButton.setEnabled(isEnable);
+        vibrationButton.setEnabled(isEnable);
+      }
+    });
   }
 }

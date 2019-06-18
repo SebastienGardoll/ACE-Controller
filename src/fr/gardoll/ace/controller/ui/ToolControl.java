@@ -1,14 +1,8 @@
 package fr.gardoll.ace.controller.ui;
 
-public interface ToolControl extends Observable
+public interface ToolControl extends Observable, ControlPanelHandler
 {
-  public void enableControlPanel(boolean isEnable);
-  
   public void displayControlPanelModalMessage(String msg) ;
-  
-  public void addControlPanel(ControlPanel ctrlPanel);
-  
-  public void removeControlPanel(ControlPanel ctrlPanel);
   
   public void pause() throws InterruptedException;
   
@@ -16,9 +10,13 @@ public interface ToolControl extends Observable
   
   public void cancel() throws InterruptedException;
   
+  public void reinit() throws InterruptedException;
+  
   public void close() throws InterruptedException;
   
-  public boolean isClosed();
+  public ToolState getState();
   
-  public boolean isPaused();
+  public void setState(ToolState state);
+  
+  public void cancelOnPause() throws InterruptedException;
 }

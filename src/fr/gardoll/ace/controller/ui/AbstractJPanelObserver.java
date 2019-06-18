@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat ;
 
 import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
-import javax.swing.JToggleButton ;
 import javax.swing.SwingUtilities ;
 
 import org.apache.logging.log4j.LogManager ;
@@ -22,8 +21,19 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   protected static final SimpleDateFormat _DATE_FORMATTER = new SimpleDateFormat("HH:mm:ss");
   
   private final AbstractToolControl _ctrl ;
-
-  abstract protected void processAction(Action action);
+  
+  protected boolean _isResumeEnable = false;
+  protected boolean _isPauseEnable  = false;
+  protected boolean _isResetEnable  = false;
+  protected boolean _isCancelEnable = false;
+  protected boolean _isStartEnable  = false;
+  
+  protected abstract void processAction(Action action);
+  protected abstract void enableReinitControl(boolean isEnable) ;
+  protected abstract void enablePauseControl(boolean isEnable) ;
+  protected abstract void enableResumeControl(boolean isEnable) ;
+  protected abstract void enableCancelControl(boolean isEnable) ;
+  protected abstract void enableStartControl(boolean isEnable) ;
   
   public AbstractJPanelObserver(AbstractToolControl ctrl)
   {
@@ -35,14 +45,48 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     this.reportError(msg, e);
   }
   
-  protected void pauseAndResume(JToggleButton pauseToggleButton)
+  @Override
+  public final void enablePause(boolean isEnable)
   {
-    if(pauseToggleButton.isSelected())
+    this._isPauseEnable = isEnable;
+    this.enablePauseControl(isEnable);
+  }
+  
+  @Override
+  public final void enableResume(boolean isEnable)
+  {
+    this._isResumeEnable = isEnable;
+    this.enableResumeControl(isEnable);
+  }
+  
+  @Override
+  public final void enableCancel(boolean isEnable)
+  {
+    this._isCancelEnable = isEnable;
+    this.enableCancelControl(isEnable);
+  }
+
+  @Override
+  public final void enableReinit(boolean isEnable)
+  {
+    this._isResetEnable = isEnable;
+    this.enableReinitControl(isEnable);
+  }
+  
+  @Override
+  public final void enableStart(boolean isEnable)
+  {
+    this._isStartEnable = isEnable;
+    this.enableStartControl(isEnable);
+  }
+
+  protected void pauseAndResume()
+  {
+    if(this._isPauseEnable)
     {
       try
       {
         this._ctrl.pause();
-        pauseToggleButton.setText("resume");
       }
       catch (Exception e)
       {
@@ -57,7 +101,6 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
       try
       {
         this._ctrl.unPause();
-        pauseToggleButton.setText("pause");
       }
       catch (Exception e)
       {
@@ -68,36 +111,71 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     }
   }
   
-  protected boolean cancel()
+  protected boolean cancelAndReinit()
   {
     int choice = JOptionPane.OK_OPTION;
     
     if(false == ParametresSession.getInstance().isDebug())
     {
-      choice = JOptionPane.showConfirmDialog(this,
-          "Do you want to cancel the running operations (and returning to the initial position) ?") ;
+      String msg = null;
+      
+      if(this._isCancelEnable)
+      {
+        msg = "Do you want to cancel the running operations (and returning to the initial position) ?";
+      }
+      else
+      {
+        msg = "Do you want to reinitialize ACE ?";
+      }
+      
+      choice = JOptionPane.showConfirmDialog(this, msg) ;
     }
     
     if (choice == JOptionPane.OK_OPTION)
     {
-      _LOG.debug("running the panel cancelling operations") ;
-      
-      try
+      if(this._isCancelEnable)
       {
-        this._ctrl.cancel();
+        _LOG.debug("running the panel cancelling operations") ;
+        
+        try
+        {
+          this._ctrl.cancel();
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while cancelling: %s", e.getMessage());
+          _LOG.error(msg, e);
+          this.handleException("error while cancelling", e);
+        }
       }
-      catch (Exception e)
+      else
       {
-        String msg = String.format("error while cancelling: %s", e.getMessage());
-        _LOG.error(msg, e);
-        this.handleException("error while cancelling", e);
+        _LOG.debug("running the panel reinit operations") ;
+        try
+        {
+          this._ctrl.reinit();
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while reinitializing: %s", e.getMessage());
+          _LOG.error(msg, e);
+          this.handleException("error while reinitializing", e);
+        }
       }
       
       return true;
     }
     else
     {
-      _LOG.debug("the panel cancelling operations has been skipped") ;
+      if(this._isCancelEnable)
+      {
+        _LOG.debug("the panel cancelling operations has been skipped") ;
+      }
+      else
+      {
+        _LOG.debug("the panel reinit operations has been skipped") ;
+      }
+      
       return false;
     }
   }

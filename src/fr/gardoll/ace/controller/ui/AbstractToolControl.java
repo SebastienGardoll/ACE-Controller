@@ -3,6 +3,7 @@ package fr.gardoll.ace.controller.ui;
 import java.util.HashSet ;
 import java.util.Set ;
 
+import org.apache.commons.lang3.NotImplementedException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -23,11 +24,10 @@ public abstract class AbstractToolControl implements ToolControl
   protected final PousseSeringue _pousseSeringue ;
   protected final Passeur _passeur ;
   
-  private boolean _hasEverMoved   = false;
   private boolean _hasAutosampler = false;
   private boolean _hasPump        = false;
-  private boolean _isClosed       = false;
-  private boolean _isPaused       = false;
+
+  private ToolState _state        = new InitialState(this, _ctrlPanel);
   
   public AbstractToolControl(ParametresSession parametresSession,
                              boolean hasPump, boolean hasAutosampler)
@@ -55,23 +55,10 @@ public abstract class AbstractToolControl implements ToolControl
     }
   }
 
-  @Override
-  public boolean isClosed()
-  {
-    return this._isClosed;
-  }
-
-  @Override
-  public boolean isPaused()
-  {
-    return this._isPaused;
-  }
-  
   protected void setThread(ThreadControl thread)
   {
     _LOG.debug(String.format("setting thread '%s'", thread)) ;
     this._currentThread = thread;
-    this._hasEverMoved = true;
   }
   
   protected boolean checkThread()
@@ -82,13 +69,6 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void cancel() throws InterruptedException
   {
-    if(false == this._hasEverMoved)
-    {
-      _LOG.debug("ACE has not ever moved: don't cancel");
-      // Early exit.
-      return;
-    }
-    
     if (this.checkThread())
     {
       _LOG.info("waiting for cancellation");
@@ -126,22 +106,36 @@ public abstract class AbstractToolControl implements ToolControl
   }
   
   @Override
+  // Thread must be terminated.
+  public void reinit() throws InterruptedException
+  {
+    try
+    {
+      _LOG.info("reinitializing all operations");
+      this.notifyAction(new Action(ActionType.REINIT, null));
+      
+      if(this._hasAutosampler)
+      {
+        this._passeur.reinit();
+      }
+      
+      if(this._hasPump)
+      {
+        this._pousseSeringue.reinit();
+      }
+      
+    }
+    catch (InterruptedException e)
+    {
+      String msg = "reinitializing has been interrupted";
+      _LOG.fatal(msg);
+      return ;
+    }
+  }
+  
+  @Override
   public void pause() throws InterruptedException
   {  
-    if(this._isPaused)
-    {
-      _LOG.debug("controller is already paused");
-      // Early exit.
-      return;
-    }
-    
-    if(false == this._hasEverMoved)
-    {
-      _LOG.debug("ACE has not ever moved: don't pause");
-      // Early exit.
-      return;
-    }
-    
     if(this.checkThread())
     {
       _LOG.info("waiting for pause");
@@ -172,20 +166,6 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void unPause() throws InterruptedException
   {  
-    if(false == this._isPaused)
-    {
-      _LOG.debug("controller is not paused: don't resume");
-      // Early exit.
-      return;
-    }
-    
-    if(false == this._hasEverMoved)
-    {
-      _LOG.debug("ACE has not ever moved: don't resume");
-      // Early exit.
-      return;
-    }
-    
     if(this.checkThread())
     {
       _LOG.info("resuming from pause");
@@ -213,39 +193,41 @@ public abstract class AbstractToolControl implements ToolControl
   }
 
   @Override
-  public void close() throws InterruptedException
+  public void setState(ToolState state)
   {
-    if(false == this._isClosed)
-    {
-      _LOG.debug("performing close operation");
-      this.cancel();
-      this._isClosed = true;
-    }
-    else
-    {
-      _LOG.debug("control is already closed");
-    }
+    this._state = state;
   }
   
   @Override
-  public void enableControlPanel(boolean isEnable)
+  public ToolState getState()
   {
-    for(ControlPanel ctrlPanel: this._ctrlPanel)
-    {
-      ctrlPanel.enableControl(isEnable);
-    }
+    return this._state;
+  }
+  
+  @Override
+  public void cancelOnPause() throws InterruptedException
+  {
+    throw new NotImplementedException("cancel on pause is not implemented yet");
+  }
+  
+  @Override
+  public void close() throws InterruptedException
+  {
+    _LOG.debug("controller has nothing to do while closing the tool");
   }
   
   @Override
   public void addControlPanel(ControlPanel obs)
   {
     this._ctrlPanel.add(obs);
+    this._state.addControlPanel(obs);
   }
 
   @Override
   public void removeControlPanel(ControlPanel obs)
   {
     this._ctrlPanel.remove(obs);
+    this._state.removeControlPanel(obs);
   }
   
   @Override
