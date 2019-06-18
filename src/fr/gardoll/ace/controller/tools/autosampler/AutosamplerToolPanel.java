@@ -858,10 +858,15 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       @Override
       public void run()
       {
-        pauseToggleButton.setEnabled(isEnable);
+        pauseToggleButton.setEnabled(isEnable || AutosamplerToolPanel.this._isResumeEnable);
+        
         if(isEnable)
         {
           pauseToggleButton.setText("pause");
+        }
+        else
+        {
+          pauseToggleButton.setText("resume");
         }
       }
     });
@@ -875,10 +880,15 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       @Override
       public void run()
       {
-        pauseToggleButton.setEnabled(isEnable);
+        pauseToggleButton.setEnabled(isEnable || AutosamplerToolPanel.this._isPauseEnable);
+        
         if(isEnable)
         {
           pauseToggleButton.setText("resume");
+        }
+        else
+        {
+          pauseToggleButton.setText("pause");
         }
       }
     });
@@ -892,10 +902,15 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       @Override
       public void run()
       {
-        cancelButton.setEnabled(isEnable);
+        cancelButton.setEnabled(isEnable || AutosamplerToolPanel.this._isResumeEnable);
+        
         if(isEnable)
         {
           cancelButton.setText("cancel");
+        }
+        else
+        {
+          cancelButton.setText("reset");
         }
       }
     });
@@ -909,10 +924,15 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
       @Override
       public void run()
       {
-        cancelButton.setEnabled(isEnable);
+        cancelButton.setEnabled(isEnable || AutosamplerToolPanel.this._isCancelEnable);
+        
         if(isEnable)
         {
           cancelButton.setText("reset");
+        }
+        else
+        {
+          cancelButton.setText("cancel");
         }
       }
     });

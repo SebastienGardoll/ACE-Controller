@@ -182,7 +182,7 @@ class ReadyState extends AbstractState implements ToolState
       panel.enableClose(true);
     }
     
-    this._ctrl.cancel();
+    this._ctrl.reinit();
     this._ctrl.setState(new ReadyState(this._ctrl, this._panels));
   }
 
