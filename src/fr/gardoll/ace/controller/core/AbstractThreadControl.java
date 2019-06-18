@@ -51,12 +51,15 @@ public abstract class AbstractThreadControl extends Thread
   @Override
   public final void run()
   {
+    boolean hasCrashed = false;
+    
     try
     {
       if(this._toolCtrl != null)
       {
         this._toolCtrl.getState().start();
       }
+      
       this.threadLogic();
     }
     catch(InterruptedException e)
@@ -64,6 +67,7 @@ public abstract class AbstractThreadControl extends Thread
       String msg = "operations have been interrupted";
       _LOG.fatal(msg);
       this.interrupt(); // Reset the interruption state of this thread.
+      hasCrashed = true;
       return ; // Terminate the execution of the thread.
     }
     catch(CancellationException e)
@@ -73,6 +77,8 @@ public abstract class AbstractThreadControl extends Thread
       {
         this._toolCtrl.notifyAction(new Action(ActionType.CANCEL, null));
       }
+      
+      hasCrashed = true;
       return; // Terminate the execution of the thread.
     }
     catch(InitializationException e)
@@ -83,6 +89,8 @@ public abstract class AbstractThreadControl extends Thread
       {
         this._toolCtrl.notifyError(msg, e);
       }
+      
+      hasCrashed = true;
       return ; // Terminate the execution of the thread.
     }
     catch(Exception e)
@@ -93,6 +101,8 @@ public abstract class AbstractThreadControl extends Thread
       {
         this._toolCtrl.notifyError(msg, e);
       }
+      
+      hasCrashed = true;
       return ; // Terminate the execution of the thread.
     }
     finally
@@ -110,7 +120,15 @@ public abstract class AbstractThreadControl extends Thread
       
       if(this._toolCtrl != null)
       {
-        this._toolCtrl.getState().done();
+        if(hasCrashed)
+        {
+          // TODO: to be tested.
+          this._toolCtrl.getState().crash();
+        }
+        else
+        {
+          this._toolCtrl.getState().done();
+        }
       }
     }
   }

@@ -12,6 +12,7 @@ public interface ToolState extends ControlPanelHandler
   public void reinit() throws InterruptedException;
   public void start() throws InterruptedException;
   public void done() ;
+  public void crash();
 }
 
 abstract class AbstractState implements ToolState
@@ -68,6 +69,37 @@ abstract class AbstractState implements ToolState
   
   @Override
   public void done() {} // Nothing is done.
+  
+  @Override
+  public void crash()
+  {
+    this._ctrl.setState(new CrashedState(this._ctrl, this._panels));
+  }
+}
+
+class CrashedState extends AbstractState implements ToolState
+{
+  public CrashedState(ToolControl ctrl, Set<ControlPanel> panels)
+  {
+    super(ctrl, panels);
+  }
+
+  @Override
+  protected void _initPanels(ControlPanel panel)
+  {
+    panel.enablePause(false);
+    panel.enableResume(false);
+    panel.enableStart(false);
+    panel.enableCancel(false);
+    panel.enableReinit(false);
+    panel.enableClose(true);
+  }
+  
+  @Override
+  public void close() throws InterruptedException
+  {
+    this._ctrl.close();
+  }
 }
 
 class InitialState extends AbstractState implements ToolState
