@@ -92,6 +92,34 @@ abstract class AbstractState implements ToolState
   {
     _LOG.debug("controller has nothing to do while closing the tool");
   }
+  
+  protected void innerCancel() throws InterruptedException
+  {
+    if (this.checkThread())
+    {
+      _LOG.info("waiting for cancellation");
+      this._ctrl.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
+      this._currentThread.cancel();
+    }
+    else
+    {
+      String msg = "thread control is not alive or is null";
+      _LOG.debug(msg);
+    }
+    
+    _LOG.info("cancelling all operations");
+    this._ctrl.notifyAction(new Action(ActionType.CANCEL, null));
+    
+    if(this._ctrl._hasAutosampler)
+    {
+      this._ctrl._passeur.cancel();
+    }
+    
+    if(this._ctrl._hasPump)
+    {
+      this._ctrl._pousseSeringue.cancel();
+    }
+  }
 }
 
 class CrashedState extends AbstractState implements ToolState
@@ -186,7 +214,7 @@ class ReadyState extends AbstractState implements ToolState
       //panel.enableClose(true);
     }
     
-    this._ctrl.cancel();
+    this.innerCancel();
     this.innerClose();
     this._ctrl.setState(new ClosedState(this._ctrl, this._panels));
   }
@@ -205,7 +233,7 @@ class ReadyState extends AbstractState implements ToolState
     }
     
     this.innerReinit();
-    this._ctrl.setState(new ReadyState(this._ctrl, this._panels));
+    this._ctrl.setState(new InitialState(this._ctrl, this._panels));
   }
 
   private void innerReinit() throws InterruptedException
@@ -316,34 +344,6 @@ class RunningState extends AbstractState implements ToolState
     this._ctrl.setState(new InitialState(this._ctrl, this._panels));
   }
   
-  private void innerCancel() throws InterruptedException
-  {
-    if (this.checkThread())
-    {
-      _LOG.info("waiting for cancellation");
-      this._ctrl.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
-      this._currentThread.cancel();
-    }
-    else
-    {
-      String msg = "thread control is not alive or is null";
-      _LOG.debug(msg);
-    }
-    
-    _LOG.info("cancelling all operations");
-    this._ctrl.notifyAction(new Action(ActionType.CANCEL, null));
-    
-    if(this._ctrl._hasAutosampler)
-    {
-      this._ctrl._passeur.cancel();
-    }
-    
-    if(this._ctrl._hasPump)
-    {
-      this._ctrl._pousseSeringue.cancel();
-    }
-  }
-
   @Override
   public void done()
   {
