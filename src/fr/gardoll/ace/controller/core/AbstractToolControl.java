@@ -189,20 +189,17 @@ public abstract class AbstractToolControl implements ToolControl
     }
   }
 
-  @Override
-  public void setState(ToolState state)
+  void setState(ToolState state)
   {
     this._state = state;
   }
   
-  @Override
-  public ToolState getState()
+  ToolState getState()
   {
     return this._state;
   }
   
-  @Override
-  public void cancelOnPause() throws InterruptedException
+  void cancelOnPause() throws InterruptedException
   {
     throw new NotImplementedException("cancel on pause is not implemented yet");
   }

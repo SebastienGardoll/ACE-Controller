@@ -20,14 +20,14 @@ public abstract class AbstractThreadControl extends Thread
   private boolean _is_canceled     = false;
   private boolean _is_synchronized = false;
 
-  protected ToolControl _toolCtrl ;
+  protected AbstractToolControl _toolCtrl ;
 
   public AbstractThreadControl()
   {
     this.init(null);
   }
   
-  private void init(ToolControl toolCtrl)
+  private void init(AbstractToolControl toolCtrl)
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
@@ -35,7 +35,7 @@ public abstract class AbstractThreadControl extends Thread
     this._toolCtrl = toolCtrl;
   }
 
-  public AbstractThreadControl(ToolControl toolCtrl)
+  public AbstractThreadControl(AbstractToolControl toolCtrl)
   {
     this.init(toolCtrl);
   }

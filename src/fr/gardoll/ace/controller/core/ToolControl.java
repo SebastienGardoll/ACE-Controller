@@ -14,9 +14,9 @@ public interface ToolControl extends Observable, ControlPanelHandler
   
   public void close() throws InterruptedException;
   
-  public ToolState getState();
+  //public ToolState getState();
   
-  public void setState(ToolState state);
+  //public void setState(ToolState state);
   
-  public void cancelOnPause() throws InterruptedException;
+  //public void cancelOnPause() throws InterruptedException;
 }

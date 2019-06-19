@@ -18,9 +18,9 @@ public interface ToolState extends ControlPanelHandler
 abstract class AbstractState implements ToolState
 {
   protected Set<ControlPanel> _panels = Collections.emptySet();
-  protected ToolControl       _ctrl   = null; 
+  protected AbstractToolControl _ctrl = null; 
   
-  public AbstractState(ToolControl ctrl, Set<ControlPanel> panels)
+  public AbstractState(AbstractToolControl ctrl, Set<ControlPanel> panels)
   {
     this._ctrl = ctrl;
     
@@ -79,7 +79,7 @@ abstract class AbstractState implements ToolState
 
 class CrashedState extends AbstractState implements ToolState
 {
-  public CrashedState(ToolControl ctrl, Set<ControlPanel> panels)
+  public CrashedState(AbstractToolControl ctrl, Set<ControlPanel> panels)
   {
     super(ctrl, panels);
   }
@@ -104,7 +104,7 @@ class CrashedState extends AbstractState implements ToolState
 
 class InitialState extends AbstractState implements ToolState
 {
-  public InitialState(ToolControl ctrl, Set<ControlPanel> panels)
+  public InitialState(AbstractToolControl ctrl, Set<ControlPanel> panels)
   {
     super(ctrl, panels);
   }
@@ -146,7 +146,7 @@ class InitialState extends AbstractState implements ToolState
 
 class ReadyState extends AbstractState implements ToolState
 {
-  public ReadyState(ToolControl ctrl, Set<ControlPanel> panels)
+  public ReadyState(AbstractToolControl ctrl, Set<ControlPanel> panels)
   {
     super(ctrl, panels);
   }
@@ -206,7 +206,7 @@ class ReadyState extends AbstractState implements ToolState
 
 class RunningState extends AbstractState implements ToolState
 {
-  public RunningState(ToolControl ctrl, Set<ControlPanel> panels)
+  public RunningState(AbstractToolControl ctrl, Set<ControlPanel> panels)
   {
     super(ctrl, panels);
   }
@@ -265,7 +265,7 @@ class RunningState extends AbstractState implements ToolState
 
 class PausedState extends AbstractState implements ToolState
 {
-  public PausedState(ToolControl ctrl, Set<ControlPanel> panels)
+  public PausedState(AbstractToolControl ctrl, Set<ControlPanel> panels)
   {
     super(ctrl, panels);
   }
@@ -318,7 +318,7 @@ class PausedState extends AbstractState implements ToolState
 
 class ClosedState extends AbstractState implements ToolState
 {
-  public ClosedState(ToolControl ctrl, Set<ControlPanel> panels)
+  public ClosedState(AbstractToolControl ctrl, Set<ControlPanel> panels)
   {
     super(ctrl, panels);
   }
