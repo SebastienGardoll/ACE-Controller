@@ -4,13 +4,13 @@ public interface ToolControl extends Observable, ControlPanelHandler
 {
   public void displayControlPanelModalMessage(String msg) ;
   
-  public void pause() throws InterruptedException;
+  public void pause();
   
-  public void unPause() throws InterruptedException;
+  public void resume();
   
-  public void cancel() throws InterruptedException;
+  public void cancel();
   
-  public void reinit() throws InterruptedException;
+  public void reinit();
   
-  public void close() throws InterruptedException;
+  public void close();
 }

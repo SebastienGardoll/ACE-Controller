@@ -139,30 +139,11 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   {
     if(this._isPauseEnable)
     {
-      try
-      {
-        this._ctrl.pause();
-      }
-      catch (Exception e)
-      {
-        String msg = String.format("error while pausing: %s", e.getMessage());
-        _LOG.error(msg, e);
-        this.handleException("error while pausing", e);
-      }
+      this._ctrl.pause();
     }
     else
     {
-      _LOG.debug("running the resume operations");
-      try
-      {
-        this._ctrl.unPause();
-      }
-      catch (Exception e)
-      {
-        String msg = String.format("error while resuming operations: %s", e.getMessage());
-        _LOG.error(msg, e);
-        this.handleException("error while resuming", e);
-      }
+      this._ctrl.resume();
     }
   }
   
@@ -191,31 +172,12 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
       if(this._isCancelEnable)
       {
         _LOG.debug("running the panel cancelling operations") ;
-        
-        try
-        {
-          this._ctrl.cancel();
-        }
-        catch (Exception e)
-        {
-          String msg = String.format("error while cancelling: %s", e.getMessage());
-          _LOG.error(msg, e);
-          this.handleException("error while cancelling", e);
-        }
+        this._ctrl.cancel();
       }
       else
       {
         _LOG.debug("running the panel reinit operations") ;
-        try
-        {
-          this._ctrl.reinit();
-        }
-        catch (Exception e)
-        {
-          String msg = String.format("error while reinitializing: %s", e.getMessage());
-          _LOG.error(msg, e);
-          this.handleException("error while reinitializing", e);
-        }
+        this._ctrl.reinit();
       }
       
       return true;
@@ -248,20 +210,12 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     if (choice == JOptionPane.OK_OPTION)
     {
       _LOG.debug("running the panel closing operations") ;
-      try
+      
+      this._ctrl.close();
+      if(parent != null)
       {
-        this._ctrl.close();
-        if(parent != null)
-        {
-          _LOG.debug("closing the parent frame and may shutdown the JVM");
-          parent.dispose();
-        }
-      }
-      catch (Exception ex)
-      {
-        String msg = "error while performing close operation" ;
-        _LOG.fatal(String.format("%s: %s", msg, ex.getMessage()), ex) ;
-        Utils.reportError(msg, ex) ;
+        _LOG.debug("closing the parent frame and may shutdown the JVM");
+        parent.dispose();
       }
       
       return true;

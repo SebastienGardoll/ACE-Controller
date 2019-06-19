@@ -51,11 +51,6 @@ public abstract class AbstractThreadControl extends Thread
     
     try
     {
-      if(this._toolCtrl != null)
-      {
-        this._toolCtrl.getState().start();
-      }
-      
       this.threadLogic();
     }
     catch(InterruptedException e)

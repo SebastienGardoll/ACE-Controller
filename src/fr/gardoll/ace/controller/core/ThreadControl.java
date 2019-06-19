@@ -20,4 +20,6 @@ public interface ThreadControl
   public void checkPause() throws InterruptedException;
 
   public boolean isAlive() ;
+  
+  public void start();
 }

@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.core;
 import java.util.HashSet ;
 import java.util.Set ;
 
-import org.apache.commons.lang3.NotImplementedException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -17,12 +16,11 @@ public abstract class AbstractToolControl implements ToolControl
   private final Set<Observer> _observers     = new HashSet<>();
   private final Set<ControlPanel> _ctrlPanel = new HashSet<>();
   
-  protected ThreadControl _currentThread = null;
   protected final PousseSeringue _pousseSeringue ;
   protected final Passeur _passeur ;
   
-  private boolean _hasAutosampler = false;
-  private boolean _hasPump        = false;
+  final boolean _hasAutosampler;
+  final boolean _hasPump;
 
   private ToolState _state        = new InitialState(this, _ctrlPanel);
   
@@ -52,141 +50,102 @@ public abstract class AbstractToolControl implements ToolControl
     }
   }
 
-  protected void setThread(ThreadControl thread)
-  {
-    _LOG.debug(String.format("setting thread '%s'", thread)) ;
-    this._currentThread = thread;
-  }
-  
-  protected boolean checkThread()
-  {
-    return this._currentThread != null && this._currentThread.isAlive();
-  }
-  
   @Override
-  public void cancel() throws InterruptedException
+  public void cancel()
   {
-    if (this.checkThread())
+    Runnable r = new Runnable()
     {
-      _LOG.info("waiting for cancellation");
-      this.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
-      this._currentThread.cancel();
-    }
-    else
-    {
-      String msg = "thread control is not alive or is null";
-      _LOG.debug(msg);
-    }
+      @Override
+      public void run()
+      {
+        try
+        {
+          AbstractToolControl.this.getState().cancel();
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while cancelling: %s", e.getMessage());
+          _LOG.error(msg, e);
+          AbstractToolControl.this.notifyError("error while cancelling", e);
+        }
+      }
+    } ;
     
-    try
-    {
-      _LOG.info("cancelling all operations");
-      this.notifyAction(new Action(ActionType.CANCEL, null));
-      
-      if(this._hasAutosampler)
-      {
-        this._passeur.cancel();
-      }
-      
-      if(this._hasPump)
-      {
-        this._pousseSeringue.cancel();
-      }
-      
-    }
-    catch (InterruptedException e)
-    {
-      String msg = "cancellation has been interrupted";
-      _LOG.fatal(msg);
-      return ;
-    }
+    new Thread(r).start();
   }
   
   @Override
   // Thread must be terminated.
-  public void reinit() throws InterruptedException
+  public void reinit()
   {
-    try
+    Runnable r = new Runnable()
     {
-      _LOG.info("reinitializing all operations");
-      this.notifyAction(new Action(ActionType.REINIT, null));
-      
-      if(this._hasAutosampler)
+      @Override
+      public void run()
       {
-        this._passeur.reinit();
+        try
+        {
+          AbstractToolControl.this.getState().reinit();
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while reinitializing: %s", e.getMessage());
+          _LOG.fatal(msg, e);
+          AbstractToolControl.this.notifyError("error while reinitializing", e);
+        }
       }
-      
-      if(this._hasPump)
-      {
-        this._pousseSeringue.reinit();
-      }
-      
-    }
-    catch (InterruptedException e)
-    {
-      String msg = "reinitializing has been interrupted";
-      _LOG.fatal(msg);
-      return ;
-    }
+    } ;
+    
+    new Thread(r).start();
   }
   
   @Override
-  public void pause() throws InterruptedException
+  public void pause()
   {  
-    if(this.checkThread())
+    Runnable r = new Runnable()
     {
-      _LOG.info("waiting for pause");
-      this.notifyAction(new Action(ActionType.WAIT_PAUSE, null));
-      
-      this._currentThread.pause();
-      
-      _LOG.info("running pause operations");
-      this.notifyAction(new Action(ActionType.PAUSE, null));
-      
-      if(this._hasPump)
+      @Override
+      public void run()
       {
-        this._pousseSeringue.pause();    
+        try
+        {
+          AbstractToolControl.this.getState().pause();
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while pausing: %s", e.getMessage());
+          _LOG.fatal(msg, e);
+          AbstractToolControl.this.notifyError("error while pausing", e);
+        }
       }
-      
-      if(this._hasAutosampler)
-      {
-        this._passeur.pause();
-      }
-    }
-    else
-    {
-      String msg = "thread control is not alive or is null";
-      _LOG.debug(msg);
-    }
+    } ;
+    
+    new Thread(r).start();
   }
   
   @Override
-  public void unPause() throws InterruptedException
+  public void resume()
   {  
-    if(this.checkThread())
+    Runnable r = new Runnable()
     {
-      _LOG.info("resuming from pause");
-      this.notifyAction(new Action(ActionType.RESUME, null));
-      
-      if(this._hasAutosampler)
+      @Override
+      public void run()
       {
-        this._passeur.reprise(false); 
+        _LOG.debug("running the resume operations");
+        try
+        {
+          AbstractToolControl.this.getState().resume() ;
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while resuming operations: %s", e.getMessage());
+          _LOG.fatal(msg, e);
+          AbstractToolControl.this.notifyError("error while resuming", e);
+        }
       }
-
-      //attention la reprise du passeur avant celle du pousse seringue à
-      //cause de la manipulation eventuelle de celui ci
-      if(this._hasPump)
-      {
-        this._pousseSeringue.reprise(); 
-      }
-      
-      this._currentThread.unPause();
-    }
-    else
-    {
-      String msg = "thread control is not alive or is null";
-      _LOG.debug(msg);
-    }
+    } ;
+    
+    new Thread(r).start();
   }
 
   void setState(ToolState state)
@@ -199,15 +158,34 @@ public abstract class AbstractToolControl implements ToolControl
     return this._state;
   }
   
-  void cancelOnPause() throws InterruptedException
+  protected void start(ThreadControl thread)
   {
-    throw new NotImplementedException("cancel on pause is not implemented yet");
+    this.getState().start(thread);
   }
   
   @Override
-  public void close() throws InterruptedException
+  public void close()
   {
-    _LOG.debug("controller has nothing to do while closing the tool");
+    Runnable r = new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        _LOG.debug("running the close operations");
+        try
+        {
+          AbstractToolControl.this.getState().close();
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while running close operations: %s", e.getMessage());
+          _LOG.fatal(msg, e);
+          AbstractToolControl.this.notifyError("error while running close operations", e);
+        }
+      }
+    } ;
+    
+    new Thread(r).start();
   }
   
   @Override

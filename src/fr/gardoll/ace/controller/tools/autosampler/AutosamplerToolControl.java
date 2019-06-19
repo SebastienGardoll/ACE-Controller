@@ -48,18 +48,16 @@ public class AutosamplerToolControl extends AbstractToolControl
   {
     int nbPas = Passeur.convertBras(value) ;
     ArmThread thread = new ArmThread(this, this._passeur, nbPas, 1);
-    this.setThread(thread);
     _LOG.debug(String.format("start arm thread for free move '%s'", value));
-    thread.start();
+    this.start(thread);
   }
   
   void armGoButee()
   {
     // zero pour le choix fin de butée
     ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
-    this.setThread(thread);
     _LOG.debug("start arm thread for go butée");
-    thread.start();        
+    this.start(thread);
   }
   
   void armGoColonne()
@@ -73,44 +71,39 @@ public class AutosamplerToolControl extends AbstractToolControl
     else
     {
       ArmThread thread = new ArmThread(this, this._passeur, this.colonne);
-      this.setThread(thread);
       _LOG.debug("start arm thread for go to column");
-      thread.start();
+      this.start(thread);
     }
   }
   
   void armGoTrash()
   {
     ArmThread thread = new ArmThread(this, this._passeur, 0, 3);
-    this.setThread(thread);
     _LOG.debug("start arm thread for go to trash can");
-    thread.start(); 
+    this.start(thread);
   }
   
   void carouselGoPosition(int position)
   {
     CarouselThread thread = new CarouselThread(this, this._passeur, position);
-    this.setThread(thread);
     _LOG.debug(String.format("start carousel thread for go to position '%s'", position));
-    thread.start();
+    this.start(thread);
   }
   
   void carouselTurnLeft()
   {
     int nbPosition =  -1 * ParametresSession.NB_POSITION;
     CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
-    this.setThread(thread);
     _LOG.debug("start carousel thread for turn to left");
-    thread.start();        
+    this.start(thread);
   }
   
   void carouselTurnRight()
   {
     int nbPosition =  ParametresSession.NB_POSITION;
     CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
-    this.setThread(thread);
     _LOG.debug("start carousel thread for turn to right");
-    thread.start();        
+    this.start(thread);
   }
   
   void carouselFreeMove()
