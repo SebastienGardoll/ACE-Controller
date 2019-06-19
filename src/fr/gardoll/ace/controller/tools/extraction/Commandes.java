@@ -8,7 +8,6 @@ import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.Observer ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
@@ -204,21 +203,12 @@ public class Commandes
     this.pousseSeringue.finPompage() ;
   }
   
-  public void distribution(int numColonne,
-                           double volumeCible,
-                           int numEv,
-                           int nbColonneRestant) throws InterruptedException
-  {
-    this.distribution(numColonne, volumeCible, numEv, nbColonneRestant, null);
-  }
-  
   //requires volumeCible > 0
   //requires numEV <= pousseSeringue.nbEvMax()
   public void distribution(int numColonne,
                            double volumeCible,
                            int numEv,
-                           int nbColonneRestant,
-                           Observer panel) throws InterruptedException
+                           int nbColonneRestant) throws InterruptedException
   {
     double vol_deja_delivre = 0. ;
 

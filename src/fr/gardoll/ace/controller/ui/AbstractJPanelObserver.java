@@ -14,11 +14,10 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.AbstractToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.core.Observer ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 
-public abstract class AbstractJPanelObserver extends JPanel implements Observer, ControlPanel
+public abstract class AbstractJPanelObserver extends JPanel implements ControlPanel
 {
   private static final long serialVersionUID = -3914638188506779210L ;
   private static final Logger _LOG = LogManager.getLogger(AbstractJPanelObserver.class.getName());

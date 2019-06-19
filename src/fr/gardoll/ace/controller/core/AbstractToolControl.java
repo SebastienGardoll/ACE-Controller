@@ -13,8 +13,7 @@ public abstract class AbstractToolControl implements ToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractToolControl.class.getName());
   
-  private final Set<Observer> _observers     = new HashSet<>();
-  private final Set<ControlPanel> _ctrlPanel = new HashSet<>();
+  private final Set<ControlPanel> _ctrlPanels = new HashSet<>();
   
   protected final PousseSeringue _pousseSeringue ;
   protected final Passeur _passeur ;
@@ -22,7 +21,7 @@ public abstract class AbstractToolControl implements ToolControl
   final boolean _hasAutosampler;
   final boolean _hasPump;
 
-  private ToolState _state        = new InitialState(this, _ctrlPanel);
+  private ToolState _state        = new InitialState(this, _ctrlPanels);
   
   public AbstractToolControl(ParametresSession parametresSession,
                              boolean hasPump, boolean hasAutosampler)
@@ -191,33 +190,21 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void addControlPanel(ControlPanel obs)
   {
-    this._ctrlPanel.add(obs);
+    this._ctrlPanels.add(obs);
     this._state.addControlPanel(obs);
   }
 
   @Override
   public void removeControlPanel(ControlPanel obs)
   {
-    this._ctrlPanel.remove(obs);
+    this._ctrlPanels.remove(obs);
     this._state.removeControlPanel(obs);
   }
   
   @Override
-  public void addObserver(Observer obs)
-  {
-    this._observers.add(obs);
-  }
-
-  @Override
-  public void removeObserver(Observer obs)
-  {
-    this._observers.remove(obs);
-  }
-
-  @Override
   public void notifyAction(Action action)
   {
-    for(Observer panel: this._observers)
+    for(ControlPanel panel: this._ctrlPanels)
     {
       panel.majActionActuelle(action);
     }
@@ -226,7 +213,7 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void displayControlPanelModalMessage(String msg)
   {
-    for(Observer panel: this._observers)
+    for(ControlPanel panel: this._ctrlPanels)
     {
       panel.displayModalMessage(msg);
     }
@@ -235,7 +222,7 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void notifyError(String msg, Throwable e)
   {
-    for(Observer panel: this._observers)
+    for(ControlPanel panel: this._ctrlPanels)
     {
       panel.reportError(msg, e);
     }
@@ -244,7 +231,7 @@ public abstract class AbstractToolControl implements ToolControl
   @Override
   public void notifyError(String msg)
   {
-    for(Observer panel: this._observers)
+    for(ControlPanel panel: this._ctrlPanels)
     {
       panel.reportError(msg);
     }
