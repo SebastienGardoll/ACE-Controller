@@ -74,7 +74,7 @@ public abstract class AbstractThreadControl extends Thread
     }
     catch(InitializationException e)
     {
-      String msg = String.format("initiallisation has crashed: %s", e);
+      String msg = String.format("initialization has crashed: %s", e);
       _LOG.fatal(msg, e);
       if(this._toolCtrl != null)
       {
@@ -104,7 +104,7 @@ public abstract class AbstractThreadControl extends Thread
       this._sync.lock();
       // Makes the caller to quit its await loop.
       this._is_synchronized = true;
-      _LOG.debug("signaling to all threads that are waiting this thread to cancel or pause");
+      _LOG.debug("signaling to all callers that are waiting this thread to cancel or pause");
       // Wake up the caller that was waiting the thread to pause or cancel.
       this._sync_cond.signalAll();
       this._sync.unlock();
@@ -155,10 +155,13 @@ public abstract class AbstractThreadControl extends Thread
         {
           // Release lock and make
           // the caller to wait until the thread is paused.
+          // Note: the thread cannot terminate when the lock is taken. At the end,
+          // the caller cannot hang around for a terminated thread.
+          // See the finally block of the run method.
           this._sync_cond.await(); 
         }
         
-        _LOG.debug("main thread is synchronized");
+        _LOG.debug("caller is synchronized");
         
         // When the caller returns from the method await,
         // it blocks until it re-takes the lock.
@@ -235,7 +238,7 @@ public abstract class AbstractThreadControl extends Thread
         // Makes the caller to quit its await loop.
         this._is_synchronized = true;
         
-        _LOG.debug("signaling to all threads that are waiting this thread to pause");
+        _LOG.debug("signaling to all callers that are waiting this thread to pause");
         // Wake up the caller that was waiting the thread to pause.
         this._sync_cond.signalAll();
         
@@ -252,7 +255,7 @@ public abstract class AbstractThreadControl extends Thread
         // it blocks until it re-takes the lock.
         // That why it must unlock it (in the finally bloc).
         
-        _LOG.debug("thread is resumed");
+        _LOG.debug("the thread is resumed");
       }
       else
       {
@@ -279,7 +282,7 @@ public abstract class AbstractThreadControl extends Thread
     if(Thread.currentThread() == this && 
        Thread.currentThread().isInterrupted())
     {
-      String msg = "thread has been interrupted, throws InterruptedException";
+      String msg = "the thread has been interrupted, throws InterruptedException";
       _LOG.debug(msg);
       throw new InterruptedException(msg);
     }
@@ -315,10 +318,13 @@ public abstract class AbstractThreadControl extends Thread
         {
           // Release lock and make
           // the caller to wait until the thread is paused.
+          // Note: the thread cannot terminate when the lock is taken. At the end,
+          // the caller cannot hang around for a terminated thread.
+          // See the finally block of the run method.
           this._sync_cond.await(); 
         }
         
-        _LOG.debug("main thread is synchronized");
+        _LOG.debug("caller is synchronized");
         
         // When the caller returns from the method await,
         // it blocks until it re-takes the lock.
@@ -359,7 +365,7 @@ public abstract class AbstractThreadControl extends Thread
         // Makes the caller to quit its await loop.
         this._is_synchronized = true;
         
-        _LOG.debug("signaling to all threads that are waiting this thread to cancel");
+        _LOG.debug("signaling to all callers that are waiting this thread to cancel");
         // Wake up the caller that was waiting the thread to pause.
         this._sync_cond.signalAll();
         
