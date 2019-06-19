@@ -36,8 +36,21 @@ abstract class AbstractState implements ToolState
       this._panels = panels;
       for(ControlPanel panel: this._panels)
       {
-        this._initPanels(panel);
+        this.initPanels(panel);
       }
+    }
+  }
+  
+  protected void disableAllControl()
+  {
+    for(ControlPanel panel: this._panels)
+    {
+      panel.enablePause(false);
+      panel.enableResume(false);
+      panel.enableStart(false);
+      panel.enableCancel(false);
+      panel.enableReinit(false);
+      panel.enableClose(false);
     }
   }
   
@@ -46,13 +59,13 @@ abstract class AbstractState implements ToolState
     return this._currentThread != null && this._currentThread.isAlive();
   }
   
-  protected abstract void _initPanels(ControlPanel panel) ;
+  protected abstract void initPanels(ControlPanel panel) ;
 
   @Override
   public void addControlPanel(ControlPanel obs)
   {
     this._panels.add(obs);
-    this._initPanels(obs);
+    this.initPanels(obs);
   }
 
   @Override
@@ -85,6 +98,7 @@ abstract class AbstractState implements ToolState
   @Override
   public void crash()
   {
+    _LOG.debug("set the crashed state");
     this._ctrl.setState(new CrashedState(this._ctrl, this._panels));
   }
   
@@ -133,7 +147,7 @@ class CrashedState extends AbstractState implements ToolState
   }
 
   @Override
-  protected void _initPanels(ControlPanel panel)
+  protected void initPanels(ControlPanel panel)
   {
     panel.enablePause(false);
     panel.enableResume(false);
@@ -159,18 +173,20 @@ class InitialState extends AbstractState implements ToolState
   }
   
   @Override
+  protected void initPanels(ControlPanel panel)
+  {
+    panel.enablePause(false);
+    panel.enableResume(false);
+    panel.enableStart(true);
+    panel.enableCancel(false);
+    panel.enableReinit(false);
+    panel.enableClose(true);
+  }
+  
+  @Override
   public void close() throws InterruptedException
   {
-    for(ControlPanel panel: this._panels)
-    {
-      panel.enablePause(false);
-      panel.enableResume(false);
-      panel.enableStart(false);
-      panel.enableCancel(false);
-      panel.enableReinit(false);
-      //panel.enableClose(true);
-    }
-
+    this.disableAllControl();
     this.innerClose();
     this._ctrl.setState(new ClosedState(this._ctrl, this._panels));
   }
@@ -182,17 +198,6 @@ class InitialState extends AbstractState implements ToolState
     this._ctrl.setState(new RunningState(this._ctrl, this._panels));
     thread.start();
   }
-
-  @Override
-  protected void _initPanels(ControlPanel panel)
-  {
-    panel.enablePause(false);
-    panel.enableResume(false);
-    panel.enableStart(true);
-    panel.enableCancel(false);
-    panel.enableReinit(false);
-    panel.enableClose(true);
-  }
 }
 
 class ReadyState extends AbstractState implements ToolState
@@ -203,20 +208,22 @@ class ReadyState extends AbstractState implements ToolState
   {
     super(ctrl, panels);
   }
+  
+  @Override
+  protected void initPanels(ControlPanel panel)
+  {
+    panel.enablePause(false);
+    panel.enableResume(false);
+    panel.enableStart(true);
+    panel.enableCancel(false);
+    panel.enableReinit(true);
+    panel.enableClose(true);
+  }
 
   @Override
   public void close() throws InterruptedException
   {
-    for(ControlPanel panel: this._panels)
-    {
-      panel.enablePause(false);
-      panel.enableResume(false);
-      panel.enableStart(false);
-      panel.enableCancel(false);
-      panel.enableReinit(false);
-      panel.enableClose(false);
-    }
-    
+    this.disableAllControl();
     this.innerReinit();
     this.innerClose();
     this._ctrl.setState(new ClosedState(this._ctrl, this._panels));
@@ -225,16 +232,7 @@ class ReadyState extends AbstractState implements ToolState
   @Override
   public void reinit() throws InterruptedException
   {
-    for(ControlPanel panel: this._panels)
-    {
-      panel.enablePause(false);
-      panel.enableResume(false);
-      panel.enableStart(false);
-      panel.enableCancel(false);
-      panel.enableReinit(false);
-      panel.enableClose(false);
-    }
-    
+    this.disableAllControl();
     this.innerReinit();
     this._ctrl.setState(new InitialState(this._ctrl, this._panels));
   }
@@ -264,17 +262,6 @@ class ReadyState extends AbstractState implements ToolState
     this._ctrl.setState(new RunningState(this._ctrl, this._panels));
     thread.start();
   }
-
-  @Override
-  protected void _initPanels(ControlPanel panel)
-  {
-    panel.enablePause(false);
-    panel.enableResume(false);
-    panel.enableStart(true);
-    panel.enableCancel(false);
-    panel.enableReinit(true);
-    panel.enableClose(true);
-  }
 }
 
 class RunningState extends AbstractState implements ToolState
@@ -285,25 +272,28 @@ class RunningState extends AbstractState implements ToolState
   {
     super(ctrl, panels);
   }
+  
+  @Override
+  protected void initPanels(ControlPanel panel)
+  {
+    panel.enablePause(true);
+    panel.enableResume(false);
+    panel.enableStart(false);
+    panel.enableCancel(true);
+    panel.enableReinit(false);
+    panel.enableClose(false);
+  }
 
   @Override
   public void pause() throws InterruptedException
   {
-    for(ControlPanel panel: this._panels)
-    {
-      panel.enablePause(false);
-      panel.enableResume(false);
-      panel.enableStart(false);
-      panel.enableCancel(false);
-      panel.enableReinit(false);
-      panel.enableClose(false);
-    }
+    this.disableAllControl();
     
     this.innerPause();
     this._ctrl.setState(new PausedState(this._ctrl, this._panels));
   }
 
-  private void innerPause() throws InterruptedException
+  private boolean innerPause() throws InterruptedException
   {
     if(this.checkThread())
     {
@@ -324,27 +314,22 @@ class RunningState extends AbstractState implements ToolState
       {
         this._ctrl._passeur.pause();
       }
+      
+      return true;
     }
     else
     {
       String msg = "thread control is not alive or is null";
       _LOG.debug(msg);
+      
+      return false;
     }
   }
 
   @Override
   public void cancel() throws InterruptedException
   {
-    for(ControlPanel panel: this._panels)
-    {
-      panel.enablePause(false);
-      panel.enableResume(false);
-      panel.enableStart(false);
-      panel.enableCancel(false);
-      panel.enableReinit(false);
-      panel.enableClose(false);
-    }
-    
+    this.disableAllControl();
     this.innerCancel();
     this._ctrl.setState(new InitialState(this._ctrl, this._panels));
   }
@@ -353,17 +338,6 @@ class RunningState extends AbstractState implements ToolState
   public void done()
   {
     this._ctrl.setState(new ReadyState(this._ctrl, this._panels));
-  }
-
-  @Override
-  protected void _initPanels(ControlPanel panel)
-  {
-    panel.enablePause(true);
-    panel.enableResume(false);
-    panel.enableStart(false);
-    panel.enableCancel(true);
-    panel.enableReinit(false);
-    panel.enableClose(false);
   }
 }
 
@@ -375,25 +349,27 @@ class PausedState extends AbstractState implements ToolState
   {
     super(ctrl, panels);
   }
+  
+  @Override
+  protected void initPanels(ControlPanel panel)
+  {
+    panel.enablePause(false);
+    panel.enableResume(true);
+    panel.enableStart(false);
+    panel.enableCancel(true);
+    panel.enableReinit(false);
+    panel.enableClose(false);
+  }
 
   @Override
   public void resume() throws InterruptedException
   {
-    for(ControlPanel panel: this._panels)
-    {
-      panel.enablePause(false);
-      panel.enableResume(false);
-      panel.enableStart(false);
-      panel.enableCancel(false);
-      panel.enableReinit(false);
-      panel.enableClose(false);
-    }
-    
-    this.unPause();
+    this.disableAllControl();
+    this.innerResume();
     this._ctrl.setState(new RunningState(this._ctrl, this._panels));
   }
   
-  private void unPause() throws InterruptedException
+  private void innerResume() throws InterruptedException
   {
     if(this.checkThread())
     {
@@ -424,16 +400,7 @@ class PausedState extends AbstractState implements ToolState
   @Override
   public void cancel() throws InterruptedException
   {
-    for(ControlPanel panel: this._panels)
-    {
-      panel.enablePause(false);
-      panel.enableResume(false);
-      panel.enableStart(false);
-      panel.enableCancel(false);
-      panel.enableReinit(false);
-      panel.enableClose(false);
-    }
-    
+    this.disableAllControl();
     this.cancelOnPause();
     this._ctrl.setState(new InitialState(this._ctrl, this._panels));
   }
@@ -441,17 +408,6 @@ class PausedState extends AbstractState implements ToolState
   private void cancelOnPause() throws InterruptedException
   {
     throw new NotImplementedException("cancel on pause is not implemented yet");
-  }
-
-  @Override
-  protected void _initPanels(ControlPanel panel)
-  {
-    panel.enablePause(false);
-    panel.enableResume(true);
-    panel.enableStart(false);
-    panel.enableCancel(true);
-    panel.enableReinit(false);
-    panel.enableClose(false);
   }
 }
 
@@ -463,7 +419,7 @@ class ClosedState extends AbstractState implements ToolState
   }
 
   @Override
-  protected void _initPanels(ControlPanel panel)
+  protected void initPanels(ControlPanel panel)
   {
     panel.dispose();
   }
