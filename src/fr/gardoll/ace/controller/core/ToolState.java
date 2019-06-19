@@ -377,13 +377,10 @@ class PausedState extends AbstractState implements ToolState
   public void resume() throws InterruptedException
   {
     this.disableAllControl();
-    if(this.innerResume())
-    {
-      this._ctrl.setState(new RunningState(this._ctrl, this._panels));
-    }
+    this.innerResume();
   }
   
-  private boolean innerResume() throws InterruptedException
+  private void innerResume() throws InterruptedException
   {
     if(this.checkThread())
     {
@@ -402,13 +399,16 @@ class PausedState extends AbstractState implements ToolState
         this._ctrl._pousseSeringue.reprise(); 
       }
       
-      return this._currentThread.unPause();
+      // Set the running state before resuming the thread avoid racing
+      // for setting the state if the thread is at its end.
+      this._ctrl.setState(new RunningState(this._ctrl, this._panels));
+      
+      this._currentThread.unPause();
     }
-    else
+    else // Should never happen.
     {
       String msg = "thread control is not alive or is null";
       _LOG.debug(msg);
-      return false;
     }
   }
 

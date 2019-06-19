@@ -47,18 +47,17 @@ public abstract class AbstractThreadControl extends Thread
   @Override
   public final void run()
   {
-    boolean hasCrashed = false;
-    
     try
     {
       this.threadLogic();
+      if(this._toolCtrl != null) {this._toolCtrl.getState().done();}
     }
     catch(InterruptedException e)
     {
       String msg = "operations have been interrupted";
       _LOG.fatal(msg);
       this.interrupt(); // Reset the interruption state of this thread.
-      hasCrashed = true;
+      if(this._toolCtrl != null) {this._toolCtrl.getState().crash();}
       return ; // Terminate the execution of the thread.
     }
     catch(CancellationException e)
@@ -69,7 +68,6 @@ public abstract class AbstractThreadControl extends Thread
         this._toolCtrl.notifyAction(new Action(ActionType.CANCEL, null));
       }
       
-      hasCrashed = true;
       return; // Terminate the execution of the thread.
     }
     catch(InitializationException e)
@@ -81,7 +79,7 @@ public abstract class AbstractThreadControl extends Thread
         this._toolCtrl.notifyError(msg, e);
       }
       
-      hasCrashed = true;
+      if(this._toolCtrl != null) {this._toolCtrl.getState().crash();}
       return ; // Terminate the execution of the thread.
     }
     catch(Exception e)
@@ -93,7 +91,7 @@ public abstract class AbstractThreadControl extends Thread
         this._toolCtrl.notifyError(msg, e);
       }
       
-      hasCrashed = true;
+      if(this._toolCtrl != null) {this._toolCtrl.getState().crash();}
       return ; // Terminate the execution of the thread.
     }
     finally
@@ -108,19 +106,6 @@ public abstract class AbstractThreadControl extends Thread
       // Wake up the caller that was waiting the thread to pause or cancel.
       this._sync_cond.signalAll();
       this._sync.unlock();
-      
-      if(this._toolCtrl != null)
-      {
-        if(hasCrashed)
-        {
-          // TODO: to be tested.
-          this._toolCtrl.getState().crash();
-        }
-        else
-        {
-          this._toolCtrl.getState().done();
-        }
-      }
     }
   }
   
