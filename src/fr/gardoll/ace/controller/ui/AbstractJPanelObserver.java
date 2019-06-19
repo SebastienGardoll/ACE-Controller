@@ -330,6 +330,12 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
         break ;
       }
       
+      case RESUME_END:
+      {
+        msg = "resuming done";
+        break;
+      }
+      
       case WAIT_CANCEL:
       {
         msg = "waiting for cancellation";

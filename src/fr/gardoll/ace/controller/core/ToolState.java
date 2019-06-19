@@ -353,6 +353,7 @@ class RunningState extends AbstractState implements ToolState
   }
 }
 
+// Never get to this state if the thread is not really paused.
 class PausedState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(PausedState.class.getName());
@@ -401,9 +402,13 @@ class PausedState extends AbstractState implements ToolState
       
       // Set the running state before resuming the thread avoid racing
       // for setting the state if the thread is at its end.
+      // Pause and Cancel are enables  whereas the thread is not running.
+      // But it's ok as the thread is quickly resume in the unPause method.
       this._ctrl.setState(new RunningState(this._ctrl, this._panels));
       
       this._currentThread.unPause();
+      
+      this._ctrl.notifyAction(new Action(ActionType.RESUME_END, null));
     }
     else // Should never happen.
     {
