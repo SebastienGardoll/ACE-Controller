@@ -11,4 +11,8 @@ public interface Observer
   public void reportError(String msg);
   
   public void displayModalMessage(String msg);
+  
+  public boolean close();
+
+  public void dispose() ;
 }

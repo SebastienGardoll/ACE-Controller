@@ -15,7 +15,6 @@ import fr.gardoll.ace.controller.core.Observer ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
-import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class AutosamplerToolPanel extends AbstractJPanelObserver
     implements ControlPanel, Observer
@@ -664,7 +663,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    this.close(UiUtils.getParentFrame(this));
+    this.close();
   }
   
   private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)

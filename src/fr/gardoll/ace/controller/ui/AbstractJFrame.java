@@ -28,7 +28,7 @@ public abstract class AbstractJFrame extends JDialog
       public void windowClosing(WindowEvent e)
       {
         _LOG.debug("windowClosing");
-        mainPanel.close(AbstractJFrame.this);
+        mainPanel.close();
       }
     }) ;
     this.pack();

@@ -91,6 +91,7 @@ abstract class AbstractState implements ToolState
   protected void innerClose()
   {
     _LOG.debug("controller has nothing to do while closing the tool");
+    this._ctrl.notifyAction(new Action(ActionType.CLOSING, null));
   }
   
   protected void innerCancel() throws InterruptedException
@@ -119,6 +120,8 @@ abstract class AbstractState implements ToolState
     {
       this._ctrl._pousseSeringue.cancel();
     }
+    
+    this._ctrl.notifyAction(new Action(ActionType.CANCEL_DONE, null));
   }
 }
 
@@ -211,10 +214,10 @@ class ReadyState extends AbstractState implements ToolState
       panel.enableStart(false);
       panel.enableCancel(false);
       panel.enableReinit(false);
-      //panel.enableClose(true);
+      panel.enableClose(false);
     }
     
-    this.innerCancel();
+    this.innerReinit();
     this.innerClose();
     this._ctrl.setState(new ClosedState(this._ctrl, this._panels));
   }
@@ -229,7 +232,7 @@ class ReadyState extends AbstractState implements ToolState
       panel.enableStart(false);
       panel.enableCancel(false);
       panel.enableReinit(false);
-      panel.enableClose(true);
+      panel.enableClose(false);
     }
     
     this.innerReinit();
@@ -462,11 +465,6 @@ class ClosedState extends AbstractState implements ToolState
   @Override
   protected void _initPanels(ControlPanel panel)
   {
-    panel.enablePause(false);
-    panel.enableResume(false);
-    panel.enableStart(false);
-    panel.enableCancel(false);
-    panel.enableReinit(false);
-    panel.enableClose(false);
+    panel.dispose();
   }
 }

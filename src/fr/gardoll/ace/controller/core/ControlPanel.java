@@ -1,6 +1,6 @@
 package fr.gardoll.ace.controller.core;
 
-public interface ControlPanel
+public interface ControlPanel extends Observer
 {
   public void enableStart(boolean isEnable);
   public void enableClose(boolean isEnable);

@@ -198,7 +198,8 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
     }
   }
   
-  protected boolean close(Window parent)
+  @Override
+  public boolean close()
   {
     int choice = JOptionPane.OK_OPTION;
     
@@ -213,18 +214,33 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
       _LOG.debug("running the panel closing operations") ;
       
       this._ctrl.close();
-      if(parent != null)
-      {
-        _LOG.debug("closing the parent frame and may shutdown the JVM");
-        parent.dispose();
-      }
-      
       return true;
     }
     else
     {
       _LOG.debug("the panel closing has been cancelled") ;
       return false;
+    }
+  }
+  
+  @Override
+  public void dispose()
+  {
+    try
+    {
+      // Sleep 1 second so as the user to read the log before closing the window.
+      Thread.sleep(1000);
+    }
+    catch (InterruptedException e)
+    {
+      // Nothing to do.
+    }
+    
+    Window parent = UiUtils.getParentFrame(this);
+    if(parent != null)
+    {
+      _LOG.debug("closing the parent frame and may shutdown the JVM");
+      parent.dispose();
     }
   }
 
@@ -338,10 +354,21 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
         msg = "reinitialization is done";
         break;
       }
+      
+      case CANCEL_DONE:
+      {
+        msg = "cancellation is done";
+        break;
+      }
+      
+      case CLOSING:
+      {
+        msg = "closing the panel";
+        break;
+      }
 
       case WITHDRAWING:
       case INFUSING:
-      case END:
       default:
       {
         _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
