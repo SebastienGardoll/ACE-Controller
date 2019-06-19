@@ -250,6 +250,8 @@ class ReadyState extends AbstractState implements ToolState
     {
       this._ctrl._pousseSeringue.reinit();
     }
+    
+    this._ctrl.notifyAction(new Action(ActionType.REINIT_DONE, null));
   }
 
   @Override

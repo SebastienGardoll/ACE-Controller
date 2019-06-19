@@ -1,7 +1,6 @@
 package fr.gardoll.ace.controller.tools.autosampler ;
 
 import java.io.File ;
-import java.util.Date ;
 
 import javax.swing.JFileChooser ;
 import javax.swing.filechooser.FileFilter ;
@@ -10,7 +9,6 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
-import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Observer ;
@@ -745,97 +743,12 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     });
   }
   
-  private void addToUi(String msg)
+  @Override
+  protected void displayToUserLogSys(String msg)
   {
     this.logTextArea.append(msg);
   }
   
-  @Override
-  protected void processAction(Action action)
-  {
-    String msg = null;
-    
-    switch(action.type)
-    {
-      case ARM_MOVING:
-      {
-        msg = "arm is moving";
-        break ;
-      }
-      
-      case ARM_END_MOVING:
-      {
-        msg = "arm reached the position";
-        break;
-      }
-      
-      case CANCEL:
-      {
-        msg = "cancelled";
-        break ;
-      }
-      
-      case CAROUSEL_MOVING:
-      {
-        msg = String.format("carousel is moving to position %s", action.data);
-        break ;
-      }
-      
-      case CAROUSEL_RELATIVE_MOVING:
-      {
-        msg = String.format("carousel is moving %s positions", action.data);
-        break;
-      }
-      
-      case CAROUSEL_END_MOVING:
-      {
-        msg = "carousel reached the position";
-        break;
-      }
-      
-      case PAUSE:
-      {
-        msg = "paused";
-        break ;
-      }
-      
-      case RESUME:
-      {
-        msg = "resuming";
-        break ;
-      }
-      
-      case WAIT_CANCEL:
-      {
-        msg = "waiting for cancellation";
-        break ;
-      }
-      
-      case WAIT_PAUSE:
-      {
-        msg = "waiting for pause";
-        break ;
-      }
-      
-      case REINIT:
-      {
-        msg = "reinitializing";
-        break;
-      }
-
-      case WITHDRAWING:
-      case INFUSING:
-      case END:
-      default:
-      {
-        _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
-        return ;
-      }
-    }
-    
-    this.addToUi(String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg));
-  }
-
   @Override
   public void enableCloseControl(boolean isEnable)
   {

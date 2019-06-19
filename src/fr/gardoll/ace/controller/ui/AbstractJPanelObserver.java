@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.ui;
 
 import java.awt.Window ;
 import java.text.SimpleDateFormat ;
+import java.util.Date ;
 
 import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
@@ -33,7 +34,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   protected boolean _isStartEnable  = false;
   protected boolean _isCloseEnable = false;
   
-  protected abstract void processAction(Action action);
+  protected abstract void displayToUserLogSys(String msg);
   protected abstract void enableReinitControl(boolean isEnable) ;
   protected abstract void enablePauseControl(boolean isEnable) ;
   protected abstract void enableResumeControl(boolean isEnable) ;
@@ -258,5 +259,96 @@ public abstract class AbstractJPanelObserver extends JPanel implements Observer,
   {
     JOptionPane.showMessageDialog(null, msg, "Information",
         JOptionPane.INFORMATION_MESSAGE);
+  }
+  
+  protected void processAction(Action action)
+  {
+    String msg = null;
+    
+    switch(action.type)
+    {
+      case ARM_MOVING:
+      {
+        msg = "arm is moving";
+        break ;
+      }
+      
+      case ARM_END_MOVING:
+      {
+        msg = "arm reached the position";
+        break;
+      }
+      
+      case CANCEL:
+      {
+        msg = "cancelled";
+        break ;
+      }
+      
+      case CAROUSEL_MOVING:
+      {
+        msg = String.format("carousel is moving to position %s", action.data);
+        break ;
+      }
+      
+      case CAROUSEL_RELATIVE_MOVING:
+      {
+        msg = String.format("carousel is moving %s positions", action.data);
+        break;
+      }
+      
+      case CAROUSEL_END_MOVING:
+      {
+        msg = "carousel reached the position";
+        break;
+      }
+      
+      case PAUSE:
+      {
+        msg = "paused";
+        break ;
+      }
+      
+      case RESUME:
+      {
+        msg = "resuming";
+        break ;
+      }
+      
+      case WAIT_CANCEL:
+      {
+        msg = "waiting for cancellation";
+        break ;
+      }
+      
+      case WAIT_PAUSE:
+      {
+        msg = "waiting for pause";
+        break ;
+      }
+      
+      case REINIT:
+      {
+        msg = "reinitializing";
+        break;
+      }
+      
+      case REINIT_DONE:
+      {
+        msg = "reinitialization is done";
+        break;
+      }
+
+      case WITHDRAWING:
+      case INFUSING:
+      case END:
+      default:
+      {
+        _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
+        return ;
+      }
+    }
+    
+    this.displayToUserLogSys(String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg));
   }
 }
