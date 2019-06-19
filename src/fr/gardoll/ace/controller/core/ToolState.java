@@ -3,7 +3,7 @@ package fr.gardoll.ace.controller.core;
 import java.util.Collections ;
 import java.util.Set ;
 
-public interface ToolState extends ControlPanelHandler
+interface ToolState extends ControlPanelHandler
 {
   public void pause() throws InterruptedException;
   public void resume() throws InterruptedException;
