@@ -130,8 +130,9 @@ public abstract class AbstractThreadControl extends Thread
                                                Exception;
 
   // Block the caller until the thread is paused.
+  // Return false if the thread has terminated meanwhile. True otherwise.
   @Override
-  public void pause() throws InterruptedException
+  public boolean pause() throws InterruptedException
   {
     try
     {
@@ -155,9 +156,11 @@ public abstract class AbstractThreadControl extends Thread
         {
           // Release lock and make
           // the caller to wait until the thread is paused.
-          // Note: the thread cannot terminate when the lock is taken. At the end,
+          // Note:
+          // - the thread cannot terminate when the lock is taken. At the end,
           // the caller cannot hang around for a terminated thread.
           // See the finally block of the run method.
+          // - the caller may wake up but the thread is terminated.
           this._sync_cond.await(); 
         }
         
@@ -170,10 +173,17 @@ public abstract class AbstractThreadControl extends Thread
         // At this point, the thread is paused, so the caller can
         // access to the sampler and the pump: they wont' be synchronized anymore.
         this._is_synchronized = false;
+        
+        // The thread before terminating, signals all the hanging callers.
+        // So the caller may wake up as the thread is terminated.
+        // So return the state of the thread to the caller so as to skip
+        // any cancellation operations.
+        return this.isAlive();
       }
       else
       {
         _LOG.debug("nothing to do");
+        return false;
       }
     }
     finally
@@ -183,8 +193,9 @@ public abstract class AbstractThreadControl extends Thread
   }
   
   // Resume the thread from another thread.
+  // Return false if the thread has terminated meanwhile. True otherwise.
   @Override
-  public void unPause() throws InterruptedException
+  public boolean unPause() throws InterruptedException
   {
     try
     {
@@ -206,10 +217,12 @@ public abstract class AbstractThreadControl extends Thread
         
         // Wake up the thread.
         this._sync_cond.signalAll();
+        return true;
       }
       else
       {
         _LOG.debug("nothing to do");
+        return false;
       }
     }
     finally
@@ -293,8 +306,9 @@ public abstract class AbstractThreadControl extends Thread
   }
   
   // Block the caller until the thread is canceled.
+  // Return false if the thread has terminated meanwhile. True otherwise.
   @Override
-  public void cancel() throws InterruptedException
+  public boolean cancel() throws InterruptedException
   {
     try
     {
@@ -318,9 +332,11 @@ public abstract class AbstractThreadControl extends Thread
         {
           // Release lock and make
           // the caller to wait until the thread is paused.
-          // Note: the thread cannot terminate when the lock is taken. At the end,
+          // Note:
+          // - the thread cannot terminate when the lock is taken. At the end,
           // the caller cannot hang around for a terminated thread.
           // See the finally block of the run method.
+          // - the caller may wake up but the thread is terminated.
           this._sync_cond.await(); 
         }
         
@@ -333,10 +349,17 @@ public abstract class AbstractThreadControl extends Thread
         // At this point, the thread is paused, so the caller can
         // access to the sampler and the pump: they wont' be synchronized anymore.
         this._is_synchronized = false;
+        
+        // The thread before terminating, signals all the hanging callers.
+        // So the caller may wake up as the thread is terminated.
+        // So return the state of the thread to the caller so as to skip
+        // any cancellation operations.
+        return this.isAlive();
       }
       else
       {
         _LOG.debug("nothing to do");
+        return false;
       }
     }
     finally
