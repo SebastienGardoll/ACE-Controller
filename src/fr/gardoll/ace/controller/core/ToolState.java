@@ -289,8 +289,14 @@ class RunningState extends AbstractState implements ToolState
   {
     this.disableAllControl();
     
-    this.innerPause();
-    this._ctrl.setState(new PausedState(this._ctrl, this._panels));
+    if(this.innerPause())
+    {
+      this._ctrl.setState(new PausedState(this._ctrl, this._panels));
+    }
+    else
+    {
+      // Nothing to do as the thread set the new state (ready or crashed).
+    }
   }
 
   private boolean innerPause() throws InterruptedException
@@ -300,28 +306,34 @@ class RunningState extends AbstractState implements ToolState
       _LOG.info("waiting for pause");
       this._ctrl.notifyAction(new Action(ActionType.WAIT_PAUSE, null));
       
-      this._currentThread.pause();
-      
-      _LOG.info("running pause operations");
-      this._ctrl.notifyAction(new Action(ActionType.PAUSE, null));
-      
-      if(this._ctrl._hasPump)
+      // The thread may terminate meanwhile.
+      if(this._currentThread.pause())
       {
-        this._ctrl._pousseSeringue.pause();    
+        _LOG.info("running pause operations");
+        this._ctrl.notifyAction(new Action(ActionType.PAUSE, null));
+        
+        if(this._ctrl._hasPump)
+        {
+          this._ctrl._pousseSeringue.pause();    
+        }
+        
+        if(this._ctrl._hasAutosampler)
+        {
+          this._ctrl._passeur.pause();
+        }
+        
+        return true;
       }
-      
-      if(this._ctrl._hasAutosampler)
+      else
       {
-        this._ctrl._passeur.pause();
+        _LOG.debug("The thread has terminated meanwhile");
+        return false;
       }
-      
-      return true;
     }
     else
     {
       String msg = "thread control is not alive or is null";
       _LOG.debug(msg);
-      
       return false;
     }
   }
@@ -365,11 +377,13 @@ class PausedState extends AbstractState implements ToolState
   public void resume() throws InterruptedException
   {
     this.disableAllControl();
-    this.innerResume();
-    this._ctrl.setState(new RunningState(this._ctrl, this._panels));
+    if(this.innerResume())
+    {
+      this._ctrl.setState(new RunningState(this._ctrl, this._panels));
+    }
   }
   
-  private void innerResume() throws InterruptedException
+  private boolean innerResume() throws InterruptedException
   {
     if(this.checkThread())
     {
@@ -388,12 +402,13 @@ class PausedState extends AbstractState implements ToolState
         this._ctrl._pousseSeringue.reprise(); 
       }
       
-      this._currentThread.unPause();
+      return this._currentThread.unPause();
     }
     else
     {
       String msg = "thread control is not alive or is null";
       _LOG.debug(msg);
+      return false;
     }
   }
 

@@ -217,7 +217,7 @@ public abstract class AbstractThreadControl extends Thread
         
         // Wake up the thread.
         this._sync_cond.signalAll();
-        return true;
+        return this.isAlive();
       }
       else
       {

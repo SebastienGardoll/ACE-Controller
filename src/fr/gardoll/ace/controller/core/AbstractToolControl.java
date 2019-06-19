@@ -147,7 +147,8 @@ public abstract class AbstractToolControl implements ToolControl
     new Thread(r).start();
   }
 
-  void setState(ToolState state)
+  // Concurrent racing between AbstractThreadControl and user actions.
+  synchronized void setState(ToolState state)
   {
     this._state = state;
   }
