@@ -53,7 +53,7 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
   @Override
   public Set<ControlPanel> getCtrlPanels()
   {
-    return (Set<ControlPanel>) Collections.unmodifiableCollection(this._ctrlPanels);
+    return Collections.unmodifiableSet(this._ctrlPanels);
   }
 
   @Override
