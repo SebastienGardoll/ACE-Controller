@@ -5,6 +5,29 @@ import java.util.Set ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+enum StateLiteral
+{
+  INITIAL("initial"),
+  READY("ready"),
+  RUNNING("running"),
+  PAUSED("paused"),
+  CLOSED("closed"),
+  CRASHED("crashed");
+
+  private String _literal ;
+  
+  private StateLiteral(String literal)
+  {
+    this._literal = literal;
+  }
+  
+  @Override
+  public String toString()
+  {
+    return this._literal;
+  }
+}
+
 interface ToolState extends ControlPanelHandler
 {
   public void pause() throws InterruptedException;
@@ -15,6 +38,7 @@ interface ToolState extends ControlPanelHandler
   public void start(ThreadControl thread);
   public void done() ;
   public void crash();
+  public StateLiteral getLiteral();
 }
 
 abstract class AbstractState implements ToolState
@@ -97,13 +121,15 @@ abstract class AbstractState implements ToolState
   @Override
   public void crash()
   {
-    _LOG.debug("set the crashed state");
+    _LOG.debug("set crashed state");
     this._ctrl.setState(new CrashedState(this._ctrl));
   }
 }
 
 class CrashedState extends AbstractState implements ToolState
 {
+  private static final Logger _LOG = LogManager.getLogger(CrashedState.class.getName());
+  
   public CrashedState(ToolControlOperations ctrl)
   {
     super(ctrl);
@@ -124,12 +150,21 @@ class CrashedState extends AbstractState implements ToolState
   public void close() throws InterruptedException
   {
     this._ctrl.closeOperations();
+    _LOG.debug("set closed state");
     this._ctrl.setState(new ClosedState(this._ctrl));
+  }
+
+  @Override
+  public StateLiteral getLiteral()
+  {
+    return StateLiteral.CRASHED;
   }
 }
 
 class InitialState extends AbstractState implements ToolState
 {
+  private static final Logger _LOG = LogManager.getLogger(InitialState.class.getName());
+  
   public InitialState(ToolControlOperations ctrl)
   {
     super(ctrl);
@@ -151,6 +186,7 @@ class InitialState extends AbstractState implements ToolState
   {
     this.disableAllControl();
     this._ctrl.closeOperations();
+    _LOG.debug("set closed state");
     this._ctrl.setState(new ClosedState(this._ctrl));
   }
 
@@ -158,13 +194,22 @@ class InitialState extends AbstractState implements ToolState
   public void start(ThreadControl thread)
   {
     this._currentThread = thread;
+    _LOG.debug("set running state");
     this._ctrl.setState(new RunningState(this._ctrl));
     thread.start();
+  }
+
+  @Override
+  public StateLiteral getLiteral()
+  {
+    return StateLiteral.INITIAL;
   }
 }
 
 class ReadyState extends AbstractState implements ToolState
 {
+  private static final Logger _LOG = LogManager.getLogger(ReadyState.class.getName());
+  
   public ReadyState(ToolControlOperations ctrl)
   {
     super(ctrl);
@@ -187,6 +232,7 @@ class ReadyState extends AbstractState implements ToolState
     this.disableAllControl();
     this._ctrl.reinitOperations();
     this._ctrl.closeOperations();
+    _LOG.debug("set closed state");
     this._ctrl.setState(new ClosedState(this._ctrl));
   }
 
@@ -195,6 +241,7 @@ class ReadyState extends AbstractState implements ToolState
   {
     this.disableAllControl();
     this._ctrl.reinitOperations();
+    _LOG.debug("set initial state");
     this._ctrl.setState(new InitialState(this._ctrl));
   }
 
@@ -202,8 +249,15 @@ class ReadyState extends AbstractState implements ToolState
   public void start(ThreadControl thread)
   {
     this._currentThread = thread;
+    _LOG.debug("set running state");
     this._ctrl.setState(new RunningState(this._ctrl));
     thread.start();
+  }
+
+  @Override
+  public StateLiteral getLiteral()
+  {
+    return StateLiteral.READY;
   }
 }
 
@@ -264,7 +318,14 @@ class RunningState extends AbstractState implements ToolState
   @Override
   public void done()
   {
+    _LOG.debug("set ready state");
     this._ctrl.setState(new ReadyState(this._ctrl));
+  }
+
+  @Override
+  public StateLiteral getLiteral()
+  {
+    return StateLiteral.RUNNING;
   }
 }
 
@@ -304,6 +365,12 @@ class PausedState extends AbstractState implements ToolState
       _LOG.debug(msg);
     }
   }
+
+  @Override
+  public StateLiteral getLiteral()
+  {
+    return StateLiteral.PAUSED;
+  }
 }
 
 class ClosedState extends AbstractState implements ToolState
@@ -317,5 +384,11 @@ class ClosedState extends AbstractState implements ToolState
   protected void initPanels(ControlPanel panel)
   {
     panel.dispose();
+  }
+
+  @Override
+  public StateLiteral getLiteral()
+  {
+    return StateLiteral.CLOSED;
   }
 }
