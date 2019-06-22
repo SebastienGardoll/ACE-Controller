@@ -2,16 +2,16 @@ package fr.gardoll.ace.controller.core;
 
 public interface ThreadControl
 {
-  // Ask to the thread to pause itself. Not blocking.
+  // Ask to the thread to pause itself. Not blocking call.
   // The thread has to define check points that where it can pause.
   // Return false if the thread has terminated meanwhile. True otherwise.
   public boolean pause() throws InterruptedException;
   
-  // Resume the thread.
+  // Resume the thread. Not blocking call.
   // Return false if the thread has terminated meanwhile. True otherwise.
   public boolean unPause() throws InterruptedException;
   
-  // Ask to the thread to cancel itself. Not blocking.
+  // Ask to the thread to cancel itself. Not blocking call.
   // The thread has to define check points that where it can cancel.
   // Return false if the thread has terminated meanwhile. True otherwise.
   public boolean cancel() throws InterruptedException;
@@ -26,7 +26,7 @@ public interface ThreadControl
   // has called the cancel method to do so.
   public void checkCancel() throws CancellationException, InterruptedException;
   
-  // Check point for the thread.
+  // Check point for the thread. Blocking call.
   // Make the instance of the AbstractThreadControl to pause if another thread
   // has called the pause method to do so.
   public void checkPause() throws InterruptedException;
@@ -35,6 +35,6 @@ public interface ThreadControl
   // Blocking call.
   public boolean isRunning();
   
-  // Start the operations of the thread.
+  // Start the operations of the thread. Not blocking call.
   public void start();
 }
