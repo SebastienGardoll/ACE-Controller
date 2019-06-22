@@ -757,7 +757,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   public void enablePauseControl(boolean isEnable)
   {
     pauseToggleButton.setEnabled(isEnable || AutosamplerToolPanel.this._isResumeEnable);
-    
+    pauseToggleButton.setSelected(! isEnable);
     if(isEnable)
     {
       pauseToggleButton.setText("pause");
@@ -772,6 +772,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
   public void enableResumeControl(boolean isEnable)
   {
     pauseToggleButton.setEnabled(isEnable || AutosamplerToolPanel.this._isPauseEnable);
+    pauseToggleButton.setSelected(isEnable);
     
     if(isEnable)
     {
