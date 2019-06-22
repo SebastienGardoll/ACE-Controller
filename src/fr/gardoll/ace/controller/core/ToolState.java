@@ -46,7 +46,7 @@ abstract class AbstractState implements ToolState
   private static final Logger _LOG = LogManager.getLogger(AbstractState.class.getName());
   
   protected ToolControlOperations _ctrl = null;
-  protected ThreadControl _currentThread = null;
+  protected static ThreadControl _CURRENT_THREAD = null;
   
   public AbstractState(ToolControlOperations ctrl)
   {
@@ -92,7 +92,7 @@ abstract class AbstractState implements ToolState
   
   protected boolean checkThread()
   {
-    return this._currentThread != null && this._currentThread.isRunning();
+    return _CURRENT_THREAD != null && _CURRENT_THREAD.isRunning();
   }
   
   protected abstract void initPanels(ControlPanel panel) ;
@@ -193,7 +193,7 @@ class InitialState extends AbstractState implements ToolState
   @Override
   public void start(ThreadControl thread)
   {
-    this._currentThread = thread;
+    _CURRENT_THREAD = thread;
     _LOG.debug("set running state");
     this._ctrl.setState(new RunningState(this._ctrl));
     thread.start();
@@ -248,7 +248,7 @@ class ReadyState extends AbstractState implements ToolState
   @Override
   public void start(ThreadControl thread)
   {
-    this._currentThread = thread;
+    _CURRENT_THREAD = thread;
     _LOG.debug("set running state");
     this._ctrl.setState(new RunningState(this._ctrl));
     thread.start();
@@ -290,7 +290,7 @@ class RunningState extends AbstractState implements ToolState
     {
       _LOG.info("waiting for pause");
       this._ctrl.notifyAction(new Action(ActionType.WAIT_PAUSE, null));
-      this._currentThread.pause();
+      _CURRENT_THREAD.pause();
     }
     else
     {
@@ -307,7 +307,7 @@ class RunningState extends AbstractState implements ToolState
     {
       _LOG.info("waiting for cancellation");
       this._ctrl.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
-      this._currentThread.cancel();
+      _CURRENT_THREAD.cancel();
     }
     else
     {
@@ -357,7 +357,7 @@ class PausedState extends AbstractState implements ToolState
 
     if(this.checkThread())
     {
-      this._currentThread.unPause();
+      _CURRENT_THREAD.unPause();
     }
     else // Should never happen.
     {
