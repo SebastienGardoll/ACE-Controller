@@ -294,9 +294,9 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
         break;
       }
       
-      case CANCEL:
+      case CANCELING:
       {
-        msg = "cancelled";
+        msg = "canceling";
         break ;
       }
       
@@ -318,10 +318,16 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
         break;
       }
       
-      case PAUSE:
+      case PAUSING:
       {
-        msg = "paused";
+        msg = "pausing";
         break ;
+      }
+      
+      case PAUSE_DONE:
+      {
+        msg = "operations are paused";
+        break;
       }
       
       case RESUME:
@@ -330,7 +336,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
         break ;
       }
       
-      case RESUME_END:
+      case RESUME_DONE:
       {
         msg = "resuming done";
         break;

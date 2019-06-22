@@ -1,9 +1,7 @@
 package fr.gardoll.ace.controller.core;
 
-import java.util.Collections ;
 import java.util.Set ;
 
-import org.apache.commons.lang3.NotImplementedException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -23,27 +21,41 @@ abstract class AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractState.class.getName());
   
-  protected Set<ControlPanel> _panels = Collections.emptySet();
-  protected AbstractToolControl _ctrl = null;
+  protected ToolControlOperations _ctrl = null;
   protected ThreadControl _currentThread = null;
   
-  public AbstractState(AbstractToolControl ctrl, Set<ControlPanel> panels)
+  public AbstractState(ToolControlOperations ctrl)
   {
     this._ctrl = ctrl;
     
-    if (panels != null)
+    for(ControlPanel panel: this._ctrl.getCtrlPanels())
     {
-      this._panels = panels;
-      for(ControlPanel panel: this._panels)
-      {
-        this.initPanels(panel);
-      }
+      this.initPanels(panel);
     }
+  }
+  
+  @Override
+  public void addControlPanel(ControlPanel ctrlPanel)
+  {
+    // Just update the state of the new Panel.
+    this.initPanels(ctrlPanel);
+  }
+  
+  @Override
+  public void removeControlPanel(ControlPanel ctrlPanel)
+  {
+    // Nothing to do.
+  }
+  
+  @Override
+  public Set<ControlPanel> getCtrlPanels()
+  {
+    return this._ctrl.getCtrlPanels();
   }
   
   protected void disableAllControl()
   {
-    for(ControlPanel panel: this._panels)
+    for(ControlPanel panel: this._ctrl.getCtrlPanels())
     {
       panel.enablePause(false);
       panel.enableResume(false);
@@ -56,24 +68,11 @@ abstract class AbstractState implements ToolState
   
   protected boolean checkThread()
   {
-    return this._currentThread != null && this._currentThread.isAlive();
+    return this._currentThread != null && this._currentThread.isRunning();
   }
   
   protected abstract void initPanels(ControlPanel panel) ;
 
-  @Override
-  public void addControlPanel(ControlPanel obs)
-  {
-    this._panels.add(obs);
-    this.initPanels(obs);
-  }
-
-  @Override
-  public void removeControlPanel(ControlPanel obs)
-  {
-    this._panels.remove(obs);
-  }
-  
   @Override
   public void pause() throws InterruptedException {} // Nothing to pause.
 
@@ -99,51 +98,15 @@ abstract class AbstractState implements ToolState
   public void crash()
   {
     _LOG.debug("set the crashed state");
-    this._ctrl.setState(new CrashedState(this._ctrl, this._panels));
-  }
-  
-  protected void innerClose()
-  {
-    _LOG.debug("controller has nothing to do while closing the tool");
-    this._ctrl.notifyAction(new Action(ActionType.CLOSING, null));
-  }
-  
-  protected void innerCancel() throws InterruptedException
-  {
-    if (this.checkThread())
-    {
-      _LOG.info("waiting for cancellation");
-      this._ctrl.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
-      this._currentThread.cancel();
-    }
-    else
-    {
-      String msg = "thread control is not alive or is null";
-      _LOG.debug(msg);
-    }
-    
-    _LOG.info("cancelling all operations");
-    this._ctrl.notifyAction(new Action(ActionType.CANCEL, null));
-    
-    if(this._ctrl._hasAutosampler)
-    {
-      this._ctrl._passeur.cancel();
-    }
-    
-    if(this._ctrl._hasPump)
-    {
-      this._ctrl._pousseSeringue.cancel();
-    }
-    
-    this._ctrl.notifyAction(new Action(ActionType.CANCEL_DONE, null));
+    this._ctrl.setState(new CrashedState(this._ctrl));
   }
 }
 
 class CrashedState extends AbstractState implements ToolState
 {
-  public CrashedState(AbstractToolControl ctrl, Set<ControlPanel> panels)
+  public CrashedState(ToolControlOperations ctrl)
   {
-    super(ctrl, panels);
+    super(ctrl);
   }
 
   @Override
@@ -160,16 +123,16 @@ class CrashedState extends AbstractState implements ToolState
   @Override
   public void close() throws InterruptedException
   {
-    this.innerClose();
-    this._ctrl.setState(new ClosedState(this._ctrl, this._panels));
+    this._ctrl.closeOperations();
+    this._ctrl.setState(new ClosedState(this._ctrl));
   }
 }
 
 class InitialState extends AbstractState implements ToolState
 {
-  public InitialState(AbstractToolControl ctrl, Set<ControlPanel> panels)
+  public InitialState(ToolControlOperations ctrl)
   {
-    super(ctrl, panels);
+    super(ctrl);
   }
   
   @Override
@@ -187,26 +150,24 @@ class InitialState extends AbstractState implements ToolState
   public void close() throws InterruptedException
   {
     this.disableAllControl();
-    this.innerClose();
-    this._ctrl.setState(new ClosedState(this._ctrl, this._panels));
+    this._ctrl.closeOperations();
+    this._ctrl.setState(new ClosedState(this._ctrl));
   }
 
   @Override
   public void start(ThreadControl thread)
   {
     this._currentThread = thread;
-    this._ctrl.setState(new RunningState(this._ctrl, this._panels));
+    this._ctrl.setState(new RunningState(this._ctrl));
     thread.start();
   }
 }
 
 class ReadyState extends AbstractState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(ReadyState.class.getName());
-  
-  public ReadyState(AbstractToolControl ctrl, Set<ControlPanel> panels)
+  public ReadyState(ToolControlOperations ctrl)
   {
-    super(ctrl, panels);
+    super(ctrl);
   }
   
   @Override
@@ -224,42 +185,24 @@ class ReadyState extends AbstractState implements ToolState
   public void close() throws InterruptedException
   {
     this.disableAllControl();
-    this.innerReinit();
-    this.innerClose();
-    this._ctrl.setState(new ClosedState(this._ctrl, this._panels));
+    this._ctrl.reinitOperations();
+    this._ctrl.closeOperations();
+    this._ctrl.setState(new ClosedState(this._ctrl));
   }
 
   @Override
   public void reinit() throws InterruptedException
   {
     this.disableAllControl();
-    this.innerReinit();
-    this._ctrl.setState(new InitialState(this._ctrl, this._panels));
-  }
-
-  private void innerReinit() throws InterruptedException
-  {
-    _LOG.info("reinitializing all operations");
-    this._ctrl.notifyAction(new Action(ActionType.REINIT, null));
-    
-    if(this._ctrl._hasAutosampler)
-    {
-      this._ctrl._passeur.reinit();
-    }
-    
-    if(this._ctrl._hasPump)
-    {
-      this._ctrl._pousseSeringue.reinit();
-    }
-    
-    this._ctrl.notifyAction(new Action(ActionType.REINIT_DONE, null));
+    this._ctrl.reinitOperations();
+    this._ctrl.setState(new InitialState(this._ctrl));
   }
 
   @Override
   public void start(ThreadControl thread)
   {
     this._currentThread = thread;
-    this._ctrl.setState(new RunningState(this._ctrl, this._panels));
+    this._ctrl.setState(new RunningState(this._ctrl));
     thread.start();
   }
 }
@@ -268,9 +211,9 @@ class RunningState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(RunningState.class.getName());
   
-  public RunningState(AbstractToolControl ctrl, Set<ControlPanel> panels)
+  public RunningState(ToolControlOperations ctrl)
   {
-    super(ctrl, panels);
+    super(ctrl);
   }
   
   @Override
@@ -289,52 +232,15 @@ class RunningState extends AbstractState implements ToolState
   {
     this.disableAllControl();
     
-    if(this.innerPause())
-    {
-      this._ctrl.setState(new PausedState(this._ctrl, this._panels));
-    }
-    else
-    {
-      // Nothing to do as the thread set the new state (ready or crashed).
-    }
-  }
-
-  private boolean innerPause() throws InterruptedException
-  {
     if(this.checkThread())
     {
       _LOG.info("waiting for pause");
       this._ctrl.notifyAction(new Action(ActionType.WAIT_PAUSE, null));
-      
-      // The thread may terminate meanwhile.
-      if(this._currentThread.pause())
-      {
-        _LOG.info("running pause operations");
-        this._ctrl.notifyAction(new Action(ActionType.PAUSE, null));
-        
-        if(this._ctrl._hasPump)
-        {
-          this._ctrl._pousseSeringue.pause();    
-        }
-        
-        if(this._ctrl._hasAutosampler)
-        {
-          this._ctrl._passeur.pause();
-        }
-        
-        return true;
-      }
-      else
-      {
-        _LOG.debug("The thread has terminated meanwhile");
-        return false;
-      }
+      this._currentThread.pause();
     }
     else
     {
-      String msg = "thread control is not alive or is null";
-      _LOG.debug(msg);
-      return false;
+      _LOG.debug("thread control is not alive or is null");
     }
   }
 
@@ -342,14 +248,23 @@ class RunningState extends AbstractState implements ToolState
   public void cancel() throws InterruptedException
   {
     this.disableAllControl();
-    this.innerCancel();
-    this._ctrl.setState(new InitialState(this._ctrl, this._panels));
+    
+    if (this.checkThread())
+    {
+      _LOG.info("waiting for cancellation");
+      this._ctrl.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
+      this._currentThread.cancel();
+    }
+    else
+    {
+      _LOG.debug("thread control is not alive or is null");
+    }
   }
   
   @Override
   public void done()
   {
-    this._ctrl.setState(new ReadyState(this._ctrl, this._panels));
+    this._ctrl.setState(new ReadyState(this._ctrl));
   }
 }
 
@@ -358,9 +273,9 @@ class PausedState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(PausedState.class.getName());
   
-  public PausedState(AbstractToolControl ctrl, Set<ControlPanel> panels)
+  public PausedState(ToolControlOperations ctrl)
   {
-    super(ctrl, panels);
+    super(ctrl);
   }
   
   @Override
@@ -378,37 +293,10 @@ class PausedState extends AbstractState implements ToolState
   public void resume() throws InterruptedException
   {
     this.disableAllControl();
-    this.innerResume();
-  }
-  
-  private void innerResume() throws InterruptedException
-  {
+
     if(this.checkThread())
     {
-      _LOG.info("resuming from pause");
-      this._ctrl.notifyAction(new Action(ActionType.RESUME, null));
-      
-      if(this._ctrl._hasAutosampler)
-      {
-        this._ctrl._passeur.reprise(false); 
-      }
-
-      //attention la reprise du passeur avant celle du pousse seringue à
-      //cause de la manipulation eventuelle de celui ci
-      if(this._ctrl._hasPump)
-      {
-        this._ctrl._pousseSeringue.reprise(); 
-      }
-      
-      // Set the running state before resuming the thread avoid racing
-      // for setting the state if the thread is at its end.
-      // Pause and Cancel are enables  whereas the thread is not running.
-      // But it's ok as the thread is quickly resume in the unPause method.
-      this._ctrl.setState(new RunningState(this._ctrl, this._panels));
-      
       this._currentThread.unPause();
-      
-      this._ctrl.notifyAction(new Action(ActionType.RESUME_END, null));
     }
     else // Should never happen.
     {
@@ -416,26 +304,13 @@ class PausedState extends AbstractState implements ToolState
       _LOG.debug(msg);
     }
   }
-
-  @Override
-  public void cancel() throws InterruptedException
-  {
-    this.disableAllControl();
-    this.cancelOnPause();
-    this._ctrl.setState(new InitialState(this._ctrl, this._panels));
-  }
-  
-  private void cancelOnPause() throws InterruptedException
-  {
-    throw new NotImplementedException("cancel on pause is not implemented yet");
-  }
 }
 
 class ClosedState extends AbstractState implements ToolState
 {
-  public ClosedState(AbstractToolControl ctrl, Set<ControlPanel> panels)
+  public ClosedState(ToolControlOperations ctrl)
   {
-    super(ctrl, panels);
+    super(ctrl);
   }
 
   @Override

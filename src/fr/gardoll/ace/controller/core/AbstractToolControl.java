@@ -1,5 +1,6 @@
 package fr.gardoll.ace.controller.core;
 
+import java.util.Collections ;
 import java.util.HashSet ;
 import java.util.Set ;
 
@@ -9,19 +10,19 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
-public abstract class AbstractToolControl implements ToolControl
+public abstract class AbstractToolControl implements ToolControl, ToolControlOperations
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractToolControl.class.getName());
   
-  private final Set<ControlPanel> _ctrlPanels = new HashSet<>();
+  final Set<ControlPanel> _ctrlPanels = new HashSet<>();
   
   protected final PousseSeringue _pousseSeringue ;
   protected final Passeur _passeur ;
   
-  final boolean _hasAutosampler;
-  final boolean _hasPump;
+  protected final boolean _hasAutosampler;
+  protected final boolean _hasPump;
 
-  private ToolState _state        = new InitialState(this, _ctrlPanels);
+  private ToolState _state = new InitialState(this);
   
   public AbstractToolControl(ParametresSession parametresSession,
                              boolean hasPump, boolean hasAutosampler)
@@ -48,6 +49,12 @@ public abstract class AbstractToolControl implements ToolControl
       this._passeur = null;
     }
   }
+  
+  @Override
+  public Set<ControlPanel> getCtrlPanels()
+  {
+    return (Set<ControlPanel>) Collections.unmodifiableCollection(this._ctrlPanels);
+  }
 
   @Override
   public void cancel()
@@ -71,6 +78,25 @@ public abstract class AbstractToolControl implements ToolControl
     } ;
     
     new Thread(r).start();
+  }
+  
+  @Override
+  public void cancelOperations() throws InterruptedException
+  {
+    _LOG.info("cancelling all operations");
+    this.notifyAction(new Action(ActionType.CANCELING, null));
+    
+    if(this._hasAutosampler)
+    {
+      this._passeur.cancel();
+    }
+    
+    if(this._hasPump)
+    {
+      this._pousseSeringue.cancel();
+    }
+    
+    this.notifyAction(new Action(ActionType.CANCEL_DONE, null));
   }
   
   @Override
@@ -99,6 +125,25 @@ public abstract class AbstractToolControl implements ToolControl
   }
   
   @Override
+  public void reinitOperations() throws InterruptedException
+  {
+    _LOG.info("reinitializing all operations");
+    this.notifyAction(new Action(ActionType.REINIT, null));
+    
+    if(this._hasAutosampler)
+    {
+      this._passeur.reinit();
+    }
+    
+    if(this._hasPump)
+    {
+      this._pousseSeringue.reinit();
+    }
+    
+    this.notifyAction(new Action(ActionType.REINIT_DONE, null));
+  }
+  
+  @Override
   public void pause()
   {  
     Runnable r = new Runnable()
@@ -120,6 +165,25 @@ public abstract class AbstractToolControl implements ToolControl
     } ;
     
     new Thread(r).start();
+  }
+  
+  @Override
+  public void pauseOperations() throws InterruptedException
+  {
+    _LOG.info("running pause operations");
+    this.notifyAction(new Action(ActionType.PAUSING, null));
+    
+    if(this._hasPump)
+    {
+      this._pousseSeringue.pause();    
+    }
+    
+    if(this._hasAutosampler)
+    {
+      this._passeur.pause();
+    }
+    
+    this.notifyAction(new Action(ActionType.PAUSE_DONE, null));
   }
   
   @Override
@@ -146,14 +210,36 @@ public abstract class AbstractToolControl implements ToolControl
     
     new Thread(r).start();
   }
+  
+  @Override
+  public void resumeOperations() throws InterruptedException
+  {
+    _LOG.info("resuming from pause");
+    this.notifyAction(new Action(ActionType.RESUME, null));
+    
+    if(this._hasAutosampler)
+    {
+      this._passeur.reprise(false); 
+    }
 
-  // XXX Concurrent racing between AbstractThreadControl and user actions ?
-  void setState(ToolState state)
+    //attention la reprise du passeur avant celle du pousse seringue à
+    //cause de la manipulation eventuelle de celui ci
+    if(this._hasPump)
+    {
+      this._pousseSeringue.reprise(); 
+    }
+    
+    this.notifyAction(new Action(ActionType.RESUME_DONE, null));
+  }
+
+  @Override
+  public void setState(ToolState state)
   {
     this._state = state;
   }
   
-  ToolState getState()
+  @Override
+  public ToolState getState()
   {
     return this._state;
   }
@@ -189,17 +275,22 @@ public abstract class AbstractToolControl implements ToolControl
   }
   
   @Override
+  public void closeOperations()
+  {
+    _LOG.debug("controller has nothing to do while closing the tool");
+    this.notifyAction(new Action(ActionType.CLOSING, null));
+  }
+  
+  @Override
   public void addControlPanel(ControlPanel obs)
   {
     this._ctrlPanels.add(obs);
-    this._state.addControlPanel(obs);
   }
 
   @Override
   public void removeControlPanel(ControlPanel obs)
   {
     this._ctrlPanels.remove(obs);
-    this._state.removeControlPanel(obs);
   }
   
   @Override

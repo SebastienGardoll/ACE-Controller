@@ -18,16 +18,18 @@ public abstract class AbstractThreadControl extends Thread
   // Shared resources. Must take the lock so as to read & write them.
   private boolean _is_paused       = false;
   private boolean _is_canceled     = false;
-  private boolean _is_synchronized = false;
+  // Thread.isAlive method is not quite clear for me. I prefer to handle the
+  // liveliness of the thread.
+  private boolean _is_running      = false;
 
-  protected AbstractToolControl _toolCtrl ;
+  protected ToolControlOperations _toolCtrl ;
 
   public AbstractThreadControl()
   {
     this.init(null);
   }
   
-  private void init(AbstractToolControl toolCtrl)
+  private void init(ToolControlOperations toolCtrl)
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
@@ -35,9 +37,25 @@ public abstract class AbstractThreadControl extends Thread
     this._toolCtrl = toolCtrl;
   }
 
-  public AbstractThreadControl(AbstractToolControl toolCtrl)
+  public AbstractThreadControl(ToolControlOperations toolCtrl)
   {
     this.init(toolCtrl);
+  }
+  
+  @Override
+  public boolean isRunning()
+  {
+    this._sync.lock();
+    boolean result = this._is_running;
+    this._sync.unlock();
+    return result;
+  }
+  
+  private void setRunning(boolean isRunning)
+  {
+    this._sync.lock();
+    this._is_running = isRunning;
+    this._sync.unlock();
   }
   
   // Make the run method impossible to override as the thread must
@@ -49,63 +67,54 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     {
+      this.setRunning(true);
       this.threadLogic();
-      if(this._toolCtrl != null) {this._toolCtrl.getState().done();}
-    }
-    catch(InterruptedException e)
-    {
-      String msg = "operations have been interrupted";
-      _LOG.fatal(msg);
-      this.interrupt(); // Reset the interruption state of this thread.
-      if(this._toolCtrl != null) {this._toolCtrl.getState().crash();}
-      return ; // Terminate the execution of the thread.
+      this._toolCtrl.getState().done();
     }
     catch(CancellationException e)
     {
-      _LOG.info("operations have been canceled");
-      if(this._toolCtrl != null)
-      {
-        this._toolCtrl.notifyAction(new Action(ActionType.CANCEL, null));
-      }
+      _LOG.debug("operations have been canceled");
       
-      return; // Terminate the execution of the thread.
-    }
-    catch(InitializationException e)
-    {
-      String msg = String.format("initialization has crashed: %s", e);
-      _LOG.fatal(msg, e);
-      if(this._toolCtrl != null)
+      try
       {
+        this._toolCtrl.cancelOperations();
+        this._toolCtrl.setState(new InitialState(this._toolCtrl));
+        return; // Terminate the execution of the thread.
+      }
+      catch (Exception e1)
+      {
+        String msg = String.format("cancel operations have crashed: %s", e);
+        _LOG.fatal(msg, e);
         this._toolCtrl.notifyError(msg, e);
+        this._toolCtrl.getState().crash();
+        return ; // Terminate the execution of the thread.
       }
-      
-      if(this._toolCtrl != null) {this._toolCtrl.getState().crash();}
-      return ; // Terminate the execution of the thread.
     }
     catch(Exception e)
     {
-      String msg = String.format("operations have crashed: %s", e);
-      _LOG.fatal(msg, e);
-      if(this._toolCtrl != null)
+      String msg = null;
+      
+      if(e instanceof InitializationException)
       {
-        this._toolCtrl.notifyError(msg, e);
+        msg = String.format("initialization has crashed: %s", e);
+      }
+      else if(e instanceof InterruptedException)
+      {
+        msg = "operations have been interrupted";
+      }
+      else
+      {
+        msg = String.format("operations have crashed: %s", e);
       }
       
-      if(this._toolCtrl != null) {this._toolCtrl.getState().crash();}
+      _LOG.fatal(msg, e);
+      this._toolCtrl.notifyError(msg, e);
+      this._toolCtrl.getState().crash();
       return ; // Terminate the execution of the thread.
     }
     finally
     {
-      // Someone may call cancel or pause at the end of the execution of the
-      // thread and the thread may not check pause or cancel so the caller
-      // will wait forever. Theses instructions release the pending callers.
-      this._sync.lock();
-      // Makes the caller to quit its await loop.
-      this._is_synchronized = true;
-      _LOG.debug("signaling to all callers that are waiting this thread to cancel or pause");
-      // Wake up the caller that was waiting the thread to pause or cancel.
-      this._sync_cond.signalAll();
-      this._sync.unlock();
+      this.setRunning(false);
     }
   }
   
@@ -114,8 +123,6 @@ public abstract class AbstractThreadControl extends Thread
                                                InitializationException,
                                                Exception;
 
-  // Block the caller until the thread is paused.
-  // Return false if the thread has terminated meanwhile. True otherwise.
   @Override
   public boolean pause() throws InterruptedException
   {
@@ -123,47 +130,19 @@ public abstract class AbstractThreadControl extends Thread
     {
       _LOG.debug("pausing the thread");
       
-      // Must take the lock so as to read the shared resources and
-      // await on the condition.
+      // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       if(false == this._is_paused   &&
          false == this._is_canceled &&
-         this.isAlive()             &&
+         this._is_running           &&
          false == (Thread.currentThread() == this))
       {
         this._is_paused = true;
-         
-        _LOG.debug("waiting until the thread is paused");
-        
-        // The caller wait for the thread to pause.
-        // The method await must be called in a loop so as to prevent spurious wakeup.
-        while(false == this._is_synchronized)
-        {
-          // Release lock and make
-          // the caller to wait until the thread is paused.
-          // Note:
-          // - the thread cannot terminate when the lock is taken. At the end,
-          // the caller cannot hang around for a terminated thread.
-          // See the finally block of the run method.
-          // - the caller may wake up but the thread is terminated.
-          this._sync_cond.await(); 
-        }
-        
-        _LOG.debug("caller is synchronized");
-        
-        // When the caller returns from the method await,
-        // it blocks until it re-takes the lock.
-        // That why it must unlock it (in the finally bloc).
-        
-        // At this point, the thread is paused, so the caller can
-        // access to the sampler and the pump: they wont' be synchronized anymore.
-        this._is_synchronized = false;
-        
-        // The thread before terminating, signals all the hanging callers.
-        // So the caller may wake up as the thread is terminated.
+
+        // The caller may wake up as the thread is terminated.
         // So return the state of the thread to the caller so as to skip
         // any cancellation operations.
-        return this.isAlive();
+        return this._is_running;
       }
       else
       {
@@ -177,8 +156,6 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  // Resume the thread from another thread.
-  // Return false if the thread has terminated meanwhile. True otherwise.
   @Override
   public boolean unPause() throws InterruptedException
   {
@@ -192,7 +169,7 @@ public abstract class AbstractThreadControl extends Thread
       
       if(this._is_paused            &&
          false == this._is_canceled &&
-         this.isAlive()             &&
+         this._is_running           &&
          false == (Thread.currentThread() == this))
       {
         // Makes the thread to quit its await loop.
@@ -202,7 +179,7 @@ public abstract class AbstractThreadControl extends Thread
         
         // Wake up the thread.
         this._sync_cond.signalAll();
-        return this.isAlive();
+        return this._is_running;
       }
       else
       {
@@ -226,19 +203,14 @@ public abstract class AbstractThreadControl extends Thread
     { 
       _LOG.debug("checking the pause");
       
-      // Must take the lock so as to read the shared resources and
-      // signall on the condition.
+      // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       
       if(this._is_paused &&
          Thread.currentThread() == this)
       {
-        // Makes the caller to quit its await loop.
-        this._is_synchronized = true;
-        
-        _LOG.debug("signaling to all callers that are waiting this thread to pause");
-        // Wake up the caller that was waiting the thread to pause.
-        this._sync_cond.signalAll();
+        this._toolCtrl.pauseOperations();
+        this._toolCtrl.setState(new PausedState(this._toolCtrl));
         
         // The method await must be called in a loop so as to prevent spurious wakeup.
         _LOG.debug("begining to pause");
@@ -252,8 +224,10 @@ public abstract class AbstractThreadControl extends Thread
         // When the thread returns from the method await,
         // it blocks until it re-takes the lock.
         // That why it must unlock it (in the finally bloc).
-        
         _LOG.debug("the thread is resumed");
+        
+        this._toolCtrl.resumeOperations();
+        this._toolCtrl.setState(new RunningState(this._toolCtrl));
       }
       else
       {
@@ -266,9 +240,6 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  // Check point for the thread.
-  // Make the instance of the AbstractThreadControl to interrupt if another thread
-  // call the interrupt method to do so.
   @Override
   public void checkInterruption() throws InterruptedException
   {
@@ -290,8 +261,6 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  // Block the caller until the thread is canceled.
-  // Return false if the thread has terminated meanwhile. True otherwise.
   @Override
   public boolean cancel() throws InterruptedException
   {
@@ -299,47 +268,19 @@ public abstract class AbstractThreadControl extends Thread
     {
       _LOG.debug("cancelling the thread");
       
-      // Must take the lock so as to read the shared resources and
-      // await on the condition.
+      // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       if(false == this._is_paused   &&
          false == this._is_canceled &&
-         this.isAlive()             &&
+         this._is_running           &&
          false == (Thread.currentThread() == this))
       {
         this._is_canceled = true;
          
-        _LOG.debug("waiting until the thread is cancelled");
-        
-        // The caller wait for the thread to pause.
-        // The method await must be called in a loop so as to prevent spurious wakeup.
-        while(false == this._is_synchronized)
-        {
-          // Release lock and make
-          // the caller to wait until the thread is paused.
-          // Note:
-          // - the thread cannot terminate when the lock is taken. At the end,
-          // the caller cannot hang around for a terminated thread.
-          // See the finally block of the run method.
-          // - the caller may wake up but the thread is terminated.
-          this._sync_cond.await(); 
-        }
-        
-        _LOG.debug("caller is synchronized");
-        
-        // When the caller returns from the method await,
-        // it blocks until it re-takes the lock.
-        // That why it must unlock it (in the finally bloc).
-        
-        // At this point, the thread is paused, so the caller can
-        // access to the sampler and the pump: they wont' be synchronized anymore.
-        this._is_synchronized = false;
-        
-        // The thread before terminating, signals all the hanging callers.
-        // So the caller may wake up as the thread is terminated.
+        // The caller may wake up as the thread is terminated.
         // So return the state of the thread to the caller so as to skip
         // any cancellation operations.
-        return this.isAlive();
+        return this._is_running;
       }
       else
       {
@@ -353,9 +294,6 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  // Check point for the thread.
-  // Make the instance of the AbstractThreadControl to cancel if another thread
-  // has called the cancel method to do so.
   @Override
   public void checkCancel() throws CancellationException, InterruptedException
   {
@@ -363,20 +301,12 @@ public abstract class AbstractThreadControl extends Thread
     { 
       _LOG.debug("checking the cancellation");
       
-      // Must take the lock so as to read the shared resources and
-      // signall on the condition.
+      // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       
       if(this._is_canceled &&
          Thread.currentThread() == this)
       {
-        // Makes the caller to quit its await loop.
-        this._is_synchronized = true;
-        
-        _LOG.debug("signaling to all callers that are waiting this thread to cancel");
-        // Wake up the caller that was waiting the thread to pause.
-        this._sync_cond.signalAll();
-        
         _LOG.debug("throwing CancellationException");
         throw new CancellationException();
       }
