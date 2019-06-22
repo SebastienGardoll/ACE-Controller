@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.core;
 
+import java.util.Collections ;
+import java.util.Set ;
 import java.util.concurrent.locks.Condition ;
 import java.util.concurrent.locks.ReentrantLock ;
 
@@ -24,22 +26,12 @@ public abstract class AbstractThreadControl extends Thread
 
   protected ToolControlOperations _toolCtrl ;
 
-  public AbstractThreadControl()
-  {
-    this.init(null);
-  }
-  
-  private void init(ToolControlOperations toolCtrl)
+  public AbstractThreadControl(ToolControlOperations toolCtrl)
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
     this.setDaemon(true);
     this._toolCtrl = toolCtrl;
-  }
-
-  public AbstractThreadControl(ToolControlOperations toolCtrl)
-  {
-    this.init(toolCtrl);
   }
   
   @Override
@@ -78,6 +70,7 @@ public abstract class AbstractThreadControl extends Thread
       try
       {
         this._toolCtrl.cancelOperations();
+        _LOG.debug("set initial state");
         this._toolCtrl.setState(new InitialState(this._toolCtrl));
         return; // Terminate the execution of the thread.
       }
@@ -210,6 +203,7 @@ public abstract class AbstractThreadControl extends Thread
          Thread.currentThread() == this)
       {
         this._toolCtrl.pauseOperations();
+        _LOG.debug("set paused state");
         this._toolCtrl.setState(new PausedState(this._toolCtrl));
         
         // The method await must be called in a loop so as to prevent spurious wakeup.
@@ -227,6 +221,7 @@ public abstract class AbstractThreadControl extends Thread
         _LOG.debug("the thread is resumed");
         
         this._toolCtrl.resumeOperations();
+        _LOG.debug("set running state");
         this._toolCtrl.setState(new RunningState(this._toolCtrl));
       }
       else
@@ -323,8 +318,77 @@ public abstract class AbstractThreadControl extends Thread
   
   public static void main(String[] args)
   {
+    ToolControlOperations ctrlOp = new ToolControlOperations()
+    {
+      private final Logger _LOG = LogManager.getLogger(ToolControlOperations.class.getName());
+      
+      private ToolState _state = new RunningState(this);
+      
+      @Override
+      public void removeControlPanel(ControlPanel ctrlPanel) {} 
+      
+      @Override
+      public Set<ControlPanel> getCtrlPanels()
+      {
+        return Collections.emptySet() ;
+      }
+      
+      @Override
+      public void addControlPanel(ControlPanel ctrlPanel) {}
+      
+      @Override
+      public void notifyError(String msg, Throwable e) {}
+      
+      @Override
+      public void notifyError(String msg) {}
+      
+      @Override
+      public void notifyAction(Action action) {}
+      
+      @Override
+      public void setState(ToolState newState)
+      {
+        _state = newState;
+      }
+      
+      @Override
+      public void resumeOperations() throws InterruptedException
+      {
+        _LOG.info("execute resume operations");
+      }
+      
+      @Override
+      public void reinitOperations() throws InterruptedException {}
+      
+      @Override
+      public void pauseOperations() throws InterruptedException
+      {
+        _LOG.info("execute pause operations");
+      }
+      
+      @Override
+      public ToolState getState()
+      {
+        return _state;
+      }
+      
+      @Override
+      public void closeOperations() throws InterruptedException {}
+      
+      @Override
+      public void cancelOperations() throws InterruptedException
+      {
+        _LOG.info("execute cancel operations");
+      }
+    };
+    
     class TestAbstractThreadControl extends AbstractThreadControl
     {
+      public TestAbstractThreadControl(ToolControlOperations toolCtrl)
+      {
+        super(toolCtrl) ;
+      }
+
       @Override
       protected void threadLogic() throws InterruptedException,
                                           CancellationException,
@@ -350,7 +414,7 @@ public abstract class AbstractThreadControl extends Thread
         System.out.println(String.format("######### TEST %s #########", test)) ;
         System.out.println() ;
         
-        TestAbstractThreadControl thread = new TestAbstractThreadControl();
+        TestAbstractThreadControl thread = new TestAbstractThreadControl(ctrlOp);
         thread.start();
         
         switch(test)
@@ -361,7 +425,9 @@ public abstract class AbstractThreadControl extends Thread
             
             System.out.println("*** calling pause on the running thread ****") ;
             thread.pause();
-            System.out.println("*** thread is paused ****") ;
+            
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             System.out.println("*** calling pause on the thread, again ****") ;
             thread.pause();
@@ -385,9 +451,12 @@ public abstract class AbstractThreadControl extends Thread
             
             Thread.sleep(2000);
             
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             System.out.println("*** calling interrupt on the running thread ****") ;
             thread.interrupt();
-            System.out.println("*** thread is interrupted ***") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
+            
             break;
           }
           
@@ -397,12 +466,14 @@ public abstract class AbstractThreadControl extends Thread
             
             System.out.println("*** calling pause on the running thread ****") ;
             thread.pause();
-            System.out.println("*** thread is paused ****") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             Thread.sleep(2000);
             System.out.println("*** calling interrupt on the paused thread ****") ;
             thread.interrupt();
-            System.out.println("*** thread is interrupted ***") ;
+            Thread.sleep(500); // Give the thread the process interruption.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             break;
           }
@@ -413,13 +484,15 @@ public abstract class AbstractThreadControl extends Thread
             
             System.out.println("*** calling cancel on the running thread ****") ;
             thread.cancel();
-            System.out.println("*** thread is cancelled ***") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             Thread.sleep(2000);
             
             System.out.println("*** calling cancel (again) on the cancelled thread ****") ;
             thread.cancel();
             System.out.println("*** it should not do anything ***") ;
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             break;
           }
@@ -430,17 +503,20 @@ public abstract class AbstractThreadControl extends Thread
             
             System.out.println("*** calling pause on the running thread ****") ;
             thread.pause();
-            System.out.println("*** thread is paused ****") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             Thread.sleep(2000);
             System.out.println("*** calling cancel on the paused thread ****") ;
             thread.cancel();
             System.out.println("*** thread should not be cancelled ***") ;
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             Thread.sleep(2000);
             System.out.println("*** calling interrupt on the paused thread ****") ;
             thread.interrupt();
-            System.out.println("*** thread is interrupted ***") ;
+            Thread.sleep(500); // Give the thread the process interruption.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             break;
           }
@@ -451,13 +527,16 @@ public abstract class AbstractThreadControl extends Thread
             
             System.out.println("*** calling cancel on the running thread ****") ;
             thread.cancel();
-            System.out.println("*** thread is cancelled ***") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             Thread.sleep(2000);
             
             System.out.println("*** calling pause on the cancelled thread ****") ;
             thread.pause();
             System.out.println("*** it should not do anything ****") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             break;
           }
@@ -468,13 +547,17 @@ public abstract class AbstractThreadControl extends Thread
             
             System.out.println("*** calling interrupt on the running thread ****") ;
             thread.interrupt();
-            System.out.println("*** thread is interrupted ***") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             Thread.sleep(2000);
             
             System.out.println("*** calling pause on the interrupted thread ****") ;
             thread.pause();
             System.out.println("*** it should not do anything ***") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
+            
             break;
           }
           
@@ -484,13 +567,17 @@ public abstract class AbstractThreadControl extends Thread
             
             System.out.println("*** calling interrupt on the running thread ****") ;
             thread.interrupt();
-            System.out.println("*** thread is interrupted ***") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
             
             Thread.sleep(2000);
             
             System.out.println("*** calling cancelled on the interrupted thread ****") ;
             thread.cancel();
             System.out.println("*** it should not do anything ***") ;
+            Thread.sleep(500); // Give the thread the time to check.
+            System.out.println(String.format("*** state is: %s ***", ctrlOp.getState().getLiteral())) ;
+            
             break;
           }
         }
