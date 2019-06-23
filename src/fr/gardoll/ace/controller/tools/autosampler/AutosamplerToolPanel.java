@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
@@ -623,16 +622,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     {
       File file = fileChooser.getSelectedFile().getAbsoluteFile();
       _LOG.info(String.format("selected column file: '%s'", file));
-      try
-      {
-        this._ctrl.openColumn(file.toPath());
-      }
-      catch (InitializationException e)
-      {
-        String msg = "error while openning column file";
-        _LOG.error(String.format("%s: %s", msg, e.getMessage()));
-        this.handleException(msg, e);
-      }
+      this._ctrl.openColumn(file.toPath());
     }
     else
     {

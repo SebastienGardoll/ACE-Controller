@@ -35,75 +35,137 @@ public class AutosamplerToolControl extends AbstractToolControl
       _LOG.debug("vibrate arm");
       this._passeur.vibration();
     }
-    catch (InterruptedException e)
+    catch (Exception e)
     {
-      String msg = "vibrating has been interrupted";
-      _LOG.fatal(msg);
-      this.notifyError(msg, e);
-      return ;
+      String msg = "vibrating has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
     }
   }
   
   void armFreeMove(int value)
   {
-    int nbPas = Passeur.convertBras(value) ;
-    ArmThread thread = new ArmThread(this, this._passeur, nbPas, 1);
-    _LOG.debug(String.format("start arm thread for free move '%s'", value));
-    this.start(thread);
+    try
+    {
+      int nbPas = Passeur.convertBras(value) ;
+      ArmThread thread = new ArmThread(this, this._passeur, nbPas, 1);
+      _LOG.debug(String.format("start arm thread for free move '%s'", value));
+      this.start(thread);
+    }
+    catch(Exception e)
+    {
+      String msg = "arm free move start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
   
   void armGoButee()
   {
-    // zero pour le choix fin de butée
-    ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
-    _LOG.debug("start arm thread for go butée");
-    this.start(thread);
+    try
+    {
+      // zero pour le choix fin de butée
+      ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
+      _LOG.debug("start arm thread for go butée");
+      this.start(thread);
+    }
+    catch(Exception e)
+    {
+      String msg = "arm go stop start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
   
   void armGoColonne()
   {
-    if (this.hasColumn == false)
+    try
     {
-      _LOG.error("colonne not set");
-      this.notifyError("Column file not set, open one before. Aborted.");
-      return ;
+      if (this.hasColumn == false)
+      {
+        _LOG.error("colonne not set");
+        this.notifyError("Column file not set, open one before. Aborted.");
+        return ;
+      }
+      else
+      {
+        ArmThread thread = new ArmThread(this, this._passeur, this.colonne);
+        _LOG.debug("start arm thread for go to column");
+        this.start(thread);
+      }
     }
-    else
+    catch(Exception e)
     {
-      ArmThread thread = new ArmThread(this, this._passeur, this.colonne);
-      _LOG.debug("start arm thread for go to column");
-      this.start(thread);
+      String msg = "arm go column start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
     }
   }
   
   void armGoTrash()
   {
-    ArmThread thread = new ArmThread(this, this._passeur, 0, 3);
-    _LOG.debug("start arm thread for go to trash can");
-    this.start(thread);
+    try
+    {
+      ArmThread thread = new ArmThread(this, this._passeur, 0, 3);
+      _LOG.debug("start arm thread for go to trash can");
+      this.start(thread);
+    }
+    catch(Exception e)
+    {
+      String msg = "arm go trash start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
   
   void carouselGoPosition(int position)
   {
-    CarouselThread thread = new CarouselThread(this, this._passeur, position);
-    _LOG.debug(String.format("start carousel thread for go to position '%s'", position));
-    this.start(thread);
+    try
+    {
+      CarouselThread thread = new CarouselThread(this, this._passeur, position);
+      _LOG.debug(String.format("start carousel thread for go to position '%s'", position));
+      this.start(thread);
+    }
+    catch(Exception e)
+    {
+      String msg = "carousel go position start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
   
   void carouselTurnLeft()
   {
-    int nbPosition =  -1 * ParametresSession.NB_POSITION;
-    CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
-    _LOG.debug("start carousel thread for turn to left");
-    this.start(thread);
+    try
+    {
+      int nbPosition =  -1 * ParametresSession.NB_POSITION;
+      CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
+      _LOG.debug("start carousel thread for turn to left");
+      this.start(thread);
+    }
+    catch(Exception e)
+    {
+      String msg = "carousel turn left start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
   
   void carouselTurnRight()
   {
-    int nbPosition =  ParametresSession.NB_POSITION;
-    CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
-    _LOG.debug("start carousel thread for turn to right");
-    this.start(thread);
+    try
+    {
+      int nbPosition =  ParametresSession.NB_POSITION;
+      CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
+      _LOG.debug("start carousel thread for turn to right");
+      this.start(thread);
+    }
+    catch(Exception e)
+    {
+      String msg = "carousel turn right start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
   
   void carouselFreeMove()
@@ -115,19 +177,27 @@ public class AutosamplerToolControl extends AbstractToolControl
       this.displayControlPanelModalMessage("Click on Ok to finish");
       this._passeur.setOrigineCarrousel();
     }
-    catch (InterruptedException e)
+    catch (Exception e)
     {
-      String msg = "arm free move has been interrupted";
+      String msg = "arm free move has crashed";
       _LOG.fatal(msg);
-      this.notifyError(msg, e);
-      return ;
+      this.handleException(msg, e);
     }
   }
   
-  void openColumn(Path filePath) throws InitializationException
+  void openColumn(Path filePath)
   {
-    this.colonne = Colonne.getInstance(filePath);
-    this.hasColumn = true;
+    try
+    {
+      this.colonne = Colonne.getInstance(filePath);
+      this.hasColumn = true;
+    }
+    catch (Exception e)
+    {
+      String msg = "error while openning column file";
+      _LOG.error(msg, e);
+      this.handleException(msg, e);
+    }
   }  
 }
 

@@ -328,4 +328,10 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
       panel.reportError(msg);
     }
   }
+  
+  protected void handleException(String msg, Exception e)
+  {
+    this.notifyError(msg, e);
+    this.getState().crash();
+  }
 }

@@ -46,11 +46,12 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
     this._ctrl = ctrl;
   }
   
+  /*
   protected void handleException(String msg, Exception e)
   {
     this.reportError(msg, e);
   }
-  
+  */
   @Override
   public final void enablePause(boolean isEnable)
   {
