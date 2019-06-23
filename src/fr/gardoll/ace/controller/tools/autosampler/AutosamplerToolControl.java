@@ -342,7 +342,7 @@ class ArmThread extends AbstractThreadControl
       {
         String msg = String.format("unsupported order '%s'", this._choix) ;
         _LOG.fatal(msg) ;
-        this._toolCtrl.notifyError(msg, null) ;
+        this._toolCtrl.notifyError(msg) ;
         return ; // Terminate the execution of the thread.
       }
     }
