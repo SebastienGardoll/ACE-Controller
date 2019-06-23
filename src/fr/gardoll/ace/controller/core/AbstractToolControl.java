@@ -72,6 +72,8 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         {
           String msg = "error while cancelling";
           _LOG.error(msg, e);
+          // Don't change the state of the running thread
+          // by calling AbstractToolControl.this.handleException.
           AbstractToolControl.this.notifyError(msg, e);
         }
       }
@@ -116,7 +118,9 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         {
           String msg = "error while reinitializing";
           _LOG.fatal(msg, e);
-          AbstractToolControl.this.notifyError(msg, e);
+          // Reinit takes place in the main thread, there isn't any operating
+          // thread that is running. So it is safe to change the state here.
+          AbstractToolControl.this.handleException(msg, e);
         }
       }
     } ;
@@ -159,6 +163,8 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         {
           String msg = "error while pausing";
           _LOG.fatal(msg, e);
+          // Don't change the state of the running thread
+          // by calling AbstractToolControl.this.handleException.
           AbstractToolControl.this.notifyError(msg, e);
         }
       }
@@ -203,7 +209,10 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         {
           String msg = "error while resuming";
           _LOG.fatal(msg, e);
-          AbstractToolControl.this.notifyError(msg, e);
+          // Resuming the operating thread is not possible, the operating thread
+          // may never wake up from its pause.
+          // So it is better to set the current state to crashed state.
+          AbstractToolControl.this.handleException(msg, e);
         }
       }
     } ;
@@ -266,7 +275,9 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         {
           String msg = "error while running close operations";
           _LOG.fatal(msg, e);
-          AbstractToolControl.this.notifyError(msg, e);
+          // close takes place in the main thread, there isn't any operating
+          // thread that is running. So it is safe to change the state here.
+          AbstractToolControl.this.handleException(msg, e);
         }
       }
     } ;
