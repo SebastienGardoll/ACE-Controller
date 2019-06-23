@@ -93,8 +93,7 @@ public class PousseSeringue implements Closeable
     }
     catch(ParaComException e)
     {
-      String msg = String.format("error while closing all the isolation valves: %s",
-          e.getMessage());
+      String msg = "error while closing all the isolation valves";
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -250,8 +249,8 @@ public class PousseSeringue implements Closeable
     }
     catch(SerialComException|ParaComException e)
     {
-      String msg = String.format("error while withdrawing the volume '%s' from isolation valve '%s': %s",
-          volume, numEv, e.getMessage());
+      String msg = String.format("error while withdrawing the volume '%s' from isolation valve '%s'",
+          volume, numEv);
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -299,8 +298,8 @@ public class PousseSeringue implements Closeable
     }
     catch(SerialComException|ParaComException e)
     {
-      String msg = String.format("error while infusing the volume '%s' to isolation valve '%s': %s",
-          volume, numEv, e.getMessage());
+      String msg = String.format("error while infusing the volume '%s' to isolation valve '%s'",
+          volume, numEv);
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -352,8 +351,8 @@ public class PousseSeringue implements Closeable
       }
       catch(SerialComException e)
       {
-        String msg = String.format("error while configuring the withdrawing rate '%s': %s",
-            debit, e.getMessage());
+        String msg = String.format("error while configuring the withdrawing rate '%s'",
+            debit);
         _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
@@ -385,8 +384,8 @@ public class PousseSeringue implements Closeable
       }
       catch(SerialComException e)
       {
-        String msg = String.format("error while configuring the infusion rate '%s': %s",
-            debit, e.getMessage());
+        String msg = String.format("error while configuring the infusion rate '%s'",
+            debit);
         _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
@@ -415,8 +414,7 @@ public class PousseSeringue implements Closeable
       }
       catch(SerialComException e)
       {
-        String msg = String.format("error while waiting for the pump: %s",
-            e.getMessage());
+        String msg = "error while waiting for the pump";
         _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
@@ -452,8 +450,7 @@ public class PousseSeringue implements Closeable
     }
     catch(SerialComException e)
     {
-      String msg = String.format("error while cancelling the pump operations: %s",
-          e.getMessage());
+      String msg = "error while cancelling the pump operations";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -485,8 +482,7 @@ public class PousseSeringue implements Closeable
     }
     catch(SerialComException e)
     {
-      String msg = String.format("error while stopping (pause) the pump: %s",
-          e.getMessage());
+      String msg = "error while stopping (pause) the pump";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -506,8 +502,7 @@ public class PousseSeringue implements Closeable
       }
       catch(SerialComException|ParaComException e)
       {
-        String msg = String.format("error while resuming the pump: %s",
-            e.getMessage());
+        String msg = "error while resuming the pump";
         _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
@@ -528,8 +523,8 @@ public class PousseSeringue implements Closeable
     }
     catch(SerialComException e)
     {
-      String msg = String.format("error while setting the diameter of the seringe '%s': %s",
-          diametre, e.getMessage());
+      String msg = String.format("error while setting the diameter of the seringe '%s'",
+          diametre);
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -546,8 +541,7 @@ public class PousseSeringue implements Closeable
     }
     catch(SerialComException e)
     {
-      String msg = String.format("error while getting the delivered volume: %s",
-          e.getMessage());
+      String msg = "error while getting the delivered volume";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -628,8 +622,7 @@ public class PousseSeringue implements Closeable
     }
     catch(ParaComException e)
     {
-      String msg = String.format("error while closing all the isolation valves: %s",
-          e.getMessage());
+      String msg = "error while closing all the isolation valves";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg);
     }

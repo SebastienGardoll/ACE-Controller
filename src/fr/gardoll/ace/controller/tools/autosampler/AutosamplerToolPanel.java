@@ -563,7 +563,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     }
     catch(Exception e)
     {
-      _LOG.error(String.format("error while fetching the position spinner value: %s", e.getMessage()));
+      _LOG.error("error while fetching the position spinner value", e);
       this.positionSpinner.setValue(0);
       return;
     }
@@ -596,7 +596,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
     }
     catch(Exception e)
     {
-      _LOG.error(String.format("error while fetching the position spinner value: %s", e.getMessage()));
+      _LOG.error("error while fetching the position spinner value", e);
       this.freePositionSpinner.setValue(0);
       return;
     }

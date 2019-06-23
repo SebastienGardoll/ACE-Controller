@@ -38,8 +38,8 @@ public class ArduinoParaCom implements ParaCom
     }
     catch(SerialComException e)
     {
-      String msg = String.format("error while initializing the port '%s': %s",
-          this._port.getPath(), e.getMessage());
+      String msg = String.format("error while initializing the port '%s'",
+          this._port.getPath());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -101,8 +101,8 @@ public class ArduinoParaCom implements ParaCom
     }
     catch(SerialComException e)
     {
-      String msg = String.format("error while writing on port '%s': %s",
-          this._port.getId(), e.getMessage());
+      String msg = String.format("error while writing on port '%s'",
+          this._port.getId());
       _LOG.fatal(msg, e);
       throw new ParaComException(msg, e);
     }
@@ -121,8 +121,8 @@ public class ArduinoParaCom implements ParaCom
     }
     catch(SerialComException e)
     {
-      String msg = String.format("error while writing on port '%s': %s",
-          this._port.getId(), e.getMessage());
+      String msg = String.format("error while writing on port '%s'",
+          this._port.getId());
       _LOG.fatal(msg, e);
       throw new ParaComException(msg, e);
     }
@@ -171,8 +171,7 @@ public class ArduinoParaCom implements ParaCom
     }
     catch (SerialComException e)
     {
-      String msg = String.format("error while waiting the usb2valves acknowledge: %s",
-          e.getMessage());
+      String msg = "error while waiting the usb2valves acknowledge";
       _LOG.fatal(msg, e);
       throw new ParaComException(msg, e);
     }

@@ -80,8 +80,7 @@ public class JSerialComm implements SerialCom
     catch(Exception e)
     {
       this._port = null ;
-      String msg = String.format("unable to open port '%s': %s.", this.getId(),
-                                 e.getMessage()) ;
+      String msg = String.format("unable to open port '%s'", this.getId()) ;
       _LOG.error(msg, e);
       throw new SerialComException(msg, e) ;
     }

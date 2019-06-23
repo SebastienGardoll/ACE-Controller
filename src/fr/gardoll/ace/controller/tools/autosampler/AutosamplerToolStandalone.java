@@ -43,7 +43,7 @@ public class AutosamplerToolStandalone extends AbstractJFrame
         msg = "error while operating the tool";
       }
       
-      _LOG.fatal(String.format("%s: %s", msg, e.getMessage()));
+      _LOG.fatal(msg, e);
       Utils.reportError(msg, e);
     }
   }

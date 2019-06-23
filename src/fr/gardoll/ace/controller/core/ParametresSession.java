@@ -101,8 +101,8 @@ public class ParametresSession implements Closeable
     }
     catch (InitializationException e)
     {
-      String msg = String.format("error while initializing the session: %s", e.getMessage());
-      _LOG.fatal(msg);
+      String msg = "error while initializing the session";
+      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -140,8 +140,8 @@ public class ParametresSession implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the ace controller configuration '%s': %s",
-          configurationFile.toString(), e.getMessage());
+      String msg = String.format("unable to read the ace controller configuration '%s'",
+          configurationFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -181,8 +181,8 @@ public class ParametresSession implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the pump configuration '%s': %s",
-          configurationFile.toString(), e.getMessage());
+      String msg = String.format("unable to read the pump configuration '%s'",
+          configurationFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -211,8 +211,8 @@ public class ParametresSession implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the plate configuration file '%s': %s",
-          plateConfFile.toString(), e.getMessage());
+      String msg = String.format("unable to read the plate configuration file '%s'",
+          plateConfFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -231,8 +231,8 @@ public class ParametresSession implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the paracom configuration file '%s': %s",
-          configurationFile.toString(), e.getMessage());
+      String msg = String.format("unable to read the paracom configuration file '%s'",
+          configurationFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -273,8 +273,8 @@ public class ParametresSession implements Closeable
     }
     catch(Exception e)
     {
-      String msg = String.format("cannot instantiate the SerialCom object '%s' with the given parameter '%s': %s",
-          classPath, portPath, e.getMessage());
+      String msg = String.format("cannot instantiate the SerialCom object '%s' with the given parameter '%s'",
+          classPath, portPath);
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -293,8 +293,8 @@ public class ParametresSession implements Closeable
     }
     catch(Exception e)
     {
-      String msg = String.format("cannot instantiate the ParaCom object '%s' with the given parameter '%s': %s",
-          paraComClassPath, paraComPort.getPath(), e.getMessage());
+      String msg = String.format("cannot instantiate the ParaCom object '%s' with the given parameter '%s'",
+          paraComClassPath, paraComPort.getPath());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -473,7 +473,7 @@ public class ParametresSession implements Closeable
     }
     catch (IOException e)
     {
-      String msg = String.format(": %s", e.getMessage());
+      String msg = "error while closing the pump or the autosampler";
       _LOG.error(msg, e);
     }
   }

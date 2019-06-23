@@ -66,7 +66,7 @@ public class AutosamplerToolControl extends AbstractToolControl
     {
       // zero pour le choix fin de butée
       ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
-      _LOG.debug("start arm thread for go butée");
+      _LOG.debug("start arm thread for go stop");
       this.start(thread);
     }
     catch(Exception e)

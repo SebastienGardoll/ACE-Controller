@@ -76,7 +76,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       catch (Exception e1)
       {
-        String msg = String.format("cancel operations have crashed: %s", e);
+        String msg = "cancel operations have crashed";
         _LOG.fatal(msg, e);
         this._toolCtrl.notifyError(msg, e);
         this._toolCtrl.getState().crash();
@@ -89,7 +89,7 @@ public abstract class AbstractThreadControl extends Thread
       
       if(e instanceof InitializationException)
       {
-        msg = String.format("initialization has crashed: %s", e);
+        msg = "initialization has crashed";
       }
       else if(e instanceof InterruptedException)
       {
@@ -97,7 +97,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       else
       {
-        msg = String.format("operations have crashed: %s", e);
+        msg = "operations have crashed";
       }
       
       _LOG.fatal(msg, e);

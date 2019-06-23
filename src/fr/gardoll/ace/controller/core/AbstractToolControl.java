@@ -70,9 +70,9 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         }
         catch (Exception e)
         {
-          String msg = String.format("error while cancelling: %s", e.getMessage());
+          String msg = "error while cancelling";
           _LOG.error(msg, e);
-          AbstractToolControl.this.notifyError("error while cancelling", e);
+          AbstractToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -114,9 +114,9 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         }
         catch (Exception e)
         {
-          String msg = String.format("error while reinitializing: %s", e.getMessage());
+          String msg = "error while reinitializing";
           _LOG.fatal(msg, e);
-          AbstractToolControl.this.notifyError("error while reinitializing", e);
+          AbstractToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -157,9 +157,9 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         }
         catch (Exception e)
         {
-          String msg = String.format("error while pausing: %s", e.getMessage());
+          String msg = "error while pausing";
           _LOG.fatal(msg, e);
-          AbstractToolControl.this.notifyError("error while pausing", e);
+          AbstractToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -201,9 +201,9 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         }
         catch (Exception e)
         {
-          String msg = String.format("error while resuming operations: %s", e.getMessage());
+          String msg = "error while resuming";
           _LOG.fatal(msg, e);
-          AbstractToolControl.this.notifyError("error while resuming", e);
+          AbstractToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -264,9 +264,9 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         }
         catch (Exception e)
         {
-          String msg = String.format("error while running close operations: %s", e.getMessage());
+          String msg = "error while running close operations";
           _LOG.fatal(msg, e);
-          AbstractToolControl.this.notifyError("error while running close operations", e);
+          AbstractToolControl.this.notifyError(msg, e);
         }
       }
     } ;

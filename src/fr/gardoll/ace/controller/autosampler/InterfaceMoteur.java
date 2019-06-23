@@ -54,8 +54,8 @@ public class InterfaceMoteur implements Closeable, MotorController
     }
     catch(SerialComException | InterruptedException e)
     {
-      String msg = String.format("error while initializing the port '%s': %s",
-          this._port.getId(), e.getMessage());
+      String msg = String.format("error while initializing the port '%s'",
+          this._port.getId());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }

@@ -93,8 +93,8 @@ public abstract class Colonne implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the column specifications in the file '%s': %s",
-          this._fichierColonne.toString(), e.getMessage());
+      String msg = String.format("unable to read the column specifications in the file '%s'",
+          this._fichierColonne.toString());
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg,e);
     }
@@ -152,8 +152,8 @@ public abstract class Colonne implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the column specifications in the file '%s': %s",
-          columnPath, e.getMessage());
+      String msg = String.format("unable to read the column specifications in the file '%s'",
+          columnPath);
       _LOG.fatal(msg, e);
       throw new InitializationException(msg,e);
     }
