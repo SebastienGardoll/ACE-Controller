@@ -149,7 +149,7 @@ class CrashedState extends AbstractState implements ToolState
   @Override
   public void close() throws InterruptedException
   {
-    this._ctrl.closeOperations();
+    _LOG.debug("skip close operations");
     _LOG.debug("set closed state");
     this._ctrl.setState(new ClosedState(this._ctrl));
   }

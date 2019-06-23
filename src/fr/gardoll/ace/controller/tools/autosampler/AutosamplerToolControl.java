@@ -8,12 +8,12 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
+import fr.gardoll.ace.controller.core.AbstractToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
-import fr.gardoll.ace.controller.core.AbstractToolControl ;
 
 public class AutosamplerToolControl extends AbstractToolControl
 {
@@ -224,7 +224,6 @@ class ArmThread extends AbstractThreadControl
                                       Exception
   {
     _LOG.debug("run ArmThread") ;
-
     ParametresSession parametresSession = null ;
     parametresSession = ParametresSession.getInstance() ;
 
