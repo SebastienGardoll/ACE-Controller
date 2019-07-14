@@ -30,7 +30,7 @@ public class MotorControllerStub implements MotorController, Closeable
   
   // Number of steps per period.
   // Moving 10 mm in 0.5 seconds considering period of 0.1 second.
-  private static int _ARM_TIME_INC = Passeur.convertBras(10.) / 1; 
+  private static int _ARM_TIME_INC = Passeur.convertBras(10.) / 10; 
 
   public MotorControllerStub(int nbStepPosition)
   {
@@ -164,16 +164,9 @@ public class MotorControllerStub implements MotorController, Closeable
       throw new RuntimeException("unexpected moving to the limit of the arm");
     }
     
-    if(this._currentArmPosition != 0)
-    {
-      this._targetedArmPosition = 0;
-      this._armDirection = this._currentArmPosition < 0 ? 1 : -1 ;
-      this._isArmMoving = true;
-    }
-    else
-    {
-      _LOG.debug("arm did'nt move");
-    }
+    this._targetedArmPosition = 0;
+    this._armDirection = this._currentArmPosition < 0 ? 1 : -1 ;
+    this._isArmMoving = true;
   }
 
   @Override
