@@ -437,6 +437,8 @@ public class PousseSeringue implements Closeable
     _LOG.debug("pump delivered the volume");
   }
   
+  // Cancel & reinit.
+  // TODO: test.
   public void cancel() throws InterruptedException
   {
     try

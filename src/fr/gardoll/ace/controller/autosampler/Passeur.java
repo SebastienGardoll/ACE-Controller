@@ -375,6 +375,7 @@ public class Passeur implements Closeable
     this.finMoveCarrousel();
   }
   
+  // Cancel & reinit.
   // TODO: test.
   public void cancel() throws InterruptedException
   {
