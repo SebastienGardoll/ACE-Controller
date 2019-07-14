@@ -30,9 +30,15 @@ enum StateLiteral
 
 interface ToolState extends ControlPanelHandler
 {
-  public void pause() throws InterruptedException;
-  public void resume() throws InterruptedException;
-  public void cancel() throws InterruptedException;
+  public void askPausing() throws InterruptedException;
+  public void pauseTransition() throws InterruptedException;
+  
+  public void askResuming() throws InterruptedException;
+  public void resumeTransition() throws InterruptedException;
+  
+  public void askCancellation() throws InterruptedException;
+  public void cancelTransition() throws InterruptedException;
+  
   public void close() throws InterruptedException;
   public void reinit() throws InterruptedException;
   public void start(ThreadControl thread);
@@ -98,13 +104,22 @@ abstract class AbstractState implements ToolState
   protected abstract void initPanels(ControlPanel panel) ;
 
   @Override
-  public void pause() throws InterruptedException {} // Nothing to pause.
+  public void askPausing() throws InterruptedException {} // Nothing to pause.
 
   @Override
-  public void resume() throws InterruptedException {} // Nothing to resume.
-
+  public void pauseTransition() throws InterruptedException {} // No pause operations.
+  
   @Override
-  public void cancel() throws InterruptedException {} // Nothing to cancel.
+  public void askResuming() throws InterruptedException {} // Nothing to resume.
+
+  @Override 
+  public void resumeTransition() throws InterruptedException {} // No resume operations.
+  
+  @Override
+  public void askCancellation() throws InterruptedException {} // Nothing to cancel.
+  
+  @Override
+  public void cancelTransition() throws InterruptedException {} // No cancel operations.
 
   @Override
   public void close() throws InterruptedException {} //Nothing to close.
@@ -282,7 +297,7 @@ class RunningState extends AbstractState implements ToolState
   }
 
   @Override
-  public void pause() throws InterruptedException
+  public void askPausing() throws InterruptedException
   {
     this.disableAllControl();
     
@@ -297,9 +312,17 @@ class RunningState extends AbstractState implements ToolState
       _LOG.debug("thread control is not alive or is null");
     }
   }
+  
+  @Override
+  public void pauseTransition() throws InterruptedException
+  {
+    this._ctrl.pauseOperations();
+    _LOG.debug("set paused state");
+    this._ctrl.setState(new PausedState(this._ctrl));
+  }
 
   @Override
-  public void cancel() throws InterruptedException
+  public void askCancellation() throws InterruptedException
   {
     this.disableAllControl();
     
@@ -313,6 +336,14 @@ class RunningState extends AbstractState implements ToolState
     {
       _LOG.debug("thread control is not alive or is null");
     }
+  }
+  
+  @Override
+  public void cancelTransition() throws InterruptedException
+  {
+    this._ctrl.cancelOperations();
+    _LOG.debug("set initial state");
+    this._ctrl.setState(new InitialState(this._ctrl));
   }
   
   @Override
@@ -351,7 +382,7 @@ class PausedState extends AbstractState implements ToolState
   }
 
   @Override
-  public void resume() throws InterruptedException
+  public void askResuming() throws InterruptedException
   {
     this.disableAllControl();
 
@@ -364,6 +395,14 @@ class PausedState extends AbstractState implements ToolState
       String msg = "thread control is not alive or is null";
       _LOG.debug(msg);
     }
+  }
+  
+  @Override
+  public void resumeTransition() throws InterruptedException
+  {
+    this._ctrl.resumeOperations();
+    _LOG.debug("set running state");
+    this._ctrl.setState(new RunningState(this._ctrl));
   }
 
   @Override

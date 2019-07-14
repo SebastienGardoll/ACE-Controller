@@ -69,9 +69,7 @@ public abstract class AbstractThreadControl extends Thread
       
       try
       {
-        this._toolCtrl.cancelOperations();
-        _LOG.debug("set initial state");
-        this._toolCtrl.setState(new InitialState(this._toolCtrl));
+        this._toolCtrl.getState().cancelTransition();
         return; // Terminate the execution of the thread.
       }
       catch (Exception e1)
@@ -202,9 +200,7 @@ public abstract class AbstractThreadControl extends Thread
       if(this._is_paused &&
          Thread.currentThread() == this)
       {
-        this._toolCtrl.pauseOperations();
-        _LOG.debug("set paused state");
-        this._toolCtrl.setState(new PausedState(this._toolCtrl));
+        this._toolCtrl.getState().pauseTransition();
         
         // The method await must be called in a loop so as to prevent spurious wakeup.
         _LOG.debug("begining to pause");
@@ -220,9 +216,7 @@ public abstract class AbstractThreadControl extends Thread
         // That why it must unlock it (in the finally bloc).
         _LOG.debug("the thread is resumed");
         
-        this._toolCtrl.resumeOperations();
-        _LOG.debug("set running state");
-        this._toolCtrl.setState(new RunningState(this._toolCtrl));
+        this._toolCtrl.getState().resumeTransition();
       }
       else
       {
@@ -318,7 +312,7 @@ public abstract class AbstractThreadControl extends Thread
   
   public static void main(String[] args)
   {
-    ToolControlOperations ctrlOp = new ToolControlOperations()
+    class TestToolControlOperations implements ToolControlOperations
     {
       private final Logger _LOG = LogManager.getLogger(ToolControlOperations.class.getName());
       
@@ -414,6 +408,7 @@ public abstract class AbstractThreadControl extends Thread
         System.out.println(String.format("######### TEST %s #########", test)) ;
         System.out.println() ;
         
+        TestToolControlOperations ctrlOp = new TestToolControlOperations();
         TestAbstractThreadControl thread = new TestAbstractThreadControl(ctrlOp);
         thread.start();
         

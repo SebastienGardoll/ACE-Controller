@@ -66,7 +66,7 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
       {
         try
         {
-          AbstractToolControl.this.getState().cancel();
+          AbstractToolControl.this.getState().askCancellation();
         }
         catch (Exception e)
         {
@@ -157,7 +157,7 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
       {
         try
         {
-          AbstractToolControl.this.getState().pause();
+          AbstractToolControl.this.getState().askPausing();
         }
         catch (Exception e)
         {
@@ -203,7 +203,7 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
         _LOG.debug("running the resume operations");
         try
         {
-          AbstractToolControl.this.getState().resume() ;
+          AbstractToolControl.this.getState().askResuming() ;
         }
         catch (Exception e)
         {
