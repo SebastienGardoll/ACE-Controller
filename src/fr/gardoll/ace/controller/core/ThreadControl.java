@@ -19,17 +19,17 @@ public interface ThreadControl
   public boolean cancel() throws InterruptedException;
   
   // Check point for interrupting the thread.
-  // Make the instance of the AbstractThreadControl to interrupt if another thread
+  // Make the instance of the ThreadControl to interrupt if another thread
   // call the interrupt method to do so.
   public void checkInterruption() throws InterruptedException ;
   
   // Check point for canceling the thread.
-  // Make the instance of the AbstractThreadControl to cancel if another thread
+  // Make the instance of the ThreadControl to cancel if another thread
   // has called the cancel method to do so.
   public void checkCancel() throws CancellationException, InterruptedException;
   
   // Check point for pausing the thread. Blocking call.
-  // Make the instance of the AbstractThreadControl to pause if another thread
+  // Make the instance of the ThreadControl to pause if another thread
   // has called the pause method to do so.
   public void checkPause() throws InterruptedException;
   
