@@ -653,7 +653,7 @@ public class AutosamplerToolPanel extends AbstractJPanelObserver
 
   private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform cancel and reinit ****");
+    _LOG.debug("**** perform cancel or reinit ****");
     this.cancelAndReinit();
   }
 
