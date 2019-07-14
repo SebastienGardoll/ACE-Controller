@@ -170,6 +170,10 @@ public class MotorControllerStub implements MotorController, Closeable
       this._armDirection = this._currentArmPosition < 0 ? 1 : -1 ;
       this._isArmMoving = true;
     }
+    else
+    {
+      _LOG.debug("arm did'nt move");
+    }
   }
 
   @Override
