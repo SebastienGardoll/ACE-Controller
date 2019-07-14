@@ -11,10 +11,10 @@ import javax.swing.SwingUtilities ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.AbstractToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 
 public abstract class AbstractJPanelObserver extends JPanel implements ControlPanel
@@ -24,7 +24,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
   
   protected static final SimpleDateFormat _DATE_FORMATTER = new SimpleDateFormat("HH:mm:ss");
   
-  private final AbstractToolControl _ctrl ;
+  private final ToolControl _ctrl ;
   
   protected boolean _isResumeEnable = false;
   protected boolean _isPauseEnable  = false;
@@ -41,7 +41,7 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
   protected abstract void enableStartControl(boolean isEnable) ;
   protected abstract void enableCloseControl(boolean isEnable) ;
   
-  public AbstractJPanelObserver(AbstractToolControl ctrl)
+  public AbstractJPanelObserver(ToolControl ctrl)
   {
     this._ctrl = ctrl;
   }
