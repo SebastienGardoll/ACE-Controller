@@ -296,12 +296,14 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
   public void addControlPanel(ControlPanel obs)
   {
     this._ctrlPanels.add(obs);
+    this.getState().addControlPanel(obs);
   }
 
   @Override
   public void removeControlPanel(ControlPanel obs)
   {
     this._ctrlPanels.remove(obs);
+    this.getState().removeControlPanel(obs);
   }
   
   @Override
