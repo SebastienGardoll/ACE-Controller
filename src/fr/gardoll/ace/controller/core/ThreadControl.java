@@ -5,6 +5,7 @@ public interface ThreadControl
   // Ask to the thread to pause itself. Not blocking call.
   // The thread has to define check points that where it can pause.
   // Return false if the thread has terminated meanwhile. True otherwise.
+  // Pause a canceled thread is not permitted.
   public boolean pause() throws InterruptedException;
   
   // Resume the thread. Not blocking call.
@@ -14,6 +15,7 @@ public interface ThreadControl
   // Ask to the thread to cancel itself. Not blocking call.
   // The thread has to define check points that where it can cancel.
   // Return false if the thread has terminated meanwhile. True otherwise.
+  // Cancel a paused thread is not permitted.
   public boolean cancel() throws InterruptedException;
   
   // Check point for interrupting the thread.
