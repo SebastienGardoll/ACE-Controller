@@ -27,7 +27,7 @@ public abstract class AbstractJFrame extends JDialog
       @Override
       public void windowClosing(WindowEvent e)
       {
-        _LOG.debug("windowClosing");
+        _LOG.debug("**** windowClosing *****");
         mainPanel.close();
       }
     }) ;
