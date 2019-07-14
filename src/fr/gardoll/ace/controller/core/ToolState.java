@@ -60,7 +60,7 @@ abstract class AbstractState implements ToolState
     
     for(ControlPanel panel: this._ctrl.getCtrlPanels())
     {
-      this.initPanels(panel);
+      this.initPanel(panel);
     }
   }
   
@@ -68,7 +68,7 @@ abstract class AbstractState implements ToolState
   public void addControlPanel(ControlPanel ctrlPanel)
   {
     // Just update the state of the new Panel.
-    this.initPanels(ctrlPanel);
+    this.initPanel(ctrlPanel);
   }
   
   @Override
@@ -101,7 +101,7 @@ abstract class AbstractState implements ToolState
     return _CURRENT_THREAD != null && _CURRENT_THREAD.isRunning();
   }
   
-  protected abstract void initPanels(ControlPanel panel) ;
+  protected abstract void initPanel(ControlPanel panel) ;
 
   @Override
   public void askPausing() throws InterruptedException {} // Nothing to pause.
@@ -151,7 +151,7 @@ class CrashedState extends AbstractState implements ToolState
   }
 
   @Override
-  protected void initPanels(ControlPanel panel)
+  protected void initPanel(ControlPanel panel)
   {
     panel.enablePause(false);
     panel.enableResume(false);
@@ -186,7 +186,7 @@ class InitialState extends AbstractState implements ToolState
   }
   
   @Override
-  protected void initPanels(ControlPanel panel)
+  protected void initPanel(ControlPanel panel)
   {
     panel.enablePause(false);
     panel.enableResume(false);
@@ -231,7 +231,7 @@ class ReadyState extends AbstractState implements ToolState
   }
   
   @Override
-  protected void initPanels(ControlPanel panel)
+  protected void initPanel(ControlPanel panel)
   {
     panel.enablePause(false);
     panel.enableResume(false);
@@ -286,7 +286,7 @@ class RunningState extends AbstractState implements ToolState
   }
   
   @Override
-  protected void initPanels(ControlPanel panel)
+  protected void initPanel(ControlPanel panel)
   {
     panel.enablePause(true);
     panel.enableResume(false);
@@ -371,7 +371,7 @@ class PausedState extends AbstractState implements ToolState
   }
   
   @Override
-  protected void initPanels(ControlPanel panel)
+  protected void initPanel(ControlPanel panel)
   {
     panel.enablePause(false);
     panel.enableResume(true);
@@ -420,7 +420,7 @@ class ClosedState extends AbstractState implements ToolState
   }
 
   @Override
-  protected void initPanels(ControlPanel panel)
+  protected void initPanel(ControlPanel panel)
   {
     panel.dispose();
   }
