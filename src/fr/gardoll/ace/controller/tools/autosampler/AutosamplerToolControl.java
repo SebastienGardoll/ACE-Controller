@@ -14,6 +14,7 @@ import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.core.ToolControlOperations ;
 
 public class AutosamplerToolControl extends AbstractToolControl
 {
@@ -207,7 +208,7 @@ class CarouselRelativeThread extends AbstractThreadControl
   private final int _nbPosition ;
   private final Passeur _passeur ;
   
-  public CarouselRelativeThread(AbstractToolControl toolCtrl, Passeur passeur, int nbPosition)
+  public CarouselRelativeThread(ToolControlOperations toolCtrl, Passeur passeur, int nbPosition)
   {
     super(toolCtrl);
     this._passeur  = passeur;
@@ -237,7 +238,7 @@ class CarouselThread extends AbstractThreadControl
   private final Passeur _passeur;
   private final int _position;
     
-  public CarouselThread(AbstractToolControl toolCtrl, Passeur passeur, int position)
+  public CarouselThread(ToolControlOperations toolCtrl, Passeur passeur, int position)
   {
     super(toolCtrl);
     this._passeur  = passeur;
@@ -271,7 +272,7 @@ class ArmThread extends AbstractThreadControl
   private final int _choix ;
   private Colonne _colonne ;
     
-  public ArmThread(AbstractToolControl toolCtrl, Passeur passeur, int nbPas, int choix)
+  public ArmThread(ToolControlOperations toolCtrl, Passeur passeur, int nbPas, int choix)
   {
     super(toolCtrl);
     this._passeur  = passeur;
@@ -279,7 +280,7 @@ class ArmThread extends AbstractThreadControl
     this._choix    = choix;
   }
   
-  public ArmThread(AbstractToolControl toolCtrl, Passeur passeur, Colonne colonne)
+  public ArmThread(ToolControlOperations toolCtrl, Passeur passeur, Colonne colonne)
   {
     super(toolCtrl);
     this._passeur  = passeur;
