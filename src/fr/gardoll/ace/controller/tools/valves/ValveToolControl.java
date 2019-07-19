@@ -30,24 +30,28 @@ public class ValveToolControl extends AbstractBasicToolControl
         if(this._lastState)
         {
           this._lastState = false;
+          _LOG.debug(String.format("openning valve %s (same valve)", valveId));
           this._valves.ouvrir(valveId);
         }
         else
         {
           this._lastState = true;
+          _LOG.debug("closing all valves");
           this._valves.toutFermer();
         }
       }
       else
       {
         this._lastState = false;
+        _LOG.debug(String.format("openning valve %s (new valve)", valveId));
         this._valves.ouvrir(valveId);
         this._lastValve = valveId;
       }
     }
     catch (Exception e)
     {
-      String msg = String.format("valve %s crashed", valveId);
+      String msg = String.format("valve %s crashed (last valve: , state: %s)", valveId,
+          this._lastValve, this._lastState);
       _LOG.fatal(msg, e);
       this.handleException(msg, e);
     }
