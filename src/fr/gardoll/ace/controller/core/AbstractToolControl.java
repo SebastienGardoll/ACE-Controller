@@ -158,6 +158,11 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
       this._pousseSeringue.reinit();
     }
     
+    if(this._hasValves)
+    {
+      // Nothing to do.
+    }
+    
     this.notifyAction(new Action(ActionType.REINIT_DONE, null));
   }
   
