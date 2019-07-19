@@ -26,7 +26,7 @@ import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.pump.PumpController ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
-import fr.gardoll.ace.controller.tools.valve.ParaComStub ;
+import fr.gardoll.ace.controller.valves.ParaComStub ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
 // TODO: default "READ ERROR" for any string.
