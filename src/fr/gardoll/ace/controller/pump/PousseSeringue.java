@@ -8,12 +8,11 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.ArduinoParaCom ;
 import fr.gardoll.ace.controller.com.JSerialComm ;
-import fr.gardoll.ace.controller.com.ParaCom ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParaComException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.Utils ;
-
+import fr.gardoll.ace.controller.valves.Valves ;
 
 //TODO: singleton.
 public class PousseSeringue implements Closeable
@@ -39,7 +38,7 @@ public class PousseSeringue implements Closeable
   
   private final PumpController interfacePousseSeringue ;
 
-  private final ParaCom para ;
+  private final Valves valves ;
 
   // débit en cours
   private double debitActuelAspiration ;
@@ -69,7 +68,7 @@ public class PousseSeringue implements Closeable
   //requires 0 < debitMaxPousseSeringue <=  debitMaxIntrinseque ( diametreSeringue )
   //requires volumeInitiale >= 0
   public PousseSeringue(PumpController interfacePousseSeringue,
-                        ParaCom paraCom,
+                        Valves valves,
                         int nombreSeringue,
                         double diametreSeringue,
                         double volumeMaxSeringue,
@@ -80,7 +79,7 @@ public class PousseSeringue implements Closeable
         nombreSeringue, diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
         volumeInitiale));
     this.interfacePousseSeringue = interfacePousseSeringue ;
-    this.para = paraCom ;
+    this.valves = valves ;
     // attention les débits sont par défaut ceux en mémoire du pousse seringue.
     this.debitActuelAspiration = 0. ; 
     // un débit de zero est impossible voir interfacePousseSeringue.
@@ -89,7 +88,7 @@ public class PousseSeringue implements Closeable
     // ferme ttes les ev
     try
     {
-      this.para.toutFermer(); ;
+      this.valves.toutFermer(); ;
     }
     catch(ParaComException e)
     {
@@ -216,10 +215,10 @@ public class PousseSeringue implements Closeable
     //attention un ordre comme voli ou volw 0 correspond à une aspi/infusion sans fin.
     if (Utils.isNearZero(volume)) return ;
 
-    if (numEv > ParaCom.NB_EV_MAX)
+    if (numEv > Valves.NB_EV_MAX)
     {
       String msg = String.format("the value of the isolation valve '%s' cannot be greater than %s",
-                                 numEv, ParaCom.NB_EV_MAX);
+                                 numEv, Valves.NB_EV_MAX);
       _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
@@ -237,7 +236,7 @@ public class PousseSeringue implements Closeable
     try
     {
       // ouverture de l'ev numEv.
-      para.ouvrir(numEv);
+      this.valves.ouvrir(numEv);
 
       this.numEvActuelle = numEv ;
 
@@ -265,10 +264,10 @@ public class PousseSeringue implements Closeable
     // si y a un problème , il faut pouvoir le détecter.
     if (Utils.isNearZero(volume)) return ; 
                                               
-    if (numEv > ParaCom.NB_EV_MAX)
+    if (numEv > Valves.NB_EV_MAX)
     {
       String msg = String.format("the value of the isolation valve '%s' cannot be greater than %s",
-                                 numEv, ParaCom.NB_EV_MAX);
+                                 numEv, Valves.NB_EV_MAX);
       _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
@@ -286,7 +285,7 @@ public class PousseSeringue implements Closeable
     try
     {
       // ouverture de l'ev numEv
-      para.ouvrir(numEv);
+      this.valves.ouvrir(numEv);
 
       this.numEvActuelle = numEv ;
 
@@ -498,7 +497,7 @@ public class PousseSeringue implements Closeable
       try
       {
         _LOG.debug("resuming the pump");
-        this.para.ouvrir(this.numEvActuelle);
+        this.valves.ouvrir(this.numEvActuelle);
         this.interfacePousseSeringue.run();
         this._pause = false ;
       }
@@ -581,17 +580,7 @@ public class PousseSeringue implements Closeable
     this.flagVolSecu = false ;
     
     // vidange.
-    this.algoRefoulement(PousseSeringue._volumeReel, ParaCom.NUM_EV_REFOULEMENT);
-  }
-
-  public static int numEvRefoulement()
-  { 
-    return ParaCom.NUM_EV_REFOULEMENT ;
-  }
-
-  public static int numEvH2O()
-  { 
-    return ParaCom.NUM_EV_H2O ;
+    this.algoRefoulement(PousseSeringue._volumeReel, Valves.NUM_EV_REFOULEMENT);
   }
 
   // renvoie le volume utile des n seringues moins VOL_SECU et VOL-AJUSTEMENT
@@ -620,7 +609,7 @@ public class PousseSeringue implements Closeable
     _LOG.debug("closing the valves");
     try
     {
-      this.para.toutFermer() ;
+      this.valves.toutFermer() ;
     }
     catch(ParaComException e)
     {
@@ -635,7 +624,7 @@ public class PousseSeringue implements Closeable
   {
     _LOG.debug("closing the pump");
     this.interfacePousseSeringue.close();
-    this.para.close();
+    this.valves.close();
   }
   
   public static void main(String[] args)
@@ -658,12 +647,13 @@ public class PousseSeringue implements Closeable
     
     try(InterfacePousseSeringue pumpInt = new InterfacePousseSeringue(pumpPort, diametreSeringue);
         ArduinoParaCom paraCom = new ArduinoParaCom(paraComPort);
-        PousseSeringue pump = new PousseSeringue(pumpInt, paraCom, nombreSeringue,
+        Valves valves = new Valves(paraCom);
+        PousseSeringue pump = new PousseSeringue(pumpInt, valves, nombreSeringue,
             diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
             volumeInitiale))
     {
       double volume = 3.;
-      int numEv = PousseSeringue.numEvH2O();
+      int numEv = Valves.NUM_EV_H2O;
       double rate = 10.;
       
       _LOG.info(String.format("setting rate to '%s'", rate));

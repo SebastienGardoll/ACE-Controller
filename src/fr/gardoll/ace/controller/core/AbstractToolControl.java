@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.valves.Valves ;
 
 public abstract class AbstractToolControl implements ToolControl, ToolControlOperations
 {
@@ -18,18 +19,22 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
   
   protected final PousseSeringue _pousseSeringue ;
   protected final Passeur _passeur ;
+  protected final Valves _valves;
   
   protected final boolean _hasAutosampler;
   protected final boolean _hasPump;
+  private final boolean _hasValves ;
 
   private ToolState _state = new InitialState(this);
   
   public AbstractToolControl(ParametresSession parametresSession,
-                             boolean hasPump, boolean hasAutosampler)
+                             boolean hasPump, boolean hasAutosampler,
+                             boolean hasValves)
       throws InitializationException, InterruptedException
   {
     this._hasAutosampler = hasAutosampler;
     this._hasPump = hasPump;
+    this._hasValves = hasValves;
     
     if(hasPump)
     {
@@ -47,6 +52,15 @@ public abstract class AbstractToolControl implements ToolControl, ToolControlOpe
     else
     {
       this._passeur = null;
+    }
+    
+    if(hasValves)
+    {
+      this._valves = parametresSession.getValves();
+    }
+    else
+    {
+      this._valves = null;
     }
   }
   

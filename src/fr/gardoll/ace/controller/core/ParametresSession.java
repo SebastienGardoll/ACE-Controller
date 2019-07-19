@@ -21,12 +21,13 @@ import fr.gardoll.ace.controller.autosampler.MotorController ;
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.com.ParaCom ;
-import fr.gardoll.ace.controller.com.ParaComStub ;
 import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.pump.PumpController ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
+import fr.gardoll.ace.controller.tools.valve.ParaComStub ;
+import fr.gardoll.ace.controller.valves.Valves ;
 
 // TODO: default "READ ERROR" for any string.
 // TODO: check for "READ ERROR" strings then throw exception.
@@ -46,6 +47,7 @@ public class ParametresSession implements Closeable
   // Lazy loading and singleton.
   private PousseSeringue _pump = null;
   private Passeur _autosampler = null;
+  private Valves _valves       = null;
   
   private final double _volumeMaxSeringue ;  // volume max du type de seringue en mL
 
@@ -340,13 +342,40 @@ public class ParametresSession implements Closeable
   {
     if(this._pump == null)
     {
+      Valves valves = this.getValves();
+      
       PumpController pumpCtrl = null;
-      ParaCom paraCom         = null;
+      
+      if(this.isDebug())
+      {
+        pumpCtrl = new PumpControllerStub();
+      }
+      else
+      {
+        String pumpSerialComClassPath = this.getPumpSerialComClassPath();
+        String pumpPortPath  = this.getPumpPortPath();
+        _LOG.debug(String.format("instantiating pump port (%s, %s)", pumpPortPath, pumpSerialComClassPath)) ;
+        SerialCom pumpPort   = this.instantiateSerialCom(pumpSerialComClassPath, pumpPortPath);
+        pumpCtrl = new InterfacePousseSeringue(pumpPort, this.diametreSeringue());
+      }
+      
+      this._pump = new PousseSeringue(pumpCtrl, valves, this.nbSeringue(), 
+          this.diametreSeringue(), this.volumeMaxSeringue(),
+          this.debitMaxPousseSeringue(), 0.);
+    }
+    
+    return this._pump;
+  }
+
+  public Valves getValves()  throws InitializationException, InterruptedException
+  {
+    if(this._valves == null)
+    {
+      ParaCom paraCom = null;
       
       if(this.isDebug())
       {
         paraCom = new ParaComStub();
-        pumpCtrl = new PumpControllerStub();
       }
       else
       {
@@ -358,20 +387,13 @@ public class ParametresSession implements Closeable
         String paraComClassPath = this.getParaComClassPath();
         _LOG.debug(String.format("instantiating paracom (%s)", paraComClassPath)) ;
         paraCom = this.instantiateParaCom(paraComClassPath, paraComPort);
-        
-        String pumpSerialComClassPath = this.getPumpSerialComClassPath();
-        String pumpPortPath  = this.getPumpPortPath();
-        _LOG.debug(String.format("instantiating pump port (%s, %s)", pumpPortPath, pumpSerialComClassPath)) ;
-        SerialCom pumpPort   = this.instantiateSerialCom(pumpSerialComClassPath, pumpPortPath);
-        pumpCtrl = new InterfacePousseSeringue(pumpPort, this.diametreSeringue());
       }
       
-      this._pump = new PousseSeringue(pumpCtrl, paraCom, this.nbSeringue(), 
-          this.diametreSeringue(), this.volumeMaxSeringue(),
-          this.debitMaxPousseSeringue(), 0.);
+      _LOG.debug("instantiating valves") ;
+      this._valves = new Valves(paraCom);
     }
     
-    return this._pump;
+    return this._valves;
   }
   
   // Lazy loading.
@@ -469,6 +491,11 @@ public class ParametresSession implements Closeable
       if(this._autosampler != null)
       {
         this._autosampler.close();
+      }
+      
+      if(this._valves != null)
+      {
+        this._valves.close();
       }
     }
     catch (IOException e)

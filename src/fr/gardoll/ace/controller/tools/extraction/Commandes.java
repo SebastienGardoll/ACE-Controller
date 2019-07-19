@@ -12,6 +12,7 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.valves.Valves ;
 
 // TODO: singleton.
 // TODO: add logging
@@ -78,7 +79,7 @@ public class Commandes
 
   public void rincageH2O() throws InterruptedException
   { 
-    this.rincage(PousseSeringue.numEvH2O()) ;
+    this.rincage(Valves.NUM_EV_H2O) ;
   }
     
   //à la position de carrousel donnée
@@ -177,7 +178,7 @@ public class Commandes
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitMax());
     }
 
-    this.pousseSeringue.refoulement(vol_delivre, PousseSeringue.numEvRefoulement());
+    this.pousseSeringue.refoulement(vol_delivre, Valves.NUM_EV_REFOULEMENT);
 
     if ((vol_total > this.colonne.volumeCritique1()) &&
         (vol_deja_delivre < this.colonne.volumeCritique1()))

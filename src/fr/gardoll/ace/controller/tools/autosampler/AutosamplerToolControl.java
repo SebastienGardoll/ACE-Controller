@@ -26,7 +26,7 @@ public class AutosamplerToolControl extends AbstractToolControl
   public AutosamplerToolControl(ParametresSession parametresSession)
       throws InitializationException, InterruptedException
   {
-    super(parametresSession, false, true);
+    super(parametresSession, false, true, false);
   }
   
   void vibrate()
