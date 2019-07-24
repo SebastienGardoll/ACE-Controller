@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.tools.extraction;
 
+import java.util.Optional ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -215,13 +217,14 @@ public class Commandes
 
     double vol_delivre ;
 
-    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_MOVING, numColonne));
+    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_MOVING,
+        Optional.of(Integer.valueOf(numColonne))));
     this.deplacementPasseur(numColonne , this.calculsDeplacement(volumeCible)) ;
 
     int nbPasBrasAtteindre = this.calculsHauteur(volumeCible) + Passeur.convertBras(this.colonne.hauteurMenisque() - this.colonne.hauteurReservoir());
     // calculs de nombre de pas à descendre cad hauteur max du liquide dans un réservoir cônique ou cylindrique
 
-    this._toolCtrl.notifyAction(new Action(ActionType.ARM_MOVING, null));
+    this._toolCtrl.notifyAction(new Action(ActionType.ARM_MOVING, Optional.empty()));
     this.passeur.moveBras(nbPasBrasAtteindre);
 
     this.passeur.finMoveBras();
@@ -232,7 +235,7 @@ public class Commandes
     {
       if (Utils.isNearZero(pousseSeringue.volumeRestant()))
       { 
-        this._toolCtrl.notifyAction(new Action(ActionType.WITHDRAWING, null));
+        this._toolCtrl.notifyAction(new Action(ActionType.WITHDRAWING, Optional.empty()));
 
         if (nbColonneRestant == 0) 
         {
@@ -245,7 +248,7 @@ public class Commandes
       }
       else
       {  
-        this._toolCtrl.notifyAction(new Action(ActionType.INFUSING, null));
+        this._toolCtrl.notifyAction(new Action(ActionType.INFUSING, Optional.empty()));
 
         if (this.pousseSeringue.volumeRestant() < volumeCible - vol_deja_delivre)
         { 

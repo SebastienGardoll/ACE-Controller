@@ -1,5 +1,6 @@
 package fr.gardoll.ace.controller.core;
 
+import java.util.Optional ;
 import java.util.Set ;
 
 import org.apache.logging.log4j.LogManager ;
@@ -304,7 +305,7 @@ class RunningState extends AbstractState implements ToolState
     if(this.checkThread())
     {
       _LOG.info("waiting for pause");
-      this._ctrl.notifyAction(new Action(ActionType.WAIT_PAUSE, null));
+      this._ctrl.notifyAction(new Action(ActionType.WAIT_PAUSE, Optional.empty()));
       _CURRENT_THREAD.pause();
     }
     else
@@ -329,7 +330,7 @@ class RunningState extends AbstractState implements ToolState
     if (this.checkThread())
     {
       _LOG.info("waiting for cancellation");
-      this._ctrl.notifyAction(new Action(ActionType.WAIT_CANCEL, null));
+      this._ctrl.notifyAction(new Action(ActionType.WAIT_CANCEL, Optional.empty()));
       _CURRENT_THREAD.cancel();
     }
     else

@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.core;
 
+import java.util.Optional ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -54,7 +56,7 @@ public class AbstractLimitedStateFullToolControl extends AbstractToolControl imp
   public void reinitOperations() throws InterruptedException
   {
     _LOG.info("reinitializing all operations");
-    this.notifyAction(new Action(ActionType.REINIT, null));
+    this.notifyAction(new Action(ActionType.REINIT, Optional.empty()));
     
     if(this._hasAutosampler)
     {
@@ -71,7 +73,7 @@ public class AbstractLimitedStateFullToolControl extends AbstractToolControl imp
       // Nothing to do.
     }
     
-    this.notifyAction(new Action(ActionType.REINIT_DONE, null));
+    this.notifyAction(new Action(ActionType.REINIT_DONE, Optional.empty()));
   }
   
   @Override
@@ -134,7 +136,7 @@ public class AbstractLimitedStateFullToolControl extends AbstractToolControl imp
   public void closeOperations()
   {
     _LOG.debug("controller has nothing to do while closing the tool");
-    this.notifyAction(new Action(ActionType.CLOSING, null));
+    this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
   }
   
   @Override

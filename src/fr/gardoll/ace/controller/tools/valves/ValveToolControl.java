@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.tools.valves;
 
+import java.util.Optional ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -34,7 +36,8 @@ public class ValveToolControl extends AbstractToolControl
           this._lastState = false;
           _LOG.debug(String.format("openning valve %s (same valve)", valveId));
           this._valves.ouvrir(valveId);
-          this.notifyAction(new Action(ActionType.OPEN_VALVE, valveId));
+          this.notifyAction(new Action(ActionType.OPEN_VALVE,
+              Optional.of(Integer.valueOf(valveId))));
         }
         else
         {
@@ -50,7 +53,8 @@ public class ValveToolControl extends AbstractToolControl
         _LOG.debug(String.format("openning valve %s (new valve)", valveId));
         this._valves.ouvrir(valveId);
         this._lastValve = valveId;
-        this.notifyAction(new Action(ActionType.OPEN_VALVE, valveId));
+        this.notifyAction(new Action(ActionType.OPEN_VALVE,
+            Optional.of(Integer.valueOf(valveId))));
       }
     }
     catch (Exception e)

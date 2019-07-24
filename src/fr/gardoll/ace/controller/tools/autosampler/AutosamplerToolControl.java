@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.tools.autosampler;
 
 import java.nio.file.Path ;
+import java.util.Optional ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -220,14 +221,15 @@ class CarouselRelativeThread extends AbstractThreadControl
       CancellationException, InitializationException, Exception
   {
     _LOG.debug("run CarouselRelativeThread");
-    Action action = new Action(ActionType.CAROUSEL_RELATIVE_MOVING, this._nbPosition);
+    Action action = new Action(ActionType.CAROUSEL_RELATIVE_MOVING,
+        Optional.of(Integer.valueOf(this._nbPosition)));
     this._toolCtrl.notifyAction(action);
     
     this._passeur.moveButeBras();
     this._passeur.finMoveBras();
     this._passeur.moveCarrouselRelatif(this._nbPosition);
     this._passeur.finMoveCarrousel();
-    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_END_MOVING, null)) ;
+    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_END_MOVING, Optional.empty())) ;
   }
 }
 
@@ -252,11 +254,12 @@ class CarouselThread extends AbstractThreadControl
                                       Exception
   {
     _LOG.debug("run CarouselThread");
-    Action action = new Action(ActionType.CAROUSEL_MOVING, this._position);
+    Action action = new Action(ActionType.CAROUSEL_MOVING,
+        Optional.of(Integer.valueOf(this._position)));
     this._toolCtrl.notifyAction(action);
     this._passeur.moveCarrousel(this._position);
     this._passeur.finMoveCarrousel();
-    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_END_MOVING, null)) ;
+    this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_END_MOVING, Optional.empty())) ;
   }
 }
 
@@ -300,7 +303,7 @@ class ArmThread extends AbstractThreadControl
 
     _LOG.debug(String.format("run ArmThread with order '%s'", this._choix)) ;
 
-    Action action = new Action(ActionType.ARM_MOVING, null) ;
+    Action action = new Action(ActionType.ARM_MOVING, Optional.empty()) ;
     this._toolCtrl.notifyAction(action) ;
 
     switch (this._choix)
