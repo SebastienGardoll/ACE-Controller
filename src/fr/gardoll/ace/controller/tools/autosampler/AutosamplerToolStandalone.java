@@ -13,8 +13,7 @@ public class AutosamplerToolStandalone extends AbstractJFrame
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolStandalone.class.getName());
   private static final long serialVersionUID = -6062838678688858409L ;
 
-  public AutosamplerToolStandalone(AutosamplerToolPanel toolPanel,
-                                   AutosamplerToolControl ctrl)
+  public AutosamplerToolStandalone(AutosamplerToolPanel toolPanel)
   {
     super(toolPanel) ;
   }
@@ -27,7 +26,7 @@ public class AutosamplerToolStandalone extends AbstractJFrame
       AutosamplerToolControl ctrl = new AutosamplerToolControl(parametresSession);
       AutosamplerToolPanel toolPanel = new AutosamplerToolPanel(ctrl);
       ctrl.addControlPanel(toolPanel);
-      AutosamplerToolStandalone tool = new AutosamplerToolStandalone(toolPanel, ctrl);
+      AutosamplerToolStandalone tool = new AutosamplerToolStandalone(toolPanel);
       tool.setVisible(true);
     }
     catch (Exception e)
