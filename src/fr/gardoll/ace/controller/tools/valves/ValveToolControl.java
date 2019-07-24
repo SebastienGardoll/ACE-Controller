@@ -25,7 +25,7 @@ public class ValveToolControl extends AbstractToolControl
     super(parametresSession, false, false, true) ;
   }
   
-  public void handleValve(int valveId)
+  void handleValve(int valveId)
   {
     try
     {
