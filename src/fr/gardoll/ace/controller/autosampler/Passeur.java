@@ -81,7 +81,7 @@ public class Passeur implements Closeable
   @Override
   public void close() throws IOException
   {
-    _LOG.debug("close the autosampler interface");
+    _LOG.debug("close the autosampler");
     this.interfaceMoteur.close();
   }
   

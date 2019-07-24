@@ -104,7 +104,7 @@ public class Valves implements Closeable
   @Override
   public void close()
   {
-    _LOG.debug(String.format("closing the port '%s'", this._paracom.getId()));
+    _LOG.debug("closing valves");
     this._paracom.close();
   }
   

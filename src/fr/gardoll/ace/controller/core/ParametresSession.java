@@ -481,6 +481,7 @@ public class ParametresSession implements Closeable
   @Override
   public void close()
   {
+    _LOG.debug("closing parameter session"); 
     try
     {
       if(this._pump != null)

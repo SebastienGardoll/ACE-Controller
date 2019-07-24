@@ -319,8 +319,16 @@ public class JSerialComm implements SerialCom
   @Override
   public void close()
   {
-    _LOG.debug(String.format("closing port '%s'", this._id));
-    this._port.closePort() ;
+    if(this._isOpened)
+    {
+      _LOG.debug(String.format("closing port '%s'", this._id));
+      this._port.closePort() ;
+      this._isOpened = false;
+    }
+    else
+    {
+      _LOG.debug(String.format("port '%s' is already closed", this._id));
+    }
   }
   
   @Override

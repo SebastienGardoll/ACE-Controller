@@ -64,7 +64,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   @Override
   public void close() throws IOException
   {
-    _LOG.debug(String.format("closing the port '%s'", this._port.getId()));
+    _LOG.debug(String.format("closing motor controller with port id '%s'", this._port.getId()));
     this._port.close() ;
   }
   

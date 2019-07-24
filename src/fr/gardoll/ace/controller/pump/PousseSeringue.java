@@ -622,7 +622,7 @@ public class PousseSeringue implements Closeable
   @Override
   public void close() throws IOException
   {
-    _LOG.debug("closing the pump");
+    _LOG.debug("closing the pump and valves");
     this.interfacePousseSeringue.close();
     this.valves.close();
   }

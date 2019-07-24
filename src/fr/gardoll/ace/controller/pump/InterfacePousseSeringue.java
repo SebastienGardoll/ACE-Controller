@@ -393,7 +393,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void close()
   {
-    _LOG.debug(String.format("closing the port '%s'", this._port.getId()));
+    _LOG.debug(String.format("closing pump controller with port id '%s'", this._port.getId()));
     this._port.close() ;
   }
   

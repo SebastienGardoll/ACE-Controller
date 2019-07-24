@@ -24,7 +24,7 @@ public class ParaComStub implements ParaCom
   @Override
   public void close()
   {
-    _LOG.debug("stubbing closing");
+    _LOG.debug("stubbing close");
   }
   
   @Override
