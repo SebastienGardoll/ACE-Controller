@@ -17,47 +17,24 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 
-public abstract class AbstractJPanelObserver extends JPanel implements ControlPanel
+public abstract class AbstractJPanelObserver  extends JPanel implements ControlPanel
 {
-  private static final long serialVersionUID = -3914638188506779210L ;
+  private static final long serialVersionUID = -6962722774816032530L ;
+
   private static final Logger _LOG = LogManager.getLogger(AbstractJPanelObserver.class.getName());
   
   protected static final SimpleDateFormat _DATE_FORMATTER = new SimpleDateFormat("HH:mm:ss");
   
-  private final ToolControl _ctrl ;
+  protected final ToolControl _ctrl ;
   
-  protected boolean _isResumeEnable = false;
-  protected boolean _isPauseEnable  = false;
-  protected boolean _isResetEnable  = false;
-  protected boolean _isCancelEnable = false;
-  protected boolean _isStartEnable  = false;
   protected boolean _isCloseEnable = false;
   
   protected abstract void displayToUserLogSys(String msg);
-  protected abstract void enableReinitControl(boolean isEnable) ;
-  protected abstract void enablePauseControl(boolean isEnable) ;
-  protected abstract void enableResumeControl(boolean isEnable) ;
-  protected abstract void enableCancelControl(boolean isEnable) ;
-  protected abstract void enableStartControl(boolean isEnable) ;
   protected abstract void enableCloseControl(boolean isEnable) ;
   
   public AbstractJPanelObserver(ToolControl ctrl)
   {
     this._ctrl = ctrl;
-  }
-  
-  @Override
-  public final void enablePause(boolean isEnable)
-  {
-    this._isPauseEnable = isEnable;
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.enablePauseControl(isEnable);
-      }
-    });
   }
   
   @Override
@@ -72,124 +49,6 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
         AbstractJPanelObserver.this.enableCloseControl(isEnable);
       }
     });
-  }
-  
-  @Override
-  public final void enableResume(boolean isEnable)
-  {
-    this._isResumeEnable = isEnable;
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.enableResumeControl(isEnable);
-      }
-    });
-  }
-  
-  @Override
-  public final void enableCancel(boolean isEnable)
-  {
-    this._isCancelEnable = isEnable;
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.enableCancelControl(isEnable);
-      }
-    });
-  }
-
-  @Override
-  public final void enableReinit(boolean isEnable)
-  {
-    this._isResetEnable = isEnable;
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.enableReinitControl(isEnable);
-      }
-    });
-  }
-  
-  @Override
-  public final void enableStart(boolean isEnable)
-  {
-    this._isStartEnable = isEnable;
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.enableStartControl(isEnable);
-      }
-    });
-  }
-
-  protected void pauseAndResume()
-  {
-    if(this._isPauseEnable)
-    {
-      this._ctrl.pause();
-    }
-    else
-    {
-      this._ctrl.resume();
-    }
-  }
-  
-  protected boolean cancelAndReinit()
-  {
-    int choice = JOptionPane.OK_OPTION;
-    
-    if(false == ParametresSession.getInstance().isDebug())
-    {
-      String msg = null;
-      
-      if(this._isCancelEnable)
-      {
-        msg = "Do you want to cancel the running operations (and returning to the initial position) ?";
-      }
-      else
-      {
-        msg = "Do you want to reinitialize ACE ?";
-      }
-      
-      choice = JOptionPane.showConfirmDialog(this, msg) ;
-    }
-    
-    if (choice == JOptionPane.OK_OPTION)
-    {
-      if(this._isCancelEnable)
-      {
-        _LOG.debug("running the panel cancelling operations") ;
-        this._ctrl.cancel();
-      }
-      else
-      {
-        _LOG.debug("running the panel reinit operations") ;
-        this._ctrl.reinit();
-      }
-      
-      return true;
-    }
-    else
-    {
-      if(this._isCancelEnable)
-      {
-        _LOG.debug("the panel cancelling operations has been skipped") ;
-      }
-      else
-      {
-        _LOG.debug("the panel reinit operations has been skipped") ;
-      }
-      
-      return false;
-    }
   }
   
   @Override
@@ -385,5 +244,35 @@ public abstract class AbstractJPanelObserver extends JPanel implements ControlPa
     }
     
     this.displayToUserLogSys(String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg));
+  }
+  
+  @Override
+  public void enableStart(boolean isEnable)
+  {  
+    throw new UnsupportedOperationException();
+  }
+  
+  @Override
+  public void enablePause(boolean isEnable)
+  {  
+    throw new UnsupportedOperationException();
+  }
+  
+  @Override
+  public void enableResume(boolean isEnable)
+  {  
+    throw new UnsupportedOperationException();
+  }
+  
+  @Override
+  public void enableCancel(boolean isEnable)
+  {  
+    throw new UnsupportedOperationException();
+  }
+  
+  @Override
+  public void enableReinit(boolean isEnable)
+  {  
+    throw new UnsupportedOperationException();
   }
 }

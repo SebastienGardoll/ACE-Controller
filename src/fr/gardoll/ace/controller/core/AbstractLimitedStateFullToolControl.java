@@ -1,85 +1,26 @@
 package fr.gardoll.ace.controller.core;
 
-import java.util.Collections ;
-import java.util.HashSet ;
-import java.util.Set ;
-
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.autosampler.Passeur ;
-import fr.gardoll.ace.controller.pump.PousseSeringue ;
-import fr.gardoll.ace.controller.valves.Valves ;
-
-public class AbstractBasicToolControl  implements ToolControl, ToolControlOperations
+public class AbstractLimitedStateFullToolControl extends AbstractToolControl implements ToolControl, ToolControlOperations
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractBasicToolControl.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(AbstractLimitedStateFullToolControl.class.getName());
   
-  final Set<ControlPanel> _ctrlPanels = new HashSet<>();
-  
-  protected final PousseSeringue _pousseSeringue ;
-  protected final Passeur _passeur ;
-  protected final Valves _valves;
-  
-  protected final boolean _hasAutosampler;
-  protected final boolean _hasPump;
-  protected final boolean _hasValves ;
-
   private ToolState _state = new InitialState(this);
   
-  public AbstractBasicToolControl(ParametresSession parametresSession,
+  public AbstractLimitedStateFullToolControl(ParametresSession parametresSession,
                                   boolean hasPump, boolean hasAutosampler,
                                   boolean hasValves)
       throws InitializationException, InterruptedException
   {
-    this._hasAutosampler = hasAutosampler;
-    this._hasPump = hasPump;
-    this._hasValves = hasValves;
-    
-    if(hasPump)
-    {
-      this._pousseSeringue = parametresSession.getPousseSeringue();
-    }
-    else
-    {
-      this._pousseSeringue = null;
-    }
-    
-    if(hasAutosampler)
-    {
-      this._passeur = parametresSession.getPasseur();
-    }
-    else
-    {
-      this._passeur = null;
-    }
-    
-    if(hasValves)
-    {
-      this._valves = parametresSession.getValves();
-    }
-    else
-    {
-      this._valves = null;
-    }
-  }
-  
-  @Override
-  public Set<ControlPanel> getCtrlPanels()
-  {
-    return Collections.unmodifiableSet(this._ctrlPanels);
+    super(parametresSession, hasPump, hasAutosampler, hasValves);
   }
 
   @Override
-  public void cancel()
-  {
-    throw new UnsupportedOperationException("");
-  }
-  
-  @Override
   public void cancelOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException("");
+    throw new UnsupportedOperationException();
   }
   
   @Override
@@ -93,7 +34,7 @@ public class AbstractBasicToolControl  implements ToolControl, ToolControlOperat
       {
         try
         {
-          AbstractBasicToolControl.this.getState().reinit();
+          AbstractLimitedStateFullToolControl.this.getState().reinit();
         }
         catch (Exception e)
         {
@@ -101,7 +42,7 @@ public class AbstractBasicToolControl  implements ToolControl, ToolControlOperat
           _LOG.fatal(msg, e);
           // Reinit takes place in the main thread, there isn't any operating
           // thread that is running. So it is safe to change the state here.
-          AbstractBasicToolControl.this.handleException(msg, e);
+          AbstractLimitedStateFullToolControl.this.handleException(msg, e);
         }
       }
     } ;
@@ -134,27 +75,15 @@ public class AbstractBasicToolControl  implements ToolControl, ToolControlOperat
   }
   
   @Override
-  public void pause()
-  {  
-    throw new UnsupportedOperationException("");
-  }
-  
-  @Override
   public void pauseOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException("");
-  }
-  
-  @Override
-  public void resume()
-  {  
-    throw new UnsupportedOperationException("");
+    throw new UnsupportedOperationException();
   }
   
   @Override
   public void resumeOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException("");
+    throw new UnsupportedOperationException();
   }
 
   @Override
@@ -185,7 +114,7 @@ public class AbstractBasicToolControl  implements ToolControl, ToolControlOperat
         _LOG.debug("running the close operations");
         try
         {
-          AbstractBasicToolControl.this.getState().close();
+          AbstractLimitedStateFullToolControl.this.getState().close();
         }
         catch (Exception e)
         {
@@ -193,7 +122,7 @@ public class AbstractBasicToolControl  implements ToolControl, ToolControlOperat
           _LOG.fatal(msg, e);
           // close takes place in the main thread, there isn't any operating
           // thread that is running. So it is safe to change the state here.
-          AbstractBasicToolControl.this.handleException(msg, e);
+          AbstractLimitedStateFullToolControl.this.handleException(msg, e);
         }
       }
     } ;
@@ -211,56 +140,21 @@ public class AbstractBasicToolControl  implements ToolControl, ToolControlOperat
   @Override
   public void addControlPanel(ControlPanel obs)
   {
-    this._ctrlPanels.add(obs);
+    super.addControlPanel(obs);
     this.getState().addControlPanel(obs);
   }
 
   @Override
   public void removeControlPanel(ControlPanel obs)
   {
-    this._ctrlPanels.remove(obs);
+    super.removeControlPanel(obs);
     this.getState().removeControlPanel(obs);
   }
   
   @Override
-  public void notifyAction(Action action)
-  {
-    for(ControlPanel panel: this._ctrlPanels)
-    {
-      panel.majActionActuelle(action);
-    }
-  }
-  
-  @Override
-  public void displayControlPanelModalMessage(String msg)
-  {
-    for(ControlPanel panel: this._ctrlPanels)
-    {
-      panel.displayModalMessage(msg);
-    }
-  }
-  
-  @Override
-  public void notifyError(String msg, Throwable e)
-  {
-    for(ControlPanel panel: this._ctrlPanels)
-    {
-      panel.reportError(msg, e);
-    }
-  }
-  
-  @Override
-  public void notifyError(String msg)
-  {
-    for(ControlPanel panel: this._ctrlPanels)
-    {
-      panel.reportError(msg);
-    }
-  }
-  
   protected void handleException(String msg, Exception e)
   {
-    this.notifyError(msg, e);
+    super.handleException(msg, e);
     this.getState().crash();
   }
 }

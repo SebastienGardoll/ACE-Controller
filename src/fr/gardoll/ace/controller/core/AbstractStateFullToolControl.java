@@ -3,12 +3,12 @@ package fr.gardoll.ace.controller.core;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-public abstract class AbstractAdvancedToolControl extends AbstractBasicToolControl 
+public abstract class AbstractStateFullToolControl extends AbstractLimitedStateFullToolControl 
    implements ToolControl, ToolControlOperations
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractAdvancedToolControl.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(AbstractStateFullToolControl.class.getName());
   
-  public AbstractAdvancedToolControl(ParametresSession parametresSession,
+  public AbstractStateFullToolControl(ParametresSession parametresSession,
                                      boolean hasPump, boolean hasAutosampler,
                                      boolean hasValves)
                             throws InitializationException, InterruptedException
@@ -26,15 +26,15 @@ public abstract class AbstractAdvancedToolControl extends AbstractBasicToolContr
       {
         try
         {
-          AbstractAdvancedToolControl.this.getState().askCancellation();
+          AbstractStateFullToolControl.this.getState().askCancellation();
         }
         catch (Exception e)
         {
           String msg = "error while cancelling";
           _LOG.error(msg, e);
           // Don't change the state of the running thread
-          // by calling AbstractAdvancedToolControl.this.handleException.
-          AbstractAdvancedToolControl.this.notifyError(msg, e);
+          // by calling AbstractStateFullToolControl.this.handleException.
+          AbstractStateFullToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -71,15 +71,15 @@ public abstract class AbstractAdvancedToolControl extends AbstractBasicToolContr
       {
         try
         {
-          AbstractAdvancedToolControl.this.getState().askPausing();
+          AbstractStateFullToolControl.this.getState().askPausing();
         }
         catch (Exception e)
         {
           String msg = "error while pausing";
           _LOG.fatal(msg, e);
           // Don't change the state of the running thread
-          // by calling AbstractAdvancedToolControl.this.handleException.
-          AbstractAdvancedToolControl.this.notifyError(msg, e);
+          // by calling AbstractStateFullToolControl.this.handleException.
+          AbstractStateFullToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -117,7 +117,7 @@ public abstract class AbstractAdvancedToolControl extends AbstractBasicToolContr
         _LOG.debug("running the resume operations");
         try
         {
-          AbstractAdvancedToolControl.this.getState().askResuming() ;
+          AbstractStateFullToolControl.this.getState().askResuming() ;
         }
         catch (Exception e)
         {
@@ -126,7 +126,7 @@ public abstract class AbstractAdvancedToolControl extends AbstractBasicToolContr
           // Resuming the operating thread is not possible, the operating thread
           // may never wake up from its pause.
           // So it is better to set the current state to crashed state.
-          AbstractAdvancedToolControl.this.handleException(msg, e);
+          AbstractStateFullToolControl.this.handleException(msg, e);
         }
       }
     } ;

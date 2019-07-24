@@ -3,11 +3,11 @@ package fr.gardoll.ace.controller.tools.valves;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.AbstractBasicToolControl ;
+import fr.gardoll.ace.controller.core.AbstractToolControl ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 
-public class ValveToolControl extends AbstractBasicToolControl
+public class ValveToolControl extends AbstractToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(ValveToolControl.class.getName());
 
@@ -55,5 +55,11 @@ public class ValveToolControl extends AbstractBasicToolControl
       _LOG.fatal(msg, e);
       this.handleException(msg, e);
     }
+  }
+
+  @Override
+  public void close()
+  {
+    _LOG.debug("controller has nothing to do while closing the tool");
   }
 }
