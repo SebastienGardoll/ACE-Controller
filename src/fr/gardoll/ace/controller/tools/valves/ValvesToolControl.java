@@ -11,15 +11,15 @@ import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 
-public class ValveToolControl extends AbstractToolControl
+public class ValvesToolControl extends AbstractToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(ValveToolControl.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(ValvesToolControl.class.getName());
 
   private int     _lastValve = -1;
   private boolean _lastState = true; // true <=> button is up ; false <=> button is down
   
   
-  public ValveToolControl(ParametresSession parametresSession)
+  public ValvesToolControl(ParametresSession parametresSession)
       throws InitializationException, InterruptedException
   {
     super(parametresSession, false, false, true) ;
