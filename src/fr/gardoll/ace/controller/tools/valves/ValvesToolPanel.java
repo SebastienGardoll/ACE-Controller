@@ -390,16 +390,18 @@ public class ValvesToolPanel extends AbstractJPanelObserver
 
 class UnselectableButtonGroup extends javax.swing.ButtonGroup
 {
+  private static final long serialVersionUID = 5748377399340064727L ;
+
   @Override
   public void setSelected(ButtonModel model, boolean selected)
   {
-    if (selected)
+    if(selected)
     {
       super.setSelected(model, selected) ;
     }
     else
     {
-      clearSelection() ;
+      this.clearSelection() ;
     }
   }
 }
