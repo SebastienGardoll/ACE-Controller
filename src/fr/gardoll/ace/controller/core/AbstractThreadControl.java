@@ -24,9 +24,9 @@ public abstract class AbstractThreadControl extends Thread
   // liveliness of the thread.
   private boolean _is_running      = false;
 
-  protected ToolControlOperations _toolCtrl ;
+  protected AbstractStateToolControl _toolCtrl ;
 
-  public AbstractThreadControl(ToolControlOperations toolCtrl)
+  public AbstractThreadControl(AbstractStateToolControl toolCtrl)
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
@@ -312,11 +312,17 @@ public abstract class AbstractThreadControl extends Thread
   
   public static void main(String[] args)
   {
-    class TestToolControlOperations implements ToolControlOperations
+    class TestToolControlOperations extends AbstractStateToolControl
     {
-      private final Logger _LOG = LogManager.getLogger(ToolControlOperations.class.getName());
+      private final Logger _LOG = LogManager.getLogger(TestToolControlOperations.class.getName());
       
       private ToolState _state = new RunningState(this);
+      
+      public TestToolControlOperations() throws InitializationException,
+                                                InterruptedException
+      {
+        super(null, false, false, false);
+      }
       
       @Override
       public void removeControlPanel(ControlPanel ctrlPanel) {} 
@@ -378,7 +384,7 @@ public abstract class AbstractThreadControl extends Thread
     
     class TestAbstractThreadControl extends AbstractThreadControl
     {
-      public TestAbstractThreadControl(ToolControlOperations toolCtrl)
+      public TestAbstractThreadControl(AbstractStateToolControl toolCtrl)
       {
         super(toolCtrl) ;
       }
@@ -581,7 +587,7 @@ public abstract class AbstractThreadControl extends Thread
         System.out.println(String.format("*** end of test %d ***", test)) ;
       }
     }
-    catch (InterruptedException e)
+    catch (Exception e)
     {
       e.printStackTrace() ;
     }

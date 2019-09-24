@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 public abstract class AbstractStateFullToolControl extends AbstractLimitedStateFullToolControl 
-   implements ToolControl, ToolControlOperations
+                                                          implements ToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractStateFullToolControl.class.getName());
   

@@ -52,10 +52,10 @@ abstract class AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractState.class.getName());
   
-  protected ToolControlOperations _ctrl = null;
+  protected AbstractStateToolControl _ctrl = null;
   protected static ThreadControl _CURRENT_THREAD = null;
   
-  public AbstractState(ToolControlOperations ctrl)
+  public AbstractState(AbstractStateToolControl ctrl)
   {
     this._ctrl = ctrl;
     
@@ -146,7 +146,7 @@ class CrashedState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(CrashedState.class.getName());
   
-  public CrashedState(ToolControlOperations ctrl)
+  public CrashedState(AbstractStateToolControl ctrl)
   {
     super(ctrl);
   }
@@ -181,7 +181,7 @@ class InitialState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(InitialState.class.getName());
   
-  public InitialState(ToolControlOperations ctrl)
+  public InitialState(AbstractStateToolControl ctrl)
   {
     super(ctrl);
   }
@@ -226,7 +226,7 @@ class ReadyState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(ReadyState.class.getName());
   
-  public ReadyState(ToolControlOperations ctrl)
+  public ReadyState(AbstractStateToolControl ctrl)
   {
     super(ctrl);
   }
@@ -281,7 +281,7 @@ class RunningState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(RunningState.class.getName());
   
-  public RunningState(ToolControlOperations ctrl)
+  public RunningState(AbstractStateToolControl ctrl)
   {
     super(ctrl);
   }
@@ -366,7 +366,7 @@ class PausedState extends AbstractState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(PausedState.class.getName());
   
-  public PausedState(ToolControlOperations ctrl)
+  public PausedState(AbstractStateToolControl ctrl)
   {
     super(ctrl);
   }
@@ -415,7 +415,7 @@ class PausedState extends AbstractState implements ToolState
 
 class ClosedState extends AbstractState implements ToolState
 {
-  public ClosedState(ToolControlOperations ctrl)
+  public ClosedState(AbstractStateToolControl ctrl)
   {
     super(ctrl);
   }

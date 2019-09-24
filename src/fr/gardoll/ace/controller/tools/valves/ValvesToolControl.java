@@ -25,6 +25,23 @@ public class ValvesToolControl extends AbstractToolControl
     super(parametresSession, false, false, true) ;
   }
   
+  @Override
+  protected void closeOperations() throws InterruptedException
+  {
+    _LOG.debug("closing all the valves");
+    try
+    {
+      this._valves.toutFermer();
+      this.notifyAction(new Action(ActionType.CLOSE_ALL_VALVES, Optional.empty()));
+    }
+    catch(Exception e)
+    {
+      String msg = "error while closing all the valves";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
+  } 
+  
   void handleValve(int valveId)
   {
     try

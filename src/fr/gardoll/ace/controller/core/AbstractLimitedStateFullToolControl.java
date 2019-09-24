@@ -5,11 +5,9 @@ import java.util.Optional ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-public class AbstractLimitedStateFullToolControl extends AbstractToolControl implements ToolControl, ToolControlOperations
+public abstract class AbstractLimitedStateFullToolControl extends AbstractStateToolControl implements ToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractLimitedStateFullToolControl.class.getName());
-  
-  private ToolState _state = new InitialState(this);
   
   public AbstractLimitedStateFullToolControl(ParametresSession parametresSession,
                                   boolean hasPump, boolean hasAutosampler,
@@ -20,7 +18,7 @@ public class AbstractLimitedStateFullToolControl extends AbstractToolControl imp
   }
 
   @Override
-  public void cancelOperations() throws InterruptedException
+  void cancelOperations() throws InterruptedException
   {
     throw new UnsupportedOperationException();
   }
@@ -53,7 +51,7 @@ public class AbstractLimitedStateFullToolControl extends AbstractToolControl imp
   }
   
   @Override
-  public void reinitOperations() throws InterruptedException
+  void reinitOperations() throws InterruptedException
   {
     _LOG.info("reinitializing all operations");
     this.notifyAction(new Action(ActionType.REINIT, Optional.empty()));
@@ -77,29 +75,17 @@ public class AbstractLimitedStateFullToolControl extends AbstractToolControl imp
   }
   
   @Override
-  public void pauseOperations() throws InterruptedException
+  void pauseOperations() throws InterruptedException
   {
     throw new UnsupportedOperationException();
   }
   
   @Override
-  public void resumeOperations() throws InterruptedException
+  void resumeOperations() throws InterruptedException
   {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public void setState(ToolState state)
-  {
-    this._state = state;
-  }
-  
-  @Override
-  public ToolState getState()
-  {
-    return this._state;
-  }
-  
   protected void start(ThreadControl thread)
   {
     this.getState().start(thread);
@@ -130,13 +116,6 @@ public class AbstractLimitedStateFullToolControl extends AbstractToolControl imp
     } ;
     
     new Thread(r).start();
-  }
-  
-  @Override
-  public void closeOperations()
-  {
-    _LOG.debug("controller has nothing to do while closing the tool");
-    this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
   }
   
   @Override
