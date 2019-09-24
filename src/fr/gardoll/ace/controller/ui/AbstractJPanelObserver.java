@@ -64,7 +64,7 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
     
     if (choice == JOptionPane.OK_OPTION)
     {
-      _LOG.debug("running the panel closing operations") ;
+      _LOG.debug("running closing operations from the panel") ;
       
       this._ctrl.close();
       return true;
@@ -231,6 +231,24 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       case CLOSING:
       {
         msg = "closing the panel";
+        break;
+      }
+      
+      case OPEN_VALVE:
+      {
+        msg = String.format("opening valve '%s'", action.data.get());
+        break;
+      }
+      
+      case CLOSE_VALVES:
+      {
+        msg = String.format("closing valve '%s'", action.data.get());
+        break;
+      }
+      
+      case CLOSE_ALL_VALVES:
+      {
+        msg = "closing all valves";
         break;
       }
 
