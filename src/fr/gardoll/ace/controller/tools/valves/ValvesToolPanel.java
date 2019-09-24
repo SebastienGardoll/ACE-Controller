@@ -309,48 +309,59 @@ public class ValvesToolPanel extends AbstractJPanelObserver
 
   private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
   {// GEN-FIRST:event_logTextAreaMouseClicked
-    // TODO add your handling code here:
+    if(evt.getClickCount() == 2)
+    {
+      logTextArea.setText(null);
+    }
   }// GEN-LAST:event_logTextAreaMouseClicked
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_closeButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** perform close ****");
+    this.close();
   }// GEN-LAST:event_closeButtonActionPerformed
 
   private void Valve1ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve1ToggleButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** toogle valve 1 ****");
+    this._ctrl.handleValve(1);
   }// GEN-LAST:event_Valve1ToggleButtonActionPerformed
 
   private void Valve3ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve3ToggleButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** toogle valve 3 ****");
+    this._ctrl.handleValve(3);
   }// GEN-LAST:event_Valve3ToggleButtonActionPerformed
 
   private void Valve6ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve6ToggleButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** toogle valve 6 ****");
+    this._ctrl.handleValve(6);
   }// GEN-LAST:event_Valve6ToggleButtonActionPerformed
 
   private void SwitchValveToggleButtonActionPerformed(
       java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_SwitchValveToggleButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** toogle valve 7 ****");
+    this._ctrl.handleValve(7);
   }// GEN-LAST:event_SwitchValveToggleButtonActionPerformed
 
   private void Valve2ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve2ToggleButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** toogle valve 2 ****");
+    this._ctrl.handleValve(2);
   }// GEN-LAST:event_Valve2ToggleButtonActionPerformed
 
   private void Valve4ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve4ToggleButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** toogle valve 4 ****");
+    this._ctrl.handleValve(4);
   }// GEN-LAST:event_Valve4ToggleButtonActionPerformed
 
   private void Valve5ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve5ToggleButtonActionPerformed
-    // TODO add your handling code here:
+    _LOG.debug("**** toogle valve 5 ****");
+    this._ctrl.handleValve(5);
   }// GEN-LAST:event_Valve5ToggleButtonActionPerformed
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -376,15 +387,13 @@ public class ValvesToolPanel extends AbstractJPanelObserver
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    // TODO Auto-generated method stub
-
+    this.logTextArea.append(msg);
   }
 
   @Override
   protected void enableCloseControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-
+    this.closeButton.setEnabled(isEnable);
   }
 }
 

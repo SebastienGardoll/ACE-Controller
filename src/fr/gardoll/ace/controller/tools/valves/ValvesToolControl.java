@@ -42,9 +42,9 @@ public class ValvesToolControl extends AbstractToolControl
         else
         {
           this._lastState = true;
-          _LOG.debug("closing all valves");
+          _LOG.debug(String.format("closing valve %s", valveId));
           this._valves.toutFermer();
-          this.notifyAction(new Action(ActionType.CLOSE_ALL_VALVES, null));
+          this.notifyAction(new Action(ActionType.CLOSE_VALVES, Optional.of(Integer.valueOf(valveId))));
         }
       }
       else
@@ -64,11 +64,5 @@ public class ValvesToolControl extends AbstractToolControl
       _LOG.fatal(msg, e);
       this.handleException(msg, e);
     }
-  }
-
-  @Override
-  public void close()
-  {
-    _LOG.debug("controller has nothing to do while closing the tool");
   }
 }
