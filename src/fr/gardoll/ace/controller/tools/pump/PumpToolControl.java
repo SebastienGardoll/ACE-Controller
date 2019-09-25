@@ -16,6 +16,7 @@ import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.valves.Valves ;
 
 public class PumpToolControl extends AbstractStateFullToolControl
 {
@@ -29,7 +30,42 @@ public class PumpToolControl extends AbstractStateFullToolControl
   
   void start(List<Integer> lines, int volume)
   {
-    // TODO check lines and volume.
+    ParametresSession parametresSession = ParametresSession.getInstance() ;
+    double volMax = parametresSession.volumeMaxSeringue();
+    
+    if(volume > volMax ||
+       volume <= 0)
+    {
+      String msg = String.format("volume must be greater than zero but less than %s, got '%s' mL", volMax, volume);
+      _LOG.error(msg);
+      this.notifyError(msg);
+      return;
+    }
+    
+    for(Integer line: lines)
+    {
+      if(line > Valves.NB_EV_MAX)
+      {
+        String msg = String.format("line number cannot be greater that %s, got '%s'",
+            Valves.NB_EV_MAX, line);
+        _LOG.error(msg);
+        this.notifyError(msg);
+        return;
+      }
+    }
+    
+    try
+    {
+      pumpThread thread = new pumpThread(this, lines, volume);
+      _LOG.debug("starting pump thread");
+      this.start(thread);
+    }
+    catch(Exception e)
+    {
+      String msg = "pump thread start has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
 
   @Override
@@ -61,7 +97,6 @@ class pumpThread extends AbstractThreadControl
   protected void threadLogic() throws InterruptedException,
       CancellationException, InitializationException, Exception
   {
-    _LOG.debug("starting pump thread");
     ParametresSession parametresSession = ParametresSession.getInstance() ;
     Passeur autosampler = parametresSession.getPasseur();
     PousseSeringue pump = parametresSession.getPousseSeringue();
