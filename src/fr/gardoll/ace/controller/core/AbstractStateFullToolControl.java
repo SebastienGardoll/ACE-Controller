@@ -3,7 +3,7 @@ package fr.gardoll.ace.controller.core;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-public abstract class AbstractStateFullToolControl extends AbstractLimitedStateFullToolControl 
+public abstract class AbstractStateFullToolControl extends AbstractBasicStateToolControl 
                                                           implements ToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(AbstractStateFullToolControl.class.getName());
