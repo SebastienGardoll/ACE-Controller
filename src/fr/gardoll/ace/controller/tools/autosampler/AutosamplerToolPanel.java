@@ -161,6 +161,8 @@ public class AutosamplerToolPanel extends AbstractStateFullJPanelObserver
     gridBagConstraints.gridx = 1 ;
     gridBagConstraints.gridy = 0 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     buttonPanel.add(pauseToggleButton, gridBagConstraints) ;
 
