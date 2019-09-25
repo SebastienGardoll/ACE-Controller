@@ -3,10 +3,7 @@
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n"/>
-        </Console>
-        <File name="File_Logging" fileName="output.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n"/>
-        </File>     
+        </Console>     
     </Appenders>
     <Loggers>
         <Logger name="fr.gardoll.controller" level="debug">
