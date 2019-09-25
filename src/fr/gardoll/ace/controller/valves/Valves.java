@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.valves;
 
 import java.io.Closeable ;
+import java.io.IOException ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -102,9 +103,20 @@ public class Valves implements Closeable
   }
 
   @Override
-  public void close()
+  public void close() throws IOException
   {
-    _LOG.debug("closing valves");
+    try
+    {
+      _LOG.debug("closing the valves");
+      this.toutFermer();
+    }
+    catch(Exception e)
+    {
+      _LOG.fatal("error while closing the valves", e);
+      throw new IOException("error while closing the valves", e);
+    }
+    
+    _LOG.debug("closing the communication port of the valves");
     this._paracom.close();
   }
   
