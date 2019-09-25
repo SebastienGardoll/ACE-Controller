@@ -149,6 +149,3 @@ public class Valves implements Closeable
     }
   }
 }
-
-
-// Thread.sleep(ArduinoParaCom.ATTENTE_EV) ; //temps d'attente de l'exécution mécanique de l'ordre
