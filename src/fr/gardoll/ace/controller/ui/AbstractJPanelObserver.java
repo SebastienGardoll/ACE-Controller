@@ -270,6 +270,12 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
+      case DRAIN_PUMP:
+      {
+        msg = "drain the pump";
+        break;
+      }
+      
       default:
       {
         _LOG.debug(String.format("nothing to do with action type '%s'", action.type));

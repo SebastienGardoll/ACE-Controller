@@ -19,18 +19,25 @@ import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
 public class PumpToolControl extends AbstractStateFullToolControl
 {
-
+  private static final Logger _LOG = LogManager.getLogger(PumpToolControl.class.getName());
+  
   public PumpToolControl(ParametresSession parametresSession)
       throws InitializationException, InterruptedException
   {
     super(parametresSession, true, true, true) ;
   }
+  
+  void start(List<Integer> lines, int volume)
+  {
+    // TODO check lines and volume.
+  }
 
   @Override
   protected void closeOperations() throws InterruptedException
   {
-    // TODO Auto-generated method stub
-    // empty the syringe ?
+    _LOG.debug("drain the pump");
+    this.notifyAction(new Action(ActionType.DRAIN_PUMP, Optional.empty()));
+    this._pousseSeringue.reinit();
   }
 }
 
