@@ -253,7 +253,23 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       }
 
       case WITHDRAWING:
+      {
+        msg = String.format("withdrawing %s mL", action.data.get());
+        break;
+      }
+      
       case INFUSING:
+      {
+        msg = String.format("infusing %s mL", action.data.get());
+        break;
+      }
+      
+      case USR_MSG:
+      {
+        msg = action.data.get().toString();
+        break;
+      }
+      
       default:
       {
         _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
