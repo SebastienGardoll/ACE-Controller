@@ -107,7 +107,7 @@ public abstract class AbstractStateFullJPanelObserver extends AbstractLimitedSta
     {
       if(this._isCancelEnable)
       {
-        _LOG.debug("running the panel cancelling operations") ;
+        _LOG.debug("running cancelling operations from the panel") ;
         this._ctrl.cancel();
       }
       else

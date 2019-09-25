@@ -1,15 +1,19 @@
 package fr.gardoll.ace.controller.tools.pump ;
 
-public class PumpToolPanel extends javax.swing.JPanel
-{
+import fr.gardoll.ace.controller.core.ControlPanel ;
+import fr.gardoll.ace.controller.ui.AbstractStateFullJPanelObserver ;
 
+public class PumpToolPanel extends AbstractStateFullJPanelObserver
+                                                         implements ControlPanel
+{
   private static final long serialVersionUID = -9036601240167321318L ;
 
   /**
    * Creates new form PumpToolPanel
    */
-  public PumpToolPanel()
+  public PumpToolPanel(PumpToolControl ctrl)
   {
+    super(ctrl);
     initComponents() ;
   }
 
@@ -308,4 +312,53 @@ public class PumpToolPanel extends javax.swing.JPanel
   private javax.swing.JPanel volumePanel ;
   private javax.swing.JSpinner volumeSpinner ;
   // End of variables declaration
+
+  @Override
+  protected void enablePauseControl(boolean isEnable)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  protected void enableResumeControl(boolean isEnable)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  protected void enableCancelControl(boolean isEnable)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  protected void enableReinitControl(boolean isEnable)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  protected void enableStartControl(boolean isEnable)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  protected void displayToUserLogSys(String msg)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  protected void enableCloseControl(boolean isEnable)
+  {
+    // TODO Auto-generated method stub
+    
+  }
 }
