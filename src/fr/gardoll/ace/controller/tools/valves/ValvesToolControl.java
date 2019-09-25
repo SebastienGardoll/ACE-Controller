@@ -16,7 +16,7 @@ public class ValvesToolControl extends AbstractToolControl
   private static final Logger _LOG = LogManager.getLogger(ValvesToolControl.class.getName());
 
   private int     _lastValve = -1;
-  private boolean _lastState = true; // true <=> button is up ; false <=> button is down
+  private boolean _lastState = true; // true <=> button is unselected ; false <=> button is selected
   
   
   public ValvesToolControl(ParametresSession parametresSession)
