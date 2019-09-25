@@ -203,7 +203,7 @@ public class AutosamplerToolControl extends AbstractStateFullToolControl
     }
     catch (Exception e)
     {
-      String msg = "error while openning column file";
+      String msg = "openning column file has crashed";
       _LOG.error(msg, e);
       this.handleException(msg, e);
     }

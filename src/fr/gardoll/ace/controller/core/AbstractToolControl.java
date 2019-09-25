@@ -76,7 +76,7 @@ public abstract class AbstractToolControl implements ToolControl, Observable
     }
     catch (Exception e)
     {
-      String msg = "error while closing operations";
+      String msg = "closing operations has crashed";
       _LOG.fatal(msg, e);
       // Reinit takes place in the main thread, there isn't any operating
       // thread that is running. So it is safe to change the state here.

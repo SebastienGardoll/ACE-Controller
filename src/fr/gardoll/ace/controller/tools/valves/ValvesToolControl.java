@@ -36,7 +36,7 @@ public class ValvesToolControl extends AbstractToolControl
     }
     catch(Exception e)
     {
-      String msg = "error while closing all the valves";
+      String msg = "close operations have crashed";
       _LOG.fatal(msg, e);
       this.handleException(msg, e);
     }
@@ -76,7 +76,7 @@ public class ValvesToolControl extends AbstractToolControl
     }
     catch (Exception e)
     {
-      String msg = String.format("valve %s crashed (last valve: , state: %s)", valveId,
+      String msg = String.format("valve %s has crashed (last valve: , state: %s)", valveId,
           this._lastValve, this._lastState);
       _LOG.fatal(msg, e);
       this.handleException(msg, e);

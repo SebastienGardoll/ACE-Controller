@@ -37,11 +37,11 @@ public class ValvesToolStandalone extends AbstractJFrame
       
       if(e.getCause() instanceof InitializationException)
       {
-        msg = "error while initialisating the tool";
+        msg = "intialisation has crashed";
       }
       else
       {
-        msg = "error while operating the tool";
+        msg = "tool has crashed";
       }
       
       _LOG.fatal(msg, e);

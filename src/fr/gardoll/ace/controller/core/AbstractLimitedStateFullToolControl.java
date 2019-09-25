@@ -38,7 +38,7 @@ public abstract class AbstractLimitedStateFullToolControl extends AbstractStateT
         }
         catch (Exception e)
         {
-          String msg = "error while reinitializing";
+          String msg = "reinitializing has crashed";
           _LOG.fatal(msg, e);
           // Reinit takes place in the main thread, there isn't any operating
           // thread that is running. So it is safe to change the state here.
@@ -106,7 +106,7 @@ public abstract class AbstractLimitedStateFullToolControl extends AbstractStateT
         }
         catch (Exception e)
         {
-          String msg = "error while running close operations";
+          String msg = "close operations have crashed";
           _LOG.fatal(msg, e);
           // close takes place in the main thread, there isn't any operating
           // thread that is running. So it is safe to change the state here.

@@ -30,7 +30,7 @@ public abstract class AbstractStateFullToolControl extends AbstractLimitedStateF
         }
         catch (Exception e)
         {
-          String msg = "error while cancelling";
+          String msg = "cancel has crashed";
           _LOG.error(msg, e);
           // Don't change the state of the running thread
           // by calling AbstractStateFullToolControl.this.handleException.
@@ -75,7 +75,7 @@ public abstract class AbstractStateFullToolControl extends AbstractLimitedStateF
         }
         catch (Exception e)
         {
-          String msg = "error while pausing";
+          String msg = "pause has crashed";
           _LOG.fatal(msg, e);
           // Don't change the state of the running thread
           // by calling AbstractStateFullToolControl.this.handleException.
@@ -121,7 +121,7 @@ public abstract class AbstractStateFullToolControl extends AbstractLimitedStateF
         }
         catch (Exception e)
         {
-          String msg = "error while resuming";
+          String msg = "resuming has crashed";
           _LOG.fatal(msg, e);
           // Resuming the operating thread is not possible, the operating thread
           // may never wake up from its pause.
