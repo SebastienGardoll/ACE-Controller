@@ -158,13 +158,13 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       case CAROUSEL_MOVING:
       {
-        msg = String.format("carousel is moving to position %s", action.data);
+        msg = String.format("carousel is moving to position %s", action.data.get());
         break ;
       }
       
       case CAROUSEL_RELATIVE_MOVING:
       {
-        msg = String.format("carousel is moving %s positions", action.data);
+        msg = String.format("carousel is moving %s positions", action.data.get());
         break;
       }
       
