@@ -377,7 +377,7 @@ class PausedState extends AbstractState implements ToolState
     panel.enablePause(false);
     panel.enableResume(true);
     panel.enableStart(false);
-    panel.enableCancel(true);
+    panel.enableCancel(false);
     panel.enableReinit(false);
     panel.enableClose(false);
   }
