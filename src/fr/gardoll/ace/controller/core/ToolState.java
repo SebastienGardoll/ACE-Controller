@@ -105,34 +105,114 @@ abstract class AbstractState implements ToolState
   protected abstract void initPanel(ControlPanel panel) ;
 
   @Override
-  public void askPausing() throws InterruptedException {} // Nothing to pause.
+  public void askPausing() throws InterruptedException
+  {
+    // Nothing to pause.
+    String className = this.getClass().getName();
+    String methodName = "askPausing";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  } 
 
   @Override
-  public void pauseTransition() throws InterruptedException {} // No pause operations.
+  public void pauseTransition() throws InterruptedException
+  {
+    // No pause operations.
+    String className = this.getClass().getName();
+    String methodName = "pauseTransition";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
   
   @Override
-  public void askResuming() throws InterruptedException {} // Nothing to resume.
+  public void askResuming() throws InterruptedException
+  {
+    // Nothing to resume.
+    String className = this.getClass().getName();
+    String methodName = "askResuming";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
 
   @Override 
-  public void resumeTransition() throws InterruptedException {} // No resume operations.
+  public void resumeTransition() throws InterruptedException
+  {
+    // No resume operations.
+    String className = this.getClass().getName();
+    String methodName = "resumeTransition";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
   
   @Override
-  public void askCancellation() throws InterruptedException {} // Nothing to cancel.
+  public void askCancellation() throws InterruptedException
+  {
+    // Nothing to cancel.
+    String className = this.getClass().getName();
+    String methodName = "askCancellation";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
   
   @Override
-  public void cancelTransition() throws InterruptedException {} // No cancel operations.
+  public void cancelTransition() throws InterruptedException
+  {
+    // No cancel operations.
+    String className = this.getClass().getName();
+    String methodName = "cancelTransition";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
 
   @Override
-  public void close() throws InterruptedException {} //Nothing to close.
+  public void close() throws InterruptedException
+  {
+    // Nothing to close.
+    String className = this.getClass().getName();
+    String methodName = "close";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
 
   @Override
-  public void reinit() throws InterruptedException {} // Nothing to reinit.
+  public void reinit() throws InterruptedException
+  {
+    // Nothing to reinit.
+    String className = this.getClass().getName();
+    String methodName = "reinit";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
 
   @Override
-  public void start(ThreadControl thread) {} // Nothing to start.
+  public void start(ThreadControl thread)
+  {
+    // Nothing to start.
+    String className = this.getClass().getName();
+    String methodName = "start";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  }
   
   @Override
-  public void done() {} // Nothing is done.
+  public void done()
+  {
+    // Nothing is done.
+    String className = this.getClass().getName();
+    String methodName = "done";
+    String msg = String.format("class %s doesn't implement method %s",
+                               className, methodName);
+    _LOG.debug(msg);
+  } 
   
   @Override
   public void crash()
