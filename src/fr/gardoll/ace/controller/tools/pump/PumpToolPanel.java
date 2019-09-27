@@ -3,6 +3,8 @@ package fr.gardoll.ace.controller.tools.pump ;
 import java.util.SortedSet ;
 import java.util.TreeSet ;
 
+import javax.swing.SpinnerNumberModel ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -15,6 +17,11 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
   private static final long serialVersionUID = -9036601240167321318L ;
   
   private static final Logger _LOG = LogManager.getLogger(PumpToolPanel.class.getName());
+
+  private static final int DEFAULT_VOL_VALUE = 0 ;
+  private static final int DEFAULT_MIN_VOL = 0;
+  private static final int DEFAULT_MAX_VOL = 10;
+  private static final int DEFAULT_VOL_STEP = 1;
   
   private final PumpToolControl _ctrl;
 
@@ -26,6 +33,14 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
     super(ctrl);
     this._ctrl = ctrl;
     initComponents() ;
+    initCustom();
+  }
+
+  private void initCustom()
+  {
+    SpinnerNumberModel model = new SpinnerNumberModel(DEFAULT_VOL_VALUE,
+        DEFAULT_MIN_VOL, DEFAULT_MAX_VOL, DEFAULT_VOL_STEP);
+    this.volumeSpinner.setModel(model);
   }
 
   /**
