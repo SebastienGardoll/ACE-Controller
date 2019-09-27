@@ -258,11 +258,16 @@ public class PousseSeringue implements Closeable
   public void algoRefoulement(double volume, int numEv) throws InterruptedException
 
   { 
-    _LOG.debug(String.format("running the infusion subroutine for volume '%s' to the valve '%s'",
+    _LOG.debug(String.format("running the withdrawing subroutine for volume '%s' to the valve '%s'",
         volume, numEv));
     // attention un ordre comme voli ou volw 0 correspond à une aspi/infusion sans fin.
     // si y a un problème , il faut pouvoir le détecter.
-    if (Utils.isNearZero(volume)) return ; 
+    if (Utils.isNearZero(volume))
+    {
+      String msg = String.format("skip withdrawing subroutine for volume '%s'", volume);
+      _LOG.debug(msg);
+      return ; 
+    }
                                               
     if (numEv > Valves.NB_EV_MAX)
     {
