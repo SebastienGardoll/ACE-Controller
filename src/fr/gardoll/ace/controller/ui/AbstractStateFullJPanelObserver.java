@@ -10,7 +10,7 @@ import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 
-public abstract class AbstractStateFullJPanelObserver extends AbstractLimitedStateFullJPanelObserver
+public abstract class AbstractStateFullJPanelObserver extends AbstractBasicStateJPanelObserver
                                                          implements ControlPanel
 {
   private static final long serialVersionUID = -3914638188506779210L ;

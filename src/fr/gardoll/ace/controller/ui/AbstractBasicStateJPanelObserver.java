@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 
-public abstract class AbstractLimitedStateFullJPanelObserver extends AbstractJPanelObserver
+public abstract class AbstractBasicStateJPanelObserver extends AbstractJPanelObserver
   implements ControlPanel
 {
   private static final long serialVersionUID = -5231053034769326388L ;
@@ -16,7 +16,7 @@ public abstract class AbstractLimitedStateFullJPanelObserver extends AbstractJPa
   protected abstract void enableReinitControl(boolean isEnable) ;
   protected abstract void enableStartControl(boolean isEnable) ;
   
-  public AbstractLimitedStateFullJPanelObserver(ToolControl ctrl)
+  public AbstractBasicStateJPanelObserver(ToolControl ctrl)
   {
     super(ctrl) ;
   }
@@ -30,7 +30,7 @@ public abstract class AbstractLimitedStateFullJPanelObserver extends AbstractJPa
       @Override
       public void run()
       {
-        AbstractLimitedStateFullJPanelObserver.this.enableReinitControl(isEnable);
+        AbstractBasicStateJPanelObserver.this.enableReinitControl(isEnable);
       }
     });
   }
@@ -44,7 +44,7 @@ public abstract class AbstractLimitedStateFullJPanelObserver extends AbstractJPa
       @Override
       public void run()
       {
-        AbstractLimitedStateFullJPanelObserver.this.enableStartControl(isEnable);
+        AbstractBasicStateJPanelObserver.this.enableStartControl(isEnable);
       }
     });
   }
