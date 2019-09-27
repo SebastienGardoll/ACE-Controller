@@ -41,7 +41,7 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
     logTextScrollPane = new javax.swing.JScrollPane() ;
     logTextArea = new javax.swing.JTextArea() ;
     buttonPanel = new javax.swing.JPanel() ;
-    startCancelResetButton = new javax.swing.JButton() ;
+    startCancelButton = new javax.swing.JButton() ;
     pauseToggleButton = new javax.swing.JToggleButton() ;
     closeButton = new javax.swing.JButton() ;
     buttonFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
@@ -197,13 +197,13 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
 
     buttonPanel.setLayout(new java.awt.GridBagLayout()) ;
 
-    startCancelResetButton.setText("start") ;
-    startCancelResetButton.addActionListener(new java.awt.event.ActionListener()
+    startCancelButton.setText("start") ;
+    startCancelButton.addActionListener(new java.awt.event.ActionListener()
     {
       @Override
       public void actionPerformed(java.awt.event.ActionEvent evt)
       {
-        startCancelResetButtonActionPerformed(evt) ;
+        startCancelButtonActionPerformed(evt) ;
       }
     }) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -214,7 +214,7 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    buttonPanel.add(startCancelResetButton, gridBagConstraints) ;
+    buttonPanel.add(startCancelButton, gridBagConstraints) ;
 
     pauseToggleButton.setText("pause") ;
     pauseToggleButton.addActionListener(new java.awt.event.ActionListener()
@@ -276,7 +276,7 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
     // TODO add your handling code here:
   }
 
-  private void startCancelResetButtonActionPerformed(
+  private void startCancelButtonActionPerformed(
       java.awt.event.ActionEvent evt)
   {
     // TODO add your handling code here:
@@ -308,7 +308,7 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
   private javax.swing.JTextArea logTextArea ;
   private javax.swing.JScrollPane logTextScrollPane ;
   private javax.swing.JToggleButton pauseToggleButton ;
-  private javax.swing.JButton startCancelResetButton ;
+  private javax.swing.JButton startCancelButton ;
   private javax.swing.JPanel volumePanel ;
   private javax.swing.JSpinner volumeSpinner ;
   // End of variables declaration
