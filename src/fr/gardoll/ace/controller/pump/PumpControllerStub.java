@@ -122,7 +122,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void ratei(double debit)
       throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("stubbing command ratei", debit));
+    _LOG.debug(String.format("stubbing command ratei %s", debit));
     this._currentRateI = debit;
   }
 
@@ -130,7 +130,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void ratew(double debit)
       throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("stubbing command ratew", debit));
+    _LOG.debug(String.format("stubbing command ratew %s", debit));
     this._currentRateW = debit;
   }
 
@@ -138,7 +138,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void voli(double volume)
       throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("stubbing command volI", volume));
+    _LOG.debug(String.format("stubbing command volI %s", volume));
     this._currentVolI = volume;
   }
 
@@ -146,7 +146,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void volw(double volume)
       throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("stubbing command volw", volume));
+    _LOG.debug(String.format("stubbing command volw %s", volume));
     this._currentVolW = volume;
   }
 
