@@ -1,5 +1,11 @@
 package fr.gardoll.ace.controller.tools.pump ;
 
+import java.util.SortedSet ;
+import java.util.TreeSet ;
+
+import org.apache.logging.log4j.LogManager ;
+import org.apache.logging.log4j.Logger ;
+
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.ui.AbstractStateFullJPanelObserver ;
 
@@ -7,6 +13,10 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
                                                          implements ControlPanel
 {
   private static final long serialVersionUID = -9036601240167321318L ;
+  
+  private static final Logger _LOG = LogManager.getLogger(PumpToolPanel.class.getName());
+  
+  private final PumpToolControl _ctrl;
 
   /**
    * Creates new form PumpToolPanel
@@ -14,6 +24,7 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
   public PumpToolPanel(PumpToolControl ctrl)
   {
     super(ctrl);
+    this._ctrl = ctrl;
     initComponents() ;
   }
 
@@ -273,23 +284,82 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
 
   private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
   {
-    // TODO add your handling code here:
+    if(evt.getClickCount() == 2)
+    {
+      logTextArea.setText(null);
+    }
   }
 
   private void startCancelButtonActionPerformed(
       java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    if(this._isStartEnable)
+    {
+      _LOG.debug("**** perform start ****");
+      
+      int volume = 0 ;
+      try
+      {
+        this.volumeSpinner.commitEdit();
+        volume = (int) this.volumeSpinner.getValue();
+      }
+      catch(Exception e)
+      {
+        _LOG.error("error while fetching the position spinner value", e);
+        this.volumeSpinner.setValue(0);
+        return;
+      }
+      
+      SortedSet<Integer> lines = new TreeSet<>();
+      
+      if(this.line1CheckBox.isSelected())
+      {
+        lines.add(1);
+      }
+      
+      if(this.line2CheckBox.isSelected())
+      {
+        lines.add(2);
+      }
+      
+      if(this.line3CheckBox.isSelected())
+      {
+        lines.add(3);
+      }
+      
+      if(this.line4CheckBox.isSelected())
+      {
+        lines.add(4);
+      }
+      
+      if(this.line5CheckBox.isSelected())
+      {
+        lines.add(5);
+      }
+      
+      if(this.line6CheckBox.isSelected())
+      {
+        lines.add(6);
+      }
+      
+      this._ctrl.start(lines, volume);
+    }
+    else
+    {
+      this._ctrl.cancel();
+    }
   }
 
   private void pauseToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    _LOG.debug("**** perform pause/resume ****");
+    this.pauseAndResume();
   }
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    _LOG.debug("**** perform close ****");
+    this.close();
   }
 
   // Variables declaration - do not modify
@@ -316,49 +386,77 @@ public class PumpToolPanel extends AbstractStateFullJPanelObserver
   @Override
   protected void enablePauseControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    pauseToggleButton.setEnabled(isEnable || this._isResumeEnable);
+    pauseToggleButton.setSelected(! isEnable);
+    if(isEnable)
+    {
+      pauseToggleButton.setText("pause");
+    }
+    else
+    {
+      pauseToggleButton.setText("resume");
+    }
   }
 
   @Override
   protected void enableResumeControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
+    pauseToggleButton.setEnabled(isEnable || this._isPauseEnable);
+    pauseToggleButton.setSelected(isEnable);
     
+    if(isEnable)
+    {
+      pauseToggleButton.setText("resume");
+    }
+    else
+    {
+      pauseToggleButton.setText("pause");
+    }
   }
 
   @Override
   protected void enableCancelControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    startCancelButton.setEnabled(isEnable || this._isStartEnable);
+    if(isEnable)
+    {
+      startCancelButton.setText("cancel");
+    }
+    else
+    {
+      startCancelButton.setText("start");
+    }
   }
 
   @Override
   protected void enableReinitControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    // Reinit feature is not implemented, nothing to do.
   }
 
   @Override
   protected void enableStartControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    startCancelButton.setEnabled(isEnable || this._isCancelEnable);
+    if(isEnable)
+    {
+      startCancelButton.setText("start");
+    }
+    else
+    {
+      startCancelButton.setText("cancel");
+    }
   }
 
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    // TODO Auto-generated method stub
-    
+    this.logTextArea.append(msg);
   }
 
   @Override
   protected void enableCloseControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    closeButton.setEnabled(isEnable);
   }
 }

@@ -1,7 +1,7 @@
 package fr.gardoll.ace.controller.tools.pump;
 
-import java.util.List ;
 import java.util.Optional ;
+import java.util.SortedSet ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -28,7 +28,7 @@ public class PumpToolControl extends AbstractStateFullToolControl
     super(parametresSession, true, true, true) ;
   }
   
-  void start(List<Integer> lines, int volume)
+  void start(SortedSet<Integer> lines, int volume)
   {
     ParametresSession parametresSession = ParametresSession.getInstance() ;
     double volMax = parametresSession.volumeMaxSeringue();
@@ -37,6 +37,14 @@ public class PumpToolControl extends AbstractStateFullToolControl
        volume <= 0)
     {
       String msg = String.format("volume must be greater than zero but less than %s, got '%s' mL", volMax, volume);
+      _LOG.error(msg);
+      this.notifyError(msg);
+      return;
+    }
+    
+    if(lines.isEmpty())
+    {
+      String msg = "select at least one line";
       _LOG.error(msg);
       this.notifyError(msg);
       return;
@@ -82,10 +90,10 @@ class pumpThread extends AbstractThreadControl
   private static final Logger _LOG = LogManager.getLogger(pumpThread.class.getName());
   
   private int _volume ;
-  private List<Integer> _lines ;
+  private SortedSet<Integer> _lines ;
 
   public pumpThread(AbstractStateToolControl toolCtrl,
-                    List<Integer> lines,
+                    SortedSet<Integer> lines,
                     int volume)
   {
     super(toolCtrl) ;
