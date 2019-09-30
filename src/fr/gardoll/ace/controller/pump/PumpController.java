@@ -27,7 +27,7 @@ public interface PumpController extends Closeable
   
   public void run() throws SerialComException, InterruptedException;
   
-  // pause
+  // pause or cancel
   public void stop() throws SerialComException, InterruptedException;
   
   // en mm requires diametre > 0

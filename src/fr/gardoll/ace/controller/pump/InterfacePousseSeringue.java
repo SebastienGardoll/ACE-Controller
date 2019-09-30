@@ -202,7 +202,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     this.traitementOrdre( "run\r" );
   }
   
-  // pause
+  // pause or cancel
   @Override
   public void stop() throws SerialComException, InterruptedException
   {
