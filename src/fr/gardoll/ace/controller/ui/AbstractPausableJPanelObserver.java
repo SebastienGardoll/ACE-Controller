@@ -10,21 +10,19 @@ import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 
-public abstract class AbstractStateFullJPanelObserver extends AbstractBasicStateJPanelObserver
+public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJPanelObserver
                                                          implements ControlPanel
 {
   private static final long serialVersionUID = -3914638188506779210L ;
-  private static final Logger _LOG = LogManager.getLogger(AbstractStateFullJPanelObserver.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(AbstractPausableJPanelObserver.class.getName());
   
   protected boolean _isResumeEnable = false;
   protected boolean _isPauseEnable  = false;
-  protected boolean _isCancelEnable = false;
   
   protected abstract void enablePauseControl(boolean isEnable) ;
   protected abstract void enableResumeControl(boolean isEnable) ;
-  protected abstract void enableCancelControl(boolean isEnable) ;
   
-  public AbstractStateFullJPanelObserver(ToolControl ctrl)
+  public AbstractPausableJPanelObserver(ToolControl ctrl)
   {
     super(ctrl);
   }
@@ -38,7 +36,7 @@ public abstract class AbstractStateFullJPanelObserver extends AbstractBasicState
       @Override
       public void run()
       {
-        AbstractStateFullJPanelObserver.this.enablePauseControl(isEnable);
+        AbstractPausableJPanelObserver.this.enablePauseControl(isEnable);
       }
     });
   }
@@ -52,25 +50,11 @@ public abstract class AbstractStateFullJPanelObserver extends AbstractBasicState
       @Override
       public void run()
       {
-        AbstractStateFullJPanelObserver.this.enableResumeControl(isEnable);
+        AbstractPausableJPanelObserver.this.enableResumeControl(isEnable);
       }
     });
   }
   
-  @Override
-  public final void enableCancel(boolean isEnable)
-  {
-    this._isCancelEnable = isEnable;
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractStateFullJPanelObserver.this.enableCancelControl(isEnable);
-      }
-    });
-  }
-
   protected void pauseAndResume()
   {
     if(this._isPauseEnable)

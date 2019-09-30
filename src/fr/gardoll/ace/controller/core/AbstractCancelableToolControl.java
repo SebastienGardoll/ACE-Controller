@@ -20,7 +20,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   @Override
   void cancelOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("cancel operations is not implemented");
   }
   
   @Override
@@ -77,13 +77,13 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   @Override
   void pauseOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("pause operations is not implemented");
   }
   
   @Override
   void resumeOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("resume operations is not implemented");
   }
 
   protected void start(ThreadControl thread)

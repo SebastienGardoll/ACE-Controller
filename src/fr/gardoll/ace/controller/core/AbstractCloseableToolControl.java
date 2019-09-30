@@ -27,23 +27,15 @@ public abstract class AbstractCloseableToolControl extends AbstractToolControl
       public void run()
       {
         AbstractCloseableToolControl.this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
-        
         try
         {
-          AbstractCloseableToolControl.this.closeOperations();
+          AbstractCloseableToolControl.this.getState().close();
         }
         catch (Exception e)
         {
-          String msg = "closing operations has crashed";
+          String msg = "closing has crashed";
           _LOG.fatal(msg, e);
-          // Reinit takes place in the main thread, there isn't any operating
-          // thread that is running. So it is safe to change the state here.
           AbstractCloseableToolControl.this.handleException(msg, e);
-        }
-        
-        for(ControlPanel panel: AbstractCloseableToolControl.this.getCtrlPanels())
-        {
-          panel.dispose();
         }
       }
     } ;
@@ -54,24 +46,24 @@ public abstract class AbstractCloseableToolControl extends AbstractToolControl
   @Override
   void cancelOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("cancel operations is not implemented");
   }
   
   @Override
   void reinitOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("reinit operations is not implemented");
   }
   
   @Override
   void pauseOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("pause operations is not implemented");
   }
  
   @Override
   void resumeOperations() throws InterruptedException
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("resume operations is not implemented");
   }
 }

@@ -72,32 +72,32 @@ public abstract class AbstractToolControl implements ToolControl, Observable
   @Override
   public void close()
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("close  is not implemented");
   }
   
   @Override
   public void cancel()
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("cancel is not implemented");
   }
   
   @Override
   // Thread must be terminated.
   public void reinit()
   {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("reinit is not implemented");
   }
   
   @Override
   public void pause()
   {  
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("pause is not implemented");
   }
   
   @Override
   public void resume()
   {  
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("resume is not implemented");
   }
   
   @Override

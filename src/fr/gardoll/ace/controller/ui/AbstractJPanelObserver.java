@@ -13,7 +13,6 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 
@@ -35,45 +34,6 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
   public AbstractJPanelObserver(ToolControl ctrl)
   {
     this._ctrl = ctrl;
-  }
-  
-  @Override
-  public void enableClose(boolean isEnable)
-  {
-    this._isCloseEnable = isEnable;
-    SwingUtilities.invokeLater(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        AbstractJPanelObserver.this.enableCloseControl(isEnable);
-      }
-    });
-  }
-  
-  @Override
-  public boolean close()
-  {
-    int choice = JOptionPane.OK_OPTION;
-    
-    if(false == ParametresSession.getInstance().isDebug())
-    {
-      choice = JOptionPane.showConfirmDialog(this,
-          "Do you want to exit (and cancel the running operations) ?") ;
-    }
-    
-    if (choice == JOptionPane.OK_OPTION)
-    {
-      _LOG.debug("running closing operations from the panel") ;
-      
-      this._ctrl.close();
-      return true;
-    }
-    else
-    {
-      _LOG.debug("the panel closing has been cancelled") ;
-      return false;
-    }
   }
   
   @Override
@@ -284,35 +244,5 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
     }
     
     this.displayToUserLogSys(String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg));
-  }
-  
-  @Override
-  public void enableStart(boolean isEnable)
-  {  
-    throw new UnsupportedOperationException();
-  }
-  
-  @Override
-  public void enablePause(boolean isEnable)
-  {  
-    throw new UnsupportedOperationException();
-  }
-  
-  @Override
-  public void enableResume(boolean isEnable)
-  {  
-    throw new UnsupportedOperationException();
-  }
-  
-  @Override
-  public void enableCancel(boolean isEnable)
-  {  
-    throw new UnsupportedOperationException();
-  }
-  
-  @Override
-  public void enableReinit(boolean isEnable)
-  {  
-    throw new UnsupportedOperationException();
   }
 }

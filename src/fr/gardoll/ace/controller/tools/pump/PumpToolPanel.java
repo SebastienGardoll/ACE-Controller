@@ -9,9 +9,9 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.ui.AbstractStateFullJPanelObserver ;
+import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 
-public class PumpToolPanel extends AbstractStateFullJPanelObserver
+public class PumpToolPanel extends AbstractPausableJPanelObserver
                                                          implements ControlPanel
 {
   private static final long serialVersionUID = -9036601240167321318L ;

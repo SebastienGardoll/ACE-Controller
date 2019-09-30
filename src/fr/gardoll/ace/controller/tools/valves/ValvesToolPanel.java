@@ -6,9 +6,9 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
+import fr.gardoll.ace.controller.ui.AbstractCloseableJPanelObserver ;
 
-public class ValvesToolPanel extends AbstractJPanelObserver
+public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     implements ControlPanel
 {
   private static final long serialVersionUID = -8374471632745316066L ;

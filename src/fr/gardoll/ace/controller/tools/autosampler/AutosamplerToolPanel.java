@@ -12,9 +12,9 @@ import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
-import fr.gardoll.ace.controller.ui.AbstractStateFullJPanelObserver ;
+import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 
-public class AutosamplerToolPanel extends AbstractStateFullJPanelObserver
+public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
     implements ControlPanel
 {
   private static final long serialVersionUID = -3286878572452437372L ;
