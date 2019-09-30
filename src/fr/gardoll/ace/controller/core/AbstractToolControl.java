@@ -69,6 +69,11 @@ public abstract class AbstractToolControl implements ToolControl, Observable
     }
   }
   
+  protected void start(ThreadControl thread)
+  {
+    this.getState().start(thread);
+  }
+  
   @Override
   public void close()
   {
@@ -120,12 +125,14 @@ public abstract class AbstractToolControl implements ToolControl, Observable
   public void addControlPanel(ControlPanel obs)
   {
     this._ctrlPanels.add(obs);
+    this.getState().addControlPanel(obs);
   }
   
   @Override
   public void removeControlPanel(ControlPanel obs)
   {
     this._ctrlPanels.remove(obs);
+    this.getState().removeControlPanel(obs);
   }
   
   @Override
@@ -167,5 +174,6 @@ public abstract class AbstractToolControl implements ToolControl, Observable
   protected void handleException(String msg, Exception e)
   {
     this.notifyError(msg, e);
+    this.getState().crash();
   }
 }

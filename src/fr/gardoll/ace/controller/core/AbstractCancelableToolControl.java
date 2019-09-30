@@ -18,9 +18,48 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   }
 
   @Override
-  void cancelOperations() throws InterruptedException
+  public void cancel()
   {
-    throw new UnsupportedOperationException("cancel operations is not implemented");
+    Runnable r = new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        try
+        {
+          AbstractCancelableToolControl.this.getState().askCancellation();
+        }
+        catch (Exception e)
+        {
+          String msg = "cancel has crashed";
+          _LOG.error(msg, e);
+          // Don't change the state of the running thread
+          // by calling AbstractStateFullToolControl.this.handleException.
+          AbstractCancelableToolControl.this.notifyError(msg, e);
+        }
+      }
+    } ;
+    
+    new Thread(r).start();
+  }
+  
+  @Override
+  public void cancelOperations() throws InterruptedException
+  {
+    _LOG.info("cancelling all operations");
+    this.notifyAction(new Action(ActionType.CANCELING, null));
+    
+    if(this._hasAutosampler)
+    {
+      this._passeur.cancelAndReinit();
+    }
+    
+    if(this._hasPump)
+    {
+      this._pousseSeringue.cancelAndReinit();
+    }
+    
+    this.notifyAction(new Action(ActionType.CANCEL_DONE, null));
   }
   
   @Override
@@ -41,7 +80,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
           String msg = "reinitializing has crashed";
           _LOG.fatal(msg, e);
           // Reinit takes place in the main thread, there isn't any operating
-          // thread that is running. So it is safe to change the state here.
+          // thread control that is running. So it is safe to change the state here.
           AbstractCancelableToolControl.this.handleException(msg, e);
         }
       }
@@ -84,58 +123,5 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   void resumeOperations() throws InterruptedException
   {
     throw new UnsupportedOperationException("resume operations is not implemented");
-  }
-
-  protected void start(ThreadControl thread)
-  {
-    this.getState().start(thread);
-  }
-  
-  @Override
-  public void close()
-  {
-    Runnable r = new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        _LOG.debug("running the close operations");
-        try
-        {
-          AbstractCancelableToolControl.this.getState().close();
-        }
-        catch (Exception e)
-        {
-          String msg = "close operations have crashed";
-          _LOG.fatal(msg, e);
-          // close takes place in the main thread, there isn't any operating
-          // thread that is running. So it is safe to change the state here.
-          AbstractCancelableToolControl.this.handleException(msg, e);
-        }
-      }
-    } ;
-    
-    new Thread(r).start();
-  }
-  
-  @Override
-  public void addControlPanel(ControlPanel obs)
-  {
-    super.addControlPanel(obs);
-    this.getState().addControlPanel(obs);
-  }
-
-  @Override
-  public void removeControlPanel(ControlPanel obs)
-  {
-    super.removeControlPanel(obs);
-    this.getState().removeControlPanel(obs);
-  }
-  
-  @Override
-  protected void handleException(String msg, Exception e)
-  {
-    super.handleException(msg, e);
-    this.getState().crash();
   }
 }

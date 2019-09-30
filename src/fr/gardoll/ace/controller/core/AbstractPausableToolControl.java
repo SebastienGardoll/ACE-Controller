@@ -17,51 +17,6 @@ public abstract class AbstractPausableToolControl extends AbstractCancelableTool
   }
   
   @Override
-  public void cancel()
-  {
-    Runnable r = new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        try
-        {
-          AbstractPausableToolControl.this.getState().askCancellation();
-        }
-        catch (Exception e)
-        {
-          String msg = "cancel has crashed";
-          _LOG.error(msg, e);
-          // Don't change the state of the running thread
-          // by calling AbstractStateFullToolControl.this.handleException.
-          AbstractPausableToolControl.this.notifyError(msg, e);
-        }
-      }
-    } ;
-    
-    new Thread(r).start();
-  }
-  
-  @Override
-  public void cancelOperations() throws InterruptedException
-  {
-    _LOG.info("cancelling all operations");
-    this.notifyAction(new Action(ActionType.CANCELING, null));
-    
-    if(this._hasAutosampler)
-    {
-      this._passeur.cancelAndReinit();
-    }
-    
-    if(this._hasPump)
-    {
-      this._pousseSeringue.cancelAndReinit();
-    }
-    
-    this.notifyAction(new Action(ActionType.CANCEL_DONE, null));
-  }
-  
-  @Override
   public void pause()
   {  
     Runnable r = new Runnable()
