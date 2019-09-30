@@ -22,19 +22,21 @@ public abstract class AbstractCloseableToolControl extends AbstractToolControl
   {
     Runnable r = new Runnable()
     {
-
       @Override
       public void run()
       {
-        AbstractCloseableToolControl.this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
+        _LOG.debug("running the close operations");
         try
         {
+          AbstractCloseableToolControl.this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
           AbstractCloseableToolControl.this.getState().close();
         }
         catch (Exception e)
         {
-          String msg = "closing has crashed";
+          String msg = "close operations have crashed";
           _LOG.fatal(msg, e);
+          // close takes place in the main thread, there isn't any operating
+          // thread control that is running. So it is safe to change the state here.
           AbstractCloseableToolControl.this.handleException(msg, e);
         }
       }
