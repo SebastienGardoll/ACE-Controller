@@ -1,5 +1,8 @@
 package fr.gardoll.ace.controller.core;
 
+import org.apache.logging.log4j.LogManager ;
+import org.apache.logging.log4j.Logger ;
+
 public interface ThreadControl
 {
   // Ask to the thread to pause itself. Not blocking call.
@@ -39,4 +42,27 @@ public interface ThreadControl
   
   // Start the operations of the thread. Not blocking call.
   public void start();
+  
+  public static void check()
+  {
+    Thread thread = Thread.currentThread();
+    
+    if(thread instanceof ThreadControl)
+    {
+      ThreadControl threadCtrl = (ThreadControl) thread;
+      try
+      {
+        threadCtrl.checkCancel();
+        threadCtrl.checkPause();
+      }
+      catch(InterruptedException e)
+      {
+        Logger _LOG = LogManager.getLogger(ThreadControl.class.getName());
+        _LOG.fatal(e);
+        // Better throw a runtime exception so as to stop the execution of
+        // the current thread.
+        throw new RuntimeException(e);
+      }
+    }
+  }
 }
