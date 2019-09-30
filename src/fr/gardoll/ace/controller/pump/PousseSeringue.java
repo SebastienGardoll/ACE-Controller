@@ -11,6 +11,7 @@ import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParaComException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
+import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
@@ -444,6 +445,13 @@ public class PousseSeringue implements Closeable
     }
     
     _LOG.debug("pump delivered the volume");
+    
+    // We can't pause or cancel during a withdraw as the volume of liquid
+    // really withdrawn is not known until the end of the withdraw.
+    // For the infusion case, the method deliver can help.
+    // So We decided to check for pause or cancel only after the completion of withdraws.
+    // As a matter of symmetry, we do the same for the infusion.
+    ThreadControl.check();
   }
   
   // Cancel & reinit.
