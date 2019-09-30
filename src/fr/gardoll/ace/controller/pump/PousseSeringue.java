@@ -464,6 +464,15 @@ public class PousseSeringue implements Closeable
       {  
         _LOG.debug("stopping the pump");
         this.interfacePousseSeringue.stop();
+        try
+        {
+          this.valves.toutFermer();
+        }
+        catch (ParaComException e)
+        {
+          _LOG.fatal(e);
+          throw new RuntimeException(e);
+        }
       }
       else
       {
@@ -482,7 +491,7 @@ public class PousseSeringue implements Closeable
   {
     _LOG.debug("reinitializing the pump");
     this.vidange();
-    this.finPompage();
+    this.finPompage(true);
   }
 
   // Arrête de la pompe
