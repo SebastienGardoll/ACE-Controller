@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
+import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.
 public class Passeur implements Closeable
@@ -195,7 +196,11 @@ public class Passeur implements Closeable
     boolean isMoving = true;
     do
     { 
+      ThreadControl.check();
+      
       Thread.sleep(100) ;
+      
+      ThreadControl.check();
       
       try
       {
@@ -222,7 +227,11 @@ public class Passeur implements Closeable
       boolean isMoving = true;
       do
       { 
+        ThreadControl.check();
+        
         Thread.sleep (100) ;
+        
+        ThreadControl.check();
         
         isMoving = this.interfaceMoteur.moving(TypeAxe.bras);
       }
