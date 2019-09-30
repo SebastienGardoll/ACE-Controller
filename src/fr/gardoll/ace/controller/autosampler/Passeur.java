@@ -347,11 +347,16 @@ public class Passeur implements Closeable
   {
     try
     {
-      _LOG.debug("pausing the autosampler operations");
+      _LOG.debug("pausing the autosampler");
       if (this.interfaceMoteur.moving(TypeAxe.carrousel) ||
           this.interfaceMoteur.moving(TypeAxe.bras))
       { 
+        _LOG.debug("halting the autosampler");
         this.interfaceMoteur.halt();
+      }
+      else
+      {
+        _LOG.debug("the autosampler is already halted");
       }
          
       this._pause = true ;
@@ -367,7 +372,7 @@ public class Passeur implements Closeable
   
   public void reinit() throws InterruptedException
   {
-    _LOG.debug("returning to the initial position");
+    _LOG.debug("reinitializing the autosampler");
     this.moveButeBras();
     this.finMoveBras();
     this.moveCarrousel(TRASH_POSITION);
@@ -378,6 +383,7 @@ public class Passeur implements Closeable
   // TODO: test.
   public void cancelAndReinit() throws InterruptedException
   {
+    _LOG.debug("calling cancel and reinit autosampler");
     this.cancel();
     this.reinit();
   }
@@ -386,12 +392,16 @@ public class Passeur implements Closeable
   {
     try
     {
-      _LOG.debug("cancelling the autosampler operations");
+      _LOG.debug("cancelling the autosampler");
       if (this.interfaceMoteur.moving(TypeAxe.bras) ||
           this.interfaceMoteur.moving(TypeAxe.carrousel))
       {
-        _LOG.debug("halting the autosampler operations");
+        _LOG.debug("halting the autosampler");
         this.interfaceMoteur.halt();
+      }
+      else
+      {
+        _LOG.debug("the autosampler is already halted");
       }
     }
     catch(SerialComException e)

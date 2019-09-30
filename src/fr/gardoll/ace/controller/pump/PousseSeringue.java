@@ -450,6 +450,7 @@ public class PousseSeringue implements Closeable
   // TODO: test.
   public void cancelAndReinit() throws InterruptedException
   {
+    _LOG.debug("calling cancel and reinit pump");
     this.cancel();
     this.reinit();
   }
@@ -458,9 +459,15 @@ public class PousseSeringue implements Closeable
   {
     try
     {
+      _LOG.debug("cancelling the pump");
       if (this.interfacePousseSeringue.running())
       {  
+        _LOG.debug("stopping the pump");
         this.interfacePousseSeringue.stop();
+      }
+      else
+      {
+        _LOG.debug("the pump is already stopped");
       }
     }
     catch(SerialComException e)
@@ -473,6 +480,7 @@ public class PousseSeringue implements Closeable
   
   public void reinit() throws InterruptedException
   {
+    _LOG.debug("reinitializing the pump");
     this.vidange();
     this.finPompage();
   }
@@ -485,6 +493,7 @@ public class PousseSeringue implements Closeable
       _LOG.debug("pausing the pump");
       if (this.interfacePousseSeringue.running())
       {  
+        _LOG.debug("stopping the pump");
         this.interfacePousseSeringue.stop();
         //ferme ttes les ev
         this.fermetureEv();
@@ -492,6 +501,7 @@ public class PousseSeringue implements Closeable
       }
       else
       {
+        _LOG.debug("the pump is already stopped");
         this._pause = false ;
       }
     }
