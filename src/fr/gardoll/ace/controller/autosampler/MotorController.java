@@ -3,12 +3,9 @@ package fr.gardoll.ace.controller.autosampler;
 import java.io.Closeable ;
 
 import fr.gardoll.ace.controller.core.SerialComException ;
-import fr.gardoll.ace.controller.core.ThreadControl ;
 
 public interface MotorController extends Closeable
 {
-  public void setThreadControl(ThreadControl threadCtrl);
-  
   public void move(int nbPas1 , int nbPas2) throws SerialComException, InterruptedException;
   
   public boolean moving(TypeAxe axe) throws SerialComException, InterruptedException;

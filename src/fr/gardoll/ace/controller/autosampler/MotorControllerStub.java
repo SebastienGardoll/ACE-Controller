@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.SerialComException ;
-import fr.gardoll.ace.controller.core.ThreadControl ;
 
 public class MotorControllerStub implements MotorController, Closeable
 {
@@ -42,12 +41,6 @@ public class MotorControllerStub implements MotorController, Closeable
   public void close() throws IOException
   {
     _LOG.debug("stubbing method close");
-  }
-
-  @Override
-  public void setThreadControl(ThreadControl threadCtrl)
-  {
-    _LOG.debug("stubbing command setThreadControl");
   }
 
   @Override

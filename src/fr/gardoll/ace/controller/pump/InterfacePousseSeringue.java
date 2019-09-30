@@ -18,7 +18,6 @@ import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
-import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.
 public class InterfacePousseSeringue  implements Closeable, PumpController
@@ -33,8 +32,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   private final static DecimalFormat[] _DOUBLE_FORMATTERS = new DecimalFormat[4];
   
   private final SerialCom _port;
-  
-  private ThreadControl _threadCtrl = null;
   
   // dépendant uniquement du diametre du type de seringue utilisé.
   private final int _debitMaxIntrinseque;
@@ -98,12 +95,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     }
   }
   
-  @Override
-  public void setThreadControl(ThreadControl threadCtrl)
-  {
-    this._threadCtrl = threadCtrl;
-  }
-  
   //traitement de la réponse de l'interface en cas d'erreur => exception.
   private void traitementReponse(String message) throws SerialComException
   {
@@ -129,20 +120,10 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     }
   }
   
-  private void checkThreadCtrl() throws InterruptedException
-  {
-    if(this._threadCtrl != null)
-    {
-      this._threadCtrl.checkInterruption();
-      this._threadCtrl.checkPause();
-    }
-  }
-  
   //renvoie la réponse de l'interface
   private String traitementOrdre(String ordre) throws SerialComException,
                                                       InterruptedException
   {
-    this.checkThreadCtrl();
     this._port.ecrire(ordre) ;
     String reponse = this.lectureReponse() ;
     this.traitementReponse(reponse) ;

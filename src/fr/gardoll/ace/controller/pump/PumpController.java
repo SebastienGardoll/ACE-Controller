@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.SerialComException ;
-import fr.gardoll.ace.controller.core.ThreadControl ;
 
 public interface PumpController extends Closeable
 {
@@ -22,8 +21,6 @@ public interface PumpController extends Closeable
   
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.US);
-  
-  public void setThreadControl(ThreadControl threadCtrl);
   
   public void run() throws SerialComException, InterruptedException;
   

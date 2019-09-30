@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.SerialComException ;
-import fr.gardoll.ace.controller.core.ThreadControl ;
 
 public class PumpControllerStub implements Closeable, PumpController
 {
@@ -41,12 +40,6 @@ public class PumpControllerStub implements Closeable, PumpController
     _LOG.debug("instanciating pump controller stub");
   }
   
-  @Override
-  public void setThreadControl(ThreadControl threadCtrl)
-  {
-    _LOG.debug("stubbing command setThreadControl");
-  }
-
   @Override
   public void run() throws SerialComException, InterruptedException
   {
