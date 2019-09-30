@@ -50,12 +50,12 @@ public abstract class AbstractPausableToolControl extends AbstractCancelableTool
     
     if(this._hasAutosampler)
     {
-      this._passeur.cancel();
+      this._passeur.cancelAndReinit();
     }
     
     if(this._hasPump)
     {
-      this._pousseSeringue.cancel();
+      this._pousseSeringue.cancelAndReinit();
     }
     
     this.notifyAction(new Action(ActionType.CANCEL_DONE, null));

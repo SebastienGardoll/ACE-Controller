@@ -448,6 +448,12 @@ public class PousseSeringue implements Closeable
   
   // Cancel & reinit.
   // TODO: test.
+  public void cancelAndReinit() throws InterruptedException
+  {
+    this.cancel();
+    this.reinit();
+  }
+  
   public void cancel() throws InterruptedException
   {
     try
@@ -456,8 +462,6 @@ public class PousseSeringue implements Closeable
       {  
         this.interfacePousseSeringue.stop();
       }
-      
-      this.reinit();
     }
     catch(SerialComException e)
     {
@@ -708,7 +712,7 @@ public class PousseSeringue implements Closeable
       // We can't test cancellation when infusing or withdrawing because
       // this._realVolume is assigned before the pump realizes the operation.
       _LOG.info("cancelling");
-      pump.cancel(); // In fact, it drains the volume plus the security volume.
+      pump.cancelAndReinit(); // In fact, it drains the volume plus the security volume.
       
       delivered = pumpInt.deliver();
       _LOG.info(String.format("delivered %s mL", delivered));

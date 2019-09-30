@@ -365,7 +365,6 @@ public class Passeur implements Closeable
     }
   }
   
-  // TODO: to stop or to trash bin so as to drain the pump ?
   public void reinit() throws InterruptedException
   {
     _LOG.debug("returning to the initial position");
@@ -377,6 +376,12 @@ public class Passeur implements Closeable
   
   // Cancel & reinit.
   // TODO: test.
+  public void cancelAndReinit() throws InterruptedException
+  {
+    this.cancel();
+    this.reinit();
+  }
+  
   public void cancel() throws InterruptedException
   {
     try
@@ -388,8 +393,6 @@ public class Passeur implements Closeable
         _LOG.debug("halting the autosampler operations");
         this.interfaceMoteur.halt();
       }
-      
-      this.reinit();
     }
     catch(SerialComException e)
     {
@@ -633,7 +636,7 @@ public class Passeur implements Closeable
       _LOG.info(String.format("where carousel: %s", autoSamplerInt.where(TypeAxe.carrousel)));
       
       _LOG.debug("cancelling");
-      autosampler.cancel();
+      autosampler.cancelAndReinit();
       
       _LOG.info(String.format("where arm: %s", autoSamplerInt.where(TypeAxe.bras)));
       _LOG.info(String.format("where carousel: %s", autoSamplerInt.where(TypeAxe.carrousel)));
