@@ -79,9 +79,8 @@ public class PumpToolControl extends AbstractPausableToolControl
   @Override
   protected void closeOperations() throws InterruptedException
   {
-    _LOG.debug("drain the pump");
-    this.notifyAction(new Action(ActionType.DRAIN_PUMP, Optional.empty()));
-    this._pousseSeringue.reinit();
+    _LOG.debug("controller has nothing to do while closing the tool");
+    this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
   }
 }
 
