@@ -75,7 +75,8 @@ public abstract class AbstractThreadControl extends Thread
       {
         this._toolCtrl.getState().cancelTransition();
         // At the point, cancel operations have been completed.
-        this._is_canceling = false;
+        this._is_canceling  = false;
+        this._has_to_cancel = false;
         return; // Terminate the execution of the thread.
       }
       catch (Exception e1)
