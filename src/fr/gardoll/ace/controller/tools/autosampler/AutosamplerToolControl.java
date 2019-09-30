@@ -9,15 +9,15 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
-import fr.gardoll.ace.controller.core.AbstractStateFullToolControl ;
-import fr.gardoll.ace.controller.core.AbstractStateToolControl ;
+import fr.gardoll.ace.controller.core.AbstractToolControl ;
+import fr.gardoll.ace.controller.core.AbstractPausableToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 
-public class AutosamplerToolControl extends AbstractStateFullToolControl
+public class AutosamplerToolControl extends AbstractPausableToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolControl.class.getName());
   private Colonne colonne = null;
@@ -216,7 +216,7 @@ class CarouselRelativeThread extends AbstractThreadControl
   private final int _nbPosition ;
   private final Passeur _passeur ;
   
-  public CarouselRelativeThread(AbstractStateToolControl toolCtrl,
+  public CarouselRelativeThread(AbstractToolControl toolCtrl,
                                 Passeur passeur, int nbPosition)
   {
     super(toolCtrl);
@@ -248,7 +248,7 @@ class CarouselThread extends AbstractThreadControl
   private final Passeur _passeur;
   private final int _position;
     
-  public CarouselThread(AbstractStateToolControl toolCtrl, Passeur passeur,
+  public CarouselThread(AbstractToolControl toolCtrl, Passeur passeur,
                         int position)
   {
     super(toolCtrl);
@@ -284,7 +284,7 @@ class ArmThread extends AbstractThreadControl
   private final int _choix ;
   private Colonne _colonne ;
     
-  public ArmThread(AbstractStateToolControl toolCtrl, Passeur passeur,
+  public ArmThread(AbstractToolControl toolCtrl, Passeur passeur,
                    int nbPas, int choix)
   {
     super(toolCtrl);
@@ -293,7 +293,7 @@ class ArmThread extends AbstractThreadControl
     this._choix    = choix;
   }
   
-  public ArmThread(AbstractStateToolControl toolCtrl, Passeur passeur,
+  public ArmThread(AbstractToolControl toolCtrl, Passeur passeur,
                    Colonne colonne)
   {
     super(toolCtrl);

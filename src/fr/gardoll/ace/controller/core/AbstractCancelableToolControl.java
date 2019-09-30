@@ -5,11 +5,11 @@ import java.util.Optional ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-public abstract class AbstractBasicStateToolControl extends AbstractStateToolControl implements ToolControl
+public abstract class AbstractCancelableToolControl extends AbstractCloseableToolControl implements ToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractBasicStateToolControl.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(AbstractCancelableToolControl.class.getName());
   
-  public AbstractBasicStateToolControl(ParametresSession parametresSession,
+  public AbstractCancelableToolControl(ParametresSession parametresSession,
                                   boolean hasPump, boolean hasAutosampler,
                                   boolean hasValves)
       throws InitializationException, InterruptedException
@@ -34,7 +34,7 @@ public abstract class AbstractBasicStateToolControl extends AbstractStateToolCon
       {
         try
         {
-          AbstractBasicStateToolControl.this.getState().reinit();
+          AbstractCancelableToolControl.this.getState().reinit();
         }
         catch (Exception e)
         {
@@ -42,7 +42,7 @@ public abstract class AbstractBasicStateToolControl extends AbstractStateToolCon
           _LOG.fatal(msg, e);
           // Reinit takes place in the main thread, there isn't any operating
           // thread that is running. So it is safe to change the state here.
-          AbstractBasicStateToolControl.this.handleException(msg, e);
+          AbstractCancelableToolControl.this.handleException(msg, e);
         }
       }
     } ;
@@ -102,7 +102,7 @@ public abstract class AbstractBasicStateToolControl extends AbstractStateToolCon
         _LOG.debug("running the close operations");
         try
         {
-          AbstractBasicStateToolControl.this.getState().close();
+          AbstractCancelableToolControl.this.getState().close();
         }
         catch (Exception e)
         {
@@ -110,7 +110,7 @@ public abstract class AbstractBasicStateToolControl extends AbstractStateToolCon
           _LOG.fatal(msg, e);
           // close takes place in the main thread, there isn't any operating
           // thread that is running. So it is safe to change the state here.
-          AbstractBasicStateToolControl.this.handleException(msg, e);
+          AbstractCancelableToolControl.this.handleException(msg, e);
         }
       }
     } ;

@@ -24,9 +24,9 @@ public abstract class AbstractThreadControl extends Thread
   // liveliness of the thread.
   private boolean _is_running      = false;
 
-  protected AbstractStateToolControl _toolCtrl ;
+  protected AbstractToolControl _toolCtrl ;
 
-  public AbstractThreadControl(AbstractStateToolControl toolCtrl)
+  public AbstractThreadControl(AbstractToolControl toolCtrl)
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
@@ -312,7 +312,7 @@ public abstract class AbstractThreadControl extends Thread
   
   public static void main(String[] args)
   {
-    class TestToolControlOperations extends AbstractStateToolControl
+    class TestToolControlOperations extends AbstractToolControl
     {
       private final Logger _LOG = LogManager.getLogger(TestToolControlOperations.class.getName());
       
@@ -384,7 +384,7 @@ public abstract class AbstractThreadControl extends Thread
     
     class TestAbstractThreadControl extends AbstractThreadControl
     {
-      public TestAbstractThreadControl(AbstractStateToolControl toolCtrl)
+      public TestAbstractThreadControl(AbstractToolControl toolCtrl)
       {
         super(toolCtrl) ;
       }

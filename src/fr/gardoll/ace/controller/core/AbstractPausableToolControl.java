@@ -3,12 +3,12 @@ package fr.gardoll.ace.controller.core;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-public abstract class AbstractStateFullToolControl extends AbstractBasicStateToolControl 
+public abstract class AbstractPausableToolControl extends AbstractCancelableToolControl 
                                                           implements ToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractStateFullToolControl.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(AbstractPausableToolControl.class.getName());
   
-  public AbstractStateFullToolControl(ParametresSession parametresSession,
+  public AbstractPausableToolControl(ParametresSession parametresSession,
                                      boolean hasPump, boolean hasAutosampler,
                                      boolean hasValves)
                             throws InitializationException, InterruptedException
@@ -26,7 +26,7 @@ public abstract class AbstractStateFullToolControl extends AbstractBasicStateToo
       {
         try
         {
-          AbstractStateFullToolControl.this.getState().askCancellation();
+          AbstractPausableToolControl.this.getState().askCancellation();
         }
         catch (Exception e)
         {
@@ -34,7 +34,7 @@ public abstract class AbstractStateFullToolControl extends AbstractBasicStateToo
           _LOG.error(msg, e);
           // Don't change the state of the running thread
           // by calling AbstractStateFullToolControl.this.handleException.
-          AbstractStateFullToolControl.this.notifyError(msg, e);
+          AbstractPausableToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -71,7 +71,7 @@ public abstract class AbstractStateFullToolControl extends AbstractBasicStateToo
       {
         try
         {
-          AbstractStateFullToolControl.this.getState().askPausing();
+          AbstractPausableToolControl.this.getState().askPausing();
         }
         catch (Exception e)
         {
@@ -79,7 +79,7 @@ public abstract class AbstractStateFullToolControl extends AbstractBasicStateToo
           _LOG.fatal(msg, e);
           // Don't change the state of the running thread
           // by calling AbstractStateFullToolControl.this.handleException.
-          AbstractStateFullToolControl.this.notifyError(msg, e);
+          AbstractPausableToolControl.this.notifyError(msg, e);
         }
       }
     } ;
@@ -117,7 +117,7 @@ public abstract class AbstractStateFullToolControl extends AbstractBasicStateToo
         _LOG.debug("running the resume operations");
         try
         {
-          AbstractStateFullToolControl.this.getState().askResuming() ;
+          AbstractPausableToolControl.this.getState().askResuming() ;
         }
         catch (Exception e)
         {
@@ -126,7 +126,7 @@ public abstract class AbstractStateFullToolControl extends AbstractBasicStateToo
           // Resuming the operating thread is not possible, the operating thread
           // may never wake up from its pause.
           // So it is better to set the current state to crashed state.
-          AbstractStateFullToolControl.this.handleException(msg, e);
+          AbstractPausableToolControl.this.handleException(msg, e);
         }
       }
     } ;

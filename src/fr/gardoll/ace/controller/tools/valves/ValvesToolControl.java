@@ -5,13 +5,13 @@ import java.util.Optional ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.AbstractToolControl ;
+import fr.gardoll.ace.controller.core.AbstractCloseableToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 
-public class ValvesToolControl extends AbstractToolControl
+public class ValvesToolControl extends AbstractCloseableToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(ValvesToolControl.class.getName());
 

@@ -2,11 +2,7 @@ package fr.gardoll.ace.controller.core;
 
 import java.util.Collections ;
 import java.util.HashSet ;
-import java.util.Optional ;
 import java.util.Set ;
-
-import org.apache.logging.log4j.LogManager ;
-import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
@@ -14,8 +10,6 @@ import fr.gardoll.ace.controller.valves.Valves ;
 
 public abstract class AbstractToolControl implements ToolControl, Observable
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractToolControl.class.getName());
-  
   final private Set<ControlPanel> _ctrlPanels = new HashSet<>();
   
   protected final PousseSeringue _pousseSeringue ;
@@ -25,8 +19,18 @@ public abstract class AbstractToolControl implements ToolControl, Observable
   protected final boolean _hasAutosampler;
   protected final boolean _hasPump;
   protected final boolean _hasValves ;
+  
+  private ToolState _state = new InitialState(this);
  
   abstract protected void closeOperations() throws InterruptedException;
+
+  abstract void cancelOperations() throws InterruptedException;
+  
+  abstract void reinitOperations() throws InterruptedException;
+  
+  abstract void pauseOperations() throws InterruptedException;
+  
+  abstract void resumeOperations() throws InterruptedException;
   
   public AbstractToolControl(ParametresSession parametresSession,
                              boolean hasPump, boolean hasAutosampler,
@@ -68,25 +72,7 @@ public abstract class AbstractToolControl implements ToolControl, Observable
   @Override
   public void close()
   {
-    this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
-    
-    try
-    {
-      this.closeOperations();
-    }
-    catch (Exception e)
-    {
-      String msg = "closing operations has crashed";
-      _LOG.fatal(msg, e);
-      // Reinit takes place in the main thread, there isn't any operating
-      // thread that is running. So it is safe to change the state here.
-      this.handleException(msg, e);
-    }
-    
-    for(ControlPanel panel: this.getCtrlPanels())
-    {
-      panel.dispose();
-    }
+    throw new UnsupportedOperationException();
   }
   
   @Override
@@ -120,12 +106,22 @@ public abstract class AbstractToolControl implements ToolControl, Observable
     return Collections.unmodifiableSet(this._ctrlPanels);
   }
   
+  void setState(ToolState state)
+  {
+    this._state = state;
+  }
+  
+  ToolState getState()
+  {
+    return this._state;
+  }
+  
   @Override
   public void addControlPanel(ControlPanel obs)
   {
     this._ctrlPanels.add(obs);
   }
-
+  
   @Override
   public void removeControlPanel(ControlPanel obs)
   {

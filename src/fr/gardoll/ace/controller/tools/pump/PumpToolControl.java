@@ -7,8 +7,8 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
-import fr.gardoll.ace.controller.core.AbstractStateFullToolControl ;
-import fr.gardoll.ace.controller.core.AbstractStateToolControl ;
+import fr.gardoll.ace.controller.core.AbstractPausableToolControl ;
+import fr.gardoll.ace.controller.core.AbstractToolControl ;
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
@@ -18,7 +18,7 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
-public class PumpToolControl extends AbstractStateFullToolControl
+public class PumpToolControl extends AbstractPausableToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(PumpToolControl.class.getName());
   
@@ -92,7 +92,7 @@ class pumpThread extends AbstractThreadControl
   private int _volume ;
   private SortedSet<Integer> _lines ;
 
-  public pumpThread(AbstractStateToolControl toolCtrl,
+  public pumpThread(AbstractToolControl toolCtrl,
                     SortedSet<Integer> lines,
                     int volume)
   {
