@@ -18,8 +18,12 @@ public abstract class AbstractThreadControl extends Thread
   private final Condition _sync_cond = _sync.newCondition();
   
   // Shared resources. Must take the lock so as to read & write them.
-  private boolean _is_paused       = false;
-  private boolean _is_canceled     = false;
+  private boolean _has_to_pause    = false;
+  // Prevent recursive pause requests. Let the pause operations be executed.
+  private boolean _is_pausing      = false;
+  private boolean _has_to_cancel   = false;
+  // Prevent recursive cancellation requests. Let the cancel operations be executed.
+  private boolean _is_canceling    = false;
   // Thread.isAlive method is not quite clear for me. I prefer to handle the
   // liveliness of the thread.
   private boolean _is_running      = false;
@@ -70,6 +74,8 @@ public abstract class AbstractThreadControl extends Thread
       try
       {
         this._toolCtrl.getState().cancelTransition();
+        // At the point, cancel operations have been completed.
+        this._is_canceling = false;
         return; // Terminate the execution of the thread.
       }
       catch (Exception e1)
@@ -123,12 +129,12 @@ public abstract class AbstractThreadControl extends Thread
       
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
-      if(false == this._is_paused   &&
-         false == this._is_canceled &&
+      if(false == this._has_to_pause   &&
+         false == this._has_to_cancel &&
          this._is_running           &&
          false == (Thread.currentThread() == this))
       {
-        this._is_paused = true;
+        this._has_to_pause = true;
 
         // The caller may wake up as the thread is terminated.
         // So return the state of the thread to the caller so as to skip
@@ -158,13 +164,13 @@ public abstract class AbstractThreadControl extends Thread
       // signalAll on the condition.
       this._sync.lockInterruptibly();
       
-      if(this._is_paused            &&
-         false == this._is_canceled &&
-         this._is_running           &&
+      if(this._has_to_pause           &&
+         false == this._has_to_cancel &&
+         this._is_running             &&
          false == (Thread.currentThread() == this))
       {
         // Makes the thread to quit its await loop.
-        this._is_paused = false;
+        this._has_to_pause = false;
         
         _LOG.debug("waking up the paused thread");
         
@@ -192,19 +198,23 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     { 
-      _LOG.debug("checking the pause");
+      //_LOG.debug("checking the pause");
       
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       
-      if(this._is_paused &&
+      if(this._is_pausing == false &&
+         this._has_to_pause        &&
          Thread.currentThread() == this)
       {
         this._toolCtrl.getState().pauseTransition();
         
+        // At the point, pause operations have been completed.
+        this._is_pausing = false;
+        
         // The method await must be called in a loop so as to prevent spurious wakeup.
         _LOG.debug("begining to pause");
-        while(this._is_paused)
+        while(this._has_to_pause)
         {
           // The thread is waiting the caller to wake it up.
           // the method await makes the thread to release the lock. 
@@ -220,7 +230,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       else
       {
-        _LOG.debug("nothing to do");
+        //_LOG.debug("nothing to do");
       }
     }
     finally
@@ -259,12 +269,12 @@ public abstract class AbstractThreadControl extends Thread
       
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
-      if(false == this._is_paused   &&
-         false == this._is_canceled &&
-         this._is_running           &&
+      if(false == this._has_to_pause  &&
+         false == this._has_to_cancel &&
+         this._is_running             &&
          false == (Thread.currentThread() == this))
       {
-        this._is_canceled = true;
+        this._has_to_cancel = true;
          
         // The caller may wake up as the thread is terminated.
         // So return the state of the thread to the caller so as to skip
@@ -288,20 +298,22 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     { 
-      _LOG.debug("checking the cancellation");
+      //_LOG.debug("checking the cancellation");
       
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       
-      if(this._is_canceled &&
+      if(this._is_canceling == false &&
+         this._has_to_cancel         &&
          Thread.currentThread() == this)
       {
+        this._is_canceling = true;
         _LOG.debug("throwing CancellationException");
         throw new CancellationException();
       }
       else
       {
-        _LOG.debug("nothing to do");
+        //_LOG.debug("nothing to do");
       }
     }
     finally
