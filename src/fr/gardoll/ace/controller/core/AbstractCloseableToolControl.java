@@ -1,7 +1,5 @@
 package fr.gardoll.ace.controller.core;
 
-import java.util.Optional ;
-
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -28,7 +26,6 @@ public abstract class AbstractCloseableToolControl extends AbstractToolControl
         _LOG.debug("running the close operations");
         try
         {
-          AbstractCloseableToolControl.this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
           AbstractCloseableToolControl.this.getState().close();
         }
         catch (Exception e)

@@ -326,10 +326,9 @@ class ReadyState extends AbstractState implements ToolState
   public void close() throws InterruptedException
   {
     this.disableAllControl();
-    this._ctrl.reinitOperations();
-    this._ctrl.closeOperations();
-    _LOG.debug("set closed state");
-    this._ctrl.setState(new ClosedState(this._ctrl));
+    _LOG.debug("reinit and closing");
+    this.reinit();
+    this._ctrl.getState().close();
   }
 
   @Override
