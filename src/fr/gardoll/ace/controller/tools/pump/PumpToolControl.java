@@ -126,19 +126,17 @@ class pumpThread extends AbstractThreadControl
 
     for (Integer line: this._lines)
     {  
+      ThreadControl.check();
+      
       String msg = String.format("begin to clean line %s", line);
       _LOG.debug(msg);
       action = new Action(ActionType.USR_MSG, Optional.of(msg));
       this._toolCtrl.notifyAction(action);
       
-      ThreadControl.check();
-      
       action = new Action(ActionType.INFUSING, Optional.of(this._volume));
       this._toolCtrl.notifyAction(action);
       pump.rincageAspiration(this._volume, line.intValue());
       pump.finPompage();
-      
-      ThreadControl.check();
       
       action = new Action(ActionType.WITHDRAWING, Optional.of(this._volume));
       this._toolCtrl.notifyAction(action);
