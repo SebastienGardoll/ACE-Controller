@@ -109,13 +109,11 @@ class pumpThread extends AbstractThreadControl
     Passeur autosampler = parametresSession.getPasseur();
     PousseSeringue pump = parametresSession.getPousseSeringue();
     
+    ThreadControl.check();
     _LOG.debug("move arm upper limit");
     Action action = new Action(ActionType.ARM_MOVING, Optional.empty()) ;
     this._toolCtrl.notifyAction(action) ;
     autosampler.moveButeBras();//sans setOrigineBras() inclus !
-    
-    ThreadControl.check();
-    
     autosampler.finMoveBras();
     autosampler.setOrigineBras(); //mettre le bras en fin de butée car attention débordement poubelle !!!
     
