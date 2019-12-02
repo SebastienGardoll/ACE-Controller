@@ -33,7 +33,8 @@
        <delete file="${dir.jarfile}/${tool_name}.jar" quiet="true" />
     </target>
    <target name="clean">
-      <delete file="${dir.jarfile}/${tool_name}.zip" quiet="true" />
+      <delete dir="${dir.jarfile}/${tool_name}" quiet="true" />
+   	  <delete file="${dir.jarfile}/${tool_name}.zip" quiet="true" />
       <delete file="${dir.jarfile}/${tool_name}.jar" quiet="true" />     
    </target>
 </project>
