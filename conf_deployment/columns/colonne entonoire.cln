@@ -1,0 +1,15 @@
+[informationsColonne]
+nomColonne=colonne entonoire
+hauteurColonne=20
+hauteurMenisque=3.5
+pousseSeringueDebitMax=10
+pousseSeringueDebitInter=3
+pousseSeringueDebitMin=1
+volumeClef1=0.25
+volumeClef2=0.5
+type=1
+date=16/03/2006
+diametreSup=32
+diametreInf=4
+hauteurCone=26
+
