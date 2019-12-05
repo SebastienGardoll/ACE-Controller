@@ -92,7 +92,7 @@ public class Passeur implements Closeable
   @Override
   public void close() throws IOException
   {
-    _LOG.debug("close the autosampler");
+    _LOG.debug("closing the autosampler");
     this.interfaceMoteur.close();
   }
   
@@ -187,7 +187,7 @@ public class Passeur implements Closeable
   {  
     try
     {
-      _LOG.debug("move the arm to the stop");
+      _LOG.debug("move the arm to the top");
       this.interfaceMoteur.movel(0, 1);
       this._butee = true ;
     }

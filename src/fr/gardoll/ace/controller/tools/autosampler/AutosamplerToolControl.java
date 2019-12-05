@@ -75,12 +75,12 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
     {
       // zero pour le choix fin de butée
       ArmThread thread = new ArmThread(this, this._passeur, 0, 0);
-      _LOG.debug("start arm thread for go stop");
+      _LOG.debug("start arm thread for go to top");
       this.start(thread);
     }
     catch(Exception e)
     {
-      String msg = "arm go stop start has crashed";
+      String msg = "arm go to top start has crashed";
       _LOG.fatal(msg, e);
       this.handleException(msg, e);
     }

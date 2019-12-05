@@ -46,7 +46,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   @Override
   public void cancelOperations() throws InterruptedException
   {
-    _LOG.info("cancelling all operations");
+    _LOG.info("running cancel procedure");
     this.notifyAction(new Action(ActionType.CANCELING, null));
     
     // First cancel.
