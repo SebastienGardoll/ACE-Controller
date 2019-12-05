@@ -111,6 +111,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
         this._pousseSeringue.reinit(); // Drain the pump to the trash.
         this._passeur.moveButeBras(); // Get the arm to the top.
         this._passeur.finMoveBras();
+        this._passeur.setOrigineBras();
       }
     }
     else if(this._hasPump) // Reinit pump only.
