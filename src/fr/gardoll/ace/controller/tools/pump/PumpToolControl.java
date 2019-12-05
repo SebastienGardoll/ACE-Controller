@@ -8,8 +8,8 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.core.AbstractPausableToolControl ;
-import fr.gardoll.ace.controller.core.AbstractToolControl ;
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
+import fr.gardoll.ace.controller.core.AbstractToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
@@ -113,9 +113,9 @@ class pumpThread extends AbstractThreadControl
     _LOG.debug("move arm upper limit");
     Action action = new Action(ActionType.ARM_MOVING, Optional.empty()) ;
     this._toolCtrl.notifyAction(action) ;
-    autosampler.moveButeBras();//sans setOrigineBras() inclus !
+    
+    autosampler.moveArmToTrash();
     autosampler.finMoveBras();
-    autosampler.setOrigineBras(); //mettre le bras en fin de butée car attention débordement poubelle !!!
     
     ThreadControl.check();
     
