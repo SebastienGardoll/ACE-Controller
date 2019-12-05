@@ -207,6 +207,7 @@ public class Passeur implements Closeable
     _LOG.debug("first reference the arm from the top");
     this.moveButeBras();
     this.finMoveBras();
+    this.setOrigineBras();
     
     _LOG.debug("then get the arm to the trash");
     
