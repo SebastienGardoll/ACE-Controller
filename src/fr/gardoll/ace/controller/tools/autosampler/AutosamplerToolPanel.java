@@ -557,7 +557,7 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
 
   private void positionButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform go position ****");
+    _LOG.debug("**** event go position ****");
     
     Integer position = null;
     try
@@ -577,25 +577,25 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
 
   private void leftButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform turn left ****");
+    _LOG.debug("**** event turn left ****");
     this._ctrl.carouselTurnLeft();
   }
 
   private void rightButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform turn right ****");
+    _LOG.debug("**** event turn right ****");
     this._ctrl.carouselTurnRight();
   }
 
   private void manualButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform manual carousel positioning ****");
+    _LOG.debug("**** event manual carousel positioning ****");
     this._ctrl.carouselFreeMove();
   }
 
   private void freePositionButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform free arm positioning ****");
+    _LOG.debug("**** event free arm positioning ****");
     Integer position = null;
     try
     {
@@ -614,20 +614,20 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
 
   private void vibrationButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform arm vibration ****");
+    _LOG.debug("**** event arm vibration ****");
     this._ctrl.vibrate();
   }
 
   private void toTopStopButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform go arm to top ****");
+    _LOG.debug("**** event go arm to top ****");
     this._ctrl.armGoButee();
   }
 
   private void openFileChooserButtonActionPerformed(
       java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform column file opening ****");
+    _LOG.debug("**** event column file opening ****");
     int returnValue = fileChooser.showOpenDialog(this);
     if(returnValue == JFileChooser.APPROVE_OPTION)
     {
@@ -643,31 +643,31 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
 
   private void aboveColumnButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform arm go to column ****");
+    _LOG.debug("**** event arm go to column ****");
     this._ctrl.armGoColonne();
   }
 
   private void toTrashBinButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform arm go to trash bin ****");
+    _LOG.debug("**** event arm go to trash bin ****");
     this._ctrl.armGoTrash();
   }
 
   private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform cancel or reinit ****");
+    _LOG.debug("**** event cancel or reinit ****");
     this.cancelAndReinit();
   }
 
   private void pauseToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform pause/resume ****");
+    _LOG.debug("**** event pause/resume ****");
     this.pauseAndResume();
   }
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform close ****");
+    _LOG.debug("**** event close ****");
     this.close();
   }
   

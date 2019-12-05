@@ -310,7 +310,7 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
   {
     if(this._isStartEnable)
     {
-      _LOG.debug("**** perform start ****");
+      _LOG.debug("**** event start ****");
       
       int volume = 0 ;
       try
@@ -367,13 +367,13 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
 
   private void pauseToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform pause/resume ****");
+    _LOG.debug("**** event pause/resume ****");
     this.pauseAndResume();
   }
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform close ****");
+    _LOG.debug("**** event close ****");
     this.close();
   }
 

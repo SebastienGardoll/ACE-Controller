@@ -317,50 +317,50 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_closeButtonActionPerformed
-    _LOG.debug("**** perform close ****");
+    _LOG.debug("**** event close ****");
     this.close();
   }// GEN-LAST:event_closeButtonActionPerformed
 
   private void Valve1ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve1ToggleButtonActionPerformed
-    _LOG.debug("**** toogle valve 1 ****");
+    _LOG.debug("**** event valve 1 ****");
     this._ctrl.handleValve(1);
   }// GEN-LAST:event_Valve1ToggleButtonActionPerformed
 
   private void Valve3ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve3ToggleButtonActionPerformed
-    _LOG.debug("**** toogle valve 3 ****");
+    _LOG.debug("**** event valve 3 ****");
     this._ctrl.handleValve(3);
   }// GEN-LAST:event_Valve3ToggleButtonActionPerformed
 
   private void Valve6ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve6ToggleButtonActionPerformed
-    _LOG.debug("**** toogle valve 6 ****");
+    _LOG.debug("**** event valve 6 ****");
     this._ctrl.handleValve(6);
   }// GEN-LAST:event_Valve6ToggleButtonActionPerformed
 
   private void SwitchValveToggleButtonActionPerformed(
       java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_SwitchValveToggleButtonActionPerformed
-    _LOG.debug("**** toogle valve 7 ****");
+    _LOG.debug("**** event valve 7 ****");
     this._ctrl.handleValve(7);
   }// GEN-LAST:event_SwitchValveToggleButtonActionPerformed
 
   private void Valve2ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve2ToggleButtonActionPerformed
-    _LOG.debug("**** toogle valve 2 ****");
+    _LOG.debug("**** event valve 2 ****");
     this._ctrl.handleValve(2);
   }// GEN-LAST:event_Valve2ToggleButtonActionPerformed
 
   private void Valve4ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve4ToggleButtonActionPerformed
-    _LOG.debug("**** toogle valve 4 ****");
+    _LOG.debug("**** event valve 4 ****");
     this._ctrl.handleValve(4);
   }// GEN-LAST:event_Valve4ToggleButtonActionPerformed
 
   private void Valve5ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve5ToggleButtonActionPerformed
-    _LOG.debug("**** toogle valve 5 ****");
+    _LOG.debug("**** event valve 5 ****");
     this._ctrl.handleValve(5);
   }// GEN-LAST:event_Valve5ToggleButtonActionPerformed
 
