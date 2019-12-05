@@ -620,7 +620,7 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
 
   private void toTopStopButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** perform go arm stop ****");
+    _LOG.debug("**** perform go arm to top ****");
     this._ctrl.armGoButee();
   }
 

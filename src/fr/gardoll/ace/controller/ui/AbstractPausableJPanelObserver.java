@@ -91,12 +91,12 @@ public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJ
     {
       if(this._isCancelEnable)
       {
-        _LOG.debug("running cancelling operations from the panel") ;
+        _LOG.debug("calling cancel from the panel") ;
         this._ctrl.cancel();
       }
       else
       {
-        _LOG.debug("running the panel reinit operations") ;
+        _LOG.debug("calling reinit from the panel") ;
         this._ctrl.reinit();
       }
       
@@ -106,11 +106,11 @@ public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJ
     {
       if(this._isCancelEnable)
       {
-        _LOG.debug("the panel cancelling operations has been skipped") ;
+        _LOG.debug("cancel from the panel has been cancelled") ;
       }
       else
       {
-        _LOG.debug("the panel reinit operations has been skipped") ;
+        _LOG.debug("reinit from the panel has been cancelled") ;
       }
       
       return false;

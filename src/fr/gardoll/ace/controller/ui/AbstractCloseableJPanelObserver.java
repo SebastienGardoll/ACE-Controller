@@ -47,14 +47,14 @@ public abstract class AbstractCloseableJPanelObserver extends AbstractJPanelObse
     
     if (choice == JOptionPane.OK_OPTION)
     {
-      _LOG.debug("running closing operations from the panel") ;
+      _LOG.debug("calling close from the panel") ;
       
       this._ctrl.close();
       return true;
     }
     else
     {
-      _LOG.debug("the panel closing has been cancelled") ;
+      _LOG.debug("closing from the panel has been cancelled") ;
       return false;
     }
   }
