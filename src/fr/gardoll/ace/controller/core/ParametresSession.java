@@ -417,7 +417,8 @@ public class ParametresSession implements Closeable
       }
       
       this._autosampler = new Passeur(motorCtrl, this.nbPasCarrousel(),
-                                      this.diametreCarrousel());
+                            this.diametreCarrousel(), this.epaisseur(),
+                            this.refCarrousel());
     }
     
     return this._autosampler;

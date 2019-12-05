@@ -49,17 +49,22 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
     _LOG.info("cancelling all operations");
     this.notifyAction(new Action(ActionType.CANCELING, null));
     
+    // First cancel.
+    
     if(this._hasAutosampler)
     {
-      this._passeur.cancelAndReinit();
+      this._passeur.cancel();
     }
     
     if(this._hasPump)
     {
-      this._pousseSeringue.cancelAndReinit();
+      this._pousseSeringue.cancel();
     }
     
     this.notifyAction(new Action(ActionType.CANCEL_DONE, null));
+    
+    // Then reinitialize.
+    this.reinitOperations();
   }
   
   @Override
@@ -92,15 +97,23 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   @Override
   void reinitOperations() throws InterruptedException
   {
-    _LOG.info("reinitializing all operations");
+    _LOG.info("reinitializing all devices");
     this.notifyAction(new Action(ActionType.REINIT, Optional.empty()));
     
-    if(this._hasAutosampler)
+    if(this._hasAutosampler) // Reinit autosampler and pump.
     {
       this._passeur.reinit();
+      
+      if(this._hasPump)
+      {
+        this._passeur.moveArmToTrash(); // Get the arm to the trash.
+        this._passeur.finMoveBras();
+        this._pousseSeringue.reinit(); // Drain the pump to the trash.
+        this._passeur.moveButeBras(); // Get the arm to the top.
+        this._passeur.finMoveBras();
+      }
     }
-    
-    if(this._hasPump)
+    else if(this._hasPump) // Reinit pump only.
     {
       this._pousseSeringue.reinit();
     }

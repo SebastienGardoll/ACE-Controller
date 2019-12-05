@@ -8,9 +8,9 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.column.Colonne ;
+import fr.gardoll.ace.controller.core.AbstractPausableToolControl ;
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
 import fr.gardoll.ace.controller.core.AbstractToolControl ;
-import fr.gardoll.ace.controller.core.AbstractPausableToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
@@ -274,9 +274,6 @@ class CarouselThread extends AbstractThreadControl
 
 class ArmThread extends AbstractThreadControl
 {
-  // coefficient pour la distance plateau porteur tuyau pour la poubelle
-  private static final double _COEFF = 2.5 ;
-  
   private static final Logger _LOG = LogManager.getLogger(ArmThread.class.getName());
   
   private final Passeur _passeur;
@@ -344,12 +341,7 @@ class ArmThread extends AbstractThreadControl
 
       case 3:
       {
-        this._passeur.moveButeBras() ;
-        this._passeur.finMoveBras() ;
-        this._passeur.setOrigineBras() ;
-        this._passeur
-            .moveBras(Passeur.convertBras(_COEFF * parametresSession.epaisseur()
-                - parametresSession.refCarrousel())) ;
+        this._passeur.moveArmToTrash();
         break ;
       }
 

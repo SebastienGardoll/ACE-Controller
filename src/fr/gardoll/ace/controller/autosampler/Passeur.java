@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 
@@ -19,6 +20,9 @@ public class Passeur implements Closeable
   public final static int NB_PAS_TOUR_MOTEUR = 400 ;//demi pas sans réducteur
   public final static int NB_PAS_TOUR_CARROUSEL = RAPPORT_REDUCTEUR_MOTEUR * NB_PAS_TOUR_MOTEUR  ; //demi pas
   public final static int HAUTEUR_TOUR_BRAS = 3 ; // en mm
+  
+  // Coefficient pour la distance plateau porteur tuyau pour la poubelle
+  private static final double _COEFF = 2.5 ;
 
   public final static int VIB_ID = 2 ; //numéro du signal utilisé pour faire vibrer le bras
   public final static int VIBRATION_TEMPS = 500 ; //temps en ms de vibration
@@ -47,6 +51,8 @@ public class Passeur implements Closeable
   private boolean _butee = false; 
   
   private final MotorController interfaceMoteur;
+  private final int _carouselThickness ;
+  private final int _refCarousel ;
   
   /* ne pas inclure d'attente de fin de mouvement dans les procédures de mouvement
   car incompatible avec le système de pause */ 
@@ -56,12 +62,16 @@ public class Passeur implements Closeable
 
   //require nbPasCarrousel > 0
   //require diametre > 0
-  public Passeur(MotorController interfaceMoteur, int nbPasCarrousel, int diametre)
+  public Passeur(MotorController interfaceMoteur, int nbPasCarrousel,
+                 int diametre, int carouselThickness, int refCarousel)
       throws InitializationException, InterruptedException
   {
     _LOG.debug(String.format("initializing the autosampler with %s number of carousel steps and %s diameter",
         nbPasCarrousel, diametre));
     this.interfaceMoteur = interfaceMoteur;
+    this._carouselThickness = carouselThickness;
+    this._refCarousel = refCarousel;
+    
     this.reset() ;
     this.setModeDirect();
 
@@ -187,6 +197,22 @@ public class Passeur implements Closeable
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
+  }
+  
+  // TODO to test.
+  public void moveArmToTrash() throws InterruptedException
+  {
+    _LOG.debug("move the arm to trash");
+    
+    _LOG.debug("first reference the arm from the top");
+    this.moveButeBras();
+    this.finMoveBras();
+    
+    _LOG.debug("then get the arm to the trash");
+    
+    int nbSteps = Passeur.convertBras(Passeur._COEFF * this._carouselThickness
+        - this._refCarousel);
+    this.moveBras(nbSteps) ;
   }
   
   //attente de la fin de mouvement
@@ -383,24 +409,6 @@ public class Passeur implements Closeable
     }
   }
   
-  public void reinit() throws InterruptedException
-  {
-    _LOG.debug("reinitializing the autosampler");
-    this.moveButeBras();
-    this.finMoveBras();
-    this.moveCarrousel(TRASH_POSITION);
-    this.finMoveCarrousel();
-  }
-  
-  // Cancel & reinit.
-  // TODO: test.
-  public void cancelAndReinit() throws InterruptedException
-  {
-    _LOG.debug("calling cancel and reinit autosampler");
-    this.cancel();
-    this.reinit();
-  }
-  
   public void cancel() throws InterruptedException
   {
     try
@@ -423,6 +431,16 @@ public class Passeur implements Closeable
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
+  }
+  
+  public void reinit() throws InterruptedException
+  {
+    _LOG.debug("reinitializing the autosampler");
+    this.moveButeBras();
+    this.finMoveBras();
+    this.setOrigineBras() ;
+    this.moveCarrousel(TRASH_POSITION);
+    this.finMoveCarrousel();
   }
   
   //reprise sur pause avec retour à la position sauvegardée dans pause()
@@ -548,7 +566,7 @@ public class Passeur implements Closeable
        throw new RuntimeException(msg, e);
      }
   }
-
+  
   //enregistre la position du bras et du carrousel
   //dans les variables save_x et save_y
   //est recalculé si appel setOrigineXX mais attention à son utilité par la suite
@@ -607,8 +625,12 @@ public class Passeur implements Closeable
     String portPath = "/dev/ttyUSB0"; // To be modified.
     JSerialComm port = new JSerialComm(portPath);
     
+    ParametresSession session = ParametresSession.getInstance();
+    
     try(InterfaceMoteur autoSamplerInt = new InterfaceMoteur(port) ;
-        Passeur autosampler = new Passeur(autoSamplerInt, 640, 360))
+        Passeur autosampler = new Passeur(autoSamplerInt, session.nbPasCarrousel(),
+            session.diametreCarrousel(), session.epaisseur(),
+            session.refCarrousel()))
     {
       int carouselPosition = 10;
       int armNbStep = Passeur.convertBras(-50); // Convert -50 millimeter into number of steps.
@@ -659,7 +681,7 @@ public class Passeur implements Closeable
       _LOG.info(String.format("where carousel: %s", autoSamplerInt.where(TypeAxe.carrousel)));
       
       _LOG.debug("cancelling");
-      autosampler.cancelAndReinit();
+      autosampler.cancel();
       
       _LOG.info(String.format("where arm: %s", autoSamplerInt.where(TypeAxe.bras)));
       _LOG.info(String.format("where carousel: %s", autoSamplerInt.where(TypeAxe.carrousel)));
