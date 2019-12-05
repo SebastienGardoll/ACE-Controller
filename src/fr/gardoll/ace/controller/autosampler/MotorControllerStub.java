@@ -17,6 +17,7 @@ public class MotorControllerStub implements MotorController, Closeable
   private int _carouselDirection        = 0;
   private boolean _isCarouselMoving     = false ;
 
+  private boolean _isArmOnTop           = true;
   private int _currentArmPosition       = 0;
   private int _targetedArmPosition      = 0;
   private int _armDirection             = 0;
@@ -65,6 +66,7 @@ public class MotorControllerStub implements MotorController, Closeable
       this._targetedArmPosition = nbPas2;
       this._armDirection = this._currentArmPosition < nbPas2 ? 1 : -1 ;
       this._isArmMoving = true;
+      this._isArmOnTop = false;
     }
     else
     {
@@ -157,7 +159,7 @@ public class MotorControllerStub implements MotorController, Closeable
       throw new RuntimeException("unexpected moving to the limit of the arm");
     }
     
-    if(this._currentArmPosition == 0)
+    if(this._isArmOnTop)
     {
       this._isArmMoving = false;
       _LOG.debug("% arm already on top %");
@@ -165,6 +167,7 @@ public class MotorControllerStub implements MotorController, Closeable
     else
     {
       this._isArmMoving = true;
+      this._isArmOnTop = true;
     }
     
     this._targetedArmPosition = 0;
@@ -175,6 +178,7 @@ public class MotorControllerStub implements MotorController, Closeable
   public void reset() throws SerialComException, InterruptedException
   {
     _LOG.debug("stubbing command reset");
+    this._isArmOnTop               = true;
     this._currentCarouselPosition  = 0;
     this._targetedCarouselPosition = 0;
     this._currentArmPosition       = 0;
