@@ -43,7 +43,7 @@ public interface ThreadControl
   // Start the operations of the thread. Not blocking call.
   public void start();
   
-  public static void check()
+  public static void check() throws CancellationException
   {
     Thread thread = Thread.currentThread();
     
