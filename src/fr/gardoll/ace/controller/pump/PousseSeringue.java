@@ -444,13 +444,13 @@ public class PousseSeringue implements Closeable
       Thread.sleep(ATTENTE_FERMETURE_EV) ;
     }
     
-    _LOG.debug("pump delivered the volume");
+    _LOG.debug("pump has delivered the volume");
     
     // We can't pause or cancel during a withdraw as the volume of liquid
     // really withdrawn is not known until the end of the withdraw.
     // For the infusion case, the method deliver can help.
-    // So We decided to check for pause or cancel only after the completion of withdraws.
-    // As a matter of symmetry, we do the same for the infusion.
+    // But we decided to check for pause or cancel only after the completion
+    // of withdraws. As a matter of symmetry, we do the same for the infusion.
     ThreadControl.check();
   }
   
