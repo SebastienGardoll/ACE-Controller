@@ -57,7 +57,7 @@ public class MotorControllerStub implements MotorController, Closeable
     }
     else
     {
-      _LOG.debug("carousel didn't move");
+      _LOG.debug("% carousel doesn't have to move %");
     }
     
     if(nbPas2 != this._currentArmPosition)
@@ -68,7 +68,7 @@ public class MotorControllerStub implements MotorController, Closeable
     }
     else
     {
-      _LOG.debug("arm didn't move");
+      _LOG.debug("% arm doesn't have to move %");
     }
   }
 
@@ -157,9 +157,18 @@ public class MotorControllerStub implements MotorController, Closeable
       throw new RuntimeException("unexpected moving to the limit of the arm");
     }
     
+    if(this._currentArmPosition == 0)
+    {
+      this._isArmMoving = false;
+      _LOG.debug("% arm already on top %");
+    }
+    else
+    {
+      this._isArmMoving = true;
+    }
+    
     this._targetedArmPosition = 0;
     this._armDirection = this._currentArmPosition < 0 ? 1 : -1 ;
-    this._isArmMoving = true;
   }
 
   @Override
