@@ -69,7 +69,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   // en cas d'erreur => exception
   private void traitementReponse(String reponse) throws SerialComException
   {
-    _LOG.trace(String.format("ack received: '%s'", reponse));
+    //_LOG.trace(String.format("ack received: '%s'", reponse));
     
     if(reponse.isEmpty())
     {
