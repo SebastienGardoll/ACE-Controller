@@ -51,7 +51,7 @@ public class ValvesToolControl extends AbstractCloseableToolControl
         if(this._lastState)
         {
           this._lastState = false;
-          _LOG.debug(String.format("openning valve %s (same valve)", valveId));
+          _LOG.info(String.format("openning valve %s (same valve)", valveId));
           this._valves.ouvrir(valveId);
           this.notifyAction(new Action(ActionType.OPEN_VALVE,
               Optional.of(Integer.valueOf(valveId))));
@@ -59,7 +59,7 @@ public class ValvesToolControl extends AbstractCloseableToolControl
         else
         {
           this._lastState = true;
-          _LOG.debug(String.format("closing valve %s", valveId));
+          _LOG.info(String.format("closing valve %s", valveId));
           this._valves.toutFermer();
           this.notifyAction(new Action(ActionType.CLOSE_VALVES, Optional.of(Integer.valueOf(valveId))));
         }
@@ -67,7 +67,7 @@ public class ValvesToolControl extends AbstractCloseableToolControl
       else
       {
         this._lastState = false;
-        _LOG.debug(String.format("openning valve %s (new valve)", valveId));
+        _LOG.info(String.format("openning valve %s (new valve)", valveId));
         this._valves.ouvrir(valveId);
         this._lastValve = valveId;
         this.notifyAction(new Action(ActionType.OPEN_VALVE,
