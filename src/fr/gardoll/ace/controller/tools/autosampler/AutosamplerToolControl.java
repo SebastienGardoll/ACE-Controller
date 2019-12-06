@@ -196,6 +196,7 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
   
   void openColumn(Path filePath)
   {
+    _LOG.debug(String.format("openning column file %s", filePath));
     try
     {
       this.colonne = Colonne.getInstance(filePath);
