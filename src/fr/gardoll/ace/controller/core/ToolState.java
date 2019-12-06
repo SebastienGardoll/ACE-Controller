@@ -219,6 +219,10 @@ abstract class AbstractState implements ToolState
   {
     _LOG.debug("set crashed state");
     this._ctrl.setState(new CrashedState(this._ctrl));
+    if(ParametresSession.isAutomatedTest)
+    {
+      throw new RuntimeException("stop test");
+    }
   }
 }
 

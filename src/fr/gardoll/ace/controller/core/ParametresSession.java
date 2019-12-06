@@ -42,6 +42,8 @@ public class ParametresSession implements Closeable
   
   public final static int NB_POSITION = 6 ;
   
+  public static boolean isAutomatedTest = false;
+  
   private static ParametresSession _INSTANCE ;
   
   // Lazy loading and singleton.
@@ -488,16 +490,19 @@ public class ParametresSession implements Closeable
       if(this._pump != null)
       {
         this._pump.close();
+        this._pump = null;
       }
           
       if(this._autosampler != null)
       {
         this._autosampler.close();
+        this._autosampler = null;
       }
       
       if(this._valves != null)
       {
         this._valves.close();
+        this._valves = null;
       }
     }
     catch (IOException e)

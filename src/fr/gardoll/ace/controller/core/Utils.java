@@ -122,7 +122,12 @@ public class Utils
       displayedMsg = msg;
     }
      
-    JOptionPane.showMessageDialog(null, displayedMsg, "Error",
-        JOptionPane.ERROR_MESSAGE);
+    _LOG.debug(String.format("displaying this message: '%s'", msg));
+    
+    if(false == ParametresSession.isAutomatedTest)
+    {
+      JOptionPane.showMessageDialog(null, displayedMsg, "Error",
+          JOptionPane.ERROR_MESSAGE);
+    }
   }
 }
