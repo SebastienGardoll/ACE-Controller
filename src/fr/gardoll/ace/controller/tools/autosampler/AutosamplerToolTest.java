@@ -36,7 +36,7 @@ class AutosamplerToolTest
   @BeforeEach
   void setUp() throws Exception
   {
-    _LOG.debug("******************** setup");
+    _LOG.info("******************** setup");
     ParametresSession parametresSession = ParametresSession.getInstance();
     this._ctrl = new AutosamplerToolControl(parametresSession);
     this._toolPanel = new PausableJPanelObserverStub(this._ctrl);
@@ -47,7 +47,7 @@ class AutosamplerToolTest
   @AfterEach
   void tearDown() throws Exception
   {
-    _LOG.debug("******************** teardown");
+    _LOG.info("******************** teardown");
     this._ctrl.close();
     this._toolPanel.waitPanel();
     ParametresSession.getInstance().close();
@@ -68,7 +68,7 @@ class AutosamplerToolTest
   @Test
   void testArm1n() throws InterruptedException
   {
-    _LOG.debug("******************** testArm1n arm go to top");
+    _LOG.info("******************** testArm1n arm go to top");
     this._ctrl.armGoButee();
     this._toolPanel.waitPanel();
   }
@@ -76,7 +76,7 @@ class AutosamplerToolTest
   @Test
   void testArm2n()
   {
-    _LOG.debug("******************** testArm2n arm go to trash");
+    _LOG.info("******************** testArm2n arm go to trash");
     this._ctrl.armGoTrash();
     this._toolPanel.waitPanel();
   }
@@ -84,7 +84,7 @@ class AutosamplerToolTest
   @Test
   void testArm3n()
   {
-    _LOG.debug("******************** testArm3n arm go to column");
+    _LOG.info("******************** testArm3n arm go to column");
     
     this.openColumnFile();
     this._ctrl.armGoColonne();
@@ -94,7 +94,7 @@ class AutosamplerToolTest
   @Test
   void testArm4n()
   {
-    _LOG.debug("******************** testArm4n arm free move up");
+    _LOG.info("******************** testArm4n arm free move up");
     
     this._ctrl.armFreeMove(100);
     this._toolPanel.waitPanel();
@@ -103,7 +103,7 @@ class AutosamplerToolTest
   @Test
   void testArm5n()
   {
-    _LOG.debug("******************** testArm5n arm free move down");
+    _LOG.info("******************** testArm5n arm free move down");
     
     this._ctrl.armFreeMove(-100);
     this._toolPanel.waitPanel();
@@ -112,7 +112,7 @@ class AutosamplerToolTest
   @Test
   void testArm1c() throws InterruptedException
   {
-    _LOG.debug("******************** testArm1c cancel arm go to top");
+    _LOG.info("******************** testArm1c cancel arm go to top");
     this._ctrl.armGoButee();
     this._ctrl.cancel();
     this._toolPanel.waitPanel();
@@ -121,7 +121,7 @@ class AutosamplerToolTest
   @Test
   void testArm2c() throws InterruptedException
   {
-    _LOG.debug("******************** testArm2c cancel arm go to trash");
+    _LOG.info("******************** testArm2c cancel arm go to trash");
     this._ctrl.armGoTrash();
     Thread.sleep(500);
     this._ctrl.cancel();
@@ -131,7 +131,7 @@ class AutosamplerToolTest
   @Test
   void testArm3c() throws InterruptedException
   {
-    _LOG.debug("******************** testArm3c cancel arm go to column");
+    _LOG.info("******************** testArm3c cancel arm go to column");
     
     this.openColumnFile();
     this._ctrl.armGoColonne();
@@ -143,7 +143,7 @@ class AutosamplerToolTest
   @Test
   void testArm4c() throws InterruptedException
   {
-    _LOG.debug("******************** testArm4c cancel arm free move up");
+    _LOG.info("******************** testArm4c cancel arm free move up");
     
     this._ctrl.armFreeMove(100);
     Thread.sleep(500);
@@ -154,7 +154,7 @@ class AutosamplerToolTest
   @Test
   void testArm5c() throws InterruptedException
   {
-    _LOG.debug("******************** testArm5c cancel arm free move down");
+    _LOG.info("******************** testArm5c cancel arm free move down");
     
     this._ctrl.armFreeMove(-100);
     Thread.sleep(500);
@@ -165,7 +165,7 @@ class AutosamplerToolTest
   @Test
   void testArm1p() throws InterruptedException
   {
-    _LOG.debug("******************** testArm1p pause arm go to top");
+    _LOG.info("******************** testArm1p pause arm go to top");
     this._ctrl.armGoButee();
     this._ctrl.pause();
     Thread.sleep(500);
@@ -176,7 +176,7 @@ class AutosamplerToolTest
   @Test
   void testArm2p() throws InterruptedException
   {
-    _LOG.debug("******************** testArm2p pause arm go to trash");
+    _LOG.info("******************** testArm2p pause arm go to trash");
     this._ctrl.armGoTrash();
     Thread.sleep(500);
     this._ctrl.pause();
@@ -188,7 +188,7 @@ class AutosamplerToolTest
   @Test
   void testArm3p() throws InterruptedException
   {
-    _LOG.debug("******************** testArm3p pause arm go to column");
+    _LOG.info("******************** testArm3p pause arm go to column");
     
     this.openColumnFile();
     this._ctrl.armGoColonne();
@@ -202,7 +202,7 @@ class AutosamplerToolTest
   @Test
   void testArm4p() throws InterruptedException
   {
-    _LOG.debug("******************** testArm4p pause arm free move up");
+    _LOG.info("******************** testArm4p pause arm free move up");
     
     this._ctrl.armFreeMove(100);
     Thread.sleep(500);
@@ -215,7 +215,7 @@ class AutosamplerToolTest
   @Test
   void testArm5p() throws InterruptedException
   {
-    _LOG.debug("******************** testArm5p pause arm free move down");
+    _LOG.info("******************** testArm5p pause arm free move down");
     
     this._ctrl.armFreeMove(-100);
     Thread.sleep(500);
@@ -228,7 +228,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel1n()
   {
-    _LOG.debug("******************** testCarousel1n turn right");
+    _LOG.info("******************** testCarousel1n turn right");
     this._ctrl.carouselTurnRight();
     this._toolPanel.waitPanel();
   }
@@ -236,7 +236,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel2n()
   {
-    _LOG.debug("******************** testCarousel2n turn left");
+    _LOG.info("******************** testCarousel2n turn left");
     this._ctrl.carouselTurnLeft();
     this._toolPanel.waitPanel();
   }
@@ -244,7 +244,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel3n()
   {
-    _LOG.debug("******************** testCarousel3n go to position 10");
+    _LOG.info("******************** testCarousel3n go to position 10");
     this._ctrl.carouselGoPosition(10);
     this._toolPanel.waitPanel();
   }
@@ -252,7 +252,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel1c() throws InterruptedException
   {
-    _LOG.debug("******************** testCarousel1c cancel turn right");
+    _LOG.info("******************** testCarousel1c cancel turn right");
     this._ctrl.carouselTurnRight();
     Thread.sleep(500);
     this._ctrl.cancel();
@@ -262,7 +262,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel2c() throws InterruptedException
   {
-    _LOG.debug("******************** testCarousel2c cancel turn left");
+    _LOG.info("******************** testCarousel2c cancel turn left");
     this._ctrl.carouselTurnLeft();
     Thread.sleep(500);
     this._ctrl.cancel();
@@ -272,7 +272,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel3c() throws InterruptedException
   {
-    _LOG.debug("******************** testCarousel3c cancel go to position 10");
+    _LOG.info("******************** testCarousel3c cancel go to position 10");
     this._ctrl.carouselGoPosition(10);
     Thread.sleep(500);
     this._ctrl.cancel();
@@ -282,7 +282,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel1p() throws InterruptedException
   {
-    _LOG.debug("******************** testCarousel1p pause turn right");
+    _LOG.info("******************** testCarousel1p pause turn right");
     this._ctrl.carouselTurnRight();
     Thread.sleep(500);
     this._ctrl.pause();
@@ -294,7 +294,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel2p() throws InterruptedException
   {
-    _LOG.debug("******************** testCarousel2p pause turn left");
+    _LOG.info("******************** testCarousel2p pause turn left");
     this._ctrl.carouselTurnLeft();
     Thread.sleep(500);
     this._ctrl.pause();
@@ -306,7 +306,7 @@ class AutosamplerToolTest
   @Test
   void testCarousel3p() throws InterruptedException
   {
-    _LOG.debug("******************** testCarousel3p pause go to position 10");
+    _LOG.info("******************** testCarousel3p pause go to position 10");
     this._ctrl.carouselGoPosition(10);
     Thread.sleep(500);
     this._ctrl.pause();
@@ -318,8 +318,8 @@ class AutosamplerToolTest
   @Test
   void scriptedTest1() throws InterruptedException
   {
-    _LOG.debug("******************** scripted test 1");
-    _LOG.debug("* arm goes to trash ; carousel turns left ; pause ; resume ; carousel move to pos 14 ; reinit *");
+    _LOG.info("******************** scripted test 1");
+    _LOG.info("* arm goes to trash ; carousel turns left ; pause ; resume ; carousel move to pos 14 ; reinit *");
     this._ctrl.armGoTrash();
     this._toolPanel.waitPanel();
     
@@ -340,8 +340,8 @@ class AutosamplerToolTest
   @Test
   void scriptedTest2() throws InterruptedException
   {
-    _LOG.debug("******************** scripted test 2");
-    _LOG.debug("* carousel turns right ; pause ; resume ; arm to trash ; arm to trash ; arm to top ; cancel *");
+    _LOG.info("******************** scripted test 2");
+    _LOG.info("* carousel turns right ; pause ; resume ; arm to trash ; arm to trash ; arm to top ; cancel *");
     
     this._ctrl.carouselTurnRight();
     Thread.sleep(500);
