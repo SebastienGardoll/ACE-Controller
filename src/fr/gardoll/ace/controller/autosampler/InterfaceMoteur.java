@@ -129,6 +129,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void move(int nbPas1 , int nbPas2) throws SerialComException, InterruptedException
   { 
     String ordre = String.format("move (%s,%s)\r", nbPas1, nbPas2) ;
+    _LOG.trace(String.format("send '%s'", ordre));
     this.traitementOrdre (ordre) ;
   }
   
@@ -147,6 +148,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void movel(int axe1, int axe2) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("movel (%s,%s)\r", axe1, axe2);
+    _LOG.trace(String.format("send '%s'", ordre));
     this.traitementOrdre(ordre) ;
   }
   
@@ -155,7 +157,9 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void reset() throws SerialComException, InterruptedException
 
   {
-    this._port.ecrire("new\r") ;
+    String order = "new\r";
+    _LOG.trace(String.format("send '%s'", order));
+    this._port.ecrire(order) ;
 
     // attente obligatoire à cause de la lenteur de l'interface
     //  pour cette fonction . 800 ms
@@ -171,6 +175,7 @@ public class InterfaceMoteur implements Closeable, MotorController
       throws SerialComException, InterruptedException
   {  
     String ordre = String.format("prescale (%s)\r", denominateur);
+    _LOG.trace(String.format("send '%s'", ordre));
     this.traitementOrdre (ordre) ;
   }
   
@@ -196,7 +201,9 @@ public class InterfaceMoteur implements Closeable, MotorController
     {
       ordre = String.format("param (%s,%s,%s,%s,%s)\r", axe, base, top, accel, deaccel);
     }
-
+    
+    _LOG.trace(String.format("send '%s'", ordre));
+    
     // long traitement par l'interface
     this.traitementOrdre(ordre, 2000l) ;
   }
@@ -206,6 +213,7 @@ public class InterfaceMoteur implements Closeable, MotorController
 
   {  
     String ordre = String.format("datum (%s)\r", axe);
+    _LOG.trace(String.format("send '%s'", ordre));
     this.traitementOrdre (ordre) ;
   }
   
@@ -215,19 +223,24 @@ public class InterfaceMoteur implements Closeable, MotorController
     char convertion = (choix) ? '1':'2';
     
     String ordre = String.format("singleline (%s)\r", convertion);
+    _LOG.trace(String.format("send '%s'", ordre));
     this.traitementOrdre (ordre) ;
   }
   
   @Override
   public void stop() throws SerialComException, InterruptedException
   { 
-    this.traitementOrdre("stop ()\r") ;
+    String order = "stop ()\r";
+    _LOG.trace(String.format("send '%s'", order));
+    this.traitementOrdre(order) ;
   }
   
   @Override
   public void manual() throws SerialComException, InterruptedException
   {  
-    this.traitementOrdre("manual ()\r") ;
+    String order = "manual ()\r";
+    _LOG.trace(String.format("send '%s'", order));
+    this.traitementOrdre(order) ;
   }
 
   @Override
@@ -235,13 +248,16 @@ public class InterfaceMoteur implements Closeable, MotorController
   { 
     // la temporisation dépend directement
     // de la vitesse de point et de la décéleration
-    this.traitementOrdre ("halt()\r" , 1500l) ;
+    String order = "halt()\r";
+    _LOG.trace(String.format("send '%s'", order));
+    this.traitementOrdre (order , 1500l) ;
   } 
                                            
   @Override
   public int where(TypeAxe axe) throws SerialComException, InterruptedException
   {  
     String ordre = String.format("where (%s)\r", axe);
+    _LOG.trace(String.format("send '%s'", ordre));
     String response = this.traitementOrdre(ordre, 100l);
     return Integer.valueOf(response);
   }
@@ -254,6 +270,7 @@ public class InterfaceMoteur implements Closeable, MotorController
     if (octet <= 255 && octet <= 0)
     {
       String ordre = String.format("out(%s)\r", octet);
+      _LOG.trace(String.format("send '%s'", ordre));
       this.traitementOrdre(ordre);
     }
     else
@@ -280,6 +297,7 @@ public class InterfaceMoteur implements Closeable, MotorController
     char value = (isOn) ? '1' : '0';
     
     String ordre = String.format("out(%s,%s)\r", bitPosition, value);
+    _LOG.trace(String.format("send '%s'", ordre));
     this.traitementOrdre(ordre);
   }
   
