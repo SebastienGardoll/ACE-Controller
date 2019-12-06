@@ -17,19 +17,19 @@ public class ParaComStub implements ParaCom
   @Override
   public String getId()
   {
-    _LOG.debug("stubbing method getId");
+    _LOG.trace("stubbing method getId");
     return "stub";
   }
 
   @Override
   public void close()
   {
-    _LOG.debug("stubbing close");
+    _LOG.debug("stubbing close paracom");
   }
   
   @Override
   public void send(byte[] order) throws ParaComException, InterruptedException
   {
-    _LOG.debug("stubbing send");
+    _LOG.trace("stubbing send");
   }
 }

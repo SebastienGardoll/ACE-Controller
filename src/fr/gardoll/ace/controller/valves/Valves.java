@@ -28,6 +28,7 @@ public class Valves implements Closeable
   
   public Valves(ParaCom paraCom)
   {
+    _LOG.debug("instanciating valves");
     this._paracom = paraCom;
   }
   
@@ -79,7 +80,7 @@ public class Valves implements Closeable
     try
     {
       byte b = Integer.valueOf(ordre).byteValue();
-      _LOG.debug(String.format("sending order '%s'", ordre));
+      _LOG.trace(String.format("sending order '%s'", ordre));
       this._paracom.send(new byte[] {b});
       Thread.sleep(ATTENTE_EV) ; //temps d'attente de l'exécution mécanique de l'ordre
     }
@@ -116,7 +117,7 @@ public class Valves implements Closeable
       throw new IOException("error while closing the valves", e);
     }
     
-    _LOG.debug("closing the communication port of the valves");
+    _LOG.debug(String.format("closing valves controller with paracom id '%s'", this._paracom.getId()));
     this._paracom.close();
   }
   
