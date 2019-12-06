@@ -52,7 +52,7 @@ public class ArduinoParaCom implements ParaCom
   @Override
   public void send(byte[] order) throws ParaComException, InterruptedException
   {
-    _LOG.debug(String.format("sending order '%s'", order));
+    //_LOG.trace(String.format("sending order '%s'", order));
     
     try
     {
@@ -74,7 +74,7 @@ public class ArduinoParaCom implements ParaCom
     try
     {
       String ack = this._port.lire().strip() ;
-      _LOG.debug(String.format("checking ack '%s'", ack));
+      //_LOG.trace(String.format("checking ack '%s'", ack));
       
       switch(ack)
       {

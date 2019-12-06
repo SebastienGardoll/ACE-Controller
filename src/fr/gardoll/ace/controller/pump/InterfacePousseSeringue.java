@@ -98,7 +98,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   //traitement de la réponse de l'interface en cas d'erreur => exception.
   private void traitementReponse(String message) throws SerialComException
   {
-    _LOG.trace(String.format("ack received: '%s'", message));
+    //_LOG.trace(String.format("ack received: '%s'", message));
     
     if (message.matches("E+"))
     {
@@ -171,7 +171,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     }
     
     String result = _DOUBLE_FORMATTERS[index].format(nombre);
-    _LOG.debug(String.format("formatting: from '%s' to '%s'", nombre, result));
+    _LOG.trace(String.format("formatting: from '%s' to '%s'", nombre, result));
     return result;
   }
   
@@ -179,7 +179,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void run() throws SerialComException, InterruptedException
   {
-    _LOG.debug("running the pump");
+    _LOG.trace("running the pump");
     this.traitementOrdre( "run\r" );
   }
   
@@ -187,7 +187,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void stop() throws SerialComException, InterruptedException
   {
-    _LOG.debug("stopping the pump");
+    _LOG.trace("stopping the pump");
     this.traitementOrdre ("stop\r");
   }
   
@@ -195,7 +195,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void dia(double diametre) throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("setting the diameter to '%s'", diametre));
+    _LOG.trace(String.format("setting the diameter to '%s'", diametre));
     String ordre = String.format("dia %s\r", formatage(diametre)) ;
     this.traitementOrdre (ordre);
   }
@@ -223,7 +223,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   private static double innerDeliver(String rawMessage) throws SerialComException
   {
-    _LOG.debug(String.format("delivered brut msg: '%s'", rawMessage));
+    _LOG.trace(String.format("delivered brut msg: '%s'", rawMessage));
     
     Matcher m = _DELIVER_PATTERN.matcher(rawMessage);
     
@@ -245,7 +245,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       throw new SerialComException(msg);
     }
     
-    _LOG.debug(String.format("the delivered volume is %s", result));
+    _LOG.trace(String.format("the delivered volume is %s", result));
     
     return result;
   }
@@ -254,7 +254,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void ratei(double debit) throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
+    _LOG.trace(String.format("setting the infusion rate to '%s'", debit));
     if (debit <= 0.)
     {
       String msg = String.format("the value of the rate '%s' cannot be negative or null",
@@ -278,7 +278,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void ratew(double debit) throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit));
+    _LOG.trace(String.format("setting the withdrawing rate to '%s'", debit));
     if (debit <= 0.)
     {
       String msg = String.format(
@@ -304,7 +304,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void voli(double volume) throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("setting the infusion volume to '%s'", volume));
+    _LOG.trace(String.format("setting the infusion volume to '%s'", volume));
     if (volume <= 0.)
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
@@ -333,7 +333,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void volw(double volume) throws SerialComException, InterruptedException
   {
-    _LOG.debug(String.format("setting the withdrawing volume to '%s'", volume));
+    _LOG.trace(String.format("setting the withdrawing volume to '%s'", volume));
     if (volume <= 0.)
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
@@ -360,14 +360,14 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void modeI() throws SerialComException, InterruptedException
   {
-    _LOG.debug("setting the infusion mode");
+    _LOG.trace("setting the infusion mode");
     this.traitementOrdre("mode i\r") ; 
   }
   
   @Override
   public void modeW() throws SerialComException, InterruptedException
   {
-    _LOG.debug("setting the withdrawing mode");
+    _LOG.trace("setting the withdrawing mode");
     this.traitementOrdre("mode w\r") ;
   }
   

@@ -74,7 +74,7 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    _LOG.debug(String.format("display '%s'", msg.strip()));
+    _LOG.info(String.format("display '%s'", msg.strip()));
   }
 
   @Override

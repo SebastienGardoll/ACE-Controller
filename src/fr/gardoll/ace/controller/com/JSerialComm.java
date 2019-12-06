@@ -30,11 +30,11 @@ public class JSerialComm implements SerialCom
   
   public JSerialComm(String portPath)
   {
-    _LOG.info("initializing the JSerialComm");
+    _LOG.debug("initializing the JSerialComm");
     
     this._portPath = portPath;
     
-    _LOG.debug(String.format("openning port '%s'.", portPath));
+    _LOG.debug(String.format("port is '%s'.", portPath));
     
     File file = new File(portPath);
     this._id = file.getName() ;
@@ -201,7 +201,7 @@ public class JSerialComm implements SerialCom
   @Override
   public void ecrire(String ordre) throws SerialComException
   {
-    _LOG.trace(String.format("writing '%s' on port '%s'", ordre, this._id)) ;
+    //_LOG.trace(String.format("writing '%s' on port '%s'", ordre, this._id)) ;
     
     try
     {
@@ -235,7 +235,7 @@ public class JSerialComm implements SerialCom
   @Override
   public String lire() throws SerialComException
   {
-    _LOG.trace(String.format("reading on port '%s'", this._id)) ;
+    //_LOG.trace(String.format("reading on port '%s'", this._id)) ;
     StringBuilder sb = new StringBuilder("") ;
     
     boolean continue_to_read = true ;
@@ -273,7 +273,7 @@ public class JSerialComm implements SerialCom
     }
     
     String result = sb.toString() ; 
-    _LOG.trace(String.format("read '%s'", result));
+    //_LOG.trace(String.format("read '%s'", result));
 
     return result ;
   }
@@ -335,7 +335,7 @@ public class JSerialComm implements SerialCom
   public void write(byte[] ordre) throws SerialComException
   {
     String orderString = Utils.toString(ordre, ", ");
-    _LOG.debug(String.format("writing '%s' on port '%s'", orderString, this._id)) ;
+    //_LOG.trace(String.format("writing '%s' on port '%s'", orderString, this._id)) ;
     try
     {
       int nb_byte_sent = this._port.writeBytes(ordre, ordre.length) ;
