@@ -39,7 +39,8 @@ public abstract class AbstractCloseableJPanelObserver extends AbstractJPanelObse
   {
     int choice = JOptionPane.OK_OPTION;
     
-    if(false == ParametresSession.getInstance().isDebug())
+    if(false == ParametresSession.getInstance().isDebug() &&
+       false == ParametresSession.isAutomatedTest)
     {
       choice = JOptionPane.showConfirmDialog(this,
           "Do you want to exit (and cancel the running operations) ?") ;
