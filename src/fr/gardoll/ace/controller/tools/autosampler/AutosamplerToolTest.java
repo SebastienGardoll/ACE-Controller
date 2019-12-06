@@ -4,7 +4,6 @@ import java.nio.file.Path ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
-import org.junit.jupiter.api.AfterAll ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.BeforeEach ;
@@ -26,11 +25,6 @@ class AutosamplerToolTest
   static void setUpBeforeClass() throws Exception
   {
     ParametresSession.isAutomatedTest = true;
-  }
-
-  @AfterAll
-  static void tearDownAfterClass() throws Exception
-  {
   }
 
   @BeforeEach
