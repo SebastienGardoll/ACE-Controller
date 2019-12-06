@@ -54,26 +54,23 @@ class AutosamplerToolTest
   }
 
   @Test
-  void test1() throws InterruptedException
+  void testArm1() throws InterruptedException
   {
-    _LOG.debug("******************** test1 arm go to top");
+    _LOG.debug("******************** testArm1 arm go to top");
     this._ctrl.armGoButee();
     this._toolPanel.waitPanel();
   }
   
   @Test
-  void test2()
+  void testArm2()
   {
-    _LOG.debug("******************** test2 arm go to trash");
+    _LOG.debug("******************** testArm2 arm go to trash");
     this._ctrl.armGoTrash();
     this._toolPanel.waitPanel();
   }
   
-  @Test
-  void test3()
+  private void openColumnFile()
   {
-    _LOG.debug("******************** test3 arm go to column");
-    
     String columnFileName = "nouvelle colonne.cln";
     
     Path rootDir = Utils.getInstance().getRootDir();
@@ -82,7 +79,33 @@ class AutosamplerToolTest
                            .resolve(columnFileName);
     
     this._ctrl.openColumn(filePath);
+  }
+  
+  @Test
+  void testArm3()
+  {
+    _LOG.debug("******************** testArm3 arm go to column");
+    
+    this.openColumnFile();
     this._ctrl.armGoColonne();
+    this._toolPanel.waitPanel();
+  }
+  
+  @Test
+  void testArm4()
+  {
+    _LOG.debug("******************** testArm4 arm free move up");
+    
+    this._ctrl.armFreeMove(100);
+    this._toolPanel.waitPanel();
+  }
+  
+  @Test
+  void testArm5()
+  {
+    _LOG.debug("******************** testArm5 arm free move down");
+    
+    this._ctrl.armFreeMove(-100);
     this._toolPanel.waitPanel();
   }
 
