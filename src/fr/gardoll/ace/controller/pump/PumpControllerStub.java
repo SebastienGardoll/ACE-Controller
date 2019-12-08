@@ -19,7 +19,7 @@ public class PumpControllerStub implements Closeable, PumpController
   // volume * _TIME_FACTOR = rate * elasting_time / period
   // _TIME_FACTOR = rate * elasting_time / (volume * period)
   // volume / period = rate / _TIME_FACTOR
-  private static double _TIME_FACTOR = 100. ;
+  private static double _TIME_FACTOR = 35. ;
   
   private boolean _isRunning ;
   

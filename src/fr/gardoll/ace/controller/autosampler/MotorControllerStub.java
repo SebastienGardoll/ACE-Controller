@@ -30,7 +30,7 @@ public class MotorControllerStub implements MotorController, Closeable
   
   // Number of steps per period.
   // Moving 10 mm in 0.5 seconds considering period of 0.1 second.
-  private static int _ARM_TIME_INC = Passeur.convertBras(10.) / 10; 
+  private static int _ARM_TIME_INC = Passeur.convertBras(10.) / 6; 
 
   public MotorControllerStub(int nbStepPosition)
   {
