@@ -110,12 +110,15 @@ class pumpThread extends AbstractThreadControl
     PousseSeringue pump = parametresSession.getPousseSeringue();
     
     ThreadControl.check();
-    _LOG.debug("move arm upper limit");
+    _LOG.debug("setup the arm");
     Action action = new Action(ActionType.ARM_MOVING, Optional.empty()) ;
     this._toolCtrl.notifyAction(action) ;
     
     autosampler.moveArmToTrash();
     autosampler.finMoveBras();
+    
+    action = new Action(ActionType.ARM_END_MOVING, Optional.empty()) ;
+    this._toolCtrl.notifyAction(action) ;
     
     ThreadControl.check();
     
