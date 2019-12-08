@@ -145,6 +145,11 @@ class pumpThread extends AbstractThreadControl
       this._toolCtrl.notifyAction(action);
       pump.vidange();
       pump.finPompage();
+      
+      msg = String.format("line %s is clean", line);
+      _LOG.debug(msg);
+      action = new Action(ActionType.USR_MSG, Optional.of(msg));
+      this._toolCtrl.notifyAction(action);
     }
 
     String msg = "end";
