@@ -117,7 +117,7 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
     // always after enableStartControl. 
     SwingUtilities.invokeLater(()->
     {
-      _LOG.debug("dispose");
+      _LOG.trace("dispose");
       this._syncMove.release();
     });
   }
