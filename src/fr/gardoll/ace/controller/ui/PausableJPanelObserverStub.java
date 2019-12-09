@@ -12,14 +12,28 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   private static final Logger _LOG = LogManager.getLogger(PausableJPanelObserverStub.class.getName());
   
   private final Semaphore _lock = new Semaphore(1);
+  private final Semaphore _syncPause = new Semaphore(1);
   
   public PausableJPanelObserverStub(ToolControl ctrl)
   {
     super(ctrl) ;
     this._lock.drainPermits();
+    this._syncPause.drainPermits();
   }
 
   private static final long serialVersionUID = 4820020174928178132L ;
+  
+  public void waitPause()
+  {
+    try
+    {
+      this._syncPause.acquire();
+    }
+    catch (InterruptedException e)
+    {
+      throw new RuntimeException(e);
+    }
+  }
   
   public void waitPanel()
   {
@@ -29,7 +43,7 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
     }
     catch (InterruptedException e)
     {
-      e.printStackTrace();
+      throw new RuntimeException(e);
     }
   }
 
@@ -43,6 +57,14 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   protected void enableResumeControl(boolean isEnable)
   {
     _LOG.trace(String.format("resume control set to %s", isEnable));
+    if(isEnable)
+    {
+      this._syncPause.release();
+    }
+    else
+    {
+      this._syncPause.drainPermits();
+    }
   }
 
   @Override
