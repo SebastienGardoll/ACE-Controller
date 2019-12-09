@@ -69,7 +69,7 @@ public abstract class AbstractThreadControl extends Thread
     }
     catch(CancellationException e)
     {
-      _LOG.debug("operations have been canceled");
+      _LOG.debug("thread is canceled");
       
       try
       {
@@ -266,7 +266,7 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     {
-      _LOG.debug("cancelling the thread");
+      _LOG.debug("ask the thread to cancel");
       
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
@@ -299,8 +299,6 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     { 
-      //_LOG.debug("checking the cancellation");
-      
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       
@@ -309,7 +307,7 @@ public abstract class AbstractThreadControl extends Thread
          Thread.currentThread() == this)
       {
         this._is_canceling = true;
-        _LOG.debug("throwing CancellationException");
+        _LOG.debug("cancelling the thread");
         throw new CancellationException();
       }
       else

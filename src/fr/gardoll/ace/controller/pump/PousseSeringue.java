@@ -625,7 +625,7 @@ public class PousseSeringue implements Closeable
     }
     else
     {
-      _LOG.debug("the pump is already drained");
+      _LOG.debug("% the pump is already drained %");
     }
   }
 
