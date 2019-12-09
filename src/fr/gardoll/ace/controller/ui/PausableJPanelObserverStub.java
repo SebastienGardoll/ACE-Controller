@@ -11,13 +11,13 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
 {
   private static final Logger _LOG = LogManager.getLogger(PausableJPanelObserverStub.class.getName());
   
-  private final Semaphore _lock = new Semaphore(1);
+  private final Semaphore _syncMove = new Semaphore(1);
   private final Semaphore _syncPause = new Semaphore(1);
   
   public PausableJPanelObserverStub(ToolControl ctrl)
   {
     super(ctrl) ;
-    this._lock.drainPermits();
+    this._syncMove.drainPermits();
     this._syncPause.drainPermits();
   }
 
@@ -35,11 +35,11 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
     }
   }
   
-  public void waitPanel()
+  public void waitMove()
   {
     try
     {
-      this._lock.acquire();
+      this._syncMove.acquire();
     }
     catch (InterruptedException e)
     {
@@ -79,11 +79,11 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
     _LOG.trace(String.format("start control set to %s", isEnable));
     if(isEnable)
     {
-      this._lock.release();
+      this._syncMove.release();
     }
     else
     {
-      this._lock.drainPermits();
+      this._syncMove.drainPermits();
     }
   }
 
@@ -108,6 +108,6 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   public void dispose()
   {
-    this._lock.release();
+    this._syncMove.release();
   }
 }

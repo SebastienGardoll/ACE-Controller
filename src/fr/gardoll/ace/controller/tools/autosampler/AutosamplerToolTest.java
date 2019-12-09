@@ -35,7 +35,7 @@ class AutosamplerToolTest
     this._ctrl = new AutosamplerToolControl(parametresSession);
     this._toolPanel = new PausableJPanelObserverStub(this._ctrl);
     this._ctrl.addControlPanel(this._toolPanel);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
 
   @AfterEach
@@ -43,7 +43,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** teardown");
     this._ctrl.close();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     ParametresSession.getInstance().close();
   }
 
@@ -64,7 +64,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testArm1n arm go to top");
     this._ctrl.armGoButee();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -72,7 +72,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testArm2n arm go to trash");
     this._ctrl.armGoTrash();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -82,7 +82,7 @@ class AutosamplerToolTest
     
     this.openColumnFile();
     this._ctrl.armGoColonne();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -91,7 +91,7 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm4n arm free move up");
     
     this._ctrl.armFreeMove(100);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -100,7 +100,7 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm5n arm free move down");
     
     this._ctrl.armFreeMove(-100);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
 
   @Test
@@ -109,7 +109,7 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm1c cancel arm go to top");
     this._ctrl.armGoButee();
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -119,7 +119,7 @@ class AutosamplerToolTest
     this._ctrl.armGoTrash();
     Thread.sleep(500);
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -131,7 +131,7 @@ class AutosamplerToolTest
     this._ctrl.armGoColonne();
     Thread.sleep(500);
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -142,7 +142,7 @@ class AutosamplerToolTest
     this._ctrl.armFreeMove(100);
     Thread.sleep(500);
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -153,7 +153,7 @@ class AutosamplerToolTest
     this._ctrl.armFreeMove(-100);
     Thread.sleep(500);
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -165,7 +165,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -178,7 +178,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -193,7 +193,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -207,7 +207,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -221,7 +221,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -229,7 +229,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel1n turn right");
     this._ctrl.carouselTurnRight();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -237,7 +237,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel2n turn left");
     this._ctrl.carouselTurnLeft();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -245,7 +245,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel3n go to position 10");
     this._ctrl.carouselGoPosition(10);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -255,7 +255,7 @@ class AutosamplerToolTest
     this._ctrl.carouselTurnRight();
     Thread.sleep(500);
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -265,7 +265,7 @@ class AutosamplerToolTest
     this._ctrl.carouselTurnLeft();
     Thread.sleep(500);
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -275,7 +275,7 @@ class AutosamplerToolTest
     this._ctrl.carouselGoPosition(10);
     Thread.sleep(500);
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -288,7 +288,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -301,7 +301,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -314,7 +314,7 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -323,7 +323,7 @@ class AutosamplerToolTest
     _LOG.info("******************** scripted test 1");
     _LOG.info("* arm goes to trash ; carousel turns left ; pause ; resume ; carousel move to pos 14 ; reinit *");
     this._ctrl.armGoTrash();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     
     this._ctrl.carouselTurnLeft();
     Thread.sleep(500);
@@ -331,13 +331,13 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     
     this._ctrl.carouselGoPosition(14);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     
     this._ctrl.reinit();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -352,16 +352,16 @@ class AutosamplerToolTest
     this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     
     this._ctrl.armGoTrash();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     
     this._ctrl.armGoTrash();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     
     this._ctrl.armGoButee();
     this._ctrl.cancel();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
 }

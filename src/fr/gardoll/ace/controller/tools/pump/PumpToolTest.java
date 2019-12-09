@@ -36,7 +36,7 @@ class PumpToolTest
     this._ctrl = new PumpToolControl(parametresSession);
     this._toolPanel = new PausableJPanelObserverStub(this._ctrl);
     this._ctrl.addControlPanel(this._toolPanel);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
 
   @AfterEach
@@ -44,7 +44,7 @@ class PumpToolTest
   {
     _LOG.info("******************** teardown");
     this._ctrl.close();
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
     ParametresSession.getInstance().close();
   }
   
@@ -55,7 +55,7 @@ class PumpToolTest
     SortedSet<Integer> lines = new TreeSet<Integer>();
     lines.add(1);
     this._ctrl.start(lines, 5);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -67,7 +67,7 @@ class PumpToolTest
     lines.add(2);
     lines.add(3);
     this._ctrl.start(lines, 5);
-    this._toolPanel.waitPanel();
+    this._toolPanel.waitMove();
   }
   
   @Test
@@ -105,7 +105,7 @@ class PumpToolTest
     SortedSet<Integer> lines = new TreeSet<Integer>();
     lines.add(1);
     this._ctrl.start(lines, 5);
-    PumpToolTest.this._toolPanel.waitPanel();
+    PumpToolTest.this._toolPanel.waitMove();
   }
   
   @Test
@@ -158,7 +158,7 @@ class PumpToolTest
     SortedSet<Integer> lines = new TreeSet<Integer>();
     lines.add(1);
     this._ctrl.start(lines, 5);
-    PumpToolTest.this._toolPanel.waitPanel();
+    PumpToolTest.this._toolPanel.waitMove();
   }
   
   @Test
@@ -196,7 +196,7 @@ class PumpToolTest
     SortedSet<Integer> lines = new TreeSet<Integer>();
     lines.add(1);
     this._ctrl.start(lines, 5);
-    PumpToolTest.this._toolPanel.waitPanel();
+    PumpToolTest.this._toolPanel.waitMove();
   }
   
   abstract class ControlPanelAdapter implements ControlPanel
