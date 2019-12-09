@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.BeforeEach ;
 import org.junit.jupiter.api.Test ;
 
+import fr.gardoll.ace.controller.core.Action ;
+import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
@@ -66,5 +68,151 @@ class PumpToolTest
     lines.add(3);
     this._ctrl.start(lines, 5);
     this._toolPanel.waitPanel();
+  }
+  
+  @Test
+  void test1c()
+  {
+    _LOG.info("******************** test1c cancel while infusing");
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case INFUSING:
+          {
+            try
+            {
+              Thread.sleep(250);
+            }
+            catch (InterruptedException e) {}
+            
+            PumpToolTest.this._ctrl.cancel();
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    SortedSet<Integer> lines = new TreeSet<Integer>();
+    lines.add(1);
+    this._ctrl.start(lines, 5);
+    PumpToolTest.this._toolPanel.waitPanel();
+  }
+  
+  @Test
+  void test2c()
+  {
+    _LOG.info("******************** test2c cancel while withdrawing");
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case WITHDRAWING:
+          {
+            try
+            {
+              Thread.sleep(250);
+            }
+            catch (InterruptedException e) {}
+            
+            PumpToolTest.this._ctrl.cancel();
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    SortedSet<Integer> lines = new TreeSet<Integer>();
+    lines.add(1);
+    this._ctrl.start(lines, 5);
+    PumpToolTest.this._toolPanel.waitPanel();
+  }
+  
+  abstract class ControlPanelAdapter implements ControlPanel
+  {
+    @Override
+    public void reportError(String msg, Throwable e)
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public void reportError(String msg)
+    {
+      // Nothing to do.  
+    }
+
+    @Override
+    public void displayModalMessage(String msg)
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public boolean close()
+    {
+      // Nothing to do.
+      return true;
+    }
+
+    @Override
+    public void dispose()
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public void enableStart(boolean isEnable)
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public void enableClose(boolean isEnable)
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public void enablePause(boolean isEnable)
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public void enableResume(boolean isEnable)
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public void enableCancel(boolean isEnable)
+    {
+      // Nothing to do.
+    }
+
+    @Override
+    public void enableReinit(boolean isEnable)
+    {
+      // Nothing to do.
+    }
   }
 }
