@@ -62,7 +62,7 @@ public class Valves implements Closeable
       
       default:
       {
-        debugMsg = String.format("openning valve '%s'", numEv);
+        debugMsg = String.format("openning the valve '%s'", numEv);
         break;
       }
     }
