@@ -162,6 +162,7 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm1p pause arm go to top");
     this._ctrl.armGoButee();
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -174,6 +175,7 @@ class AutosamplerToolTest
     this._ctrl.armGoTrash();
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -188,6 +190,7 @@ class AutosamplerToolTest
     this._ctrl.armGoColonne();
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -201,6 +204,7 @@ class AutosamplerToolTest
     this._ctrl.armFreeMove(100);
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -214,6 +218,7 @@ class AutosamplerToolTest
     this._ctrl.armFreeMove(-100);
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -280,6 +285,7 @@ class AutosamplerToolTest
     this._ctrl.carouselTurnRight();
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -292,6 +298,7 @@ class AutosamplerToolTest
     this._ctrl.carouselTurnLeft();
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -304,6 +311,7 @@ class AutosamplerToolTest
     this._ctrl.carouselGoPosition(10);
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -320,6 +328,7 @@ class AutosamplerToolTest
     this._ctrl.carouselTurnLeft();
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
@@ -340,6 +349,7 @@ class AutosamplerToolTest
     this._ctrl.carouselTurnRight();
     Thread.sleep(500);
     this._ctrl.pause();
+    this._toolPanel.waitPause();
     Thread.sleep(500);
     this._ctrl.resume();
     this._toolPanel.waitPanel();
