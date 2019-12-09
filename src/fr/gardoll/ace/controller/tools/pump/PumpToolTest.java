@@ -199,6 +199,59 @@ class PumpToolTest
     PumpToolTest.this._toolPanel.waitMove();
   }
   
+  @Test
+  void test2p()
+  {
+    _LOG.info("******************** test2p pause while withdrawing");
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case WITHDRAWING:
+          {
+            // The current thread is pause when _ctrl.pause is called.
+            // We must call resume method in another thread.
+            Runnable threadLogic = () -> 
+            {
+              try
+              {
+                Thread.sleep(250);
+              }
+              catch (InterruptedException e) {e.printStackTrace();}
+              
+              PumpToolTest.this._ctrl.pause();
+              PumpToolTest.this._toolPanel.waitPause();
+              try
+              {
+                Thread.sleep(500);
+              }
+              catch (InterruptedException e) {e.printStackTrace();}
+              PumpToolTest.this._ctrl.resume();              
+            };
+            
+            new Thread(threadLogic).start();
+            
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    SortedSet<Integer> lines = new TreeSet<Integer>();
+    lines.add(1);
+    this._ctrl.start(lines, 5);
+    PumpToolTest.this._toolPanel.waitMove();
+  }
+  
   abstract class ControlPanelAdapter implements ControlPanel
   {
     @Override
