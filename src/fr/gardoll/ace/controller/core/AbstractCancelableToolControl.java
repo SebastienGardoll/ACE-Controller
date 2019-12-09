@@ -61,6 +61,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
       this._pousseSeringue.cancel();
     }
     
+    _LOG.debug("thread is cancelled");
     this.notifyAction(new Action(ActionType.CANCEL_DONE, null));
     
     // Then reinitialize.
@@ -138,6 +139,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
       // Nothing to do.
     }
     
+    _LOG.debug("reinitialisation done");
     this.notifyAction(new Action(ActionType.REINIT_DONE, Optional.empty()));
   }
   

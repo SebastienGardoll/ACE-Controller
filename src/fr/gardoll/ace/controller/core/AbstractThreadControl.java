@@ -69,8 +69,6 @@ public abstract class AbstractThreadControl extends Thread
     }
     catch(CancellationException e)
     {
-      _LOG.debug("thread is canceled");
-      
       try
       {
         this._toolCtrl.getState().cancelTransition();
