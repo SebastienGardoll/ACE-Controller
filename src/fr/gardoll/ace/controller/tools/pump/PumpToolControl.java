@@ -136,12 +136,12 @@ class pumpThread extends AbstractThreadControl
       action = new Action(ActionType.USR_MSG, Optional.of(msg));
       this._toolCtrl.notifyAction(action);
       
-      action = new Action(ActionType.INFUSING, Optional.of(this._volume));
+      action = new Action(ActionType.WITHDRAWING, Optional.of(this._volume));
       this._toolCtrl.notifyAction(action);
       pump.rincageAspiration(this._volume, line.intValue());
       pump.finPompage();
       
-      action = new Action(ActionType.WITHDRAWING, Optional.of(this._volume));
+      action = new Action(ActionType.INFUSING, Optional.of(this._volume));
       this._toolCtrl.notifyAction(action);
       pump.vidange();
       pump.finPompage();
