@@ -38,7 +38,36 @@ public class Valves implements Closeable
   
   public void ouvrir(int numEv) throws ParaComException, InterruptedException
   {
-    _LOG.debug(String.format("openning valve '%s'", numEv));
+    String debugMsg = null;
+    
+    switch(numEv)
+    {
+      case NUM_SHUT_IV:
+      {
+        debugMsg = "shutting all the valves";
+        break;
+      }
+      
+      case NUM_EV_H2O:
+      {
+        debugMsg = "openning the H2O valve";
+        break;
+      }
+      
+      case NUM_EV_REFOULEMENT:
+      {
+        debugMsg = "openning the withdrawing valve";
+        break;
+      }
+      
+      default:
+      {
+        debugMsg = String.format("openning valve '%s'", numEv);
+        break;
+      }
+    }
+    
+    _LOG.debug(debugMsg);
     
     if (numEv < 0)
     {

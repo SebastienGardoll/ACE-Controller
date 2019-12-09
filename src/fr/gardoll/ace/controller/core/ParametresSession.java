@@ -140,7 +140,7 @@ public class ParametresSession implements Closeable
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_ACE_CONTROLLER);
       
       this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, DEFAULT_STRING_VALUE));
-      _LOG.debug(String.format("setting isDebug to %s", this._isDebug));
+      _LOG.debug(String.format("isDebug returns %s", this._isDebug));
     }
     catch (ConfigurationException e)
     {
