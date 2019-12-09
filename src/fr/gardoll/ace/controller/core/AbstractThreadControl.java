@@ -126,7 +126,7 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     {
-      _LOG.debug("pausing the thread");
+      _LOG.debug("ask the thread to pause");
       
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
@@ -159,7 +159,7 @@ public abstract class AbstractThreadControl extends Thread
   {
     try
     {
-      _LOG.debug("executing unpause");
+      _LOG.debug("resuming the thread");
       
       // Must take the lock so as to read the shared resources and
       // signalAll on the condition.
@@ -214,7 +214,7 @@ public abstract class AbstractThreadControl extends Thread
         this._is_pausing = false;
         
         // The method await must be called in a loop so as to prevent spurious wakeup.
-        _LOG.debug("begining to pause");
+        _LOG.debug("the thead is paused");
         while(this._has_to_pause)
         {
           // The thread is waiting the caller to wake it up.

@@ -69,7 +69,6 @@ public abstract class AbstractPausableToolControl extends AbstractCancelableTool
       @Override
       public void run()
       {
-        _LOG.debug("running the resume operations");
         try
         {
           AbstractPausableToolControl.this.getState().askResuming() ;
@@ -92,7 +91,7 @@ public abstract class AbstractPausableToolControl extends AbstractCancelableTool
   @Override
   public void resumeOperations() throws InterruptedException
   {
-    _LOG.info("resuming from pause");
+    _LOG.info("running the resume operations");
     this.notifyAction(new Action(ActionType.RESUME, null));
     
     if(this._hasAutosampler)

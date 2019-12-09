@@ -542,7 +542,7 @@ public class PousseSeringue implements Closeable
     }
     else
     {
-      _LOG.debug("ignore resuming the pump");
+      _LOG.debug("the pump has nothing to resume");
     }
   }
 
