@@ -602,6 +602,11 @@ public class PousseSeringue implements Closeable
     _LOG.debug(String.format("total raiming volume is '%s'", result));
     return result;                      
   }
+  
+  public boolean hasToDrain()
+  {
+    return (false == Utils.isNearZero(PousseSeringue._volumeReel));
+  }
 
   // vide la seringue entièrement même le volume de sécurité dans le tuyau de refoulement.
   // vide entièrement la seringue, volume de sécurité compris.
@@ -611,8 +616,15 @@ public class PousseSeringue implements Closeable
     // retour aux conditions initiales.
     this.flagVolSecu = false ;
     
-    // vidange.
-    this.algoRefoulement(PousseSeringue._volumeReel, Valves.NUM_EV_REFOULEMENT);
+    if(this.hasToDrain())
+    {
+      // vidange.
+      this.algoRefoulement(PousseSeringue._volumeReel, Valves.NUM_EV_REFOULEMENT);
+    }
+    else
+    {
+      _LOG.debug("the pump is already drained");
+    }
   }
 
   // renvoie le volume utile des n seringues moins VOL_SECU et VOL-AJUSTEMENT
