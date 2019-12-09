@@ -2,6 +2,8 @@ package fr.gardoll.ace.controller.ui;
 
 import java.util.concurrent.Semaphore ;
 
+import javax.swing.SwingUtilities ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -108,6 +110,15 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   public void dispose()
   {
-    this._syncMove.release();
+    // Call for enableStartControl is always executed by the thread AWT.
+    // At the end of the teardown of a test, dispose and enableStartControl
+    // are racing against each other for releasing/draining the permit of 
+    // _syncMove. So running dispose by AWT makes sure that dispose is called
+    // always after enableStartControl. 
+    SwingUtilities.invokeLater(()->
+    {
+      _LOG.debug("dispose");
+      this._syncMove.release();
+    });
   }
 }
