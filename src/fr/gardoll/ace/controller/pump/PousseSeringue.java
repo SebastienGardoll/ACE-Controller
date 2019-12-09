@@ -250,6 +250,7 @@ public class PousseSeringue implements Closeable
 
       this.interfacePousseSeringue.volw(volume);
 
+      _LOG.debug("run the pump");
       this.interfacePousseSeringue.run();
     }
     catch(SerialComException|ParaComException e)
@@ -304,6 +305,7 @@ public class PousseSeringue implements Closeable
 
       this.interfacePousseSeringue.voli(volume);
 
+      _LOG.debug("run the pump");
       this.interfacePousseSeringue.run();
     }
     catch(SerialComException|ParaComException e)
