@@ -19,7 +19,7 @@ public class CloseableJPanelObserverStub extends AbstractCloseableJPanelObserver
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    _LOG.info(String.format("display '%s'", msg.strip()));
+    _LOG.trace(String.format("display '%s'", msg.strip()));
   }
 
   @Override
@@ -31,6 +31,6 @@ public class CloseableJPanelObserverStub extends AbstractCloseableJPanelObserver
   @Override
   public void dispose()
   {
-    // Nothing to do.
+    _LOG.trace("dispose");
   }
 }
