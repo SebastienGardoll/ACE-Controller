@@ -219,7 +219,7 @@ public class Passeur implements Closeable
   //attente de la fin de mouvement
   public void finMoveCarrousel() throws InterruptedException
   {
-    _LOG.debug("waiting for the end of the carousel operation");
+    _LOG.debug("waiting for the carousel");
     boolean isMoving = true;
     do
     { 
@@ -252,7 +252,7 @@ public class Passeur implements Closeable
   {
     try
     {
-      _LOG.debug("waiting for the end of arm operation");
+      _LOG.debug("waiting for the arm");
       boolean isMoving = true;
       do
       { 
