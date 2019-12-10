@@ -321,18 +321,18 @@ public abstract class AbstractThreadControl extends Thread
           // The method await makes the thread to release the lock. 
           this._sync_await_cond.await(timeToWait, TimeUnit.MILLISECONDS);
         }
-        
-        // Cancel all operations, including the await method.
-        this.checkCancel(); 
-        // Let the thread enters into the pause state but the thread still have
-        // to wait until the given deadline, even if it is resumed before the
-        // deadline.
-        this.checkPause(); 
       }
       finally
       {
         this._sync.unlock();
       }
+      
+      // Cancel all operations, including the await method.
+      this.checkCancel(); 
+      // Let the thread enters into the pause state but the thread still have
+      // to wait until the given deadline, even if it is resumed before the
+      // deadline.
+      this.checkPause();
     }
     
     _LOG.debug("wait done");
