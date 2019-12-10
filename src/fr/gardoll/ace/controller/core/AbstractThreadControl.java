@@ -334,13 +334,13 @@ public abstract class AbstractThreadControl extends Thread
       }
     }
     
-    _LOG.debug("await done");
+    _LOG.debug("wait done");
   }
   
   @Override
   public void checkInterruption() throws InterruptedException
   {
-    _LOG.debug("checking interruption");
+    //_LOG.debug("checking interruption");
     
     // Don't call this.isInterrupted(), as this method takes the state of this
     // object that represents a thread rather than taking the
@@ -354,7 +354,7 @@ public abstract class AbstractThreadControl extends Thread
     }
     else
     {
-      _LOG.debug("nothing to do");
+      //_LOG.debug("nothing to do");
     }
   }
   
