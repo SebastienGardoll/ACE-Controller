@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.core;
 
+import java.time.Duration ;
+import java.time.Instant ;
 import java.util.Collections ;
 import java.util.Set ;
 import java.util.concurrent.locks.Condition ;
@@ -16,6 +18,11 @@ public abstract class AbstractThreadControl extends Thread
   // Fairness is on so as to yield the lock.
   private final ReentrantLock _sync = new ReentrantLock(true);
   private final Condition _sync_cond = _sync.newCondition();
+  private final Condition _sync_await_cond = _sync.newCondition();
+  
+  // Flag that tells when the thread is waiting for an amount of time
+  // (see await method).
+  private boolean _is_awaiting = false;
   
   // Shared resources. Must take the lock so as to read & write them.
   private boolean _has_to_pause    = false;
@@ -122,6 +129,33 @@ public abstract class AbstractThreadControl extends Thread
   @Override
   public boolean pause() throws InterruptedException
   {
+    if(false == (Thread.currentThread() == this))
+    {
+      return this.askPause();
+    }
+    else
+    {
+      _LOG.debug("pause: nothing to do");
+      return false;
+    }
+  }
+  
+  protected void selfTriggerPause() throws InterruptedException
+  {
+    if(Thread.currentThread() == this)
+    {
+      this.askPause();
+      this.checkCancel();
+      this.checkPause();
+    }
+    else
+    {
+      _LOG.debug("selfTriggerPause: nothing to do");
+    }
+  }
+  
+  private boolean askPause() throws InterruptedException
+  {
     try
     {
       _LOG.debug("ask the thread to pause");
@@ -129,11 +163,12 @@ public abstract class AbstractThreadControl extends Thread
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
       if(false == this._has_to_pause   &&
-         false == this._has_to_cancel &&
-         this._is_running           &&
-         false == (Thread.currentThread() == this))
+         false == this._has_to_cancel  &&
+         this._is_running)
       {
         this._has_to_pause = true;
+        
+        this.handleAwaitingThread();
 
         // The caller may wake up a terminated thread.
         // So return the state of the thread to the caller so as to skip
@@ -142,7 +177,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       else
       {
-        _LOG.debug("nothing to do");
+        _LOG.debug("innerPause: nothing to do");
         return false;
       }
     }
@@ -152,6 +187,14 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
+  // _sync must be lock before calling this method !
+  private void handleAwaitingThread()
+  {
+    // Wake up the thread if it is awaiting (see await method).
+    this._is_awaiting = false;
+    this._sync_await_cond.signalAll();
+  }
+
   @Override
   public boolean unPause() throws InterruptedException
   {
@@ -238,6 +281,62 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
+  public void await(int seconds) throws InterruptedException
+  {
+    final Instant deadline = Instant.now().plusSeconds(seconds);
+    _LOG.debug(String.format("wait until %s", deadline)) ;
+    Instant now = Instant.now();
+    
+    // Whatever the thread is pause, the thread must wait until the deadline.
+    while(now.isBefore(deadline))
+    {
+      // Must take the lock so as to read the shared resources.
+      this._sync.lockInterruptibly();
+      try
+      {
+        // Shared resource.
+        // Initialize the wait flag.
+        // It can be set to false by pause and cancel methods so as the thread
+        // to react to the pause/cancel triggers.
+        this._is_awaiting = true;
+        
+        // The method await must be called in a loop so as to prevent
+        // spurious wake up.
+        while(this._is_awaiting)
+        {
+          // Now must be computed each time the thread is waked up.
+          now = Instant.now(); 
+          
+          if(now.isAfter(deadline))
+          {
+            this._is_awaiting = false;
+            break; // Leave the inner while but not the outer most while.
+          }
+          
+          long nanosTimeout = Duration.between(now,deadline).getNano();
+          
+          // The thread is waiting nanosTimeout of time but it can be wake up
+          // by pause/cancel triggers.
+          // The method await makes the thread to release the lock. 
+          this._sync_await_cond.awaitNanos(nanosTimeout);
+        }
+        
+        // Cancel all operations, including the await method.
+        this.checkCancel(); 
+        // Let the thread enters into the pause state but the thread still have
+        // to wait until the given deadline, even if it is resumed before the
+        // deadline.
+        this.checkPause(); 
+      }
+      finally
+      {
+        this._sync.unlock();
+      }
+    }
+    
+    _LOG.debug("await done");
+  }
+  
   @Override
   public void checkInterruption() throws InterruptedException
   {
@@ -274,7 +373,9 @@ public abstract class AbstractThreadControl extends Thread
          false == (Thread.currentThread() == this))
       {
         this._has_to_cancel = true;
-         
+        
+        this.handleAwaitingThread();
+        
         // The caller may wake up as the thread is terminated.
         // So return the state of the thread to the caller so as to skip
         // any cancellation operations.
