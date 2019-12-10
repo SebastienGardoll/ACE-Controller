@@ -230,12 +230,28 @@ class AbstractThreadControlTest
     
     thread.join();
   }
-
+  
   @Test
   void test8() throws InterruptedException
   {
     System.out.println() ;
     System.out.println("######### TEST 8 #########") ;
+    System.out.println() ;
+    
+    WaitingThread thread = new WaitingThread(this._ctrl, 5);
+    thread.start();
+    
+    _LOG.debug("*** just waiting for the thread ****") ;
+    
+    thread.join();
+    _LOG.debug(String.format("*** state is: %s ***", this._ctrl.getState().getLiteral())) ;
+  }
+
+  @Test
+  void test9() throws InterruptedException
+  {
+    System.out.println() ;
+    System.out.println("######### TEST 9 #########") ;
     System.out.println() ;
     
     WaitingThread thread = new WaitingThread(this._ctrl, 5);
@@ -250,10 +266,10 @@ class AbstractThreadControlTest
   }
   
   @Test
-  void test9() throws InterruptedException
+  void test10() throws InterruptedException
   {
     System.out.println() ;
-    System.out.println("######### TEST 9 #########") ;
+    System.out.println("######### TEST 10 #########") ;
     System.out.println() ;
     
     WaitingThread thread = new WaitingThread(this._ctrl, 5);
@@ -272,10 +288,10 @@ class AbstractThreadControlTest
   }
 
   @Test
-  void test10() throws InterruptedException
+  void test11() throws InterruptedException
   {
     System.out.println() ;
-    System.out.println("######### TEST 10 #########") ;
+    System.out.println("######### TEST 11 #########") ;
     System.out.println() ;
     
     WaitingThread thread = new WaitingThread(this._ctrl, 5);
@@ -294,7 +310,7 @@ class AbstractThreadControlTest
   }
   
   @Test
-  void test11() throws InterruptedException
+  void test12() throws InterruptedException
   {
     System.out.println() ;
     System.out.println("######### TEST 11 #########") ;
