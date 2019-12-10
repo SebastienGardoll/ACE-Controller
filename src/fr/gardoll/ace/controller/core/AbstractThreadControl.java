@@ -135,7 +135,7 @@ public abstract class AbstractThreadControl extends Thread
       {
         this._has_to_pause = true;
 
-        // The caller may wake up as the thread is terminated.
+        // The caller may wake up a terminated thread.
         // So return the state of the thread to the caller so as to skip
         // any cancellation operations.
         return this._is_running;
@@ -216,7 +216,7 @@ public abstract class AbstractThreadControl extends Thread
         while(this._has_to_pause)
         {
           // The thread is waiting the caller to wake it up.
-          // the method await makes the thread to release the lock. 
+          // The method await makes the thread to release the lock. 
           this._sync_cond.await();
         }
         
