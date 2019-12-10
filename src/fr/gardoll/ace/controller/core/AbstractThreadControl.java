@@ -4,6 +4,7 @@ import java.time.Duration ;
 import java.time.Instant ;
 import java.util.Collections ;
 import java.util.Set ;
+import java.util.concurrent.TimeUnit ;
 import java.util.concurrent.locks.Condition ;
 import java.util.concurrent.locks.ReentrantLock ;
 
@@ -177,7 +178,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       else
       {
-        _LOG.debug("innerPause: nothing to do");
+        _LOG.debug("askPause: nothing to do");
         return false;
       }
     }
@@ -313,12 +314,14 @@ public abstract class AbstractThreadControl extends Thread
             break; // Leave the inner while but not the outer most while.
           }
           
-          long nanosTimeout = Duration.between(now,deadline).getNano();
+          long timeToWait = Duration.between(now,deadline).toMillis();
+          
+          _LOG.debug(String.format("waiting %s ms", timeToWait));
           
           // The thread is waiting nanosTimeout of time but it can be wake up
           // by pause/cancel triggers.
           // The method await makes the thread to release the lock. 
-          this._sync_await_cond.awaitNanos(nanosTimeout);
+          this._sync_await_cond.await(timeToWait, TimeUnit.MILLISECONDS);
         }
         
         // Cancel all operations, including the await method.
