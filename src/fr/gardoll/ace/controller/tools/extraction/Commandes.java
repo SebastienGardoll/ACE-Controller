@@ -19,7 +19,7 @@ import fr.gardoll.ace.controller.valves.Valves ;
 // TODO: singleton.
 // TODO: add logging
 // TODO: add user logging (high level)
-public class Commandes
+class Commandes
 {
   private final ParametresSession parametresSession;
 
@@ -34,7 +34,7 @@ public class Commandes
   private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
 
   //requires colonne != NULL
-  public Commandes (ToolControl toolCtrl, Colonne colonne)
+  Commandes (ToolControl toolCtrl, Colonne colonne)
       throws InitializationException, InterruptedException
   {
     this.colonne   = colonne;
@@ -51,7 +51,7 @@ public class Commandes
   
   //rinçe la tuyauterie selon le volume de rinçage et le nombre de cycle de parametresSession
   //requires numEv <= pousseSeringue.nbEvMax()
-  public void rincage(int numEv) throws InterruptedException
+  void rincage(int numEv) throws InterruptedException
   { 
     _LOG.info(String.format("rincing with valve %s", numEv));
     //le refoulement pour les rinçage se fait toujours au débit max.
@@ -79,18 +79,18 @@ public class Commandes
     this.passeur.vibration();
   }
 
-  public void rincageH2O() throws InterruptedException
+  void rincageH2O() throws InterruptedException
   { 
     this.rincage(Valves.NUM_EV_H2O) ;
   }
     
   //à la position de carrousel donnée
-  public void deplacementPasseur(int position) throws InterruptedException
+  void deplacementPasseur(int position) throws InterruptedException
   {
     this.deplacementPasseur(position, 0);
   }
   
-  public void deplacementPasseur(int position, int modificateur) throws InterruptedException
+  void deplacementPasseur(int position, int modificateur) throws InterruptedException
   {  
     //le bras est juste au dessus du réservoir de la colonne
     this.passeur.moveOrigineBras();
@@ -101,7 +101,7 @@ public class Commandes
   
   //à la position de la poubelle , bras à l'intérieur de poubelle
   //le bras se retrouve dans la poubelle
-  public void deplacementPasseurPoubelle() throws InterruptedException
+  void deplacementPasseurPoubelle() throws InterruptedException
   {
     int correction = 0 ;
 
@@ -119,7 +119,7 @@ public class Commandes
   }
   
   //fixe l'origine du bras juste au dessus des colonne
-  public void referencementBras() throws InterruptedException
+  void referencementBras() throws InterruptedException
   { //sans setOrigineBras() inclus ! 
     this.passeur.moveButeBras();
     this.passeur.finMoveBras() ;
@@ -136,7 +136,7 @@ public class Commandes
   //volume en mL                              
   //requires vol_demande > 0                  
   //requires numEv <= pousseSeringue.nbEvMax()                                                 
-  public void remplissageSeringue(double vol_demande, int numEv)
+  void remplissageSeringue(double vol_demande, int numEv)
       throws InterruptedException
   {
     if (vol_demande <= this.pousseSeringue.volumeRestant())
@@ -208,7 +208,7 @@ public class Commandes
   
   //requires volumeCible > 0
   //requires numEV <= pousseSeringue.nbEvMax()
-  public void distribution(int numColonne,
+  void distribution(int numColonne,
                            double volumeCible,
                            int numEv,
                            int nbColonneRestant) throws InterruptedException
@@ -282,13 +282,13 @@ public class Commandes
   //en fonction du volume d'acide donné
   // volume en microLitre                       
   //requires volume > 0
-  public int calculsDeplacement(double volume) //V doit être en mili litre !!!
+  int calculsDeplacement(double volume) //V doit être en mili litre !!!
   {  
     return this.passeur.convertCarrousel(this.colonne.calculsDeplacementCarrousel(volume)) ;
   }
   
   //procédures de fin de session.
-  public void finSession() throws InterruptedException
+  void finSession() throws InterruptedException
   {  
     this.pousseSeringue.fermetureEv() ;
     this.passeur.moveButeBras();
@@ -299,7 +299,7 @@ public class Commandes
   //qui ne le sont pas
   //attention si un thread est sur pause, l'appel par un autre thread
   //de cette fonction sera piégé dans la boucle de finMoveBras !!!
-  public void presentationPasseur(int sens) throws InterruptedException
+  void presentationPasseur(int sens) throws InterruptedException
   {
     this.passeur.moveButeBras();
     this.passeur.finMoveBras();
