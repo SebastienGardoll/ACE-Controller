@@ -102,21 +102,24 @@ public class Protocol
 
       int temps = sequenceSection.getInt(Names.SIP_CLEF_TEMPS, -1);
      
-      boolean pause = sequenceSection.getBoolean(Names.SIP_CLEF_PAUSE, null);
-      
+      int pauseCode = sequenceSection.getInteger(Names.SIP_CLEF_PAUSE, -1);
+
       if (nomAcide.isEmpty() ||
           numEv < 0          ||
           volume < 0.        ||
-          temps < 0)
+          temps < 0          ||
+          pauseCode < 0)
       {
         String msg = String.format("unable to read the speficication of sequence '%s'", (i+1));
         _LOG.fatal(msg);
         throw new InitializationException(msg);
       }
       
-      tempsTotal += this._tabSequence[i].temps;
+      boolean pause = (pauseCode == 1)?true:false;
       
       this._tabSequence[i] = new Sequence(nomAcide, numEv, volume, temps, pause);
+      
+      tempsTotal += temps;
       
       sequenceSection.close();
     }
