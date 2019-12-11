@@ -36,6 +36,9 @@ class ProtocolTest
     assertEquals(16, _PROTOCOL.nbMaxSequence);
     assertEquals(9180, _PROTOCOL.tempsTotal);
     assertEquals(TypeColonne.HYBRIDE, _PROTOCOL.colonne.getType());
+    assertEquals("Sebastien GARDOLL", _PROTOCOL.author);
+    assertEquals("Protocole d'extraction du Sr par la resine Sr-SPEC ( Eichrom ). Attentes non optimisees : elles correspondent  aux attentes des colonnes entonnoirs.", _PROTOCOL.comments);
+    assertEquals("11/05/2006", _PROTOCOL.date); 
   }
   
   @Test

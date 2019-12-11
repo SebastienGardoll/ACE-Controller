@@ -29,6 +29,12 @@ public class Protocol
   
   public final Colonne colonne ;
   
+  public final String author;
+  
+  public final String comments;
+  
+  public final String date;
+  
   public Protocol(Path cheminFichierProtocole) throws InitializationException
   {
     if(false == Files.isReadable(cheminFichierProtocole) &&
@@ -69,7 +75,14 @@ public class Protocol
           
       this.colonne = Colonne.getInstance(cheminColonne);
       
-      if(this.nomProtocole.isEmpty())
+      this.author = protocolMetadata.getString(Names.SIP_CLEF_AUTEUR, "");
+      this.comments = protocolMetadata.getString(Names.SIP_CLEF_COMMENTAIRES, "");
+      this.date = protocolMetadata.getString(Names.CLEF_DATE, "");
+      
+      if(this.nomProtocole.isEmpty() ||
+         this.comments.isEmpty()     ||
+         this.author.isEmpty()       ||
+         this.date.isEmpty())
       {
         String msg = String.format("corrupted protocol metadata file '%s'",
                                    cheminFichierProtocole);
