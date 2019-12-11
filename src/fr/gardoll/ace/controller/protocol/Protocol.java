@@ -55,24 +55,28 @@ public class Protocol
       throw new InitializationException(msg,e);
     }
     
-    SubnodeConfiguration colSection = iniConf.getSection(Names.SEC_INFO_PROTOCOLE);
-    
-    this.nbMaxSequence = colSection.size() - 1; // - 1 due à la section informations
-    
-    this.nomProtocole = colSection.getString(Names.SIP_CLEF_NOM_PROTO, "");
-    
-    this._tabSequence  = new Sequence[this.nbMaxSequence];
-    
-    String cheminColonne = colSection.getString(Names.SIP_CLEF_CHEMIN_FICHIER_COL, ""); 
-        
-    this.colonne = Colonne.getInstance(cheminColonne);
-    
-    if(this.nomProtocole.isEmpty())
     {
-      String msg = String.format("corrupted protocol metadata file '%s'",
-                                 cheminFichierProtocole);
-      _LOG.fatal(msg);
-      throw new InitializationException(msg);
+      SubnodeConfiguration protocolMetadata = iniConf.getSection(Names.SEC_INFO_PROTOCOLE);
+      
+      this.nbMaxSequence = protocolMetadata.size() - 1; // - 1 due à la section informations
+      
+      this.nomProtocole = protocolMetadata.getString(Names.SIP_CLEF_NOM_PROTO, "");
+      
+      this._tabSequence  = new Sequence[this.nbMaxSequence];
+      
+      String cheminColonne = protocolMetadata.getString(Names.SIP_CLEF_CHEMIN_FICHIER_COL, ""); 
+          
+      this.colonne = Colonne.getInstance(cheminColonne);
+      
+      if(this.nomProtocole.isEmpty())
+      {
+        String msg = String.format("corrupted protocol metadata file '%s'",
+                                   cheminFichierProtocole);
+        _LOG.fatal(msg);
+        throw new InitializationException(msg);
+      }
+      
+      protocolMetadata.close();
     }
     
     /***********************************************************************/
@@ -88,17 +92,17 @@ public class Protocol
     
     for ( int i = 0 ; i < this.nbMaxSequence ; i ++ )
     {
-      colSection = iniConf.getSection(String.valueOf((i+1)));
+      SubnodeConfiguration sequenceSection = iniConf.getSection(String.valueOf((i+1)));
       
-      String nomAcide = colSection.getString(Names.SIP_CLEF_ACIDE, "");
+      String nomAcide = sequenceSection.getString(Names.SIP_CLEF_ACIDE, "");
       
-      int numEv = colSection.getInt(Names.SIP_CLEF_NUM_EV, -1);
+      int numEv = sequenceSection.getInt(Names.SIP_CLEF_NUM_EV, -1);
       
-      double volume = colSection.getDouble(Names.SIP_CLEF_VOL, -1.);
+      double volume = sequenceSection.getDouble(Names.SIP_CLEF_VOL, -1.);
 
-      int temps = colSection.getInt(Names.SIP_CLEF_TEMPS, -1);
+      int temps = sequenceSection.getInt(Names.SIP_CLEF_TEMPS, -1);
      
-      boolean pause = colSection.getBoolean(Names.SIP_CLEF_PAUSE, null);
+      boolean pause = sequenceSection.getBoolean(Names.SIP_CLEF_PAUSE, null);
       
       if (nomAcide.isEmpty() ||
           numEv < 0          ||
@@ -113,6 +117,8 @@ public class Protocol
       tempsTotal += this._tabSequence[i].temps;
       
       this._tabSequence[i] = new Sequence(nomAcide, numEv, volume, temps, pause);
+      
+      sequenceSection.close();
     }
     
     this.tempsTotal = tempsTotal;

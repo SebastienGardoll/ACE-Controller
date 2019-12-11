@@ -38,6 +38,8 @@ public class CCylindre extends Colonne
       double tmp =  Math.PI * Math.pow (this.diametre/2 , 2 ) * this.hauteurCylindre ;  //en µL
       this._volumeReservoir = tmp / 1000 ; //passage au mL
     }
+    
+    this.close();
   }
   
   @Override

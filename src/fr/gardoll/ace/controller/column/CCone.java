@@ -5,8 +5,8 @@ import java.nio.file.Path ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Names ;
 
 public class CCone extends Colonne
 {
@@ -56,6 +56,8 @@ public class CCone extends Colonne
       double tmp = Math.PI * this.hauteurCone * (Math.pow (this.diametreSup/2, 2) + (this.diametreSup * this.diametreInf)/4 + Math.pow (this.diametreInf/2, 2)) / 3; //en µL
       this._volumeReservoir = tmp / 1000 ; //passage au mL
     }
+    
+    this.close();
   }
   
   @Override

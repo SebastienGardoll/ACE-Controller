@@ -18,6 +18,7 @@ public class CHybride extends Colonne
     this.cone = new CCone(cheminFichierColonne);
     this.cylindre = new CCylindre(cheminFichierColonne);
     this.volumeRetard = this.cone.volumeEquivalentCylindre() - this.cone.volumeReservoir() ;
+    this.close();
   }
   
   @Override

@@ -1,6 +1,5 @@
 package fr.gardoll.ace.controller.column;
 
-import java.io.Closeable ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
 import java.nio.file.Paths ;
@@ -16,7 +15,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Names ;
 
 // TODO: add logging
-public abstract class Colonne implements Closeable
+public abstract class Colonne
 {
   public static final String COLUMN_FILE_EXTENTION = "cln";
   
@@ -118,8 +117,7 @@ public abstract class Colonne implements Closeable
     return this._type;
   }
   
-  @Override
-  public void close()
+  void close()
   {
     this._colSection.close();
   }
