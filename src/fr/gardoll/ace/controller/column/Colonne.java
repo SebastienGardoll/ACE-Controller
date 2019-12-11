@@ -122,6 +122,11 @@ public abstract class Colonne
     this._colSection.close();
   }
   
+  public Path getColumnFilePath()
+  {
+    return this._fichierColonne;
+  }
+  
   public static Colonne getInstance(String filePath) throws InitializationException
   {
     Path columnPath = Paths.get(filePath);
