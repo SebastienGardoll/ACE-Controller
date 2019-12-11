@@ -55,10 +55,11 @@ public class Protocol
       throw new InitializationException(msg,e);
     }
     
+    // - 1 due à la section informations
+    this.nbMaxSequence = iniConf.getSections().size() - 1;
+    
     {
       SubnodeConfiguration protocolMetadata = iniConf.getSection(Names.SEC_INFO_PROTOCOLE);
-      
-      this.nbMaxSequence = protocolMetadata.size() - 1; // - 1 due à la section informations
       
       this.nomProtocole = protocolMetadata.getString(Names.SIP_CLEF_NOM_PROTO, "");
       
