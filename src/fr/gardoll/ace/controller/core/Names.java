@@ -8,7 +8,7 @@ public class Names
   public static final String CONFIG_FILENAME   = "configuration.ini";
   
   public static final String LOG_DIRNAME       = "log"; 
-  public static final String PROTOCOLE_DIRNAME = "protocoles";
+  public static final String PROTOCOL_DIRNAME  = "protocoles";
   public static final String COLUMN_DIRNAME    = "columns";
   public static final String CAROUSEL_DIRNAME  = "carousel";
   
