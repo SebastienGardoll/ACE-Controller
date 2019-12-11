@@ -21,6 +21,12 @@ public class ExtractionThreadControl extends AbstractThreadControl
   protected void threadLogic() throws InterruptedException,
       CancellationException, InitializationException, Exception
   {
-    
+    /*
+    To be computed
+    int previousTime;
+    int previousNumEv;
+    int previousVolume;
+    boolean isLastSequence;
+    */
   }
 }
