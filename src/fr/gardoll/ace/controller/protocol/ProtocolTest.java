@@ -28,7 +28,6 @@ class ProtocolTest
     _PROTOCOL = new Protocol(protocolFilePath);
   }
 
-
   @Test
   void test1()
   {
