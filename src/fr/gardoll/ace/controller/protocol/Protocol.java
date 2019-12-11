@@ -2,7 +2,6 @@ package fr.gardoll.ace.controller.protocol;
 
 import java.nio.file.Files ;
 import java.nio.file.Path ;
-import java.util.Optional ;
 
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
@@ -101,26 +100,6 @@ public class Protocol
      
       boolean pause = colSection.getBoolean(Names.SIP_CLEF_PAUSE, null);
       
-      boolean derniereSequence = false;
-      if((i+1) == this.nbMaxSequence)
-      {
-        derniereSequence = true;
-      }
-      
-      Optional<Integer> tempsPrecedent = Optional.empty();
-      if(i != 0)
-      {
-        tempsPrecedent = Optional.of(this._tabSequence[i-1].temps) ;
-      }
-      
-      Optional<Integer> numEvSuivant = Optional.empty();
-      Optional<Double> volumeSuivant = Optional.empty();
-      if((i+1) != this.nbMaxSequence)
-      {
-        numEvSuivant  = Optional.of(this._tabSequence[(i+1)].numEv);
-        volumeSuivant = Optional.of(this._tabSequence[(i+1)].volume);
-      }
-      
       if (nomAcide.isEmpty() ||
           numEv < 0          ||
           volume < 0.        ||
@@ -133,8 +112,7 @@ public class Protocol
       
       tempsTotal += this._tabSequence[i].temps;
       
-      this._tabSequence[i] = new Sequence(nomAcide, numEv, volume, temps, pause,
-          derniereSequence, numEvSuivant, volumeSuivant, tempsPrecedent);
+      this._tabSequence[i] = new Sequence(nomAcide, numEv, volume, temps, pause);
     }
     
     this.tempsTotal = tempsTotal;
