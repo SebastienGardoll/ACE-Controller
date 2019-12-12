@@ -280,7 +280,7 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  public void await(int seconds) throws InterruptedException
+  public void await(long seconds) throws InterruptedException
   {
     final Instant deadline = Instant.now().plusSeconds(seconds);
     _LOG.debug(String.format("wait until %s", deadline)) ;
