@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.tools.extraction;
 
 import java.util.Optional ;
 
+import org.apache.commons.lang3.tuple.ImmutablePair ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -53,7 +54,19 @@ class Commandes
   //requires numEv <= pousseSeringue.nbEvMax()
   void rincage(int numEv) throws InterruptedException
   { 
-    _LOG.info(String.format("rincing with valve %s", numEv));
+    if(numEv == Valves.NUM_EV_H2O)
+    {
+      _LOG.info("rince with H20");
+      Action action = new Action(ActionType.H2O_RINCE, Optional.empty()) ;
+      this._toolCtrl.notifyAction(action) ;
+    }
+    else
+    {
+      _LOG.info(String.format("rincing with valve %s", numEv));
+      Action action = new Action(ActionType.RINCE, Optional.of(numEv)) ;
+      this._toolCtrl.notifyAction(action) ;
+    }
+    
     //le refoulement pour les rinçage se fait toujours au débit max.
     this.pousseSeringue.setDebitRefoulement(this.parametresSession.debitMaxPousseSeringue()); 
                                                                                     
@@ -141,6 +154,9 @@ class Commandes
   {
     if (vol_demande <= this.pousseSeringue.volumeRestant())
     {
+      String msg = String.format("ask withdrawing %s mL from valve %s but pump has enough of it",
+          vol_demande, numEv);
+      _LOG.debug(msg);
       return ;
     }
     else
@@ -153,6 +169,13 @@ class Commandes
                       - this.pousseSeringue.volumeRestant() ;
       }
 
+      String msg = String.format("withdraw %s mL from valve %s", vol_demande, numEv);
+      _LOG.debug(msg);
+      
+      Optional<Object> opt = Optional.of(ImmutablePair.of(vol_demande, numEv));
+      Action action = new Action(ActionType.REFILL_PUMP, opt) ;
+      this._toolCtrl.notifyAction(action) ;
+      
       this.pousseSeringue.aspiration(vol_demande, numEv) ;
       this.pousseSeringue.finPompage() ;
     }
