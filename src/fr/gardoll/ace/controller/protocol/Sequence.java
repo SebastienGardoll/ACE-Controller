@@ -16,4 +16,23 @@ public class Sequence
     this.temps = temps;
     this.pause = pause;
   }
+  
+  @Override
+  public String toString()
+  {
+    String result = null;
+    
+    if(this.pause)
+    {
+      result = String.format("%s mL of %s(%s) during %s %s (pause)",
+          this.volume, this.nomAcide, this.numEv, this.temps);
+    }
+    else
+    {
+      result = String.format("%s mL of %s(%s) during %s %s",
+          this.volume, this.nomAcide, this.numEv, this.temps);
+    }
+    
+    return result;
+  }
 }
