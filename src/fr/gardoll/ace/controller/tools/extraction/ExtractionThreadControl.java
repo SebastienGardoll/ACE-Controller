@@ -177,13 +177,15 @@ public class ExtractionThreadControl extends AbstractThreadControl
   }
 
   private void processSequence(Sequence currentSequence, Commandes commandes,
-      Instant[] tabTemps, boolean preliminaires, int nbColonne)
+                               Instant[] tabTemps, boolean preliminaires,
+                               int nbColonne)
   {
     // TODO Auto-generated method stub
   }
 
   private void processSequence(Sequence currentSequence, Commandes commandes,
-      Instant[] tabTemps, boolean preliminaires, int nbColonne, int numColonne)
+                               Instant[] tabTemps, boolean preliminaires,
+                               int nbColonne, int numColonne)
   {
     // TODO Auto-generated method stub
   }
