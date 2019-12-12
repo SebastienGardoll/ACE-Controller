@@ -8,6 +8,7 @@ import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
 import javax.swing.SwingUtilities ;
 
+import org.apache.commons.lang3.tuple.Pair ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -15,6 +16,7 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.protocol.Sequence ;
 
 public abstract class AbstractJPanelObserver  extends JPanel implements ControlPanel
 {
@@ -232,7 +234,65 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       case DRAIN_PUMP:
       {
-        msg = "drain the pump";
+        msg = "draining the pump";
+        break;
+      }
+      
+      case BEGIN_SEQUENCE:
+      {
+        @SuppressWarnings("unchecked")
+        Pair<Integer, Sequence> pair = (Pair<Integer, Sequence>) action.data.get(); 
+        Integer sequenceIndex = pair.getLeft();
+        Sequence sequence = pair.getRight();
+        msg = String.format("starting sequence %s: %s", sequenceIndex, sequence);
+        break;
+      }
+      
+      case SEQUENCE_AWAIT:
+      {
+        msg = String.format("waiting %s seconds until the last column processed is done",
+                            action.data.get());
+        break;
+      }
+      
+      case SEQUENCE_AWAIT_DONE:
+      {
+        msg = "wait done, proceed next";
+        break;
+      }
+      
+      case H2O_RINCE:
+      {
+        msg = "rincing with H20";
+        break;
+      }
+      
+      case RINCE:
+      {
+        msg = String.format("rincing with eluent from valve %s", action.data.get());
+        break;
+      }
+      
+      case REFILL_PUMP:
+      {
+        @SuppressWarnings("unchecked")
+        Pair<Double, Integer> pair = (Pair<Double, Integer>) action.data.get(); 
+        Double volume = pair.getLeft();
+        Integer numEv = pair.getRight();
+        msg = String.format("refilling the pump with %s mL from valve %s",
+            volume, numEv);
+        break;
+      }
+      
+      case SEQUENCE_PAUSE:
+      {
+        msg = "waiting for the operator";
+        break;
+      }
+      
+      case END_SESSION:
+      {
+        msg = "the session is completed";
         break;
       }
       
