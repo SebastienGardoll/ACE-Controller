@@ -25,12 +25,11 @@ public class ExtractionThreadControl extends AbstractThreadControl
   private final Protocol _protocol ;
   
   public ExtractionThreadControl(AbstractToolControl toolCtrl,
-                                 InitSession initSession,
-                                 Protocol protocol)
+                                 InitSession initSession) throws InitializationException
   {
     super(toolCtrl) ;
     this._initSession = initSession;
-    this._protocol = protocol;
+    this._protocol = new Protocol(initSession.cheminFichierProtocole);
   }
   
   @Override
