@@ -5,10 +5,10 @@ public class Sequence
   public final String nomAcide ;
   public final int numEv ;
   public final double volume ; //en mL
-  public final int temps ;   // en seconde
+  public final long temps ;   // en seconde
   public final boolean pause ;
 
-  public Sequence(String nomAcide, int numEv, double volume, int temps, boolean pause)
+  public Sequence(String nomAcide, int numEv, double volume, long temps, boolean pause)
   {
     this.nomAcide = nomAcide;
     this.numEv = numEv;

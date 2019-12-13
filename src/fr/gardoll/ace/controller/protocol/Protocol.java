@@ -114,7 +114,7 @@ public class Protocol
       
       double volume = sequenceSection.getDouble(Names.SIP_CLEF_VOL, -1.);
 
-      int temps = sequenceSection.getInt(Names.SIP_CLEF_TEMPS, -1);
+      long temps = sequenceSection.getLong(Names.SIP_CLEF_TEMPS, -1);
      
       int pauseCode = sequenceSection.getInteger(Names.SIP_CLEF_PAUSE, -1);
 
