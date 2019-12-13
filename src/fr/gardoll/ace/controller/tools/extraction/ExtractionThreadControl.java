@@ -37,6 +37,12 @@ public class ExtractionThreadControl extends AbstractThreadControl
   protected void threadLogic() throws InterruptedException,
       CancellationException, InitializationException, Exception
   {
+    {
+      _LOG.info("starting session");
+      Action action = new Action(ActionType.SESSION_START, Optional.empty()) ;
+      this._toolCtrl.notifyAction(action) ;
+    }
+    
     _LOG.debug("instantiate commandes");
     Commandes commandes = new Commandes(this._toolCtrl, this._protocol.colonne);
     
@@ -54,6 +60,8 @@ public class ExtractionThreadControl extends AbstractThreadControl
     }
     
     boolean reprise = this._initSession.numColonne != 1;
+    
+    Optional<Long> tempsPrecedent = Optional.empty();
     
     // attention le <= est très important car sequenceIndex doit être = à nbMaxSequence
     for(int sequenceIndex = this._initSession.numSequence;
@@ -79,13 +87,14 @@ public class ExtractionThreadControl extends AbstractThreadControl
         
         Optional<Object> opt = Optional.of(ImmutablePair.of(sequenceIndex,
             currentSequence));
-        Action action = new Action(ActionType.BEGIN_SEQUENCE, opt) ;
+        Action action = new Action(ActionType.SEQUENCE_START, opt) ;
         this._toolCtrl.notifyAction(action) ;
       }
       
       if(reprise)
       {
         processSequence(currentSequence, commandes, tabTemps, preliminaires,
+                        tempsPrecedent,
                         this._initSession.nbColonne,
                         this._initSession.numColonne);
         
@@ -94,7 +103,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       else
       {
         processSequence(currentSequence, commandes, tabTemps, preliminaires,
-                        this._initSession.nbColonne);
+                        tempsPrecedent, this._initSession.nbColonne);
       }
       
       if(currentSequence.pause || // Pause.
@@ -114,6 +123,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
           
           this.await(tempsAttente); // Blocking.
           
+          _LOG.info("wait done");
           action = new Action(ActionType.SEQUENCE_AWAIT_DONE, Optional.empty()) ;
           this._toolCtrl.notifyAction(action) ;
         }
@@ -165,28 +175,109 @@ public class ExtractionThreadControl extends AbstractThreadControl
       
       // effectuer qu'une fois par appel de OrganiseurThreadSequence
       preliminaires = false ;
+      
+      tempsPrecedent = Optional.of(currentSequence.temps);
+      
+      {
+        _LOG.info(String.format("sequence %s is completed", sequenceIndex));
+        Action action = new Action(ActionType.SEQUENCE_DONE, Optional.empty()) ;
+        this._toolCtrl.notifyAction(action) ;
+      }
     } //fin du for
     
     commandes.finSession();
     
     {
       _LOG.info("session is completed");
-      Action action = new Action(ActionType.END_SESSION, Optional.empty()) ;
+      Action action = new Action(ActionType.SESSION_DONE, Optional.empty()) ;
       this._toolCtrl.notifyAction(action) ;
     }
   }
 
   private void processSequence(Sequence currentSequence, Commandes commandes,
                                Instant[] tabTemps, boolean preliminaires,
-                               int nbColonne)
+                               Optional<Long> tempsPrecedent, int nbColonne)
+                                   throws InterruptedException
   {
-    // TODO Auto-generated method stub
+    processSequence(currentSequence, commandes, tabTemps, preliminaires,
+                    tempsPrecedent, this._initSession.nbColonne, 1);
   }
 
-  private void processSequence(Sequence currentSequence, Commandes commandes,
+  private void processSequence(Sequence sequence, Commandes commandes,
                                Instant[] tabTemps, boolean preliminaires,
-                               int nbColonne, int numColonne)
+                               Optional<Long> tempsPrecedent,
+                               int nbColonne, int numColonne) throws InterruptedException
   {
-    // TODO Auto-generated method stub
+    //--------------------------------------------------------------------------
+    // Conditions initiales : tuyauterie purgée d'air
+    //                         seringue vide et purgée d'air
+    //                         bras n'import où
+    //                         carrousel sur la position de la poubelle et référencé
+    //--------------------------------------------------------------------------
+
+    /************ INTERVALES ************
+
+     numcolonnes : 1 à nbColonnes inclus
+
+     tabTemps : 0 à nbColonnes-1 inclus
+
+    *************            *************/
+    
+    /* DEBUT PRELIMINAIRES */
+    if(preliminaires)
+    {
+      // maintenant l'origine du bras correspond à au dessus de la colonne
+      commandes.referencementBras();
+      
+      commandes.deplacementPasseurPoubelle();
+      
+      commandes.rincageH2O();
+      
+      commandes.rincage(sequence.numEv) ;
+    }
+    /* FIN PRELIMINAIRES */
+    
+    //bras dans la poubelle, carrousel position poubelle
+    //seringues vides et purgées d'air
+    
+    for(; numColonne <= nbColonne ; numColonne++)       // algo testé le 12/01/05
+    {
+      int nbColonneRestant = nbColonne - numColonne ;
+      
+      //mettre indication d'attente !!
+      
+      //ok 10/01/06
+      long tempsEcoule = Duration.between(Instant.now(),tabTemps[numColonne-1]).toSeconds();
+      
+      if(false == tempsPrecedent.isEmpty() &&
+         tempsEcoule < tempsPrecedent.get())
+      {
+        long timeToWait = tempsPrecedent.get() - tempsEcoule + 1;
+        
+        String msg = String.format("wait %s seconds until the next column percolates",
+                                   timeToWait);
+        _LOG.info(msg);
+        Action action = new Action(ActionType.SEQUENCE_AWAIT, Optional.of(timeToWait)) ;
+        this._toolCtrl.notifyAction(action) ;
+        
+        this.await(timeToWait); // Blocking.
+        
+        _LOG.info("wait done, processing next column");
+        action = new Action(ActionType.SEQUENCE_AWAIT_DONE, Optional.empty()) ;
+        this._toolCtrl.notifyAction(action) ;
+      }
+      
+      //1ère sequence => pas d'attente
+      
+      commandes.distribution(numColonne, sequence.volume, sequence.numEv, nbColonneRestant);
+      tabTemps[numColonne-1] = Instant.now() ; //ok 10/01/06
+
+      // Must keep the sleep even after C++ translation because elution times
+      // are computed with this wait in all the protocols.
+      Thread.sleep(2000) ;    //pourquoi Sleep ?
+      
+    } //fin du for
+    
+    commandes.deplacementPasseurPoubelle();//retour à la poubelle
   }
 }
