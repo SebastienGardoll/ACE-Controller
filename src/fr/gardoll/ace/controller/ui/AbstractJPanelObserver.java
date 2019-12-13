@@ -238,7 +238,7 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
-      case BEGIN_SEQUENCE:
+      case SEQUENCE_START:
       {
         @SuppressWarnings("unchecked")
         Pair<Integer, Sequence> pair = (Pair<Integer, Sequence>) action.data.get(); 
@@ -250,14 +250,20 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       case SEQUENCE_AWAIT:
       {
-        msg = String.format("waiting %s seconds until the last column processed is done",
+        msg = String.format("waiting %s seconds until the column processing is done",
                             action.data.get());
         break;
       }
       
       case SEQUENCE_AWAIT_DONE:
       {
-        msg = "wait done, proceed next";
+        msg = "wait done";
+        break;
+      }
+      
+      case SEQUENCE_DONE:
+      {
+        msg = String.format("sequence %s is completed", action.data.get());
         break;
       }
       
@@ -290,9 +296,39 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
-      case END_SESSION:
+      case SESSION_START:
+      {
+        msg = "starting the session";
+        break;
+      }
+      
+      case SESSION_DONE:
       {
         msg = "the session is completed";
+        break;
+      }
+      
+      case INDEX_ARM:
+      {
+        msg = "indexing the arm above the column";
+        break;
+      }
+      
+      case CAROUSEL_TO_TRASH:
+      {
+        msg = "moving the carousel to the trash position";
+        break;
+      }
+      
+      case COLUMN_DIST_START:
+      {
+        msg = String.format("processing column %s", action.data.get());
+        break;
+      }
+      
+      case COLUMN_DIST_DONE:
+      {
+        msg = String.format("column %s is completed", action.data.get());
         break;
       }
       
