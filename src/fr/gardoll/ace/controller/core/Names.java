@@ -1,8 +1,28 @@
 package fr.gardoll.ace.controller.core;
 
+import java.nio.file.Path ;
+
 public class Names
 {
   private Names() {}
+  
+  public static Path computeProtocolFilePath(String protocolFileName)
+  {
+    Path rootDir = Utils.getInstance().getRootDir();
+    Path protocolFilePath = rootDir.resolve(Names.CONFIG_DIRNAME)
+                                   .resolve(Names.PROTOCOL_DIRNAME)
+                                   .resolve(protocolFileName);
+    return protocolFilePath;
+  }
+  
+  public static Path computeColumnFilePath(String columnFileName)
+  {
+    Path rootDir = Utils.getInstance().getRootDir();
+    Path filePath = rootDir.resolve(Names.CONFIG_DIRNAME)
+                           .resolve(Names.COLUMN_DIRNAME)
+                           .resolve(columnFileName);
+    return filePath;
+  }
   
   public static final String CONFIG_DIRNAME    = "conf";
   public static final String CONFIG_FILENAME   = "configuration.ini";

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test ;
 
 import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
-import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
 class AutosamplerToolTest
@@ -51,12 +50,9 @@ class AutosamplerToolTest
   {
     String columnFileName = "nouvelle colonne.cln";
     
-    Path rootDir = Utils.getInstance().getRootDir();
-    Path filePath = rootDir.resolve(Names.CONFIG_DIRNAME)
-                           .resolve(Names.COLUMN_DIRNAME)
-                           .resolve(columnFileName);
+    Path columnFilePath = Names.computeColumnFilePath(columnFileName);
     
-    this._ctrl.openColumn(filePath);
+    this._ctrl.openColumn(columnFilePath);
   }
   
   @Test
