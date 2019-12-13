@@ -19,7 +19,6 @@ import fr.gardoll.ace.controller.valves.Valves ;
 
 // TODO: singleton.
 // TODO: add logging
-// TODO: add user logging (high level)
 class Commandes
 {
   private final ParametresSession parametresSession;
@@ -116,6 +115,10 @@ class Commandes
   //le bras se retrouve dans la poubelle
   void deplacementPasseurPoubelle() throws InterruptedException
   {
+    _LOG.info("moving the carousel to the trash position");
+    Action action = new Action(ActionType.CAROUSEL_TO_TRASH, Optional.empty()) ;
+    this._toolCtrl.notifyAction(action) ;
+    
     int correction = 0 ;
 
     this.deplacementPasseur(0) ;
@@ -133,7 +136,12 @@ class Commandes
   
   //fixe l'origine du bras juste au dessus des colonne
   void referencementBras() throws InterruptedException
-  { //sans setOrigineBras() inclus ! 
+  { 
+    _LOG.info("indexing the arm above the column");
+    Action action = new Action(ActionType.INDEX_ARM, Optional.empty()) ;
+    this._toolCtrl.notifyAction(action) ;
+    
+    //sans setOrigineBras() inclus ! 
     this.passeur.moveButeBras();
     this.passeur.finMoveBras() ;
     this.passeur.setOrigineBras();
@@ -156,7 +164,7 @@ class Commandes
     {
       String msg = String.format("ask withdrawing %s mL from valve %s but pump has enough of it",
           vol_demande, numEv);
-      _LOG.debug(msg);
+      _LOG.info(msg);
       return ;
     }
     else
@@ -170,7 +178,7 @@ class Commandes
       }
 
       String msg = String.format("withdraw %s mL from valve %s", vol_demande, numEv);
-      _LOG.debug(msg);
+      _LOG.info(msg);
       
       Optional<Object> opt = Optional.of(ImmutablePair.of(vol_demande, numEv));
       Action action = new Action(ActionType.REFILL_PUMP, opt) ;
@@ -232,10 +240,18 @@ class Commandes
   //requires volumeCible > 0
   //requires numEV <= pousseSeringue.nbEvMax()
   void distribution(int numColonne,
-                           double volumeCible,
-                           int numEv,
-                           int nbColonneRestant) throws InterruptedException
+                    double volumeCible,
+                    int numEv,
+                    int nbColonneRestant) throws InterruptedException
   {
+    {
+      String msg = String.format("processing column %s", numColonne);
+      _LOG.info(msg);
+      
+      Action action = new Action(ActionType.COLUMN_DIST_START, Optional.of(numColonne)) ;
+      this._toolCtrl.notifyAction(action) ;
+    }
+    
     double vol_deja_delivre = 0. ;
 
     double vol_delivre ;
@@ -289,7 +305,15 @@ class Commandes
       }
     }//fin du while
 
-    this.passeur.vibration(); 
+    this.passeur.vibration();
+    
+    {
+      String msg = String.format("column %s completed", numColonne);
+      _LOG.info(msg);
+      
+      Action action = new Action(ActionType.COLUMN_DIST_DONE, Optional.empty()) ;
+      this._toolCtrl.notifyAction(action) ;
+    }
   }
   
   // revoye le nombre de pas à descendre dans la colonne pour le bras
