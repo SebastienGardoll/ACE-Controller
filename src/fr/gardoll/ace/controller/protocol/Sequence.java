@@ -29,7 +29,7 @@ public class Sequence
     }
     else
     {
-      result = String.format("%s mL of %s(%s) during %s %s",
+      result = String.format("%s mL of %s (%s) during %s",
           this.volume, this.nomAcide, this.numEv, this.temps);
     }
     
