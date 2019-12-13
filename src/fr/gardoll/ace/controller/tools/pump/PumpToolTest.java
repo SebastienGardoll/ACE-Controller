@@ -19,8 +19,8 @@ class PumpToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(PumpToolTest.class.getName());
   
-  PumpToolControl _ctrl = null;
-  PausableJPanelObserverStub _toolPanel = null;
+  private PumpToolControl _ctrl = null;
+  private PausableJPanelObserverStub _toolPanel = null;
   
   @BeforeAll
   static void setUpBeforeClass() throws Exception

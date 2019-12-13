@@ -18,8 +18,8 @@ class AutosamplerToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolTest.class.getName());
   
-  AutosamplerToolControl _ctrl = null;
-  PausableJPanelObserverStub _toolPanel = null;
+  private AutosamplerToolControl _ctrl = null;
+  private PausableJPanelObserverStub _toolPanel = null;
 
   @BeforeAll
   static void setUpBeforeClass() throws Exception

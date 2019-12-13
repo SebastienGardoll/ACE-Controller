@@ -14,8 +14,8 @@ class ValvesToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(ValvesToolTest.class.getName());
   
-  ValvesToolControl _ctrl = null;
-  CloseableJPanelObserverStub _toolPanel = null;
+  private ValvesToolControl _ctrl = null;
+  private CloseableJPanelObserverStub _toolPanel = null;
   
   @BeforeAll
   static void setUpBeforeClass() throws Exception
