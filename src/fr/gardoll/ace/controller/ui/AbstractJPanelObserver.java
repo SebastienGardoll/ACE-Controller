@@ -216,13 +216,29 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
 
       case WITHDRAWING:
       {
-        msg = String.format("withdrawing %s mL", action.data.get());
+        if(action.data.isEmpty())
+        {
+          msg = "pump is withdrawing";          
+        }
+        else
+        {
+          msg = String.format("pump is withdrawing %s mL", action.data.get());
+        }
+        
         break;
       }
       
       case INFUSING:
       {
-        msg = String.format("infusing %s mL", action.data.get());
+        if(action.data.isEmpty())
+        {
+          msg = "pump is infusing";
+        }
+        else
+        {
+          msg = String.format("pump is infusing %s mL", action.data.get());
+        }
+        
         break;
       }
       
