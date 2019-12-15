@@ -571,7 +571,7 @@ public class PousseSeringue implements Closeable
     try
     {
       double result = this.interfacePousseSeringue.deliver() * this._nbSeringue ;
-      _LOG.debug(String.format("getting '%s' of delivered volume", result));
+      _LOG.trace(String.format("getting '%s' of delivered volume", result));
       return result ;
     }
     catch(SerialComException e)
