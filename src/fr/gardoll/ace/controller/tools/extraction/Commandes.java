@@ -316,7 +316,7 @@ class Commandes
       String msg = String.format("column %s completed", numColonne);
       _LOG.info(msg);
       
-      Action action = new Action(ActionType.COLUMN_DIST_DONE, Optional.empty()) ;
+      Action action = new Action(ActionType.COLUMN_DIST_DONE, Optional.of(numColonne)) ;
       this._toolCtrl.notifyAction(action) ;
     }
   }
