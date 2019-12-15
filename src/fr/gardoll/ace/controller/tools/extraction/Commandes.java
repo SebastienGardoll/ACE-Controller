@@ -250,7 +250,7 @@ class Commandes
                     int nbColonneRestant) throws InterruptedException
   {
     {
-      String msg = String.format("processing column %s", numColonne);
+      String msg = String.format("* processing column %s *", numColonne);
       _LOG.info(msg);
       
       Action action = new Action(ActionType.COLUMN_DIST_START, Optional.of(numColonne)) ;
@@ -313,7 +313,7 @@ class Commandes
     this.passeur.vibration();
     
     {
-      String msg = String.format("column %s completed", numColonne);
+      String msg = String.format("* column %s completed *", numColonne);
       _LOG.info(msg);
       
       Action action = new Action(ActionType.COLUMN_DIST_DONE, Optional.of(numColonne)) ;

@@ -73,12 +73,12 @@ public class ExtractionThreadControl extends AbstractThreadControl
         String msg;
         if(reprise)
         {
-          msg = String.format("begin sequence %s (extraction resuming): %s",
+          msg = String.format("*** begin sequence %s (extraction resuming): %s ***",
                               sequenceIndex, currentSequence);
         }
         else
         {
-          msg = String.format("begin sequence %s: %s",
+          msg = String.format("*** begin sequence %s: %s ***",
                               sequenceIndex, currentSequence);
         }
         
@@ -276,7 +276,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       }
       else
       {
-        _LOG.debug("sequence doesn't need to await");
+        _LOG.debug("don't need to wait next column");
       }
       
       //1ère sequence => pas d'attente
