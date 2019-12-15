@@ -2,15 +2,28 @@
 <Configuration status="WARN">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} %M - %msg%n"/>
-        </Console>     
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <File name="File_Logging_Info" fileName="output_info.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="File_Logging_Debug" fileName="output_debug.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="File_Logging_All" fileName="output_all.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
     </Appenders>
     <Loggers>
-        <Logger name="fr.gardoll.controller" level="debug">
+        <Root level="ALL">
             <AppenderRef ref="Console"/>
-        </Logger>
-        <Root level="DEBUG">
-            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File_Logging_Info"/>
+            <AppenderRef ref="File_Logging_Debug"/>
+            <AppenderRef ref="File_Logging_All"/>
         </Root>
     </Loggers>
 </Configuration>

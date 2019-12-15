@@ -4,3 +4,4 @@ src/Test.java
 .settings
 .classpath
 .project
+*.log
