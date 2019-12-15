@@ -179,7 +179,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       
       {
         _LOG.info(String.format("sequence %s is completed", sequenceIndex));
-        Action action = new Action(ActionType.SEQUENCE_DONE, Optional.empty()) ;
+        Action action = new Action(ActionType.SEQUENCE_DONE, Optional.of(sequenceIndex)) ;
         this._toolCtrl.notifyAction(action) ;
       }
     } //fin du for
