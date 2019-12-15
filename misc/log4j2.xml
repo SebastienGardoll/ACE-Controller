@@ -2,14 +2,14 @@
 <Configuration status="WARN">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
         </Console>
         <File name="File_Logging" fileName="output.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
         </File>     
     </Appenders>
     <Loggers>
-        <Logger name="fr.gardoll.controller" level="debug">
+        <Logger name="fr.gardoll.ace.controller" level="debug">
             <AppenderRef ref="File_Logging"/>
         </Logger>
         <Root level="DEBUG">
