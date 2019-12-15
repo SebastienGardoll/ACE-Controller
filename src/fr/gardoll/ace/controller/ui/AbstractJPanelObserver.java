@@ -277,6 +277,12 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
+      case NEXT_SEQUENCE_PREP:
+      {
+        msg = "preparing the pump for the next sequence";
+        break;
+      }
+      
       case SEQUENCE_DONE:
       {
         msg = String.format("sequence %s is completed", action.data.get());

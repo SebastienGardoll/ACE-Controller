@@ -139,11 +139,16 @@ public class ExtractionThreadControl extends AbstractThreadControl
       
       if(sequenceIndex == this._protocol.nbMaxSequence)
       {
+        _LOG.debug("last sequence: rince with H20");
         // dernière séquence, normalement la boucle for est finie.
         commandes.rincageH2O();
       }
       else
       {
+        _LOG.debug("preparing the next sequence");
+        Action action = new Action(ActionType.NEXT_SEQUENCE_PREP, Optional.empty()) ;
+        this._toolCtrl.notifyAction(action) ;
+        
         // cas ou il y a une séquence suivante même si la séquence courante a une pause
         Sequence nextSequence = this._protocol.sequence(sequenceIndex+1);
         
@@ -165,11 +170,15 @@ public class ExtractionThreadControl extends AbstractThreadControl
       if(currentSequence.pause)
       {
         // si la séquence se termine par une pause protocole
-        _LOG.info("terminate the sequence with a pause");
+        _LOG.info("terminate the current sequence with a pause");
         Action action = new Action(ActionType.SEQUENCE_PAUSE, Optional.empty()) ;
         this._toolCtrl.notifyAction(action) ;
         
         this.selfTriggerPause();
+      }
+      else
+      {
+        _LOG.debug("the current sequence has not pause");
       }
       
       // effectuer qu'une fois par appel de OrganiseurThreadSequence
@@ -264,6 +273,10 @@ public class ExtractionThreadControl extends AbstractThreadControl
         _LOG.info("wait done, processing next column");
         action = new Action(ActionType.SEQUENCE_AWAIT_DONE, Optional.empty()) ;
         this._toolCtrl.notifyAction(action) ;
+      }
+      else
+      {
+        _LOG.debug("sequence doesn't need to await");
       }
       
       //1ère sequence => pas d'attente
