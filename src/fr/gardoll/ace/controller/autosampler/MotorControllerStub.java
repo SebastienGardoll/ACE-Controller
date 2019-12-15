@@ -25,17 +25,17 @@ public class MotorControllerStub implements MotorController, Closeable
   
   // Number of steps per period.
   // Moving to 1 position in 0.2 seconds considering period of 0.1 second.
-  private static int _CAROUSEL_TIME_INC_FACTOR = 5;
+  public static int CAROUSEL_TIME_INC_FACTOR = 5;
   private int _carouselTimeInc = 1 ;
   
   // Number of steps per period.
   // Moving 10 mm in 0.5 seconds considering period of 0.1 second.
-  private static int _ARM_TIME_INC = Passeur.convertBras(10.) / 6; 
+  public static int ARM_TIME_INC = Passeur.convertBras(10.) / 6; 
 
   public MotorControllerStub(int nbStepPosition)
   {
     _LOG.debug(String.format("instanciating motor controller stub with %s number of steps by carousel position", nbStepPosition));
-    this._carouselTimeInc = nbStepPosition/_CAROUSEL_TIME_INC_FACTOR;
+    this._carouselTimeInc = nbStepPosition/CAROUSEL_TIME_INC_FACTOR;
   }
   
   @Override
@@ -88,7 +88,7 @@ public class MotorControllerStub implements MotorController, Closeable
         {
           if(this._armDirection > 0)
           {
-            this._currentArmPosition += _ARM_TIME_INC;
+            this._currentArmPosition += ARM_TIME_INC;
             if(this._currentArmPosition >= this._targetedArmPosition)
             {
               this._currentArmPosition = this._targetedArmPosition;
@@ -97,7 +97,7 @@ public class MotorControllerStub implements MotorController, Closeable
           }
           else
           {
-            this._currentArmPosition -= _ARM_TIME_INC;
+            this._currentArmPosition -= ARM_TIME_INC;
             if(this._currentArmPosition <= this._targetedArmPosition)
             {
               this._currentArmPosition = this._targetedArmPosition;

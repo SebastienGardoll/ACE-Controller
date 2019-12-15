@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.BeforeEach ;
 import org.junit.jupiter.api.Test ;
 
+import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
+import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
@@ -30,6 +32,8 @@ class AutosamplerToolTest
   static void setUpBeforeClass() throws Exception
   {
     ParametresSession.isAutomatedTest = true;
+    MotorControllerStub.ARM_TIME_INC = Passeur.convertBras(10.) / 6;
+    MotorControllerStub.CAROUSEL_TIME_INC_FACTOR = 5;
   }
 
   @BeforeEach
