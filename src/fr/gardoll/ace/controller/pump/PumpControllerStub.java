@@ -108,6 +108,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public double deliver() throws SerialComException, InterruptedException
   {
     _LOG.trace(String.format("stubbing command deliver %s", this._delivered));
+    this.running(); // Simulates the pump.
     return this._delivered;
   }
 
