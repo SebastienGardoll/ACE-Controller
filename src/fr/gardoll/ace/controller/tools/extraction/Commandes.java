@@ -200,14 +200,17 @@ class Commandes
 
     if (vol_deja_delivre < this.colonne.volumeCritique1())
     { 
+      _LOG.debug("set infusion rate min");
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitMin());
     }
     else if (vol_deja_delivre < this.colonne.volumeCritique2())
     { 
+      _LOG.debug("set infusion rate inter");
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitInter());
     }
     else
     { 
+      _LOG.debug("set infusion rate max");
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitMax());
     }
 
@@ -221,6 +224,7 @@ class Commandes
         Thread.sleep(100);
       }
       
+      _LOG.debug("set infusion rate inter");
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitInter());
     }
 
@@ -231,6 +235,7 @@ class Commandes
         Thread.sleep(100) ;
       }
       
+      _LOG.debug("set infusion rate max");
       this.pousseSeringue.setDebitRefoulement(this.colonne.pousseSeringueDebitMax());
     }
 
