@@ -109,7 +109,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
          (sequenceIndex == this._protocol.nbMaxSequence)) // Last sequence.
       {
         // entre maintenant et la dernière colonne.
-        long tempsEcoule = Duration.between(Instant.now(),tabTemps[tabTemps.length-1]).toSeconds();
+        long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toSeconds();
         long tempsAttente = currentSequence.temps - tempsEcoule ;
         
         if(tempsAttente > 0l)
@@ -246,7 +246,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       //mettre indication d'attente !!
       
       //ok 10/01/06
-      long tempsEcoule = Duration.between(Instant.now(),tabTemps[numColonne-1]).toSeconds();
+      long tempsEcoule = Duration.between(tabTemps[numColonne-1], Instant.now()).toSeconds();
       
       if(false == tempsPrecedent.isEmpty() &&
          tempsEcoule < tempsPrecedent.get())
