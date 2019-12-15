@@ -59,8 +59,9 @@ class ExtractionToolTest
   }
 
   @Test
-  void test() throws InitializationException
+  void test1n() throws InitializationException
   {
+    _LOG.info("******************** test1n");
     int nbColumn = 3;
     int numColumn = 1;
     int numSequence = 1;

@@ -18,7 +18,6 @@ import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
 // TODO: singleton.
-// TODO: add logging
 class Commandes
 {
   private final ParametresSession parametresSession;
@@ -79,6 +78,9 @@ class Commandes
       // appel aspiration dédié au rinçage à cause
       // ok pour deux seringue 07/10/05 //de la gestion du volume de sécu voir
       // aussi vidange
+      
+      _LOG.debug(String.format("start rince cycle %s", i));
+      
       this.pousseSeringue.rincageAspiration(this.parametresSession.volumeRincage(),
                                             numEv) ; 
       this.pousseSeringue.finPompage() ;

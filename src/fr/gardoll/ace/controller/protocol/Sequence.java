@@ -24,12 +24,12 @@ public class Sequence
     
     if(this.pause)
     {
-      result = String.format("%s mL of %s (%s) waiting %s (with pause)",
+      result = String.format("%s mL of %s (%s) waiting %ss (with pause)",
           this.volume, this.nomAcide, this.numEv, this.temps);
     }
     else
     {
-      result = String.format("%s mL of %s (%s) waiting %s",
+      result = String.format("%s mL of %s (%s) waiting %ss",
           this.volume, this.nomAcide, this.numEv, this.temps);
     }
     
