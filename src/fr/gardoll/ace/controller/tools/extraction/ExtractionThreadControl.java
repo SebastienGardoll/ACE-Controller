@@ -105,38 +105,6 @@ public class ExtractionThreadControl extends AbstractThreadControl
                         tempsPrecedent, this._initSession.nbColonne);
       }
       
-      if(currentSequence.pause || // Pause.
-         (sequenceIndex == this._protocol.nbMaxSequence)) // Last sequence.
-      {
-        // entre maintenant et la dernière colonne.
-        long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toSeconds();
-        long tempsAttente = currentSequence.temps - tempsEcoule ;
-        
-        if(tempsAttente > 0l)
-        {
-          String msg = String.format("wait %s seconds until the last column percolates",
-                                     tempsAttente);
-          _LOG.info(msg);
-          Action action = new Action(ActionType.SEQUENCE_AWAIT, Optional.of(tempsAttente)) ;
-          this._toolCtrl.notifyAction(action) ;
-          
-          this.await(tempsAttente); // Blocking.
-          
-          _LOG.info("wait done");
-          action = new Action(ActionType.SEQUENCE_AWAIT_DONE, Optional.empty()) ;
-          this._toolCtrl.notifyAction(action) ;
-        }
-        else
-        {
-          // Nothing to do.
-        }
-      }
-      else  
-      {
-        // le temps d'attente est effectué dans la séquence suivante voir code Sequence.
-        // Nothing to do.
-      }
-      
       if(sequenceIndex == this._protocol.nbMaxSequence)
       {
         _LOG.debug("last sequence: rince with H20");
@@ -165,6 +133,38 @@ public class ExtractionThreadControl extends AbstractThreadControl
           commandes.remplissageSeringue(nextSequence.volume * this._initSession.nbColonne,
                                         nextSequence.numEv);
         }
+      }
+      
+      if(currentSequence.pause || // Pause.
+         (sequenceIndex == this._protocol.nbMaxSequence)) // Last sequence.
+      {
+        // entre maintenant et la dernière colonne.
+        long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toSeconds();
+        long tempsAttente = currentSequence.temps - tempsEcoule ;
+
+        if(tempsAttente > 0l)
+        {
+          String msg = String.format("wait %s seconds until the last column percolates",
+              tempsAttente);
+          _LOG.info(msg);
+          Action action = new Action(ActionType.SEQUENCE_AWAIT, Optional.of(tempsAttente)) ;
+          this._toolCtrl.notifyAction(action) ;
+
+          this.await(tempsAttente); // Blocking.
+
+          _LOG.info("wait done");
+          action = new Action(ActionType.SEQUENCE_AWAIT_DONE, Optional.empty()) ;
+          this._toolCtrl.notifyAction(action) ;
+        }
+        else
+        {
+          // Nothing to do.
+        }
+      }
+      else  
+      {
+        // le temps d'attente est effectué dans la séquence suivante voir code Sequence.
+        // Nothing to do.
       }
       
       {
