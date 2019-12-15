@@ -167,6 +167,12 @@ public class ExtractionThreadControl extends AbstractThreadControl
         }
       }
       
+      {
+        _LOG.info(String.format("sequence %s is completed", sequenceIndex));
+        Action action = new Action(ActionType.SEQUENCE_DONE, Optional.of(sequenceIndex)) ;
+        this._toolCtrl.notifyAction(action) ;
+      }
+      
       if(currentSequence.pause)
       {
         // si la séquence se termine par une pause protocole
@@ -185,12 +191,6 @@ public class ExtractionThreadControl extends AbstractThreadControl
       preliminaires = false ;
       
       tempsPrecedent = Optional.of(currentSequence.temps);
-      
-      {
-        _LOG.info(String.format("sequence %s is completed", sequenceIndex));
-        Action action = new Action(ActionType.SEQUENCE_DONE, Optional.of(sequenceIndex)) ;
-        this._toolCtrl.notifyAction(action) ;
-      }
     } //fin du for
     
     commandes.finSession();
