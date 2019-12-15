@@ -55,7 +55,7 @@ class Commandes
   { 
     if(numEv == Valves.NUM_EV_H2O)
     {
-      _LOG.info("rince with H20");
+      _LOG.info("rincing with H20");
       Action action = new Action(ActionType.H2O_RINCE, Optional.empty()) ;
       this._toolCtrl.notifyAction(action) ;
     }
