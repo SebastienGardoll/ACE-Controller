@@ -17,6 +17,12 @@ class AutosamplerToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolTest.class.getName());
   
+  // Milliseconds before triggering pause or cancel.
+  private static final long _TRIGGER_DELAY = 500l;
+ 
+  // Duration of a pause in milliseconds.
+  private static final long _PAUSE_DELAY = 500l;
+  
   private AutosamplerToolControl _ctrl = null;
   private PausableJPanelObserverStub _toolPanel = null;
 
@@ -113,7 +119,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testArm2c cancel arm go to trash");
     this._ctrl.armGoTrash();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.cancel();
     this._toolPanel.waitMove();
   }
@@ -125,7 +131,7 @@ class AutosamplerToolTest
     
     this.openColumnFile();
     this._ctrl.armGoColonne();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.cancel();
     this._toolPanel.waitMove();
   }
@@ -136,7 +142,7 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm4c cancel arm free move up");
     
     this._ctrl.armFreeMove(100);
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.cancel();
     this._toolPanel.waitMove();
   }
@@ -147,7 +153,7 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm5c cancel arm free move down");
     
     this._ctrl.armFreeMove(-100);
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.cancel();
     this._toolPanel.waitMove();
   }
@@ -159,7 +165,7 @@ class AutosamplerToolTest
     this._ctrl.armGoButee();
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -169,10 +175,10 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testArm2p pause arm go to trash");
     this._ctrl.armGoTrash();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -184,10 +190,10 @@ class AutosamplerToolTest
     
     this.openColumnFile();
     this._ctrl.armGoColonne();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -198,10 +204,10 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm4p pause arm free move up");
     
     this._ctrl.armFreeMove(100);
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -212,10 +218,10 @@ class AutosamplerToolTest
     _LOG.info("******************** testArm5p pause arm free move down");
     
     this._ctrl.armFreeMove(-100);
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -249,7 +255,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel1c cancel turn right");
     this._ctrl.carouselTurnRight();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.cancel();
     this._toolPanel.waitMove();
   }
@@ -259,7 +265,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel2c cancel turn left");
     this._ctrl.carouselTurnLeft();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.cancel();
     this._toolPanel.waitMove();
   }
@@ -269,7 +275,7 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel3c cancel go to position 10");
     this._ctrl.carouselGoPosition(10);
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.cancel();
     this._toolPanel.waitMove();
   }
@@ -279,10 +285,10 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel1p pause turn right");
     this._ctrl.carouselTurnRight();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -292,10 +298,10 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel2p pause turn left");
     this._ctrl.carouselTurnLeft();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -305,10 +311,10 @@ class AutosamplerToolTest
   {
     _LOG.info("******************** testCarousel3p pause go to position 10");
     this._ctrl.carouselGoPosition(10);
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
   }
@@ -322,10 +328,10 @@ class AutosamplerToolTest
     this._toolPanel.waitMove();
     
     this._ctrl.carouselTurnLeft();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
     
@@ -343,10 +349,10 @@ class AutosamplerToolTest
     _LOG.info("* carousel turns right ; pause ; resume ; arm to trash ; arm to trash ; arm to top ; cancel *");
     
     this._ctrl.carouselTurnRight();
-    Thread.sleep(500);
+    Thread.sleep(_TRIGGER_DELAY);
     this._ctrl.pause();
     this._toolPanel.waitPause();
-    Thread.sleep(500);
+    Thread.sleep(_PAUSE_DELAY);
     this._ctrl.resume();
     this._toolPanel.waitMove();
     

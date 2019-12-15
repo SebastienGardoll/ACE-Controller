@@ -18,6 +18,12 @@ import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 class PumpToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(PumpToolTest.class.getName());
+
+  // Milliseconds before triggering pause or cancel.
+  private static final long _TRIGGER_DELAY = 250l;
+  
+  // Duration of a pause in milliseconds.
+  private static final long _PAUSE_DELAY = 500l;
   
   private PumpToolControl _ctrl = null;
   private PausableJPanelObserverStub _toolPanel = null;
@@ -85,7 +91,7 @@ class PumpToolTest
           {
             try
             {
-              Thread.sleep(250);
+              Thread.sleep(PumpToolTest._TRIGGER_DELAY);
             }
             catch (InterruptedException e) {e.printStackTrace();}
             
@@ -127,7 +133,7 @@ class PumpToolTest
             {
               try
               {
-                Thread.sleep(250);
+                Thread.sleep(PumpToolTest._TRIGGER_DELAY);
               }
               catch (InterruptedException e) {e.printStackTrace();}
               
@@ -135,7 +141,7 @@ class PumpToolTest
               PumpToolTest.this._toolPanel.waitPause();
               try
               {
-                Thread.sleep(500);
+                Thread.sleep(_PAUSE_DELAY);
               }
               catch (InterruptedException e) {e.printStackTrace();}
               PumpToolTest.this._ctrl.resume();              
@@ -176,7 +182,7 @@ class PumpToolTest
           {
             try
             {
-              Thread.sleep(250);
+              Thread.sleep(PumpToolTest._TRIGGER_DELAY);
             }
             catch (InterruptedException e) {e.printStackTrace();}
             
@@ -218,7 +224,7 @@ class PumpToolTest
             {
               try
               {
-                Thread.sleep(250);
+                Thread.sleep(PumpToolTest._TRIGGER_DELAY);
               }
               catch (InterruptedException e) {e.printStackTrace();}
               
@@ -226,7 +232,7 @@ class PumpToolTest
               PumpToolTest.this._toolPanel.waitPause();
               try
               {
-                Thread.sleep(500);
+                Thread.sleep(_PAUSE_DELAY);
               }
               catch (InterruptedException e) {e.printStackTrace();}
               PumpToolTest.this._ctrl.resume();              
