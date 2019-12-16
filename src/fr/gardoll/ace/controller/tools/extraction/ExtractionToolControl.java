@@ -61,12 +61,12 @@ public class ExtractionToolControl extends AbstractPausableToolControl
     this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
   }
   
-  private void enableCarouselButton(boolean isEnable)
+  private void enableCarouselControl(boolean isEnable)
   {
     for(ControlPanel panel : this.getCtrlPanels())
     {
       panel.enableResume(isEnable);
-      panel.enableCarouselButton(isEnable);
+      panel.enableCarousel(isEnable);
     }
   }
   
@@ -88,9 +88,9 @@ public class ExtractionToolControl extends AbstractPausableToolControl
   {
     Runnable threadLogic = () -> 
     {
-      ExtractionToolControl.this.enableCarouselButton(false);
+      ExtractionToolControl.this.enableCarouselControl(false);
       ExtractionToolControl.this.presentationPasseur(direction);
-      ExtractionToolControl.this.enableCarouselButton(true);
+      ExtractionToolControl.this.enableCarouselControl(true);
     };
     
     new Thread(threadLogic).start();
