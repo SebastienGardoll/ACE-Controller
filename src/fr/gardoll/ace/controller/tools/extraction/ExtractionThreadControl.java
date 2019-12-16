@@ -234,6 +234,10 @@ public class ExtractionThreadControl extends AbstractThreadControl
     /* DEBUT PRELIMINAIRES */
     if(preliminaires)
     {
+      _LOG.info("preparing the extraction");
+      Action action = new Action(ActionType.PREPARING, Optional.empty()) ;
+      this._toolCtrl.notifyAction(action) ;
+      
       // maintenant l'origine du bras correspond à au dessus de la colonne
       commandes.referencementBras();
       

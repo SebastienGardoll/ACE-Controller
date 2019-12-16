@@ -354,6 +354,12 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
+      case PREPARING:
+      {
+        msg = "preparing the extraction";
+        break;
+      }
+      
       default:
       {
         _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
