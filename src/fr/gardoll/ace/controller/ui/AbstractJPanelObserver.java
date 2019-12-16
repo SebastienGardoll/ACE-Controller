@@ -71,6 +71,12 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       }
     });
   }
+  
+  @Override
+  public void enableCarouselButton(boolean isEnable)
+  {
+    // Nothing to do.
+  }
 
   // Throwable can be null.
   @Override

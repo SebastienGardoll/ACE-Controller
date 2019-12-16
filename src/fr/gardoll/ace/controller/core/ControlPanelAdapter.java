@@ -68,4 +68,10 @@ public abstract class ControlPanelAdapter implements ControlPanel
   {
     // Nothing to do.
   }
+  
+  @Override
+  public void enableCarouselButton(boolean isEnable)
+  {
+    // Nothing to do.
+  }
 }

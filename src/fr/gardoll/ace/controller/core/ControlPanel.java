@@ -22,4 +22,5 @@ public interface ControlPanel
   public void enableResume(boolean isEnable);
   public void enableCancel(boolean isEnable);
   public void enableReinit(boolean isEnable);
+  public void enableCarouselButton(boolean isEnable);
 }
