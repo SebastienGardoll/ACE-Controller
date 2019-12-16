@@ -116,6 +116,20 @@ class ExtractionToolTest
     new Thread(threadLogic).start();
   }
   
+  private void triggerPause()
+  {
+    try
+    {
+      Thread.sleep(ExtractionToolTest._TRIGGER_DELAY);
+    }
+    catch (InterruptedException e)
+    {
+      e.printStackTrace();
+    }
+    
+    this._ctrl.pause();
+  }
+  
   @Test
   void test1n() throws InitializationException
   {
@@ -347,6 +361,206 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
+  @Test void test9n()throws InitializationException
+  {
+    _LOG.info("******************** test9n turn to the right while waiting");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "solo_sequence_no_pause_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case SEQUENCE_AWAIT:
+          {
+            ExtractionToolTest.this.triggerPause();
+            break;
+          }
+          
+          case PAUSE_DONE:
+          {
+            ExtractionToolTest.this.turnCarouselToRight();
+            break;
+          }
+          
+          case CAROUSEL_TURN_RIGHT:
+          {
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._TURN_DURATION);
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test10n()throws InitializationException
+  {
+    _LOG.info("******************** test10n turn to the left while waiting");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "solo_sequence_no_pause_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case SEQUENCE_AWAIT:
+          {
+            ExtractionToolTest.this.triggerPause();
+            break;
+          }
+          
+          case PAUSE_DONE:
+          {
+            ExtractionToolTest.this.turnCarouselToLeft();
+            break;
+          }
+          
+          case CAROUSEL_TURN_LEFT:
+          {
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._TURN_DURATION);
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test11n()throws InitializationException
+  {
+    _LOG.info("******************** test11n turn to the right while usr pause");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "solo_sequence_no_pause_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case COLUMN_DIST_START:
+          {
+            ExtractionToolTest.this.triggerPause();
+            break;
+          }
+          
+          case PAUSE_DONE:
+          {
+            ExtractionToolTest.this.turnCarouselToRight();
+            break;
+          }
+          
+          case CAROUSEL_TURN_RIGHT:
+          {
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._TURN_DURATION);
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test12n()throws InitializationException
+  {
+    _LOG.info("******************** test12n turn to the left while usr pause");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "solo_sequence_no_pause_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case COLUMN_DIST_START:
+          {
+            ExtractionToolTest.this.triggerPause();
+            break;
+          }
+          
+          case PAUSE_DONE:
+          {
+            ExtractionToolTest.this.turnCarouselToLeft();
+            break;
+          }
+          
+          case CAROUSEL_TURN_LEFT:
+          {
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._TURN_DURATION);
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
   @Test
   void test1c() throws InitializationException
   {
@@ -431,17 +645,7 @@ class ExtractionToolTest
           
           case SEQUENCE_AWAIT:
           {
-            try
-            {
-              Thread.sleep(ExtractionToolTest._TRIGGER_DELAY);
-            }
-            catch (InterruptedException e)
-            {
-              e.printStackTrace();
-            }
-            
-            ExtractionToolTest.this._ctrl.pause();
-            
+            ExtractionToolTest.this.triggerPause();
             break;
           }
           
