@@ -21,6 +21,7 @@ public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJ
   
   protected abstract void enablePauseControl(boolean isEnable) ;
   protected abstract void enableResumeControl(boolean isEnable) ;
+  protected abstract void enableCarouselControl(boolean isEnable) ;
   
   public AbstractPausableJPanelObserver(ToolControl ctrl)
   {
@@ -51,6 +52,20 @@ public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJ
       public void run()
       {
         AbstractPausableJPanelObserver.this.enableResumeControl(isEnable);
+      }
+    });
+  }
+  
+  @Override
+  public final void enableCarousel(boolean isEnable)
+  {
+    this._isResumeEnable = isEnable;
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        AbstractPausableJPanelObserver.this.enableCarouselControl(isEnable);
       }
     });
   }

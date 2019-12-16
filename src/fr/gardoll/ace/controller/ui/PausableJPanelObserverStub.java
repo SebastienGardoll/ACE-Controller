@@ -108,6 +108,12 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   }
   
   @Override
+  protected void enableCarouselControl(boolean isEnable)
+  {
+    _LOG.trace(String.format("carousel control set to %s", isEnable));
+  }
+  
+  @Override
   public void dispose()
   {
     // Call for enableStartControl is always executed by the thread AWT.

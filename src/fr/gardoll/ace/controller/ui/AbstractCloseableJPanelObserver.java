@@ -89,4 +89,10 @@ public abstract class AbstractCloseableJPanelObserver extends AbstractJPanelObse
   {  
     // Nothing to do.
   }
+  
+  @Override
+  public void enableCarousel(boolean isEnable)
+  {  
+    // Nothing to do.
+  }
 }

@@ -462,6 +462,12 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
       startCancelButton.setText("cancel");
     }
   }
+  
+  @Override
+  public void enableCarouselControl(boolean isEnable)
+  {  
+    // Nothing to do.
+  }
 
   @Override
   protected void displayToUserLogSys(String msg)

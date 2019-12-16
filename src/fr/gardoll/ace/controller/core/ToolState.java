@@ -94,7 +94,7 @@ abstract class AbstractState implements ToolState
       panel.enableCancel(false);
       panel.enableReinit(false);
       panel.enableClose(false);
-      panel.enableCarouselButton(false);
+      panel.enableCarousel(false);
     }
   }
   
@@ -245,7 +245,7 @@ class CrashedState extends AbstractState implements ToolState
     panel.enableCancel(false);
     panel.enableReinit(false);
     panel.enableClose(true);
-    panel.enableCarouselButton(false);
+    panel.enableCarousel(false);
   }
   
   @Override
@@ -281,7 +281,7 @@ class InitialState extends AbstractState implements ToolState
     panel.enableCancel(false);
     panel.enableReinit(false);
     panel.enableClose(true);
-    panel.enableCarouselButton(false);
+    panel.enableCarousel(false);
   }
   
   @Override
@@ -327,7 +327,7 @@ class ReadyState extends AbstractState implements ToolState
     panel.enableCancel(false);
     panel.enableReinit(true);
     panel.enableClose(true);
-    panel.enableCarouselButton(false);
+    panel.enableCarousel(false);
   }
 
   @Override
@@ -383,7 +383,7 @@ class RunningState extends AbstractState implements ToolState
     panel.enableCancel(true);
     panel.enableReinit(false);
     panel.enableClose(false);
-    panel.enableCarouselButton(false);
+    panel.enableCarousel(false);
   }
 
   @Override
@@ -469,7 +469,7 @@ class PausedState extends AbstractState implements ToolState
     panel.enableCancel(false);
     panel.enableReinit(false);
     panel.enableClose(false);
-    panel.enableCarouselButton(true);
+    panel.enableCarousel(true);
   }
 
   @Override

@@ -821,6 +821,12 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
   }
   
   @Override
+  public void enableCarouselControl(boolean isEnable)
+  {  
+    // Nothing to do.
+  }
+  
+  @Override
   public void enableStartControl(boolean isEnable)
   {
     aboveColumnButton.setEnabled(isEnable);
