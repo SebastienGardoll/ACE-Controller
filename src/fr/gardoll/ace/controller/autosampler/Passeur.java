@@ -447,7 +447,7 @@ public class Passeur implements Closeable
   //reprise sur pause avec retour à la position sauvegardée dans pause()
   public void reprise(boolean brasFirst) throws InterruptedException
   {  
-    _LOG.debug(String.format("resuming the autosampler with arm first: %s", brasFirst));
+    _LOG.debug(String.format("resuming the autosampler (with arm first: %s)", brasFirst));
     if (this._pause)
     {
       //cas où il n'y a pas eu de manip sur le passeur
@@ -584,7 +584,7 @@ public class Passeur implements Closeable
   //appel obligatoire si l'on doit manipuler le passeur pendant une pause
   public void returnSavedPosition(boolean brasFirst) throws InterruptedException
   {
-    _LOG.debug(String.format("return to the saved position with bras first: %s", brasFirst));
+    _LOG.debug(String.format("return to the saved position (with bras first: %s)", brasFirst));
     
     if (brasFirst)
     {
