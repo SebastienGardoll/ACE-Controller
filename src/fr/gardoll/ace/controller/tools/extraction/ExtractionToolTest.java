@@ -82,15 +82,15 @@ class ExtractionToolTest
   @Test
   void test1n() throws InitializationException
   {
-    _LOG.info("******************** test1n");
+    _LOG.info("******************** test1n nominal sequence");
     int nbColumn = 3;
     int numColumn = 1;
     int numSequence = 1;
-    String protocolFileName = "sr-spec_test.prt";
+    String protocolFileName = "nominal_test.prt";
     Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
     
-    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
-    
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
     
     ControlPanel ctrlPanel = new ControlPanelAdapter()
     {
@@ -119,6 +119,109 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
+  @Test void test2n()throws InitializationException
+  {
+    _LOG.info("******************** test2n rincing cases");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "rincing_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test
+  void test3n() throws InitializationException
+  {
+    _LOG.info("******************** test3n await tests");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "await_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+    
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case PAUSE_DONE:
+          {
+            ExtractionToolTest.this.autoResume();
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test4n()throws InitializationException
+  {
+    _LOG.info("******************** test4n resuming to sequence 2/3");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 2;
+    String protocolFileName = "resuming_test_seq.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test5n()throws InitializationException
+  {
+    _LOG.info("******************** test5n resuming to column 2/3");
+    int nbColumn = 3;
+    int numColumn = 2;
+    int numSequence = 1;
+    String protocolFileName = "resuming_test_col.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test6n()throws InitializationException
+  {
+    _LOG.info("******************** test6n resuming to column 2/3 & sequence 2/3");
+    int nbColumn = 3;
+    int numColumn = 2;
+    int numSequence = 2;
+    String protocolFileName = "resuming_test_seq.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
   @Test
   void test1c() throws InitializationException
   {
@@ -126,7 +229,7 @@ class ExtractionToolTest
     int nbColumn = 3;
     int numColumn = 1;
     int numSequence = 1;
-    String protocolFileName = "sr-spec_test.prt";
+    String protocolFileName = "nominal_test.prt";
     Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
@@ -182,7 +285,7 @@ class ExtractionToolTest
     int nbColumn = 3;
     int numColumn = 1;
     int numSequence = 1;
-    String protocolFileName = "sr-spec_test.prt";
+    String protocolFileName = "nominal_test.prt";
     Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);

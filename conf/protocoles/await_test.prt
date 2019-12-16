@@ -1,0 +1,27 @@
+[informationsProtocole]
+nomProtocole=Await test
+auteur=Sebastien GARDOLL
+date=15/12/2019
+cheminFichierColonne=./conf/columns/nouvelle colonne.cln
+commentaires=testing purpose
+
+[1]
+acide=HNO3 2N
+numeroEv=4
+volume=1
+temps=10
+pause?=1
+
+[2]
+acide=HNO3 2N
+numeroEv=4
+volume=1
+temps=10
+pause?=0
+
+[3]
+acide=HNO3 2N
+numeroEv=4
+volume=1
+temps=20
+pause?=0

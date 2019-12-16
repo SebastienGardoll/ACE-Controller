@@ -1,0 +1,20 @@
+[informationsProtocole]
+nomProtocole=Resuming test column
+auteur=Sebastien GARDOLL
+date=15/12/2019
+cheminFichierColonne=./conf/columns/nouvelle colonne.cln
+commentaires=testing purpose
+
+[1]
+acide=HNO3 0,05N
+numeroEv=2
+volume=1
+temps=1
+pause?=0
+
+[2]
+acide=HNO3 0,05N
+numeroEv=2
+volume=1
+temps=1
+pause?=0

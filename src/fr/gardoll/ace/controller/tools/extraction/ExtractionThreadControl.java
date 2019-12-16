@@ -58,7 +58,8 @@ public class ExtractionThreadControl extends AbstractThreadControl
       }
     }
     
-    boolean reprise = this._initSession.numColonne != 1;
+    boolean reprise = this._initSession.numColonne  != 1 ||
+                      this._initSession.numSequence != 1;
     
     Optional<Long> tempsPrecedent = Optional.empty();
     
@@ -73,7 +74,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
         String msg;
         if(reprise)
         {
-          msg = String.format("*** begin sequence %s (extraction resuming): %s ***",
+          msg = String.format("*** begin sequence %s (resuming): %s ***",
                               sequenceIndex, currentSequence);
         }
         else
@@ -160,7 +161,19 @@ public class ExtractionThreadControl extends AbstractThreadControl
         }
         else
         {
-          // Nothing to do.
+          // Nothing todo.
+          
+          String msg = "";
+          if(currentSequence.pause)
+          {
+            msg = "sequence with pause doesn't have to wait";
+          }
+          else
+          {
+            msg = "last sequence doesn't have to wait";
+          }
+          
+          _LOG.debug(msg);
         }
       }
       else  
@@ -193,7 +206,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
         _LOG.debug("the current sequence has not pause");
       }
       
-      // effectuer qu'une fois par appel de OrganiseurThreadSequence
+      // Only one time.
       preliminaires = false ;
       
       tempsPrecedent = Optional.of(currentSequence.temps);
