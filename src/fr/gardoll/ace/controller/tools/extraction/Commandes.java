@@ -347,25 +347,4 @@ class Commandes
     this.passeur.moveButeBras();
     this.passeur.finMoveBras();
   }
-
-  //déplace le carrousel pour rendre accessible les côté du carrousel
-  //qui ne le sont pas
-  //attention si un thread est sur pause, l'appel par un autre thread
-  //de cette fonction sera piégé dans la boucle de finMoveBras !!!
-  void presentationPasseur(int sens) throws InterruptedException
-  {
-    this.passeur.moveButeBras();
-    this.passeur.finMoveBras();
-
-    if (sens >= 0)
-    {
-      this.passeur.moveCarrouselRelatif(ParametresSession.NB_POSITION) ; //par la droite
-    }
-    else
-    {
-      this.passeur.moveCarrouselRelatif( -1 * ParametresSession.NB_POSITION) ; //par la gauche
-    }
-
-    this.passeur.finMoveCarrousel();
-  }
 }
