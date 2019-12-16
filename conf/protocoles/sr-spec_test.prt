@@ -1,9 +1,9 @@
 [informationsProtocole]
-nomProtocole=Sr - SPEC
+nomProtocole=Nominal test
 auteur=Sebastien GARDOLL
-date=11/05/2006
+date=15/12/2019
 cheminFichierColonne=./conf/columns/nouvelle colonne.cln
-commentaires=Protocole d'extraction du Sr par la resine Sr-SPEC ( Eichrom ). Attentes non optimisees : elles correspondent  aux attentes des colonnes entonnoirs.
+commentaires=testing purpose
 
 [1]
 acide=HCl 6N
