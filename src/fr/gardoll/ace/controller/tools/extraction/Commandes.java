@@ -343,6 +343,7 @@ class Commandes
   //procédures de fin de session.
   void finSession() throws InterruptedException
   {  
+    _LOG.debug("running end of session operations");
     this.pousseSeringue.fermetureEv() ;
     this.passeur.moveButeBras();
     this.passeur.finMoveBras();
