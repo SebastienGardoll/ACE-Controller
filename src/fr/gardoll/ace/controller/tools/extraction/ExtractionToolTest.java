@@ -63,7 +63,35 @@ class ExtractionToolTest
     ParametresSession.getInstance().close();
   }
 
-  private void autoResume()
+  private void autoResume(long pauseDuration)
+  {
+    // The current thread is pause when _ctrl.pause is called.
+    // We must call resume method in another thread.
+    Runnable threadLogic = () -> 
+    {
+      try
+      {
+        Thread.sleep(pauseDuration);
+      }
+      catch (InterruptedException e) {e.printStackTrace();}
+      
+      this._ctrl.resume();              
+    };
+    
+    new Thread(threadLogic).start();
+  }
+  
+  private void turnCarouselToRight()
+  {
+    this.turnCarousel(1);
+  }
+  
+  private void turnCarouselToLeft()
+  {
+    this.turnCarousel(-1);
+  }
+  
+  private void turnCarousel(int direction)
   {
     // The current thread is pause when _ctrl.pause is called.
     // We must call resume method in another thread.
@@ -75,7 +103,14 @@ class ExtractionToolTest
       }
       catch (InterruptedException e) {e.printStackTrace();}
       
-      this._ctrl.resume();              
+      if(direction >= 0)
+      {
+        ExtractionToolTest.this._ctrl.turnCarouselToRight();
+      }
+      else
+      {
+        ExtractionToolTest.this._ctrl.turnCarouselToLeft();
+      }
     };
     
     new Thread(threadLogic).start();
@@ -103,7 +138,7 @@ class ExtractionToolTest
         {
           case PAUSE_DONE:
           {
-            ExtractionToolTest.this.autoResume();
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._PAUSE_DURATION);
             break;
           }
           
@@ -159,7 +194,7 @@ class ExtractionToolTest
         {
           case PAUSE_DONE:
           {
-            ExtractionToolTest.this.autoResume();
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._PAUSE_DURATION);
             break;
           }
           
@@ -245,39 +280,13 @@ class ExtractionToolTest
         {
           case PAUSE_DONE:
           {
-            // The current thread is pause when _ctrl.pause is called.
-            // We must call resume method in another thread.
-            Runnable threadLogic = () -> 
-            {
-              try
-              {
-                Thread.sleep(ExtractionToolTest._PAUSE_DURATION);
-              }
-              catch (InterruptedException e) {e.printStackTrace();}
-              
-              ExtractionToolTest.this._ctrl.turnCarouselToRight();
-            };
-            
-            new Thread(threadLogic).start();
-            
+            ExtractionToolTest.this.turnCarouselToRight();
             break;
           }
           
           case CAROUSEL_TURN_RIGHT:
           {
-            Runnable threadLogic = () -> 
-            {
-              try
-              {
-                Thread.sleep(ExtractionToolTest._TURN_DURATION);
-              }
-              catch (InterruptedException e) {e.printStackTrace();}
-              
-              ExtractionToolTest.this._ctrl.resume();
-            };
-            
-            new Thread(threadLogic).start();
-            
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._TURN_DURATION);
             break;
           }
           
@@ -315,39 +324,13 @@ class ExtractionToolTest
         {
           case PAUSE_DONE:
           {
-            // The current thread is pause when _ctrl.pause is called.
-            // We must call resume method in another thread.
-            Runnable threadLogic = () -> 
-            {
-              try
-              {
-                Thread.sleep(ExtractionToolTest._PAUSE_DURATION);
-              }
-              catch (InterruptedException e) {e.printStackTrace();}
-              
-              ExtractionToolTest.this._ctrl.turnCarouselToLeft();
-            };
-            
-            new Thread(threadLogic).start();
-            
+            ExtractionToolTest.this.turnCarouselToLeft();
             break;
           }
           
           case CAROUSEL_TURN_LEFT:
           {
-            Runnable threadLogic = () -> 
-            {
-              try
-              {
-                Thread.sleep(ExtractionToolTest._TURN_DURATION);
-              }
-              catch (InterruptedException e) {e.printStackTrace();}
-              
-              ExtractionToolTest.this._ctrl.resume();
-            };
-            
-            new Thread(threadLogic).start();
-            
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._TURN_DURATION);
             break;
           }
           
@@ -386,7 +369,7 @@ class ExtractionToolTest
         {
           case PAUSE_DONE:
           {
-            ExtractionToolTest.this.autoResume();
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._PAUSE_DURATION);
             break;
           }
           
@@ -442,7 +425,7 @@ class ExtractionToolTest
         {
           case PAUSE_DONE:
           {
-            ExtractionToolTest.this.autoResume();
+            ExtractionToolTest.this.autoResume(ExtractionToolTest._PAUSE_DURATION);
             break;
           }
           
