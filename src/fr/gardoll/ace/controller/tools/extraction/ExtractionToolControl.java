@@ -1,9 +1,13 @@
 package fr.gardoll.ace.controller.tools.extraction;
 
+import java.util.Optional ;
+
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.AbstractPausableToolControl ;
+import fr.gardoll.ace.controller.core.Action ;
+import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 
@@ -39,6 +43,7 @@ public class ExtractionToolControl extends AbstractPausableToolControl
   @Override
   protected void closeOperations() throws InterruptedException
   {
-    // TODO
+    _LOG.debug("controller has nothing to do while closing the tool");
+    this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
   }
 }
