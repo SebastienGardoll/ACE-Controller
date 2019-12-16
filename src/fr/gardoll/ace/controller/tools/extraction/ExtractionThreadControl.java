@@ -22,14 +22,12 @@ public class ExtractionThreadControl extends AbstractThreadControl
   private static final Logger _LOG = LogManager.getLogger(ExtractionThreadControl.class.getName());
   
   private final InitSession _initSession ;
-  private final Protocol _protocol ;
   
   public ExtractionThreadControl(AbstractToolControl toolCtrl,
                                  InitSession initSession) throws InitializationException
   {
     super(toolCtrl) ;
     this._initSession = initSession;
-    this._protocol = new Protocol(initSession.cheminFichierProtocole);
   }
   
   @Override
@@ -42,8 +40,11 @@ public class ExtractionThreadControl extends AbstractThreadControl
       this._toolCtrl.notifyAction(action) ;
     }
     
+    // Shortcut.
+    Protocol protocol = this._initSession.protocol;
+    
     _LOG.debug("instantiate commandes");
-    Commandes commandes = new Commandes(this._toolCtrl, this._protocol.colonne);
+    Commandes commandes = new Commandes(this._toolCtrl, protocol.colonne);
     
     // flag pour effectuer les préliminaires dans threadSequence
     boolean preliminaires = true ;
@@ -65,10 +66,10 @@ public class ExtractionThreadControl extends AbstractThreadControl
     
     // attention le <= est très important car sequenceIndex doit être = à nbMaxSequence
     for(int sequenceIndex = this._initSession.numSequence;
-            sequenceIndex <= this._protocol.nbMaxSequence;
+            sequenceIndex <= protocol.nbMaxSequence;
             sequenceIndex++)
     {
-      Sequence currentSequence = this._protocol.sequence(sequenceIndex);
+      Sequence currentSequence = protocol.sequence(sequenceIndex);
       
       {
         String msg;
@@ -106,7 +107,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
                         tempsPrecedent, this._initSession.nbColonne);
       }
       
-      if(sequenceIndex == this._protocol.nbMaxSequence)
+      if(sequenceIndex == protocol.nbMaxSequence)
       {
         _LOG.debug("last sequence: rince with H20");
         // dernière séquence, normalement la boucle for est finie.
@@ -119,7 +120,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
         this._toolCtrl.notifyAction(action) ;
         
         // cas ou il y a une séquence suivante même si la séquence courante a une pause
-        Sequence nextSequence = this._protocol.sequence(sequenceIndex+1);
+        Sequence nextSequence = protocol.sequence(sequenceIndex+1);
         
         if(currentSequence.numEv == nextSequence.numEv)
         {
@@ -139,7 +140,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       }
       
       if(currentSequence.pause || // Pause.
-         (sequenceIndex == this._protocol.nbMaxSequence)) // Last sequence.
+         (sequenceIndex == protocol.nbMaxSequence)) // Last sequence.
       {
         // entre maintenant et la dernière colonne.
         long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toSeconds();

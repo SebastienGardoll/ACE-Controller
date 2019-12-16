@@ -23,9 +23,6 @@ public class ExtractionToolControl extends AbstractPausableToolControl
 
   void start(InitSession initSession)
   {
-    
-    // TODO check initSession object 
-    
     try
     {
       ExtractionThreadControl thread = new ExtractionThreadControl(this, initSession);
