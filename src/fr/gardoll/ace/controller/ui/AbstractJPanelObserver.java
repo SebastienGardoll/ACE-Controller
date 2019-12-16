@@ -312,9 +312,15 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
-      case SEQUENCE_PAUSE:
+      case SEQUENCE_PAUSE_START:
       {
         msg = "waiting for the operator";
+        break;
+      }
+      
+      case SEQUENCE_PAUSE_DONE:
+      {
+        msg = "resuming by the operator";
         break;
       }
       

@@ -177,10 +177,14 @@ public class ExtractionThreadControl extends AbstractThreadControl
       {
         // si la séquence se termine par une pause protocole
         _LOG.info("terminate the current sequence with a pause");
-        Action action = new Action(ActionType.SEQUENCE_PAUSE, Optional.empty()) ;
+        Action action = new Action(ActionType.SEQUENCE_PAUSE_START, Optional.empty()) ;
         this._toolCtrl.notifyAction(action) ;
         
         this.selfTriggerPause();
+        
+        _LOG.info("resuming from a sequence pause");
+        action = new Action(ActionType.SEQUENCE_PAUSE_DONE, Optional.empty()) ;
+        this._toolCtrl.notifyAction(action) ;
       }
       else
       {
@@ -274,13 +278,13 @@ public class ExtractionThreadControl extends AbstractThreadControl
         
         this.await(timeToWait); // Blocking.
         
-        _LOG.info("wait done, processing next column");
+        _LOG.info("wait done, processing the next column");
         action = new Action(ActionType.SEQUENCE_AWAIT_DONE, Optional.empty()) ;
         this._toolCtrl.notifyAction(action) ;
       }
       else
       {
-        _LOG.debug("don't need to wait next column");
+        _LOG.debug("don't need to wait the next column");
       }
       
       //1ère sequence => pas d'attente
