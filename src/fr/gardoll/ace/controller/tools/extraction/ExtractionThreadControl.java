@@ -122,6 +122,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
         
         if(currentSequence.numEv == nextSequence.numEv)
         {
+          _LOG.info(String.format("refill from valve %s", nextSequence.numEv));
           // même numEv que la séquence suivante
           commandes.remplissageSeringue(nextSequence.volume * this._initSession.nbColonne,
                                         nextSequence.numEv);
@@ -130,6 +131,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
         {
           commandes.rincageH2O();
           commandes.rincage(nextSequence.numEv);
+          _LOG.info(String.format("refill from valve %s", nextSequence.numEv));
           commandes.remplissageSeringue(nextSequence.volume * this._initSession.nbColonne,
                                         nextSequence.numEv);
         }

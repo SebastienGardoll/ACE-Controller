@@ -180,7 +180,7 @@ class Commandes
       }
 
       String msg = String.format("withdraw %s mL from valve %s", vol_demande, numEv);
-      _LOG.info(msg);
+      _LOG.debug(msg);
       
       Optional<Object> opt = Optional.of(ImmutablePair.of(vol_demande, numEv));
       Action action = new Action(ActionType.REFILL_PUMP, opt) ;
