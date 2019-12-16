@@ -17,7 +17,6 @@ import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
-// TODO: singleton.
 class Commandes
 {
   private final ParametresSession parametresSession;

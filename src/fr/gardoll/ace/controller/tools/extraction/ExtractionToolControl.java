@@ -23,9 +23,24 @@ public class ExtractionToolControl extends AbstractPausableToolControl
 
   void start(InitSession initSession)
   {
+    Commandes commandes = null;
+    
     try
     {
-      ExtractionThreadControl thread = new ExtractionThreadControl(this, initSession);
+      _LOG.debug("instantiate commandes");
+      commandes = new Commandes(this, initSession.protocol.colonne);
+    }
+    catch(Exception e)
+    {
+      String msg = "initialization of commandes has crashed";
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
+    
+    try
+    {
+      ExtractionThreadControl thread = new ExtractionThreadControl(this,
+          initSession, commandes);
       _LOG.debug("starting extraction thread");
       this.start(thread);
     }

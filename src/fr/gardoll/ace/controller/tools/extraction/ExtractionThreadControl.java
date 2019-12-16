@@ -22,12 +22,16 @@ public class ExtractionThreadControl extends AbstractThreadControl
   private static final Logger _LOG = LogManager.getLogger(ExtractionThreadControl.class.getName());
   
   private final InitSession _initSession ;
+
+  private final Commandes _cmd ;
   
   public ExtractionThreadControl(AbstractToolControl toolCtrl,
-                                 InitSession initSession) throws InitializationException
+                                 InitSession initSession,
+                                 Commandes commandes) throws InitializationException
   {
     super(toolCtrl) ;
     this._initSession = initSession;
+    this._cmd = commandes;
   }
   
   @Override
@@ -42,9 +46,6 @@ public class ExtractionThreadControl extends AbstractThreadControl
     
     // Shortcut.
     Protocol protocol = this._initSession.protocol;
-    
-    _LOG.debug("instantiate commandes");
-    Commandes commandes = new Commandes(this._toolCtrl, protocol.colonne);
     
     // flag pour effectuer les préliminaires dans threadSequence
     boolean preliminaires = true ;
@@ -94,7 +95,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       
       if(reprise)
       {
-        processSequence(currentSequence, commandes, tabTemps, preliminaires,
+        processSequence(currentSequence, this._cmd, tabTemps, preliminaires,
                         tempsPrecedent,
                         this._initSession.nbColonne,
                         this._initSession.numColonne);
@@ -103,7 +104,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       }
       else
       {
-        processSequence(currentSequence, commandes, tabTemps, preliminaires,
+        processSequence(currentSequence, this._cmd, tabTemps, preliminaires,
                         tempsPrecedent, this._initSession.nbColonne);
       }
       
@@ -111,7 +112,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       {
         _LOG.debug("last sequence: rince with H20");
         // dernière séquence, normalement la boucle for est finie.
-        commandes.rincageH2O();
+        this._cmd.rincageH2O();
       }
       else
       {
@@ -126,15 +127,15 @@ public class ExtractionThreadControl extends AbstractThreadControl
         {
           _LOG.info(String.format("refill from valve %s", nextSequence.numEv));
           // même numEv que la séquence suivante
-          commandes.remplissageSeringue(nextSequence.volume * this._initSession.nbColonne,
+          this._cmd.remplissageSeringue(nextSequence.volume * this._initSession.nbColonne,
                                         nextSequence.numEv);
         }
         else  //pas le même numEv que la séquence suivante
         {
-          commandes.rincageH2O();
-          commandes.rincage(nextSequence.numEv);
+          this._cmd.rincageH2O();
+          this._cmd.rincage(nextSequence.numEv);
           _LOG.info(String.format("refill from valve %s", nextSequence.numEv));
-          commandes.remplissageSeringue(nextSequence.volume * this._initSession.nbColonne,
+          this._cmd.remplissageSeringue(nextSequence.volume * this._initSession.nbColonne,
                                         nextSequence.numEv);
         }
       }
@@ -213,7 +214,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       tempsPrecedent = Optional.of(currentSequence.temps);
     } //fin du for
     
-    commandes.finSession();
+    this._cmd.finSession();
     
     {
       _LOG.info("session is completed");
