@@ -35,6 +35,8 @@ public class Protocol
   
   public final String date;
   
+  public final Path protocolFilePath;
+  
   public Protocol(Path cheminFichierProtocole) throws InitializationException
   {
     if(false == Files.isReadable(cheminFichierProtocole) &&
@@ -91,6 +93,8 @@ public class Protocol
       }
       
       protocolMetadata.close();
+      
+      this.protocolFilePath = cheminFichierProtocole;
     }
     
     /***********************************************************************/
