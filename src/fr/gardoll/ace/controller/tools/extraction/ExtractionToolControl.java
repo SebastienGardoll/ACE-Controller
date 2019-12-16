@@ -9,6 +9,7 @@ import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.core.AbstractPausableToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
+import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 
@@ -60,29 +61,72 @@ public class ExtractionToolControl extends AbstractPausableToolControl
     this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
   }
   
+  private void enableCarouselButton(boolean isEnable)
+  {
+    for(ControlPanel panel : this.getCtrlPanels())
+    {
+      panel.enableResume(isEnable);
+      panel.enableCarouselButton(isEnable);
+    }
+  }
+  
+  void turnCarouselToRight()
+  {
+    _LOG.info("turning the carousel to the right");
+    this.notifyAction(new Action(ActionType.CAROUSEL_TURN_RIGHT, Optional.empty()));
+    this.turnCarousel(1);
+  }
+  
+  void turnCarouselToLeft()
+  {
+    _LOG.info("turning the carousel to the left");
+    this.notifyAction(new Action(ActionType.CAROUSEL_TURN_LEFT, Optional.empty()));
+    this.turnCarousel(-1);
+  }
+  
+  private void turnCarousel(int direction)
+  {
+    Runnable threadLogic = () -> 
+    {
+      ExtractionToolControl.this.enableCarouselButton(false);
+      ExtractionToolControl.this.presentationPasseur(direction);
+      ExtractionToolControl.this.enableCarouselButton(true);
+    };
+    
+    new Thread(threadLogic).start();
+  }
+  
   //déplace le carrousel pour rendre accessible les côté du carrousel
   //qui ne le sont pas
   //attention si un thread est sur pause, l'appel par un autre thread
   //de cette fonction sera piégé dans la boucle de finMoveBras !!!
-  private void presentationPasseur(int sens) throws InterruptedException,
-                                                    InitializationException
+  private void presentationPasseur(int sens)
   {
-    Passeur passeur = ParametresSession.getInstance().getPasseur();
-    
-    passeur.moveButeBras();
-    passeur.finMoveBras();
-
-    if (sens >= 0)
+    try
     {
-      //par la droite
-      passeur.moveCarrouselRelatif(ParametresSession.NB_POSITION) ;
-    }
-    else
-    {
-      //par la gauche
-      passeur.moveCarrouselRelatif( -1 * ParametresSession.NB_POSITION) ;
-    }
+      Passeur passeur = ParametresSession.getInstance().getPasseur();
+      
+      passeur.moveButeBras();
+      passeur.finMoveBras();
 
-    passeur.finMoveCarrousel();
+      if (sens >= 0)
+      {
+        //par la droite
+        passeur.moveCarrouselRelatif(ParametresSession.NB_POSITION) ;
+      }
+      else
+      {
+        //par la gauche
+        passeur.moveCarrouselRelatif( -1 * ParametresSession.NB_POSITION) ;
+      }
+
+      passeur.finMoveCarrousel();
+    }
+    catch (Exception e)
+    {
+      String msg = String.format("turning to %s has crashed", sens);
+      _LOG.fatal(msg, e);
+      this.handleException(msg, e);
+    }
   }
 }

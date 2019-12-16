@@ -372,6 +372,18 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
+      case CAROUSEL_TURN_RIGHT:
+      {
+        msg = "turning the carousel to the right";
+        break;
+      }
+      
+      case CAROUSEL_TURN_LEFT:
+      {
+        msg = "turning the carousel to the left";
+        break;
+      }
+      
       default:
       {
         _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
