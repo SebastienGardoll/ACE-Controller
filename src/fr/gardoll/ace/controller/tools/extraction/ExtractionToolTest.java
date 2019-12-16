@@ -26,6 +26,8 @@ class ExtractionToolTest
   
   private static final long _PAUSE_DURATION = 500l;
   
+  private static final long _TURN_DURATION  = 1000l;
+  
   //Milliseconds before triggering pause or cancel.
   private static final long _TRIGGER_DELAY = 250l;
   
@@ -217,6 +219,146 @@ class ExtractionToolTest
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test7n()throws InitializationException
+  {
+    _LOG.info("******************** test7n sequence pause and turn to the right");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "solo_sequence_pause_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case PAUSE_DONE:
+          {
+            // The current thread is pause when _ctrl.pause is called.
+            // We must call resume method in another thread.
+            Runnable threadLogic = () -> 
+            {
+              try
+              {
+                Thread.sleep(ExtractionToolTest._PAUSE_DURATION);
+              }
+              catch (InterruptedException e) {e.printStackTrace();}
+              
+              ExtractionToolTest.this._ctrl.turnCarouselToRight();
+            };
+            
+            new Thread(threadLogic).start();
+            
+            break;
+          }
+          
+          case CAROUSEL_TURN_RIGHT:
+          {
+            Runnable threadLogic = () -> 
+            {
+              try
+              {
+                Thread.sleep(ExtractionToolTest._TURN_DURATION);
+              }
+              catch (InterruptedException e) {e.printStackTrace();}
+              
+              ExtractionToolTest.this._ctrl.resume();
+            };
+            
+            new Thread(threadLogic).start();
+            
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test void test8n()throws InitializationException
+  {
+    _LOG.info("******************** test8n sequence pause and turn to the left");
+    int nbColumn = 1;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "solo_sequence_pause_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+   
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
+                                              protocolFilePath);
+
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case PAUSE_DONE:
+          {
+            // The current thread is pause when _ctrl.pause is called.
+            // We must call resume method in another thread.
+            Runnable threadLogic = () -> 
+            {
+              try
+              {
+                Thread.sleep(ExtractionToolTest._PAUSE_DURATION);
+              }
+              catch (InterruptedException e) {e.printStackTrace();}
+              
+              ExtractionToolTest.this._ctrl.turnCarouselToLeft();
+            };
+            
+            new Thread(threadLogic).start();
+            
+            break;
+          }
+          
+          case CAROUSEL_TURN_LEFT:
+          {
+            Runnable threadLogic = () -> 
+            {
+              try
+              {
+                Thread.sleep(ExtractionToolTest._TURN_DURATION);
+              }
+              catch (InterruptedException e) {e.printStackTrace();}
+              
+              ExtractionToolTest.this._ctrl.resume();
+            };
+            
+            new Thread(threadLogic).start();
+            
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
     
     this._ctrl.start(initSession);
     this._toolPanel.waitMove();
