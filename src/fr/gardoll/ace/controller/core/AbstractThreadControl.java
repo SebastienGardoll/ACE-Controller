@@ -284,10 +284,9 @@ public abstract class AbstractThreadControl extends Thread
   {
     final Instant deadline = Instant.now().plusSeconds(seconds);
     _LOG.debug(String.format("wait until %s", deadline)) ;
-    Instant now = Instant.now();
     
     // Whatever the thread is pause, the thread must wait until the deadline.
-    while(now.isBefore(deadline))
+    while(Instant.now().isBefore(deadline))
     {
       // Must take the lock so as to read the shared resources.
       this._sync.lockInterruptibly();
@@ -304,7 +303,7 @@ public abstract class AbstractThreadControl extends Thread
         while(this._is_awaiting)
         {
           // Now must be computed each time the thread is waked up.
-          now = Instant.now(); 
+          Instant now = Instant.now(); 
           
           if(now.isAfter(deadline))
           {
