@@ -26,6 +26,9 @@ class ExtractionToolTest
   
   private static final long _PAUSE_DURATION = 500l;
   
+  //Milliseconds before triggering pause or cancel.
+  private static final long _TRIGGER_DELAY = 250l;
+  
   private ExtractionToolControl _ctrl = null;
   private PausableJPanelObserverStub _toolPanel = null;
 
@@ -58,6 +61,24 @@ class ExtractionToolTest
     ParametresSession.getInstance().close();
   }
 
+  private void autoResume()
+  {
+    // The current thread is pause when _ctrl.pause is called.
+    // We must call resume method in another thread.
+    Runnable threadLogic = () -> 
+    {
+      try
+      {
+        Thread.sleep(ExtractionToolTest._PAUSE_DURATION);
+      }
+      catch (InterruptedException e) {e.printStackTrace();}
+      
+      this._ctrl.resume();              
+    };
+    
+    new Thread(threadLogic).start();
+  }
+  
   @Test
   void test1n() throws InitializationException
   {
@@ -80,20 +101,118 @@ class ExtractionToolTest
         {
           case PAUSE_DONE:
           {
-            // The current thread is pause when _ctrl.pause is called.
-            // We must call resume method in another thread.
-            Runnable threadLogic = () -> 
+            ExtractionToolTest.this.autoResume();
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test
+  void test1c() throws InitializationException
+  {
+    _LOG.info("******************** test1c cancel while awaiting");
+    int nbColumn = 3;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "sr-spec_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
+    
+    
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case PAUSE_DONE:
+          {
+            ExtractionToolTest.this.autoResume();
+            break;
+          }
+          
+          case SEQUENCE_AWAIT:
+          {
+            try
             {
-              try
-              {
-                Thread.sleep(ExtractionToolTest._PAUSE_DURATION);
-              }
-              catch (InterruptedException e) {e.printStackTrace();}
-              
-              ExtractionToolTest.this._ctrl.resume();              
-            };
+              Thread.sleep(ExtractionToolTest._TRIGGER_DELAY);
+            }
+            catch (InterruptedException e)
+            {
+              e.printStackTrace();
+            }
             
-            new Thread(threadLogic).start();
+            ExtractionToolTest.this._ctrl.cancel();
+            
+            break;
+          }
+          
+          default:
+          {
+            break;
+          }
+        }
+      }
+    };
+    this._ctrl.addControlPanel(ctrlPanel);
+    
+    
+    this._ctrl.start(initSession);
+    this._toolPanel.waitMove();
+  }
+  
+  @Test
+  void test1p() throws InitializationException
+  {
+    _LOG.info("******************** test1p pause while awaiting");
+    int nbColumn = 3;
+    int numColumn = 1;
+    int numSequence = 1;
+    String protocolFileName = "sr-spec_test.prt";
+    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    
+    InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
+    
+    
+    ControlPanel ctrlPanel = new ControlPanelAdapter()
+    {
+      @Override
+      public void majActionActuelle(Action action)
+      {
+        switch(action.type)
+        {
+          case PAUSE_DONE:
+          {
+            ExtractionToolTest.this.autoResume();
+            break;
+          }
+          
+          case SEQUENCE_AWAIT:
+          {
+            try
+            {
+              Thread.sleep(ExtractionToolTest._TRIGGER_DELAY);
+            }
+            catch (InterruptedException e)
+            {
+              e.printStackTrace();
+            }
+            
+            ExtractionToolTest.this._ctrl.pause();
             
             break;
           }
