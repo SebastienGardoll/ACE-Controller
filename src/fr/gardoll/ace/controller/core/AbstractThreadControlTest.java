@@ -7,8 +7,12 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeEach ;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation ;
+import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
+import org.junit.jupiter.api.TestMethodOrder ;
 
+@TestMethodOrder(OrderAnnotation.class)
 class AbstractThreadControlTest
 {
   private TestToolControlOperations _ctrl = null;
@@ -28,11 +32,11 @@ class AbstractThreadControlTest
   }
 
   @Test
+  @Order(1)
   void test1() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 1 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 1 #########") ;
+    
     SleepingThread thread = new SleepingThread(this._ctrl);
     thread.start();
     Thread.sleep(2000);
@@ -75,11 +79,11 @@ class AbstractThreadControlTest
   }
   
   @Test
+  @Order(2)
   void test2() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 2 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 2 #########") ;
+    
     SleepingThread thread = new SleepingThread(this._ctrl);
     thread.start();
     Thread.sleep(2000);
@@ -99,11 +103,11 @@ class AbstractThreadControlTest
   }
   
   @Test
+  @Order(3)
   void test3() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 3 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 3 #########") ;
+    
     SleepingThread thread = new SleepingThread(this._ctrl);
     thread.start();
     Thread.sleep(2000);
@@ -124,11 +128,11 @@ class AbstractThreadControlTest
   }
 
   @Test
+  @Order(4)
   void test4() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 4 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 4 #########") ;
+    
     SleepingThread thread = new SleepingThread(this._ctrl);
     thread.start();
     Thread.sleep(2000);
@@ -154,11 +158,11 @@ class AbstractThreadControlTest
   }
 
   @Test
+  @Order(5)
   void test5() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 5 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 5 #########") ;
+    
     SleepingThread thread = new SleepingThread(this._ctrl);
     thread.start();
     Thread.sleep(2000);
@@ -180,11 +184,11 @@ class AbstractThreadControlTest
   }
 
   @Test
+  @Order(6)
   void test6() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 6 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 6 #########") ;
+    
     SleepingThread thread = new SleepingThread(this._ctrl);
     thread.start();
     Thread.sleep(2000);
@@ -206,11 +210,11 @@ class AbstractThreadControlTest
   }
 
   @Test
+  @Order(7)
   void test7() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 7 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 7 #########") ;
+    
     SleepingThread thread = new SleepingThread(this._ctrl);
     thread.start();
     Thread.sleep(2000);
@@ -232,11 +236,10 @@ class AbstractThreadControlTest
   }
   
   @Test
+  @Order(8)
   void test8() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 8 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 8 #########") ;
     
     WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
@@ -248,11 +251,10 @@ class AbstractThreadControlTest
   }
 
   @Test
+  @Order(9)
   void test9() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 9 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 9 #########") ;
     
     WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
@@ -266,11 +268,10 @@ class AbstractThreadControlTest
   }
   
   @Test
+  @Order(10)
   void test10() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 10 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 10 #########") ;
     
     WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
@@ -288,11 +289,10 @@ class AbstractThreadControlTest
   }
 
   @Test
+  @Order(11)
   void test11() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 11 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 11 #########") ;
     
     WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
@@ -310,11 +310,10 @@ class AbstractThreadControlTest
   }
   
   @Test
+  @Order(12)
   void test12() throws InterruptedException
   {
-    System.out.println() ;
-    System.out.println("######### TEST 11 #########") ;
-    System.out.println() ;
+    _LOG.info("######### TEST 12 #########") ;
     
     SelfPausedThread thread = new SelfPausedThread(this._ctrl);
     thread.start();
