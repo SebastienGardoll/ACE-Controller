@@ -592,10 +592,10 @@ class ExtractionToolTest
   void test1c() throws InitializationException
   {
     _LOG.info("******************** test1c cancel while awaiting");
-    int nbColumn = 3;
+    int nbColumn = 1;
     int numColumn = 1;
     int numSequence = 1;
-    String protocolFileName = "nominal_test.prt";
+    String protocolFileName = "await_cancel_pause_test.prt";
     Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
@@ -649,10 +649,10 @@ class ExtractionToolTest
   void test1p() throws InitializationException
   {
     _LOG.info("******************** test1p pause while awaiting");
-    int nbColumn = 3;
+    int nbColumn = 1;
     int numColumn = 1;
     int numSequence = 1;
-    String protocolFileName = "nominal_test.prt";
+    String protocolFileName = "await_cancel_pause_test.prt";
     Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
