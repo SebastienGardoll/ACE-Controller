@@ -75,4 +75,14 @@ public class InitSession
       throw new InitializationException(msg) ;
     }
   }
+  
+  @Override
+  public String toString()
+  {
+    String result = String.format("initialization: nbColumn=%s ; numColumn=%s ; numSequence=%s ; protocol=%s",
+        this.nbColonne, this.numColonne, this.numSequence,
+        this.protocol.protocolFilePath.toAbsolutePath());
+    
+    return result;
+  }
 }

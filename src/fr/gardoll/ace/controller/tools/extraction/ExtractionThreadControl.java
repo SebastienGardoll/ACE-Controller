@@ -42,6 +42,8 @@ public class ExtractionThreadControl extends AbstractThreadControl
       _LOG.info("starting session");
       Action action = new Action(ActionType.SESSION_START, Optional.empty()) ;
       this._toolCtrl.notifyAction(action) ;
+      
+      _LOG.info(this._initSession.toString());
     }
     
     // Shortcut.
