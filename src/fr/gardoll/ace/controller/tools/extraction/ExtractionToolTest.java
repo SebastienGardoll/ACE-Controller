@@ -7,7 +7,10 @@ import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.BeforeEach ;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation ;
+import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
+import org.junit.jupiter.api.TestMethodOrder ;
 
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
@@ -20,6 +23,7 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
+@TestMethodOrder(OrderAnnotation.class)
 class ExtractionToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(ExtractionToolTest.class.getName());
@@ -131,6 +135,7 @@ class ExtractionToolTest
   }
   
   @Test
+  @Order(1)
   void test1n() throws InitializationException
   {
     _LOG.info("******************** test1n nominal sequence");
@@ -170,7 +175,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test2n()throws InitializationException
+  @Test
+  @Order(2)
+  void test2n()throws InitializationException
   {
     _LOG.info("******************** test2n rincing cases");
     int nbColumn = 1;
@@ -187,6 +194,7 @@ class ExtractionToolTest
   }
   
   @Test
+  @Order(3)
   void test3n() throws InitializationException
   {
     _LOG.info("******************** test3n await tests");
@@ -225,7 +233,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test4n()throws InitializationException
+  @Order(4)
+  @Test
+  void test4n()throws InitializationException
   {
     _LOG.info("******************** test4n resuming to sequence 2/3");
     int nbColumn = 1;
@@ -241,7 +251,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test5n()throws InitializationException
+  @Test
+  @Order(5)
+  void test5n()throws InitializationException
   {
     _LOG.info("******************** test5n resuming to column 2/3");
     int nbColumn = 3;
@@ -257,7 +269,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test6n()throws InitializationException
+  @Test
+  @Order(6)
+  void test6n()throws InitializationException
   {
     _LOG.info("******************** test6n resuming to column 2/3 & sequence 2/3");
     int nbColumn = 3;
@@ -273,7 +287,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test7n()throws InitializationException
+  @Test
+  @Order(7)
+  void test7n()throws InitializationException
   {
     _LOG.info("******************** test7n sequence pause and turn to the right");
     int nbColumn = 1;
@@ -317,7 +333,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test8n()throws InitializationException
+  @Test
+  @Order(8)
+  void test8n()throws InitializationException
   {
     _LOG.info("******************** test8n sequence pause and turn to the left");
     int nbColumn = 1;
@@ -361,7 +379,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test9n()throws InitializationException
+  @Test
+  @Order(9)
+  void test9n()throws InitializationException
   {
     _LOG.info("******************** test9n turn to the right while waiting");
     int nbColumn = 1;
@@ -411,7 +431,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test10n()throws InitializationException
+  @Test
+  @Order(10)
+  void test10n()throws InitializationException
   {
     _LOG.info("******************** test10n turn to the left while waiting");
     int nbColumn = 1;
@@ -461,7 +483,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test11n()throws InitializationException
+  @Test
+  @Order(11)
+  void test11n()throws InitializationException
   {
     _LOG.info("******************** test11n turn to the right while usr pause");
     int nbColumn = 1;
@@ -511,7 +535,9 @@ class ExtractionToolTest
     this._toolPanel.waitMove();
   }
   
-  @Test void test12n()throws InitializationException
+  @Test
+  @Order(12)
+  void test12n()throws InitializationException
   {
     _LOG.info("******************** test12n turn to the left while usr pause");
     int nbColumn = 1;
@@ -562,6 +588,7 @@ class ExtractionToolTest
   }
   
   @Test
+  @Order(13)
   void test1c() throws InitializationException
   {
     _LOG.info("******************** test1c cancel while awaiting");
@@ -618,6 +645,7 @@ class ExtractionToolTest
   }
   
   @Test
+  @Order(14)
   void test1p() throws InitializationException
   {
     _LOG.info("******************** test1p pause while awaiting");
