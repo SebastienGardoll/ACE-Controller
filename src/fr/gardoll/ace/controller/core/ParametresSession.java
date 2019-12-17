@@ -504,6 +504,8 @@ public class ParametresSession implements Closeable
         this._valves.close();
         this._valves = null;
       }
+      
+      ParametresSession._INSTANCE = null;
     }
     catch (IOException e)
     {
