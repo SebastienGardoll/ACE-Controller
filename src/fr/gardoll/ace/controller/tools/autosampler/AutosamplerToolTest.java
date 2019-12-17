@@ -7,7 +7,10 @@ import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.BeforeEach ;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation ;
+import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
+import org.junit.jupiter.api.TestMethodOrder ;
 
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
@@ -15,6 +18,7 @@ import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
+@TestMethodOrder(OrderAnnotation.class)
 class AutosamplerToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolTest.class.getName());
@@ -66,6 +70,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(1)
   void testArm1n() throws InterruptedException
   {
     _LOG.info("******************** testArm1n arm go to top");
@@ -74,6 +79,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(2)
   void testArm2n()
   {
     _LOG.info("******************** testArm2n arm go to trash");
@@ -82,6 +88,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(3)
   void testArm3n()
   {
     _LOG.info("******************** testArm3n arm go to column");
@@ -92,6 +99,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(4)
   void testArm4n()
   {
     _LOG.info("******************** testArm4n arm free move up");
@@ -101,6 +109,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(5)
   void testArm5n()
   {
     _LOG.info("******************** testArm5n arm free move down");
@@ -110,6 +119,7 @@ class AutosamplerToolTest
   }
 
   @Test
+  @Order(6)
   void testArm1c() throws InterruptedException
   {
     _LOG.info("******************** testArm1c cancel arm go to top");
@@ -119,6 +129,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(7)
   void testArm2c() throws InterruptedException
   {
     _LOG.info("******************** testArm2c cancel arm go to trash");
@@ -129,6 +140,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(8)
   void testArm3c() throws InterruptedException
   {
     _LOG.info("******************** testArm3c cancel arm go to column");
@@ -141,6 +153,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(9)
   void testArm4c() throws InterruptedException
   {
     _LOG.info("******************** testArm4c cancel arm free move up");
@@ -152,6 +165,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(10)
   void testArm5c() throws InterruptedException
   {
     _LOG.info("******************** testArm5c cancel arm free move down");
@@ -163,6 +177,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(11)
   void testArm1p() throws InterruptedException
   {
     _LOG.info("******************** testArm1p pause arm go to top");
@@ -175,6 +190,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(12)
   void testArm2p() throws InterruptedException
   {
     _LOG.info("******************** testArm2p pause arm go to trash");
@@ -188,6 +204,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(13)
   void testArm3p() throws InterruptedException
   {
     _LOG.info("******************** testArm3p pause arm go to column");
@@ -203,6 +220,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(14)
   void testArm4p() throws InterruptedException
   {
     _LOG.info("******************** testArm4p pause arm free move up");
@@ -217,6 +235,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(15)
   void testArm5p() throws InterruptedException
   {
     _LOG.info("******************** testArm5p pause arm free move down");
@@ -231,6 +250,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(16)
   void testCarousel1n()
   {
     _LOG.info("******************** testCarousel1n turn right");
@@ -239,6 +259,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(17)
   void testCarousel2n()
   {
     _LOG.info("******************** testCarousel2n turn left");
@@ -247,6 +268,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(18)
   void testCarousel3n()
   {
     _LOG.info("******************** testCarousel3n go to position 10");
@@ -255,6 +277,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(19)
   void testCarousel1c() throws InterruptedException
   {
     _LOG.info("******************** testCarousel1c cancel turn right");
@@ -265,6 +288,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(20)
   void testCarousel2c() throws InterruptedException
   {
     _LOG.info("******************** testCarousel2c cancel turn left");
@@ -275,6 +299,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(21)
   void testCarousel3c() throws InterruptedException
   {
     _LOG.info("******************** testCarousel3c cancel go to position 10");
@@ -285,6 +310,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(22)
   void testCarousel1p() throws InterruptedException
   {
     _LOG.info("******************** testCarousel1p pause turn right");
@@ -298,6 +324,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(23)
   void testCarousel2p() throws InterruptedException
   {
     _LOG.info("******************** testCarousel2p pause turn left");
@@ -311,6 +338,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(24)
   void testCarousel3p() throws InterruptedException
   {
     _LOG.info("******************** testCarousel3p pause go to position 10");
@@ -324,6 +352,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(25)
   void scriptedTest1() throws InterruptedException
   {
     _LOG.info("******************** scripted test 1");
@@ -347,6 +376,7 @@ class AutosamplerToolTest
   }
   
   @Test
+  @Order(26)
   void scriptedTest2() throws InterruptedException
   {
     _LOG.info("******************** scripted test 2");

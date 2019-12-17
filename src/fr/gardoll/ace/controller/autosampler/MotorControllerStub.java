@@ -16,12 +16,13 @@ public class MotorControllerStub implements MotorController, Closeable
   private int _targetedCarouselPosition = 0;
   private int _carouselDirection        = 0;
   private boolean _isCarouselMoving     = false ;
+  private int _carouselOrigin           = 0;
 
-  private boolean _isArmOnTop           = true;
   private int _currentArmPosition       = 0;
   private int _targetedArmPosition      = 0;
   private int _armDirection             = 0;
   private boolean _isArmMoving          = false ;
+  private int _armOrigin                = 0;
   
   // Number of steps per period.
   // Moving to 1 position in 0.2 seconds considering period of 0.1 second.
@@ -50,6 +51,10 @@ public class MotorControllerStub implements MotorController, Closeable
   {
     _LOG.trace(String.format("stubbing command move(%s, %s)", nbPas1, nbPas2));
     
+    // Translate from relative coordinates to absolute coordinates.
+    nbPas1 = nbPas1 + this._carouselOrigin;
+    nbPas2 = nbPas2 + this._armOrigin;
+    
     if(nbPas1 != this._currentCarouselPosition)
     {
       this._targetedCarouselPosition = nbPas1;
@@ -59,6 +64,8 @@ public class MotorControllerStub implements MotorController, Closeable
     else
     {
       _LOG.debug("% carousel doesn't have to move %");
+      this._carouselDirection = 0;
+      this._isCarouselMoving = false;
     }
     
     if(nbPas2 != this._currentArmPosition)
@@ -66,11 +73,12 @@ public class MotorControllerStub implements MotorController, Closeable
       this._targetedArmPosition = nbPas2;
       this._armDirection = this._currentArmPosition < nbPas2 ? 1 : -1 ;
       this._isArmMoving = true;
-      this._isArmOnTop = false;
     }
     else
     {
       _LOG.debug("% arm doesn't have to move %");
+      this._armDirection = 0;
+      this._isArmMoving = false;
     }
   }
 
@@ -159,26 +167,27 @@ public class MotorControllerStub implements MotorController, Closeable
       throw new RuntimeException("unexpected moving to the limit of the arm");
     }
     
-    if(this._isArmOnTop)
+    if(this._currentArmPosition == 0)
     {
       this._isArmMoving = false;
+      this._armDirection = 0 ;
       _LOG.debug("% arm already on top %");
     }
     else
     {
       this._isArmMoving = true;
-      this._isArmOnTop = true;
+      this._armDirection = this._currentArmPosition < 0 ? 1 : -1 ;
     }
     
     this._targetedArmPosition = 0;
-    this._armDirection = this._currentArmPosition < 0 ? 1 : -1 ;
   }
 
   @Override
   public void reset() throws SerialComException, InterruptedException
   {
     _LOG.debug("stubbing command reset");
-    this._isArmOnTop               = true;
+    this._armOrigin                = 0;
+    this._carouselOrigin           = 0;
     this._currentCarouselPosition  = 0;
     this._targetedCarouselPosition = 0;
     this._currentArmPosition       = 0;
@@ -217,13 +226,13 @@ public class MotorControllerStub implements MotorController, Closeable
     {
       case bras:
       {
-        this._currentArmPosition = 0;
+        this._armOrigin = this._currentArmPosition;
         break ;
       }
       
       case carrousel:
       {
-        this._currentCarouselPosition = 0;
+        this._carouselOrigin = this._currentCarouselPosition;
         break ;
       }
     }
@@ -267,13 +276,13 @@ public class MotorControllerStub implements MotorController, Closeable
     {
       case bras:
       {
-        result = this._currentArmPosition;
+        result = this._currentArmPosition - this._armOrigin;
         break ;
       }
       
       case carrousel:
       {
-        result = this._currentCarouselPosition;
+        result = this._currentCarouselPosition - this._carouselOrigin;
         break ;
       }
     }

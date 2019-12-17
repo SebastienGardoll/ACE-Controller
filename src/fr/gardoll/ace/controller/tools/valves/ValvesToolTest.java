@@ -5,11 +5,15 @@ import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.BeforeEach ;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation ;
+import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
+import org.junit.jupiter.api.TestMethodOrder ;
 
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.ui.CloseableJPanelObserverStub ;
 
+@TestMethodOrder(OrderAnnotation.class)
 class ValvesToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(ValvesToolTest.class.getName());
@@ -42,6 +46,7 @@ class ValvesToolTest
   }
 
   @Test
+  @Order(1)
   void scriptedTest1() throws InterruptedException
   {
     _LOG.info("******************** scripted test1");
@@ -54,6 +59,7 @@ class ValvesToolTest
   }
   
   @Test
+  @Order(2)
   void scriptedTest2() throws InterruptedException
   {
     _LOG.info("******************** scripted test2");

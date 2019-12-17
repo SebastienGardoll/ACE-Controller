@@ -8,7 +8,10 @@ import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.BeforeEach ;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation ;
+import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
+import org.junit.jupiter.api.TestMethodOrder ;
 
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
@@ -19,6 +22,7 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
+@TestMethodOrder(OrderAnnotation.class)
 class PumpToolTest
 {
   private static final Logger _LOG = LogManager.getLogger(PumpToolTest.class.getName());
@@ -62,6 +66,7 @@ class PumpToolTest
   }
   
   @Test
+  @Order(1)
   void test1n()
   {
     _LOG.info("******************** test1n clean line 1");
@@ -72,6 +77,7 @@ class PumpToolTest
   }
   
   @Test
+  @Order(2)
   void test2n()
   {
     _LOG.info("******************** test2n clean line 1 to 3");
@@ -84,6 +90,7 @@ class PumpToolTest
   }
   
   @Test
+  @Order(3)
   void test1c()
   {
     _LOG.info("******************** test1c cancel while infusing");
@@ -122,6 +129,7 @@ class PumpToolTest
   }
   
   @Test
+  @Order(4)
   void test1p()
   {
     _LOG.info("******************** test1p pause while infusing");
@@ -175,6 +183,7 @@ class PumpToolTest
   }
   
   @Test
+  @Order(5)
   void test2c()
   {
     _LOG.info("******************** test2c cancel while withdrawing");
@@ -213,6 +222,7 @@ class PumpToolTest
   }
   
   @Test
+  @Order(6)
   void test2p()
   {
     _LOG.info("******************** test2p pause while withdrawing");
