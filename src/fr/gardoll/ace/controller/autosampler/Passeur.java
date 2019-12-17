@@ -128,7 +128,7 @@ public class Passeur implements Closeable
   //en nombre de demi pas
   public void moveBras(int nbPas) throws InterruptedException
   {
-    _LOG.debug(String.format("move the arm of %s steps", nbPas));
+    _LOG.debug(String.format("move the arm to the position %s", nbPas));
     this.y = nbPas ;
     
     try
@@ -137,7 +137,7 @@ public class Passeur implements Closeable
     }
     catch (SerialComException e)
     {
-      String msg = String.format("error while moving the autosampler arm of '%s' steps",
+      String msg = String.format("error while moving the autosampler arm to position '%s'",
           nbPas);
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
@@ -148,7 +148,7 @@ public class Passeur implements Closeable
   // fait car problème de temps de réponse car halt fait par interface
   public void moveCarrouselEtBras (int position, int nbPas) throws InterruptedException
   {
-    _LOG.debug(String.format("move the carousel to position %s and arm of %s steps",
+    _LOG.debug(String.format("move the carousel to position %s and arm to position %s",
         position, nbPas));
     this.x = position * nbPasCarrousel ;
     this.y = nbPas ;
@@ -158,7 +158,7 @@ public class Passeur implements Closeable
     }
     catch (SerialComException e)
     {
-      String msg = String.format("error while moving the autosampler arm of '%s' steps and carousel to position '%s'",
+      String msg = String.format("error while moving the autosampler arm to position '%s' steps and carousel to position '%s'",
           nbPas, position);
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
@@ -193,7 +193,7 @@ public class Passeur implements Closeable
     }
     catch(SerialComException e)
     {
-      String msg = "error while moving autosampler arm to upper limit";
+      String msg = "error while moving autosampler arm to top";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -316,7 +316,7 @@ public class Passeur implements Closeable
     }
     catch (SerialComException e)
     {
-      String msg = "error while setting the autosampler arm base";
+      String msg = "error while setting the arm origin";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -335,7 +335,7 @@ public class Passeur implements Closeable
     }
     catch(SerialComException e)
     {
-      String msg = "error while setting the autosampler carousel base";
+      String msg = "error while setting the carousel origin";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -543,7 +543,7 @@ public class Passeur implements Closeable
     }
     catch(SerialComException e)
     {
-      String msg = "error while moving the autosampler carousel to base";
+      String msg = "error while moving the carousel to origin";
       _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
@@ -648,7 +648,7 @@ public class Passeur implements Closeable
       _LOG.info("waiting for the carousel");
       autosampler.finMoveCarrousel();
       
-      _LOG.info(String.format("moving arm to %s nb of step", armNbStep));
+      _LOG.info(String.format("moving arm to position %s", armNbStep));
       autosampler.moveBras(armNbStep);
       
       _LOG.info("waiting for the arm");
@@ -660,7 +660,7 @@ public class Passeur implements Closeable
       _LOG.info("waiting for the arm");
       autosampler.finMoveBras();
       
-      _LOG.info(String.format("moving carousel to position %s and arm to %s nb of step", carouselPosition, armNbStep));
+      _LOG.info(String.format("moving carousel to position %s and arm to position %s", carouselPosition, armNbStep));
       autosampler.moveCarrouselEtBras(carouselPosition, armNbStep);
       
       Thread.sleep(1000);
