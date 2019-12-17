@@ -61,7 +61,7 @@ public class PumpControllerStub implements Closeable, PumpController
     _LOG.trace(String.format("stubbing command dia %s", diametre));
   }
 
-  private double computeDeliveredVolume(double volume, double rate)
+  private double computeDeliveredVolume(double rate)
   {
     return (rate / TIME_FACTOR);
   }
@@ -85,7 +85,7 @@ public class PumpControllerStub implements Closeable, PumpController
         rate = this._currentRateW;
       }
       
-      double deliveredVolume = computeDeliveredVolume(targetedVolume, rate);
+      double deliveredVolume = computeDeliveredVolume(rate);
       this._delivered += deliveredVolume;
       
       if(this._delivered >= targetedVolume)
