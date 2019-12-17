@@ -238,7 +238,7 @@ class AbstractThreadControlTest
     System.out.println("######### TEST 8 #########") ;
     System.out.println() ;
     
-    WaitingThread thread = new WaitingThread(this._ctrl, 5);
+    WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
     
     _LOG.debug("*** just waiting for the thread ****") ;
@@ -254,7 +254,7 @@ class AbstractThreadControlTest
     System.out.println("######### TEST 9 #########") ;
     System.out.println() ;
     
-    WaitingThread thread = new WaitingThread(this._ctrl, 5);
+    WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
     
     Thread.sleep(1000);
@@ -272,7 +272,7 @@ class AbstractThreadControlTest
     System.out.println("######### TEST 10 #########") ;
     System.out.println() ;
     
-    WaitingThread thread = new WaitingThread(this._ctrl, 5);
+    WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
     
     Thread.sleep(1000);
@@ -294,7 +294,7 @@ class AbstractThreadControlTest
     System.out.println("######### TEST 11 #########") ;
     System.out.println() ;
     
-    WaitingThread thread = new WaitingThread(this._ctrl, 5);
+    WaitingThread thread = new WaitingThread(this._ctrl, 5000);
     thread.start();
     
     Thread.sleep(1000);
@@ -376,12 +376,12 @@ class SleepingThread extends AbstractThreadControl
 
 class WaitingThread extends AbstractThreadControl
 {
-  private int _seconds ;
+  private int _duration ; // In milliseconds.
 
-  public WaitingThread(AbstractToolControl toolCtrl, int seconds)
+  public WaitingThread(AbstractToolControl toolCtrl, int duration)
   {
     super(toolCtrl) ;
-    this._seconds = seconds;
+    this._duration = duration;
   }
 
   @Override
@@ -390,7 +390,7 @@ class WaitingThread extends AbstractThreadControl
                                       InitializationException,
                                       Exception
   {
-    this.await(this._seconds);
+    this.await(this._duration);
   }
 }
 

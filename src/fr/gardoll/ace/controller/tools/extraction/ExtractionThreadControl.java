@@ -146,12 +146,13 @@ public class ExtractionThreadControl extends AbstractThreadControl
          (sequenceIndex == protocol.nbMaxSequence)) // Last sequence.
       {
         // entre maintenant et la dernière colonne.
-        long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toSeconds();
-        long tempsAttente = currentSequence.temps - tempsEcoule ;
+        // +1 because between definition.
+        long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toMillis() + 1;
+        long tempsAttente = currentSequence.temps * 1000 - tempsEcoule ;
 
         if(tempsAttente > 0l)
         {
-          String msg = String.format("wait %s seconds until the last column percolates",
+          String msg = String.format("wait %s ms until the last column percolates",
               tempsAttente);
           _LOG.info(msg);
           Action action = new Action(ActionType.SEQUENCE_AWAIT, Optional.of(tempsAttente)) ;
@@ -282,14 +283,15 @@ public class ExtractionThreadControl extends AbstractThreadControl
       //mettre indication d'attente !!
       
       //ok 10/01/06
-      long tempsEcoule = Duration.between(tabTemps[numColonne-1], Instant.now()).toSeconds();
+      // +1 because between definition.
+      long tempsEcoule = Duration.between(tabTemps[numColonne-1], Instant.now()).toMillis() + 1;
       
       if(false == tempsPrecedent.isEmpty() &&
-         tempsEcoule < tempsPrecedent.get())
+         tempsEcoule < (tempsPrecedent.get() * 1000))
       {
-        long timeToWait = tempsPrecedent.get() - tempsEcoule + 1;
+        long timeToWait = tempsPrecedent.get() * 1000 - tempsEcoule;
         
-        String msg = String.format("wait %s seconds until the next column percolates",
+        String msg = String.format("wait %s ms until the next column percolates",
                                    timeToWait);
         _LOG.info(msg);
         Action action = new Action(ActionType.SEQUENCE_AWAIT, Optional.of(timeToWait)) ;

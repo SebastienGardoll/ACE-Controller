@@ -280,9 +280,9 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  public void await(long seconds) throws InterruptedException
+  public void await(long milliseconds) throws InterruptedException
   {
-    final Instant deadline = Instant.now().plusSeconds(seconds);
+    final Instant deadline = Instant.now().plusMillis(milliseconds);
     _LOG.debug(String.format("wait until %s", deadline)) ;
     
     // Whatever the thread is pause, the thread must wait until the deadline.
@@ -311,7 +311,8 @@ public abstract class AbstractThreadControl extends Thread
             break; // Leave the inner while but not the outer most while.
           }
           
-          long timeToWait = Duration.between(now,deadline).toMillis();
+          // +1 because between definition.
+          long timeToWait = Duration.between(now,deadline).toMillis() + 1;
           
           _LOG.debug(String.format("waiting %s ms", timeToWait));
           
