@@ -462,6 +462,8 @@ public class Passeur implements Closeable
           //ancien mécanisme de reprise quand la manip sur le passeur n'était pas possible en pause
           try
           {
+            _LOG.debug(String.format("resume by moving to x=%s ; y=%s",
+                this.x, this.y));
             this.interfaceMoteur.move(this.x, this.y) ;
           }
           catch (SerialComException e)
