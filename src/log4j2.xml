@@ -17,6 +17,10 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
+        <File name="File_Logging_Diff" fileName="output_diff.log" append="false">
+            <PatternLayout pattern="%logger{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
     </Appenders>
     <Loggers>
         <Root level="ALL">
@@ -24,6 +28,7 @@
             <AppenderRef ref="File_Logging_Info"/>
             <AppenderRef ref="File_Logging_Debug"/>
             <AppenderRef ref="File_Logging_All"/>
+            <AppenderRef ref="File_Logging_Diff"/>
         </Root>
     </Loggers>
 </Configuration>
