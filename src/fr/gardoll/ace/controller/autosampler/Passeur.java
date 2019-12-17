@@ -574,7 +574,7 @@ public class Passeur implements Closeable
   //appel obligatoire si l'on doit manipuler le passeur pendant une pause
   public void saveCurrentPosition()
   {  
-    _LOG.debug(String.format("save the current position: x = %s ; y = %s ; stop = %s",
+    _LOG.debug(String.format("save the current position: x = %s ; y = %s ; top = %s",
         this.x, this.y, this._butee));
     this.sav_x = this.x ; this.sav_y = this.y ; this.sav_butee = this._butee ;
   }

@@ -108,7 +108,8 @@ public class ExtractionToolControl extends AbstractPausableToolControl
       
       passeur.moveButeBras();
       passeur.finMoveBras();
-
+      // Don't call setArmOrigin as the arm reference (above the column) is lost.
+      
       if (sens >= 0)
       {
         //par la droite
