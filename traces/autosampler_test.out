@@ -1,0 +1,1542 @@
+Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
+Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm1n - ******************** testArm1n arm go to top
+AutosamplerToolControl::armGoButee - start arm thread for go to top
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '0'
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+ParametresSession::close - closing parameter session
+InitialState::close - set closed state
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm2n - ******************** testArm2n arm go to trash
+AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '3'
+Passeur::moveArmToTrash - move the arm to trash
+Passeur::moveArmToTrash - first reference the arm from the top
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveArmToTrash - then get the arm to the trash
+Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
+Passeur::moveBras - move the arm to the position -13000
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm3n - ******************** testArm3n arm go to column
+AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
+AutosamplerToolControl::armGoColonne - start arm thread for go to column
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '2'
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::convertBras - convert -63.0 millimeter into -8400 number of arm steps
+Passeur::moveBras - move the arm to the position -8400
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm4n - ******************** testArm4n arm free move up
+Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
+AutosamplerToolControl::armFreeMove - start arm thread for free move '100'
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '1'
+Passeur::moveBras - move the arm to the position 13334
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm5n - ******************** testArm5n arm free move down
+Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
+AutosamplerToolControl::armFreeMove - start arm thread for free move '-100'
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '1'
+Passeur::moveBras - move the arm to the position -13333
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm1c - ******************** testArm1c cancel arm go to top
+AutosamplerToolControl::armGoButee - start arm thread for go to top
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '0'
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - the autosampler is already halted
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm2c - ******************** testArm2c cancel arm go to trash
+AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '3'
+Passeur::moveArmToTrash - move the arm to trash
+Passeur::moveArmToTrash - first reference the arm from the top
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveArmToTrash - then get the arm to the trash
+Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
+Passeur::moveBras - move the arm to the position -13000
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm3c - ******************** testArm3c cancel arm go to column
+AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
+AutosamplerToolControl::armGoColonne - start arm thread for go to column
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '2'
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::convertBras - convert -63.0 millimeter into -8400 number of arm steps
+Passeur::moveBras - move the arm to the position -8400
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm4c - ******************** testArm4c cancel arm free move up
+Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
+AutosamplerToolControl::armFreeMove - start arm thread for free move '100'
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '1'
+Passeur::moveBras - move the arm to the position 13334
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm5c - ******************** testArm5c cancel arm free move down
+Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
+AutosamplerToolControl::armFreeMove - start arm thread for free move '-100'
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '1'
+Passeur::moveBras - move the arm to the position -13333
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm1p - ******************** testArm1p pause arm go to top
+AutosamplerToolControl::armGoButee - start arm thread for go to top
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '0'
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - the autosampler is already halted
+Passeur::saveCurrentPosition - save the current position: x = 0 ; y = 0 ; top = true
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+PausedState::resumeTransition - set running state
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm2p - ******************** testArm2p pause arm go to trash
+AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '3'
+Passeur::moveArmToTrash - move the arm to trash
+Passeur::moveArmToTrash - first reference the arm from the top
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveArmToTrash - then get the arm to the trash
+Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
+Passeur::moveBras - move the arm to the position -13000
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 0 ; y = -13000 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=0 ; y=-13000
+MotorControllerStub::move - % carousel doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm3p - ******************** testArm3p pause arm go to column
+AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
+AutosamplerToolControl::armGoColonne - start arm thread for go to column
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '2'
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::convertBras - convert -63.0 millimeter into -8400 number of arm steps
+Passeur::moveBras - move the arm to the position -8400
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 0 ; y = -8400 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=0 ; y=-8400
+MotorControllerStub::move - % carousel doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm4p - ******************** testArm4p pause arm free move up
+Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
+AutosamplerToolControl::armFreeMove - start arm thread for free move '100'
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '1'
+Passeur::moveBras - move the arm to the position 13334
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 0 ; y = 13334 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=0 ; y=13334
+MotorControllerStub::move - % carousel doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testArm5p - ******************** testArm5p pause arm free move down
+Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
+AutosamplerToolControl::armFreeMove - start arm thread for free move '-100'
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '1'
+Passeur::moveBras - move the arm to the position -13333
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 0 ; y = -13333 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=0 ; y=-13333
+MotorControllerStub::move - % carousel doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel1n - ******************** testCarousel1n turn right
+AutosamplerToolControl::carouselTurnRight - start carousel thread for turn to right
+InitialState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position 6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel2n - ******************** testCarousel2n turn left
+AutosamplerToolControl::carouselTurnLeft - start carousel thread for turn to left
+InitialState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position -6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel3n - ******************** testCarousel3n go to position 10
+AutosamplerToolControl::carouselGoPosition - start carousel thread for go to position '10'
+InitialState::start - set running state
+CarouselThread::threadLogic - run CarouselThread
+Passeur::moveCarrousel - move the carousel to the position 10 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel1c - ******************** testCarousel1c cancel turn right
+AutosamplerToolControl::carouselTurnRight - start carousel thread for turn to right
+InitialState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position 6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel2c - ******************** testCarousel2c cancel turn left
+AutosamplerToolControl::carouselTurnLeft - start carousel thread for turn to left
+InitialState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position -6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel3c - ******************** testCarousel3c cancel go to position 10
+AutosamplerToolControl::carouselGoPosition - start carousel thread for go to position '10'
+InitialState::start - set running state
+CarouselThread::threadLogic - run CarouselThread
+Passeur::moveCarrousel - move the carousel to the position 10 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel1p - ******************** testCarousel1p pause turn right
+AutosamplerToolControl::carouselTurnRight - start carousel thread for turn to right
+InitialState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position 6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 3840 ; y = 0 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=3840 ; y=0
+MotorControllerStub::move - % arm doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel2p - ******************** testCarousel2p pause turn left
+AutosamplerToolControl::carouselTurnLeft - start carousel thread for turn to left
+InitialState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position -6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = -3840 ; y = 0 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=-3840 ; y=0
+MotorControllerStub::move - % arm doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::testCarousel3p - ******************** testCarousel3p pause go to position 10
+AutosamplerToolControl::carouselGoPosition - start carousel thread for go to position '10'
+InitialState::start - set running state
+CarouselThread::threadLogic - run CarouselThread
+Passeur::moveCarrousel - move the carousel to the position 10 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 6400 ; y = 0 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=6400 ; y=0
+MotorControllerStub::move - % arm doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+ReadyState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+ReadyState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::scriptedTest1 - ******************** scripted test 1
+AutosamplerToolTest::scriptedTest1 - * arm goes to trash ; carousel turns left ; pause ; resume ; carousel move to pos 14 ; reinit *
+AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
+InitialState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '3'
+Passeur::moveArmToTrash - move the arm to trash
+Passeur::moveArmToTrash - first reference the arm from the top
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveArmToTrash - then get the arm to the trash
+Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
+Passeur::moveBras - move the arm to the position -13000
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolControl::carouselTurnLeft - start carousel thread for turn to left
+ReadyState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 0 ; y = 0 ; top = true
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::moveButeBras - move the arm to the top
+PausedState::resumeTransition - set running state
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position -6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolControl::carouselGoPosition - start carousel thread for go to position '14'
+ReadyState::start - set running state
+CarouselThread::threadLogic - run CarouselThread
+Passeur::moveCarrousel - move the carousel to the position 14 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+ReadyState::reinit - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
+AutosamplerToolTest::setUp - ******************** setup
+ParametresSession::<init> - fetch the configuration
+ParametresSession::<init> - fetch root dir
+ParametresSession::<init> - read ace controller configuration
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - read pump configuration
+ParametresSession::<init> - read autosampler configuration
+ParametresSession::<init> - read paracom configuration
+ParametresSession::<init> - performing data checking
+MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
+Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::reset - resetting the autosampler interface
+MotorControllerStub::reset - stubbing command reset
+Passeur::setModeDirect - setting the ack single line mode
+AutosamplerToolTest::scriptedTest2 - ******************** scripted test 2
+AutosamplerToolTest::scriptedTest2 - * carousel turns right ; pause ; resume ; arm to trash ; arm to trash ; arm to top ; cancel *
+AutosamplerToolControl::carouselTurnRight - start carousel thread for turn to right
+InitialState::start - set running state
+CarouselRelativeThread::threadLogic - run CarouselRelativeThread
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrouselRelatif - move carousel to the relative position 6
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+RunningState::askPausing - waiting for pause
+AbstractThreadControl::askPause - ask the thread to pause
+AbstractPausableToolControl::pauseOperations - running pause operations
+Passeur::pause - pausing the autosampler
+Passeur::pause - halting the autosampler
+Passeur::saveCurrentPosition - save the current position: x = 3840 ; y = 0 ; top = false
+RunningState::pauseTransition - set paused state
+AbstractThreadControl::checkPause - the thead is paused
+AbstractThreadControl::unPause - resuming the thread
+AbstractThreadControl::unPause - waking up the paused thread
+AbstractThreadControl::checkPause - the thread is resumed
+AbstractPausableToolControl::resumeOperations - running the resume operations
+Passeur::reprise - resuming the autosampler (with arm first: false)
+Passeur::reprise - resume by moving to x=3840 ; y=0
+MotorControllerStub::move - % arm doesn't have to move %
+PausedState::resumeTransition - set running state
+Passeur::finMoveCarrousel - carousel reached the position
+RunningState::done - set ready state
+AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
+ReadyState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '3'
+Passeur::moveArmToTrash - move the arm to trash
+Passeur::moveArmToTrash - first reference the arm from the top
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveArmToTrash - then get the arm to the trash
+Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
+Passeur::moveBras - move the arm to the position -13000
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
+ReadyState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '3'
+Passeur::moveArmToTrash - move the arm to trash
+Passeur::moveArmToTrash - first reference the arm from the top
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveArmToTrash - then get the arm to the trash
+Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
+Passeur::moveBras - move the arm to the position -13000
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+RunningState::done - set ready state
+AutosamplerToolControl::armGoButee - start arm thread for go to top
+ReadyState::start - set running state
+ArmThread::threadLogic - run ArmThread
+ArmThread::threadLogic - run ArmThread with order '0'
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - halting the autosampler
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set initial state
+AutosamplerToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl::run - running the close operations
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
+MotorControllerStub::close - stubbing method close
