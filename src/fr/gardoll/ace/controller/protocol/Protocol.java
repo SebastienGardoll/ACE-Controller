@@ -16,6 +16,8 @@ import fr.gardoll.ace.controller.core.Names ;
 
 public class Protocol
 {
+  public static final String PROTOCOL_FILE_EXTENTION = "prt";
+  
   private static final Logger _LOG = LogManager.getLogger(Protocol.class.getName());
   
   // The insertion order is mandatory.
