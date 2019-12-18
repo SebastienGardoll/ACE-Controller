@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.ui;
 
 import java.awt.Container ;
+import java.awt.Dialog ;
 import java.awt.Window ;
 
 public class UiUtils
@@ -15,5 +16,15 @@ public class UiUtils
     }
     
     return (Window) c;
+  }
+  
+  public static Dialog getParentDialog(Container c)
+  {
+    while(false == c instanceof Dialog)
+    {
+      c = c.getParent();
+    }
+    
+    return (Dialog) c;
   }
 }
