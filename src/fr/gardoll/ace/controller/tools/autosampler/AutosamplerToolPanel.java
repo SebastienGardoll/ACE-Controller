@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 
@@ -720,7 +720,7 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
   private void initCustom()
   {
     this.fileChooser.setDialogTitle("select column file");
-    this.fileChooser.setCurrentDirectory(ParametresSession.COLUMN_DIR_PATH.toFile());
+    this.fileChooser.setCurrentDirectory(Names.COLUMN_DIR_PATH.toFile());
     this.fileChooser.setMultiSelectionEnabled(false);
     this.fileChooser.setFileFilter(new FileFilter() 
     {

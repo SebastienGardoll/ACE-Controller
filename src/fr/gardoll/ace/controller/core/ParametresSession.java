@@ -31,6 +31,7 @@ import fr.gardoll.ace.controller.valves.Valves ;
 
 // TODO: default "READ ERROR" for any string.
 // TODO: check for "READ ERROR" strings then throw exception.
+// TODO: implement reload intelligent method (don't reload stuff that has not change).
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
@@ -88,9 +89,6 @@ public class ParametresSession implements Closeable
   private final String _paraComPortPath ;
 
   private final boolean _isDebug ;
-  
-  public final static Path COLUMN_DIR_PATH = 
-      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.COLUMN_DIRNAME);
   
   public static ParametresSession getInstance()
   {
