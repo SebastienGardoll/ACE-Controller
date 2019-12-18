@@ -24,6 +24,12 @@ public class Names
     return filePath;
   }
   
+  public final static Path COLUMN_DIR_PATH = 
+      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.COLUMN_DIRNAME);
+  
+  public final static Path PROTOCOL_DIR_PATH = 
+      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.PROTOCOL_DIRNAME);
+  
   public static final String CONFIG_DIRNAME    = "conf";
   public static final String CONFIG_FILENAME   = "configuration.ini";
   
