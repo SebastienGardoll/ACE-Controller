@@ -314,19 +314,27 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
       java.awt.event.ActionEvent evt)
   {
     _LOG.debug("**** event start ****");
-    ExtractionConfigurationDialog diag = new ExtractionConfigurationDialog(
-        UiUtils.getParentDialog(this), "extraction configuration", true);
-    diag.setVisible(true);
     
-    Optional<InitSession> initSession = diag.getInitSession();
-    
-    if(initSession.isPresent())
+    if(this._isStartEnable)
     {
-      this._ctrl.start(initSession.get());
+      ExtractionConfigurationDialog diag = new ExtractionConfigurationDialog(
+          UiUtils.getParentDialog(this), "extraction configuration", true);
+      diag.setVisible(true);
+      
+      Optional<InitSession> initSession = diag.getInitSession();
+      
+      if(initSession.isPresent())
+      {
+        this._ctrl.start(initSession.get());
+      }
+      else
+      {
+        // Nothing to do.
+      }
     }
     else
     {
-      // Nothing to do.
+      this._ctrl.cancel();
     }
   }
 
