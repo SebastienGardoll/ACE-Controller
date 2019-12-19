@@ -24,7 +24,7 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
 
   private static final Logger _LOG = LogManager.getLogger(AbstractJPanelObserver.class.getName());
   
-  protected static final SimpleDateFormat _DATE_FORMATTER = new SimpleDateFormat("HH:mm:ss");
+  protected static final SimpleDateFormat _DATE_FORMATTER = new SimpleDateFormat("HH:mm");
   
   protected final ToolControl _ctrl ;
   
