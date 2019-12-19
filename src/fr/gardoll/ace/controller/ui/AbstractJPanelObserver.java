@@ -266,8 +266,9 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       case SEQUENCE_AWAIT:
       {
+        long delay = (long) action.data.get() / 1000l ; // Convert into seconds.
         msg = String.format("waiting %s seconds until the column processing is done",
-                            action.data.get());
+                            delay);
         break;
       }
       
