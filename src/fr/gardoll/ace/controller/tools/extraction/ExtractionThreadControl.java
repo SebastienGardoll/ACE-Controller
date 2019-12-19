@@ -113,6 +113,10 @@ public class ExtractionThreadControl extends AbstractThreadControl
       if(sequenceIndex == protocol.nbMaxSequence)
       {
         _LOG.debug("last sequence: rince with H20");
+        
+        Action action = new Action(ActionType.POST_LAST_SEQ, Optional.empty()) ;
+        this._toolCtrl.notifyAction(action) ;
+        
         // dernière séquence, normalement la boucle for est finie.
         this._cmd.rincageH2O();
       }

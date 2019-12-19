@@ -344,6 +344,9 @@ class Commandes
   void finSession() throws InterruptedException
   {  
     _LOG.debug("running end of session operations");
+    Action action = new Action(ActionType.POST_SESSION, Optional.empty()) ;
+    this._toolCtrl.notifyAction(action) ;
+    
     this.pousseSeringue.fermetureEv() ;
     this.passeur.moveButeBras();
     this.passeur.finMoveBras();

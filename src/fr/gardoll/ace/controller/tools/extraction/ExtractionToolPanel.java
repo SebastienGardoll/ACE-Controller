@@ -2,9 +2,12 @@ package fr.gardoll.ace.controller.tools.extraction ;
 
 import java.util.Optional ;
 
+import org.apache.commons.lang3.tuple.Pair ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.Action ;
+import fr.gardoll.ace.controller.protocol.Sequence ;
 import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 import fr.gardoll.ace.controller.ui.UiUtils ;
 
@@ -19,7 +22,10 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
   
   private static final long serialVersionUID = -4485547824494200127L ;
   
-  private final ExtractionToolControl _ctrl; 
+  private final ExtractionToolControl _ctrl;
+
+  private int _maxColumn;
+  private int _maxSequence;
   
   public ExtractionToolPanel(ExtractionToolControl ctrl)
   {
@@ -325,7 +331,12 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
       
       if(initSession.isPresent())
       {
-        this._ctrl.start(initSession.get());
+        InitSession init = initSession.get();
+        
+        this._maxColumn = init.nbColonne;
+        this._maxSequence = init.protocol.nbMaxSequence;
+        
+        this._ctrl.start(init);
       }
       else
       {
@@ -464,5 +475,112 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
   protected void enableCloseControl(boolean isEnable)
   {
     closeButton.setEnabled(isEnable);
+  }
+  
+  @Override
+  protected void processAction(Action action)
+  {
+    super.processAction(action);
+    
+    switch(action.type)
+    {
+      case RESUME:
+      {
+        this.actionValueLabel.setText("resuming");
+        break ;
+      }
+      
+      case WAIT_CANCEL:
+      {
+        this.actionValueLabel.setText("cancelling");
+        break ;
+      }
+      
+      case WAIT_PAUSE:
+      {
+        this.actionValueLabel.setText("user pause");
+        break ;
+      }
+      
+      case REINIT:
+      {
+        this.actionValueLabel.setText("reinitializing");
+        break;
+      }
+      
+      case CLOSING:
+      {
+        this.actionValueLabel.setText("closing");
+        break;
+      }
+      
+      case SEQUENCE_START:
+      {
+        @SuppressWarnings("unchecked")
+        Pair<Integer, Sequence> pair = (Pair<Integer, Sequence>) action.data.get(); 
+        Integer sequenceIndex = pair.getLeft();
+        String text = String.format("%s/%s", sequenceIndex, this._maxSequence);
+        this.sequenceValueLabel.setText(text);
+        break;
+      }
+      
+      case SEQUENCE_AWAIT:
+      {
+        this.actionValueLabel.setText("waiting");
+        break;
+      }
+      
+      case NEXT_SEQUENCE_PREP:
+      {
+        this.actionValueLabel.setText("preparing next seq");
+        break;
+      }
+      
+      case SEQUENCE_PAUSE_START:
+      {
+        this.actionValueLabel.setText("seq pause");
+        break;
+      }
+      
+      case COLUMN_DIST_START:
+      {
+        this.actionValueLabel.setText("distributing");
+        String text = String.format("%s/%s", action.data.get(), this._maxColumn);
+        this.columnValueLabel.setText(text);
+        break;
+      }
+      
+      case PREPARING:
+      {
+        this.actionValueLabel.setText("preparing seq");
+        break;
+      }
+      
+      case POST_LAST_SEQ:
+      {
+        this.actionValueLabel.setText("rincing");
+        this.columnValueLabel.setText("-");
+        this.sequenceValueLabel.setText("-");
+        break;
+      }
+      
+      case POST_SESSION:
+      {
+        this.actionValueLabel.setText("home");
+        break;
+      }
+      
+      case SESSION_DONE:
+      {
+        this.actionValueLabel.setText("done");
+        break;
+      }
+      
+      default:
+      {
+        // Nothing to do.
+        return ;
+      }
+    }
   }
 }

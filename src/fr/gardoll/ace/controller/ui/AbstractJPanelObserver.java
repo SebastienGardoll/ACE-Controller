@@ -379,6 +379,18 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
         break;
       }
       
+      case POST_LAST_SEQ:
+      {
+        msg = "starting last sequence operations";
+        break;
+      }
+      
+      case POST_SESSION:
+      {
+        msg = "post session operations";
+        break;
+      }
+      
       default:
       {
         _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
