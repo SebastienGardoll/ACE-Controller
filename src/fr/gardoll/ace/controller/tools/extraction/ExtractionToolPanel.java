@@ -1,6 +1,10 @@
 package fr.gardoll.ace.controller.tools.extraction ;
 
+import java.awt.event.AdjustmentEvent ;
+import java.awt.event.AdjustmentListener ;
 import java.util.Optional ;
+
+import javax.swing.text.DefaultCaret ;
 
 import org.apache.commons.lang3.tuple.Pair ;
 import org.apache.logging.log4j.LogManager ;
@@ -27,13 +31,46 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
   private int _maxColumn;
   private int _maxSequence;
   
+  private javax.swing.text.DefaultCaret caret;
+  private javax.swing.BoundedRangeModel model;
+  
   public ExtractionToolPanel(ExtractionToolControl ctrl)
   {
     super(ctrl);
     this._ctrl = ctrl;
     initComponents() ;
+    initCustom();
   }
-
+  
+  private void initCustom()
+  {
+    setupSmartScrolling();
+  }
+  
+  private void setupSmartScrolling()
+  {
+    caret = (javax.swing.text.DefaultCaret) this.logTextArea.getCaret();
+    
+    javax.swing.JScrollBar scrollBar = this.logTextScrollPane.getVerticalScrollBar();
+    model = scrollBar.getModel();
+    scrollBar.addAdjustmentListener(new AdjustmentListener()
+    {
+      @Override
+      public void adjustmentValueChanged(AdjustmentEvent e)
+      {
+        if (model.getValue() == model.getMaximum() - model.getExtent())
+        {
+           caret.setDot(logTextArea.getText().length());
+           caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        }
+        else
+        {
+           caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        }
+      }
+    });
+  }
+  
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
