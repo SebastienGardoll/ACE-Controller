@@ -5,3 +5,4 @@ src/Test.java
 .classpath
 .project
 *.log
+org.eclipse.jdt.core.prefs
