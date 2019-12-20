@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.core;
+package fr.gardoll.ace.controller.com;
 
 public class ParaComException extends Exception
 {

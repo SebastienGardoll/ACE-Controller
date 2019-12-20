@@ -11,10 +11,10 @@ import fr.gardoll.ace.controller.com.FlowControl ;
 import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.Parity ;
 import fr.gardoll.ace.controller.com.SerialCom;
+import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.SerialComException ;
 
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable, MotorController

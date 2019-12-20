@@ -2,7 +2,7 @@ package fr.gardoll.ace.controller.autosampler;
 
 import java.io.Closeable ;
 
-import fr.gardoll.ace.controller.core.SerialComException ;
+import fr.gardoll.ace.controller.com.SerialComException ;
 
 public interface MotorController extends Closeable
 {

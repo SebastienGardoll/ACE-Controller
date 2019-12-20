@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortTimeoutException;
 
-import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.Utils ;
 
 public class JSerialComm implements SerialCom

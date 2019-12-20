@@ -3,8 +3,6 @@ package fr.gardoll.ace.controller.com;
 import java.io.Closeable ;
 import java.nio.charset.Charset ;
 
-import fr.gardoll.ace.controller.core.SerialComException ;
-
 public interface SerialCom extends Closeable
 {
   public String getId();

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.com.ArduinoParaCom ;
 import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.ParaCom ;
-import fr.gardoll.ace.controller.core.ParaComException ;
+import fr.gardoll.ace.controller.com.ParaComException ;
 
 public class Valves implements Closeable
 {

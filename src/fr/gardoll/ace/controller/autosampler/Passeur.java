@@ -7,9 +7,9 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.JSerialComm ;
+import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
-import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 
 //TODO: singleton.

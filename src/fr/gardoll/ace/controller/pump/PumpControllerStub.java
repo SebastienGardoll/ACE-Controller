@@ -6,7 +6,7 @@ import java.io.IOException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.SerialComException ;
+import fr.gardoll.ace.controller.com.SerialComException ;
 
 public class PumpControllerStub implements Closeable, PumpController
 {

@@ -8,9 +8,9 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.ArduinoParaCom ;
 import fr.gardoll.ace.controller.com.JSerialComm ;
+import fr.gardoll.ace.controller.com.ParaComException ;
+import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.ParaComException ;
-import fr.gardoll.ace.controller.core.SerialComException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.valves.Valves ;

@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.ParaCom ;
-import fr.gardoll.ace.controller.core.ParaComException ;
+import fr.gardoll.ace.controller.com.ParaComException ;
 
 public class ParaComStub implements ParaCom
 {
