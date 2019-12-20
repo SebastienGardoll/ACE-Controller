@@ -237,14 +237,6 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
     logTextArea.setColumns(20) ;
     logTextArea.setLineWrap(true) ;
     logTextArea.setRows(5) ;
-    logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
-    {
-      @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
-      {
-        logTextAreaMouseClicked(evt) ;
-      }
-    }) ;
     logTextScrollPane.setViewportView(logTextArea) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -344,14 +336,6 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     add(buttonPanel, gridBagConstraints) ;
   }// </editor-fold>
-
-  private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
-  {
-    if(evt.getClickCount() == 2)
-    {
-      logTextArea.setText(null);
-    }
-  }
 
   private void startCancelButtonActionPerformed(
       java.awt.event.ActionEvent evt)
