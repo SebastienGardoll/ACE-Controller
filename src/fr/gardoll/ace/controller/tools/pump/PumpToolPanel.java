@@ -1,9 +1,12 @@
 package fr.gardoll.ace.controller.tools.pump ;
 
+import java.awt.event.AdjustmentEvent ;
+import java.awt.event.AdjustmentListener ;
 import java.util.SortedSet ;
 import java.util.TreeSet ;
 
 import javax.swing.SpinnerNumberModel ;
+import javax.swing.text.DefaultCaret ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -25,6 +28,9 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
   
   private final PumpToolControl _ctrl;
 
+  private javax.swing.text.DefaultCaret caret;
+  private javax.swing.BoundedRangeModel model;
+  
   /**
    * Creates new form PumpToolPanel
    */
@@ -41,8 +47,34 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     SpinnerNumberModel model = new SpinnerNumberModel(DEFAULT_VOL_VALUE,
         DEFAULT_MIN_VOL, DEFAULT_MAX_VOL, DEFAULT_VOL_STEP);
     this.volumeSpinner.setModel(model);
+    
+    setupSmartScrolling();
   }
 
+  private void setupSmartScrolling()
+  {
+    caret = (javax.swing.text.DefaultCaret) this.logTextArea.getCaret();
+    
+    javax.swing.JScrollBar scrollBar = this.logTextScrollPane.getVerticalScrollBar();
+    model = scrollBar.getModel();
+    scrollBar.addAdjustmentListener(new AdjustmentListener()
+    {
+      @Override
+      public void adjustmentValueChanged(AdjustmentEvent e)
+      {
+        if (model.getValue() == model.getMaximum() - model.getExtent())
+        {
+           caret.setDot(logTextArea.getText().length());
+           caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        }
+        else
+        {
+           caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        }
+      }
+    });
+  }
+  
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -191,14 +223,6 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     logTextArea.setColumns(20) ;
     logTextArea.setLineWrap(true) ;
     logTextArea.setRows(5) ;
-    logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
-    {
-      @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
-      {
-        logTextAreaMouseClicked(evt) ;
-      }
-    }) ;
     logTextScrollPane.setViewportView(logTextArea) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -296,14 +320,6 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     add(buttonPanel, gridBagConstraints) ;
   }// </editor-fold>
-
-  private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
-  {
-    if(evt.getClickCount() == 2)
-    {
-      logTextArea.setText(null);
-    }
-  }
 
   private void startCancelButtonActionPerformed(
       java.awt.event.ActionEvent evt)

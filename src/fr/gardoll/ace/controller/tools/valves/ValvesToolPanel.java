@@ -1,6 +1,10 @@
 package fr.gardoll.ace.controller.tools.valves ;
 
+import java.awt.event.AdjustmentEvent ;
+import java.awt.event.AdjustmentListener ;
+
 import javax.swing.ButtonModel ;
+import javax.swing.text.DefaultCaret ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -17,12 +21,45 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
       .getLogger(ValvesToolPanel.class.getName()) ;
 
   private final ValvesToolControl _ctrl ;
+  
+  private javax.swing.text.DefaultCaret caret;
+  private javax.swing.BoundedRangeModel model;
 
   public ValvesToolPanel(ValvesToolControl ctrl)
   {
     super(ctrl) ;
     this._ctrl = ctrl ;
     initComponents() ;
+    initCustom();
+  }
+  
+  private void initCustom()
+  {
+    setupSmartScrolling();
+  }
+  
+  private void setupSmartScrolling()
+  {
+    caret = (javax.swing.text.DefaultCaret) this.logTextArea.getCaret();
+    
+    javax.swing.JScrollBar scrollBar = this.logTextScrollPane.getVerticalScrollBar();
+    model = scrollBar.getModel();
+    scrollBar.addAdjustmentListener(new AdjustmentListener()
+    {
+      @Override
+      public void adjustmentValueChanged(AdjustmentEvent e)
+      {
+        if (model.getValue() == model.getMaximum() - model.getExtent())
+        {
+           caret.setDot(logTextArea.getText().length());
+           caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        }
+        else
+        {
+           caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        }
+      }
+    });
   }
 
   /**
@@ -237,14 +274,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     logTextArea.setColumns(20) ;
     logTextArea.setLineWrap(true) ;
     logTextArea.setRows(5) ;
-    logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
-    {
-      @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
-      {
-        logTextAreaMouseClicked(evt) ;
-      }
-    }) ;
     logTextScrollPane.setViewportView(logTextArea) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -306,14 +335,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     add(buttonPanel, gridBagConstraints) ;
   }// </editor-fold>//GEN-END:initComponents
-
-  private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
-  {// GEN-FIRST:event_logTextAreaMouseClicked
-    if(evt.getClickCount() == 2)
-    {
-      logTextArea.setText(null);
-    }
-  }// GEN-LAST:event_logTextAreaMouseClicked
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_closeButtonActionPerformed

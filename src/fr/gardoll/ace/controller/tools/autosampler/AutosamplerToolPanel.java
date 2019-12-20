@@ -1,9 +1,12 @@
 package fr.gardoll.ace.controller.tools.autosampler ;
 
+import java.awt.event.AdjustmentEvent ;
+import java.awt.event.AdjustmentListener ;
 import java.io.File ;
 
 import javax.swing.JFileChooser ;
 import javax.swing.filechooser.FileFilter ;
+import javax.swing.text.DefaultCaret ;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -22,6 +25,9 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolPanel.class.getName());
 
   private final AutosamplerToolControl _ctrl ;
+  
+  private javax.swing.text.DefaultCaret caret;
+  private javax.swing.BoundedRangeModel model;
 
   /**
    * Creates new form AutosamplerToolPanel
@@ -96,14 +102,6 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
     logTextArea.setColumns(20) ;
     logTextArea.setLineWrap(true) ;
     logTextArea.setRows(5) ;
-    logTextArea.addMouseListener(new java.awt.event.MouseAdapter()
-    {
-      @Override
-      public void mouseClicked(java.awt.event.MouseEvent evt)
-      {
-        logTextAreaMouseClicked(evt) ;
-      }
-    }) ;
     logTextScrollPane.setViewportView(logTextArea) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -671,14 +669,6 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
     this.close();
   }
   
-  private void logTextAreaMouseClicked(java.awt.event.MouseEvent evt)
-  {
-    if(evt.getClickCount() == 2)
-    {
-      logTextArea.setText(null);
-    }
-  }
-
   // Variables declaration - do not modify
   private javax.swing.JButton aboveColumnButton ;
   private javax.swing.JLabel aboveColumnLabel ;
@@ -743,6 +733,32 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
       public String getDescription()
       {
         return String.format("column file *.%s", Colonne.COLUMN_FILE_EXTENTION);
+      }
+    });
+    
+    setupSmartScrolling();
+  }
+  
+  private void setupSmartScrolling()
+  {
+    caret = (javax.swing.text.DefaultCaret) this.logTextArea.getCaret();
+    
+    javax.swing.JScrollBar scrollBar = this.logTextScrollPane.getVerticalScrollBar();
+    model = scrollBar.getModel();
+    scrollBar.addAdjustmentListener(new AdjustmentListener()
+    {
+      @Override
+      public void adjustmentValueChanged(AdjustmentEvent e)
+      {
+        if (model.getValue() == model.getMaximum() - model.getExtent())
+        {
+           caret.setDot(logTextArea.getText().length());
+           caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        }
+        else
+        {
+           caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        }
       }
     });
   }
