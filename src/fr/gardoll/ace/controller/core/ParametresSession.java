@@ -52,43 +52,43 @@ public class ParametresSession implements Closeable
   private Passeur _autosampler = null;
   private Valves _valves       = null;
   
-  private final double _volumeMaxSeringue ;  // volume max du type de seringue en mL
+  private double _volumeMaxSeringue ;  // volume max du type de seringue en mL
 
-  private final double _volumeRincage ;  // volume  utilisé pendant un cylce de rinçage  en mL
+  private double _volumeRincage ;  // volume  utilisé pendant un cylce de rinçage  en mL
 
-  private final int _nbPasCarrousel ;  // nombre de demi pas entre deux emplacement colonnes
+  private int _nbPasCarrousel ;  // nombre de demi pas entre deux emplacement colonnes
 
-  private final int  _refCarrousel; // distance butée haute du bras, plateau supérieur du carrousel en mm
+  private int  _refCarrousel; // distance butée haute du bras, plateau supérieur du carrousel en mm
 
-  private final int _nbRincage ; //nombre de rinçage à effectuer au moment de changer d'éluant
+  private int _nbRincage ; //nombre de rinçage à effectuer au moment de changer d'éluant
 
-  private final double _debitMaxPousseSeringue ;//débit maximum applicable au pousseSeringue en fonction du diamètre de tuyau utilisé !!!
+  private double _debitMaxPousseSeringue ;//débit maximum applicable au pousseSeringue en fonction du diamètre de tuyau utilisé !!!
 
-  private final double _diametreSeringue ;//diametre du type de seringue utilisé
+  private double _diametreSeringue ;//diametre du type de seringue utilisé
 
-  private final int _nbSeringue ; //nombre de seringues utilisées
+  private int _nbSeringue ; //nombre de seringues utilisées
 
-  private final int _diametreCarrousel ;//diamètre du carrousel en mm
+  private int _diametreCarrousel ;//diamètre du carrousel en mm
 
-  private final int _epaisseur ;//epaisseur du plateau sup du carrousel
+  private int _epaisseur ;//epaisseur du plateau sup du carrousel
 
-  private final int _nbMaxColonne ; //nombre d'emplacement max de colonnes sur le carrousel choisi
+  private int _nbMaxColonne ; //nombre d'emplacement max de colonnes sur le carrousel choisi
 
-  private final String _pumpSerialComClassPath ;
+  private String _pumpSerialComClassPath ;
 
-  private final String _pumpPortPath ;
+  private String _pumpPortPath ;
 
-  private final String _autosamplerSerialComClassPath ;
+  private String _autosamplerSerialComClassPath ;
 
-  private final String _autosamplerPortPath ;
+  private String _autosamplerPortPath ;
 
-  private final String _paraComClassPath ;
+  private String _paraComClassPath ;
 
-  private final String _paraComSerialComClassPath ;
+  private String _paraComSerialComClassPath ;
 
-  private final String _paraComPortPath ;
+  private String _paraComPortPath ;
 
-  private final boolean _isDebug ;
+  private boolean _isDebug ;
   
   public static ParametresSession getInstance()
   {
@@ -110,6 +110,12 @@ public class ParametresSession implements Closeable
   }
   
   private ParametresSession() throws InitializationException
+  {
+    this.reloadConf();
+  }
+  
+  // Reload conf but not Autosampler, Pump and Valves.
+  public void reloadConf() throws InitializationException
   {
     _LOG.info("fetch the configuration");
     
