@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 
 public class InitSession
@@ -39,7 +40,7 @@ public class InitSession
     {
       String msg = String.format("the number of columns cannot be zero or less, instead got '%s'",
           nbColonne);
-      _LOG.fatal(msg);
+      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -47,7 +48,7 @@ public class InitSession
     {
       String msg = String.format("the column position cannot be zero or less, instead got '%s'",
           numColonne);
-      _LOG.fatal(msg);
+      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -55,7 +56,7 @@ public class InitSession
     {
       String msg = String.format("the sequence id cannot be zero or less, instead got '%s'",
           numSequence);
-      _LOG.fatal(msg);
+      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -63,7 +64,7 @@ public class InitSession
     {
       String msg = String.format("cannot resume to the column #%s out of %s columns",
           numColonne, nbColonne);
-      _LOG.fatal(msg);
+      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -71,7 +72,15 @@ public class InitSession
     {
       String msg = String.format("cannot resume to the sequence #%s out of %s sequences",
           numSequence, this.protocol.nbMaxSequence);
-      _LOG.fatal(msg);
+      _LOG.error(msg);
+      throw new InitializationException(msg) ;
+    }
+    
+    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne() - 1;
+    if(this.nbColonne > maxColumnUtil)
+    {
+      String msg = String.format("number of columns cannot be greater than %s", maxColumnUtil);
+      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
   }

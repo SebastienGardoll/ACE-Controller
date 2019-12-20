@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.Names ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 
@@ -23,10 +24,9 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
 {
   private static final Logger _LOG = LogManager.getLogger(ExtractionConfigurationDialog.class.getName());
   
-  private static int _DEFAULT_MAX_SEQUENCES  = 30;
+  private static int _DEFAULT_MAX_SEQUENCES  = 99;
   private static int _DEFAULT_MIN_SEQUENCES  =  1;
   private static int _DEFAULT_SEQUENCE_VALUE =  1;
-  private static int _DEFAULT_MAX_COLUMNS    = 24;
   private static int _DEFAULT_MIN_COLUMNS    =  1;
   private static int _DEFAULT_COLUMN_VALUE   =  1;
   private static int _DEFAULT_STEP           =  1;
@@ -61,15 +61,15 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
   
   private void initCustom()
   {
-    // TODO compute the restriction of the number of columns and sequences.
+    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne() - 1;
     
     SpinnerNumberModel nbColumnModel = new SpinnerNumberModel(
-        _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, _DEFAULT_MAX_COLUMNS,
+        _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, maxColumnUtil,
         _DEFAULT_STEP);
     this.nbColumnSpinner.setModel(nbColumnModel);
     
     SpinnerNumberModel numColumnModel = new SpinnerNumberModel(
-        _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, _DEFAULT_MAX_COLUMNS,
+        _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, maxColumnUtil,
         _DEFAULT_STEP);
     this.numColumnSpinner.setModel(numColumnModel);
     
