@@ -529,6 +529,14 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
         break;
       }
       
+      case REINIT_DONE:
+      {
+        this.actionValueLabel.setText("-");
+        this.columnValueLabel.setText("-");
+        this.sequenceValueLabel.setText("-");
+        break;
+      }
+      
       case CLOSING:
       {
         this.actionValueLabel.setText("closing");
