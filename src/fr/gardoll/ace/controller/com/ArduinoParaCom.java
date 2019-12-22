@@ -31,8 +31,9 @@ public class ArduinoParaCom implements ParaCom
       this._port.setParite(Parity.NOPARITY);
       this._port.setStopBit(StopBit.ONESTOPBIT);
       this._port.open(ArduinoParaCom.OPENING_DELAY);
+      this.send(new byte[] {0}); // Close all valves.
     }
-    catch(SerialComException e)
+    catch(SerialComException | ParaComException e)
     {
       String msg = String.format("error while initializing the port '%s'",
           this._port.getPath());
