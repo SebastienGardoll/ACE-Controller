@@ -114,6 +114,12 @@ public class ArduinoParaCom implements ParaCom
   }
 
   @Override
+  public String getPortPath()
+  {
+    return this._port.getPath();
+  }
+  
+  @Override
   public void close()
   {
     _LOG.debug(String.format("closing paracom with port id '%s'", this._port.getId()));

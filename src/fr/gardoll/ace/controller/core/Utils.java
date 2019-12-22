@@ -130,4 +130,40 @@ public class Utils
           JOptionPane.ERROR_MESSAGE);
     }
   }
+  
+  public static OS getOs()
+  {
+    String rawOsName = System.getProperty("os.name").toLowerCase();
+    
+    OS result = OS.UNKNOWN;
+    
+    if(rawOsName.contains("mac"))
+    {
+      result = OS.MACOS;
+    }
+    else if(rawOsName.contains("win"))
+    {
+      result = OS.WINDOWS;
+    }
+    else if(rawOsName.contains("nix") ||
+            rawOsName.contains("nux") ||
+            rawOsName.contains("aix"))
+    {
+      result = OS.UNIX;
+    }
+    else
+    {
+      result = OS.UNKNOWN;
+    }
+    
+    return result;
+  }
+  
+  public enum OS
+  {
+    MACOS,
+    WINDOWS,
+    UNIX,
+    UNKNOWN;
+  }
 }

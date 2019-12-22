@@ -39,4 +39,6 @@ public interface MotorController extends Closeable
   public void out(int octet) throws SerialComException, InterruptedException;
 
   public void out(int bitPosition, boolean isOn) throws SerialComException, InterruptedException;
+
+  public String getPortPath() ;
 }

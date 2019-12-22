@@ -165,4 +165,10 @@ public class PumpControllerStub implements Closeable, PumpController
   {
     _LOG.debug("stubbing command close");
   }
+
+  @Override
+  public String getPortPath()
+  {
+    return "sub_port";
+  }
 }

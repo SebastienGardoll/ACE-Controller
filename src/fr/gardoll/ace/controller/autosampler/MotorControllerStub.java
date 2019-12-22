@@ -303,4 +303,10 @@ public class MotorControllerStub implements MotorController, Closeable
   {
     _LOG.trace(String.format("stubbing command out(%s, %s)", bitPosition, isOn));
   }
+
+  @Override
+  public String getPortPath()
+  {
+    return "stub_port";
+  }
 }

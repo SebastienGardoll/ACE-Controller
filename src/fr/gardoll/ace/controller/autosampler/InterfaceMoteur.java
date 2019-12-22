@@ -301,6 +301,12 @@ public class InterfaceMoteur implements Closeable, MotorController
     this.traitementOrdre(ordre);
   }
   
+  @Override
+  public String getPortPath()
+  {
+    return this._port.getPath();
+  }
+  
   public static void main(String[] args)
   {
     String portPath = "/dev/ttyUSB0"; // To be modified.

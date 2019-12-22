@@ -32,4 +32,10 @@ public class ParaComStub implements ParaCom
   {
     _LOG.trace("stubbing send");
   }
+  
+  @Override
+  public String getPortPath()
+  {
+    return "stub_port";
+  }
 }

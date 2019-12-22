@@ -83,4 +83,6 @@ public interface PumpController extends Closeable
     
     return (int) (result) ;
   }
+
+  public String getPortPath() ;
 }

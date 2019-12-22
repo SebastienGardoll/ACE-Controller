@@ -7,14 +7,20 @@ import java.lang.reflect.Constructor ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
 import java.text.DecimalFormatSymbols ;
+import java.util.HashSet ;
 import java.util.Locale ;
+import java.util.Optional ;
+import java.util.Set ;
 
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
+import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
+
+import com.fazecast.jSerialComm.SerialPort ;
 
 import fr.gardoll.ace.controller.autosampler.InterfaceMoteur ;
 import fr.gardoll.ace.controller.autosampler.MotorController ;
@@ -22,6 +28,7 @@ import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.com.ParaCom ;
 import fr.gardoll.ace.controller.com.SerialCom ;
+import fr.gardoll.ace.controller.core.Utils.OS ;
 import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.pump.PumpController ;
@@ -31,7 +38,6 @@ import fr.gardoll.ace.controller.valves.Valves ;
 
 // TODO: default "READ ERROR" for any string.
 // TODO: check for "READ ERROR" strings then throw exception.
-// TODO: implement reload intelligent method (don't reload stuff that has not change).
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
@@ -46,6 +52,8 @@ public class ParametresSession implements Closeable
   public static boolean isAutomatedTest = false;
   
   private static ParametresSession _INSTANCE ;
+  
+  private Path _configurationFile = null;
   
   // Lazy loading and singleton.
   private PousseSeringue _pump = null;
@@ -76,19 +84,25 @@ public class ParametresSession implements Closeable
 
   private String _pumpSerialComClassPath ;
 
-  private String _pumpPortPath ;
+  private String _pumpConfPortPath ;
 
   private String _autosamplerSerialComClassPath ;
 
-  private String _autosamplerPortPath ;
+  private String _autosamplerConfPortPath ;
 
   private String _paraComClassPath ;
 
   private String _paraComSerialComClassPath ;
 
-  private String _paraComPortPath ;
+  private String _paraComConfPortPath ;
 
   private boolean _isDebug ;
+  
+  private Optional<String> _autosamplerRuntimePortPath = Optional.empty();
+  
+  private Optional<String> _pumpRuntimePortPath = Optional.empty();
+  
+  private Optional<String> _paraComRuntimePortPath = Optional.empty();
   
   public static ParametresSession getInstance()
   {
@@ -123,14 +137,15 @@ public class ParametresSession implements Closeable
     _LOG.debug("fetch root dir");
     rootDir = Utils.getInstance().getRootDir();
     
-    Path configurationFile = rootDir.resolve(Names.CONFIG_DIRNAME)
-                                    .resolve(Names.CONFIG_FILENAME);
-    Path plateConfFile = null;
+    this._configurationFile = rootDir.resolve(Names.CONFIG_DIRNAME)
+                                     .resolve(Names.CONFIG_FILENAME);
+    Path carouselConfFile = null;
     
-    if (Files.isReadable(configurationFile)    == false ||
-        Files.isRegularFile(configurationFile) == false)
+    if (Files.isReadable(this._configurationFile)    == false ||
+        Files.isRegularFile(this._configurationFile) == false)
     {
-      String msg = String.format("unable to read the configuration file '%s'", configurationFile);
+      String msg = String.format("unable to read the configuration file '%s'",
+          this._configurationFile);
       _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
@@ -140,7 +155,7 @@ public class ParametresSession implements Closeable
       _LOG.debug("read ace controller configuration");
       
       Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(configurationFile.toFile());
+      INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_ACE_CONTROLLER);
       
       this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, DEFAULT_STRING_VALUE));
@@ -149,7 +164,7 @@ public class ParametresSession implements Closeable
     catch (ConfigurationException e)
     {
       String msg = String.format("unable to read the ace controller configuration '%s'",
-          configurationFile.toString());
+          this._configurationFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -159,11 +174,11 @@ public class ParametresSession implements Closeable
       _LOG.debug("read pump configuration");
       
       Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(configurationFile.toFile());
+      INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_POUSSE_SERINGUE);
       
       this._pumpSerialComClassPath = section.getString(Names.SIPS_CLEF_SERIAL_COM_CLASS_PATH);
-      this._pumpPortPath           = section.getString(Names.SIPS_CLEF_PORT_PATH);
+      this._pumpConfPortPath           = section.getString(Names.SIPS_CLEF_PORT_PATH);
       
       this._volumeMaxSeringue      = section.getDouble(Names.SIPS_CLEF_VOL_MAX, -1.0) ;
       this._volumeRincage          = section.getDouble(Names.SIPS_CLEF_VOL_RINCAGE, -1.0) ;
@@ -175,14 +190,14 @@ public class ParametresSession implements Closeable
       section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
       String plateConfFilePathString      = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
       this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
-      this._autosamplerPortPath           = section.getString(Names.SIC_CLEF_PORT_PATH);
+      this._autosamplerConfPortPath       = section.getString(Names.SIC_CLEF_PORT_PATH);
       try
       {
-        plateConfFile = Utils.getInstance().resolvePath(plateConfFilePathString);
+        carouselConfFile = Utils.getInstance().resolvePath(plateConfFilePathString);
       }
       catch (FileNotFoundException e)
       {
-        String msg = String.format("unable to locate plate conf file '%s'", plateConfFilePathString);
+        String msg = String.format("unable to locate carousel conf file '%s'", plateConfFilePathString);
         _LOG.fatal(msg, e);
         throw new InitializationException(msg, e);
       }
@@ -190,15 +205,15 @@ public class ParametresSession implements Closeable
     catch (ConfigurationException e)
     {
       String msg = String.format("unable to read the pump configuration '%s'",
-          configurationFile.toString());
+          this._configurationFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
     
-    if (Files.isReadable(plateConfFile)    == false ||
-        Files.isRegularFile(plateConfFile) == false)
+    if (Files.isReadable(carouselConfFile)    == false ||
+        Files.isRegularFile(carouselConfFile) == false)
     {
-      String msg = String.format("unable to read the plate configuration file '%s'", plateConfFile);
+      String msg = String.format("unable to read the carousel configuration file '%s'", carouselConfFile);
       _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
@@ -208,7 +223,7 @@ public class ParametresSession implements Closeable
       _LOG.debug("read autosampler configuration");
       
       Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(plateConfFile.toFile());
+      INIConfiguration iniConf = configs.ini(carouselConfFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
       
       this._nbPasCarrousel    = section.getInteger(Names.SIC_CLEF_NB_DEMI_PAS, -1) ;
@@ -219,8 +234,8 @@ public class ParametresSession implements Closeable
     }
     catch (ConfigurationException e)
     {
-      String msg = String.format("unable to read the plate configuration file '%s'",
-          plateConfFile.toString());
+      String msg = String.format("unable to read the carousel configuration file '%s'",
+          carouselConfFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -230,17 +245,17 @@ public class ParametresSession implements Closeable
       _LOG.debug("read paracom configuration");
       
       Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(configurationFile.toFile());
+      INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_PARA_COM);
       
       this._paraComClassPath = section.getString(Names.SIPC_CLEF_PARA_COM_CLASS_PATH);
       this._paraComSerialComClassPath = section.getString(Names.SIPC_CLEF_SERIAL_COM_CLASS_PATH);
-      this._paraComPortPath = section.getString(Names.SIPC_CLEF_PORT_PATH);
+      this._paraComConfPortPath = section.getString(Names.SIPC_CLEF_PORT_PATH);
     }
     catch (ConfigurationException e)
     {
       String msg = String.format("unable to read the paracom configuration file '%s'",
-          configurationFile.toString());
+          this._configurationFile.toString());
       _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
@@ -313,9 +328,9 @@ public class ParametresSession implements Closeable
     return this._paraComSerialComClassPath;
   }
 
-  private String getParaComPortPath()
+  private String getParaComConfPortPath()
   {
-    return this._paraComPortPath;
+    return this._paraComConfPortPath;
   }
 
   private String getParaComClassPath()
@@ -323,9 +338,9 @@ public class ParametresSession implements Closeable
     return this._paraComClassPath;
   }
 
-  private String getPumpPortPath()
+  private String getPumpConfPortPath()
   {
-    return this._pumpPortPath;
+    return this._pumpConfPortPath;
   }
 
   private String getPumpSerialComClassPath()
@@ -338,9 +353,9 @@ public class ParametresSession implements Closeable
     return this._autosamplerSerialComClassPath;
   }
 
-  private String getAutosamplerPortPath()
+  private String getAutosamplerConfPortPath()
   {
-    return this._autosamplerPortPath;
+    return this._autosamplerConfPortPath;
   }
   
   // Lazy loading.
@@ -358,11 +373,24 @@ public class ParametresSession implements Closeable
       }
       else
       {
-        String pumpSerialComClassPath = this.getPumpSerialComClassPath();
-        String pumpPortPath  = this.getPumpPortPath();
-        _LOG.debug(String.format("instantiating pump port (%s, %s)", pumpPortPath, pumpSerialComClassPath)) ;
-        SerialCom pumpPort   = this.instantiateSerialCom(pumpSerialComClassPath, pumpPortPath);
-        pumpCtrl = new InterfacePousseSeringue(pumpPort, this.diametreSeringue());
+        Instantiator instantiator = new PumpControllerInstatiator();
+        Optional<Object> instance = null;
+        instance = this.discoverCom(instantiator,
+                                    this._pumpRuntimePortPath,
+                                    this.getPumpConfPortPath());
+        if(instance.isPresent())
+        {
+          pumpCtrl = (PumpController) instance.get();
+          String actualPortPath = pumpCtrl.getPortPath();
+          this._pumpRuntimePortPath = Optional.of(actualPortPath);
+          this.persistPumpPortPath(actualPortPath);
+        }
+        else
+        {
+          String msg = "unable to discover the pump";
+          _LOG.fatal(msg);
+          throw new InitializationException(msg);
+        }
       }
       
       this._pump = new PousseSeringue(pumpCtrl, valves, this.nbSeringue(), 
@@ -371,6 +399,28 @@ public class ParametresSession implements Closeable
     }
     
     return this._pump;
+  }
+  
+  private void persistPumpPortPath(String portPath)
+      throws InitializationException
+  {
+    String section = Names.SEC_INFO_POUSSE_SERINGUE;
+    String key = Names.SIPS_CLEF_PORT_PATH ;
+    String value = portPath;
+    this.persistData(section, key, value);
+  }
+
+  private class PumpControllerInstatiator implements Instantiator
+  {
+    @Override
+    public Object instantiate(String portPath) throws Exception
+    {
+      String pumpSerialComClassPath = ParametresSession.this.getPumpSerialComClassPath();
+      _LOG.debug(String.format("instantiating pump port (%s, %s)", portPath, pumpSerialComClassPath)) ;
+      SerialCom pumpPort = ParametresSession.this.instantiateSerialCom(pumpSerialComClassPath, portPath);
+      PumpController pumpCtrl = new InterfacePousseSeringue(pumpPort, ParametresSession.this.diametreSeringue());
+      return pumpCtrl;
+    }
   }
 
   public Valves getValves()  throws InitializationException, InterruptedException
@@ -385,14 +435,24 @@ public class ParametresSession implements Closeable
       }
       else
       {
-        String paraComSerialComClassPath = this.getParaComSerialComClassPath();
-        String paraComPortPath  = this.getParaComPortPath();
-        _LOG.debug(String.format("instantiating paracom port (%s, %s)", paraComPortPath, paraComSerialComClassPath)) ;
-        SerialCom paraComPort   = this.instantiateSerialCom(paraComSerialComClassPath, paraComPortPath);
-        
-        String paraComClassPath = this.getParaComClassPath();
-        _LOG.debug(String.format("instantiating paracom (%s)", paraComClassPath)) ;
-        paraCom = this.instantiateParaCom(paraComClassPath, paraComPort);
+        Instantiator instantiator = new ParaComInstatiator();
+        Optional<Object> instance = null;
+        instance = this.discoverCom(instantiator,
+                                    this._paraComRuntimePortPath,
+                                    this.getParaComConfPortPath());
+        if(instance.isPresent())
+        {
+          paraCom = (ParaCom) instance.get();
+          String actualPortPath = paraCom.getPortPath();
+          this._paraComRuntimePortPath = Optional.of(actualPortPath);
+          this.persistParaComPortPath(actualPortPath);
+        }
+        else
+        {
+          String msg = "unable to discover the paracom";
+          _LOG.fatal(msg);
+          throw new InitializationException(msg);
+        }
       }
       
       _LOG.debug("instantiating valves") ;
@@ -400,6 +460,31 @@ public class ParametresSession implements Closeable
     }
     
     return this._valves;
+  }
+  
+  private void persistParaComPortPath(String portPath)
+      throws InitializationException
+  {
+    String section = Names.SEC_INFO_PARA_COM;
+    String key = Names.SIPC_CLEF_PORT_PATH;
+    String value = portPath;
+    this.persistData(section, key, value);
+  }
+
+  private class ParaComInstatiator implements Instantiator
+  {
+    @Override
+    public Object instantiate(String portPath) throws Exception
+    {
+      String paraComSerialComClassPath = ParametresSession.this.getParaComSerialComClassPath();
+      _LOG.debug(String.format("instantiating paracom port (%s, %s)", portPath, paraComSerialComClassPath)) ;
+      SerialCom paraComPort = ParametresSession.this.instantiateSerialCom(paraComSerialComClassPath, portPath);
+      
+      String paraComClassPath = ParametresSession.this.getParaComClassPath();
+      _LOG.debug(String.format("instantiating paracom (%s)", paraComClassPath)) ;
+      ParaCom paraCom = ParametresSession.this.instantiateParaCom(paraComClassPath, paraComPort);
+      return paraCom;
+    }
   }
   
   // Lazy loading.
@@ -415,11 +500,24 @@ public class ParametresSession implements Closeable
       }
       else
       {
-        String classPath = this.getAutosamplerSerialComClassPath();
-        String portPath  = this.getAutosamplerPortPath();
-        _LOG.debug(String.format("instantiating autosampler port (%s, %s)", portPath, classPath));
-        SerialCom autosamplerPort = this.instantiateSerialCom(classPath, portPath);
-        motorCtrl = new InterfaceMoteur(autosamplerPort);
+        Instantiator instantiator = new MotorControllerInstatiator();
+        Optional<Object> instance = null;
+        instance = this. discoverCom(instantiator,
+                                     this._autosamplerRuntimePortPath,
+                                     this.getAutosamplerConfPortPath());
+        if(instance.isPresent())
+        {
+          motorCtrl = (MotorController) instance.get();
+          String actualPortPath = motorCtrl.getPortPath();
+          this._autosamplerRuntimePortPath = Optional.of(actualPortPath);
+          this.persistAutosamplerPortPath(actualPortPath);
+        }
+        else
+        {
+          String msg = "unable to discover the autosampler";
+          _LOG.fatal(msg);
+          throw new InitializationException(msg);
+        }
       }
       
       this._autosampler = new Passeur(motorCtrl, this.nbPasCarrousel(),
@@ -428,6 +526,150 @@ public class ParametresSession implements Closeable
     }
     
     return this._autosampler;
+  }
+  
+  private void persistAutosamplerPortPath(String portPath)
+      throws InitializationException
+  {
+    String section = Names.SEC_INFO_CARROUSEL;
+    String key = Names.SIC_CLEF_PORT_PATH ;
+    String value = portPath;
+    this.persistData(section, key, value);
+  }
+  
+  private void persistData(String section, String key, String value)
+      throws InitializationException
+  {
+    try
+    {
+      Configurations configs = new Configurations();
+      FileBasedConfigurationBuilder<INIConfiguration> iniBuilder = configs.iniBuilder(this._configurationFile.toFile());
+      INIConfiguration iniConf = iniBuilder.getConfiguration();  
+      SubnodeConfiguration sectionNode = iniConf.getSection(section);
+      sectionNode.setProperty(key, value);
+      sectionNode.close();
+      iniBuilder.save();
+    }
+    catch(Exception e)
+    {
+      String msg = String.format("unable to persist section '%s' ; key '%s' ; value '%s'",
+                                  section, key, value);
+      _LOG.fatal(msg, e);
+      throw new InitializationException(msg, e);
+    }
+  }
+
+  private Optional<Object> tryInstantiate(Instantiator instantiator,
+                                          String portPath)
+  {
+    Optional<Object> result = Optional.empty();
+    
+    try
+    {
+      Object instance = instantiator.instantiate(portPath);
+      result = Optional.of(instance);
+      String msg = String.format("instantiation successed with port path '%s'", portPath);
+      _LOG.debug(msg);
+    }
+    catch(Exception e)
+    {
+      String msg = String.format("failed to instantiate with port path '%s'", portPath);
+      _LOG.debug(msg);
+    }
+    
+    return result;
+  }
+  
+  // Caller must set runtimePort and configPort after a successful call.
+  private Optional<Object> discoverCom(Instantiator instantiator,
+                                       Optional<String> runtimePort,
+                                       String configPort)
+  {
+    Optional<Object> result = Optional.empty();
+    
+    Set<String> portPathTries = new HashSet<>();
+    
+    // Try runtime setting.
+    if(runtimePort.isPresent())
+    {
+      result = this.tryInstantiate(instantiator, runtimePort.get());
+      if(result.isPresent())
+      {
+        return result;
+      }
+      else
+      {
+        portPathTries.add(runtimePort.get());
+      }
+    }
+    
+    // Else try the path set in the configuration file.
+    result = this.tryInstantiate(instantiator, configPort);
+    if(result.isPresent())
+    {
+      return result;
+    }
+    else
+    {
+      portPathTries.add(configPort);
+    }
+    
+    // Otherwise try every remaining path.
+    Set<String> systemPortPaths = ParametresSession.getSystemPortPaths();
+    systemPortPaths.removeAll(portPathTries);
+    
+    for(String portPath: systemPortPaths)
+    {
+      result = this.tryInstantiate(instantiator, portPath);
+      if(result.isPresent())
+      {
+        return result;
+      }
+      else
+      {
+        continue;
+      }
+    }
+    
+    return result;
+  }
+  
+  private static Set<String> getSystemPortPaths()
+  {
+    Set<String> result = new HashSet<>();
+    OS currentOS = Utils.getOs();
+    
+    for(SerialPort port: SerialPort.getCommPorts())
+    {
+      String portName = port.getSystemPortName();
+      if(currentOS == OS.MACOS ||
+         currentOS == OS.UNIX)
+      {
+        portName = String.format("/dev/%s", portName);
+      }
+      
+      result.add(portName);
+    }
+    
+    return result ;
+  }
+
+  private interface Instantiator
+  {
+    public Object instantiate(String portPath) throws Exception;
+  }
+  
+  private class MotorControllerInstatiator implements Instantiator
+  {
+    @Override
+    public Object instantiate(String portPath) throws Exception
+    {
+      String classPath = ParametresSession.this.getAutosamplerSerialComClassPath();
+      _LOG.debug(String.format("instantiating autosampler port (%s, %s)", portPath, classPath));
+      SerialCom autosamplerPort = ParametresSession.this.instantiateSerialCom(classPath, portPath);
+      MotorController motorCtrl = new InterfaceMoteur(autosamplerPort);
+      return motorCtrl;
+    }
   }
 
   public double volumeMaxSeringue()

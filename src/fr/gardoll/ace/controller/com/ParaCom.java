@@ -10,4 +10,6 @@ public interface ParaCom  extends Closeable
   
   @Override // Dodge IOException.
   public void close();
+
+  public String getPortPath() ;
 }
