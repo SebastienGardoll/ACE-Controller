@@ -2,17 +2,12 @@ package fr.gardoll.ace.controller.tools.extraction;
 
 import java.nio.file.Path ;
 
-import org.apache.logging.log4j.LogManager ;
-import org.apache.logging.log4j.Logger ;
-
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 
 public class InitSession
 {
-  private static final Logger _LOG = LogManager.getLogger(InitSession.class.getName());
-  
   // The number of column.
   // Zero means no column.
   final public int nbColonne ; 

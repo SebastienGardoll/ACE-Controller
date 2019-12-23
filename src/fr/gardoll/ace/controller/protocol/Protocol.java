@@ -7,8 +7,6 @@ import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.commons.configuration2.ex.ConfigurationException ;
-import org.apache.logging.log4j.LogManager ;
-import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.InitializationException ;
@@ -17,8 +15,6 @@ import fr.gardoll.ace.controller.core.Names ;
 public class Protocol
 {
   public static final String PROTOCOL_FILE_EXTENTION = "prt";
-  
-  private static final Logger _LOG = LogManager.getLogger(Protocol.class.getName());
   
   // The insertion order is mandatory.
   private final Sequence[] _tabSequence;
