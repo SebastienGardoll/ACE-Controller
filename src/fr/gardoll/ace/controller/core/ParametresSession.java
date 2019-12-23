@@ -354,6 +354,8 @@ public class ParametresSession implements Closeable
     {
       Valves valves = this.getValves();
       
+      _LOG.info("instantiating the pump");
+      
       PumpController pumpCtrl = null;
       
       if(this.isDebug())
@@ -416,6 +418,8 @@ public class ParametresSession implements Closeable
     if(this._valves == null)
     {
       ParaCom paraCom = null;
+      
+      _LOG.info("instantiating the valves");
       
       if(this.isDebug())
       {
@@ -480,6 +484,8 @@ public class ParametresSession implements Closeable
     if(this._autosampler == null)
     {
       MotorController motorCtrl = null;
+      
+      _LOG.info("instantiating the autosampler");
       
       if(this.isDebug())
       {
