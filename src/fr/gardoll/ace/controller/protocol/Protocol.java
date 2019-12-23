@@ -46,7 +46,6 @@ public class Protocol
     {
       String msg = String.format("cannot read the protocol file '%s'",
                                  cheminFichierProtocole);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     
@@ -61,7 +60,6 @@ public class Protocol
     {
       String msg = String.format("unable to read the protocol specifications in '%s'",
                                  cheminFichierProtocole.toString());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg,e);
     }
     
@@ -90,7 +88,6 @@ public class Protocol
       {
         String msg = String.format("corrupted protocol metadata file '%s'",
                                    cheminFichierProtocole);
-        _LOG.fatal(msg);
         throw new InitializationException(msg);
       }
       
@@ -131,7 +128,6 @@ public class Protocol
           pauseCode < 0)
       {
         String msg = String.format("unable to read the speficication of sequence '%s'", (i+1));
-        _LOG.fatal(msg);
         throw new InitializationException(msg);
       }
       

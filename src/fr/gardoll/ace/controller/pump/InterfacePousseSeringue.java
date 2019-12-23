@@ -76,7 +76,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     catch(SerialComException | InterruptedException e)
     {
       String msg = "error while initializing the pump serial port";
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
  
@@ -90,7 +89,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     catch(SerialComException|InterruptedException e)
     {
       String msg = "error while initializing the pump";
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }
@@ -103,19 +101,16 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     if (message.matches("E+"))
     {
       String msg = "pump failure" ;
-      _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
     else if (_NA_PATTERN.matcher(message).matches())
     {
       String msg = "unknown pump order" ;
-      _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
     else if (message == "")
     {
       String msg = "pump disconnection" ;
-      _LOG.error(msg);
       throw new SerialComException(msg) ;
     }
   }
@@ -166,7 +161,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     else
     {
       String msg = String.format("unsupported format number '%s'", nombre);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
     
@@ -241,7 +235,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     else
     {
       String msg = String.format("cannot interpret delivered volume '%s'", rawMessage);
-      _LOG.fatal(msg);
       throw new SerialComException(msg);
     }
     
@@ -259,14 +252,12 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     {
       String msg = String.format("the value of the rate '%s' cannot be negative or null",
                                  debit);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
     }
     else if (debit > this._debitMaxIntrinseque)
     {
       String msg = String.format("the value of the rate '%s' cannot be greater than %s mL/min",
                                  debit, this._debitMaxIntrinseque);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
     }
     
@@ -283,7 +274,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     {
       String msg = String.format(
           "the value of the rate '%s' cannot be negative or null", debit) ;
-      _LOG.fatal(msg) ;
       throw new RuntimeException(msg) ;
     }
     else if (debit > this._debitMaxIntrinseque)
@@ -291,7 +281,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       String msg = String.format(
           "the value of the rate '%s' cannot be greater than %s mL/min", debit,
           this._debitMaxIntrinseque) ;
-      _LOG.fatal(msg) ;
       throw new RuntimeException(msg) ;
     }
 
@@ -309,7 +298,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
                                  volume);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
     }
 
@@ -338,7 +326,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
                                  volume);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg) ;
     }
 

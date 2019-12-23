@@ -118,7 +118,6 @@ public class ParametresSession implements Closeable
     catch (InitializationException e)
     {
       String msg = "error while initializing the session";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -146,7 +145,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("unable to read the configuration file '%s'",
           this._configurationFile);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     
@@ -165,7 +163,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("unable to read the ace controller configuration '%s'",
           this._configurationFile.toString());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
     
@@ -198,7 +195,6 @@ public class ParametresSession implements Closeable
       catch (FileNotFoundException e)
       {
         String msg = String.format("unable to locate carousel conf file '%s'", plateConfFilePathString);
-        _LOG.fatal(msg, e);
         throw new InitializationException(msg, e);
       }
     }
@@ -206,7 +202,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("unable to read the pump configuration '%s'",
           this._configurationFile.toString());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
     
@@ -214,7 +209,6 @@ public class ParametresSession implements Closeable
         Files.isRegularFile(carouselConfFile) == false)
     {
       String msg = String.format("unable to read the carousel configuration file '%s'", carouselConfFile);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     
@@ -236,7 +230,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("unable to read the carousel configuration file '%s'",
           carouselConfFile.toString());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
     
@@ -256,7 +249,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("unable to read the paracom configuration file '%s'",
           this._configurationFile.toString());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
     
@@ -274,7 +266,6 @@ public class ParametresSession implements Closeable
         this._nbMaxColonne           < 0    )
     {
       String msg = String.format("corrupted configuration file or plate configuration file");
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
   }
@@ -298,7 +289,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("cannot instantiate the SerialCom object '%s' with the given parameter '%s'",
           classPath, portPath);
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }
@@ -318,7 +308,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("cannot instantiate the ParaCom object '%s' with the given parameter '%s'",
           paraComClassPath, paraComPort.getPath());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }
@@ -388,7 +377,6 @@ public class ParametresSession implements Closeable
         else
         {
           String msg = "unable to discover the pump";
-          _LOG.fatal(msg);
           throw new InitializationException(msg);
         }
       }
@@ -450,7 +438,6 @@ public class ParametresSession implements Closeable
         else
         {
           String msg = "unable to discover the paracom";
-          _LOG.fatal(msg);
           throw new InitializationException(msg);
         }
       }
@@ -515,7 +502,6 @@ public class ParametresSession implements Closeable
         else
         {
           String msg = "unable to discover the autosampler";
-          _LOG.fatal(msg);
           throw new InitializationException(msg);
         }
       }
@@ -554,7 +540,6 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("unable to persist section '%s' ; key '%s' ; value '%s'",
                                   section, key, value);
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }

@@ -64,7 +64,6 @@ public class JSerialComm implements SerialCom
       else
       {
         String msg = String.format("fail to open port '%s'.", this.getId());
-        _LOG.error(msg) ;
         throw new SerialComException(msg) ;
       } 
       
@@ -80,7 +79,6 @@ public class JSerialComm implements SerialCom
     {
       this._port = null ;
       String msg = String.format("unable to open port '%s'", this.getId()) ;
-      _LOG.error(msg, e);
       throw new SerialComException(msg, e) ;
     }
   }

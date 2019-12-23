@@ -74,7 +74,6 @@ public class Utils
     catch (URISyntaxException e)
     {
       String msg = "unable to fetch the path of the application";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(e);
     }
   }

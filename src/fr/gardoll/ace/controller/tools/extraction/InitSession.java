@@ -40,7 +40,6 @@ public class InitSession
     {
       String msg = String.format("the number of columns cannot be zero or less, instead got '%s'",
           nbColonne);
-      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -48,7 +47,6 @@ public class InitSession
     {
       String msg = String.format("the column position cannot be zero or less, instead got '%s'",
           numColonne);
-      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -56,7 +54,6 @@ public class InitSession
     {
       String msg = String.format("the sequence id cannot be zero or less, instead got '%s'",
           numSequence);
-      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -64,7 +61,6 @@ public class InitSession
     {
       String msg = String.format("cannot resume to the column #%s out of %s columns",
           numColonne, nbColonne);
-      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -72,7 +68,6 @@ public class InitSession
     {
       String msg = String.format("cannot resume to the sequence #%s out of %s sequences",
           numSequence, this.protocol.nbMaxSequence);
-      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
     
@@ -80,7 +75,6 @@ public class InitSession
     if(this.nbColonne > maxColumnUtil)
     {
       String msg = String.format("number of columns cannot be greater than %s", maxColumnUtil);
-      _LOG.error(msg);
       throw new InitializationException(msg) ;
     }
   }

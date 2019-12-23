@@ -8,8 +8,6 @@ import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.commons.configuration2.ex.ConfigurationException ;
-import org.apache.logging.log4j.LogManager ;
-import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Names ;
@@ -18,8 +16,6 @@ import fr.gardoll.ace.controller.core.Names ;
 public abstract class Colonne
 {
   public static final String COLUMN_FILE_EXTENTION = "cln";
-  
-  private static final Logger _LOG = LogManager.getLogger(Colonne.class.getName());
   
   protected final Path _fichierColonne ;
   protected final SubnodeConfiguration _colSection;
@@ -73,7 +69,6 @@ public abstract class Colonne
     if (! (Files.isReadable(this._fichierColonne) && Files.isRegularFile(this._fichierColonne)))
     {
       String msg = String.format("cannot read column configuration file '%s'", cheminFichierColonne);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     
@@ -94,7 +89,6 @@ public abstract class Colonne
     {
       String msg = String.format("unable to read the column specifications in the file '%s'",
           this._fichierColonne.toString());
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg,e);
     }
     
@@ -107,7 +101,6 @@ public abstract class Colonne
         this._volumeCritique2          < 0    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
   }
@@ -139,7 +132,6 @@ public abstract class Colonne
         Files.isRegularFile(columnPath)))
     {
       String msg = String.format("cannot read column configuration file '%s'", columnPath);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     
@@ -157,7 +149,6 @@ public abstract class Colonne
     {
       String msg = String.format("unable to read the column specifications in the file '%s'",
           columnPath);
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg,e);
     }
     finally

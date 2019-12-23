@@ -65,14 +65,12 @@ public interface PumpController extends Closeable
     {
       String msg = String.format("the value of the syringe diameter '%s' cannot be negative or null",
                                  diametreSeringue) ;
-      _LOG.fatal(msg);
       throw new ConfigurationException(msg);
     }
     else if (diametreSeringue > DIAMETRE_MAX)
     {
       String msg = String.format("the value of the syringe diameter '%s' cannot be greater than %s",
                                  diametreSeringue, DIAMETRE_MAX);
-      _LOG.fatal(msg);
       throw new ConfigurationException (msg);
     }
     

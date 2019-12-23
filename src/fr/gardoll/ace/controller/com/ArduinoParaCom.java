@@ -37,7 +37,6 @@ public class ArduinoParaCom implements ParaCom
     {
       String msg = String.format("error while initializing the port '%s'",
           this._port.getPath());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }
@@ -61,7 +60,6 @@ public class ArduinoParaCom implements ParaCom
     {
       String msg = String.format("error while writing on port '%s'",
           this._port.getId());
-      _LOG.fatal(msg, e);
       throw new ParaComException(msg, e);
     }
     
@@ -80,7 +78,6 @@ public class ArduinoParaCom implements ParaCom
         case "E":
         {
           String msg = "error while sending order to usb2valves";
-          _LOG.fatal(msg);
           throw new ParaComException(msg);
         }
         
@@ -94,14 +91,12 @@ public class ArduinoParaCom implements ParaCom
         {
           String msg = String.format("arduino is disconnected (port is %s)",
                                      this._port.getId());
-          _LOG.fatal(msg);
           throw new ParaComException(msg);
         }
         
         default:
         {
           String msg = String.format("unsupported ack '%s'", ack);
-          _LOG.fatal(msg);
           throw new ParaComException(msg);
         }
       }
@@ -109,7 +104,6 @@ public class ArduinoParaCom implements ParaCom
     catch (SerialComException e)
     {
       String msg = "error while waiting the usb2valves acknowledge";
-      _LOG.fatal(msg, e);
       throw new ParaComException(msg, e);
     }
   }

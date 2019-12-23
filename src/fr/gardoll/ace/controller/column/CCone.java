@@ -2,9 +2,6 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
-import org.apache.logging.log4j.LogManager ;
-import org.apache.logging.log4j.Logger ;
-
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Names ;
 
@@ -21,8 +18,6 @@ public class CCone extends Colonne
   private final double _volumeReservoir ; //volume du réservoir en mL
     //en mL
   
-  private static final Logger _LOG = LogManager.getLogger(CCone.class.getName());
-  
   public CCone(Path cheminFichierColonne) throws InitializationException
   { 
     super(cheminFichierColonne, TypeColonne.CONE);
@@ -35,7 +30,6 @@ public class CCone extends Colonne
     {
       String msg = String.format("superior diameter '%s' must be greater than the inferior diameter '%s'",
           this.diametreSup, this.diametreInf);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
 
@@ -44,7 +38,6 @@ public class CCone extends Colonne
          this.diametreInf < 0    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
 
@@ -66,7 +59,6 @@ public class CCone extends Colonne
     if ( volume <= 0. )
     {
       String msg = String.format("volume '%s' cannot be negative or null", volume);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 
@@ -89,7 +81,6 @@ public class CCone extends Colonne
     if (volume <= 0.)
     {
       String msg = String.format("volume '%s' cannot be negative or null", volume);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 

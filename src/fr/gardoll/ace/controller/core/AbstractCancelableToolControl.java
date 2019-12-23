@@ -32,7 +32,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
         catch (Exception e)
         {
           String msg = "cancel has crashed";
-          _LOG.error(msg, e);
+          _LOG.fatal(msg, e);
           // Don't change the state of the running thread
           // by calling AbstractStateFullToolControl.this.handleException.
           AbstractCancelableToolControl.this.notifyError(msg, e);

@@ -94,7 +94,6 @@ public class PousseSeringue implements Closeable
     catch(ParaComException e)
     {
       String msg = "error while closing all the isolation valves";
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
     
@@ -110,7 +109,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("unsupported number of syringe '%s'",
                                  nombreSeringue);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
 
@@ -118,7 +116,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the value of the initial volume '%s' cannot be negative or null",
           volumeInitiale);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     
@@ -126,14 +123,12 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the value of the maximum syringe volume '%s' cannot be negative of null",
           volumeMaxSeringue);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
         
     if (debitMaxPousseSeringue <= 0.)
     {
       String msg = String.format("the value of the maximum rate '%s' cannot be negative of null", debitMaxPousseSeringue);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     else if (debitMaxPousseSeringue > debitMaxIntrinseque(diametreSeringue))
@@ -141,7 +136,6 @@ public class PousseSeringue implements Closeable
       String msg = String.format("the value of the maximum rate '%s' cannot be greater than %s ",
                                  debitMaxPousseSeringue,
                                  debitMaxIntrinseque(diametreSeringue));
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
 
@@ -225,7 +219,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the value of the isolation valve '%s' cannot be greater than %s",
                                  numEv, Valves.NB_EV_MAX);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 
@@ -233,7 +226,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the volume '%s' to be pumped, cannot be greater than the maximum volume %s",
           volume, this._volumeMaxSeringue);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 
@@ -257,7 +249,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while withdrawing the volume '%s' from isolation valve '%s'",
           volume, numEv);
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -280,7 +271,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the value of the isolation valve '%s' cannot be greater than %s",
                                  numEv, Valves.NB_EV_MAX);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 
@@ -288,7 +278,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the volume '%s' to be delivered cannot be greater than the maximum volume %s",
           volume, PousseSeringue._volumeReel);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 
@@ -312,7 +301,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while infusing the volume '%s' to isolation valve '%s'",
           volume, numEv);
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -348,7 +336,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the withdrawing rate '%s' cannot be greater than the maximum rate %s",
           debit, this._debitMaxPousseSeringue);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 
@@ -365,7 +352,6 @@ public class PousseSeringue implements Closeable
       {
         String msg = String.format("error while configuring the withdrawing rate '%s'",
             debit);
-        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
       
@@ -382,7 +368,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("the value of the infusion rate '%s' cannot be greater than the maximum rate %s",
                                  debit, this._debitMaxPousseSeringue);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
 
@@ -398,7 +383,6 @@ public class PousseSeringue implements Closeable
       {
         String msg = String.format("error while configuring the infusion rate '%s'",
             debit);
-        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
       
@@ -427,7 +411,6 @@ public class PousseSeringue implements Closeable
       catch(SerialComException e)
       {
         String msg = "error while waiting for the pump";
-        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
     }
@@ -471,8 +454,7 @@ public class PousseSeringue implements Closeable
         }
         catch (ParaComException e)
         {
-          _LOG.fatal(e);
-          throw new RuntimeException(e);
+          throw new RuntimeException("error while closing the valves", e);
         }
       }
       else
@@ -483,7 +465,6 @@ public class PousseSeringue implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while cancelling the pump operations";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -518,7 +499,6 @@ public class PousseSeringue implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while stopping (pause) the pump";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -538,7 +518,6 @@ public class PousseSeringue implements Closeable
       catch(SerialComException|ParaComException e)
       {
         String msg = "error while resuming the pump";
-        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
     }
@@ -560,7 +539,6 @@ public class PousseSeringue implements Closeable
     {
       String msg = String.format("error while setting the diameter of the seringe '%s'",
           diametre);
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -577,7 +555,6 @@ public class PousseSeringue implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while getting the delivered volume";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -660,7 +637,6 @@ public class PousseSeringue implements Closeable
     catch(ParaComException e)
     {
       String msg = "error while closing all the isolation valves";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg);
     }
   }  

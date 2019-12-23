@@ -53,7 +53,6 @@ public class InterfaceMoteur implements Closeable, MotorController
     {
       String msg = String.format("error while initializing the port '%s'",
           this._port.getId());
-      _LOG.fatal(msg, e);
       throw new InitializationException(msg, e);
     }
   }
@@ -74,7 +73,6 @@ public class InterfaceMoteur implements Closeable, MotorController
     if(reponse.isEmpty())
     {
       String msg = "autosampler disconnected";
-      _LOG.fatal(msg);
       throw new SerialComException(msg);
     }
 
@@ -87,7 +85,6 @@ public class InterfaceMoteur implements Closeable, MotorController
       case 'E':
       { 
         String msg = String.format("autosampler failure: %s", reponse);
-        _LOG.fatal(msg);
         throw new SerialComException(msg);
       }
     }
@@ -277,7 +274,6 @@ public class InterfaceMoteur implements Closeable, MotorController
     {
       String msg = String.format("the state of optocoupled outputs '%s' must be greater or equal than 0 but less or equal than 255)",
           octet);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
   }
@@ -290,7 +286,6 @@ public class InterfaceMoteur implements Closeable, MotorController
     {
       String msg = String.format("the position of the bit '%s' cannot be greater than %s",
           bitPosition, NB_BITS);
-      _LOG.fatal(msg);
       throw new RuntimeException(msg);
     }
     

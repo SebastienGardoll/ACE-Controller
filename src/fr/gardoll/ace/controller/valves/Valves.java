@@ -72,7 +72,6 @@ public class Valves implements Closeable
     if (numEv < 0)
     {
       String msg = String.format("isolation valve number '%s' cannot be negative", numEv);
-      _LOG.fatal(msg);
       throw new ParaComException(msg);
     }
 
@@ -101,7 +100,6 @@ public class Valves implements Closeable
       default :
       {
         String msg = String.format("unsupported isolation valve number '%s'", numEv);
-        _LOG.fatal(msg);
         throw new ParaComException(msg);
       }
     }
@@ -117,7 +115,6 @@ public class Valves implements Closeable
     {
       String msg = String.format("error while writing on port '%s'",
           this._paracom.getId());
-      _LOG.fatal(msg, e);
       throw new ParaComException(msg, e);
     }
   }
@@ -142,7 +139,6 @@ public class Valves implements Closeable
     }
     catch(Exception e)
     {
-      _LOG.fatal("error while closing the valves", e);
       throw new IOException("error while closing the valves", e);
     }
     

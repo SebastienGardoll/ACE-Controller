@@ -79,7 +79,6 @@ public class Passeur implements Closeable
     {
       String msg = String.format("the value of the diameter '%s' and the steps '%s' of the step motor cannot be negative or null",
           diametre, nbPasCarrousel);
-      _LOG.fatal(msg);
       throw new InitializationException(msg);
     }
     else
@@ -120,7 +119,6 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving the autosampler carousel to position '%s' with offset '%s'",
           position, modificateur);
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -139,7 +137,6 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving the autosampler arm to position '%s'",
           nbPas);
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -160,7 +157,6 @@ public class Passeur implements Closeable
     {
       String msg = String.format("error while moving the autosampler arm to position '%s' steps and carousel to position '%s'",
           nbPas, position);
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -177,7 +173,6 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while moving autosampler arm to base";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -194,7 +189,6 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while moving autosampler arm to top";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -236,7 +230,6 @@ public class Passeur implements Closeable
       catch (SerialComException e)
       {
         String msg = "error while waiting for the end of the autosampler carousel move";
-        _LOG.fatal(msg, e);
         throw new RuntimeException(msg, e);
       }
     }
@@ -298,7 +291,6 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = "error while resetting the autosampler interface";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -317,7 +309,6 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = "error while setting the arm origin";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -336,7 +327,6 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while setting the carousel origin";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -361,7 +351,6 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = "error while setting autosampler direct mode";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -377,7 +366,6 @@ public class Passeur implements Closeable
     catch (SerialComException e)
     {
       String msg = "error while setting autosampler manual mode";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -405,7 +393,6 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while pausing the autosampler";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -429,7 +416,6 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while cancelling the autosampler";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -469,7 +455,6 @@ public class Passeur implements Closeable
           catch (SerialComException e)
           {
             String msg = "error while resuming the autosampler move";
-            _LOG.fatal(msg, e);
             throw new RuntimeException(msg, e);
           }
         }
@@ -529,7 +514,6 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while vibrating the autosampler arm";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -546,7 +530,6 @@ public class Passeur implements Closeable
     catch(SerialComException e)
     {
       String msg = "error while moving the carousel to origin";
-      _LOG.fatal(msg, e);
       throw new RuntimeException(msg, e);
     }
   }
@@ -565,7 +548,6 @@ public class Passeur implements Closeable
      {
        String msg = String.format("error while moving the autosampler carousel to position '%s' (relative)",
            nbPosition);
-       _LOG.fatal(msg, e);
        throw new RuntimeException(msg, e);
      }
   }

@@ -86,8 +86,8 @@ public abstract class AbstractThreadControl extends Thread
       catch (Exception e1)
       {
         String msg = "cancel operations have crashed";
-        _LOG.fatal(msg, e);
-        this._toolCtrl.notifyError(msg, e);
+        _LOG.fatal(msg, e1);
+        this._toolCtrl.notifyError(msg, e1);
         this._toolCtrl.getState().crash();
         return ; // Terminate the execution of the thread.
       }
