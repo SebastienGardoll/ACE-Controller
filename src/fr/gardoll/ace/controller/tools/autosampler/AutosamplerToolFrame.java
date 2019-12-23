@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.tools.extraction;
+package fr.gardoll.ace.controller.tools.autosampler;
 
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
@@ -8,31 +8,32 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
-public class ExtractionToolStandalone extends AbstractToolFrame
+public class AutosamplerToolFrame extends AbstractToolFrame
 {
-  private static final long serialVersionUID = 1190173227128454971L ;
-  private static final Logger _LOG = LogManager.getLogger(ExtractionToolStandalone.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(AutosamplerToolFrame.class.getName());
+  private static final long serialVersionUID = -6062838678688858409L ;
 
-  private ExtractionToolStandalone(ExtractionToolPanel toolPanel)
+  private AutosamplerToolFrame(AutosamplerToolPanel toolPanel)
   {
-    super(toolPanel);
+    super(toolPanel) ;
   }
   
-  public static ExtractionToolStandalone instantiate(ParametresSession parametresSession)
+  public static AutosamplerToolFrame instantiate(ParametresSession parametresSession)
       throws InitializationException
   {
-    ExtractionToolControl ctrl = new ExtractionToolControl(parametresSession);
-    ExtractionToolPanel toolPanel = new ExtractionToolPanel(ctrl);
+    AutosamplerToolControl ctrl = new AutosamplerToolControl(parametresSession);
+    AutosamplerToolPanel toolPanel = new AutosamplerToolPanel(ctrl);
     ctrl.addControlPanel(toolPanel);
-    ExtractionToolStandalone tool = new ExtractionToolStandalone(toolPanel);
+    AutosamplerToolFrame tool = new AutosamplerToolFrame(toolPanel);
     return tool;
   }
-  
+
+  // TODO: to be tested.
   public static void main(String[] args)
   {
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
-      ExtractionToolStandalone tool = ExtractionToolStandalone.instantiate(parametresSession); 
+      AutosamplerToolFrame tool = AutosamplerToolFrame.instantiate(parametresSession); 
       tool.setVisible(true);
     }
     catch (Exception e)

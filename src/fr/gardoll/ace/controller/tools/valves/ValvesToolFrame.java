@@ -9,24 +9,24 @@ import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
 
-public class ValvesToolStandalone extends AbstractToolFrame
+public class ValvesToolFrame extends AbstractToolFrame
 {
   private static final long serialVersionUID = 9097813064524782984L ;
   
-  private static final Logger _LOG = LogManager.getLogger(ValvesToolStandalone.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(ValvesToolFrame.class.getName());
   
-  private ValvesToolStandalone(AbstractJPanelObserver mainPanel)
+  private ValvesToolFrame(AbstractJPanelObserver mainPanel)
   {
     super(mainPanel) ;
   }
   
-  public static ValvesToolStandalone instantiate(ParametresSession parametresSession) 
+  public static ValvesToolFrame instantiate(ParametresSession parametresSession) 
      throws InitializationException
   {
     ValvesToolControl ctrl = new ValvesToolControl(parametresSession);
     ValvesToolPanel toolPanel = new ValvesToolPanel(ctrl);
     ctrl.addControlPanel(toolPanel);
-    ValvesToolStandalone tool = new ValvesToolStandalone(toolPanel);
+    ValvesToolFrame tool = new ValvesToolFrame(toolPanel);
     return tool;
   }
   
@@ -34,7 +34,7 @@ public class ValvesToolStandalone extends AbstractToolFrame
   {
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
-      ValvesToolStandalone tool = ValvesToolStandalone.instantiate(parametresSession);
+      ValvesToolFrame tool = ValvesToolFrame.instantiate(parametresSession);
       tool.setVisible(true);
     }
     catch (Exception e)

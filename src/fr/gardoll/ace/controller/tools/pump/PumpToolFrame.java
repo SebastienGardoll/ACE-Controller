@@ -8,23 +8,23 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
-public class PumpToolStandalone extends AbstractToolFrame
+public class PumpToolFrame extends AbstractToolFrame
 {
   private static final long serialVersionUID = 1190173227128454971L ;
-  private static final Logger _LOG = LogManager.getLogger(PumpToolStandalone.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(PumpToolFrame.class.getName());
 
-  private PumpToolStandalone(PumpToolPanel toolPanel)
+  private PumpToolFrame(PumpToolPanel toolPanel)
   {
     super(toolPanel);
   }
   
-  public static PumpToolStandalone instantiate (ParametresSession parametresSession)
+  public static PumpToolFrame instantiate (ParametresSession parametresSession)
       throws InitializationException
   {
     PumpToolControl ctrl = new PumpToolControl(parametresSession);
     PumpToolPanel toolPanel = new PumpToolPanel(ctrl);
     ctrl.addControlPanel(toolPanel);
-    PumpToolStandalone tool = new PumpToolStandalone(toolPanel);
+    PumpToolFrame tool = new PumpToolFrame(toolPanel);
     return tool;
   }
   
@@ -32,7 +32,7 @@ public class PumpToolStandalone extends AbstractToolFrame
   {
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
-      PumpToolStandalone tool = PumpToolStandalone.instantiate(parametresSession);
+      PumpToolFrame tool = PumpToolFrame.instantiate(parametresSession);
       tool.setVisible(true);
     }
     catch (Exception e)
