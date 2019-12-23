@@ -158,6 +158,7 @@ public class ParametresSession implements Closeable
       
       this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, DEFAULT_STRING_VALUE));
       _LOG.debug(String.format("isDebug returns %s", this._isDebug));
+      section.close();
     }
     catch (ConfigurationException e)
     {
@@ -188,6 +189,9 @@ public class ParametresSession implements Closeable
       String plateConfFilePathString      = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
       this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
       this._autosamplerConfPortPath       = section.getString(Names.SIC_CLEF_PORT_PATH);
+      
+      section.close();
+      
       try
       {
         carouselConfFile = Utils.getInstance().resolvePath(plateConfFilePathString);
@@ -225,6 +229,8 @@ public class ParametresSession implements Closeable
       this._diametreCarrousel = section.getInteger(Names.SIC_CLEF_DIA, -1);
       this._epaisseur         = section.getInteger(Names.SIC_CLEF_EPAISSEUR, -1);
       this._nbMaxColonne      = section.getInteger(Names.SIC_CLEF_NB_COL , -1) ;
+      
+      section.close();
     }
     catch (ConfigurationException e)
     {
@@ -244,6 +250,8 @@ public class ParametresSession implements Closeable
       this._paraComClassPath = section.getString(Names.SIPC_CLEF_PARA_COM_CLASS_PATH);
       this._paraComSerialComClassPath = section.getString(Names.SIPC_CLEF_SERIAL_COM_CLASS_PATH);
       this._paraComConfPortPath = section.getString(Names.SIPC_CLEF_PORT_PATH);
+      
+      section.close();
     }
     catch (ConfigurationException e)
     {
