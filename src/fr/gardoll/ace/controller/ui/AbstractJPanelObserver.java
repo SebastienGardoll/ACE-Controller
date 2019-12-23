@@ -192,7 +192,7 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       case CLOSING:
       {
-        msg = "closing the panel";
+        msg = "closing the tool";
         break;
       }
       

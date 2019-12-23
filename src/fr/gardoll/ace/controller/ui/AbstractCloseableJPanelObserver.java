@@ -48,7 +48,7 @@ public abstract class AbstractCloseableJPanelObserver extends AbstractJPanelObse
     
     if (choice == JOptionPane.OK_OPTION)
     {
-      _LOG.debug("calling close from the panel") ;
+      _LOG.info("start closing the panel") ;
       
       this._ctrl.close();
       return true;
