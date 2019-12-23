@@ -74,7 +74,7 @@ public class PousseSeringue implements Closeable
                         double diametreSeringue,
                         double volumeMaxSeringue,
                         double debitMaxPousseSeringue,
-                        double volumeInitiale) throws InitializationException, InterruptedException
+                        double volumeInitiale) throws InitializationException
   {
     _LOG.debug(String.format("initializing the pump with %s number of syringe, %s syringe diameter, %s syringe max volume, %s max rate, %s initial volume",
         nombreSeringue, diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
@@ -166,7 +166,7 @@ public class PousseSeringue implements Closeable
 
   // aspiration d'un volume exprimé en en mL.
   // requires 0 <= numEv <= NBEV_MAX
-  public void aspiration(double volume, int numEv) throws InterruptedException
+  public void aspiration(double volume, int numEv)
   { 
     _LOG.debug(String.format("withdrawing volume '%s' from valve '%s'",
         volume, numEv));
@@ -195,7 +195,7 @@ public class PousseSeringue implements Closeable
 
   //refoulement d'un volume exprimé en en mL.
   //requires 0 <= numEv <= NBEV_MAX
-  public void refoulement(double volume , int numEv) throws InterruptedException
+  public void refoulement(double volume , int numEv)
   {
     _LOG.debug(String.format("infusing volume '%s' to the valve '%s'",
         volume, numEv));
@@ -203,7 +203,7 @@ public class PousseSeringue implements Closeable
     this.algoRefoulement(volume, numEv) ;
   }
 
-  public void algoAspiration(double volume, int numEv) throws InterruptedException
+  public void algoAspiration(double volume, int numEv)
   { 
     _LOG.debug(String.format("running withdrawing subroutine for volume '%s' from valve '%s'",
         volume, numEv));
@@ -253,7 +253,7 @@ public class PousseSeringue implements Closeable
     }
   }
 
-  public void algoRefoulement(double volume, int numEv) throws InterruptedException
+  public void algoRefoulement(double volume, int numEv)
 
   { 
     _LOG.debug(String.format("running the infusing subroutine for volume '%s' to the valve '%s'",
@@ -309,7 +309,7 @@ public class PousseSeringue implements Closeable
   // volume n'est pas divisé par nbSeringue !!!!!!!! 
   // spécialement pour l'aspiration d'un cycle de rinçage
   //volume n'est pas divisé par nbSeringue !!!
-  public void rincageAspiration(double volume, int numEv) throws InterruptedException
+  public void rincageAspiration(double volume, int numEv)
   {
     _LOG.debug(String.format("rinsing with volume '%s' from valve '%s'",
         volume, numEv));
@@ -328,7 +328,7 @@ public class PousseSeringue implements Closeable
 
   //réglage du débit à l'aspiration en ml / min
   //requires debit <= _debitMaxPousseSeringue
-  public void setDebitAspiration(double debit) throws InterruptedException
+  public void setDebitAspiration(double debit)
 
   { 
     _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit)); 
@@ -361,7 +361,7 @@ public class PousseSeringue implements Closeable
 
   // réglage du débit au refoulement en ml / min.
   // requires debit <= _debitMaxPousseSeringue
-  public void setDebitRefoulement(double debit) throws InterruptedException
+  public void setDebitRefoulement(double debit)
   {  
     _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
     if(debit > this._debitMaxPousseSeringue)
@@ -390,19 +390,26 @@ public class PousseSeringue implements Closeable
     }
   }
   
-  public void finPompage() throws InterruptedException
+  public void finPompage()
   {
     this.finPompage(false);
   }
   
   // attente de la fin de l'aspiration ou refoulement
-  public void finPompage(boolean fermeture) throws InterruptedException
+  public void finPompage(boolean fermeture)
   {
     _LOG.debug(String.format("waiting for the pump (close flag is '%s')", fermeture));
     boolean has_to_continue = false;
     do
     {
-      Thread.sleep(100) ;
+      try
+      {
+        Thread.sleep(100) ;
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
       
       try
       {
@@ -417,7 +424,14 @@ public class PousseSeringue implements Closeable
     while (has_to_continue) ;
     
     // équilibre de la pression dans les tuyaux.
-    Thread.sleep(ATTENTE_FERMETURE_EV) ;
+    try
+    {
+      Thread.sleep(ATTENTE_FERMETURE_EV) ;
+    }
+    catch (InterruptedException e)
+    {
+      throw new RuntimeException(e);
+    }
 
     if (fermeture)
     {
@@ -426,7 +440,14 @@ public class PousseSeringue implements Closeable
       // pendant distribution <=> perte précison
       numEvActuelle = 0 ;
       // équilibre de la pression dans les tuyaux
-      Thread.sleep(ATTENTE_FERMETURE_EV) ;
+      try
+      {
+        Thread.sleep(ATTENTE_FERMETURE_EV) ;
+      }
+      catch (InterruptedException e)
+      {
+        throw new RuntimeException(e);
+      }
     }
     
     _LOG.debug("pump completed");
@@ -439,7 +460,7 @@ public class PousseSeringue implements Closeable
     ThreadControl.check();
   }
   
-  public void cancel() throws InterruptedException
+  public void cancel()
   {
     try
     {
@@ -469,7 +490,7 @@ public class PousseSeringue implements Closeable
     }
   }
   
-  public void reinit() throws InterruptedException
+  public void reinit()
   {
     _LOG.debug("reinitializing the pump");
     this.vidange();
@@ -477,7 +498,7 @@ public class PousseSeringue implements Closeable
   }
   
   // Arrête de la pompe
-  public void pause() throws InterruptedException
+  public void pause()
   {
     try
     {
@@ -504,7 +525,7 @@ public class PousseSeringue implements Closeable
   }
 
   // reprise après pause
-  public void reprise() throws InterruptedException
+  public void reprise()
   {  
     if (this._pause)
     { 
@@ -528,7 +549,7 @@ public class PousseSeringue implements Closeable
   }
 
   // règle le diamètre de la seringue en mm.
-  public void setDiametreSeringue(double diametre) throws InterruptedException
+  public void setDiametreSeringue(double diametre)
   {
     try
     {
@@ -544,7 +565,7 @@ public class PousseSeringue implements Closeable
   }
 
   // retourne le volume déjà délivré.
-  public double volumeDelivre() throws InterruptedException
+  public double volumeDelivre()
   { 
     try
     {
@@ -589,7 +610,7 @@ public class PousseSeringue implements Closeable
 
   // vide la seringue entièrement même le volume de sécurité dans le tuyau de refoulement.
   // vide entièrement la seringue, volume de sécurité compris.
-  public void vidange() throws InterruptedException  
+  public void vidange()  
   { 
     _LOG.debug("draining the pump");
     // retour aux conditions initiales.
@@ -627,7 +648,7 @@ public class PousseSeringue implements Closeable
   }
 
   // fermeture des Ev Commandées.
-  public void fermetureEv() throws InterruptedException
+  public void fermetureEv()
   {  
     _LOG.debug("closing the valves");
     try

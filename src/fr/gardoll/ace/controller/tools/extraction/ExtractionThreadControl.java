@@ -35,8 +35,8 @@ public class ExtractionThreadControl extends AbstractThreadControl
   }
   
   @Override
-  protected void threadLogic() throws InterruptedException,
-      CancellationException, InitializationException, Exception
+  protected void threadLogic() throws CancellationException,
+                                      InitializationException, Exception
   {
     {
       _LOG.info("starting session");
@@ -233,7 +233,6 @@ public class ExtractionThreadControl extends AbstractThreadControl
   private void processSequence(Sequence currentSequence, Commandes commandes,
                                Instant[] tabTemps, boolean preliminaires,
                                Optional<Long> tempsPrecedent, int nbColonne)
-                                   throws InterruptedException
   {
     processSequence(currentSequence, commandes, tabTemps, preliminaires,
                     tempsPrecedent, this._initSession.nbColonne, 1);
@@ -242,7 +241,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
   private void processSequence(Sequence sequence, Commandes commandes,
                                Instant[] tabTemps, boolean preliminaires,
                                Optional<Long> tempsPrecedent,
-                               int nbColonne, int numColonne) throws InterruptedException
+                               int nbColonne, int numColonne)
   {
     //--------------------------------------------------------------------------
     // Conditions initiales : tuyauterie purgée d'air
@@ -319,7 +318,14 @@ public class ExtractionThreadControl extends AbstractThreadControl
 
       // Must keep the sleep even after C++ translation because elution times
       // are computed with this wait in all the protocols.
-      Thread.sleep(2000) ;    //pourquoi Sleep ?
+      try
+      {
+        Thread.sleep(2000) ; //pourquoi Sleep ?
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
       
     } //fin du for
     

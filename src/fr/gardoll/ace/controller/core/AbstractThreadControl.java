@@ -104,6 +104,11 @@ public abstract class AbstractThreadControl extends Thread
       {
         msg = "operations have been interrupted";
       }
+      else if(e instanceof RuntimeException &&
+              e.getCause() instanceof InterruptedException)
+      {
+        msg = "operations have been interrupted";
+      }
       else
       {
         msg = "operations have crashed";
@@ -120,13 +125,12 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  protected abstract void threadLogic() throws InterruptedException,
-                                               CancellationException,
+  protected abstract void threadLogic() throws CancellationException,
                                                InitializationException,
                                                Exception;
 
   @Override
-  public boolean pause() throws InterruptedException
+  public boolean pause()
   {
     if(false == (Thread.currentThread() == this))
     {
@@ -139,7 +143,7 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  protected void selfTriggerPause() throws InterruptedException
+  protected void selfTriggerPause()
   {
     if(Thread.currentThread() == this)
     {
@@ -153,14 +157,22 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  private boolean askPause() throws InterruptedException
+  private boolean askPause()
   {
     try
     {
       _LOG.debug("ask the thread to pause");
       
       // Must take the lock so as to read the shared resources.
-      this._sync.lockInterruptibly();
+      try
+      {
+        this._sync.lockInterruptibly();
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
+      
       if(false == this._has_to_pause   &&
          false == this._has_to_cancel  &&
          this._is_running)
@@ -195,7 +207,7 @@ public abstract class AbstractThreadControl extends Thread
   }
 
   @Override
-  public boolean unPause() throws InterruptedException
+  public boolean unPause()
   {
     try
     {
@@ -203,7 +215,14 @@ public abstract class AbstractThreadControl extends Thread
       
       // Must take the lock so as to read the shared resources and
       // signalAll on the condition.
-      this._sync.lockInterruptibly();
+      try
+      {
+        this._sync.lockInterruptibly();
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
       
       if(this._has_to_pause           &&
          false == this._has_to_cancel &&
@@ -235,14 +254,21 @@ public abstract class AbstractThreadControl extends Thread
   // Make the instance of the AbstractThreadControl to pause if another thread
   // has called the pause method to do so.
   @Override
-  public void checkPause() throws InterruptedException
+  public void checkPause()
   {
     try
     { 
       //_LOG.debug("checking the pause");
       
       // Must take the lock so as to read the shared resources.
-      this._sync.lockInterruptibly();
+      try
+      {
+        this._sync.lockInterruptibly();
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
       
       if(this._is_pausing == false &&
          this._has_to_pause        &&
@@ -259,7 +285,14 @@ public abstract class AbstractThreadControl extends Thread
         {
           // The thread is waiting the caller to wake it up.
           // The method await makes the thread to release the lock. 
-          this._sync_cond.await();
+          try
+          {
+            this._sync_cond.await();
+          }
+          catch (InterruptedException e)
+          {
+            new RuntimeException(e);
+          }
         }
         
         // When the thread returns from the method await,
@@ -280,7 +313,7 @@ public abstract class AbstractThreadControl extends Thread
     }
   }
   
-  public void await(long milliseconds) throws InterruptedException
+  public void await(long milliseconds)
   {
     final Instant deadline = Instant.now().plusMillis(milliseconds);
     _LOG.debug(String.format("wait until %s", deadline)) ;
@@ -289,7 +322,15 @@ public abstract class AbstractThreadControl extends Thread
     while(Instant.now().isBefore(deadline))
     {
       // Must take the lock so as to read the shared resources.
-      this._sync.lockInterruptibly();
+      try
+      {
+        this._sync.lockInterruptibly();
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
+      
       try
       {
         // Shared resource.
@@ -319,7 +360,14 @@ public abstract class AbstractThreadControl extends Thread
           // The thread is waiting nanosTimeout of time but it can be wake up
           // by pause/cancel triggers.
           // The method await makes the thread to release the lock. 
-          this._sync_await_cond.await(timeToWait, TimeUnit.MILLISECONDS);
+          try
+          {
+            this._sync_await_cond.await(timeToWait, TimeUnit.MILLISECONDS);
+          }
+          catch (InterruptedException e)
+          {
+            new RuntimeException(e);
+          }
         }
       }
       finally
@@ -349,7 +397,7 @@ public abstract class AbstractThreadControl extends Thread
     if(Thread.currentThread() == this && 
        Thread.currentThread().isInterrupted())
     {
-      String msg = "the thread has been interrupted, throws InterruptedException";
+      String msg = "the thread has been interrupted,";
       _LOG.debug(msg);
       throw new InterruptedException(msg);
     }
@@ -360,14 +408,22 @@ public abstract class AbstractThreadControl extends Thread
   }
   
   @Override
-  public boolean cancel() throws InterruptedException
+  public boolean cancel()
   {
     try
     {
       _LOG.debug("ask the thread to cancel");
       
       // Must take the lock so as to read the shared resources.
-      this._sync.lockInterruptibly();
+      try
+      {
+        this._sync.lockInterruptibly();
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
+      
       if(false == this._has_to_pause  &&
          false == this._has_to_cancel &&
          this._is_running             &&
@@ -395,12 +451,19 @@ public abstract class AbstractThreadControl extends Thread
   }
   
   @Override
-  public void checkCancel() throws CancellationException, InterruptedException
+  public void checkCancel() throws CancellationException
   {
     try
     { 
       // Must take the lock so as to read the shared resources.
-      this._sync.lockInterruptibly();
+      try
+      {
+        this._sync.lockInterruptibly();
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      }
       
       if(this._is_canceling == false &&
          this._has_to_cancel         &&

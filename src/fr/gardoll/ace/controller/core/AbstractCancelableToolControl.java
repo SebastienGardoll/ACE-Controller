@@ -12,7 +12,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   public AbstractCancelableToolControl(ParametresSession parametresSession,
                                   boolean hasPump, boolean hasAutosampler,
                                   boolean hasValves)
-      throws InitializationException, InterruptedException
+      throws InitializationException
   {
     super(parametresSession, hasPump, hasAutosampler, hasValves);
   }
@@ -44,7 +44,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   }
   
   @Override
-  public void cancelOperations() throws InterruptedException
+  public void cancelOperations()
   {
     _LOG.info("running cancel procedure");
     this.notifyAction(new Action(ActionType.CANCELING, null));
@@ -96,7 +96,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   }
   
   @Override
-  void reinitOperations() throws InterruptedException
+  void reinitOperations()
   {
     _LOG.info("reinitializing all devices");
     this.notifyAction(new Action(ActionType.REINIT, Optional.empty()));
@@ -144,13 +144,13 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   }
   
   @Override
-  void pauseOperations() throws InterruptedException
+  void pauseOperations()
   {
     throw new UnsupportedOperationException("pause operations is not implemented");
   }
   
   @Override
-  void resumeOperations() throws InterruptedException
+  void resumeOperations()
   {
     throw new UnsupportedOperationException("resume operations is not implemented");
   }

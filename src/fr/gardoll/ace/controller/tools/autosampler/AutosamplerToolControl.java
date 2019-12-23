@@ -25,7 +25,7 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
   // autorise la fermeture de la fenêtre ou non à cause des threads
   
   public AutosamplerToolControl(ParametresSession parametresSession)
-      throws InitializationException, InterruptedException
+      throws InitializationException
   {
     super(parametresSession, false, true, false);
   }
@@ -226,8 +226,7 @@ class CarouselRelativeThread extends AbstractThreadControl
   }
   
   @Override
-  protected void threadLogic() throws InterruptedException,
-      CancellationException, InitializationException, Exception
+  protected void threadLogic() throws CancellationException, InitializationException, Exception
   {
     _LOG.debug("run CarouselRelativeThread");
     Action action = new Action(ActionType.CAROUSEL_RELATIVE_MOVING,
@@ -258,8 +257,7 @@ class CarouselThread extends AbstractThreadControl
   }
   
   @Override
-  protected void threadLogic() throws InterruptedException,
-                                      InitializationException,
+  protected void threadLogic() throws InitializationException,
                                       CancellationException,
                                       Exception
   {
@@ -301,8 +299,7 @@ class ArmThread extends AbstractThreadControl
   }
   
   @Override
-  protected void threadLogic() throws InterruptedException,
-                                      CancellationException,
+  protected void threadLogic() throws CancellationException,
                                       InitializationException,
                                       Exception
   {

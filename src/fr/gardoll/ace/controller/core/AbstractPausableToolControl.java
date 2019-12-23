@@ -11,7 +11,7 @@ public abstract class AbstractPausableToolControl extends AbstractCancelableTool
   public AbstractPausableToolControl(ParametresSession parametresSession,
                                      boolean hasPump, boolean hasAutosampler,
                                      boolean hasValves)
-                            throws InitializationException, InterruptedException
+                            throws InitializationException
   {
     super(parametresSession, hasPump, hasAutosampler, hasValves);
   }
@@ -43,7 +43,7 @@ public abstract class AbstractPausableToolControl extends AbstractCancelableTool
   }
   
   @Override
-  public void pauseOperations() throws InterruptedException
+  public void pauseOperations()
   {
     _LOG.info("running pause operations");
     this.notifyAction(new Action(ActionType.PAUSING, null));
@@ -89,7 +89,7 @@ public abstract class AbstractPausableToolControl extends AbstractCancelableTool
   }
   
   @Override
-  public void resumeOperations() throws InterruptedException
+  public void resumeOperations()
   {
     _LOG.info("running the resume operations");
     this.notifyAction(new Action(ActionType.RESUME, null));

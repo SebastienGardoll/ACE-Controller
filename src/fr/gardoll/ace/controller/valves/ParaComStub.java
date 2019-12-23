@@ -28,7 +28,7 @@ public class ParaComStub implements ParaCom
   }
   
   @Override
-  public void send(byte[] order) throws ParaComException, InterruptedException
+  public void send(byte[] order) throws ParaComException
   {
     _LOG.trace("stubbing send");
   }

@@ -36,7 +36,7 @@ public class Valves implements Closeable
   
   private static final Logger _LOG = LogManager.getLogger(Valves.class.getName());
   
-  public void ouvrir(int numEv) throws ParaComException, InterruptedException
+  public void ouvrir(int numEv) throws ParaComException
   {
     String debugMsg = null;
     
@@ -109,7 +109,15 @@ public class Valves implements Closeable
       byte b = Integer.valueOf(ordre).byteValue();
       _LOG.trace(String.format("sending order '%s'", ordre));
       this._paracom.send(new byte[] {b});
-      Thread.sleep(ATTENTE_EV) ; //temps d'attente de l'exécution mécanique de l'ordre
+      try
+      {
+        // temps d'attente de l'exécution mécanique de l'ordre
+        Thread.sleep(ATTENTE_EV) ;
+      }
+      catch (InterruptedException e)
+      {
+        new RuntimeException(e);
+      } 
     }
     catch(ParaComException e)
     {
@@ -119,12 +127,12 @@ public class Valves implements Closeable
     }
   }
   
-  public void ouvrirH2O() throws ParaComException, InterruptedException
+  public void ouvrirH2O() throws ParaComException
   {
     this.ouvrir(NUM_EV_H2O); 
   }
 
-  public void toutFermer() throws ParaComException, InterruptedException
+  public void toutFermer() throws ParaComException
   {
     this.ouvrir(NUM_SHUT_IV) ; 
   }

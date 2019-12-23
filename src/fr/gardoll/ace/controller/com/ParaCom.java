@@ -6,7 +6,7 @@ public interface ParaCom  extends Closeable
 {
   public String getId();
   
-  public void send(byte[] order) throws ParaComException, InterruptedException;
+  public void send(byte[] order) throws ParaComException;
   
   @Override // Dodge IOException.
   public void close();

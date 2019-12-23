@@ -33,7 +33,7 @@ public interface SerialCom extends Closeable
   public void close() ;
   
   // Time (milliseconds) to wait after opening the port.
-  public void open(int openingDelay) throws SerialComException, InterruptedException ;
+  public void open(int openingDelay) throws SerialComException;
   
   public void setMode(SerialMode readMode, SerialMode writeMode);
   

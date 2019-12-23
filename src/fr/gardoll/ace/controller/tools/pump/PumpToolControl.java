@@ -24,7 +24,7 @@ public class PumpToolControl extends AbstractPausableToolControl
   private static final Logger _LOG = LogManager.getLogger(PumpToolControl.class.getName());
   
   public PumpToolControl(ParametresSession parametresSession)
-      throws InitializationException, InterruptedException
+      throws InitializationException
   {
     super(parametresSession, true, true, true) ;
   }
@@ -78,7 +78,7 @@ public class PumpToolControl extends AbstractPausableToolControl
   }
 
   @Override
-  protected void closeOperations() throws InterruptedException
+  protected void closeOperations()
   {
     _LOG.debug("controller has nothing to do while closing the tool");
     this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));
@@ -102,8 +102,8 @@ class pumpThread extends AbstractThreadControl
   }
 
   @Override
-  protected void threadLogic() throws InterruptedException,
-      CancellationException, InitializationException, Exception
+  protected void threadLogic() throws CancellationException,
+                                      InitializationException, Exception
   {
     ParametresSession parametresSession = ParametresSession.getInstance() ;
     Passeur autosampler = parametresSession.getPasseur();

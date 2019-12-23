@@ -49,7 +49,7 @@ public class InterfaceMoteur implements Closeable, MotorController
       
       this.singleLine(true); // ack processing supposes to get single line ack.
     }
-    catch(SerialComException | InterruptedException e)
+    catch(SerialComException e)
     {
       String msg = String.format("error while initializing the port '%s'",
           this._port.getId());
@@ -92,13 +92,20 @@ public class InterfaceMoteur implements Closeable, MotorController
   
   // renvoie la réponse de l'interface. Temporisation en milisecondes.
   private String traitementOrdre(String ordre, long temporisation)
-                                 throws SerialComException, InterruptedException
+                                 throws SerialComException
   {  
     String reponse = "";
     
     this._port.ecrire(ordre) ;
 
-    Thread.sleep(temporisation);
+    try
+    {
+      Thread.sleep(temporisation);
+    }
+    catch (InterruptedException e)
+    {
+      throw new RuntimeException(e);
+    }
 
     reponse = this.lectureReponse() ;
 
@@ -107,8 +114,7 @@ public class InterfaceMoteur implements Closeable, MotorController
     return reponse  ;
   }
   
-  private String traitementOrdre(String ordre)
-      throws SerialComException, InterruptedException
+  private String traitementOrdre(String ordre) throws SerialComException
   {
     return this.traitementOrdre (ordre, 0l) ;
   }
@@ -123,7 +129,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   }  
   
   @Override
-  public void move(int nbPas1 , int nbPas2) throws SerialComException, InterruptedException
+  public void move(int nbPas1 , int nbPas2) throws SerialComException
   { 
     String ordre = String.format("move (%s,%s)\r", nbPas1, nbPas2) ;
     _LOG.trace(String.format("send '%s'", ordre));
@@ -132,7 +138,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   
   //détection fin de mouvement
   @Override
-  public boolean moving(TypeAxe axe) throws SerialComException, InterruptedException
+  public boolean moving(TypeAxe axe) throws SerialComException
   {  
     String ordre = String.format("moving (%s)\r", axe);
     // valeur 1 ==> en mouvement
@@ -142,7 +148,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   // avance jusqu'à fin de butée
   // 0 :pas bougé, 1 : butée positive, -1 : butée négative
   @Override
-  public void movel(int axe1, int axe2) throws SerialComException, InterruptedException
+  public void movel(int axe1, int axe2) throws SerialComException
   {  
     String ordre = String.format("movel (%s,%s)\r", axe1, axe2);
     _LOG.trace(String.format("send '%s'", ordre));
@@ -151,7 +157,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   
   //réinitialisation de l'interface
   @Override
-  public void reset() throws SerialComException, InterruptedException
+  public void reset() throws SerialComException
 
   {
     String order = "new\r";
@@ -160,7 +166,14 @@ public class InterfaceMoteur implements Closeable, MotorController
 
     // attente obligatoire à cause de la lenteur de l'interface
     //  pour cette fonction . 800 ms
-    Thread.sleep(800); 
+    try
+    {
+      Thread.sleep(800);
+    }
+    catch (InterruptedException e)
+    {
+      throw new RuntimeException(e);
+    } 
 
     this.lectureReponse ();
 
@@ -168,8 +181,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   }
   
   @Override
-  public void preSecale(int denominateur) 
-      throws SerialComException, InterruptedException
+  public void preSecale(int denominateur) throws SerialComException
   {  
     String ordre = String.format("prescale (%s)\r", denominateur);
     _LOG.trace(String.format("send '%s'", ordre));
@@ -178,14 +190,14 @@ public class InterfaceMoteur implements Closeable, MotorController
   
   @Override
   public void param(TypeAxe axe, int base, int top, int accel)
-                                                       throws SerialComException, InterruptedException
+                                                       throws SerialComException
   {
     this.param(axe, base, top, accel, 0);
   }
   
   @Override
   public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
-                                                       throws SerialComException, InterruptedException
+                                                       throws SerialComException
 
   {  
     String ordre = null;
@@ -206,7 +218,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   }
 
   @Override
-  public void datum(TypeAxe axe) throws SerialComException, InterruptedException
+  public void datum(TypeAxe axe) throws SerialComException
 
   {  
     String ordre = String.format("datum (%s)\r", axe);
@@ -215,7 +227,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   }
   
   @Override
-  public void singleLine(boolean choix) throws SerialComException, InterruptedException
+  public void singleLine(boolean choix) throws SerialComException
   { 
     char convertion = (choix) ? '1':'2';
     
@@ -225,7 +237,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   }
   
   @Override
-  public void stop() throws SerialComException, InterruptedException
+  public void stop() throws SerialComException
   { 
     String order = "stop ()\r";
     _LOG.trace(String.format("send '%s'", order));
@@ -233,7 +245,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   }
   
   @Override
-  public void manual() throws SerialComException, InterruptedException
+  public void manual() throws SerialComException
   {  
     String order = "manual ()\r";
     _LOG.trace(String.format("send '%s'", order));
@@ -241,7 +253,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   }
 
   @Override
-  public void halt() throws SerialComException, InterruptedException
+  public void halt() throws SerialComException
   { 
     // la temporisation dépend directement
     // de la vitesse de point et de la décéleration
@@ -251,7 +263,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   } 
                                            
   @Override
-  public int where(TypeAxe axe) throws SerialComException, InterruptedException
+  public int where(TypeAxe axe) throws SerialComException
   {  
     String ordre = String.format("where (%s)\r", axe);
     _LOG.trace(String.format("send '%s'", ordre));
@@ -262,7 +274,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   //voir manuel de l'interface
   // 0 <= octet <= 255
   @Override
-  public void out(int octet) throws SerialComException, InterruptedException
+  public void out(int octet) throws SerialComException
   { 
     if (octet <= 255 && octet <= 0)
     {
@@ -280,7 +292,7 @@ public class InterfaceMoteur implements Closeable, MotorController
 
   //voir manuel de l'interface
   @Override
-  public void out(int bitPosition, boolean isOn) throws SerialComException, InterruptedException
+  public void out(int bitPosition, boolean isOn) throws SerialComException
   { 
     if (bitPosition > NB_BITS )
     {

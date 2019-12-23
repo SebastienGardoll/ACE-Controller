@@ -20,13 +20,13 @@ public class ValvesToolControl extends AbstractCloseableToolControl
   
   
   public ValvesToolControl(ParametresSession parametresSession)
-      throws InitializationException, InterruptedException
+      throws InitializationException
   {
     super(parametresSession, false, false, true) ;
   }
   
   @Override
-  protected void closeOperations() throws InterruptedException
+  protected void closeOperations()
   {
     _LOG.debug("closing all the valves");
     try

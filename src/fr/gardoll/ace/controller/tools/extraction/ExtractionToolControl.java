@@ -18,7 +18,7 @@ public class ExtractionToolControl extends AbstractPausableToolControl
   private static final Logger _LOG = LogManager.getLogger(ExtractionToolControl.class.getName());
   
   public ExtractionToolControl(ParametresSession parametresSession)
-                            throws InitializationException, InterruptedException
+                            throws InitializationException
   {
     super(parametresSession, true, true, true) ;
   }
@@ -55,7 +55,7 @@ public class ExtractionToolControl extends AbstractPausableToolControl
   }
   
   @Override
-  protected void closeOperations() throws InterruptedException
+  protected void closeOperations()
   {
     _LOG.debug("controller has nothing to do while closing the tool");
     this.notifyAction(new Action(ActionType.CLOSING, Optional.empty()));

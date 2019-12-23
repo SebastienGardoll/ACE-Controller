@@ -22,40 +22,40 @@ public interface PumpController extends Closeable
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.US);
   
-  public void run() throws SerialComException, InterruptedException;
+  public void run() throws SerialComException;
   
   // pause or cancel
-  public void stop() throws SerialComException, InterruptedException;
+  public void stop() throws SerialComException;
   
   // en mm requires diametre > 0
-  public void dia(double diametre) throws SerialComException, InterruptedException;
+  public void dia(double diametre) throws SerialComException;
   
-  public boolean running() throws SerialComException, InterruptedException;
+  public boolean running() throws SerialComException;
   
   // en mL
   //Attention ne revoie un réel que si le volume à délivré en est un.
   // Ainsi : 1. ou 1.0 ne donnera pas de réponse en réel donc la réponse sera
   // 0 puis 1 à la fin !!!! Il n'y a donc aucun intérêt.
   // Parade : passer en micro litre quand < 10 mL.
-  public double deliver() throws SerialComException, InterruptedException;
+  public double deliver() throws SerialComException;
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
-  public void ratei(double debit) throws SerialComException, InterruptedException;
+  public void ratei(double debit) throws SerialComException;
   
   //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
-  public void ratew(double debit) throws SerialComException, InterruptedException;
+  public void ratew(double debit) throws SerialComException;
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
-  public void voli(double volume) throws SerialComException, InterruptedException;
+  public void voli(double volume) throws SerialComException;
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
-  public void volw(double volume) throws SerialComException, InterruptedException;
+  public void volw(double volume) throws SerialComException;
   
-  public void modeI() throws SerialComException, InterruptedException;
+  public void modeI() throws SerialComException;
 
-  public void modeW() throws SerialComException, InterruptedException;
+  public void modeW() throws SerialComException;
   
   public static int debitMaxIntrinseque(double diametreSeringue)
   {

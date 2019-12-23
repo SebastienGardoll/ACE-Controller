@@ -73,7 +73,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       this._port.open(OPENING_DELAY);
       
     }
-    catch(SerialComException | InterruptedException e)
+    catch(SerialComException e)
     {
       String msg = "error while initializing the pump serial port";
       throw new InitializationException(msg, e);
@@ -86,7 +86,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
       this.dia(diametreSeringue);
     }
-    catch(SerialComException|InterruptedException e)
+    catch(SerialComException e)
     {
       String msg = "error while initializing the pump";
       throw new InitializationException(msg, e);
@@ -116,8 +116,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   }
   
   //renvoie la réponse de l'interface
-  private String traitementOrdre(String ordre) throws SerialComException,
-                                                      InterruptedException
+  private String traitementOrdre(String ordre) throws SerialComException
   {
     this._port.ecrire(ordre) ;
     String reponse = this.lectureReponse() ;
@@ -171,7 +170,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   //reprise ou démarrage
   @Override
-  public void run() throws SerialComException, InterruptedException
+  public void run() throws SerialComException
   {
     _LOG.trace("running the pump");
     this.traitementOrdre( "run\r" );
@@ -179,7 +178,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   // pause or cancel
   @Override
-  public void stop() throws SerialComException, InterruptedException
+  public void stop() throws SerialComException
   {
     _LOG.trace("stopping the pump");
     this.traitementOrdre ("stop\r");
@@ -187,7 +186,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   // en mm requires diametre > 0
   @Override
-  public void dia(double diametre) throws SerialComException, InterruptedException
+  public void dia(double diametre) throws SerialComException
   {
     _LOG.trace(String.format("setting the diameter to '%s'", diametre));
     String ordre = String.format("dia %s\r", formatage(diametre)) ;
@@ -195,7 +194,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   }
   
   @Override
-  public boolean running() throws SerialComException, InterruptedException
+  public boolean running() throws SerialComException
   {
     String ack = this.traitementOrdre("run?\r");
     boolean result = false == ack.equals(":") ;
@@ -209,7 +208,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   // 0 puis 1 à la fin !!!! Il n'y a donc aucun intérêt.
   // Parade : passer en micro litre quand < 10 mL.
   @Override
-  public double deliver() throws SerialComException, InterruptedException
+  public double deliver() throws SerialComException
   {
     String rawMessage = this.traitementOrdre("del?\r");
     return innerDeliver(rawMessage);
@@ -245,7 +244,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   @Override
-  public void ratei(double debit) throws SerialComException, InterruptedException
+  public void ratei(double debit) throws SerialComException
   {
     _LOG.trace(String.format("setting the infusion rate to '%s'", debit));
     if (debit <= 0.)
@@ -267,7 +266,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   @Override
-  public void ratew(double debit) throws SerialComException, InterruptedException
+  public void ratew(double debit) throws SerialComException
   {
     _LOG.trace(String.format("setting the withdrawing rate to '%s'", debit));
     if (debit <= 0.)
@@ -291,7 +290,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
   @Override
-  public void voli(double volume) throws SerialComException, InterruptedException
+  public void voli(double volume) throws SerialComException
   {
     _LOG.trace(String.format("setting the infusion volume to '%s'", volume));
     if (volume <= 0.)
@@ -319,7 +318,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
   @Override
-  public void volw(double volume) throws SerialComException, InterruptedException
+  public void volw(double volume) throws SerialComException
   {
     _LOG.trace(String.format("setting the withdrawing volume to '%s'", volume));
     if (volume <= 0.)
@@ -345,14 +344,14 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   }
   
   @Override
-  public void modeI() throws SerialComException, InterruptedException
+  public void modeI() throws SerialComException
   {
     _LOG.trace("setting the infusion mode");
     this.traitementOrdre("mode i\r") ; 
   }
   
   @Override
-  public void modeW() throws SerialComException, InterruptedException
+  public void modeW() throws SerialComException
   {
     _LOG.trace("setting the withdrawing mode");
     this.traitementOrdre("mode w\r") ;

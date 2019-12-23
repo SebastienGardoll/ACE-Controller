@@ -32,8 +32,7 @@ class Commandes
   private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
 
   //requires colonne != NULL
-  Commandes (ToolControl toolCtrl, Colonne colonne)
-      throws InitializationException, InterruptedException
+  Commandes (ToolControl toolCtrl, Colonne colonne) throws InitializationException
   {
     this.colonne   = colonne;
     this._toolCtrl = toolCtrl;
@@ -49,7 +48,7 @@ class Commandes
   
   //rinçe la tuyauterie selon le volume de rinçage et le nombre de cycle de parametresSession
   //requires numEv <= pousseSeringue.nbEvMax()
-  void rincage(int numEv) throws InterruptedException
+  void rincage(int numEv)
   { 
     if(numEv == Valves.NUM_EV_H2O)
     {
@@ -92,18 +91,18 @@ class Commandes
     this.passeur.vibration();
   }
 
-  void rincageH2O() throws InterruptedException
+  void rincageH2O()
   { 
     this.rincage(Valves.NUM_EV_H2O) ;
   }
     
   //à la position de carrousel donnée
-  void deplacementPasseur(int position) throws InterruptedException
+  void deplacementPasseur(int position)
   {
     this.deplacementPasseur(position, 0);
   }
   
-  void deplacementPasseur(int position, int modificateur) throws InterruptedException
+  void deplacementPasseur(int position, int modificateur)
   {  
     //le bras est juste au dessus du réservoir de la colonne
     this.passeur.moveOrigineBras();
@@ -114,7 +113,7 @@ class Commandes
   
   //à la position de la poubelle , bras à l'intérieur de poubelle
   //le bras se retrouve dans la poubelle
-  void deplacementPasseurPoubelle() throws InterruptedException
+  void deplacementPasseurPoubelle()
   {
     _LOG.info("moving the carousel to the trash position");
     Action action = new Action(ActionType.CAROUSEL_TO_TRASH, Optional.empty()) ;
@@ -136,7 +135,7 @@ class Commandes
   }
   
   //fixe l'origine du bras juste au dessus des colonne
-  void referencementBras() throws InterruptedException
+  void referencementBras()
   { 
     _LOG.info("indexing the arm above the column");
     Action action = new Action(ActionType.INDEX_ARM, Optional.empty()) ;
@@ -159,7 +158,6 @@ class Commandes
   //requires vol_demande > 0                  
   //requires numEv <= pousseSeringue.nbEvMax()                                                 
   void remplissageSeringue(double vol_demande, int numEv)
-      throws InterruptedException
   {
     if (vol_demande <= this.pousseSeringue.volumeRestant())
     {
@@ -195,7 +193,6 @@ class Commandes
   //requires vol_deja_delivre >= 0
   //requires vol_delivre > 0
   private void algoDistribution(double vol_delivre, double vol_deja_delivre)
-      throws InterruptedException
   {
     double vol_total = vol_delivre + vol_deja_delivre ;
 
@@ -222,7 +219,14 @@ class Commandes
     {  
       while ((this.pousseSeringue.volumeDelivre() + vol_deja_delivre) < this.colonne.volumeCritique1())
       { 
-        Thread.sleep(100);
+        try
+        {
+          Thread.sleep(100);
+        }
+        catch (InterruptedException e)
+        {
+          throw new RuntimeException(e);
+        }
       }
       
       _LOG.debug("set infusion rate inter");
@@ -233,7 +237,14 @@ class Commandes
     {  
       while ((this.pousseSeringue.volumeDelivre() + vol_deja_delivre) < this.colonne.volumeCritique2())
       { 
-        Thread.sleep(100) ;
+        try
+        {
+          Thread.sleep(100) ;
+        }
+        catch (InterruptedException e)
+        {
+          throw new RuntimeException(e);
+        }
       }
       
       _LOG.debug("set infusion rate max");
@@ -248,7 +259,7 @@ class Commandes
   void distribution(int numColonne,
                     double volumeCible,
                     int numEv,
-                    int nbColonneRestant) throws InterruptedException
+                    int nbColonneRestant)
   {
     {
       String msg = String.format("* processing column %s *", numColonne);
@@ -341,7 +352,7 @@ class Commandes
   }
   
   //procédures de fin de session.
-  void finSession() throws InterruptedException
+  void finSession()
   {  
     _LOG.debug("running end of session operations");
     Action action = new Action(ActionType.POST_SESSION, Optional.empty()) ;

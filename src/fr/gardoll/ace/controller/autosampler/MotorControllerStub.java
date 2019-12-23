@@ -47,7 +47,7 @@ public class MotorControllerStub implements MotorController, Closeable
 
   @Override
   public void move(int nbPas1, int nbPas2)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     _LOG.trace(String.format("stubbing command move(%s, %s)", nbPas1, nbPas2));
     
@@ -84,7 +84,7 @@ public class MotorControllerStub implements MotorController, Closeable
 
   @Override
   public boolean moving(TypeAxe axe)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     boolean result = false;
 
@@ -153,7 +153,7 @@ public class MotorControllerStub implements MotorController, Closeable
 
   @Override
   public void movel(int axe1, int axe2)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     _LOG.trace(String.format("stubbing command movel(%s, %s)", axe1, axe2));
     
@@ -183,7 +183,7 @@ public class MotorControllerStub implements MotorController, Closeable
   }
 
   @Override
-  public void reset() throws SerialComException, InterruptedException
+  public void reset() throws SerialComException
   {
     _LOG.debug("stubbing command reset");
     this._armOrigin                = 0;
@@ -198,28 +198,28 @@ public class MotorControllerStub implements MotorController, Closeable
 
   @Override
   public void preSecale(int denominateur)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     _LOG.trace(String.format("stubbing command preSecale %s", denominateur));
   }
 
   @Override
   public void param(TypeAxe axe, int base, int top, int accel)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     this.param(axe, base, top, accel, 0);
   }
 
   @Override
   public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     _LOG.trace(String.format("stubbing command param(%s, %s, %s, %s, %s)",
         axe, base, top, accel, deaccel));
   }
 
   @Override
-  public void datum(TypeAxe axe) throws SerialComException, InterruptedException
+  public void datum(TypeAxe axe) throws SerialComException
   {
     _LOG.trace(String.format("stubbing command datum for %s", axe.name()));
     switch(axe)
@@ -240,13 +240,13 @@ public class MotorControllerStub implements MotorController, Closeable
 
   @Override
   public void singleLine(boolean choix)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     _LOG.trace(String.format("stubbing command singleline %s", choix));
   }
 
   @Override
-  public void stop() throws SerialComException, InterruptedException
+  public void stop() throws SerialComException
   {
     _LOG.trace("stubbing command stop");
     this._isArmMoving      = false;
@@ -254,13 +254,13 @@ public class MotorControllerStub implements MotorController, Closeable
   }
 
   @Override
-  public void manual() throws SerialComException, InterruptedException
+  public void manual() throws SerialComException
   {
     _LOG.trace("stubbing command manual");
   }
 
   @Override
-  public void halt() throws SerialComException, InterruptedException
+  public void halt() throws SerialComException
   {
     _LOG.trace("stubbing command halt");
     this._isArmMoving      = false;
@@ -268,7 +268,7 @@ public class MotorControllerStub implements MotorController, Closeable
   }
 
   @Override
-  public int where(TypeAxe axe) throws SerialComException, InterruptedException
+  public int where(TypeAxe axe) throws SerialComException
   {
     int result = 0;
     
@@ -292,14 +292,14 @@ public class MotorControllerStub implements MotorController, Closeable
   }
 
   @Override
-  public void out(int octet) throws SerialComException, InterruptedException
+  public void out(int octet) throws SerialComException
   {
     _LOG.trace(String.format("stubbing command out %s", octet));
   }
 
   @Override
   public void out(int bitPosition, boolean isOn)
-      throws SerialComException, InterruptedException
+      throws SerialComException
   {
     _LOG.trace(String.format("stubbing command out(%s, %s)", bitPosition, isOn));
   }

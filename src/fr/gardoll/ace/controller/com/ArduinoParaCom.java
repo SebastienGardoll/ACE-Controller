@@ -15,7 +15,7 @@ public class ArduinoParaCom implements ParaCom
   
   private final SerialCom _port;
 
-  public ArduinoParaCom(SerialCom port) throws InitializationException, InterruptedException
+  public ArduinoParaCom(SerialCom port) throws InitializationException
   {
     _LOG.debug(String.format("initialiazing arduino with the port '%s'", port.getId()));
     this._port = port;
@@ -48,7 +48,7 @@ public class ArduinoParaCom implements ParaCom
   }
 
   @Override
-  public void send(byte[] order) throws ParaComException, InterruptedException
+  public void send(byte[] order) throws ParaComException
   {
     //_LOG.trace(String.format("sending order '%s'", order));
     

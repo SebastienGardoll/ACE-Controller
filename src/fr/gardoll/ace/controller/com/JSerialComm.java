@@ -46,7 +46,7 @@ public class JSerialComm implements SerialCom
   
   // Time (milliseconds) to wait after opening the port.
   @Override
-  public void open(int openingDelay) throws SerialComException, InterruptedException
+  public void open(int openingDelay) throws SerialComException
   {
     if (this._isOpened)
     {
@@ -71,9 +71,13 @@ public class JSerialComm implements SerialCom
       
       this._isOpened = true;
     }
-    catch(InterruptedException | SerialComException e)
+    catch(SerialComException e)
     {
       throw e;
+    }
+    catch(InterruptedException e)
+    {
+      throw new RuntimeException(e);
     }
     catch(Exception e)
     {

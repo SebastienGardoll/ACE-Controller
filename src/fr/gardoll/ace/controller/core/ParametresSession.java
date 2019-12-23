@@ -356,7 +356,7 @@ public class ParametresSession implements Closeable
   }
   
   // Lazy loading.
-  public PousseSeringue getPousseSeringue() throws InitializationException, InterruptedException
+  public PousseSeringue getPousseSeringue() throws InitializationException
   {
     if(this._pump == null)
     {
@@ -421,7 +421,7 @@ public class ParametresSession implements Closeable
     }
   }
 
-  public Valves getValves()  throws InitializationException, InterruptedException
+  public Valves getValves()  throws InitializationException
   {
     if(this._valves == null)
     {
@@ -487,7 +487,7 @@ public class ParametresSession implements Closeable
   }
   
   // Lazy loading.
-  public Passeur getPasseur() throws InitializationException, InterruptedException
+  public Passeur getPasseur() throws InitializationException
   {
     if(this._autosampler == null)
     {

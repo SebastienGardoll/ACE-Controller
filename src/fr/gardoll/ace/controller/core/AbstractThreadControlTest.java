@@ -337,8 +337,7 @@ class SelfPausedThread extends AbstractThreadControl
   }
 
   @Override
-  protected void threadLogic() throws InterruptedException,
-                                      CancellationException,
+  protected void threadLogic() throws CancellationException,
                                       InitializationException,
                                       Exception
   {
@@ -357,8 +356,7 @@ class SleepingThread extends AbstractThreadControl
   }
 
   @Override
-  protected void threadLogic() throws InterruptedException,
-                                      CancellationException,
+  protected void threadLogic() throws CancellationException,
                                       InitializationException,
                                       Exception
   {
@@ -384,8 +382,7 @@ class WaitingThread extends AbstractThreadControl
   }
 
   @Override
-  protected void threadLogic() throws InterruptedException,
-                                      CancellationException,
+  protected void threadLogic() throws CancellationException,
                                       InitializationException,
                                       Exception
   {
@@ -399,8 +396,7 @@ class TestToolControlOperations extends AbstractToolControl
   
   private ToolState _state = new RunningState(this);
   
-  public TestToolControlOperations() throws InitializationException,
-                                            InterruptedException
+  public TestToolControlOperations() throws InitializationException
   {
     super(null, false, false, false);
   }
@@ -433,16 +429,16 @@ class TestToolControlOperations extends AbstractToolControl
   }
   
   @Override
-  public void resumeOperations() throws InterruptedException
+  public void resumeOperations()
   {
     _LOG.info("execute resume operations");
   }
   
   @Override
-  public void reinitOperations() throws InterruptedException {}
+  public void reinitOperations(){}
   
   @Override
-  public void pauseOperations() throws InterruptedException
+  public void pauseOperations()
   {
     _LOG.info("execute pause operations");
   }
@@ -454,10 +450,10 @@ class TestToolControlOperations extends AbstractToolControl
   }
   
   @Override
-  public void closeOperations() throws InterruptedException {}
+  public void closeOperations(){}
   
   @Override
-  public void cancelOperations() throws InterruptedException
+  public void cancelOperations()
   {
     _LOG.info("execute cancel operations");
   }

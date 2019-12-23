@@ -10,7 +10,7 @@ public abstract class AbstractCloseableToolControl extends AbstractToolControl
   public AbstractCloseableToolControl(ParametresSession parametresSession,
                                   boolean hasPump, boolean hasAutosampler,
                                   boolean hasValves)
-      throws InitializationException, InterruptedException
+      throws InitializationException
   {
     super(parametresSession, hasPump, hasAutosampler, hasValves);
   }
@@ -43,25 +43,25 @@ public abstract class AbstractCloseableToolControl extends AbstractToolControl
   }
   
   @Override
-  void cancelOperations() throws InterruptedException
+  void cancelOperations()
   {
     throw new UnsupportedOperationException("cancel operations is not implemented");
   }
   
   @Override
-  void reinitOperations() throws InterruptedException
+  void reinitOperations()
   {
     throw new UnsupportedOperationException("reinit operations is not implemented");
   }
   
   @Override
-  void pauseOperations() throws InterruptedException
+  void pauseOperations()
   {
     throw new UnsupportedOperationException("pause operations is not implemented");
   }
  
   @Override
-  void resumeOperations() throws InterruptedException
+  void resumeOperations()
   {
     throw new UnsupportedOperationException("resume operations is not implemented");
   }

@@ -22,20 +22,20 @@ public abstract class AbstractToolControl implements ToolControl, Observable
   
   private ToolState _state = new InitialState(this);
  
-  abstract protected void closeOperations() throws InterruptedException;
+  abstract protected void closeOperations();
 
-  abstract void cancelOperations() throws InterruptedException;
+  abstract void cancelOperations();
   
-  abstract void reinitOperations() throws InterruptedException;
+  abstract void reinitOperations();
   
-  abstract void pauseOperations() throws InterruptedException;
+  abstract void pauseOperations();
   
-  abstract void resumeOperations() throws InterruptedException;
+  abstract void resumeOperations();
   
   public AbstractToolControl(ParametresSession parametresSession,
                              boolean hasPump, boolean hasAutosampler,
                              boolean hasValves)
-                         throws InitializationException, InterruptedException
+                         throws InitializationException
   {
     this._hasAutosampler = hasAutosampler;
     this._hasPump = hasPump;

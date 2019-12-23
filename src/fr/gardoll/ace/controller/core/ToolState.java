@@ -31,17 +31,17 @@ enum StateLiteral
 
 interface ToolState extends ControlPanelHandler
 {
-  public void askPausing() throws InterruptedException;
-  public void pauseTransition() throws InterruptedException;
+  public void askPausing();
+  public void pauseTransition();
   
-  public void askResuming() throws InterruptedException;
-  public void resumeTransition() throws InterruptedException;
+  public void askResuming();
+  public void resumeTransition();
   
-  public void askCancellation() throws InterruptedException;
-  public void cancelTransition() throws InterruptedException;
+  public void askCancellation();
+  public void cancelTransition();
   
-  public void close() throws InterruptedException;
-  public void reinit() throws InterruptedException;
+  public void close();
+  public void reinit();
   public void start(ThreadControl thread);
   public void done() ;
   public void crash();
@@ -106,7 +106,7 @@ abstract class AbstractState implements ToolState
   protected abstract void initPanel(ControlPanel panel) ;
 
   @Override
-  public void askPausing() throws InterruptedException
+  public void askPausing()
   {
     // Nothing to pause.
     String className = this.getClass().getName();
@@ -117,7 +117,7 @@ abstract class AbstractState implements ToolState
   } 
 
   @Override
-  public void pauseTransition() throws InterruptedException
+  public void pauseTransition()
   {
     // No pause operations.
     String className = this.getClass().getName();
@@ -128,7 +128,7 @@ abstract class AbstractState implements ToolState
   }
   
   @Override
-  public void askResuming() throws InterruptedException
+  public void askResuming()
   {
     // Nothing to resume.
     String className = this.getClass().getName();
@@ -139,7 +139,7 @@ abstract class AbstractState implements ToolState
   }
 
   @Override 
-  public void resumeTransition() throws InterruptedException
+  public void resumeTransition()
   {
     // No resume operations.
     String className = this.getClass().getName();
@@ -150,7 +150,7 @@ abstract class AbstractState implements ToolState
   }
   
   @Override
-  public void askCancellation() throws InterruptedException
+  public void askCancellation()
   {
     // Nothing to cancel.
     String className = this.getClass().getName();
@@ -161,7 +161,7 @@ abstract class AbstractState implements ToolState
   }
   
   @Override
-  public void cancelTransition() throws InterruptedException
+  public void cancelTransition()
   {
     // No cancel operations.
     String className = this.getClass().getName();
@@ -172,7 +172,7 @@ abstract class AbstractState implements ToolState
   }
 
   @Override
-  public void close() throws InterruptedException
+  public void close()
   {
     // Nothing to close.
     String className = this.getClass().getName();
@@ -183,7 +183,7 @@ abstract class AbstractState implements ToolState
   }
 
   @Override
-  public void reinit() throws InterruptedException
+  public void reinit()
   {
     // Nothing to reinit.
     String className = this.getClass().getName();
@@ -249,7 +249,7 @@ class CrashedState extends AbstractState implements ToolState
   }
   
   @Override
-  public void close() throws InterruptedException
+  public void close()
   {
     _LOG.debug("skip close operations");
     _LOG.debug("set closed state");
@@ -285,7 +285,7 @@ class InitialState extends AbstractState implements ToolState
   }
   
   @Override
-  public void close() throws InterruptedException
+  public void close()
   {
     this.disableAllControl();
     this._ctrl.closeOperations();
@@ -331,7 +331,7 @@ class ReadyState extends AbstractState implements ToolState
   }
 
   @Override
-  public void close() throws InterruptedException
+  public void close()
   {
     this.disableAllControl();
     _LOG.debug("reinit before closing");
@@ -341,7 +341,7 @@ class ReadyState extends AbstractState implements ToolState
   }
 
   @Override
-  public void reinit() throws InterruptedException
+  public void reinit()
   {
     this.disableAllControl();
     this._ctrl.reinitOperations();
@@ -387,7 +387,7 @@ class RunningState extends AbstractState implements ToolState
   }
 
   @Override
-  public void askPausing() throws InterruptedException
+  public void askPausing()
   {
     this.disableAllControl();
     
@@ -404,7 +404,7 @@ class RunningState extends AbstractState implements ToolState
   }
   
   @Override
-  public void pauseTransition() throws InterruptedException
+  public void pauseTransition()
   {
     this._ctrl.pauseOperations();
     _LOG.debug("set paused state");
@@ -412,7 +412,7 @@ class RunningState extends AbstractState implements ToolState
   }
 
   @Override
-  public void askCancellation() throws InterruptedException
+  public void askCancellation()
   {
     this.disableAllControl();
     
@@ -429,7 +429,7 @@ class RunningState extends AbstractState implements ToolState
   }
   
   @Override
-  public void cancelTransition() throws InterruptedException
+  public void cancelTransition()
   {
     this._ctrl.cancelOperations();
     _LOG.debug("set initial state");
@@ -473,7 +473,7 @@ class PausedState extends AbstractState implements ToolState
   }
 
   @Override
-  public void askResuming() throws InterruptedException
+  public void askResuming()
   {
     this.disableAllControl();
 
@@ -489,7 +489,7 @@ class PausedState extends AbstractState implements ToolState
   }
   
   @Override
-  public void resumeTransition() throws InterruptedException
+  public void resumeTransition()
   {
     this._ctrl.resumeOperations();
     _LOG.debug("set running state");
