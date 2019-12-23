@@ -71,7 +71,7 @@ public class JSerialComm implements SerialCom
       
       this._isOpened = true;
     }
-    catch(InterruptedException e)
+    catch(InterruptedException | SerialComException e)
     {
       throw e;
     }
