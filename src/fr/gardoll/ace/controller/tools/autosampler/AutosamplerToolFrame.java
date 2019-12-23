@@ -31,6 +31,8 @@ public class AutosamplerToolFrame extends AbstractToolFrame
   // TODO: to be tested.
   public static void main(String[] args)
   {
+    _LOG.info("start the tool");
+    
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
       AutosamplerToolFrame tool = AutosamplerToolFrame.instantiate(parametresSession); 
@@ -51,6 +53,10 @@ public class AutosamplerToolFrame extends AbstractToolFrame
       
       _LOG.fatal(msg, e);
       Utils.reportError(msg, e);
+    }
+    finally
+    {
+      _LOG.info("shutdown the tool");
     }
   }
 }

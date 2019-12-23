@@ -6,8 +6,8 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
-import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
+import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
 public class ValvesToolFrame extends AbstractToolFrame
 {
@@ -32,6 +32,8 @@ public class ValvesToolFrame extends AbstractToolFrame
   
   public static void main(String[] args)
   {
+    _LOG.info("start the tool");
+    
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
       ValvesToolFrame tool = ValvesToolFrame.instantiate(parametresSession);
@@ -52,6 +54,10 @@ public class ValvesToolFrame extends AbstractToolFrame
       
       _LOG.fatal(msg, e);
       Utils.reportError(msg, e);
+    }
+    finally
+    {
+      _LOG.info("shutdown the tool");
     }
   }
 

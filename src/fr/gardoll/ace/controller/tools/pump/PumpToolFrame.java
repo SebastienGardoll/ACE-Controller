@@ -30,6 +30,8 @@ public class PumpToolFrame extends AbstractToolFrame
   
   public static void main(String[] args)
   {
+    _LOG.info("start the tool");
+    
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
       PumpToolFrame tool = PumpToolFrame.instantiate(parametresSession);
@@ -50,6 +52,10 @@ public class PumpToolFrame extends AbstractToolFrame
       
       _LOG.fatal(msg, e);
       Utils.reportError(msg, e);
+    }
+    finally
+    {
+      _LOG.info("shutdown the tool");
     }
   }
 }

@@ -22,6 +22,8 @@ public class MainToolFrame extends AbstractToolFrame
 
   public static void main(String[] args)
   {
+    _LOG.info("start the tool");
+    
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
       MainToolPanel mainPanel = new MainToolPanel(parametresSession);
@@ -43,6 +45,10 @@ public class MainToolFrame extends AbstractToolFrame
       
       _LOG.fatal(msg, e);
       Utils.reportError(msg, e);
+    }
+    finally
+    {
+      _LOG.info("shutdown the tool");
     }
   }
 }
