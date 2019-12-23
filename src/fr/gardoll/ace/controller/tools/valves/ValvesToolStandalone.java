@@ -15,20 +15,26 @@ public class ValvesToolStandalone extends AbstractJFrame
   
   private static final Logger _LOG = LogManager.getLogger(ValvesToolStandalone.class.getName());
   
-  public ValvesToolStandalone(AbstractJPanelObserver mainPanel)
+  private ValvesToolStandalone(AbstractJPanelObserver mainPanel)
   {
     super(mainPanel) ;
   }
   
-  // TODO: to be tested.
+  public static ValvesToolStandalone instantiate(ParametresSession parametresSession) 
+     throws InitializationException
+  {
+    ValvesToolControl ctrl = new ValvesToolControl(parametresSession);
+    ValvesToolPanel toolPanel = new ValvesToolPanel(ctrl);
+    ctrl.addControlPanel(toolPanel);
+    ValvesToolStandalone tool = new ValvesToolStandalone(toolPanel);
+    return tool;
+  }
+  
   public static void main(String[] args)
   {
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
-      ValvesToolControl ctrl = new ValvesToolControl(parametresSession);
-      ValvesToolPanel toolPanel = new ValvesToolPanel(ctrl);
-      ctrl.addControlPanel(toolPanel);
-      ValvesToolStandalone tool = new ValvesToolStandalone(toolPanel);
+      ValvesToolStandalone tool = ValvesToolStandalone.instantiate(parametresSession);
       tool.setVisible(true);
     }
     catch (Exception e)

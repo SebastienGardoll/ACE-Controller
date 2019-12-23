@@ -13,19 +13,26 @@ public class PumpToolStandalone extends AbstractJFrame
   private static final long serialVersionUID = 1190173227128454971L ;
   private static final Logger _LOG = LogManager.getLogger(PumpToolStandalone.class.getName());
 
-  public PumpToolStandalone(PumpToolPanel toolPanel)
+  private PumpToolStandalone(PumpToolPanel toolPanel)
   {
     super(toolPanel);
+  }
+  
+  public static PumpToolStandalone instantiate (ParametresSession parametresSession)
+      throws InitializationException
+  {
+    PumpToolControl ctrl = new PumpToolControl(parametresSession);
+    PumpToolPanel toolPanel = new PumpToolPanel(ctrl);
+    ctrl.addControlPanel(toolPanel);
+    PumpToolStandalone tool = new PumpToolStandalone(toolPanel);
+    return tool;
   }
   
   public static void main(String[] args)
   {
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
-      PumpToolControl ctrl = new PumpToolControl(parametresSession);
-      PumpToolPanel toolPanel = new PumpToolPanel(ctrl);
-      ctrl.addControlPanel(toolPanel);
-      PumpToolStandalone tool = new PumpToolStandalone(toolPanel);
+      PumpToolStandalone tool = PumpToolStandalone.instantiate(parametresSession);
       tool.setVisible(true);
     }
     catch (Exception e)

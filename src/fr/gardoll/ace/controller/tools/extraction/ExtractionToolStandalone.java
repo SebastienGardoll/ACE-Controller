@@ -13,19 +13,26 @@ public class ExtractionToolStandalone extends AbstractJFrame
   private static final long serialVersionUID = 1190173227128454971L ;
   private static final Logger _LOG = LogManager.getLogger(ExtractionToolStandalone.class.getName());
 
-  public ExtractionToolStandalone(ExtractionToolPanel toolPanel)
+  private ExtractionToolStandalone(ExtractionToolPanel toolPanel)
   {
     super(toolPanel);
+  }
+  
+  public static ExtractionToolStandalone instantiate(ParametresSession parametresSession)
+      throws InitializationException
+  {
+    ExtractionToolControl ctrl = new ExtractionToolControl(parametresSession);
+    ExtractionToolPanel toolPanel = new ExtractionToolPanel(ctrl);
+    ctrl.addControlPanel(toolPanel);
+    ExtractionToolStandalone tool = new ExtractionToolStandalone(toolPanel);
+    return tool;
   }
   
   public static void main(String[] args)
   {
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
-      ExtractionToolControl ctrl = new ExtractionToolControl(parametresSession);
-      ExtractionToolPanel toolPanel = new ExtractionToolPanel(ctrl);
-      ctrl.addControlPanel(toolPanel);
-      ExtractionToolStandalone tool = new ExtractionToolStandalone(toolPanel);
+      ExtractionToolStandalone tool = ExtractionToolStandalone.instantiate(parametresSession); 
       tool.setVisible(true);
     }
     catch (Exception e)
