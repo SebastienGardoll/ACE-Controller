@@ -6,10 +6,10 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
-import fr.gardoll.ace.controller.ui.AbstractJFrame ;
+import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
 
-public class ValvesToolStandalone extends AbstractJFrame
+public class ValvesToolStandalone extends AbstractToolFrame
 {
   private static final long serialVersionUID = 9097813064524782984L ;
   

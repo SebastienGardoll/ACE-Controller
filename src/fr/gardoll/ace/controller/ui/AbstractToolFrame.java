@@ -4,11 +4,11 @@ import javax.swing.JDialog ;
 import javax.swing.JPanel ;
 import javax.swing.WindowConstants ;
 
-public abstract class AbstractJFrame extends JDialog
+public abstract class AbstractToolFrame extends JDialog
 {
   private static final long serialVersionUID = -2440934563391351769L ;
   
-  public AbstractJFrame(JPanel mainPanel)
+  public AbstractToolFrame(JPanel mainPanel)
   {
     super(null, ModalityType.APPLICATION_MODAL);
     this.getContentPane().add(mainPanel);

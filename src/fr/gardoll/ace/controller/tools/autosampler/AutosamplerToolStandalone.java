@@ -6,9 +6,9 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
-import fr.gardoll.ace.controller.ui.AbstractJFrame ;
+import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
-public class AutosamplerToolStandalone extends AbstractJFrame
+public class AutosamplerToolStandalone extends AbstractToolFrame
 {
   private static final Logger _LOG = LogManager.getLogger(AutosamplerToolStandalone.class.getName());
   private static final long serialVersionUID = -6062838678688858409L ;

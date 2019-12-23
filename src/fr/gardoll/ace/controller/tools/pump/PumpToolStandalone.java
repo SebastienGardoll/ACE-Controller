@@ -6,9 +6,9 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
-import fr.gardoll.ace.controller.ui.AbstractJFrame ;
+import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
-public class PumpToolStandalone extends AbstractJFrame
+public class PumpToolStandalone extends AbstractToolFrame
 {
   private static final long serialVersionUID = 1190173227128454971L ;
   private static final Logger _LOG = LogManager.getLogger(PumpToolStandalone.class.getName());
