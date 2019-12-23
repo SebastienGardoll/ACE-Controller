@@ -560,6 +560,7 @@ public class ParametresSession implements Closeable
     {
       String msg = String.format("failed to instantiate with port path '%s'", portPath);
       _LOG.debug(msg);
+      _LOG.trace("print stack trace", e);
     }
     
     return result;
