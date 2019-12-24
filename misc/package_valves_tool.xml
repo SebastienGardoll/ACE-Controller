@@ -10,7 +10,7 @@
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/${tool_name}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
-                <attribute name="Main-Class" value="fr.gardoll.ace.controller.tools.valves.ValvesToolStandalone"/>
+                <attribute name="Main-Class" value="fr.gardoll.ace.controller.tools.valves.ValvesToolFrame"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
             <fileset dir="${dir.workspace}/ACE-Controller/bin" excludes="log4j2.xml"/>
