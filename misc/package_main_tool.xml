@@ -12,6 +12,7 @@
             <manifest>
                 <attribute name="Main-Class" value="fr.gardoll.ace.controller.tools.main.MainToolFrame"/>
                 <attribute name="Class-Path" value="."/>
+            	  <attribute name="Multi-Release" value="true"/>
             </manifest>
             <fileset dir="${dir.workspace}/ACE-Controller/bin" excludes="log4j2.xml"/>
             <zipfileset excludes="META-INF/*.SF" src="${dir.workspace}/ACE-Controller/lib/log4j-api-2.11.2.jar"/>
