@@ -44,7 +44,7 @@ interface ToolState extends ControlPanelHandler
   public void close();
   public void reinit();
   public void start(ThreadControl thread);
-  public void done() ;
+  public void done(boolean canRerun) ;
   public void crash();
   public StateLiteral getLiteral();
 }
@@ -206,7 +206,7 @@ abstract class AbstractState implements ToolState
   }
   
   @Override
-  public void done()
+  public void done(boolean canRerun)
   {
     // Nothing is done.
     String className = this.getClass().getName();
@@ -419,10 +419,18 @@ class RunningState extends AbstractState implements ToolState
   }
   
   @Override
-  public void done()
+  public void done(boolean canRerun)
   {
-    _LOG.debug("set ready state");
-    this._ctrl.setState(new ReadyState(this._ctrl));
+    if(canRerun)
+    {
+      _LOG.debug("set ready state");
+      this._ctrl.setState(new ReadyState(this._ctrl));
+    }
+    else
+    {
+      _LOG.debug("set done state");
+      this._ctrl.setState(new DoneState(this._ctrl));
+    }
   }
 
   @Override

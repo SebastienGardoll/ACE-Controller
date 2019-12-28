@@ -36,12 +36,25 @@ public abstract class AbstractThreadControl extends Thread
 
   protected AbstractToolControl _toolCtrl ;
 
+  private boolean _canRerun = true;
+
   public AbstractThreadControl(AbstractToolControl toolCtrl)
+  {
+    init(toolCtrl, true);
+  }
+  
+  public AbstractThreadControl(AbstractToolControl toolCtrl, boolean canRerun)
+  {
+    init(toolCtrl, canRerun);
+  }
+  
+  private void init(AbstractToolControl toolCtrl, boolean canRerun)
   {
     // JVM will not wait until this thread ends.
     // Very convenient for an emergency stop.
     this.setDaemon(true);
     this._toolCtrl = toolCtrl;
+    this._canRerun = canRerun;
   }
   
   @Override
@@ -71,7 +84,7 @@ public abstract class AbstractThreadControl extends Thread
     {
       this.setRunning(true);
       this.threadLogic();
-      this._toolCtrl.getState().done();
+      this._toolCtrl.getState().done(this._canRerun);
     }
     catch(CancellationException e)
     {

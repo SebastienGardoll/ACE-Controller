@@ -29,7 +29,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
                                  InitSession initSession,
                                  Commandes commandes) throws InitializationException
   {
-    super(toolCtrl) ;
+    super(toolCtrl, false) ;
     this._initSession = initSession;
     this._cmd = commandes;
   }
