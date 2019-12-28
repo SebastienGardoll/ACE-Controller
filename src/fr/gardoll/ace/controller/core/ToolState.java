@@ -13,7 +13,8 @@ enum StateLiteral
   RUNNING("running"),
   PAUSED("paused"),
   CLOSED("closed"),
-  CRASHED("crashed");
+  CRASHED("crashed"),
+  DONE("done");
 
   private String _literal ;
   
@@ -309,7 +310,7 @@ class InitialState extends AbstractState implements ToolState
   }
 }
 
-class ReadyState extends AbstractState implements ToolState
+class ReadyState extends CloseableState implements ToolState
 {
   private static final Logger _LOG = LogManager.getLogger(ReadyState.class.getName());
   
@@ -328,25 +329,6 @@ class ReadyState extends AbstractState implements ToolState
     panel.enableReinit(true);
     panel.enableClose(true);
     panel.enableCarousel(false);
-  }
-
-  @Override
-  public void close()
-  {
-    this.disableAllControl();
-    _LOG.debug("reinit before closing");
-    this.reinit();
-    _LOG.debug("closing after reinit");
-    this._ctrl.getState().close();
-  }
-
-  @Override
-  public void reinit()
-  {
-    this.disableAllControl();
-    this._ctrl.reinitOperations();
-    _LOG.debug("set initial state");
-    this._ctrl.setState(new InitialState(this._ctrl));
   }
 
   @Override
@@ -500,6 +482,61 @@ class PausedState extends AbstractState implements ToolState
   public StateLiteral getLiteral()
   {
     return StateLiteral.PAUSED;
+  }
+}
+
+abstract class CloseableState extends AbstractState implements ToolState
+{
+  private static final Logger _LOG = LogManager.getLogger(CloseableState.class.getName());
+  
+  public CloseableState(AbstractToolControl ctrl)
+  {
+    super(ctrl) ;
+  }
+  
+  @Override
+  public void close()
+  {
+    this.disableAllControl();
+    _LOG.debug("reinit before closing");
+    this.reinit();
+    _LOG.debug("closing after reinit");
+    this._ctrl.getState().close();
+  }
+
+  @Override
+  public void reinit()
+  {
+    this.disableAllControl();
+    this._ctrl.reinitOperations();
+    _LOG.debug("set initial state");
+    this._ctrl.setState(new InitialState(this._ctrl));
+  }
+}
+
+class DoneState extends CloseableState implements ToolState
+{
+  public DoneState(AbstractToolControl ctrl)
+  {
+    super(ctrl) ;
+  }
+
+  @Override
+  public StateLiteral getLiteral()
+  {
+    return StateLiteral.DONE;
+  }
+
+  @Override
+  protected void initPanel(ControlPanel panel)
+  {
+    panel.enablePause(false);
+    panel.enableResume(false);
+    panel.enableStart(false);
+    panel.enableCancel(false);
+    panel.enableReinit(false);
+    panel.enableClose(true);
+    panel.enableCarousel(false);
   }
 }
 
