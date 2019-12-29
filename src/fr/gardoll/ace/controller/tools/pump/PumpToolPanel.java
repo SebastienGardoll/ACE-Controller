@@ -15,48 +15,50 @@ import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 
 public class PumpToolPanel extends AbstractPausableJPanelObserver
-                                                         implements ControlPanel
+    implements ControlPanel
 {
   private static final long serialVersionUID = -9036601240167321318L ;
-  
-  private static final Logger _LOG = LogManager.getLogger(PumpToolPanel.class.getName());
+
+  private static final Logger _LOG = LogManager
+      .getLogger(PumpToolPanel.class.getName()) ;
 
   private static final int DEFAULT_VOL_VALUE = 0 ;
-  private static final int DEFAULT_MIN_VOL = 0;
-  private static final int DEFAULT_MAX_VOL = 10;
-  private static final int DEFAULT_VOL_STEP = 1;
-  
-  private final PumpToolControl _ctrl;
+  private static final int DEFAULT_MIN_VOL = 0 ;
+  private static final int DEFAULT_MAX_VOL = 10 ;
+  private static final int DEFAULT_VOL_STEP = 1 ;
 
-  private javax.swing.text.DefaultCaret caret;
-  private javax.swing.BoundedRangeModel model;
-  
+  private final PumpToolControl _ctrl ;
+
+  private javax.swing.text.DefaultCaret caret ;
+  private javax.swing.BoundedRangeModel model ;
+
   /**
    * Creates new form PumpToolPanel
    */
   public PumpToolPanel(PumpToolControl ctrl)
   {
-    super(ctrl);
-    this._ctrl = ctrl;
+    super(ctrl) ;
+    this._ctrl = ctrl ;
     initComponents() ;
-    initCustom();
+    initCustom() ;
   }
 
   private void initCustom()
   {
     SpinnerNumberModel model = new SpinnerNumberModel(DEFAULT_VOL_VALUE,
-        DEFAULT_MIN_VOL, DEFAULT_MAX_VOL, DEFAULT_VOL_STEP);
-    this.volumeSpinner.setModel(model);
-    
-    setupSmartScrolling();
+        DEFAULT_MIN_VOL, DEFAULT_MAX_VOL, DEFAULT_VOL_STEP) ;
+    this.volumeSpinner.setModel(model) ;
+
+    setupSmartScrolling() ;
   }
 
   private void setupSmartScrolling()
   {
-    caret = (javax.swing.text.DefaultCaret) this.logTextArea.getCaret();
-    
-    javax.swing.JScrollBar scrollBar = this.logTextScrollPane.getVerticalScrollBar();
-    model = scrollBar.getModel();
+    caret = (javax.swing.text.DefaultCaret) this.logTextArea.getCaret() ;
+
+    javax.swing.JScrollBar scrollBar = this.logTextScrollPane
+        .getVerticalScrollBar() ;
+    model = scrollBar.getModel() ;
     scrollBar.addAdjustmentListener(new AdjustmentListener()
     {
       @Override
@@ -64,17 +66,17 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
       {
         if (model.getValue() == model.getMaximum() - model.getExtent())
         {
-           caret.setDot(logTextArea.getText().length());
-           caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+          caret.setDot(logTextArea.getText().length()) ;
+          caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE) ;
         }
         else
         {
-           caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+          caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE) ;
         }
       }
-    });
+    }) ;
   }
-  
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,6 +107,7 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     buttonFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
         new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0)) ;
 
+    setPreferredSize(new java.awt.Dimension(780, 460)) ;
     setLayout(new java.awt.GridBagLayout()) ;
 
     controlPanel.setLayout(new java.awt.GridBagLayout()) ;
@@ -125,8 +128,6 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 0 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
-    gridBagConstraints.weightx = 1.0 ;
-    gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     controlPanel.add(volumePanel, gridBagConstraints) ;
 
@@ -194,8 +195,8 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 1 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
-    gridBagConstraints.weightx = 1.0 ;
-    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.weightx = 0.1 ;
+    gridBagConstraints.weighty = 0.1 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     controlPanel.add(linesPanel, gridBagConstraints) ;
 
@@ -203,15 +204,12 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 0 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
-    gridBagConstraints.weightx = 1.0 ;
-    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.weightx = 0.1 ;
+    gridBagConstraints.weighty = 0.1 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     add(controlPanel, gridBagConstraints) ;
 
-    logPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Log",
-        javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-        javax.swing.border.TitledBorder.DEFAULT_POSITION,
-        new java.awt.Font("Lucida Grande", 0, 15))) ; // NOI18N
+    logPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Log")) ;
     logPanel.setLayout(new java.awt.GridBagLayout()) ;
 
     logTextScrollPane.setHorizontalScrollBarPolicy(
@@ -315,82 +313,81 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 2 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
-    gridBagConstraints.weightx = 1.0 ;
-    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.weightx = 0.1 ;
+    gridBagConstraints.weighty = 0.1 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     add(buttonPanel, gridBagConstraints) ;
   }// </editor-fold>
 
-  private void startCancelButtonActionPerformed(
-      java.awt.event.ActionEvent evt)
+  private void startCancelButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    if(this._isStartEnable)
+    if (this._isStartEnable)
     {
-      _LOG.debug("**** event start ****");
-      
+      _LOG.debug("**** event start ****") ;
+
       int volume = 0 ;
       try
       {
-        this.volumeSpinner.commitEdit();
-        volume = (int) this.volumeSpinner.getValue();
+        this.volumeSpinner.commitEdit() ;
+        volume = (int) this.volumeSpinner.getValue() ;
       }
-      catch(Exception e)
+      catch (Exception e)
       {
-        _LOG.error("error while fetching the position spinner value", e);
-        this.volumeSpinner.setValue(0);
-        return;
+        _LOG.error("error while fetching the position spinner value", e) ;
+        this.volumeSpinner.setValue(0) ;
+        return ;
       }
-      
-      SortedSet<Integer> lines = new TreeSet<>();
-      
-      if(this.line1CheckBox.isSelected())
+
+      SortedSet<Integer> lines = new TreeSet<>() ;
+
+      if (this.line1CheckBox.isSelected())
       {
-        lines.add(1);
+        lines.add(1) ;
       }
-      
-      if(this.line2CheckBox.isSelected())
+
+      if (this.line2CheckBox.isSelected())
       {
-        lines.add(2);
+        lines.add(2) ;
       }
-      
-      if(this.line3CheckBox.isSelected())
+
+      if (this.line3CheckBox.isSelected())
       {
-        lines.add(3);
+        lines.add(3) ;
       }
-      
-      if(this.line4CheckBox.isSelected())
+
+      if (this.line4CheckBox.isSelected())
       {
-        lines.add(4);
+        lines.add(4) ;
       }
-      
-      if(this.line5CheckBox.isSelected())
+
+      if (this.line5CheckBox.isSelected())
       {
-        lines.add(5);
+        lines.add(5) ;
       }
-      
-      if(this.line6CheckBox.isSelected())
+
+      if (this.line6CheckBox.isSelected())
       {
-        lines.add(6);
+        lines.add(6) ;
       }
-      
-      this._ctrl.start(lines, volume);
+
+      this._ctrl.start(lines, volume) ;
     }
     else
     {
-      this._ctrl.cancel();
+      this._ctrl.cancel() ;
     }
   }
 
   private void pauseToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** event pause/resume ****");
-    this.pauseAndResume();
+    _LOG.debug("**** event pause/resume ****") ;
+    this.pauseAndResume() ;
   }
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    _LOG.debug("**** event close ****");
-    this.close();
+    _LOG.debug("**** event close ****") ;
+    this.close() ;
   }
 
   // Variables declaration - do not modify
@@ -417,45 +414,45 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
   @Override
   protected void enablePauseControl(boolean isEnable)
   {
-    pauseToggleButton.setEnabled(isEnable || this._isResumeEnable);
-    pauseToggleButton.setSelected(! isEnable);
-    if(isEnable)
+    pauseToggleButton.setEnabled(isEnable || this._isResumeEnable) ;
+    pauseToggleButton.setSelected(!isEnable) ;
+    if (isEnable)
     {
-      pauseToggleButton.setText("pause");
+      pauseToggleButton.setText("pause") ;
     }
     else
     {
-      pauseToggleButton.setText("resume");
+      pauseToggleButton.setText("resume") ;
     }
   }
 
   @Override
   protected void enableResumeControl(boolean isEnable)
   {
-    pauseToggleButton.setEnabled(isEnable || this._isPauseEnable);
-    pauseToggleButton.setSelected(isEnable);
-    
-    if(isEnable)
+    pauseToggleButton.setEnabled(isEnable || this._isPauseEnable) ;
+    pauseToggleButton.setSelected(isEnable) ;
+
+    if (isEnable)
     {
-      pauseToggleButton.setText("resume");
+      pauseToggleButton.setText("resume") ;
     }
     else
     {
-      pauseToggleButton.setText("pause");
+      pauseToggleButton.setText("pause") ;
     }
   }
 
   @Override
   protected void enableCancelControl(boolean isEnable)
   {
-    startCancelButton.setEnabled(isEnable || this._isStartEnable);
-    if(isEnable)
+    startCancelButton.setEnabled(isEnable || this._isStartEnable) ;
+    if (isEnable)
     {
-      startCancelButton.setText("cancel");
+      startCancelButton.setText("cancel") ;
     }
     else
     {
-      startCancelButton.setText("start");
+      startCancelButton.setText("start") ;
     }
   }
 
@@ -468,32 +465,32 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
   @Override
   protected void enableStartControl(boolean isEnable)
   {
-    startCancelButton.setEnabled(isEnable || this._isCancelEnable);
-    if(isEnable)
+    startCancelButton.setEnabled(isEnable || this._isCancelEnable) ;
+    if (isEnable)
     {
-      startCancelButton.setText("start");
+      startCancelButton.setText("start") ;
     }
     else
     {
-      startCancelButton.setText("cancel");
+      startCancelButton.setText("cancel") ;
     }
   }
-  
+
   @Override
   public void enableCarouselControl(boolean isEnable)
-  {  
+  {
     // Nothing to do.
   }
 
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    this.logTextArea.append(msg);
+    this.logTextArea.append(msg) ;
   }
 
   @Override
   protected void enableCloseControl(boolean isEnable)
   {
-    closeButton.setEnabled(isEnable);
+    closeButton.setEnabled(isEnable) ;
   }
 }
