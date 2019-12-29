@@ -90,7 +90,7 @@ public abstract class AbstractThreadControl extends Thread
     {
       try
       {
-        this._toolCtrl.getState().cancelTransition();
+        this._toolCtrl.getState().cancelTransition(this._canRerun);
         // At the point, cancel operations have been completed.
         this._is_canceling  = false;
         this._has_to_cancel = false;

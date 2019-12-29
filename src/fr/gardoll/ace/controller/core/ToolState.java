@@ -39,7 +39,7 @@ interface ToolState extends ControlPanelHandler
   public void resumeTransition();
   
   public void askCancellation();
-  public void cancelTransition();
+  public void cancelTransition(boolean canRerun);
   
   public void close();
   public void reinit();
@@ -162,7 +162,7 @@ abstract class AbstractState implements ToolState
   }
   
   @Override
-  public void cancelTransition()
+  public void cancelTransition(boolean canRerun)
   {
     // No cancel operations.
     String className = this.getClass().getName();
@@ -411,11 +411,21 @@ class RunningState extends AbstractState implements ToolState
   }
   
   @Override
-  public void cancelTransition()
+  public void cancelTransition(boolean canRerun)
   {
     this._ctrl.cancelOperations();
-    _LOG.debug("set initial state");
-    this._ctrl.setState(new InitialState(this._ctrl));
+    
+    
+    if(canRerun)
+    {
+      _LOG.debug("set initial state");
+      this._ctrl.setState(new InitialState(this._ctrl));
+    }
+    else
+    {
+      _LOG.debug("set done state");
+      this._ctrl.setState(new DoneState(this._ctrl));
+    }
   }
   
   @Override
