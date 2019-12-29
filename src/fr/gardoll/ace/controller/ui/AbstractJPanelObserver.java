@@ -3,6 +3,7 @@ package fr.gardoll.ace.controller.ui;
 import java.awt.Window ;
 import java.text.SimpleDateFormat ;
 import java.util.Date ;
+import java.util.Optional ;
 
 import javax.swing.JOptionPane ;
 import javax.swing.JPanel ;
@@ -198,13 +199,30 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       case OPEN_VALVE:
       {
-        msg = String.format("opening valve '%s'", action.data.get());
+        @SuppressWarnings("unchecked")
+        Pair<Integer,Optional<Integer>> payload = (Pair<Integer, Optional<Integer>>) action.data.get();
+        
+        int valveId = payload.getLeft();
+        Optional<Integer> lastValveId = payload.getRight();
+        
+        if(lastValveId.isPresent())
+        {
+          msg = String.format("closing valve '%s' , opening valve '%s'", lastValveId.get(), valveId);
+        }
+        else
+        {
+          msg = String.format("opening valve '%s'", valveId);
+        }
+        
         break;
       }
       
       case CLOSE_VALVES:
       {
-        msg = String.format("closing valve '%s'", action.data.get());
+        @SuppressWarnings("unchecked")
+        Pair<Integer,Optional<Integer>> payload = (Pair<Integer, Optional<Integer>>) action.data.get();
+        
+        msg = String.format("closing valve '%s'", payload.getLeft());
         break;
       }
       

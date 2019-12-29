@@ -2,6 +2,8 @@ package fr.gardoll.ace.controller.tools.valves;
 
 import java.util.Optional ;
 
+import org.apache.commons.lang3.tuple.ImmutablePair ;
+import org.apache.commons.lang3.tuple.Pair ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -15,8 +17,14 @@ public class ValvesToolControl extends AbstractCloseableToolControl
 {
   private static final Logger _LOG = LogManager.getLogger(ValvesToolControl.class.getName());
 
-  private int     _lastValve = -1;
-  private boolean _lastState = true; // true <=> button is unselected ; false <=> button is selected
+  private final static int _DEFAULT_LAST_VALVE = -1;
+  
+  // this._previousValveId: the id of the previous valve operated.
+  private int _previousValveId = _DEFAULT_LAST_VALVE;
+  
+  // this._previousValveState: true  <=> the previous valve is opened
+  //                           false <=> the previous valve is closed
+  private boolean _previousValveState = false;
   
   
   public ValvesToolControl(ParametresSession parametresSession)
@@ -44,40 +52,79 @@ public class ValvesToolControl extends AbstractCloseableToolControl
   
   void handleValve(int valveId)
   {
+    // this._previousValveId: the id of the previous valve operated. 
+    // this._previousValveState: true  <=> the previous valve is opened
+    //                           false <=> the previous valve is closed
     try
     {
-      if(this._lastValve == valveId)
+      if(this._previousValveId == valveId ||
+         this._previousValveId == _DEFAULT_LAST_VALVE) // The first time.
       {
-        if(this._lastState)
+        // The case of:
+        // - the first valve operated.
+        // - the current valve operated is the same as the previous valve.
+        
+        // Case of this._lastValve == _DEFAULT_LAST_VALVE
+        this._previousValveId = valveId;
+        
+        if(this._previousValveState) 
         {
-          this._lastState = false;
-          _LOG.info(String.format("openning valve %s (same valve)", valveId));
-          this._valves.ouvrir(valveId);
-          this.notifyAction(new Action(ActionType.OPEN_VALVE,
-              Optional.of(Integer.valueOf(valveId))));
+          // Meaning the valve was previously opened => close all valves.
+          
+          this._previousValveState = false;
+          _LOG.info(String.format("closing valve %s", valveId));
+          this._valves.toutFermer();
+          
+          Pair<Integer,Optional<Integer>> payload = ImmutablePair.of(valveId, Optional.empty());
+          this.notifyAction(new Action(ActionType.CLOSE_VALVES, Optional.of(payload)));
         }
         else
         {
-          this._lastState = true;
-          _LOG.info(String.format("closing valve %s", valveId));
-          this._valves.toutFermer();
-          this.notifyAction(new Action(ActionType.CLOSE_VALVES, Optional.of(Integer.valueOf(valveId))));
+          // Meaning the valve was previously closed => open the given valve.
+          
+          this._previousValveState = true;
+          _LOG.info(String.format("openning valve %s", valveId));
+          this._valves.ouvrir(valveId);
+          
+          Pair<Integer,Optional<Integer>> payload = ImmutablePair.of(valveId, Optional.empty());
+          this.notifyAction(new Action(ActionType.OPEN_VALVE, Optional.of(payload)));
         }
       }
       else
       {
-        this._lastState = false;
-        _LOG.info(String.format("openning valve %s (new valve)", valveId));
+        // The current valve operated (only open) is not the same as the previous valve.
+        
+        Pair<Integer,Optional<Integer>> payload = null;
+        String msg = null;
+        
+        if(this._previousValveState)
+        {
+          // The previous valve is opened.
+          
+          msg = String.format("closing valve %s, openning valve %s", this._previousValveId, valveId);
+          payload = ImmutablePair.of(valveId, Optional.of(this._previousValveId));
+        }
+        else
+        {
+          // The previous valve has already been closed.
+          
+          msg = String.format("openning valve %s", valveId);
+          payload = ImmutablePair.of(valveId, Optional.empty());
+        }
+        
+        _LOG.info(msg);
+
         this._valves.ouvrir(valveId);
-        this._lastValve = valveId;
-        this.notifyAction(new Action(ActionType.OPEN_VALVE,
-            Optional.of(Integer.valueOf(valveId))));
+        this._previousValveId = valveId;
+        this._previousValveState = true;
+        
+        this.notifyAction(new Action(ActionType.OPEN_VALVE, Optional.of(payload)));
       }
     }
     catch (Exception e)
     {
       String msg = String.format("valve %s has crashed (last valve: , state: %s)", valveId,
-          this._lastValve, this._lastState);
+          this._previousValveId, this._previousValveState);
       _LOG.fatal(msg, e);
       this.handleException(msg, e);
     }
