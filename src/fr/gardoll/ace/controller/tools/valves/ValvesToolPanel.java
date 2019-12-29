@@ -4,6 +4,7 @@ import java.awt.event.AdjustmentEvent ;
 import java.awt.event.AdjustmentListener ;
 
 import javax.swing.ButtonModel ;
+import javax.swing.JToggleButton ;
 import javax.swing.text.DefaultCaret ;
 
 import org.apache.logging.log4j.LogManager ;
@@ -36,6 +37,18 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
   private void initCustom()
   {
     setupSmartScrolling() ;
+    initToggleButtonArray();
+  }
+
+  private void initToggleButtonArray()
+  {
+    this._toggleButtons[0] = this.Valve1ToggleButton;
+    this._toggleButtons[1] = this.Valve2ToggleButton;
+    this._toggleButtons[2] = this.Valve3ToggleButton;
+    this._toggleButtons[3] = this.Valve4ToggleButton;
+    this._toggleButtons[4] = this.Valve5ToggleButton;
+    this._toggleButtons[5] = this.Valve6ToggleButton;
+    this._toggleButtons[6] = this.SwitchValveToggleButton;
   }
 
   private void setupSmartScrolling()
@@ -62,6 +75,24 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
       }
     }) ;
   }
+  
+  private void deselectToggleButtonExcept(int toggleButtonId)
+  {
+    toggleButtonId--; // translate into array index (zero based).
+    
+    for(int index = 0 ; index < this._toggleButtons.length ; index++)
+    {
+      if(index == toggleButtonId)
+      {
+        continue;
+      }
+      else
+      {
+        JToggleButton button = this._toggleButtons[index];
+        button.setSelected(false);
+      }
+    }
+  }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -73,7 +104,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
   {
     java.awt.GridBagConstraints gridBagConstraints ;
 
-    valveButtonGroup = new javax.swing.ButtonGroup() ;
     ValvesPanel = new javax.swing.JPanel() ;
     Valve1ToggleButton = new javax.swing.JToggleButton() ;
     Valve3ToggleButton = new javax.swing.JToggleButton() ;
@@ -99,7 +129,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
         .setBorder(javax.swing.BorderFactory.createTitledBorder("Valves")) ;
     ValvesPanel.setLayout(new java.awt.GridBagLayout()) ;
 
-    valveButtonGroup.add(Valve1ToggleButton) ;
     Valve1ToggleButton.setText("VALVE 1") ;
     Valve1ToggleButton.addActionListener(new java.awt.event.ActionListener()
     {
@@ -118,7 +147,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10) ;
     ValvesPanel.add(Valve1ToggleButton, gridBagConstraints) ;
 
-    valveButtonGroup.add(Valve3ToggleButton) ;
     Valve3ToggleButton.setText("VALVE 3") ;
     Valve3ToggleButton.addActionListener(new java.awt.event.ActionListener()
     {
@@ -137,7 +165,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10) ;
     ValvesPanel.add(Valve3ToggleButton, gridBagConstraints) ;
 
-    valveButtonGroup.add(Valve5ToggleButton) ;
     Valve5ToggleButton.setText("VALVE 5") ;
     Valve5ToggleButton.addActionListener(new java.awt.event.ActionListener()
     {
@@ -164,7 +191,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10) ;
     ValvesPanel.add(filler1, gridBagConstraints) ;
 
-    valveButtonGroup.add(SwitchValveToggleButton) ;
     SwitchValveToggleButton.setText("SWITCH VALVE") ;
     SwitchValveToggleButton
         .addActionListener(new java.awt.event.ActionListener()
@@ -192,7 +218,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10) ;
     ValvesPanel.add(filler2, gridBagConstraints) ;
 
-    valveButtonGroup.add(Valve2ToggleButton) ;
     Valve2ToggleButton.setText("VALVE 2") ;
     Valve2ToggleButton.addActionListener(new java.awt.event.ActionListener()
     {
@@ -211,7 +236,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10) ;
     ValvesPanel.add(Valve2ToggleButton, gridBagConstraints) ;
 
-    valveButtonGroup.add(Valve4ToggleButton) ;
     Valve4ToggleButton.setText("VALVE 4") ;
     Valve4ToggleButton.addActionListener(new java.awt.event.ActionListener()
     {
@@ -230,7 +254,6 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
     gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10) ;
     ValvesPanel.add(Valve4ToggleButton, gridBagConstraints) ;
 
-    valveButtonGroup.add(Valve6ToggleButton) ;
     Valve6ToggleButton.setText("VALVE 6") ;
     Valve6ToggleButton.addActionListener(new java.awt.event.ActionListener()
     {
@@ -333,18 +356,21 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
   private void Valve1ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve1ToggleButtonActionPerformed
     _LOG.debug("**** event valve 1 ****") ;
+    this.deselectToggleButtonExcept(1);
     this._ctrl.handleValve(1) ;
   }// GEN-LAST:event_Valve1ToggleButtonActionPerformed
 
   private void Valve3ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve3ToggleButtonActionPerformed
     _LOG.debug("**** event valve 3 ****") ;
+    this.deselectToggleButtonExcept(3);
     this._ctrl.handleValve(3) ;
   }// GEN-LAST:event_Valve3ToggleButtonActionPerformed
 
   private void Valve6ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve6ToggleButtonActionPerformed
     _LOG.debug("**** event valve 6 ****") ;
+    this.deselectToggleButtonExcept(6);
     this._ctrl.handleValve(6) ;
   }// GEN-LAST:event_Valve6ToggleButtonActionPerformed
 
@@ -352,24 +378,28 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
       java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_SwitchValveToggleButtonActionPerformed
     _LOG.debug("**** event valve 7 ****") ;
+    this.deselectToggleButtonExcept(7);
     this._ctrl.handleValve(7) ;
   }// GEN-LAST:event_SwitchValveToggleButtonActionPerformed
 
   private void Valve2ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve2ToggleButtonActionPerformed
     _LOG.debug("**** event valve 2 ****") ;
+    this.deselectToggleButtonExcept(2);
     this._ctrl.handleValve(2) ;
   }// GEN-LAST:event_Valve2ToggleButtonActionPerformed
 
   private void Valve4ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve4ToggleButtonActionPerformed
     _LOG.debug("**** event valve 4 ****") ;
+    this.deselectToggleButtonExcept(4);
     this._ctrl.handleValve(4) ;
   }// GEN-LAST:event_Valve4ToggleButtonActionPerformed
 
   private void Valve5ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)
   {// GEN-FIRST:event_Valve5ToggleButtonActionPerformed
     _LOG.debug("**** event valve 5 ****") ;
+    this.deselectToggleButtonExcept(5);
     this._ctrl.handleValve(5) ;
   }// GEN-LAST:event_Valve5ToggleButtonActionPerformed
 
@@ -389,7 +419,8 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
   private javax.swing.JPanel logPanel ;
   private javax.swing.JTextArea logTextArea ;
   private javax.swing.JScrollPane logTextScrollPane ;
-  private javax.swing.ButtonGroup valveButtonGroup ;
+  
+  private final JToggleButton[] _toggleButtons = new JToggleButton[7];
   // End of variables declaration
 
   @Override
