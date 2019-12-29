@@ -16,7 +16,8 @@ import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class MainToolPanel extends javax.swing.JPanel
 {
-  private static final Logger _LOG = LogManager.getLogger(MainToolPanel.class.getName());
+  private static final Logger _LOG = LogManager
+      .getLogger(MainToolPanel.class.getName()) ;
   private static final long serialVersionUID = 1727861281958313483L ;
   private final ParametresSession _parametresSession ;
 
@@ -24,7 +25,7 @@ public class MainToolPanel extends javax.swing.JPanel
   public MainToolPanel(ParametresSession parametresSession)
   {
     initComponents() ;
-    this._parametresSession = parametresSession;
+    this._parametresSession = parametresSession ;
   }
 
   /**
@@ -50,6 +51,7 @@ public class MainToolPanel extends javax.swing.JPanel
     filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
         new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767)) ;
 
+    setPreferredSize(new java.awt.Dimension(300, 300)) ;
     setLayout(new java.awt.GridBagLayout()) ;
 
     toolsPanel.setLayout(new java.awt.GridBagLayout()) ;
@@ -184,23 +186,23 @@ public class MainToolPanel extends javax.swing.JPanel
     {
       ValvesToolFrame tool ;
       tool = ValvesToolFrame.instantiate(this._parametresSession) ;
-      tool.setVisible(true);
+      tool.setVisible(true) ;
     }
     catch (Exception e)
     {
-      String msg = null;
-      
-      if(e.getCause() instanceof InitializationException)
+      String msg = null ;
+
+      if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed";
+        msg = "intialisation has crashed" ;
       }
       else
       {
-        msg = "valves tool has crashed";
+        msg = "valves tool has crashed" ;
       }
-      
-      _LOG.fatal(msg, e);
-      Utils.reportError(msg, e);
+
+      _LOG.fatal(msg, e) ;
+      Utils.reportError(msg, e) ;
     }
   }
 
@@ -210,23 +212,23 @@ public class MainToolPanel extends javax.swing.JPanel
     {
       PumpToolFrame tool ;
       tool = PumpToolFrame.instantiate(this._parametresSession) ;
-      tool.setVisible(true);
+      tool.setVisible(true) ;
     }
     catch (Exception e)
     {
-      String msg = null;
-      
-      if(e.getCause() instanceof InitializationException)
+      String msg = null ;
+
+      if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed";
+        msg = "intialisation has crashed" ;
       }
       else
       {
-        msg = "pump tool has crashed";
+        msg = "pump tool has crashed" ;
       }
-      
-      _LOG.fatal(msg, e);
-      Utils.reportError(msg, e);
+
+      _LOG.fatal(msg, e) ;
+      Utils.reportError(msg, e) ;
     }
   }
 
@@ -236,23 +238,23 @@ public class MainToolPanel extends javax.swing.JPanel
     {
       AutosamplerToolFrame tool ;
       tool = AutosamplerToolFrame.instantiate(this._parametresSession) ;
-      tool.setVisible(true);
+      tool.setVisible(true) ;
     }
     catch (Exception e)
     {
-      String msg = null;
-      
-      if(e.getCause() instanceof InitializationException)
+      String msg = null ;
+
+      if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed";
+        msg = "intialisation has crashed" ;
       }
       else
       {
-        msg = "autosampler tool has crashed";
+        msg = "autosampler tool has crashed" ;
       }
-      
-      _LOG.fatal(msg, e);
-      Utils.reportError(msg, e);
+
+      _LOG.fatal(msg, e) ;
+      Utils.reportError(msg, e) ;
     }
   }
 
@@ -262,33 +264,33 @@ public class MainToolPanel extends javax.swing.JPanel
     {
       ExtractionToolFrame tool ;
       tool = ExtractionToolFrame.instantiate(this._parametresSession) ;
-      tool.setVisible(true);
+      tool.setVisible(true) ;
     }
     catch (Exception e)
     {
-      String msg = null;
-      
-      if(e.getCause() instanceof InitializationException)
+      String msg = null ;
+
+      if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed";
+        msg = "intialisation has crashed" ;
       }
       else
       {
-        msg = "extraction tool has crashed";
+        msg = "extraction tool has crashed" ;
       }
-      
-      _LOG.fatal(msg, e);
-      Utils.reportError(msg, e);
+
+      _LOG.fatal(msg, e) ;
+      Utils.reportError(msg, e) ;
     }
   }
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    Window parent = UiUtils.getParentFrame(this);
-    if(parent != null)
+    Window parent = UiUtils.getParentFrame(this) ;
+    if (parent != null)
     {
-      _LOG.debug("closing the parent frame and may shutdown the JVM");
-      parent.dispose();
+      _LOG.debug("closing the parent frame and may shutdown the JVM") ;
+      parent.dispose() ;
     }
   }
 
@@ -304,4 +306,5 @@ public class MainToolPanel extends javax.swing.JPanel
   private javax.swing.JPanel toolsPanel ;
   private javax.swing.JButton valvesButton ;
   // End of variables declaration
+
 }
