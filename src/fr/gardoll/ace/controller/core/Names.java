@@ -50,7 +50,8 @@ public class Names
   //----------------------------
   
   public static final String SEC_ACE_CONTROLLER                = "ace_controller_settings";
-  public static final String  SAC_IS_DEBUG                     = "is_debug";
+  public static final String SAC_IS_DEBUG                      = "is_debug";
+  public static final String SAC_IS_FULL_SCREEN                = "is_fullScreen";
   
   //----------------------------
 

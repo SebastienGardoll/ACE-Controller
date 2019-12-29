@@ -97,13 +97,14 @@ public class ParametresSession implements Closeable
   private String _paraComConfPortPath ;
 
   private boolean _isDebug ;
+  private boolean _isFullScreen ;
   
   private Optional<String> _autosamplerRuntimePortPath = Optional.empty();
   
   private Optional<String> _pumpRuntimePortPath = Optional.empty();
   
   private Optional<String> _paraComRuntimePortPath = Optional.empty();
-  
+
   public static ParametresSession getInstance()
   {
     try
@@ -158,6 +159,10 @@ public class ParametresSession implements Closeable
       
       this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, DEFAULT_STRING_VALUE));
       _LOG.debug(String.format("isDebug returns %s", this._isDebug));
+      
+      
+      this._isFullScreen = Names.TRUE.equals(section.getString(Names.SAC_IS_FULL_SCREEN, DEFAULT_STRING_VALUE));
+      
       section.close();
     }
     catch (ConfigurationException e)
@@ -758,5 +763,10 @@ public class ParametresSession implements Closeable
       String msg = "error while closing the pump or the autosampler";
       _LOG.error(msg, e);
     }
+  }
+
+  public boolean isFullScreen()
+  {
+    return this._isFullScreen;
   }
 }
