@@ -58,6 +58,7 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
 
     initComponents() ;
     initCustom() ;
+    this.setLocationRelativeTo(null) ;
   }
 
   private void initCustom()
