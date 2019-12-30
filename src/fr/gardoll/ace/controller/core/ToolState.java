@@ -415,7 +415,6 @@ class RunningState extends AbstractState implements ToolState
   {
     this._ctrl.cancelOperations();
     
-    
     if(canRerun)
     {
       _LOG.debug("set initial state");
