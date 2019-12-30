@@ -517,7 +517,7 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
 
       case REINIT_DONE:
       {
-        this.actionValueLabel.setText("-") ;
+        this.actionValueLabel.setText("reinitialization done") ;
         this.columnValueLabel.setText("-") ;
         this.sequenceValueLabel.setText("-") ;
         break ;
