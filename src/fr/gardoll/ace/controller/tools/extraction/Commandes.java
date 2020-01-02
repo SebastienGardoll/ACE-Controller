@@ -37,10 +37,10 @@ class Commandes
     this.colonne   = colonne;
     this._toolCtrl = toolCtrl;
     ParametresSession parametresSession = ParametresSession.getInstance();
+    this.parametresSession = parametresSession;
     
     this.pousseSeringue = parametresSession.getPousseSeringue();
     this.passeur = parametresSession.getPasseur();
-    this.parametresSession = parametresSession;
     
     //aspiration est toujours au débit max
     this.pousseSeringue.setDebitAspiration(parametresSession.debitMaxPousseSeringue());
