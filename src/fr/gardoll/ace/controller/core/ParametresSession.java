@@ -125,13 +125,13 @@ public class ParametresSession implements Closeable
   
   private ParametresSession() throws InitializationException
   {
-    this.reloadConf();
+    this.loadConf();
   }
   
   // Reload conf but not Autosampler, Pump and Valves.
-  public void reloadConf() throws InitializationException
+  public void loadConf() throws InitializationException
   {
-    _LOG.info("fetch the configuration");
+    _LOG.info("load the basic configuration");
     
     Path rootDir = null ;
     _LOG.debug("fetch root dir");
