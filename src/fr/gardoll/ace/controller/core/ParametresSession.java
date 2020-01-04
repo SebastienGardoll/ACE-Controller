@@ -162,6 +162,7 @@ public class ParametresSession implements Closeable
       
       
       this._isFullScreen = Names.TRUE.equals(section.getString(Names.SAC_IS_FULL_SCREEN, DEFAULT_STRING_VALUE));
+      _LOG.debug(String.format("isFullScreen returns %s", this._isFullScreen));
       
       section.close();
     }
