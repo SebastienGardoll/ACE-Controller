@@ -191,6 +191,8 @@ public class ParametresSession implements Closeable
       this._nbSeringue             = section.getInteger(Names.SIPS_CLEF_NB_SERINGUE,-1);
       this._diametreSeringue       = section.getDouble(Names.SIPS_CLEF_DIA_SERINGUE,-1.0);
       
+      section.close();
+
       section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
       String plateConfFilePathString      = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
       this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
