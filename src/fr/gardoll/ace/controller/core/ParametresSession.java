@@ -36,13 +36,11 @@ import fr.gardoll.ace.controller.pump.PumpControllerStub ;
 import fr.gardoll.ace.controller.valves.ParaComStub ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
-// TODO: default "READ ERROR" for any string.
-// TODO: check for "READ ERROR" strings then throw exception.
 public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
   
-  private static final String DEFAULT_STRING_VALUE = "READ_ERROR";
+  private static final String _DEFAULT_STRING_VALUE = "READ_ERROR";
   
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.FRANCE);
@@ -157,11 +155,11 @@ public class ParametresSession implements Closeable
       INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_ACE_CONTROLLER);
       
-      this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, DEFAULT_STRING_VALUE));
+      this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, _DEFAULT_STRING_VALUE));
       _LOG.debug(String.format("isDebug returns %s", this._isDebug));
       
       
-      this._isFullScreen = Names.TRUE.equals(section.getString(Names.SAC_IS_FULL_SCREEN, DEFAULT_STRING_VALUE));
+      this._isFullScreen = Names.TRUE.equals(section.getString(Names.SAC_IS_FULL_SCREEN, _DEFAULT_STRING_VALUE));
       _LOG.debug(String.format("isFullScreen returns %s", this._isFullScreen));
       
       section.close();
@@ -181,8 +179,8 @@ public class ParametresSession implements Closeable
       INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_POUSSE_SERINGUE);
       
-      this._pumpSerialComClassPath = section.getString(Names.SIPS_CLEF_SERIAL_COM_CLASS_PATH);
-      this._pumpConfPortPath           = section.getString(Names.SIPS_CLEF_PORT_PATH);
+      this._pumpSerialComClassPath = section.getString(Names.SIPS_CLEF_SERIAL_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
+      this._pumpConfPortPath           = section.getString(Names.SIPS_CLEF_PORT_PATH, _DEFAULT_STRING_VALUE);
       
       this._volumeMaxSeringue      = section.getDouble(Names.SIPS_CLEF_VOL_MAX, -1.0) ;
       this._volumeRincage          = section.getDouble(Names.SIPS_CLEF_VOL_RINCAGE, -1.0) ;
@@ -194,9 +192,9 @@ public class ParametresSession implements Closeable
       section.close();
 
       section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
-      String plateConfFilePathString      = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, "READ ERROR");
-      this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH);
-      this._autosamplerConfPortPath       = section.getString(Names.SIC_CLEF_PORT_PATH);
+      String plateConfFilePathString      = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, _DEFAULT_STRING_VALUE);
+      this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
+      this._autosamplerConfPortPath       = section.getString(Names.SIC_CLEF_PORT_PATH, _DEFAULT_STRING_VALUE);
       
       section.close();
       
@@ -255,9 +253,9 @@ public class ParametresSession implements Closeable
       INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
       SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_PARA_COM);
       
-      this._paraComClassPath = section.getString(Names.SIPC_CLEF_PARA_COM_CLASS_PATH);
-      this._paraComSerialComClassPath = section.getString(Names.SIPC_CLEF_SERIAL_COM_CLASS_PATH);
-      this._paraComConfPortPath = section.getString(Names.SIPC_CLEF_PORT_PATH);
+      this._paraComClassPath = section.getString(Names.SIPC_CLEF_PARA_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
+      this._paraComSerialComClassPath = section.getString(Names.SIPC_CLEF_SERIAL_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
+      this._paraComConfPortPath = section.getString(Names.SIPC_CLEF_PORT_PATH, _DEFAULT_STRING_VALUE);
       
       section.close();
     }
