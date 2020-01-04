@@ -5,21 +5,22 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
-        <File name="File_Logging_Info" fileName="output_info.log">
+        <File name="File_Logging_Info" fileName="output_info_${date:dd-MM-yyyy_hh:mm}.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_Debug" fileName="output_debug.log">
+        <File name="File_Logging_Debug" fileName="output_debug_${date:dd-MM-yyyy_hh:mm}.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_All" fileName="output_all.log">
+        <File name="File_Logging_All" fileName="output_all_${date:dd-MM-yyyy_hh:mm}.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
     <Loggers>
         <Root level="ALL">
+            <AppenderRef ref="Console"/>
             <AppenderRef ref="File_Logging_Info"/>
             <AppenderRef ref="File_Logging_Debug"/>
             <AppenderRef ref="File_Logging_All"/>
