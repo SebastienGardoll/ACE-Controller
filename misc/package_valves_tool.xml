@@ -7,6 +7,7 @@
     <property name="dir.workspace" value="${dir.buildfile}/../.."/>
     <property name="dir.jarfile" value="${user.home}/tmp"/>
 	  <property name="tool_name" value="valves_tool"/>
+    <property name="file.version" value="version.properties"/>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/${tool_name}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
@@ -25,17 +26,31 @@
             <zipfileset excludes="META-INF/*.SF" src="${dir.workspace}/ACE-Controller/lib/commons-text-1.6.jar"/>
         </jar>
     </target>
-	  <target name="package_tool" depends="clean,create_run_jar">
+	  <target name="package_tool" depends="clean,create_run_jar,gen_version">
        <zip destfile="${dir.jarfile}/${tool_name}.zip">
            <zipfileset dir="${dir.workspace}/ACE-Controller/conf_deployment" prefix="${tool_name}/conf"/>
            <zipfileset file="${dir.workspace}/ACE-Controller/misc/log4j2.xml" prefix="${tool_name}"/>
+       	   <zipfileset file="${dir.jarfile}/${file.version}" prefix="${tool_name}"/>
            <zipfileset file="${dir.jarfile}/${tool_name}.jar" prefix="${tool_name}" />
        </zip>
        <delete file="${dir.jarfile}/${tool_name}.jar" quiet="true" />
+	  	 <delete file="${dir.jarfile}/${file.version}" quiet="true" />
     </target>
    <target name="clean">
       <delete dir="${dir.jarfile}/${tool_name}" quiet="true" />
    	  <delete file="${dir.jarfile}/${tool_name}.zip" quiet="true" />
-      <delete file="${dir.jarfile}/${tool_name}.jar" quiet="true" />     
+      <delete file="${dir.jarfile}/${tool_name}.jar" quiet="true" />    
+   	  <delete file="${dir.jarfile}/${file.version}" quiet="true" />
+   </target>
+	 <target name="gen_version">
+	    <echo message="Generating version properties"/>
+	    <exec executable="git" outputproperty="version" failifexecutionfails="true">
+	      <arg value="describe"/>
+	    	<arg value="--tags"/>
+	    </exec>
+	 	  <echo message="version is ${version}"/>
+	 	  <propertyfile file="${dir.jarfile}/${file.version}">
+	 	    <entry  key="version" value="${version}"/>
+	 	  </propertyfile>
    </target>
 </project>
