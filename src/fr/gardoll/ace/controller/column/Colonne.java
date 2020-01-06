@@ -12,7 +12,6 @@ import org.apache.commons.configuration2.ex.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Names ;
 
-// TODO: add logging
 public abstract class Colonne
 {
   public static final String COLUMN_FILE_EXTENTION = "cln";
