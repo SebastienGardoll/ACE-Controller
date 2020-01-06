@@ -23,7 +23,7 @@ public class Protocol
   
   public final int nbMaxSequence; // nombre de séquences total
   
-  public final int tempsTotal ; // somme de temps d'élution
+  public final long tempsTotal ; // somme de temps d'élution
   
   public final Colonne colonne ;
   
@@ -101,9 +101,9 @@ public class Protocol
     //
     /***********************************************************************/
     
-    int tempsTotal = 0 ;
+    long tempsTotal = 0l ;
     
-    for ( int i = 0 ; i < this.nbMaxSequence ; i ++ )
+    for ( int i = 0 ; i < this.nbMaxSequence ; i++ )
     {
       SubnodeConfiguration sequenceSection = iniConf.getSection(String.valueOf((i+1)));
       
@@ -113,14 +113,14 @@ public class Protocol
       
       double volume = sequenceSection.getDouble(Names.SIP_CLEF_VOL, -1.);
 
-      long temps = sequenceSection.getLong(Names.SIP_CLEF_TEMPS, -1);
+      long temps = sequenceSection.getLong(Names.SIP_CLEF_TEMPS, -1l);
      
       int pauseCode = sequenceSection.getInteger(Names.SIP_CLEF_PAUSE, -1);
 
       if (nomAcide.isEmpty() ||
           numEv < 0          ||
           volume < 0.        ||
-          temps < 0          ||
+          temps < 0l         ||
           pauseCode < 0)
       {
         String msg = String.format("unable to read the speficication of sequence '%s'", (i+1));
