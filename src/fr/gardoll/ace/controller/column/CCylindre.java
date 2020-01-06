@@ -21,16 +21,16 @@ public class CCylindre extends Colonne
     this.hauteurCylindre = this._colSection.getDouble(Names.SICOL_CLEF_H_CYLINDRE, -1.)  ;
     this.diametre        = this._colSection.getDouble(Names.SICOL_CLEF_DIA, -1.)   ;
     
-    if (this.hauteurCylindre < 0 ||
-        this.diametre        < 0    )
+    if (this.hauteurCylindre < 0. ||
+        this.diametre        < 0.    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
       throw new InitializationException(msg);
     }
 
     {
-      double tmp =  Math.PI * Math.pow (this.diametre/2 , 2 ) * this.hauteurCylindre ;  //en µL
-      this._volumeReservoir = tmp / 1000 ; //passage au mL
+      double tmp =  Math.PI * Math.pow (this.diametre/2. , 2. ) * this.hauteurCylindre ;  //en µL
+      this._volumeReservoir = tmp / 1000. ; //passage au mL
     }
     
     this.close();
@@ -47,7 +47,7 @@ public class CCylindre extends Colonne
 
     volume *=1000. ;  // v en ml est traité en micro litre car dimension en mm.
 
-    return ((4 * volume) /  (Math.PI * Math.pow (this.diametre, 2))) ;
+    return ((4. * volume) /  (Math.PI * Math.pow (this.diametre, 2.))) ;
   }
 
   @Override

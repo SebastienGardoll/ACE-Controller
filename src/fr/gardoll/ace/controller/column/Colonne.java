@@ -91,13 +91,13 @@ public abstract class Colonne
       throw new RuntimeException(msg,e);
     }
     
-    if (this._hauteurColonne           < 0 ||
-        this._hauteurMenisque          < 0 ||
-        this._pousseSeringueDebitMin   < 0 ||
-        this._pousseSeringueDebitInter < 0 ||
-        this._pousseSeringueDebitMax   < 0 ||
-        this._volumeCritique1          < 0 ||
-        this._volumeCritique2          < 0    )
+    if (this._hauteurColonne           < 0. ||
+        this._hauteurMenisque          < 0. ||
+        this._pousseSeringueDebitMin   < 0. ||
+        this._pousseSeringueDebitInter < 0. ||
+        this._pousseSeringueDebitMax   < 0. ||
+        this._volumeCritique1          < 0. ||
+        this._volumeCritique2          < 0.    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
       throw new InitializationException(msg);

@@ -33,21 +33,21 @@ public class CCone extends Colonne
       throw new InitializationException(msg);
     }
 
-    if ( this.hauteurCone < 0 ||
-         this.diametreSup < 0 ||
-         this.diametreInf < 0    )
+    if ( this.hauteurCone < 0. ||
+         this.diametreSup < 0. ||
+         this.diametreInf < 0.    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
       throw new InitializationException(msg);
     }
 
-    a = Math.pow(this.diametreSup - this.diametreInf, 2) / Math.pow (this.hauteurCone, 2) ;
-    b = 3 * this.diametreInf * (this.diametreSup - this.diametreInf ) / this.hauteurCone ;
-    c = 3 * Math.pow (this.diametreInf, 2);
+    a = Math.pow(this.diametreSup - this.diametreInf, 2.) / Math.pow (this.hauteurCone, 2.) ;
+    b = 3. * this.diametreInf * (this.diametreSup - this.diametreInf ) / this.hauteurCone ;
+    c = 3. * Math.pow (this.diametreInf, 2.);
 
     {
-      double tmp = Math.PI * this.hauteurCone * (Math.pow (this.diametreSup/2, 2) + (this.diametreSup * this.diametreInf)/4 + Math.pow (this.diametreInf/2, 2)) / 3; //en µL
-      this._volumeReservoir = tmp / 1000 ; //passage au mL
+      double tmp = Math.PI * this.hauteurCone * (Math.pow (this.diametreSup/2., 2.) + (this.diametreSup * this.diametreInf)/4. + Math.pow (this.diametreInf/2., 2.)) / 3.; //en µL
+      this._volumeReservoir = tmp / 1000. ; //passage au mL
     }
     
     this.close();
@@ -64,15 +64,15 @@ public class CCone extends Colonne
 
     volume *= 1000. ; // volume en ml est traité en micro litre car dimensions en mm.
 
-    double d = 12 * volume  / Math.PI ;
+    double d = 12. * volume  / Math.PI ;
 
     d  = -d ; // valeur aberrante en fesant -12*Volume  / 3.14
 
-    double q = (2 * Math.pow (this.b , 3) / (27 * Math.pow (this.a,  3))) + d/this.a - (this.b * this.c/ (3 * Math.pow (this.a,2))) ;
+    double q = (2. * Math.pow (this.b , 3.) / (27. * Math.pow (this.a,  3.))) + d/this.a - (this.b * this.c/ (3. * Math.pow (this.a, 2.))) ;
 
     double X = Math.pow (-q , 0.33333333333333333333); // 1/3 marche mais résultats aberrant ( -2.714 ... )
 
-    return  X - (this.b / (3 * this.a)) ;
+    return  X - (this.b / (3. * this.a)) ;
   }
   
   @Override
@@ -88,12 +88,12 @@ public class CCone extends Colonne
 
     volume *= 1000. ; // v en ml est traité en micro litre car dimension en mm.
 
-    return (0.25 * ( - this.diametreInf + Math.pow (-3 * this.diametreInf * this.diametreInf + (48 * volume )/( Math.PI * h), 0.5))) ;
+    return (0.25 * ( - this.diametreInf + Math.pow (-3. * this.diametreInf * this.diametreInf + (48. * volume )/( Math.PI * h), 0.5))) ;
   }
   
   public double volumeEquivalentCylindre()
   {  
-    return ( Math.PI * Math.pow(this.diametreSup/2, 2) * this.hauteurCone ) /1000.  ;//en mL
+    return ( Math.PI * Math.pow(this.diametreSup/2., 2.) * this.hauteurCone ) /1000.  ;//en mL
   }
 
   @Override
