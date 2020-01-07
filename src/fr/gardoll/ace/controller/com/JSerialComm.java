@@ -287,7 +287,7 @@ public class JSerialComm implements SerialCom
     
     try
     {
-      // Blocking until timeout elapsed or read the size of the buffer.
+      // Blocking until timeout elapsed or read enough characters to full fill the buffer.
       // SerialPortTimeoutException is not raised normally.
       // Return -1 on error.
       nb_byte_read = this._port.readBytes(buffer, buffer.length) ;
