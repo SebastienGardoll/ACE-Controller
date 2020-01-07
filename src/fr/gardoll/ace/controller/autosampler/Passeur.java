@@ -25,7 +25,7 @@ public class Passeur implements Closeable
   private static final double _COEFF = 2.5 ;
 
   public final static int VIB_ID = 2 ; //numéro du signal utilisé pour faire vibrer le bras
-  public final static int VIBRATION_TEMPS = 500 ; //temps en ms de vibration
+  public final static long VIBRATION_TEMPS = 500l ; //temps en ms de vibration
   public final static int TRASH_POSITION = 0;
   
   private static final Logger _LOG = LogManager.getLogger(Passeur.class.getName());

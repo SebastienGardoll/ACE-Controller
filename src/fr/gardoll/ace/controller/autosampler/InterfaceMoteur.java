@@ -83,7 +83,7 @@ public class InterfaceMoteur implements Closeable, MotorController
 
       case 'E':
       { 
-        String msg = String.format("autosampler failure: %s", reponse);
+        String msg = String.format("autosampler failure: '%s'", reponse);
         throw new SerialComException(msg);
       }
     }
