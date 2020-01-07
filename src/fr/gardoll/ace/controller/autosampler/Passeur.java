@@ -15,11 +15,11 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 //TODO: singleton.
 public class Passeur implements Closeable
 {
-  private final static int RAPPORT_REDUCTEUR_MOTEUR = 40 ; //DEPENDANT DE LA MECANIQUE
-  private final static int NB_PAS_TOUR_BRAS = 400 ; // en demi pas
-  private final static int NB_PAS_TOUR_MOTEUR = 400 ;//demi pas sans réducteur
-  private final static int NB_PAS_TOUR_CARROUSEL = RAPPORT_REDUCTEUR_MOTEUR * NB_PAS_TOUR_MOTEUR  ; //demi pas
-  private final static int HAUTEUR_TOUR_BRAS = 3 ; // en mm
+  private final static double RAPPORT_REDUCTEUR_MOTEUR = 40. ; //DEPENDANT DE LA MECANIQUE
+  private final static double NB_PAS_TOUR_BRAS = 400. ; // en demi pas
+  private final static double NB_PAS_TOUR_MOTEUR = 400. ;//demi pas sans réducteur
+  private final static double NB_PAS_TOUR_CARROUSEL = RAPPORT_REDUCTEUR_MOTEUR * NB_PAS_TOUR_MOTEUR  ; //demi pas
+  private final static double HAUTEUR_TOUR_BRAS = 3. ; // en mm
   
   // Coefficient pour la distance plateau porteur tuyau pour la poubelle
   private static final double _COEFF = 2.5 ;
