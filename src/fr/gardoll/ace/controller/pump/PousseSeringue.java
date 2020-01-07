@@ -33,7 +33,7 @@ public class PousseSeringue implements Closeable
   public final static double VOL_AJUSTEMENT = 0.5 ;   
                                         
   //Attention : static !!!! volume réel pour une seringue
-  private static double _volumeReel ;
+  private static double _volumeReel = 0.;
   
   private static final Logger _LOG = LogManager.getLogger(PousseSeringue.class.getName());
   
