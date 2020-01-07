@@ -482,14 +482,6 @@ public class Passeur implements Closeable
     }
   }
   
-  public static int rapportReducteur () { return RAPPORT_REDUCTEUR_MOTEUR ;}
-
-
-  public static int nbPasTourBras () { return NB_PAS_TOUR_BRAS ; }
-
-
-  public static int hauteurTourBras () { return HAUTEUR_TOUR_BRAS ; }
-
   //converti une dimension exprimée en mm en nombre de demi pas pour le bras.
   //arrondi au demi pas supérieur
   //dimension en mm en rapport avec le bras !
