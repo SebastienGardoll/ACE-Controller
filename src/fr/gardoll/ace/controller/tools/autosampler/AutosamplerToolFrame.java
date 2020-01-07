@@ -28,7 +28,6 @@ public class AutosamplerToolFrame extends AbstractToolFrame
     return tool;
   }
 
-  // TODO: to be tested.
   public static void main(String[] args)
   {
     _LOG.info("start the tool");

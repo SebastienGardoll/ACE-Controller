@@ -19,7 +19,6 @@ import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 
-//TODO: singleton.
 public class InterfacePousseSeringue  implements Closeable, PumpController
 {
   private static final long _OPENING_DELAY = 2000l;

@@ -15,7 +15,6 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
-//TODO: singleton.
 public class PousseSeringue implements Closeable
 {
   // temps d'attente entre la détection d'une fin de pompage

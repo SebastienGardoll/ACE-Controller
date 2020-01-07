@@ -15,7 +15,6 @@ import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 
-//TODO: singleton.
 public class InterfaceMoteur implements Closeable, MotorController
 {
   private static final long _OPENING_DELAY = 2000l;

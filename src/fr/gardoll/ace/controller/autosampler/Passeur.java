@@ -12,7 +12,6 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 
-//TODO: singleton.
 public class Passeur implements Closeable
 {
   private final static double RAPPORT_REDUCTEUR_MOTEUR = 40. ; //DEPENDANT DE LA MECANIQUE
@@ -193,7 +192,6 @@ public class Passeur implements Closeable
     }
   }
   
-  // TODO to test.
   public void moveArmToTrash()
   {
     _LOG.debug("move the arm to trash");
