@@ -444,7 +444,7 @@ public class PousseSeringue implements Closeable
       // ferme ttes les ev  désactivation pour éviter depression dans le tube.
       this.fermetureEv();
       // pendant distribution <=> perte précison
-      numEvActuelle = 0 ;
+      this.numEvActuelle = 0 ;
       // équilibre de la pression dans les tuyaux
       try
       {
