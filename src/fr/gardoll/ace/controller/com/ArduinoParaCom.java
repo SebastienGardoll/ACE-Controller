@@ -7,7 +7,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 
 public class ArduinoParaCom implements ParaCom
 {
-  private static final long OPENING_DELAY = 2000l;
+  private static final long _OPENING_DELAY = 2000l;
   
   private static final Logger _LOG = LogManager.getLogger(ArduinoParaCom.class.getName());
   
@@ -28,7 +28,7 @@ public class ArduinoParaCom implements ParaCom
       this._port.setByteSize(8);
       this._port.setParite(Parity.NOPARITY);
       this._port.setStopBit(StopBit.ONESTOPBIT);
-      this._port.open(ArduinoParaCom.OPENING_DELAY);
+      this._port.open(ArduinoParaCom._OPENING_DELAY);
       this.send(new byte[] {0}); // Close all valves.
     }
     catch(SerialComException | ParaComException e)
