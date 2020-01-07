@@ -58,6 +58,7 @@ public interface PumpController extends Closeable
   public void modeW() throws SerialComException;
   
   public static int debitMaxIntrinseque(double diametreSeringue)
+    throws ConfigurationException
   {
     _LOG.debug(String.format("computing the maxium rate based on the syringe diameter '%s'",
         diametreSeringue));

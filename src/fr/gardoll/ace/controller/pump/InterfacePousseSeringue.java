@@ -16,6 +16,7 @@ import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
+import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 
 //TODO: singleton.
@@ -50,7 +51,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   // requires 0 < diametreSeringue <= DIAMETRE_MAX
   public InterfacePousseSeringue(SerialCom port, double diametreSeringue)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     _LOG.debug(String.format("initializing the pump interface with the serial port %s and the syringe diameter %s",
         port.getId(), diametreSeringue));
@@ -78,10 +79,11 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       throw new InitializationException(msg, e);
     }
  
+    // contient le code de vérification.
+    this._debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametreSeringue);
+    
     try
     {
-      // contient le code de vérification.
-      this._debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametreSeringue);
       _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
       this.dia(diametreSeringue);
     }
