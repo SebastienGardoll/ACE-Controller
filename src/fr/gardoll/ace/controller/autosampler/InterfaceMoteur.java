@@ -18,7 +18,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable, MotorController
 {
-  private static final long OPENING_DELAY = 2000l;
+  private static final long _OPENING_DELAY = 2000l;
   
   // nombre de signaux en sortis de l'interface.
   private final static int NB_BITS = 7 ;
@@ -44,7 +44,7 @@ public class InterfaceMoteur implements Closeable, MotorController
       this._port.setParite(Parity.NOPARITY);
       this._port.setControlFlux(FlowControl.XON_XOFF);
       this._port.setTimeOut(100) ;
-      this._port.open(OPENING_DELAY);
+      this._port.open(_OPENING_DELAY);
       
       this.singleLine(true); // ack processing supposes to get single line ack.
     }
