@@ -15,18 +15,18 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 //TODO: singleton.
 public class Passeur implements Closeable
 {
-  public final static int RAPPORT_REDUCTEUR_MOTEUR = 40 ; //DEPENDANT DE LA MECANIQUE
-  public final static int NB_PAS_TOUR_BRAS = 400 ; // en demi pas
-  public final static int NB_PAS_TOUR_MOTEUR = 400 ;//demi pas sans réducteur
-  public final static int NB_PAS_TOUR_CARROUSEL = RAPPORT_REDUCTEUR_MOTEUR * NB_PAS_TOUR_MOTEUR  ; //demi pas
-  public final static int HAUTEUR_TOUR_BRAS = 3 ; // en mm
+  private final static int RAPPORT_REDUCTEUR_MOTEUR = 40 ; //DEPENDANT DE LA MECANIQUE
+  private final static int NB_PAS_TOUR_BRAS = 400 ; // en demi pas
+  private final static int NB_PAS_TOUR_MOTEUR = 400 ;//demi pas sans réducteur
+  private final static int NB_PAS_TOUR_CARROUSEL = RAPPORT_REDUCTEUR_MOTEUR * NB_PAS_TOUR_MOTEUR  ; //demi pas
+  private final static int HAUTEUR_TOUR_BRAS = 3 ; // en mm
   
   // Coefficient pour la distance plateau porteur tuyau pour la poubelle
   private static final double _COEFF = 2.5 ;
 
-  public final static int VIB_ID = 2 ; //numéro du signal utilisé pour faire vibrer le bras
-  public final static long VIBRATION_TEMPS = 500l ; //temps en ms de vibration
-  public final static int TRASH_POSITION = 0;
+  private final static int VIB_ID = 2 ; //numéro du signal utilisé pour faire vibrer le bras
+  private final static long VIBRATION_TEMPS = 500l ; //temps en ms de vibration
+  private final static int TRASH_POSITION = 0;
   
   private static final Logger _LOG = LogManager.getLogger(Passeur.class.getName());
   
