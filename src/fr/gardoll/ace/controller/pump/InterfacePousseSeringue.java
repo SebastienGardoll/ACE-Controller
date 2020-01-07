@@ -101,7 +101,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     
     if (message.matches("E+"))
     {
-      String msg = "pump failure" ;
+      String msg = String.format("pump failure ('%s')", message) ;
       throw new SerialComException(msg) ;
     }
     else if (_NA_PATTERN.matcher(message).matches())
