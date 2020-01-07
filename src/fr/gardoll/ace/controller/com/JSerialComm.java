@@ -18,15 +18,16 @@ public class JSerialComm implements SerialCom
   
   private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
   
-  private SerialPort _port    = null ;
+  private final String _portPath ;
+  private final String _id;
+  private final SerialPort _port;
+  
   private Charset _charset    = JSerialComm.ASCII_CHARSET; // DEFAULT
   private int _readBufferSize = 256; // DEFAULT
   private boolean _isOpened   = false;
-  private String _id          = "unknown" ;
   private int _readMode       = SerialPort.TIMEOUT_READ_BLOCKING ;
   private int _writeMode      = SerialPort.TIMEOUT_WRITE_BLOCKING ;
   private int _mode           = this._readMode | this._writeMode ;
-  private final String _portPath ;
   
   public JSerialComm(String portPath)
   {
@@ -82,7 +83,6 @@ public class JSerialComm implements SerialCom
     }
     catch(Exception e)
     {
-      this._port = null ;
       String msg = String.format("unable to open port '%s'", this.getId()) ;
       throw new SerialComException(msg, e) ;
     }
