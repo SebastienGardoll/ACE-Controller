@@ -1,7 +1,5 @@
 package fr.gardoll.ace.controller.com;
 
-import java.nio.charset.Charset ;
-
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -24,7 +22,7 @@ public class ArduinoParaCom implements ParaCom
     {
       this._port.setReadBufferSize(10);
       this._port.setMode(SerialMode.FULL_BLOCKING, SerialMode.FULL_BLOCKING);
-      this._port.setCharset(Charset.forName("ASCII"));
+      this._port.setCharset(JSerialComm.ASCII_CHARSET);
       this._port.setVitesse(9600);
       this._port.setTimeOut(100);
       this._port.setByteSize(8);

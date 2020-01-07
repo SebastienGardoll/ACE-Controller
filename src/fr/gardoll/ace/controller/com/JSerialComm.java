@@ -14,11 +14,12 @@ import fr.gardoll.ace.controller.core.Utils ;
 
 public class JSerialComm implements SerialCom
 {
+  public static final Charset ASCII_CHARSET = Charset.forName("ASCII");
   
   private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
   
   private SerialPort _port    = null ;
-  private Charset _charset = Charset.forName("ASCII"); // DEFAULT
+  private Charset _charset    = JSerialComm.ASCII_CHARSET; // DEFAULT
   private int _sizeReadBuffer = 256; // DEFAULT
   private boolean _isOpened   = false;
   private String _id          = "unknown" ;
@@ -447,7 +448,7 @@ public class JSerialComm implements SerialCom
       
       port.setReadBufferSize(10);
       port.setMode(SerialMode.FULL_BLOCKING, SerialMode.FULL_BLOCKING);
-      port.setCharset(Charset.forName("ASCII"));
+      port.setCharset(JSerialComm.ASCII_CHARSET);
       port.setVitesse(9600);
       port.setTimeOut(10);
       port.setByteSize(8);

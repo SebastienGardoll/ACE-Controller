@@ -2,7 +2,6 @@ package fr.gardoll.ace.controller.pump;
 
 import java.io.Closeable;
 import java.math.RoundingMode ;
-import java.nio.charset.Charset ;
 import java.text.DecimalFormat ;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
@@ -63,7 +62,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       _LOG.debug(String.format("setting the pump com port '%s'", this._port.getId()));
       this._port.setReadBufferSize(256);
       this._port.setMode(SerialMode.FULL_BLOCKING, SerialMode.FULL_BLOCKING);
-      this._port.setCharset(Charset.forName("ASCII"));
+      this._port.setCharset(JSerialComm.ASCII_CHARSET);
       this._port.setVitesse(9600) ;
       this._port.setByteSize (8);
       this._port.setStopBit(StopBit.ONESTOPBIT);
