@@ -34,8 +34,8 @@ AbstractThreadControlTest::test1 - *** calling interrupt on the running thread *
 AbstractThreadControl::run - operations have been interrupted
 java.lang.InterruptedException: sleep interrupted
 	at java.lang.Thread.sleep(Native Method) ~[?:?]
-	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:368) ~[bin/:?]
-	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:73) [bin/:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:366) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:86) [bin/:?]
 AbstractState::crash - set crashed state
 AbstractThreadControlTest::test1 - *** state is: crashed ***
 AbstractThreadControlTest::teardown - *** end of test ***
@@ -52,12 +52,15 @@ AbstractThreadControl::checkPause - the thead is paused
 AbstractThreadControlTest::test2 - *** state is: paused ***
 AbstractThreadControlTest::test2 - *** calling interrupt on the paused thread ****
 AbstractThreadControl::run - operations have been interrupted
-java.lang.InterruptedException: null
+java.lang.RuntimeException: java.lang.InterruptedException
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:307) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:369) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:86) [bin/:?]
+Caused by: java.lang.InterruptedException
 	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2056) ~[?:?]
 	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2090) ~[?:?]
-	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:262) ~[bin/:?]
-	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:371) ~[bin/:?]
-	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:73) [bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:303) ~[bin/:?]
+	... 2 more
 AbstractState::crash - set crashed state
 AbstractThreadControlTest::test2 - *** state is: crashed ***
 AbstractThreadControlTest::teardown - *** end of test ***
@@ -96,12 +99,15 @@ AbstractThreadControlTest::test4 - *** thread should not be cancelled ***
 AbstractThreadControlTest::test4 - *** state is: paused ***
 AbstractThreadControlTest::test4 - *** calling interrupt on the paused thread ****
 AbstractThreadControl::run - operations have been interrupted
-java.lang.InterruptedException: null
+java.lang.RuntimeException: java.lang.InterruptedException
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:307) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:369) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:86) [bin/:?]
+Caused by: java.lang.InterruptedException
 	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2056) ~[?:?]
 	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2090) ~[?:?]
-	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:262) ~[bin/:?]
-	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:371) ~[bin/:?]
-	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:73) [bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:303) ~[bin/:?]
+	... 2 more
 AbstractState::crash - set crashed state
 AbstractThreadControlTest::test4 - *** state is: crashed ***
 AbstractThreadControlTest::teardown - *** end of test ***
@@ -131,8 +137,8 @@ AbstractThreadControlTest::test6 - *** calling interrupt on the running thread *
 AbstractThreadControl::run - operations have been interrupted
 java.lang.InterruptedException: sleep interrupted
 	at java.lang.Thread.sleep(Native Method) ~[?:?]
-	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:368) ~[bin/:?]
-	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:73) [bin/:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:366) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:86) [bin/:?]
 AbstractState::crash - set crashed state
 AbstractThreadControlTest::test6 - *** state is: crashed ***
 AbstractThreadControlTest::test6 - *** calling pause on the interrupted thread ****
@@ -150,8 +156,8 @@ AbstractThreadControlTest::test7 - *** calling interrupt on the running thread *
 AbstractThreadControl::run - operations have been interrupted
 java.lang.InterruptedException: sleep interrupted
 	at java.lang.Thread.sleep(Native Method) ~[?:?]
-	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:368) ~[bin/:?]
-	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:73) [bin/:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:366) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:86) [bin/:?]
 AbstractState::crash - set crashed state
 AbstractThreadControlTest::test7 - *** state is: crashed ***
 AbstractThreadControlTest::test7 - *** calling cancelled on the interrupted thread ****
@@ -162,14 +168,14 @@ AbstractThreadControlTest::test7 - *** state is: crashed ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test8 - ######### TEST 8 #########
 AbstractThreadControlTest::test8 - *** just waiting for the thread ****
-AbstractThreadControl::await - wait until 2019-12-17T17:26:06.979430Z
-AbstractThreadControl::await - waiting 4991 ms
+AbstractThreadControl::await - wait until 2020-01-07T15:15:25.720998Z
+AbstractThreadControl::await - waiting 4992 ms
 AbstractThreadControl::await - wait done
 RunningState::done - set ready state
 AbstractThreadControlTest::test8 - *** state is: ready ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test9 - ######### TEST 9 #########
-AbstractThreadControl::await - wait until 2019-12-17T17:26:11.988363Z
+AbstractThreadControl::await - wait until 2020-01-07T15:15:30.737050Z
 AbstractThreadControl::await - waiting 5000 ms
 AbstractThreadControlTest::test9 - *** calling cancel on the awaiting thread ****
 AbstractThreadControl::cancel - ask the thread to cancel
@@ -179,7 +185,7 @@ RunningState::cancelTransition - set initial state
 AbstractThreadControlTest::test9 - *** state is: initial ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test10 - ######### TEST 10 #########
-AbstractThreadControl::await - wait until 2019-12-17T17:26:12.995070Z
+AbstractThreadControl::await - wait until 2020-01-07T15:15:31.746504Z
 AbstractThreadControl::await - waiting 5000 ms
 AbstractThreadControlTest::test10 - *** calling pause on the awaiting thread ****
 AbstractThreadControl::askPause - ask the thread to pause
@@ -192,13 +198,13 @@ AbstractThreadControl::unPause - waking up the paused thread
 AbstractThreadControl::checkPause - the thread is resumed
 TestToolControlOperations::resumeOperations - execute resume operations
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 1990 ms
+AbstractThreadControl::await - waiting 1989 ms
 AbstractThreadControl::await - wait done
 RunningState::done - set ready state
 AbstractThreadControlTest::test10 - *** state is: ready ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test11 - ######### TEST 11 #########
-AbstractThreadControl::await - wait until 2019-12-17T17:26:17.999962Z
+AbstractThreadControl::await - wait until 2020-01-07T15:15:36.753132Z
 AbstractThreadControl::await - waiting 5000 ms
 AbstractThreadControlTest::test11 - *** calling pause on the awaiting thread ****
 AbstractThreadControl::askPause - ask the thread to pause
