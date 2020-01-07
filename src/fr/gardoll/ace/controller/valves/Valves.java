@@ -32,7 +32,7 @@ public class Valves implements Closeable
     this._paracom = paraCom;
   }
   
-  private static final int ATTENTE_EV = 200 ; // en milisecondes
+  private static final long ATTENTE_EV = 200l ; // en milisecondes
   
   private static final Logger _LOG = LogManager.getLogger(Valves.class.getName());
   
