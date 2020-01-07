@@ -347,6 +347,7 @@ public class PousseSeringue implements Closeable
       try
       {
         this.interfacePousseSeringue.ratew(debit) ;
+        this.debitActuelAspiration = debit ;
       }
       catch(SerialComException e)
       {
@@ -354,8 +355,6 @@ public class PousseSeringue implements Closeable
             debit);
         throw new RuntimeException(msg, e);
       }
-      
-      this.debitActuelAspiration = debit ;
     }
   }
 
