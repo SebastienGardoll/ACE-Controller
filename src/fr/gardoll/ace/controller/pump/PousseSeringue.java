@@ -342,7 +342,7 @@ public class PousseSeringue implements Closeable
     // tient compte du nombre de seringue.
     debit = debit/_nbSeringue ;
 
-    if (debit != debitActuelAspiration)
+    if (debit != this.debitActuelAspiration)
     {
       try
       {
@@ -355,6 +355,10 @@ public class PousseSeringue implements Closeable
             debit);
         throw new RuntimeException(msg, e);
       }
+    }
+    else
+    {
+      _LOG.debug(String.format("withdrawing rate is already at %s", this.debitActuelAspiration));
     }
   }
 
@@ -377,6 +381,7 @@ public class PousseSeringue implements Closeable
       try
       {
         this.interfacePousseSeringue.ratei(debit) ;
+        this.debitActuelRefoulement = debit ;
       }
       catch(SerialComException e)
       {
@@ -384,8 +389,10 @@ public class PousseSeringue implements Closeable
             debit);
         throw new RuntimeException(msg, e);
       }
-      
-      this.debitActuelRefoulement = debit ;
+    }
+    else
+    {
+      _LOG.debug(String.format("infusion rate is already at %s", this.debitActuelRefoulement));
     }
   }
   
