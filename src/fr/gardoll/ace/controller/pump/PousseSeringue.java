@@ -20,7 +20,7 @@ public class PousseSeringue implements Closeable
 {
   // temps d'attente entre la détection d'une fin de pompage
   // et la fermeture des EV <=> équilibre des pressions dans les tuyaux.
-  public final static int ATTENTE_FERMETURE_EV = 1000 ;
+  public final static long ATTENTE_FERMETURE_EV = 1000l ; // Milliseconds.
                                               
   //volume laissé entre le piston et la fin du corps de la seringue par seringue
   //ceci dut à la forme conique de la fin du corps de la seringue
