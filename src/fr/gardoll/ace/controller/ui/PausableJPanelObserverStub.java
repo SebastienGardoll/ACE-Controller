@@ -79,14 +79,6 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   protected void enableStartControl(boolean isEnable)
   {
     _LOG.trace(String.format("start control set to %s", isEnable));
-    if(isEnable)
-    {
-      this._syncMove.release();
-    }
-    else
-    {
-      this._syncMove.drainPermits();
-    }
   }
 
   @Override
@@ -105,6 +97,15 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   protected void enableCloseControl(boolean isEnable)
   {
     _LOG.trace(String.format("close control set to %s", isEnable));
+    
+    if(isEnable)
+    {
+      this._syncMove.release();
+    }
+    else
+    {
+      this._syncMove.drainPermits();
+    }
   }
   
   @Override
