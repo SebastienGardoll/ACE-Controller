@@ -507,7 +507,7 @@ public class Passeur implements Closeable
   //dimension en mm en rapport avec au carrousel !
   public int convertCarrousel(double dimension)
   {
-    double raw = (Math.asin(dimension / rayon) *  NB_PAS_TOUR_CARROUSEL) / ( 2 * Math.PI) ; 
+    double raw = (Math.asin(dimension / rayon) *  NB_PAS_TOUR_CARROUSEL) / ( 2. * Math.PI) ; 
     int result = ((int) (raw));
     _LOG.debug(String.format("convert %s millimeter into %s number of carousel steps",
                               dimension, result));
