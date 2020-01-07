@@ -21,7 +21,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 //TODO: singleton.
 public class InterfacePousseSeringue  implements Closeable, PumpController
 {
-  private static final long OPENING_DELAY = 2000l;
+  private static final long _OPENING_DELAY = 2000l;
   
   private static final Pattern _DELIVER_PATTERN = Pattern.compile("([0-9.]+)\\s+(u|m)l\\s+(:|>|<)");
   private static final Pattern _NA_PATTERN = Pattern.compile("NA\\s+(:|>|<)");
@@ -69,7 +69,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       this._port.setParite(Parity.NOPARITY);
       this._port.setControlFlux(FlowControl.XON_XOFF);
       this._port.setTimeOut(300) ;
-      this._port.open(OPENING_DELAY);
+      this._port.open(_OPENING_DELAY);
       
     }
     catch(SerialComException e)
