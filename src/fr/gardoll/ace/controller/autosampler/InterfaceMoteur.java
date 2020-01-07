@@ -21,7 +21,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   private static final long _OPENING_DELAY = 2000l;
   
   // nombre de signaux en sortis de l'interface.
-  private final static int NB_BITS = 7 ;
+  private final static int _NB_BITS = 7 ;
   
   private static final Logger _LOG = LogManager.getLogger(InterfaceMoteur.class.getName());
   
@@ -293,10 +293,10 @@ public class InterfaceMoteur implements Closeable, MotorController
   @Override
   public void out(int bitPosition, boolean isOn) throws SerialComException
   { 
-    if (bitPosition > NB_BITS )
+    if (bitPosition > _NB_BITS )
     {
       String msg = String.format("the position of the bit '%s' cannot be greater than %s",
-          bitPosition, NB_BITS);
+          bitPosition, _NB_BITS);
       throw new RuntimeException(msg);
     }
     
