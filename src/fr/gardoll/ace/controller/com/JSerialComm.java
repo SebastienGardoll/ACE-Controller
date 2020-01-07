@@ -48,7 +48,7 @@ public class JSerialComm implements SerialCom
   
   // Time (milliseconds) to wait after opening the port.
   @Override
-  public void open(int openingDelay) throws SerialComException
+  public void open(long openingDelay) throws SerialComException
   {
     if (this._isOpened)
     {
@@ -455,7 +455,7 @@ public class JSerialComm implements SerialCom
       port.setParite(Parity.NOPARITY);
       port.setStopBit(StopBit.ONESTOPBIT);
       
-      port.open(1000);
+      port.open(1000l);
       
       String msg = "cou cou\n";
       System.out.println(String.format("sending: '%s'", msg)) ;

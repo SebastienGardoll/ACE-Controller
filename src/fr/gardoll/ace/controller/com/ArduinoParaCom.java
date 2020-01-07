@@ -7,7 +7,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 
 public class ArduinoParaCom implements ParaCom
 {
-  private static final int OPENING_DELAY = 2000;
+  private static final long OPENING_DELAY = 2000l;
   
   private static final Logger _LOG = LogManager.getLogger(ArduinoParaCom.class.getName());
   

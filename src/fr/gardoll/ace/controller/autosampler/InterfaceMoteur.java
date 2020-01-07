@@ -18,7 +18,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 //TODO: singleton.
 public class InterfaceMoteur implements Closeable, MotorController
 {
-  private static final int OPENING_DELAY = 2000;
+  private static final long OPENING_DELAY = 2000l;
   
   // nombre de signaux en sortis de l'interface.
   private final static int NB_BITS = 7 ;
