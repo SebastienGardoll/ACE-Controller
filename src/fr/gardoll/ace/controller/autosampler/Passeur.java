@@ -569,7 +569,7 @@ public class Passeur implements Closeable
   //dans les variables save_x et save_y
   //est recalculé si appel setOrigineXX mais attention à son utilité par la suite
   //appel obligatoire si l'on doit manipuler le passeur pendant une pause
-  public void saveCurrentPosition()
+  private void saveCurrentPosition()
   {  
     _LOG.debug(String.format("save the current position: x = %s ; y = %s ; top = %s",
         this.x, this.y, this._butee));
@@ -579,7 +579,7 @@ public class Passeur implements Closeable
   //revient à la position enregistrée par saveCurrentPosition
   //détermine si le bras bouge avant le carrousel
   //appel obligatoire si l'on doit manipuler le passeur pendant une pause
-  public void returnSavedPosition(boolean brasFirst)
+  private void returnSavedPosition(boolean brasFirst)
   {
     _LOG.debug(String.format("return to the saved position (with bras first: %s)", brasFirst));
     
