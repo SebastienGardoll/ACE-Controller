@@ -1,14 +1,16 @@
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -27,7 +29,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -41,22 +43,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -84,7 +88,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -97,22 +101,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -138,7 +144,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -151,22 +157,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -186,7 +194,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -199,22 +207,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -234,7 +244,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -247,22 +257,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
-AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -305,14 +317,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -363,14 +377,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -419,14 +435,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -469,14 +487,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -519,14 +539,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -561,7 +583,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -575,22 +597,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -634,7 +658,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -647,22 +671,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -704,7 +730,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -717,22 +743,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -768,7 +796,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -781,22 +809,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -832,7 +862,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -845,22 +875,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -881,7 +913,7 @@ Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -894,22 +926,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -930,7 +964,7 @@ Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -943,22 +977,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -975,7 +1011,7 @@ Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -988,22 +1024,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -1048,14 +1086,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -1100,14 +1140,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -1148,14 +1190,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -1192,7 +1236,7 @@ Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -1205,22 +1249,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -1257,7 +1303,7 @@ Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -1270,22 +1316,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -1318,7 +1366,7 @@ Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -1331,22 +1379,24 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -1419,7 +1469,7 @@ MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
+CloseableState::reinit - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
@@ -1428,14 +1478,16 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
