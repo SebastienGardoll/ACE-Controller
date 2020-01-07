@@ -548,22 +548,6 @@ public class PousseSeringue implements Closeable
     }
   }
 
-  // règle le diamètre de la seringue en mm.
-  public void setDiametreSeringue(double diametre)
-  {
-    try
-    {
-      _LOG.debug(String.format("setting the syringe diameter to '%s'", diametre));
-      this.interfacePousseSeringue.dia(diametre);
-    }
-    catch(SerialComException e)
-    {
-      String msg = String.format("error while setting the diameter of the seringe '%s'",
-          diametre);
-      throw new RuntimeException(msg, e);
-    }
-  }
-
   // retourne le volume déjà délivré.
   public double volumeDelivre()
   { 
