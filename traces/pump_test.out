@@ -1,22 +1,26 @@
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 PumpToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
+ParametresSession::getPousseSeringue - instantiating the pump
 PumpControllerStub::<init> - instanciating pump controller stub
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -46,20 +50,24 @@ PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 pumpThread::threadLogic - line 1 is clean
 pumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -73,8 +81,8 @@ Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - pump is already drained
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 PumpToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
@@ -87,22 +95,26 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
+ParametresSession::getPousseSeringue - instantiating the pump
 PumpControllerStub::<init> - instanciating pump controller stub
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -132,13 +144,17 @@ PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 pumpThread::threadLogic - line 1 is clean
 pumpThread::threadLogic - begin to clean line 2
@@ -146,13 +162,17 @@ PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '2'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '2'
 Valves::ouvrir - openning the valve '2'
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 pumpThread::threadLogic - line 2 is clean
 pumpThread::threadLogic - begin to clean line 3
@@ -160,20 +180,24 @@ PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '3'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '3'
 Valves::ouvrir - openning the valve '3'
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 pumpThread::threadLogic - line 3 is clean
 pumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -187,8 +211,8 @@ Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - pump is already drained
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 PumpToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
@@ -201,22 +225,26 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
+ParametresSession::getPousseSeringue - instantiating the pump
 PumpControllerStub::<init> - instanciating pump controller stub
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -246,7 +274,9 @@ PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
@@ -254,7 +284,9 @@ Valves::ouvrir - openning the withdrawing valve
 RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -291,22 +323,26 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
+ParametresSession::getPousseSeringue - instantiating the pump
 PumpControllerStub::<init> - instanciating pump controller stub
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -336,15 +372,19 @@ PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -369,7 +409,7 @@ pumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -383,8 +423,8 @@ Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - pump is already drained
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 PumpToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
@@ -397,22 +437,26 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
+ParametresSession::getPousseSeringue - instantiating the pump
 PumpControllerStub::<init> - instanciating pump controller stub
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -444,7 +488,9 @@ Valves::ouvrir - openning the H2O valve
 RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -506,22 +552,26 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
+ParametresSession::getPousseSeringue - instantiating the pump
 PumpControllerStub::<init> - instanciating pump controller stub
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
@@ -551,9 +601,11 @@ PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -577,14 +629,16 @@ PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 pumpThread::threadLogic - line 1 is clean
 pumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
-ReadyState::close - reinit before closing
+CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
 Passeur::moveButeBras - move the arm to the top
@@ -598,8 +652,8 @@ Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - pump is already drained
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
-ReadyState::reinit - set initial state
-ReadyState::close - closing after reinit
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
 PumpToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
