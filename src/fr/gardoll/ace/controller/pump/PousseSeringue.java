@@ -542,7 +542,7 @@ public class PousseSeringue implements Closeable
         this.interfacePousseSeringue.run();
         this._pause = false ;
       }
-      catch(SerialComException|ParaComException e)
+      catch(SerialComException | ParaComException e)
       {
         String msg = "error while resuming the pump";
         throw new RuntimeException(msg, e);
@@ -583,12 +583,12 @@ public class PousseSeringue implements Closeable
   { 
     double volumeUtile = PousseSeringue._volumeReel ;
 
-    if (flagVolSecu) 
+    if (this.flagVolSecu) 
     {
       volumeUtile -= VOL_SECU  ;
     }
 
-    double result = (volumeUtile  * _nbSeringue) ;
+    double result = (volumeUtile  * this._nbSeringue) ;
     _LOG.debug(String.format("total raiming volume is '%s'", result));
     return result;                      
   }
