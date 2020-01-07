@@ -20,7 +20,7 @@ public class JSerialComm implements SerialCom
   
   private SerialPort _port    = null ;
   private Charset _charset    = JSerialComm.ASCII_CHARSET; // DEFAULT
-  private int _sizeReadBuffer = 256; // DEFAULT
+  private int _readBufferSize = 256; // DEFAULT
   private boolean _isOpened   = false;
   private String _id          = "unknown" ;
   private int _readMode       = SerialPort.TIMEOUT_READ_BLOCKING ;
@@ -282,7 +282,7 @@ public class JSerialComm implements SerialCom
   
   private SimpleEntry<Integer, byte[]> internal_read() throws SerialComException
   {
-    byte[] buffer = new byte[this._sizeReadBuffer] ;
+    byte[] buffer = new byte[this._readBufferSize] ;
     int nb_byte_read = 0 ;
     
     try
@@ -426,7 +426,7 @@ public class JSerialComm implements SerialCom
   @Override
   public void setReadBufferSize(int nbOfBytes)
   {
-    this._sizeReadBuffer = nbOfBytes;
+    this._readBufferSize = nbOfBytes;
   }
 
   @Override
