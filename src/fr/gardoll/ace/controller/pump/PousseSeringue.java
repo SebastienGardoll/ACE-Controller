@@ -392,7 +392,7 @@ public class PousseSeringue implements Closeable
   
   public void finPompage()
   {
-    this.finPompage(false);
+    this.finPompage(true);
   }
   
   // attente de la fin de l'aspiration ou refoulement
