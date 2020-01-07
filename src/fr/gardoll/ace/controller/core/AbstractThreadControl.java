@@ -183,7 +183,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
       if(false == this._has_to_pause   &&
@@ -234,7 +234,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
       if(this._has_to_pause           &&
@@ -280,7 +280,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
       if(this._is_pausing == false &&
@@ -304,7 +304,7 @@ public abstract class AbstractThreadControl extends Thread
           }
           catch (InterruptedException e)
           {
-            new RuntimeException(e);
+            throw new RuntimeException(e);
           }
         }
         
@@ -341,7 +341,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
       try
@@ -379,7 +379,7 @@ public abstract class AbstractThreadControl extends Thread
           }
           catch (InterruptedException e)
           {
-            new RuntimeException(e);
+            throw new RuntimeException(e);
           }
         }
       }
@@ -434,7 +434,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
       if(false == this._has_to_pause  &&
@@ -475,7 +475,7 @@ public abstract class AbstractThreadControl extends Thread
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
       if(this._is_canceling == false &&

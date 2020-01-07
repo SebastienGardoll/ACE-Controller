@@ -413,7 +413,7 @@ public class PousseSeringue implements Closeable
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
       try

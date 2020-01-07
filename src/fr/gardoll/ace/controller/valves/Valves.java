@@ -116,7 +116,7 @@ public class Valves implements Closeable
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       } 
     }
     catch(ParaComException e)

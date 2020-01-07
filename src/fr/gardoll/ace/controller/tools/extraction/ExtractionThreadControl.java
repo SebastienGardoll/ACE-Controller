@@ -324,7 +324,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       }
       catch (InterruptedException e)
       {
-        new RuntimeException(e);
+        throw new RuntimeException(e);
       }
       
     } //fin du for
