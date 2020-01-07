@@ -133,7 +133,7 @@ public class PousseSeringue implements Closeable
     }
     else if (debitMaxPousseSeringue > debitMaxIntrinseque(diametreSeringue))
     {
-      String msg = String.format("the value of the maximum rate '%s' cannot be greater than %s ",
+      String msg = String.format("the value of the maximum rate '%s' cannot be greater than %s",
                                  debitMaxPousseSeringue,
                                  debitMaxIntrinseque(diametreSeringue));
       throw new InitializationException(msg);
@@ -245,7 +245,7 @@ public class PousseSeringue implements Closeable
       _LOG.debug("run the pump");
       this.interfacePousseSeringue.run();
     }
-    catch(SerialComException|ParaComException e)
+    catch(SerialComException | ParaComException e)
     {
       String msg = String.format("error while withdrawing the volume '%s' from isolation valve '%s'",
           volume, numEv);
@@ -297,7 +297,7 @@ public class PousseSeringue implements Closeable
       _LOG.debug("run the pump");
       this.interfacePousseSeringue.run();
     }
-    catch(SerialComException|ParaComException e)
+    catch(SerialComException | ParaComException e)
     {
       String msg = String.format("error while infusing the volume '%s' to isolation valve '%s'",
           volume, numEv);
