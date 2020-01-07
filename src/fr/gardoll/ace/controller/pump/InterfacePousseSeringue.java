@@ -34,7 +34,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   private final SerialCom _port;
   
   // dépendant uniquement du diametre du type de seringue utilisé.
-  private final int _debitMaxIntrinseque;
+  private int _debitMaxIntrinseque;
   
   static
   {
@@ -79,12 +79,8 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       throw new InitializationException(msg, e);
     }
  
-    // contient le code de vérification.
-    this._debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametreSeringue);
-    
     try
     {
-      _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
       this.dia(diametreSeringue);
     }
     catch(SerialComException e)
@@ -190,6 +186,12 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   public void dia(double diametre) throws SerialComException
   {
     _LOG.trace(String.format("setting the diameter to '%s'", diametre));
+    
+    // contient le code de vérification.
+    this._debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametre);
+    
+    _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
+    
     String ordre = String.format("dia %s\r", formatage(diametre)) ;
     this.traitementOrdre (ordre);
   }
