@@ -219,7 +219,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   private static double innerDeliver(String rawMessage) throws SerialComException
   {
-    _LOG.trace(String.format("delivered brut msg: '%s'", rawMessage));
+    // _LOG.trace(String.format("delivered raw msg: '%s'", rawMessage));
     
     Matcher m = _DELIVER_PATTERN.matcher(rawMessage);
     
@@ -240,7 +240,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       throw new SerialComException(msg);
     }
     
-    _LOG.trace(String.format("the delivered volume is %s", result));
+    // _LOG.trace(String.format("the delivered volume is %s", result));
     
     return result;
   }
