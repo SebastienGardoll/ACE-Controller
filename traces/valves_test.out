@@ -1,89 +1,93 @@
 ValvesToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ValvesToolTest::scriptedTest1 - ******************** scripted test1
 ValvesToolTest::scriptedTest1 - * open sequentially every valve *
-ValvesToolControl::handleValve - openning valve 0 (new valve)
+ValvesToolControl::handleValve - openning valve 0
 Valves::ouvrir - shutting all the valves
-ValvesToolControl::handleValve - openning valve 1 (new valve)
+ValvesToolControl::handleValve - closing valve 0, openning valve 1
 Valves::ouvrir - openning the H2O valve
-ValvesToolControl::handleValve - openning valve 2 (new valve)
+ValvesToolControl::handleValve - closing valve 1, openning valve 2
 Valves::ouvrir - openning the valve '2'
-ValvesToolControl::handleValve - openning valve 3 (new valve)
+ValvesToolControl::handleValve - closing valve 2, openning valve 3
 Valves::ouvrir - openning the valve '3'
-ValvesToolControl::handleValve - openning valve 4 (new valve)
+ValvesToolControl::handleValve - closing valve 3, openning valve 4
 Valves::ouvrir - openning the valve '4'
-ValvesToolControl::handleValve - openning valve 5 (new valve)
+ValvesToolControl::handleValve - closing valve 4, openning valve 5
 Valves::ouvrir - openning the valve '5'
-ValvesToolControl::handleValve - openning valve 6 (new valve)
+ValvesToolControl::handleValve - closing valve 5, openning valve 6
 Valves::ouvrir - openning the valve '6'
-ValvesToolControl::handleValve - openning valve 7 (new valve)
+ValvesToolControl::handleValve - closing valve 6, openning valve 7
 Valves::ouvrir - openning the withdrawing valve
 ValvesToolTest::tearDown - ******************** teardown
 ParametresSession::close - closing parameter session
 Valves::close - closing the valves
-AbstractCloseableToolControl::run - running the close operations
 Valves::ouvrir - shutting all the valves
+AbstractCloseableToolControl::run - running the close operations
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
-InitialState::close - set closed state
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
+InitialState::close - set closed state
 ValvesToolTest::setUp - ******************** setup
-ParametresSession::<init> - fetch the configuration
-ParametresSession::<init> - fetch root dir
-ParametresSession::<init> - read ace controller configuration
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - read pump configuration
-ParametresSession::<init> - read autosampler configuration
-ParametresSession::<init> - read paracom configuration
-ParametresSession::<init> - performing data checking
+ParametresSession::loadConf - load the basic configuration
+ParametresSession::loadConf - fetch root dir
+ParametresSession::loadConf - read ace controller configuration
+ParametresSession::loadConf - isDebug returns true
+ParametresSession::loadConf - isFullScreen returns false
+ParametresSession::loadConf - read pump configuration
+ParametresSession::loadConf - read autosampler configuration
+ParametresSession::loadConf - read paracom configuration
+ParametresSession::loadConf - performing data checking
+ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ValvesToolTest::scriptedTest2 - ******************** scripted test2
 ValvesToolTest::scriptedTest2 - * open and shut sequentially every valve *
-ValvesToolControl::handleValve - openning valve 1 (new valve)
+ValvesToolControl::handleValve - openning valve 1
 Valves::ouvrir - openning the H2O valve
 ValvesToolControl::handleValve - closing valve 1
 Valves::ouvrir - shutting all the valves
-ValvesToolControl::handleValve - openning valve 2 (new valve)
+ValvesToolControl::handleValve - openning valve 2
 Valves::ouvrir - openning the valve '2'
 ValvesToolControl::handleValve - closing valve 2
 Valves::ouvrir - shutting all the valves
-ValvesToolControl::handleValve - openning valve 3 (new valve)
+ValvesToolControl::handleValve - openning valve 3
 Valves::ouvrir - openning the valve '3'
 ValvesToolControl::handleValve - closing valve 3
 Valves::ouvrir - shutting all the valves
-ValvesToolControl::handleValve - openning valve 4 (new valve)
+ValvesToolControl::handleValve - openning valve 4
 Valves::ouvrir - openning the valve '4'
 ValvesToolControl::handleValve - closing valve 4
 Valves::ouvrir - shutting all the valves
-ValvesToolControl::handleValve - openning valve 5 (new valve)
+ValvesToolControl::handleValve - openning valve 5
 Valves::ouvrir - openning the valve '5'
 ValvesToolControl::handleValve - closing valve 5
 Valves::ouvrir - shutting all the valves
-ValvesToolControl::handleValve - openning valve 6 (new valve)
+ValvesToolControl::handleValve - openning valve 6
 Valves::ouvrir - openning the valve '6'
 ValvesToolControl::handleValve - closing valve 6
 Valves::ouvrir - shutting all the valves
-ValvesToolControl::handleValve - openning valve 7 (new valve)
+ValvesToolControl::handleValve - openning valve 7
 Valves::ouvrir - openning the withdrawing valve
 ValvesToolControl::handleValve - closing valve 7
 Valves::ouvrir - shutting all the valves
 ValvesToolTest::tearDown - ******************** teardown
 ParametresSession::close - closing parameter session
-AbstractCloseableToolControl::run - running the close operations
 Valves::close - closing the valves
+AbstractCloseableToolControl::run - running the close operations
 Valves::ouvrir - shutting all the valves
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
