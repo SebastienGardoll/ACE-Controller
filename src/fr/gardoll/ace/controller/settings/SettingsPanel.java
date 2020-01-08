@@ -3,8 +3,16 @@ package fr.gardoll.ace.controller.settings ;
 import java.util.ArrayList ;
 import java.util.List ;
 
+import org.apache.logging.log4j.LogManager ;
+import org.apache.logging.log4j.Logger ;
+
+import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.ui.UiUtils ;
+
 public class SettingsPanel extends javax.swing.JPanel
 {
+  private static final Logger _LOG = LogManager.getLogger(SettingsPanel.class.getName());
+  
   private static final long serialVersionUID = 2498266605755338610L ;
 
   private final List<Panel> _panels = new ArrayList<Panel>() ;
@@ -114,12 +122,33 @@ public class SettingsPanel extends javax.swing.JPanel
 
   private void okButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    boolean succeeded = true;
+    
+    for(Panel panel: this._panels)
+    {
+      try
+      {
+        _LOG.info(String.format("saving panel %s", panel.getName()));
+        panel.save();
+      }
+      catch (Exception e)
+      {
+        String msg = String.format("error while saving panel %s", panel.getName());
+        _LOG.error(msg, e);
+        Utils.reportError(msg, e);
+        succeeded = false;
+      }
+    }
+    
+    if(succeeded)
+    {
+      UiUtils.getParentDialog(this).dispose();
+    }
   }
 
   private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    UiUtils.getParentDialog(this).dispose();
   }
 
   // Variables declaration - do not modify

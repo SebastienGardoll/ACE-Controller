@@ -20,6 +20,25 @@ public class GeneralPanel extends javax.swing.JPanel implements Panel
   {
     initComponents() ;
     initCustom() ;
+    load();
+  }
+
+  private void load()
+  {
+    // TODO 
+  }
+  
+  @Override
+  public void save() throws ConfigurationException
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  public String getName()
+  {
+    return GeneralPanel.NAME;
   }
 
   private void initCustom()
@@ -331,17 +350,4 @@ public class GeneralPanel extends javax.swing.JPanel implements Panel
   private javax.swing.ButtonGroup syringebuttonGroup ;
   private javax.swing.JRadioButton twoSyringeRadioButton ;
   // End of variables declaration
-
-  @Override
-  public void save()  throws ConfigurationException
-  {
-    // TODO Auto-generated method stub
-    
-  }
-
-  @Override
-  public String getPanelName()
-  {
-    return GeneralPanel.NAME;
-  }
 }
