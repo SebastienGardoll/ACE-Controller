@@ -66,7 +66,7 @@ public class InitSession
       throw new InitializationException(msg) ;
     }
     
-    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne() - 1;
+    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne();
     if(this.nbColonne > maxColumnUtil)
     {
       String msg = String.format("number of columns cannot be greater than %s", maxColumnUtil);

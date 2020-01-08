@@ -235,6 +235,7 @@ public class ParametresSession implements Closeable
       this._diametreCarrousel = section.getInteger(Names.SIC_CLEF_DIA, -1);
       this._epaisseur         = section.getInteger(Names.SIC_CLEF_EPAISSEUR, -1);
       this._nbMaxColonne      = section.getInteger(Names.SIC_CLEF_NB_COL , -1) ;
+      this._nbMaxColonne--; // Minus the trash that takes a column position.
       
       section.close();
     }

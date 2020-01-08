@@ -63,7 +63,7 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
 
   private void initCustom()
   {
-    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne() - 1 ;
+    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne();
 
     SpinnerNumberModel nbColumnModel = new SpinnerNumberModel(
         _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, maxColumnUtil,
