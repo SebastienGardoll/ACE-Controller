@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.SettingsFrame ;
 import fr.gardoll.ace.controller.tools.autosampler.AutosamplerToolFrame ;
 import fr.gardoll.ace.controller.tools.extraction.ExtractionToolFrame ;
 import fr.gardoll.ace.controller.tools.pump.PumpToolFrame ;
@@ -44,6 +45,14 @@ public class MainToolPanel extends javax.swing.JPanel
     autosamplerButton = new javax.swing.JButton() ;
     pumpButton = new javax.swing.JButton() ;
     valvesButton = new javax.swing.JButton() ;
+    settingsPanel = new javax.swing.JPanel() ;
+    generalSettignsjButton = new javax.swing.JButton() ;
+    filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
+        new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767)) ;
+    filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
+        new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767)) ;
+    filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
+        new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767)) ;
     buttonPanel = new javax.swing.JPanel() ;
     closeButton = new javax.swing.JButton() ;
     filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0),
@@ -125,6 +134,52 @@ public class MainToolPanel extends javax.swing.JPanel
     toolsPanel.add(valvesButton, gridBagConstraints) ;
 
     tabbedPane.addTab("tools", toolsPanel) ;
+
+    settingsPanel.setLayout(new java.awt.GridBagLayout()) ;
+
+    generalSettignsjButton.setText("general") ;
+    generalSettignsjButton.addActionListener(new java.awt.event.ActionListener()
+    {
+      @Override
+      public void actionPerformed(java.awt.event.ActionEvent evt)
+      {
+        generalSettignsjButtonActionPerformed(evt) ;
+      }
+    }) ;
+    gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 0 ;
+    gridBagConstraints.gridy = 0 ;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
+    settingsPanel.add(generalSettignsjButton, gridBagConstraints) ;
+    gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 1 ;
+    gridBagConstraints.gridy = 0 ;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
+    settingsPanel.add(filler3, gridBagConstraints) ;
+    gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 0 ;
+    gridBagConstraints.gridy = 1 ;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
+    settingsPanel.add(filler4, gridBagConstraints) ;
+    gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 1 ;
+    gridBagConstraints.gridy = 1 ;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
+    settingsPanel.add(filler5, gridBagConstraints) ;
+
+    tabbedPane.addTab("settings", settingsPanel) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
@@ -294,6 +349,33 @@ public class MainToolPanel extends javax.swing.JPanel
     }
   }
 
+  private void generalSettignsjButtonActionPerformed(
+      java.awt.event.ActionEvent evt)
+  {
+    try
+    {
+      SettingsFrame frame ;
+      frame = SettingsFrame.instantiate() ;
+      frame.setVisible(true) ;
+    }
+    catch (Exception e)
+    {
+      String msg = null ;
+
+      if (e.getCause() instanceof InitializationException)
+      {
+        msg = "intialisation has crashed" ;
+      }
+      else
+      {
+        msg = "settings editor has crashed" ;
+      }
+
+      _LOG.fatal(msg, e) ;
+      Utils.reportError(msg, e) ;
+    }
+  }
+
   // Variables declaration - do not modify
   private javax.swing.JButton autosamplerButton ;
   private javax.swing.JPanel buttonPanel ;
@@ -301,7 +383,12 @@ public class MainToolPanel extends javax.swing.JPanel
   private javax.swing.JButton extractionButton ;
   private javax.swing.Box.Filler filler1 ;
   private javax.swing.Box.Filler filler2 ;
+  private javax.swing.Box.Filler filler3 ;
+  private javax.swing.Box.Filler filler4 ;
+  private javax.swing.Box.Filler filler5 ;
+  private javax.swing.JButton generalSettignsjButton ;
   private javax.swing.JButton pumpButton ;
+  private javax.swing.JPanel settingsPanel ;
   private javax.swing.JTabbedPane tabbedPane ;
   private javax.swing.JPanel toolsPanel ;
   private javax.swing.JButton valvesButton ;

@@ -34,11 +34,11 @@ public class SettingsFrame extends AbstractToolFrame
       
       if(e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed";
+        msg = "intialisation of the settings editor has crashed";
       }
       else
       {
-        msg = "settings has crashed";
+        msg = "settings editor has crashed";
       }
       
       _LOG.fatal(msg, e);
