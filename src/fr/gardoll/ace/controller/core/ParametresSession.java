@@ -14,7 +14,6 @@ import java.util.Set ;
 
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
-import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
@@ -549,19 +548,11 @@ public class ParametresSession implements Closeable
   {
     try
     {
-      Configurations configs = new Configurations();
-      FileBasedConfigurationBuilder<INIConfiguration> iniBuilder = configs.iniBuilder(this._configurationFile.toFile());
-      INIConfiguration iniConf = iniBuilder.getConfiguration();  
-      SubnodeConfiguration sectionNode = iniConf.getSection(section);
-      sectionNode.setProperty(key, value);
-      sectionNode.close();
-      iniBuilder.save();
+      Utils.persistPropertyData(this._configurationFile, section, key, value);
     }
     catch(Exception e)
     {
-      String msg = String.format("unable to persist section '%s' ; key '%s' ; value '%s'",
-                                  section, key, value);
-      throw new InitializationException(msg, e);
+      throw new InitializationException(e);
     }
   }
 

@@ -5,6 +5,7 @@ import fr.gardoll.ace.controller.core.ConfigurationException ;
 public class GeneralPanel extends javax.swing.JPanel implements Panel
 {
   private static final long serialVersionUID = -4086064621880324437L ;
+  public static final String NAME = "general" ;
 
   /**
    * Creates new form PumpPanel
@@ -315,7 +316,6 @@ public class GeneralPanel extends javax.swing.JPanel implements Panel
   @Override
   public String getPanelName()
   {
-    // TODO Auto-generated method stub
-    return null ;
+    return GeneralPanel.NAME;
   }
 }

@@ -13,4 +13,9 @@ public class InitializationException extends Exception
   {
     super(msg, e) ;
   }
+  
+  public InitializationException(Throwable e)
+  {
+    super(e) ;
+  }
 }
