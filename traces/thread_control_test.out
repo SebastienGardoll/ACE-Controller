@@ -168,14 +168,14 @@ AbstractThreadControlTest::test7 - *** state is: crashed ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test8 - ######### TEST 8 #########
 AbstractThreadControlTest::test8 - *** just waiting for the thread ****
-AbstractThreadControl::await - wait until 2020-01-07T15:15:25.720998Z
+AbstractThreadControl::await - wait until 2020-01-08T18:40:51.872712Z
 AbstractThreadControl::await - waiting 4992 ms
 AbstractThreadControl::await - wait done
 RunningState::done - set ready state
 AbstractThreadControlTest::test8 - *** state is: ready ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test9 - ######### TEST 9 #########
-AbstractThreadControl::await - wait until 2020-01-07T15:15:30.737050Z
+AbstractThreadControl::await - wait until 2020-01-08T18:40:56.912069Z
 AbstractThreadControl::await - waiting 5000 ms
 AbstractThreadControlTest::test9 - *** calling cancel on the awaiting thread ****
 AbstractThreadControl::cancel - ask the thread to cancel
@@ -185,7 +185,7 @@ RunningState::cancelTransition - set initial state
 AbstractThreadControlTest::test9 - *** state is: initial ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test10 - ######### TEST 10 #########
-AbstractThreadControl::await - wait until 2020-01-07T15:15:31.746504Z
+AbstractThreadControl::await - wait until 2020-01-08T18:40:57.920528Z
 AbstractThreadControl::await - waiting 5000 ms
 AbstractThreadControlTest::test10 - *** calling pause on the awaiting thread ****
 AbstractThreadControl::askPause - ask the thread to pause
@@ -198,13 +198,13 @@ AbstractThreadControl::unPause - waking up the paused thread
 AbstractThreadControl::checkPause - the thread is resumed
 TestToolControlOperations::resumeOperations - execute resume operations
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 1989 ms
+AbstractThreadControl::await - waiting 1996 ms
 AbstractThreadControl::await - wait done
 RunningState::done - set ready state
 AbstractThreadControlTest::test10 - *** state is: ready ***
 AbstractThreadControlTest::teardown - *** end of test ***
 AbstractThreadControlTest::test11 - ######### TEST 11 #########
-AbstractThreadControl::await - wait until 2020-01-07T15:15:36.753132Z
+AbstractThreadControl::await - wait until 2020-01-08T18:41:02.926601Z
 AbstractThreadControl::await - waiting 5000 ms
 AbstractThreadControlTest::test11 - *** calling pause on the awaiting thread ****
 AbstractThreadControl::askPause - ask the thread to pause
