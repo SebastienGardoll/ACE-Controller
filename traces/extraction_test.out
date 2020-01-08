@@ -1,15 +1,15 @@
 Passeur::convertBras - convert 50.0 millimeter into 6667 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -667,9 +667,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13653 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:02:16.623905Z
-AbstractThreadControl::await - waiting 13637 ms
+ExtractionThreadControl::threadLogic - wait 13635 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:39:24.455827Z
+AbstractThreadControl::await - waiting 13621 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -827,9 +827,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2976 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:02:40.586413Z
-AbstractThreadControl::await - waiting 2976 ms
+ExtractionThreadControl::processSequence - wait 2956 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:39:48.415839Z
+AbstractThreadControl::await - waiting 2956 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -1178,9 +1178,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9421 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:03:51.600642Z
-AbstractThreadControl::await - waiting 9421 ms
+ExtractionThreadControl::threadLogic - wait 9455 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:40:59.389485Z
+AbstractThreadControl::await - waiting 9455 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1224,15 +1224,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -1682,15 +1682,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -1887,9 +1887,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 3750 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:05:37.217527Z
-AbstractThreadControl::await - waiting 3750 ms
+ExtractionThreadControl::threadLogic - wait 3754 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:42:44.941446Z
+AbstractThreadControl::await - waiting 3754 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -1988,9 +1988,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
-ExtractionThreadControl::processSequence - wait 3744 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:05:51.167189Z
-AbstractThreadControl::await - waiting 3744 ms
+ExtractionThreadControl::processSequence - wait 3748 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:42:58.897890Z
+AbstractThreadControl::await - waiting 3748 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -2071,9 +2071,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9486 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:06:14.613949Z
-AbstractThreadControl::await - waiting 9486 ms
+ExtractionThreadControl::threadLogic - wait 9528 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:43:22.337562Z
+AbstractThreadControl::await - waiting 9528 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -2117,15 +2117,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -2502,15 +2502,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -2936,15 +2936,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -3426,15 +3426,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -3716,15 +3716,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4006,15 +4006,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4220,9 +4220,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4532 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:11:29.759532Z
-AbstractThreadControl::await - waiting 4532 ms
+ExtractionThreadControl::threadLogic - wait 4526 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:48:36.514915Z
+AbstractThreadControl::await - waiting 4526 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4257,7 +4257,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2404 ms
+AbstractThreadControl::await - waiting 2396 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4301,15 +4301,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4515,9 +4515,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4525 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:12:09.930892Z
-AbstractThreadControl::await - waiting 4525 ms
+ExtractionThreadControl::threadLogic - wait 4535 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:49:16.628428Z
+AbstractThreadControl::await - waiting 4535 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4552,7 +4552,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2392 ms
+AbstractThreadControl::await - waiting 2399 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4596,15 +4596,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4844,9 +4844,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4524 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:12:52.000593Z
-AbstractThreadControl::await - waiting 4524 ms
+ExtractionThreadControl::threadLogic - wait 4501 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:49:58.658920Z
+AbstractThreadControl::await - waiting 4501 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4890,15 +4890,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -5008,11 +5008,11 @@ Passeur::vibration - vibrate the arm
 ExtractionThreadControl::processSequence - don't need to wait the next column
 Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
-Passeur::moveOrigineBras - move the arm to its origin
-MotorControllerStub::move - % carousel doesn't have to move %
 RunningState::askPausing - waiting for pause
-Passeur::finMoveBras - waiting for the arm
+Passeur::moveOrigineBras - move the arm to its origin
 AbstractThreadControl::askPause - ask the thread to pause
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -5138,9 +5138,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4491 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:13:34.056077Z
-AbstractThreadControl::await - waiting 4491 ms
+ExtractionThreadControl::threadLogic - wait 4446 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:50:40.927939Z
+AbstractThreadControl::await - waiting 4446 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -5184,15 +5184,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -5392,9 +5392,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8755 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:14:14.264428Z
-AbstractThreadControl::await - waiting 8755 ms
+ExtractionThreadControl::processSequence - wait 8726 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:51:21.228647Z
+AbstractThreadControl::await - waiting 8726 ms
 RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
@@ -5474,15 +5474,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -5682,9 +5682,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8764 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T10:14:48.599921Z
-AbstractThreadControl::await - waiting 8764 ms
+ExtractionThreadControl::processSequence - wait 8706 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-08T16:51:55.809514Z
+AbstractThreadControl::await - waiting 8706 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -5705,7 +5705,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8255 ms
+AbstractThreadControl::await - waiting 8198 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *

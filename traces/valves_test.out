@@ -1,13 +1,13 @@
 ValvesToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -33,23 +33,23 @@ Valves::ouvrir - openning the withdrawing valve
 ValvesToolTest::tearDown - ******************** teardown
 ParametresSession::close - closing parameter session
 Valves::close - closing the valves
-Valves::ouvrir - shutting all the valves
 AbstractCloseableToolControl::run - running the close operations
+Valves::ouvrir - shutting all the valves
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
+InitialState::close - set closed state
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
-InitialState::close - set closed state
 ValvesToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -87,8 +87,8 @@ Valves::ouvrir - shutting all the valves
 ValvesToolTest::tearDown - ******************** teardown
 ParametresSession::close - closing parameter session
 Valves::close - closing the valves
-AbstractCloseableToolControl::run - running the close operations
 Valves::ouvrir - shutting all the valves
+AbstractCloseableToolControl::run - running the close operations
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
 InitialState::close - set closed state
