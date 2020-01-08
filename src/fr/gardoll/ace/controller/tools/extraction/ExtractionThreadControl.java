@@ -287,12 +287,12 @@ public class ExtractionThreadControl extends AbstractThreadControl
       
       //ok 10/01/06
       // +1 because between definition.
-      long tempsEcoule = Duration.between(tabTemps[numColonne-1], Instant.now()).toMillis() + 1;
+      long tempsEcoule = Duration.between(tabTemps[numColonne-1], Instant.now()).toMillis() + 1l;
       
       if(false == tempsPrecedent.isEmpty() &&
-         tempsEcoule < (tempsPrecedent.get() * 1000))
+         tempsEcoule < (tempsPrecedent.get() * 1000l))
       {
-        long timeToWait = tempsPrecedent.get() * 1000 - tempsEcoule;
+        long timeToWait = tempsPrecedent.get() * 1000l - tempsEcoule;
         
         String msg = String.format("wait %s ms until the next column percolates",
                                    timeToWait);
@@ -320,7 +320,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
       // are computed with this wait in all the protocols.
       try
       {
-        Thread.sleep(2000) ; //pourquoi Sleep ?
+        Thread.sleep(2000l) ; //pourquoi Sleep ?
       }
       catch (InterruptedException e)
       {
