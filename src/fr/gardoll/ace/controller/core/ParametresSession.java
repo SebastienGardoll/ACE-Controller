@@ -736,6 +736,8 @@ public class ParametresSession implements Closeable
   
   public void reset() throws InitializationException
   {
+    _LOG.debug("reset settings");
+    
     this.close();
     this.load();
   }
