@@ -123,11 +123,11 @@ public class ParametresSession implements Closeable
   
   private ParametresSession() throws InitializationException
   {
-    this.loadConf();
+    this.load();
   }
   
   // Reload conf but not Autosampler, Pump and Valves.
-  public void loadConf() throws InitializationException
+  public void load() throws InitializationException
   {
     _LOG.info("load the basic configuration");
     
@@ -732,6 +732,12 @@ public class ParametresSession implements Closeable
   public int nbMaxColonne()
   {
     return this._nbMaxColonne ;
+  }
+  
+  public void reset() throws InitializationException
+  {
+    this.close();
+    this.load();
   }
   
   @Override
