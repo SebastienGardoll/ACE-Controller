@@ -65,7 +65,7 @@ public class PumpToolControl extends AbstractPausableToolControl
     
     try
     {
-      pumpThread thread = new pumpThread(this, lines, volume);
+      PumpThread thread = new PumpThread(this, lines, volume);
       _LOG.debug("starting pump thread");
       this.start(thread);
     }
@@ -85,14 +85,14 @@ public class PumpToolControl extends AbstractPausableToolControl
   }
 }
 
-class pumpThread extends AbstractThreadControl
+class PumpThread extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(pumpThread.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(PumpThread.class.getName());
   
   private int _volume ;
   private SortedSet<Integer> _lines ;
 
-  public pumpThread(AbstractToolControl toolCtrl,
+  public PumpThread(AbstractToolControl toolCtrl,
                     SortedSet<Integer> lines,
                     int volume)
   {
