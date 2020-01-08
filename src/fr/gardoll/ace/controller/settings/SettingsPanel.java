@@ -30,9 +30,13 @@ public class SettingsPanel extends javax.swing.JPanel
 
   private void initCustom()
   {
-    GeneralPanel generalPanel = new GeneralPanel() ;
-    this.settingsTabbedPanel.add(generalPanel, "General") ;
+    PumpPanel generalPanel = new PumpPanel() ;
+    this.settingsTabbedPanel.add(generalPanel, "Pump") ;
     this._panels.add(generalPanel) ;
+    
+    MiscellaneousPanel miscPanel = new MiscellaneousPanel();
+    this.settingsTabbedPanel.add(miscPanel, "Misc") ;
+    this._panels.add(miscPanel) ;
   }
 
   /**
