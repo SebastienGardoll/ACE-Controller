@@ -249,7 +249,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
       if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed" ;
+        msg = "intialisation of the valves tool has crashed" ;
       }
       else
       {
@@ -275,7 +275,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
       if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed" ;
+        msg = "intialisation of the pump tool has crashed" ;
       }
       else
       {
@@ -301,7 +301,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
       if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed" ;
+        msg = "intialisation of the autosampler tool has crashed" ;
       }
       else
       {
@@ -327,7 +327,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
       if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed" ;
+        msg = "intialisation of the extraction tool has crashed" ;
       }
       else
       {
@@ -364,7 +364,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
       if (e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed" ;
+        msg = "intialisation of the settings editor has crashed" ;
       }
       else
       {

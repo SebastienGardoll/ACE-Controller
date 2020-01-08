@@ -32,7 +32,7 @@ public class ValvesToolFrame extends AbstractToolFrame
   
   public static void main(String[] args)
   {
-    _LOG.info("start the tool");
+    _LOG.info("starting the standalone valves tool");
     
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
@@ -45,11 +45,11 @@ public class ValvesToolFrame extends AbstractToolFrame
       
       if(e.getCause() instanceof InitializationException)
       {
-        msg = "intialisation has crashed";
+        msg = "intialization of the standalone valves tool has crashed";
       }
       else
       {
-        msg = "tool has crashed";
+        msg = "standalone valves tool has crashed";
       }
       
       _LOG.fatal(msg, e);
@@ -57,7 +57,7 @@ public class ValvesToolFrame extends AbstractToolFrame
     }
     finally
     {
-      _LOG.info("shutdown the tool");
+      _LOG.info("shutdown the standalone valves tool");
     }
   }
 

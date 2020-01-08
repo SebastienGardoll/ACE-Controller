@@ -30,7 +30,7 @@ public class ExtractionToolFrame extends AbstractToolFrame
   
   public static void main(String[] args)
   {
-    _LOG.info("start the tool");
+    _LOG.info("starting the standalone extraction tool");
     
     try(ParametresSession parametresSession = ParametresSession.getInstance())
     {
@@ -43,11 +43,11 @@ public class ExtractionToolFrame extends AbstractToolFrame
       
       if(e.getCause() instanceof InitializationException)
       {
-        msg = "initialisation has crashed";
+        msg = "initialisation of the standalone extraction tool has crashed";
       }
       else
       {
-        msg = "tool has crashed";
+        msg = "standalone extraction tool has crashed";
       }
       
       _LOG.fatal(msg, e);
@@ -55,7 +55,7 @@ public class ExtractionToolFrame extends AbstractToolFrame
     }
     finally
     {
-      _LOG.info("shutdown the tool");
+      _LOG.info("shutdown the standalone extraction tool");
     }
   }
 }
