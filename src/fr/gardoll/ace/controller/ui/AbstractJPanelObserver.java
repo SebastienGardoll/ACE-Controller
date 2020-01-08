@@ -399,7 +399,7 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       case POST_LAST_SEQ:
       {
-        msg = "starting last sequence post operations";
+        msg = "last sequence post operations";
         break;
       }
       
