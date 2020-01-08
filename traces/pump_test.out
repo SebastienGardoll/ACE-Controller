@@ -1,15 +1,15 @@
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 PumpToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -29,7 +29,7 @@ Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test1n - ******************** test1n clean line 1
 PumpToolControl::start - starting pump thread
 InitialState::start - set running state
-pumpThread::threadLogic - setup the arm
+PumpThread::threadLogic - setup the arm
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
 Passeur::moveButeBras - move the arm to the top
@@ -45,7 +45,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-pumpThread::threadLogic - begin to clean line 1
+PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
@@ -62,8 +62,8 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-pumpThread::threadLogic - line 1 is clean
-pumpThread::threadLogic - end
+PumpThread::threadLogic - line 1 is clean
+PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
@@ -95,15 +95,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -123,7 +123,7 @@ Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test2n - ******************** test2n clean line 1 to 3
 PumpToolControl::start - starting pump thread
 InitialState::start - set running state
-pumpThread::threadLogic - setup the arm
+PumpThread::threadLogic - setup the arm
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
 Passeur::moveButeBras - move the arm to the top
@@ -139,7 +139,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-pumpThread::threadLogic - begin to clean line 1
+PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
@@ -156,8 +156,8 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-pumpThread::threadLogic - line 1 is clean
-pumpThread::threadLogic - begin to clean line 2
+PumpThread::threadLogic - line 1 is clean
+PumpThread::threadLogic - begin to clean line 2
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '2'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '2'
 Valves::ouvrir - openning the valve '2'
@@ -174,8 +174,8 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-pumpThread::threadLogic - line 2 is clean
-pumpThread::threadLogic - begin to clean line 3
+PumpThread::threadLogic - line 2 is clean
+PumpThread::threadLogic - begin to clean line 3
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '3'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '3'
 Valves::ouvrir - openning the valve '3'
@@ -192,8 +192,8 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-pumpThread::threadLogic - line 3 is clean
-pumpThread::threadLogic - end
+PumpThread::threadLogic - line 3 is clean
+PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
@@ -225,15 +225,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -253,7 +253,7 @@ Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test1c - ******************** test1c cancel while infusing
 PumpToolControl::start - starting pump thread
 InitialState::start - set running state
-pumpThread::threadLogic - setup the arm
+PumpThread::threadLogic - setup the arm
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
 Passeur::moveButeBras - move the arm to the top
@@ -269,7 +269,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-pumpThread::threadLogic - begin to clean line 1
+PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
@@ -323,15 +323,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -351,7 +351,7 @@ Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test1p - ******************** test1p pause while infusing
 PumpToolControl::start - starting pump thread
 InitialState::start - set running state
-pumpThread::threadLogic - setup the arm
+PumpThread::threadLogic - setup the arm
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
 Passeur::moveButeBras - move the arm to the top
@@ -367,7 +367,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-pumpThread::threadLogic - begin to clean line 1
+PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
@@ -404,8 +404,8 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-pumpThread::threadLogic - line 1 is clean
-pumpThread::threadLogic - end
+PumpThread::threadLogic - line 1 is clean
+PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
@@ -437,15 +437,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -465,7 +465,7 @@ Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test2c - ******************** test2c cancel while withdrawing
 PumpToolControl::start - starting pump thread
 InitialState::start - set running state
-pumpThread::threadLogic - setup the arm
+PumpThread::threadLogic - setup the arm
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
 Passeur::moveButeBras - move the arm to the top
@@ -481,7 +481,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-pumpThread::threadLogic - begin to clean line 1
+PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
@@ -552,15 +552,15 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::loadConf - load the basic configuration
-ParametresSession::loadConf - fetch root dir
-ParametresSession::loadConf - read ace controller configuration
-ParametresSession::loadConf - isDebug returns true
-ParametresSession::loadConf - isFullScreen returns false
-ParametresSession::loadConf - read pump configuration
-ParametresSession::loadConf - read autosampler configuration
-ParametresSession::loadConf - read paracom configuration
-ParametresSession::loadConf - performing data checking
+ParametresSession::load - load the basic configuration
+ParametresSession::load - fetch root dir
+ParametresSession::load - read ace controller configuration
+ParametresSession::load - isDebug returns true
+ParametresSession::load - isFullScreen returns false
+ParametresSession::load - read pump configuration
+ParametresSession::load - read autosampler configuration
+ParametresSession::load - read paracom configuration
+ParametresSession::load - performing data checking
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -580,7 +580,7 @@ Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test2p - ******************** test2p pause while withdrawing
 PumpToolControl::start - starting pump thread
 InitialState::start - set running state
-pumpThread::threadLogic - setup the arm
+PumpThread::threadLogic - setup the arm
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
 Passeur::moveButeBras - move the arm to the top
@@ -596,7 +596,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-pumpThread::threadLogic - begin to clean line 1
+PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
@@ -633,8 +633,8 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-pumpThread::threadLogic - line 1 is clean
-pumpThread::threadLogic - end
+PumpThread::threadLogic - line 1 is clean
+PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl::run - running the close operations
