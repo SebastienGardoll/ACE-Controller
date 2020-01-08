@@ -1,11 +1,17 @@
 package fr.gardoll.ace.controller.settings ;
 
-import fr.gardoll.ace.controller.core.ConfigurationException ;
+import java.util.ArrayList ;
+import java.util.List ;
 
+import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.ui.TextFieldRealNumber ;
+
+// TODO check syringe volume against rince volume.
 public class GeneralPanel extends javax.swing.JPanel implements Panel
 {
   private static final long serialVersionUID = -4086064621880324437L ;
   public static final String NAME = "general" ;
+  private final List<TextFieldRealNumber> _realTextFields = new ArrayList<>();
 
   /**
    * Creates new form PumpPanel
@@ -20,6 +26,26 @@ public class GeneralPanel extends javax.swing.JPanel implements Panel
   {
     this.syringebuttonGroup.add(this.oneSyringeRadioButton) ;
     this.syringebuttonGroup.add(this.twoSyringeRadioButton) ;
+    
+    this._realTextFields.add(new TextFieldRealNumber("syringe volume",
+                               this.syringeVolumeTextField,
+                               0.,
+                               100.));
+    
+    this._realTextFields.add(new TextFieldRealNumber("pump max rate",
+                               this.pumpMaxRateTextField,
+                               0.,
+                               15.));
+    
+    this._realTextFields.add(new TextFieldRealNumber("rince volume",
+                               this.rinceVolumeTextField,
+                               0.,
+                               100.));
+    
+    this._realTextFields.add(new TextFieldRealNumber("syringe diameter",
+                               this.syringeDiameterTextField,
+                               0.,
+                               100.));
   }
 
   /**
