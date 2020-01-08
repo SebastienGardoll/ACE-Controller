@@ -151,8 +151,8 @@ public class ExtractionThreadControl extends AbstractThreadControl
       {
         // entre maintenant et la dernière colonne.
         // +1 because between definition.
-        long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toMillis() + 1;
-        long tempsAttente = currentSequence.temps * 1000 - tempsEcoule ;
+        long tempsEcoule = Duration.between(tabTemps[tabTemps.length-1], Instant.now()).toMillis() + 1l;
+        long tempsAttente = currentSequence.temps * 1000l - tempsEcoule ;
 
         if(tempsAttente > 0l)
         {
