@@ -11,7 +11,7 @@ import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.tools.autosampler.AutosamplerToolFrame ;
 import fr.gardoll.ace.controller.tools.extraction.ExtractionToolFrame ;
 import fr.gardoll.ace.controller.tools.pump.PumpToolFrame ;
-import fr.gardoll.ace.controller.tools.settings.SettingsFrame ;
+import fr.gardoll.ace.controller.tools.settings.general.SettingsFrame ;
 import fr.gardoll.ace.controller.tools.valves.ValvesToolFrame ;
 import fr.gardoll.ace.controller.ui.UiUtils ;
 

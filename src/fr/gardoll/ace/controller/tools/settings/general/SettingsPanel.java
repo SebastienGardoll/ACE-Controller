@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.tools.settings ;
+package fr.gardoll.ace.controller.tools.settings.general ;
 
 import java.util.ArrayList ;
 import java.util.List ;
