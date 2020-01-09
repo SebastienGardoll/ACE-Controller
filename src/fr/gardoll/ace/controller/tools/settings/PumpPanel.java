@@ -102,8 +102,15 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     double syringeVolume   =       this.syringeVolTextFieldRealNumber.parse();
     double syringeDiameter =       this.syringeDiaTextFieldRealNumber.parse();
     double pumpMaxRate     =       this.pumpMaxRateTextFieldRealNumber.parse();
+    int nbSyringe          =      (this.oneSyringeRadioButton.isSelected())?1:2;
     
     // Basic checking.
+    
+    if(nbSyringe !=1 || nbSyringe != 2)
+    {
+      String msg = String.format("the number of syringe must be 1 or 2 not '%s'", nbSyringe);
+      throw new ConfigurationException(msg);
+    }
     
     if(pumpMaxRate < _DEFAULT_MIN_PUMP_MAX_RATE)
     {
