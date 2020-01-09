@@ -108,7 +108,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     
     if(nbSyringe !=1 && nbSyringe != 2)
     {
-      String msg = String.format("the number of syringe must be 1 or 2 not '%s'", nbSyringe);
+      String msg = String.format("the number of syringe must be 1 or 2, not '%s'", nbSyringe);
       throw new ConfigurationException(msg);
     }
     
@@ -198,7 +198,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     
     if(syringeVolume < rinceVolume)
     {
-      String msg = String.format("the volume of rinse (got '%s') cannot be greater than the volume of the syringe (got '%s')",
+      String msg = String.format("the volume of rinse (got '%s') cannot be greater than the volume of the syringe (%s)",
           rinceVolume, syringeVolume);
       throw new ConfigurationException(msg);
     }
