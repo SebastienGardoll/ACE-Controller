@@ -1,17 +1,44 @@
 package fr.gardoll.ace.controller.tools.settings ;
 
-import java.util.ArrayList ;
-import java.util.List ;
+import java.text.ParseException ;
+
+import javax.swing.SpinnerNumberModel ;
 
 import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.ui.TextFieldRealNumber ;
 
 //TODO check syringe volume against rince volume.
 public class PumpPanel extends javax.swing.JPanel implements Panel
 {
   private static final long serialVersionUID = -4086064621880324437L ;
+  
+  private static final double _DEFAULT_MAX_SYRINGE_VOLUME   = 100.; // in mL
+  private static final double _DEFAULT_MAX_PUMP_MAX_RATE    = 15.;  // in mL/min
+  private static final double _DEFAULT_MAX_RINCE_VOLUME     = 100.; // in mL
+  private static final double _DEFAULT_MAX_SYRINGE_DIAMETER = 100.; // in mm
+  
+  private static final double _DEFAULT_MIN_PUMP_MAX_RATE    = 0.1; // in mL/min
+  private static final double _DEFAULT_MIN_RINCE_VOLUME     = 0.1; // in mL
+  private static final double _DEFAULT_MIN_SYRINGE_DIAMETER = 1.; // in mm
+  
+  private static final int _DEFAULT_MIN_RINCE_NB = 1;
+  private static final int _DEFAULT_MAX_RINCE_NB = 10;
+  
+  private static final double _MIN_SYRINGE_VOLUME = 
+      PousseSeringue.volumeAjustement() + PousseSeringue.volumeSecurite() ;
+  
   public static final String NAME = "pump" ;
-  private final List<TextFieldRealNumber> _realTextFields = new ArrayList<>() ;
+
+  private TextFieldRealNumber syringeVolTextFieldRealNumber ;
+
+  private TextFieldRealNumber pumpMaxRateTextFieldRealNumber ;
+
+  private TextFieldRealNumber rinceVolTextFieldRealNumber ;
+
+  private TextFieldRealNumber syringeDiaTextFieldRealNumber ;
 
   /**
    * Creates new form PumpPanel
@@ -25,7 +52,24 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
 
   private void load()
   {
-    // TODO
+    ParametresSession session = ParametresSession.getInstance();
+    
+    String pumpMaxRateValue = String.valueOf(session.debitMaxPousseSeringue());
+    this.pumpMaxRateTextField.setText(pumpMaxRateValue);
+    
+    this.oneSyringeRadioButton.setSelected(session.nbSeringue() == 1);
+    this.twoSyringeRadioButton.setSelected(session.nbSeringue() == 2);
+    
+    String rinceVolumeValue = String.valueOf(session.volumeRincage());
+    this.rinceVolumeTextField.setText(rinceVolumeValue);
+    
+    this.rinceNumberSpinner.setValue(session.nbRincage());
+    
+    String syringeDiameterValue = String.valueOf(session.diametreSeringue());
+    this.syringeDiameterTextField.setText(syringeDiameterValue);
+    
+    String syringeVolumeValue = String.valueOf(session.volumeMaxSeringue());
+    this.syringeVolumeTextField.setText(syringeVolumeValue);
   }
 
   @Override
@@ -44,8 +88,124 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
   @Override
   public void check() throws ConfigurationException
   {
-    // TODO Auto-generated method stub
-
+    try
+    {
+      this.rinceNumberSpinner.commitEdit();
+    }
+    catch (ParseException e)
+    {
+      throw new ConfigurationException("failed to fetch the number of rincing", e);
+    }
+    
+    int nbRince            = (int) this.rinceNumberSpinner.getValue();
+    double rinceVolume     =       this.rinceVolTextFieldRealNumber.parse();
+    double syringeVolume   =       this.syringeVolTextFieldRealNumber.parse();
+    double syringeDiameter =       this.syringeDiaTextFieldRealNumber.parse();
+    double pumpMaxRate     =       this.pumpMaxRateTextFieldRealNumber.parse();
+    
+    // Basic checking.
+    
+    if(pumpMaxRate < _DEFAULT_MIN_PUMP_MAX_RATE)
+    {
+      String msg = String.format("the pump maximum rate (got '%s') cannot be less than %s",
+          pumpMaxRate, _DEFAULT_MIN_PUMP_MAX_RATE);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(syringeDiameter < _DEFAULT_MIN_SYRINGE_DIAMETER)
+    {
+      String msg = String.format("the syringe diameter (got '%s') cannot be less than %s",
+          syringeDiameter, _DEFAULT_MIN_SYRINGE_DIAMETER);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(rinceVolume < _DEFAULT_MIN_RINCE_VOLUME)
+    {
+      String msg = String.format("the rinse volume (got '%s') cannot be less than %s",
+          rinceVolume, _DEFAULT_MIN_RINCE_VOLUME);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(syringeVolume <= _MIN_SYRINGE_VOLUME)
+    {
+      String msg = String.format("the volume of the syringe (got '%s') must be greater than %s",
+          syringeVolume, _MIN_SYRINGE_VOLUME);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(nbRince < _DEFAULT_MIN_RINCE_NB)
+    {
+      String msg = String.format("the number of rinses (got '%s') cannot be less than %s",
+          nbRince, _DEFAULT_MIN_RINCE_NB);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(pumpMaxRate > _DEFAULT_MAX_PUMP_MAX_RATE)
+    {
+      String msg = String.format("the pump maximum rate (got '%s') cannot be greater than %s",
+          pumpMaxRate, _DEFAULT_MAX_PUMP_MAX_RATE);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(syringeDiameter > _DEFAULT_MAX_SYRINGE_DIAMETER)
+    {
+      String msg = String.format("the syringe diameter (got '%s') cannot be greate than %s",
+          syringeDiameter, _DEFAULT_MAX_SYRINGE_DIAMETER);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(rinceVolume > _DEFAULT_MAX_RINCE_VOLUME)
+    {
+      String msg = String.format("the rinse volume (got '%s') cannot be greater than %s",
+          rinceVolume, _DEFAULT_MAX_RINCE_VOLUME);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(syringeVolume > _DEFAULT_MAX_SYRINGE_VOLUME)
+    {
+      String msg = String.format("the volume of the syringe (got '%s') must be less of equal than %s",
+          syringeVolume, _DEFAULT_MAX_SYRINGE_VOLUME);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(nbRince > _DEFAULT_MAX_RINCE_NB)
+    {
+      String msg = String.format("the number of rinses (got '%s') must be less or equal than %s",
+          nbRince, _DEFAULT_MAX_RINCE_NB);
+      throw new ConfigurationException(msg);
+    }
+    
+    // Consistency checking.
+    
+    if(false == Utils.isDividableBy250(rinceVolume))
+    {
+      String msg = String.format("the volume of rinse must be dividable by 0.25 (got '%s')", rinceVolume);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(false == Utils.isDividableBy250(pumpMaxRate))
+    {
+      String msg = String.format("the pump rate must be dividable by 0.25 (got '%s')", pumpMaxRate);
+      throw new ConfigurationException(msg);
+    }
+    
+    if(syringeVolume < rinceVolume)
+    {
+      String msg = String.format("the volume of rinse (got '%s') must less or equal than the volume of the syringe (got '%s')",
+          rinceVolume, syringeVolume);
+      throw new ConfigurationException(msg);
+    }
+    
+    {
+      int inherentPumpMaxRate = PousseSeringue.debitMaxIntrinseque(syringeDiameter);
+      
+      if(pumpMaxRate > inherentPumpMaxRate)
+      {
+        String msg = String.format("the maximum rate of the pump (got '%s') must be less or equal to %s (computed for a syringe diameter of %s)", 
+            pumpMaxRate, inherentPumpMaxRate, syringeDiameter);
+        throw new ConfigurationException(msg);
+      }
+    }
   }
 
   private void initCustom()
@@ -53,17 +213,21 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     this.syringebuttonGroup.add(this.oneSyringeRadioButton) ;
     this.syringebuttonGroup.add(this.twoSyringeRadioButton) ;
 
-    this._realTextFields.add(new TextFieldRealNumber("syringe volume",
-        this.syringeVolumeTextField, 0., 100.)) ;
+    this.pumpMaxRateTextFieldRealNumber = new TextFieldRealNumber("pump max rate",
+        this.pumpMaxRateTextField, _DEFAULT_MIN_PUMP_MAX_RATE, _DEFAULT_MAX_PUMP_MAX_RATE) ;
 
-    this._realTextFields.add(new TextFieldRealNumber("pump max rate",
-        this.pumpMaxRateTextField, 0., 15.)) ;
+    this.rinceVolTextFieldRealNumber = new TextFieldRealNumber("rince volume",
+        this.rinceVolumeTextField, _DEFAULT_MIN_RINCE_VOLUME, _DEFAULT_MAX_RINCE_VOLUME) ;
 
-    this._realTextFields.add(new TextFieldRealNumber("rince volume",
-        this.rinceVolumeTextField, 0., 100.)) ;
-
-    this._realTextFields.add(new TextFieldRealNumber("syringe diameter",
-        this.syringeDiameterTextField, 0., 100.)) ;
+    this.syringeDiaTextFieldRealNumber = new TextFieldRealNumber("syringe diameter",
+        this.syringeDiameterTextField, _DEFAULT_MIN_SYRINGE_DIAMETER, _DEFAULT_MAX_SYRINGE_DIAMETER) ;
+    
+    this.syringeVolTextFieldRealNumber = new TextFieldRealNumber("syringe volume",
+        this.syringeVolumeTextField, _MIN_SYRINGE_VOLUME, _DEFAULT_MAX_SYRINGE_VOLUME) ;
+    
+    SpinnerNumberModel nbRinceModel = new SpinnerNumberModel(
+        1, _DEFAULT_MIN_RINCE_NB, _DEFAULT_MAX_RINCE_NB, 1) ;
+    this.rinceNumberSpinner.setModel(nbRinceModel) ;
   }
 
   /**

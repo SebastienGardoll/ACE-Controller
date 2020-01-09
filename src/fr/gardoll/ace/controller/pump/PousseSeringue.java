@@ -626,12 +626,12 @@ public class PousseSeringue implements Closeable
     return  result ;
   }
 
-  public double volumeAjustement()
+  public static double volumeAjustement()
   {  
     return VOL_AJUSTEMENT ;
   }
 
-  public double volumeSecurite()
+  public static double volumeSecurite()
   {  
     return VOL_SECU ;
   }

@@ -269,4 +269,44 @@ public class Utils
       throw new ConfigurationException(msg, e);
     }
   }
+  
+  public static boolean isDividableBy250(double value)
+  {
+    boolean result = false;
+    
+    String[] decomposition = String.valueOf(value).split("\\.");
+    
+    if(decomposition.length > 1)
+    {
+      String fractionalLiteral = decomposition[1];
+      
+      if(fractionalLiteral.length() > 3)
+      {
+        result = false;
+      }
+      else
+      {
+        int fractionalPart = Integer.valueOf(fractionalLiteral);
+        
+        if(fractionalLiteral.length() == 1)
+        {
+          fractionalPart *= 100;
+        }
+        else if(fractionalLiteral.length() == 2)
+        {
+          fractionalPart *= 10;
+        }
+        
+        int remaining = fractionalPart % 250 ;
+        
+        result = remaining == 0;
+      }
+    }
+    else
+    {
+      result = true;
+    }
+    
+    return result;
+  }
 }
