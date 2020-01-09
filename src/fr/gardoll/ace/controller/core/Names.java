@@ -24,6 +24,15 @@ public class Names
     return filePath;
   }
   
+  public static Path computeGeneralSettingsFilePath()
+  {
+    Path rootDir = Utils.getInstance().getRootDir();
+    Path filePath = rootDir.resolve(Names.CONFIG_DIRNAME)
+                           .resolve(Names.CONFIG_FILENAME);
+    
+    return filePath;
+  }
+  
   public final static Path COLUMN_DIR_PATH = 
       Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.COLUMN_DIRNAME);
   
