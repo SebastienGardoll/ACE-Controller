@@ -38,21 +38,21 @@ public class TextFieldRealNumber
     }
     catch(Exception e)
     {
-      String msg = String.format("field %s doesn't containt a number (got '%s')",
+      String msg = String.format("field '%s' doesn't containt a number (got '%s')",
                                  this.displayName, rawText);
       throw new ConfigurationException(msg);
     }
     
     if(result < this.min)
     {
-      String msg = String.format("field %s cannot be less than %s (got '%s')",
+      String msg = String.format("field '%s' cannot be less than %s (got '%s')",
           this.displayName, this.min, result);
       throw new ConfigurationException(msg);
     }
     
     if(result > this.max)
     {
-      String msg = String.format("field %s cannot be greater than %s (got '%s')",
+      String msg = String.format("field '%s' cannot be greater than %s (got '%s')",
           this.displayName, this.max, result);
       throw new ConfigurationException(msg);
     }
