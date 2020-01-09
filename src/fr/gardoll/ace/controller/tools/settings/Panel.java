@@ -6,4 +6,5 @@ public interface Panel
 {
   public void save() throws ConfigurationException;
   public String getName();
+  public void check() throws ConfigurationException;
 }

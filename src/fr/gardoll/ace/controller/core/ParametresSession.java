@@ -125,6 +125,11 @@ public class ParametresSession implements Closeable
     this.load();
   }
   
+  public Path getConfigurationFilePath()
+  {
+    return this._configurationFile;
+  }
+  
   // Reload conf but not Autosampler, Pump and Valves.
   public void load() throws InitializationException
   {

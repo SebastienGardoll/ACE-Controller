@@ -1,6 +1,18 @@
 package fr.gardoll.ace.controller.tools.settings ;
 
+import java.nio.file.Path ;
+import java.util.ArrayList ;
+import java.util.HashMap ;
+import java.util.List ;
+import java.util.Map ;
+
+import org.apache.commons.lang3.tuple.ImmutablePair ;
+import org.apache.commons.lang3.tuple.Pair ;
+
 import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.core.Names ;
+import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.core.Utils ;
 
 public class MiscellaneousPanel extends javax.swing.JPanel implements Panel
 {
@@ -13,12 +25,43 @@ public class MiscellaneousPanel extends javax.swing.JPanel implements Panel
   public MiscellaneousPanel()
   {
     initComponents() ;
+    load();
   }
   
+  private void load()
+  {
+    ParametresSession session = ParametresSession.getInstance();
+    boolean isDebug = session.isDebug();
+    boolean isFullScreen = session.isFullScreen();
+    
+    this.debugModeCheckBox.setSelected(isDebug);
+    this.fullScreenModeCheckBox.setSelected(isFullScreen);
+  }
+
   @Override
   public void save() throws ConfigurationException
   {
-    // TODO
+    String debugModeValue = (this.debugModeCheckBox.isSelected())?Names.TRUE:Names.FALSE;
+    ImmutablePair<String, String> debugMode = null;
+    debugMode = new ImmutablePair<>(Names.SAC_IS_DEBUG, debugModeValue);
+    
+    String FullScreenModeValue = (this.fullScreenModeCheckBox.isSelected())?Names.TRUE:Names.FALSE;
+    ImmutablePair<String, String> FullScreenMode = null;
+    FullScreenMode = new ImmutablePair<>(Names.SAC_IS_FULL_SCREEN, FullScreenModeValue);
+    
+    List<Pair<String, String>> items = new ArrayList<>();
+    items.add(debugMode);
+    items.add(FullScreenMode);
+    
+    Map<String, List<Pair<String, String>>> sectionKeyValues = null;
+    sectionKeyValues = new HashMap<>();
+    
+    sectionKeyValues.put(Names.SEC_ACE_CONTROLLER, items);
+    
+    ParametresSession session = ParametresSession.getInstance();
+    Path configurationFilePath = session.getConfigurationFilePath();
+    
+    Utils.persistPropertyData(configurationFilePath, sectionKeyValues);
   }
   
   @Override
@@ -27,6 +70,12 @@ public class MiscellaneousPanel extends javax.swing.JPanel implements Panel
     return MiscellaneousPanel.NAME;
   }
 
+  @Override
+  public void check() throws ConfigurationException
+  {
+    // Nothing to do.
+  }
+  
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always

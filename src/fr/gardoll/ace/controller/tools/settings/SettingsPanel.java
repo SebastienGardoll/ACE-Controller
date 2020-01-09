@@ -134,12 +134,12 @@ public class SettingsPanel extends javax.swing.JPanel
     {
       try
       {
-        _LOG.info(String.format("saving panel %s", panel.getName()));
-        panel.save();
+        _LOG.info(String.format("checking %s settings", panel.getName()));
+        panel.check();
       }
       catch (Exception e)
       {
-        String msg = String.format("error while saving panel %s", panel.getName());
+        String msg = String.format("error in %s settings", panel.getName());
         _LOG.error(msg, e);
         Utils.reportError(msg, e);
         succeeded = false;
@@ -148,6 +148,22 @@ public class SettingsPanel extends javax.swing.JPanel
     
     if(succeeded)
     {
+      for(Panel panel: this._panels)
+      {
+        try
+        {
+          _LOG.info(String.format("saving %s settings", panel.getName()));
+          panel.save();
+        }
+        catch (Exception e)
+        {
+          String msg = String.format("error while saving %s settings", panel.getName());
+          _LOG.error(msg, e);
+          Utils.reportError(msg, e);
+          return;
+        }
+      }
+      
       try
       {
         ParametresSession.getInstance().reset();
