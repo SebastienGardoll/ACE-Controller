@@ -10,22 +10,22 @@ import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.ui.TextFieldRealNumber ;
 
-//TODO check syringe volume against rince volume.
+//TODO check syringe volume against rinse volume.
 public class PumpPanel extends javax.swing.JPanel implements Panel
 {
   private static final long serialVersionUID = -4086064621880324437L ;
   
   private static final double _DEFAULT_MAX_SYRINGE_VOLUME   = 100.; // in mL
   private static final double _DEFAULT_MAX_PUMP_MAX_RATE    = 15.;  // in mL/min
-  private static final double _DEFAULT_MAX_RINCE_VOLUME     = 100.; // in mL
+  private static final double _DEFAULT_MAX_RINSE_VOLUME     = 100.; // in mL
   private static final double _DEFAULT_MAX_SYRINGE_DIAMETER = 100.; // in mm
   
   private static final double _DEFAULT_MIN_PUMP_MAX_RATE    = 0.1; // in mL/min
-  private static final double _DEFAULT_MIN_RINCE_VOLUME     = 0.1; // in mL
+  private static final double _DEFAULT_MIN_RINSE_VOLUME     = 0.1; // in mL
   private static final double _DEFAULT_MIN_SYRINGE_DIAMETER = 1.; // in mm
   
-  private static final int _DEFAULT_MIN_RINCE_NB = 1;
-  private static final int _DEFAULT_MAX_RINCE_NB = 10;
+  private static final int _DEFAULT_MIN_RINSE_NB = 1;
+  private static final int _DEFAULT_MAX_RINSE_NB = 10;
   
   private static final double _MIN_SYRINGE_VOLUME = 
       PousseSeringue.volumeAjustement() + PousseSeringue.volumeSecurite() ;
@@ -36,7 +36,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
 
   private TextFieldRealNumber pumpMaxRateTextFieldRealNumber ;
 
-  private TextFieldRealNumber rinceVolTextFieldRealNumber ;
+  private TextFieldRealNumber rinseVolTextFieldRealNumber ;
 
   private TextFieldRealNumber syringeDiaTextFieldRealNumber ;
 
@@ -60,10 +60,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     this.oneSyringeRadioButton.setSelected(session.nbSeringue() == 1);
     this.twoSyringeRadioButton.setSelected(session.nbSeringue() == 2);
     
-    String rinceVolumeValue = String.valueOf(session.volumeRincage());
-    this.rinceVolumeTextField.setText(rinceVolumeValue);
+    String rinseVolumeValue = String.valueOf(session.volumeRincage());
+    this.rinseVolumeTextField.setText(rinseVolumeValue);
     
-    this.rinceNumberSpinner.setValue(session.nbRincage());
+    this.rinseNumberSpinner.setValue(session.nbRincage());
     
     String syringeDiameterValue = String.valueOf(session.diametreSeringue());
     this.syringeDiameterTextField.setText(syringeDiameterValue);
@@ -90,15 +90,15 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
   {
     try
     {
-      this.rinceNumberSpinner.commitEdit();
+      this.rinseNumberSpinner.commitEdit();
     }
     catch (ParseException e)
     {
       throw new ConfigurationException("failed to fetch the number of rincing", e);
     }
     
-    int nbRince            = (int) this.rinceNumberSpinner.getValue();
-    double rinceVolume     =       this.rinceVolTextFieldRealNumber.parse();
+    int nbRinse            = (int) this.rinseNumberSpinner.getValue();
+    double rinseVolume     =       this.rinseVolTextFieldRealNumber.parse();
     double syringeVolume   =       this.syringeVolTextFieldRealNumber.parse();
     double syringeDiameter =       this.syringeDiaTextFieldRealNumber.parse();
     double pumpMaxRate     =       this.pumpMaxRateTextFieldRealNumber.parse();
@@ -126,10 +126,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
       throw new ConfigurationException(msg);
     }
     
-    if(rinceVolume < _DEFAULT_MIN_RINCE_VOLUME)
+    if(rinseVolume < _DEFAULT_MIN_RINSE_VOLUME)
     {
       String msg = String.format("the rinse volume (got '%s') cannot be less than %s",
-          rinceVolume, _DEFAULT_MIN_RINCE_VOLUME);
+          rinseVolume, _DEFAULT_MIN_RINSE_VOLUME);
       throw new ConfigurationException(msg);
     }
     
@@ -140,10 +140,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
       throw new ConfigurationException(msg);
     }
     
-    if(nbRince < _DEFAULT_MIN_RINCE_NB)
+    if(nbRinse < _DEFAULT_MIN_RINSE_NB)
     {
       String msg = String.format("the number of rinses (got '%s') cannot be less than %s",
-          nbRince, _DEFAULT_MIN_RINCE_NB);
+          nbRinse, _DEFAULT_MIN_RINSE_NB);
       throw new ConfigurationException(msg);
     }
     
@@ -161,10 +161,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
       throw new ConfigurationException(msg);
     }
     
-    if(rinceVolume > _DEFAULT_MAX_RINCE_VOLUME)
+    if(rinseVolume > _DEFAULT_MAX_RINSE_VOLUME)
     {
       String msg = String.format("the rinse volume (got '%s') cannot be greater than %s",
-          rinceVolume, _DEFAULT_MAX_RINCE_VOLUME);
+          rinseVolume, _DEFAULT_MAX_RINSE_VOLUME);
       throw new ConfigurationException(msg);
     }
     
@@ -175,18 +175,18 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
       throw new ConfigurationException(msg);
     }
     
-    if(nbRince > _DEFAULT_MAX_RINCE_NB)
+    if(nbRinse > _DEFAULT_MAX_RINSE_NB)
     {
       String msg = String.format("the number of rinses (got '%s') cannot be greater than %s",
-          nbRince, _DEFAULT_MAX_RINCE_NB);
+          nbRinse, _DEFAULT_MAX_RINSE_NB);
       throw new ConfigurationException(msg);
     }
     
     // Consistency checking.
     
-    if(false == Utils.isDividableBy250(rinceVolume))
+    if(false == Utils.isDividableBy250(rinseVolume))
     {
-      String msg = String.format("the volume of rinse must be dividable by 0.25 (got '%s')", rinceVolume);
+      String msg = String.format("the volume of rinse must be dividable by 0.25 (got '%s')", rinseVolume);
       throw new ConfigurationException(msg);
     }
     
@@ -196,10 +196,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
       throw new ConfigurationException(msg);
     }
     
-    if(syringeVolume < rinceVolume)
+    if(syringeVolume < rinseVolume)
     {
       String msg = String.format("the volume of rinse (got '%s') cannot be greater than the volume of the syringe (%s)",
-          rinceVolume, syringeVolume);
+          rinseVolume, syringeVolume);
       throw new ConfigurationException(msg);
     }
     
@@ -223,8 +223,8 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     this.pumpMaxRateTextFieldRealNumber = new TextFieldRealNumber("pump max rate",
         this.pumpMaxRateTextField, _DEFAULT_MIN_PUMP_MAX_RATE, _DEFAULT_MAX_PUMP_MAX_RATE) ;
 
-    this.rinceVolTextFieldRealNumber = new TextFieldRealNumber("rince volume",
-        this.rinceVolumeTextField, _DEFAULT_MIN_RINCE_VOLUME, _DEFAULT_MAX_RINCE_VOLUME) ;
+    this.rinseVolTextFieldRealNumber = new TextFieldRealNumber("rinse volume",
+        this.rinseVolumeTextField, _DEFAULT_MIN_RINSE_VOLUME, _DEFAULT_MAX_RINSE_VOLUME) ;
 
     this.syringeDiaTextFieldRealNumber = new TextFieldRealNumber("syringe diameter",
         this.syringeDiameterTextField, _DEFAULT_MIN_SYRINGE_DIAMETER, _DEFAULT_MAX_SYRINGE_DIAMETER) ;
@@ -232,9 +232,9 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     this.syringeVolTextFieldRealNumber = new TextFieldRealNumber("syringe volume",
         this.syringeVolumeTextField, _MIN_SYRINGE_VOLUME, _DEFAULT_MAX_SYRINGE_VOLUME) ;
     
-    SpinnerNumberModel nbRinceModel = new SpinnerNumberModel(
-        1, _DEFAULT_MIN_RINCE_NB, _DEFAULT_MAX_RINCE_NB, 1) ;
-    this.rinceNumberSpinner.setModel(nbRinceModel) ;
+    SpinnerNumberModel nbRinseModel = new SpinnerNumberModel(
+        1, _DEFAULT_MIN_RINSE_NB, _DEFAULT_MAX_RINSE_NB, 1) ;
+    this.rinseNumberSpinner.setModel(nbRinseModel) ;
   }
 
   /**
@@ -254,11 +254,11 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     pumpSyringePanel = new javax.swing.JPanel() ;
     oneSyringeRadioButton = new javax.swing.JRadioButton() ;
     twoSyringeRadioButton = new javax.swing.JRadioButton() ;
-    rinceSettingsPanel = new javax.swing.JPanel() ;
-    rinceVolumePanel = new javax.swing.JPanel() ;
-    rinceVolumeTextField = new javax.swing.JTextField() ;
-    rinceNumberPanel = new javax.swing.JPanel() ;
-    rinceNumberSpinner = new javax.swing.JSpinner() ;
+    rinseSettingsPanel = new javax.swing.JPanel() ;
+    rinseVolumePanel = new javax.swing.JPanel() ;
+    rinseVolumeTextField = new javax.swing.JTextField() ;
+    rinseNumberPanel = new javax.swing.JPanel() ;
+    rinseNumberSpinner = new javax.swing.JSpinner() ;
     syringeSettingsPanel = new javax.swing.JPanel() ;
     syringeDiameterPanel = new javax.swing.JPanel() ;
     syringeDiameterTextField = new javax.swing.JTextField() ;
@@ -336,13 +336,13 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
     add(pumpSettingsPanel, gridBagConstraints) ;
 
-    rinceSettingsPanel
-        .setBorder(javax.swing.BorderFactory.createTitledBorder("Rincing")) ;
-    rinceSettingsPanel.setLayout(new java.awt.GridBagLayout()) ;
+    rinseSettingsPanel
+        .setBorder(javax.swing.BorderFactory.createTitledBorder("Rinsing")) ;
+    rinseSettingsPanel.setLayout(new java.awt.GridBagLayout()) ;
 
-    rinceVolumePanel.setBorder(
+    rinseVolumePanel.setBorder(
         javax.swing.BorderFactory.createTitledBorder("Volume (mL)")) ;
-    rinceVolumePanel.setLayout(new java.awt.GridBagLayout()) ;
+    rinseVolumePanel.setLayout(new java.awt.GridBagLayout()) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 0 ;
@@ -350,7 +350,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    rinceVolumePanel.add(rinceVolumeTextField, gridBagConstraints) ;
+    rinseVolumePanel.add(rinseVolumeTextField, gridBagConstraints) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
@@ -359,17 +359,17 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    rinceSettingsPanel.add(rinceVolumePanel, gridBagConstraints) ;
+    rinseSettingsPanel.add(rinseVolumePanel, gridBagConstraints) ;
 
-    rinceNumberPanel.setBorder(
+    rinseNumberPanel.setBorder(
         javax.swing.BorderFactory.createTitledBorder("Number per cycle")) ;
-    rinceNumberPanel.setLayout(new java.awt.GridBagLayout()) ;
+    rinseNumberPanel.setLayout(new java.awt.GridBagLayout()) ;
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    rinceNumberPanel.add(rinceNumberSpinner, gridBagConstraints) ;
+    rinseNumberPanel.add(rinseNumberSpinner, gridBagConstraints) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
@@ -378,7 +378,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    rinceSettingsPanel.add(rinceNumberPanel, gridBagConstraints) ;
+    rinseSettingsPanel.add(rinseNumberPanel, gridBagConstraints) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 1 ;
@@ -387,7 +387,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    add(rinceSettingsPanel, gridBagConstraints) ;
+    add(rinseSettingsPanel, gridBagConstraints) ;
 
     syringeSettingsPanel
         .setBorder(javax.swing.BorderFactory.createTitledBorder("Syringe")) ;
@@ -451,11 +451,11 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
   private javax.swing.JTextField pumpMaxRateTextField ;
   private javax.swing.JPanel pumpSettingsPanel ;
   private javax.swing.JPanel pumpSyringePanel ;
-  private javax.swing.JPanel rinceNumberPanel ;
-  private javax.swing.JSpinner rinceNumberSpinner ;
-  private javax.swing.JPanel rinceSettingsPanel ;
-  private javax.swing.JPanel rinceVolumePanel ;
-  private javax.swing.JTextField rinceVolumeTextField ;
+  private javax.swing.JPanel rinseNumberPanel ;
+  private javax.swing.JSpinner rinseNumberSpinner ;
+  private javax.swing.JPanel rinseSettingsPanel ;
+  private javax.swing.JPanel rinseVolumePanel ;
+  private javax.swing.JTextField rinseVolumeTextField ;
   private javax.swing.JPanel syringeDiameterPanel ;
   private javax.swing.JTextField syringeDiameterTextField ;
   private javax.swing.JPanel syringeSettingsPanel ;
