@@ -163,14 +163,14 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     
     if(syringeVolume > _DEFAULT_MAX_SYRINGE_VOLUME)
     {
-      String msg = String.format("the volume of the syringe (got '%s') must be less of equal than %s",
+      String msg = String.format("the volume of the syringe (got '%s') cannot be greater than %s",
           syringeVolume, _DEFAULT_MAX_SYRINGE_VOLUME);
       throw new ConfigurationException(msg);
     }
     
     if(nbRince > _DEFAULT_MAX_RINCE_NB)
     {
-      String msg = String.format("the number of rinses (got '%s') must be less or equal than %s",
+      String msg = String.format("the number of rinses (got '%s') cannot be greater than %s",
           nbRince, _DEFAULT_MAX_RINCE_NB);
       throw new ConfigurationException(msg);
     }
@@ -191,7 +191,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     
     if(syringeVolume < rinceVolume)
     {
-      String msg = String.format("the volume of rinse (got '%s') must less or equal than the volume of the syringe (got '%s')",
+      String msg = String.format("the volume of rinse (got '%s') cannot be greater than the volume of the syringe (got '%s')",
           rinceVolume, syringeVolume);
       throw new ConfigurationException(msg);
     }
@@ -201,7 +201,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
       
       if(pumpMaxRate > inherentPumpMaxRate)
       {
-        String msg = String.format("the maximum rate of the pump (got '%s') must be less or equal to %s (computed for a syringe diameter of %s)", 
+        String msg = String.format("the maximum rate of the pump (got '%s') cannot be greater than %s (computed for a syringe diameter of %s)", 
             pumpMaxRate, inherentPumpMaxRate, syringeDiameter);
         throw new ConfigurationException(msg);
       }
