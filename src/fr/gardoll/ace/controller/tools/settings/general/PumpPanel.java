@@ -20,8 +20,8 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
   private static final double _DEFAULT_MAX_RINSE_VOLUME     = 100.; // in mL
   private static final double _DEFAULT_MAX_SYRINGE_DIAMETER = 100.; // in mm
   
-  private static final double _DEFAULT_MIN_PUMP_MAX_RATE    = 0.1; // in mL/min
-  private static final double _DEFAULT_MIN_RINSE_VOLUME     = 0.1; // in mL
+  private static final double _DEFAULT_MIN_PUMP_MAX_RATE    = 0.25; // in mL/min
+  private static final double _DEFAULT_MIN_RINSE_VOLUME     = 0.25; // in mL
   private static final double _DEFAULT_MIN_SYRINGE_DIAMETER = 1.; // in mm
   
   private static final int _DEFAULT_MIN_RINSE_NB = 1;
