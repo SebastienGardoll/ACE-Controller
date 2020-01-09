@@ -27,6 +27,7 @@ public class TextFieldRealNumber
     if(rawText.isEmpty())
     {
       String msg = String.format("field '%s' is empty", this.displayName);
+      textField.requestFocus();
       throw new ConfigurationException(msg);
     }
     
@@ -40,6 +41,7 @@ public class TextFieldRealNumber
     {
       String msg = String.format("field '%s' doesn't containt a number (got '%s')",
                                  this.displayName, rawText);
+      textField.requestFocus();
       throw new ConfigurationException(msg);
     }
     
@@ -47,6 +49,7 @@ public class TextFieldRealNumber
     {
       String msg = String.format("field '%s' cannot be less than %s (got '%s')",
           this.displayName, this.min, result);
+      textField.requestFocus();
       throw new ConfigurationException(msg);
     }
     
@@ -54,6 +57,7 @@ public class TextFieldRealNumber
     {
       String msg = String.format("field '%s' cannot be greater than %s (got '%s')",
           this.displayName, this.max, result);
+      textField.requestFocus();
       throw new ConfigurationException(msg);
     }
     
