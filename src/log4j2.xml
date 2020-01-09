@@ -5,19 +5,19 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
-        <File name="File_Logging_Info" fileName="output_info.log" append="false">
+        <File name="File_Logging_Info" fileName="./log/output_info.log" append="false">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_Debug" fileName="output_debug.log" append="false">
+        <File name="File_Logging_Debug" fileName="./log/output_debug.log" append="false">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_All" fileName="output_all.log" append="false">
+        <File name="File_Logging_All" fileName="./log/output_all.log" append="false">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_Diff" fileName="output_diff.log" append="false">
+        <File name="File_Logging_Diff" fileName="./log/output_diff.log" append="false">
             <PatternLayout pattern="%logger{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
