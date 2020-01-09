@@ -26,11 +26,11 @@ public class TextFieldRealNumber
     
     if(rawText.isEmpty())
     {
-      String msg = String.format("field %s is empty", this.displayName);
+      String msg = String.format("field '%s' is empty", this.displayName);
       throw new ConfigurationException(msg);
     }
     
-    double result;
+    double result = 0.;
     
     try
     {
@@ -40,7 +40,7 @@ public class TextFieldRealNumber
     {
       String msg = String.format("field '%s' doesn't containt a number (got '%s')",
                                  this.displayName, rawText);
-      throw new ConfigurationException(msg);
+      //throw new ConfigurationException(msg);
     }
     
     if(result < this.min)
@@ -54,7 +54,7 @@ public class TextFieldRealNumber
     {
       String msg = String.format("field '%s' cannot be greater than %s (got '%s')",
           this.displayName, this.max, result);
-      throw new ConfigurationException(msg);
+      //throw new ConfigurationException(msg);
     }
     
     return result;
