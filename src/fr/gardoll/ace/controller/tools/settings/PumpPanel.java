@@ -106,7 +106,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     
     // Basic checking.
     
-    if(nbSyringe !=1 || nbSyringe != 2)
+    if(nbSyringe !=1 && nbSyringe != 2)
     {
       String msg = String.format("the number of syringe must be 1 or 2 not '%s'", nbSyringe);
       throw new ConfigurationException(msg);
