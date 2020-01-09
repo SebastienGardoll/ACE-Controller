@@ -27,6 +27,9 @@ public class Utils
   // Must be singleton as getRootDir must fetch the file of this class (or any
   // classes of this Java project).
   private static Utils _INSTANCE = null ;
+  
+  private static Path _ROOT_DIR = null;
+  
   private Utils() {}
   
   public static double EPSILON = 0.00001 ;
@@ -73,17 +76,21 @@ public class Utils
   // directory !).
   public Path getRootDir()
   {
-    try
+    if(_ROOT_DIR == null)
     {
-      URL u = this.getClass().getProtectionDomain().getCodeSource().getLocation();
-      Path result = Path.of(u.toURI()).getParent() ;
-      return result;
+      try
+      {
+        URL u = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+        _ROOT_DIR = Path.of(u.toURI()).getParent() ;
+      }
+      catch (URISyntaxException e)
+      {
+        String msg = "unable to fetch the path of the application";
+        throw new RuntimeException(msg, e);
+      }
     }
-    catch (URISyntaxException e)
-    {
-      String msg = "unable to fetch the path of the application";
-      throw new RuntimeException(msg, e);
-    }
+    
+    return _ROOT_DIR;
   }
   
   public static String toString(byte[] value, String separator)
