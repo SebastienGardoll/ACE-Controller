@@ -18,6 +18,7 @@ import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class InterfacePousseSeringue  implements Closeable, PumpController
 {
@@ -49,9 +50,11 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   }
   
   // requires 0 < diametreSeringue <= DIAMETRE_MAX
-  public InterfacePousseSeringue(SerialCom port, double diametreSeringue)
+  public InterfacePousseSeringue(SerialCom port)
       throws InitializationException, ConfigurationException
   {
+    double diametreSeringue = GeneralSettings.instance().getDiametreSeringue();
+    
     _LOG.debug(String.format("initializing the pump interface with the serial port %s and the syringe diameter %s",
         port.getId(), diametreSeringue));
     this._port = port ;
@@ -379,7 +382,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     String portPath = "/dev/ttyUSB1"; // To be modified.
     JSerialComm port = new JSerialComm(portPath);
     
-    try(InterfacePousseSeringue pumpInt = new InterfacePousseSeringue(port, 14.25))
+    try(InterfacePousseSeringue pumpInt = new InterfacePousseSeringue(port))
     {
       boolean isRunning = pumpInt.running();
       _LOG.info(String.format("is runnning: %s", isRunning)) ;

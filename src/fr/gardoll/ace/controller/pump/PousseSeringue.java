@@ -13,6 +13,7 @@ import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
 public class PousseSeringue implements Closeable
@@ -46,12 +47,6 @@ public class PousseSeringue implements Closeable
   //débit en cours
   private double debitActuelRefoulement ;
 
-  //dépendant de la section de tuyaux utilisé et le diamètre de seringue
-  //différent de débitIntrinsèque qui dépend uniquement du diamètre de la seringue
-  private final double _debitMaxPousseSeringue ; 
-                                   
-  private final double _volumeMaxSeringue ;
-  
   //numéro ev actuellement ouverte sert à la reprise d'une pause
   private int numEvActuelle ;  
 
@@ -61,20 +56,21 @@ public class PousseSeringue implements Closeable
   //info sur l'aspiration ou non du volume de sécurité, true : aspiré, false : refoulé
   private boolean flagVolSecu ; 
 
-  private final int _nbSeringue ;
-  
   //requires nombresSeringues <= 2
   //requires volumeMaxSeringue > 0
   //requires 0 < debitMaxPousseSeringue <=  debitMaxIntrinseque ( diametreSeringue )
   //requires volumeInitiale >= 0
   public PousseSeringue(PumpController interfacePousseSeringue,
                         Valves valves,
-                        int nombreSeringue,
-                        double diametreSeringue,
-                        double volumeMaxSeringue,
-                        double debitMaxPousseSeringue,
                         double volumeInitiale) throws InitializationException
   {
+    GeneralSettings settings = GeneralSettings.instance(); 
+    
+    int nombreSeringue = settings.getNbSeringue();
+    double diametreSeringue = settings.getDiametreSeringue();
+    double volumeMaxSeringue = settings.getVolumeMaxSeringue();
+    double debitMaxPousseSeringue = settings.getDebitMaxPousseSeringue();
+    
     _LOG.debug(String.format("initializing the pump with %s number of syringe, %s syringe diameter, %s syringe max volume, %s max rate, %s initial volume",
         nombreSeringue, diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
         volumeInitiale));
@@ -124,7 +120,9 @@ public class PousseSeringue implements Closeable
           volumeMaxSeringue);
       throw new InitializationException(msg);
     }
-        
+    
+    // dépendant de la section de tuyaux utilisé et le diamètre de seringue
+    // différent de débitIntrinsèque qui dépend uniquement du diamètre de la seringue
     if (debitMaxPousseSeringue <= 0.)
     {
       String msg = String.format("the value of the maximum rate '%s' cannot be negative of null", debitMaxPousseSeringue);
@@ -138,25 +136,9 @@ public class PousseSeringue implements Closeable
       throw new InitializationException(msg);
     }
 
-    this._nbSeringue = nombreSeringue ;
-
     PousseSeringue._volumeReel = volumeInitiale ;
-
-    this._volumeMaxSeringue = volumeMaxSeringue ;
-
-    this._debitMaxPousseSeringue = debitMaxPousseSeringue ;
   }
 
-  public int nbSeringue()
-  {
-    return this._nbSeringue ;
-  }
-  
-  public double debitMaxPousseSeringue()
-  { 
-    return this._debitMaxPousseSeringue ; 
-  } 
-  
   // précise si le pousse seringue est pausé
   public boolean isPaused()
   { 
@@ -169,9 +151,12 @@ public class PousseSeringue implements Closeable
   { 
     _LOG.debug(String.format("withdrawing volume '%s' from valve '%s'",
         volume, numEv));
+    
+    GeneralSettings settings = GeneralSettings.instance();
+    
     // amélioration de l'algo pour éviter les pertes !!!
     // considère le volume d'une seringue
-    volume /= _nbSeringue ;   
+    volume /= settings.getNbSeringue() ;   
 
     if (! this.flagVolSecu)
     { 
@@ -187,7 +172,7 @@ public class PousseSeringue implements Closeable
     this.finPompage(false);
     
     // ajustement à pleine vitesse
-    this.setDebitRefoulement(_debitMaxPousseSeringue) ;
+    this.setDebitRefoulement(settings.getDebitMaxPousseSeringue()) ;
 
     this.algoRefoulement(VOL_AJUSTEMENT, numEv) ; 
   }
@@ -198,7 +183,7 @@ public class PousseSeringue implements Closeable
   {
     _LOG.debug(String.format("infusing volume '%s' to the valve '%s'",
         volume, numEv));
-    volume /= _nbSeringue ;
+    volume /= GeneralSettings.instance().getNbSeringue() ;
     this.algoRefoulement(volume, numEv) ;
   }
 
@@ -220,11 +205,13 @@ public class PousseSeringue implements Closeable
                                  numEv, Valves.NB_EV_MAX);
       throw new RuntimeException(msg);
     }
+    
+    double volumeMaxSeringue = GeneralSettings.instance().getVolumeMaxSeringue();
 
-    if (this._volumeMaxSeringue < volume)
+    if (volumeMaxSeringue < volume)
     {
       String msg = String.format("the volume '%s' to be pumped, cannot be greater than the maximum volume %s",
-          volume, this._volumeMaxSeringue);
+          volume, volumeMaxSeringue);
       throw new RuntimeException(msg);
     }
 
@@ -312,10 +299,13 @@ public class PousseSeringue implements Closeable
   {
     _LOG.debug(String.format("rinsing with volume '%s' from valve '%s'",
         volume, numEv));
+    
+    GeneralSettings settings = GeneralSettings.instance();
+    
     // attention si volume = _volumeMaxSeringue
     // volume + VOL_AJUSTEMENT > _volumeMaxSeringue
     // voir algoAspiration
-    if ((volume + VOL_AJUSTEMENT) <= this._volumeMaxSeringue)
+    if ((volume + VOL_AJUSTEMENT) <= settings.getVolumeMaxSeringue())
     {
       volume += VOL_AJUSTEMENT ;
     }
@@ -331,15 +321,20 @@ public class PousseSeringue implements Closeable
 
   { 
     _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit)); 
-    if (debit > this._debitMaxPousseSeringue )
+    
+    GeneralSettings settings = GeneralSettings.instance();
+    
+    double debitMaxPousseSeringue = settings.getDebitMaxPousseSeringue();
+    
+    if (debit > debitMaxPousseSeringue )
     {
       String msg = String.format("the withdrawing rate '%s' cannot be greater than the maximum rate %s",
-          debit, this._debitMaxPousseSeringue);
+          debit, debitMaxPousseSeringue);
       throw new RuntimeException(msg);
     }
 
     // tient compte du nombre de seringue.
-    debit = debit/_nbSeringue ;
+    debit = debit/settings.getNbSeringue() ;
 
     if (debit != this.debitActuelAspiration)
     {
@@ -366,14 +361,20 @@ public class PousseSeringue implements Closeable
   public void setDebitRefoulement(double debit)
   {  
     _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
-    if(debit > this._debitMaxPousseSeringue)
+    
+    GeneralSettings settings = GeneralSettings.instance();
+    
+    double debitMaxPousseSeringue = settings.getDebitMaxPousseSeringue();
+    int nbSeringue = settings.getNbSeringue();
+    
+    if(debit > debitMaxPousseSeringue)
     {
       String msg = String.format("the value of the infusion rate '%s' cannot be greater than the maximum rate %s",
-                                 debit, this._debitMaxPousseSeringue);
+                                 debit, debitMaxPousseSeringue);
       throw new RuntimeException(msg);
     }
 
-    debit = debit/_nbSeringue ;
+    debit = debit/nbSeringue ;
 
     if (debit != this.debitActuelRefoulement)
     {  
@@ -558,7 +559,7 @@ public class PousseSeringue implements Closeable
   { 
     try
     {
-      double result = this.interfacePousseSeringue.deliver() * this._nbSeringue ;
+      double result = this.interfacePousseSeringue.deliver() * GeneralSettings.instance().getNbSeringue() ;
       _LOG.trace(String.format("getting '%s' of delivered volume", result));
       return result ;
     }
@@ -587,7 +588,7 @@ public class PousseSeringue implements Closeable
       volumeUtile -= VOL_SECU  ;
     }
 
-    double result = (volumeUtile  * this._nbSeringue) ;
+    double result = (volumeUtile  * GeneralSettings.instance().getNbSeringue()) ;
     _LOG.debug(String.format("total raiming volume is '%s'", result));
     return result;                      
   }
@@ -620,8 +621,12 @@ public class PousseSeringue implements Closeable
   // par seringues.
   public double volumeMaxSeringueUtile()
   {  
+    GeneralSettings settings = GeneralSettings.instance();
+    int nbSeringue = settings.getNbSeringue();
+    double volumeMaxSeringue = settings.getVolumeMaxSeringue();
+    
     //volume Max utile pour les n seringues !
-    double result = (this._nbSeringue * (this._volumeMaxSeringue - VOL_SECU - VOL_AJUSTEMENT ) );
+    double result = (nbSeringue * (volumeMaxSeringue - VOL_SECU - VOL_AJUSTEMENT ) );
     _LOG.debug(String.format("computed the maximum util volume is '%s'", result));
     return  result ;
   }
@@ -670,18 +675,12 @@ public class PousseSeringue implements Closeable
     String paraComPortPath = "/dev/ttyUSB0"; // To be modified.
     JSerialComm paraComPort = new JSerialComm(paraComPortPath);
     
-    int nombreSeringue = 1;
-    double diametreSeringue = 14.25;
-    double volumeMaxSeringue = 10.;
-    double debitMaxPousseSeringue = 10.;
     double volumeInitiale = 0.;
     
-    try(InterfacePousseSeringue pumpInt = new InterfacePousseSeringue(pumpPort, diametreSeringue);
+    try(InterfacePousseSeringue pumpInt = new InterfacePousseSeringue(pumpPort);
         ArduinoParaCom paraCom = new ArduinoParaCom(paraComPort);
         Valves valves = new Valves(paraCom);
-        PousseSeringue pump = new PousseSeringue(pumpInt, valves, nombreSeringue,
-            diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
-            volumeInitiale))
+        PousseSeringue pump = new PousseSeringue(pumpInt, valves, volumeInitiale))
     {
       double volume = 3.;
       int numEv = Valves.NUM_EV_H2O;

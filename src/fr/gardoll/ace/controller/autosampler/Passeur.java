@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class Passeur implements Closeable
 {
@@ -41,10 +41,6 @@ public class Passeur implements Closeable
 
   private boolean sav_butee = false;//flag de butee enregistré
 
-  private final int nbPasCarrousel ;
-
-  private final double rayon ;
-
   private boolean _pause = false;
 
   //ce flag sert en cas de pause à savoir si le bras devait
@@ -52,8 +48,6 @@ public class Passeur implements Closeable
   private boolean _butee = false; 
   
   private final MotorController interfaceMoteur;
-  private final int _carouselThickness ;
-  private final int _refCarousel ;
   
   /* ne pas inclure d'attente de fin de mouvement dans les procédures de mouvement
   car incompatible avec le système de pause */ 
@@ -63,15 +57,17 @@ public class Passeur implements Closeable
 
   //require nbPasCarrousel > 0
   //require diametre > 0
-  public Passeur(MotorController interfaceMoteur, int nbPasCarrousel,
-                 int diametre, int carouselThickness, int refCarousel)
+  public Passeur(MotorController interfaceMoteur)
       throws InitializationException
   {
+    GeneralSettings settings = GeneralSettings.instance();
+    
+    int diametre = settings.getDiametreCarrousel();
+    int nbPasCarrousel = settings.getNbPasCarrousel();
+    
     _LOG.debug(String.format("initializing the autosampler with %s number of carousel steps and %s diameter",
         nbPasCarrousel, diametre));
     this.interfaceMoteur = interfaceMoteur;
-    this._carouselThickness = carouselThickness;
-    this._refCarousel = refCarousel;
     
     this.reset() ;
     this.setModeDirect();
@@ -81,11 +77,6 @@ public class Passeur implements Closeable
       String msg = String.format("the value of the diameter '%s' and the steps '%s' of the step motor cannot be negative or null",
           diametre, nbPasCarrousel);
       throw new InitializationException(msg);
-    }
-    else
-    {  
-      this.nbPasCarrousel = nbPasCarrousel ;
-      this.rayon = diametre / 2.  ;
     }
   }
   
@@ -110,7 +101,7 @@ public class Passeur implements Closeable
   {
     _LOG.debug(String.format("move the carousel to the position %s with %s offset",
         position, modificateur));
-    this.x = position * nbPasCarrousel + modificateur ;
+    this.x = position * GeneralSettings.instance().getNbPasCarrousel() + modificateur ;
     
     try
     {
@@ -148,7 +139,7 @@ public class Passeur implements Closeable
   {
     _LOG.debug(String.format("move the carousel to position %s and arm to position %s",
         position, nbPas));
-    this.x = position * nbPasCarrousel ;
+    this.x = position * GeneralSettings.instance().getNbPasCarrousel() ;
     this.y = nbPas ;
     try
     {
@@ -205,8 +196,12 @@ public class Passeur implements Closeable
     
     _LOG.debug("then get the arm to the trash");
     
-    int nbSteps = Passeur.convertBras(Passeur._COEFF * this._carouselThickness
-        - this._refCarousel);
+    GeneralSettings settings = GeneralSettings.instance();
+    int carouselThickness = settings.getEpaisseur();
+    int refCarousel = settings.getRefCarrousel();
+    
+    int nbSteps = Passeur.convertBras(Passeur._COEFF * carouselThickness
+        - refCarousel);
     this.moveBras(nbSteps) ;
   }
   
@@ -499,6 +494,8 @@ public class Passeur implements Closeable
   //dimension en mm en rapport avec au carrousel !
   public int convertCarrousel(double dimension)
   {
+    double rayon = GeneralSettings.instance().getDiametreCarrousel() / 2.  ;
+    
     double raw = (Math.asin(dimension / rayon) *  NB_PAS_TOUR_CARROUSEL) / ( 2. * Math.PI) ; 
     int result = ((int) (raw));
     _LOG.debug(String.format("convert %s millimeter into %s number of carousel steps",
@@ -554,7 +551,7 @@ public class Passeur implements Closeable
      try
      {
        _LOG.debug(String.format("move carousel to the relative position %s", nbPosition));
-       this.x += nbPosition * this.nbPasCarrousel  ;
+       this.x += nbPosition * GeneralSettings.instance().getNbPasCarrousel()  ;
        this.interfaceMoteur.move(this.x , this.y);
      }
      catch(SerialComException e)
@@ -623,12 +620,8 @@ public class Passeur implements Closeable
     String portPath = "/dev/ttyUSB0"; // To be modified.
     JSerialComm port = new JSerialComm(portPath);
     
-    ParametresSession session = ParametresSession.getInstance();
-    
     try(InterfaceMoteur autoSamplerInt = new InterfaceMoteur(port) ;
-        Passeur autosampler = new Passeur(autoSamplerInt, session.nbPasCarrousel(),
-            session.diametreCarrousel(), session.epaisseur(),
-            session.refCarrousel()))
+        Passeur autosampler = new Passeur(autoSamplerInt))
     {
       int carouselPosition = 10;
       int armNbStep = Passeur.convertBras(-50); // Convert -50 millimeter into number of steps.

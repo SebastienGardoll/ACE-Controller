@@ -16,9 +16,9 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.Names ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class ExtractionConfigurationDialog extends javax.swing.JDialog
 {
@@ -63,7 +63,7 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
 
   private void initCustom()
   {
-    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne();
+    int maxColumnUtil = GeneralSettings.instance().getNbMaxColonne();
 
     SpinnerNumberModel nbColumnModel = new SpinnerNumberModel(
         _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, maxColumnUtil,

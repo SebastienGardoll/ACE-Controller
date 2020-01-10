@@ -7,7 +7,7 @@ import javax.swing.JDialog ;
 import javax.swing.JPanel ;
 import javax.swing.WindowConstants ;
 
-import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public abstract class AbstractToolFrame extends JDialog
 {
@@ -22,7 +22,7 @@ public abstract class AbstractToolFrame extends JDialog
     this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     this.pack();
     
-    if(ParametresSession.getInstance().isFullScreen())
+    if(GeneralSettings.instance().isFullScreen())
     {
       // Set full screen.
       Dimension dim = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());

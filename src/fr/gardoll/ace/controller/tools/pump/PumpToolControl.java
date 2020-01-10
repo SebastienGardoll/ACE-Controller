@@ -17,6 +17,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
 public class PumpToolControl extends AbstractPausableToolControl
@@ -31,8 +32,7 @@ public class PumpToolControl extends AbstractPausableToolControl
   
   void start(SortedSet<Integer> lines, int volume)
   {
-    ParametresSession parametresSession = ParametresSession.getInstance() ;
-    double volMax = parametresSession.volumeMaxSeringue();
+    double volMax = GeneralSettings.instance().getVolumeMaxSeringue();
     
     if(volume > volMax ||
        volume <= 0)
@@ -105,9 +105,11 @@ class PumpThread extends AbstractThreadControl
   protected void threadLogic() throws CancellationException,
                                       InitializationException, Exception
   {
-    ParametresSession parametresSession = ParametresSession.getInstance() ;
-    Passeur autosampler = parametresSession.getPasseur();
-    PousseSeringue pump = parametresSession.getPousseSeringue();
+    ParametresSession session = ParametresSession.getInstance() ;
+    Passeur autosampler = session.getPasseur();
+    PousseSeringue pump = session.getPousseSeringue();
+    
+    GeneralSettings settings = GeneralSettings.instance();
     
     ThreadControl.check();
     _LOG.debug("setup the arm");
@@ -124,8 +126,8 @@ class PumpThread extends AbstractThreadControl
     
     action = new Action(ActionType.USR_MSG, Optional.of("set maximum pump rate"));
     this._toolCtrl.notifyAction(action) ;
-    pump.setDebitAspiration(parametresSession.debitMaxPousseSeringue());
-    pump.setDebitRefoulement(parametresSession.debitMaxPousseSeringue());
+    pump.setDebitAspiration(settings.getDebitMaxPousseSeringue());
+    pump.setDebitRefoulement(settings.getDebitMaxPousseSeringue());
 
     for (Integer line: this._lines)
     {  

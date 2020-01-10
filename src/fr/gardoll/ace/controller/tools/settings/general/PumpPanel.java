@@ -5,9 +5,9 @@ import java.text.ParseException ;
 import javax.swing.SpinnerNumberModel ;
 
 import fr.gardoll.ace.controller.core.ConfigurationException ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.ui.TextFieldRealNumber ;
 
 //TODO check syringe volume against rinse volume.
@@ -52,28 +52,28 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
 
   private void load()
   {
-    ParametresSession session = ParametresSession.getInstance();
+    GeneralSettings settings = GeneralSettings.instance();
     
-    String pumpMaxRateValue = String.valueOf(session.debitMaxPousseSeringue());
+    String pumpMaxRateValue = String.valueOf(settings.getDebitMaxPousseSeringue());
     this.pumpMaxRateTextField.setText(pumpMaxRateValue);
     
-    this.oneSyringeRadioButton.setSelected(session.nbSeringue() == 1);
-    this.twoSyringeRadioButton.setSelected(session.nbSeringue() == 2);
+    this.oneSyringeRadioButton.setSelected(settings.getNbSeringue() == 1);
+    this.twoSyringeRadioButton.setSelected(settings.getNbSeringue() == 2);
     
-    String rinseVolumeValue = String.valueOf(session.volumeRincage());
+    String rinseVolumeValue = String.valueOf(settings.getVolumeRincage());
     this.rinseVolumeTextField.setText(rinseVolumeValue);
     
-    this.rinseNumberSpinner.setValue(session.nbRincage());
+    this.rinseNumberSpinner.setValue(settings.getNbRincage());
     
-    String syringeDiameterValue = String.valueOf(session.diametreSeringue());
+    String syringeDiameterValue = String.valueOf(settings.getDiametreSeringue());
     this.syringeDiameterTextField.setText(syringeDiameterValue);
     
-    String syringeVolumeValue = String.valueOf(session.volumeMaxSeringue());
+    String syringeVolumeValue = String.valueOf(settings.getVolumeMaxSeringue());
     this.syringeVolumeTextField.setText(syringeVolumeValue);
   }
 
   @Override
-  public void save() throws ConfigurationException
+  public void set() throws ConfigurationException
   {
     // TODO Auto-generated method stub
 

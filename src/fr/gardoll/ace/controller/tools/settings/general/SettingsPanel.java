@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class SettingsPanel extends javax.swing.JPanel
@@ -152,16 +153,29 @@ public class SettingsPanel extends javax.swing.JPanel
       {
         try
         {
-          _LOG.info(String.format("saving %s settings", panel.getName()));
-          panel.save();
+          _LOG.info(String.format("altering the %s settings", panel.getName()));
+          panel.set();
         }
         catch (Exception e)
         {
-          String msg = String.format("error while saving %s settings", panel.getName());
+          String msg = String.format("error in %s settings", panel.getName());
           _LOG.error(msg, e);
           Utils.reportError(msg, e);
-          return;
+          succeeded = false;
         }
+      }
+      
+      try
+      {
+        _LOG.info("saving general settings");
+        GeneralSettings.instance().save();
+      }
+      catch (Exception e)
+      {
+        String msg = "error while saving general settings";
+        _LOG.error(msg, e);
+        Utils.reportError(msg, e);
+        return;
       }
       
       try

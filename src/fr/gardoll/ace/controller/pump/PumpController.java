@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public interface PumpController extends Closeable
 {
@@ -16,8 +17,6 @@ public interface PumpController extends Closeable
   
   // caractéristique du pousse seringue en m/min
   public final static double COURCE_LINEAIRE_MAX = 0.1269 ;
-  // diamètre de seringue maximum pour le pousse seringue en mm
-  public final static int DIAMETRE_MAX = 140 ;
   
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.US);
@@ -68,10 +67,10 @@ public interface PumpController extends Closeable
                                  diametreSeringue) ;
       throw new ConfigurationException(msg);
     }
-    else if (diametreSeringue > DIAMETRE_MAX)
+    else if (diametreSeringue > GeneralSettings.MAX_SYRINGE_DIAMETER)
     {
       String msg = String.format("the value of the syringe diameter '%s' cannot be greater than %s",
-                                 diametreSeringue, DIAMETRE_MAX);
+                                 diametreSeringue, GeneralSettings.MAX_SYRINGE_DIAMETER);
       throw new ConfigurationException (msg);
     }
     

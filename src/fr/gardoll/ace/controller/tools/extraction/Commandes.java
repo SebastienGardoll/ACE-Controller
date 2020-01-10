@@ -15,11 +15,12 @@ import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
 class Commandes
 {
-  private final ParametresSession parametresSession;
+  private final GeneralSettings _settings;
 
   private final Colonne colonne;
 
@@ -36,14 +37,16 @@ class Commandes
   {
     this.colonne   = colonne;
     this._toolCtrl = toolCtrl;
-    ParametresSession parametresSession = ParametresSession.getInstance();
-    this.parametresSession = parametresSession;
+    this._settings = GeneralSettings.instance();
     
-    this.pousseSeringue = parametresSession.getPousseSeringue();
-    this.passeur = parametresSession.getPasseur();
+    {
+      ParametresSession parametresSession = ParametresSession.getInstance();
+      this.pousseSeringue = parametresSession.getPousseSeringue();
+      this.passeur = parametresSession.getPasseur();
+    }
     
     //aspiration est toujours au débit max
-    this.pousseSeringue.setDebitAspiration(parametresSession.debitMaxPousseSeringue());
+    this.pousseSeringue.setDebitAspiration(_settings.getDebitMaxPousseSeringue());
   }
   
   //rinçe la tuyauterie selon le volume de rinçage et le nombre de cycle de parametresSession
@@ -64,14 +67,14 @@ class Commandes
     }
     
     //le refoulement pour les rinçage se fait toujours au débit max.
-    this.pousseSeringue.setDebitRefoulement(this.parametresSession.debitMaxPousseSeringue()); 
+    this.pousseSeringue.setDebitRefoulement(this._settings.getDebitMaxPousseSeringue()); 
                                                                                     
     //perte du volume de sécurité
     this.pousseSeringue.vidange(); 
 
     this.pousseSeringue.finPompage();                                                   
 
-    for(int i = 0 ; i < this.parametresSession.nbRincage() ; i++)
+    for(int i = 0 ; i < this._settings.getNbRincage() ; i++)
     {
       // appel aspiration dédié au rinçage à cause
       // ok pour deux seringue 07/10/05 //de la gestion du volume de sécu voir
@@ -79,7 +82,7 @@ class Commandes
       
       _LOG.debug(String.format("start rince cycle %s", i));
       
-      this.pousseSeringue.rincageAspiration(this.parametresSession.volumeRincage(),
+      this.pousseSeringue.rincageAspiration(this._settings.getVolumeRincage(),
                                             numEv) ; 
       this.pousseSeringue.finPompage() ;
 
@@ -123,9 +126,9 @@ class Commandes
 
     this.deplacementPasseur(0) ;
 
-    if (this.colonne.hauteurReservoir() > this.parametresSession.epaisseur())
+    if (this.colonne.hauteurReservoir() > this._settings.getEpaisseur())
     {
-      correction = this.parametresSession.epaisseur() ;
+      correction = this._settings.getEpaisseur() ;
     }
 
     this.passeur.moveBras(- Passeur.convertBras(this.colonne.hauteurReservoir()
@@ -145,7 +148,7 @@ class Commandes
     this.passeur.moveButeBras();
     this.passeur.finMoveBras() ;
     this.passeur.setOrigineBras();
-    this.passeur.moveBras(Passeur.convertBras(this.colonne.hauteurColonne() + this.colonne.hauteurReservoir()  - this.parametresSession.refCarrousel()));
+    this.passeur.moveBras(Passeur.convertBras(this.colonne.hauteurColonne() + this.colonne.hauteurReservoir()  - this._settings.getRefCarrousel()));
     this.passeur.finMoveBras() ;
     this.passeur.setOrigineBras();
   }

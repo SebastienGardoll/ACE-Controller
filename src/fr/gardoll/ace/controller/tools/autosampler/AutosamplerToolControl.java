@@ -16,6 +16,7 @@ import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class AutosamplerToolControl extends AbstractPausableToolControl
 {
@@ -303,10 +304,6 @@ class ArmThread extends AbstractThreadControl
                                       InitializationException,
                                       Exception
   {
-    _LOG.debug("run ArmThread") ;
-    ParametresSession parametresSession = null ;
-    parametresSession = ParametresSession.getInstance() ;
-
     _LOG.debug(String.format("run ArmThread with order '%s'", this._choix)) ;
 
     Action action = new Action(ActionType.ARM_MOVING, Optional.empty()) ;
@@ -333,7 +330,7 @@ class ArmThread extends AbstractThreadControl
         this._passeur.setOrigineBras() ;
         this._passeur.moveBras(Passeur.convertBras(
             this._colonne.hauteurColonne() + this._colonne.hauteurReservoir()
-                - parametresSession.refCarrousel())) ;
+                - GeneralSettings.instance().getRefCarrousel())) ;
         break ;
       }
 

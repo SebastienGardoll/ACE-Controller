@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public abstract class AbstractCloseableJPanelObserver extends AbstractJPanelObserver
 {
@@ -39,7 +40,7 @@ public abstract class AbstractCloseableJPanelObserver extends AbstractJPanelObse
   {
     int choice = JOptionPane.OK_OPTION;
     
-    if(false == ParametresSession.getInstance().isDebug() &&
+    if(false == GeneralSettings.instance().isDebug() &&
        false == ParametresSession.isAutomatedTest)
     {
       choice = JOptionPane.showConfirmDialog(this,

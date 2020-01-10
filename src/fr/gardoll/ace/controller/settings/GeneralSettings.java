@@ -28,7 +28,9 @@ public class GeneralSettings extends Settings
   public static final double DEFAULT_MAX_SYRINGE_VOLUME   = 100.; // in mL
   public static final double DEFAULT_MAX_PUMP_MAX_RATE    = 15.;  // in mL/min
   public static final double DEFAULT_MAX_RINSE_VOLUME     = 100.; // in mL
-  public static final double DEFAULT_MAX_SYRINGE_DIAMETER = 100.; // in mm
+  
+  // diamètre de seringue maximum pour le pousse seringue en mm
+  public static final double MAX_SYRINGE_DIAMETER = 140.; // in mm
   
   public static final double DEFAULT_MIN_PUMP_MAX_RATE    = 0.25; // in mL/min
   public static final double DEFAULT_MIN_RINSE_VOLUME     = 0.25; // in mL
@@ -427,10 +429,10 @@ public class GeneralSettings extends Settings
       throw new ConfigurationException(msg);
     }
     
-    if(syringeDiameter > DEFAULT_MAX_SYRINGE_DIAMETER)
+    if(syringeDiameter > GeneralSettings.MAX_SYRINGE_DIAMETER)
     {
       String msg = String.format("the syringe diameter (got '%s') cannot be greate than %s",
-          syringeDiameter, DEFAULT_MAX_SYRINGE_DIAMETER);
+          syringeDiameter, GeneralSettings.MAX_SYRINGE_DIAMETER);
       throw new ConfigurationException(msg);
     }
     

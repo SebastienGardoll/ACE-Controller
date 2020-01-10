@@ -7,8 +7,8 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ToolControl ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJPanelObserver
                                                          implements ControlPanel
@@ -86,7 +86,7 @@ public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJ
   {
     int choice = JOptionPane.OK_OPTION;
     
-    if(false == ParametresSession.getInstance().isDebug())
+    if(false == GeneralSettings.instance().isDebug())
     {
       String msg = null;
       

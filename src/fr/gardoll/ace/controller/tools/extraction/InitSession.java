@@ -3,8 +3,8 @@ package fr.gardoll.ace.controller.tools.extraction;
 import java.nio.file.Path ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class InitSession
 {
@@ -66,7 +66,7 @@ public class InitSession
       throw new InitializationException(msg) ;
     }
     
-    int maxColumnUtil = ParametresSession.getInstance().nbMaxColonne();
+    int maxColumnUtil = GeneralSettings.instance().getNbMaxColonne();
     if(this.nbColonne > maxColumnUtil)
     {
       String msg = String.format("number of columns cannot be greater than %s", maxColumnUtil);

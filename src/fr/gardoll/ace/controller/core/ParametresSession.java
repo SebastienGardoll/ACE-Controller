@@ -1,21 +1,12 @@
 package fr.gardoll.ace.controller.core;
 
 import java.io.Closeable ;
-import java.io.FileNotFoundException ;
 import java.io.IOException ;
 import java.lang.reflect.Constructor ;
-import java.nio.file.Files ;
-import java.nio.file.Path ;
-import java.text.DecimalFormatSymbols ;
 import java.util.HashSet ;
-import java.util.Locale ;
 import java.util.Optional ;
 import java.util.Set ;
 
-import org.apache.commons.configuration2.INIConfiguration ;
-import org.apache.commons.configuration2.SubnodeConfiguration ;
-import org.apache.commons.configuration2.builder.fluent.Configurations ;
-import org.apache.commons.configuration2.ex.ConfigurationException ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -32,6 +23,7 @@ import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.pump.PumpController ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.valves.ParaComStub ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
@@ -39,66 +31,22 @@ public class ParametresSession implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
   
-  private static final String _DEFAULT_STRING_VALUE = "READ_ERROR";
-  
-  public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
-      new DecimalFormatSymbols(Locale.FRANCE);
-  
   public static boolean isAutomatedTest = false;
   
   private static ParametresSession _INSTANCE ;
-  
-  private Path _configurationFile = null;
   
   // Lazy loading and singleton.
   private PousseSeringue _pump = null;
   private Passeur _autosampler = null;
   private Valves _valves       = null;
   
-  private double _volumeMaxSeringue ;  // volume max du type de seringue en mL
-
-  private double _volumeRincage ;  // volume  utilisé pendant un cylce de rinçage  en mL
-
-  private int _nbPasCarrousel ;  // nombre de demi pas entre deux emplacement colonnes
-
-  private int  _refCarrousel; // distance butée haute du bras, plateau supérieur du carrousel en mm
-
-  private int _nbRincage ; //nombre de rinçage à effectuer au moment de changer d'éluant
-
-  private double _debitMaxPousseSeringue ;//débit maximum applicable au pousseSeringue en fonction du diamètre de tuyau utilisé !!!
-
-  private double _diametreSeringue ;//diametre du type de seringue utilisé
-
-  private int _nbSeringue ; //nombre de seringues utilisées
-
-  private int _diametreCarrousel ;//diamètre du carrousel en mm
-
-  private int _epaisseur ;//epaisseur du plateau sup du carrousel
-
-  private int _nbMaxColonne ; //nombre d'emplacement max de colonnes sur le carrousel choisi
-
-  private String _pumpSerialComClassPath ;
-
-  private String _pumpConfPortPath ;
-
-  private String _autosamplerSerialComClassPath ;
-
-  private String _autosamplerConfPortPath ;
-
-  private String _paraComClassPath ;
-
-  private String _paraComSerialComClassPath ;
-
-  private String _paraComConfPortPath ;
-
-  private boolean _isDebug ;
-  private boolean _isFullScreen ;
-  
   private Optional<String> _autosamplerRuntimePortPath = Optional.empty();
   
   private Optional<String> _pumpRuntimePortPath = Optional.empty();
   
   private Optional<String> _paraComRuntimePortPath = Optional.empty();
+
+  private final GeneralSettings _settings ;
 
   public static ParametresSession getInstance()
   {
@@ -118,180 +66,13 @@ public class ParametresSession implements Closeable
     }
   }
   
-  private ParametresSession() throws InitializationException
+  private ParametresSession()
   {
-    this.load();
-  }
-  
-  public Path getConfigurationFilePath()
-  {
-    return this._configurationFile;
-  }
-  
-  // Reload conf but not Autosampler, Pump and Valves.
-  public void load() throws InitializationException
-  {
-    _LOG.info("load the basic configuration");
-    
-    Path rootDir = null ;
-    _LOG.debug("fetch root dir");
-    rootDir = Utils.getInstance().getRootDir();
-    
-    this._configurationFile = rootDir.resolve(Names.CONFIG_DIRNAME)
-                                     .resolve(Names.CONFIG_FILENAME);
-    Path carouselConfFile = null;
-    
-    if (Files.isReadable(this._configurationFile)    == false ||
-        Files.isRegularFile(this._configurationFile) == false)
-    {
-      String msg = String.format("unable to read the configuration file '%s'",
-          this._configurationFile);
-      throw new InitializationException(msg);
-    }
-    
-    try
-    {
-      _LOG.debug("read ace controller configuration");
-      
-      Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
-      SubnodeConfiguration section = iniConf.getSection(Names.SEC_ACE_CONTROLLER);
-      
-      this._isDebug = Names.TRUE.equals(section.getString(Names.SAC_IS_DEBUG, _DEFAULT_STRING_VALUE));
-      _LOG.debug(String.format("isDebug returns %s", this._isDebug));
-      
-      
-      this._isFullScreen = Names.TRUE.equals(section.getString(Names.SAC_IS_FULL_SCREEN, _DEFAULT_STRING_VALUE));
-      _LOG.debug(String.format("isFullScreen returns %s", this._isFullScreen));
-      
-      section.close();
-    }
-    catch (ConfigurationException e)
-    {
-      String msg = String.format("unable to read the ace controller configuration '%s'",
-          this._configurationFile.toString());
-      throw new InitializationException(msg, e);
-    }
-    
-    try
-    {
-      _LOG.debug("read pump configuration");
-      
-      Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
-      SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_POUSSE_SERINGUE);
-      
-      this._pumpSerialComClassPath = section.getString(Names.SIPS_CLEF_SERIAL_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
-      this._pumpConfPortPath           = section.getString(Names.SIPS_CLEF_PORT_PATH, _DEFAULT_STRING_VALUE);
-      
-      this._volumeMaxSeringue      = section.getDouble(Names.SIPS_CLEF_VOL_MAX, -1.0) ;
-      this._volumeRincage          = section.getDouble(Names.SIPS_CLEF_VOL_RINCAGE, -1.0) ;
-      this._nbRincage              = section.getInteger(Names.SIPS_CLEF_NB_RINCAGE, -1) ;
-      this._debitMaxPousseSeringue = section.getDouble(Names.SIPS_CLEF_DEBIT_MAX, -1.0) ;
-      this._nbSeringue             = section.getInteger(Names.SIPS_CLEF_NB_SERINGUE,-1);
-      this._diametreSeringue       = section.getDouble(Names.SIPS_CLEF_DIA_SERINGUE,-1.0);
-      
-      section.close();
-
-      section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
-      String plateConfFilePathString      = section.getString(Names.SIC_CLEF_CHEMIN_FICHIER_CARROUSEL, _DEFAULT_STRING_VALUE);
-      this._autosamplerSerialComClassPath = section.getString(Names.SIC_CLEF_SERIAL_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
-      this._autosamplerConfPortPath       = section.getString(Names.SIC_CLEF_PORT_PATH, _DEFAULT_STRING_VALUE);
-      
-      section.close();
-      
-      try
-      {
-        carouselConfFile = Utils.getInstance().resolvePath(plateConfFilePathString);
-      }
-      catch (FileNotFoundException e)
-      {
-        String msg = String.format("unable to locate carousel conf file '%s'", plateConfFilePathString);
-        throw new InitializationException(msg, e);
-      }
-    }
-    catch (ConfigurationException e)
-    {
-      String msg = String.format("unable to read the pump configuration '%s'",
-          this._configurationFile.toString());
-      throw new InitializationException(msg, e);
-    }
-    
-    if (Files.isReadable(carouselConfFile)    == false ||
-        Files.isRegularFile(carouselConfFile) == false)
-    {
-      String msg = String.format("unable to read the carousel configuration file '%s'", carouselConfFile);
-      throw new InitializationException(msg);
-    }
-    
-    try
-    {
-      _LOG.debug("read autosampler configuration");
-      
-      Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(carouselConfFile.toFile());
-      SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_CARROUSEL);
-      
-      this._nbPasCarrousel    = section.getInteger(Names.SIC_CLEF_NB_DEMI_PAS, -1) ;
-      this._refCarrousel      = section.getInteger(Names.SIC_CLEF_REF_CARROUSEL, -1);
-      this._diametreCarrousel = section.getInteger(Names.SIC_CLEF_DIA, -1);
-      this._epaisseur         = section.getInteger(Names.SIC_CLEF_EPAISSEUR, -1);
-      this._nbMaxColonne      = section.getInteger(Names.SIC_CLEF_NB_COL , -1) ;
-      this._nbMaxColonne--; // Minus the trash that takes a column position.
-      
-      section.close();
-    }
-    catch (ConfigurationException e)
-    {
-      String msg = String.format("unable to read the carousel configuration file '%s'",
-          carouselConfFile.toString());
-      throw new InitializationException(msg, e);
-    }
-    
-    try
-    {
-      _LOG.debug("read paracom configuration");
-      
-      Configurations configs = new Configurations();
-      INIConfiguration iniConf = configs.ini(this._configurationFile.toFile());
-      SubnodeConfiguration section = iniConf.getSection(Names.SEC_INFO_PARA_COM);
-      
-      this._paraComClassPath = section.getString(Names.SIPC_CLEF_PARA_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
-      this._paraComSerialComClassPath = section.getString(Names.SIPC_CLEF_SERIAL_COM_CLASS_PATH, _DEFAULT_STRING_VALUE);
-      this._paraComConfPortPath = section.getString(Names.SIPC_CLEF_PORT_PATH, _DEFAULT_STRING_VALUE);
-      
-      section.close();
-    }
-    catch (ConfigurationException e)
-    {
-      String msg = String.format("unable to read the paracom configuration file '%s'",
-          this._configurationFile.toString());
-      throw new InitializationException(msg, e);
-    }
-    
-    _LOG.debug("performing data checking");
-    if (this._volumeMaxSeringue      < 0 ||
-        this._volumeRincage          < 0 ||
-        this._nbRincage              < 0 ||
-        this._debitMaxPousseSeringue < 0 ||
-        this._nbSeringue             < 0 ||
-        this._diametreSeringue       < 0 ||
-        this._nbPasCarrousel         < 0 ||
-        this._refCarrousel           < 0 ||
-        this._diametreCarrousel      < 0 ||
-        this._epaisseur              < 0 ||
-        this._nbMaxColonne           < 0    )
-    {
-      String msg = String.format("corrupted configuration file or plate configuration file");
-      throw new InitializationException(msg);
-    }
+    this._settings = GeneralSettings.instance();
+    _LOG.debug(String.format("isDebug returns %s", this._settings.isDebug()));
+    _LOG.debug(String.format("isFullScreen returns %s", this._settings.isFullScreen()));
   }
 
-  public boolean isDebug()
-  {
-    return this._isDebug;
-  }
-  
   private SerialCom instantiateSerialCom(String classPath, String portPath) throws InitializationException
   {
     try
@@ -329,41 +110,6 @@ public class ParametresSession implements Closeable
     }
   }
 
-  private String getParaComSerialComClassPath()
-  {
-    return this._paraComSerialComClassPath;
-  }
-
-  private String getParaComConfPortPath()
-  {
-    return this._paraComConfPortPath;
-  }
-
-  private String getParaComClassPath()
-  {
-    return this._paraComClassPath;
-  }
-
-  private String getPumpConfPortPath()
-  {
-    return this._pumpConfPortPath;
-  }
-
-  private String getPumpSerialComClassPath()
-  {
-    return this._pumpSerialComClassPath;
-  }
-
-  private String getAutosamplerSerialComClassPath()
-  {
-    return this._autosamplerSerialComClassPath;
-  }
-
-  private String getAutosamplerConfPortPath()
-  {
-    return this._autosamplerConfPortPath;
-  }
-  
   // Lazy loading.
   public PousseSeringue getPousseSeringue() throws InitializationException
   {
@@ -375,7 +121,7 @@ public class ParametresSession implements Closeable
       
       PumpController pumpCtrl = null;
       
-      if(this.isDebug())
+      if(this._settings.isDebug())
       {
         pumpCtrl = new PumpControllerStub();
       }
@@ -385,13 +131,14 @@ public class ParametresSession implements Closeable
         Optional<Object> instance = null;
         instance = this.discoverCom(instantiator,
                                     this._pumpRuntimePortPath,
-                                    this.getPumpConfPortPath());
+                                    this._settings.getPumpConfPortPath());
         if(instance.isPresent())
         {
           pumpCtrl = (PumpController) instance.get();
           String actualPortPath = pumpCtrl.getPortPath();
           this._pumpRuntimePortPath = Optional.of(actualPortPath);
-          this.persistPumpPortPath(actualPortPath);
+          
+          this._settings.setPumpConfPortPath(actualPortPath);
         }
         else
         {
@@ -400,32 +147,21 @@ public class ParametresSession implements Closeable
         }
       }
       
-      this._pump = new PousseSeringue(pumpCtrl, valves, this.nbSeringue(), 
-          this.diametreSeringue(), this.volumeMaxSeringue(),
-          this.debitMaxPousseSeringue(), 0.);
+      this._pump = new PousseSeringue(pumpCtrl, valves, 0.);
     }
     
     return this._pump;
   }
   
-  private void persistPumpPortPath(String portPath)
-      throws InitializationException
-  {
-    String section = Names.SEC_INFO_POUSSE_SERINGUE;
-    String key = Names.SIPS_CLEF_PORT_PATH ;
-    String value = portPath;
-    this.persistData(section, key, value);
-  }
-
   private class PumpControllerInstatiator implements Instantiator
   {
     @Override
     public Object instantiate(String portPath) throws Exception
     {
-      String pumpSerialComClassPath = ParametresSession.this.getPumpSerialComClassPath();
+      String pumpSerialComClassPath = ParametresSession.this._settings.getPumpSerialComClassPath();
       _LOG.debug(String.format("instantiating pump port (%s, %s)", portPath, pumpSerialComClassPath)) ;
       SerialCom pumpPort = ParametresSession.this.instantiateSerialCom(pumpSerialComClassPath, portPath);
-      PumpController pumpCtrl = new InterfacePousseSeringue(pumpPort, ParametresSession.this.diametreSeringue());
+      PumpController pumpCtrl = new InterfacePousseSeringue(pumpPort);
       return pumpCtrl;
     }
   }
@@ -438,7 +174,7 @@ public class ParametresSession implements Closeable
       
       _LOG.info("instantiating the valves");
       
-      if(this.isDebug())
+      if(this._settings.isDebug())
       {
         paraCom = new ParaComStub();
       }
@@ -448,13 +184,14 @@ public class ParametresSession implements Closeable
         Optional<Object> instance = null;
         instance = this.discoverCom(instantiator,
                                     this._paraComRuntimePortPath,
-                                    this.getParaComConfPortPath());
+                                    this._settings.getParaComConfPortPath());
         if(instance.isPresent())
         {
           paraCom = (ParaCom) instance.get();
           String actualPortPath = paraCom.getPortPath();
           this._paraComRuntimePortPath = Optional.of(actualPortPath);
-          this.persistParaComPortPath(actualPortPath);
+          
+          this._settings.setParaComConfPortPath(actualPortPath);
         }
         else
         {
@@ -470,25 +207,16 @@ public class ParametresSession implements Closeable
     return this._valves;
   }
   
-  private void persistParaComPortPath(String portPath)
-      throws InitializationException
-  {
-    String section = Names.SEC_INFO_PARA_COM;
-    String key = Names.SIPC_CLEF_PORT_PATH;
-    String value = portPath;
-    this.persistData(section, key, value);
-  }
-
   private class ParaComInstatiator implements Instantiator
   {
     @Override
     public Object instantiate(String portPath) throws Exception
     {
-      String paraComSerialComClassPath = ParametresSession.this.getParaComSerialComClassPath();
+      String paraComSerialComClassPath = ParametresSession.this._settings.getParaComSerialComClassPath();
       _LOG.debug(String.format("instantiating paracom port (%s, %s)", portPath, paraComSerialComClassPath)) ;
       SerialCom paraComPort = ParametresSession.this.instantiateSerialCom(paraComSerialComClassPath, portPath);
       
-      String paraComClassPath = ParametresSession.this.getParaComClassPath();
+      String paraComClassPath = ParametresSession.this._settings.getParaComClassPath();
       _LOG.debug(String.format("instantiating paracom (%s)", paraComClassPath)) ;
       ParaCom paraCom = ParametresSession.this.instantiateParaCom(paraComClassPath, paraComPort);
       return paraCom;
@@ -504,9 +232,9 @@ public class ParametresSession implements Closeable
       
       _LOG.info("instantiating the autosampler");
       
-      if(this.isDebug())
+      if(this._settings.isDebug())
       {
-        motorCtrl = new MotorControllerStub(this.nbPasCarrousel());
+        motorCtrl = new MotorControllerStub(this._settings.getNbPasCarrousel());
       }
       else
       {
@@ -514,13 +242,14 @@ public class ParametresSession implements Closeable
         Optional<Object> instance = null;
         instance = this. discoverCom(instantiator,
                                      this._autosamplerRuntimePortPath,
-                                     this.getAutosamplerConfPortPath());
+                                     this._settings.getAutosamplerConfPortPath());
         if(instance.isPresent())
         {
           motorCtrl = (MotorController) instance.get();
           String actualPortPath = motorCtrl.getPortPath();
           this._autosamplerRuntimePortPath = Optional.of(actualPortPath);
-          this.persistAutosamplerPortPath(actualPortPath);
+          
+          this._settings.setAutosamplerConfPortPath(actualPortPath);
         }
         else
         {
@@ -529,36 +258,12 @@ public class ParametresSession implements Closeable
         }
       }
       
-      this._autosampler = new Passeur(motorCtrl, this.nbPasCarrousel(),
-                            this.diametreCarrousel(), this.epaisseur(),
-                            this.refCarrousel());
+      this._autosampler = new Passeur(motorCtrl);
     }
     
     return this._autosampler;
   }
   
-  private void persistAutosamplerPortPath(String portPath)
-      throws InitializationException
-  {
-    String section = Names.SEC_INFO_CARROUSEL;
-    String key = Names.SIC_CLEF_PORT_PATH ;
-    String value = portPath;
-    this.persistData(section, key, value);
-  }
-  
-  private void persistData(String section, String key, String value)
-      throws InitializationException
-  {
-    try
-    {
-      Utils.persistPropertyData(this._configurationFile, section, key, value);
-    }
-    catch(Exception e)
-    {
-      throw new InitializationException(e);
-    }
-  }
-
   private Optional<Object> tryInstantiate(Instantiator instantiator,
                                           String portPath)
   {
@@ -665,7 +370,7 @@ public class ParametresSession implements Closeable
     @Override
     public Object instantiate(String portPath) throws Exception
     {
-      String classPath = ParametresSession.this.getAutosamplerSerialComClassPath();
+      String classPath = ParametresSession.this._settings.getAutosamplerSerialComClassPath();
       _LOG.debug(String.format("instantiating autosampler port (%s, %s)", portPath, classPath));
       SerialCom autosamplerPort = ParametresSession.this.instantiateSerialCom(classPath, portPath);
       MotorController motorCtrl = new InterfaceMoteur(autosamplerPort);
@@ -673,69 +378,6 @@ public class ParametresSession implements Closeable
     }
   }
 
-  public double volumeMaxSeringue()
-  {
-    return this._volumeMaxSeringue ;
-  }
-
-  public double volumeRincage()
-  {
-    return this._volumeRincage ;
-  }
-
-  public int nbPasCarrousel()
-  {
-    return this._nbPasCarrousel ;
-  }
-
-  public int refCarrousel()
-  {
-    return this._refCarrousel ;
-  }
-
-  public int nbRincage()
-  {
-    return this._nbRincage ;
-  }
-
-  public double debitMaxPousseSeringue()
-  {
-    return this._debitMaxPousseSeringue ;
-  }
-
-  public double diametreSeringue()
-  {
-    return this._diametreSeringue ;
-  }
-
-  public int nbSeringue()
-  {
-    return this._nbSeringue ;
-  }
-
-  public int diametreCarrousel()
-  {
-    return this._diametreCarrousel ;
-  }
-
-  public int epaisseur()
-  {
-    return this._epaisseur ;
-  }
-
-  public int nbMaxColonne()
-  {
-    return this._nbMaxColonne ;
-  }
-  
-  public void reset() throws InitializationException
-  {
-    _LOG.debug("reset settings");
-    
-    this.close();
-    this.load();
-  }
-  
   @Override
   public void close()
   {
@@ -760,6 +402,8 @@ public class ParametresSession implements Closeable
         this._valves = null;
       }
       
+      GeneralSettings.instance().close();
+      
       ParametresSession._INSTANCE = null;
     }
     catch (IOException e)
@@ -769,8 +413,32 @@ public class ParametresSession implements Closeable
     }
   }
 
-  public boolean isFullScreen()
+  public void reset()
   {
-    return this._isFullScreen;
+    try
+    {
+      if(this._pump != null)
+      {
+        this._pump.close();
+        this._pump = null;
+      }
+          
+      if(this._autosampler != null)
+      {
+        this._autosampler.close();
+        this._autosampler = null;
+      }
+      
+      if(this._valves != null)
+      {
+        this._valves.close();
+        this._valves = null;
+      }
+    }
+    catch (IOException e)
+    {
+      String msg = "error while closing the pump or the autosampler";
+      _LOG.error(msg, e);
+    }
   }
 }
