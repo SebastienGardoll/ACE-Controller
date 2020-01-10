@@ -24,15 +24,6 @@ public class Names
     return filePath;
   }
   
-  public static Path computeGeneralSettingsFilePath()
-  {
-    Path rootDir = Utils.getInstance().getRootDir();
-    Path filePath = rootDir.resolve(Names.CONFIG_DIRNAME)
-                           .resolve(Names.CONFIG_FILENAME);
-    
-    return filePath;
-  }
-  
   public final static Path COLUMN_DIR_PATH = 
       Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.COLUMN_DIRNAME);
   
@@ -55,56 +46,6 @@ public class Names
   // COMMUN
 
   public static final String CLEF_DATE                         = "date";
-
-  //----------------------------
-  
-  public static final String SEC_ACE_CONTROLLER                = "ace_controller_settings";
-  public static final String SAC_IS_DEBUG                      = "is_debug";
-  public static final String SAC_IS_FULL_SCREEN                = "is_fullScreen";
-  
-  //----------------------------
-
-  public static final String SEC_INFO_POUSSE_SERINGUE          = "informationsPousseSeringue";
-
-  public static final String SIPS_CLEF_SERIAL_COM_CLASS_PATH   = "serialComClassPath";
-  
-  public static final String SIPS_CLEF_PORT_PATH               = "portPath";
-  
-  public static final String SIPS_CLEF_VOL_MAX                 = "volumeMax";
-
-  public static final String SIPS_CLEF_VOL_RINCAGE             = "volumeRincage";
-
-  public static final String SIPS_CLEF_NB_RINCAGE              = "nombreRincage";
-
-  public static final String SIPS_CLEF_DEBIT_MAX               = "debitMax";
-
-  public static final String SIPS_CLEF_NB_SERINGUE             = "nombreSeringue";
-
-  public static final String SIPS_CLEF_DIA_SERINGUE            = "diametreSeringue";
-
-  //----------------------------
-
-  public static final String SEC_INFO_CARROUSEL                = "informationsCarrousel";
-
-  public static final String SIC_CLEF_SERIAL_COM_CLASS_PATH    = "serialComClassPath";
-  
-  public static final String SIC_CLEF_PORT_PATH                = "portPath";
-  
-  public static final String SIC_CLEF_CHEMIN_FICHIER_CARROUSEL = "cheminFichierCarrousel";
-
-  public static final String SIC_CLEF_NOM_CARROUSEL            = "nomCarrousel";
-
-  public static final String SIC_CLEF_DIA                      = "diametre";
-
-  public static final String SIC_CLEF_NB_COL                   = "nombreColonne";
-
-  public static final String SIC_CLEF_REF_CARROUSEL            = "referenceCarrousel";
-
-  public static final String SIC_CLEF_EPAISSEUR                = "epaisseur";
-
-  public static final String SIC_CLEF_NB_DEMI_PAS              = "nombreDemiPas";
-
-  public static final String SIC_CLEF_AJUSTEMENT               = "ajuste?";
 
   //----------------------------
 
@@ -159,14 +100,4 @@ public class Names
   public static final String SIP_CLEF_TEMPS                    = "temps";
 
   public static final String SIP_CLEF_PAUSE                    = "pause?";
-
-  //----------------------------
-
-  public static final String SEC_INFO_PARA_COM                 = "informationsParacom";
-
-  public static final String SIPC_CLEF_PARA_COM_CLASS_PATH     = "paraComClassPath";
-  
-  public static final String SIPC_CLEF_SERIAL_COM_CLASS_PATH   = "serialComClassPath";
-  
-  public static final String SIPC_CLEF_PORT_PATH               = "portPath";
 }
