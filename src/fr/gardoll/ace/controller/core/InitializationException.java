@@ -1,6 +1,6 @@
 package fr.gardoll.ace.controller.core;
 
-public class InitializationException extends Exception
+public class InitializationException extends RuntimeException
 {
   private static final long serialVersionUID = -7247356875898233009L ;
 
