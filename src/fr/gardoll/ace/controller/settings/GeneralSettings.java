@@ -547,12 +547,12 @@ public class GeneralSettings extends Settings
                                     String.class);
   }
   
-  public void setPumpConfPortPath(String classPath) throws ConfigurationException
+  public void setPumpConfPortPath(String path) throws ConfigurationException
   {
-    this.checkPumpSerialComClassPath(classPath);
+    this.checkPumpSerialComClassPath(path);
     this.setValue(SEC_INFO_POUSSE_SERINGUE,
                   SIPS_CLEF_PORT_PATH,
-                  classPath);
+                  path);
   }  
   
   public void checkPumpSerialComClassPath(String classPath)
