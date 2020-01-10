@@ -14,6 +14,8 @@ import fr.gardoll.ace.controller.core.ThreadControl ;
 
 public class Passeur implements Closeable
 {
+  public final static int NB_POSITION = 6 ;
+  
   private final static double RAPPORT_REDUCTEUR_MOTEUR = 40. ; //DEPENDANT DE LA MECANIQUE
   private final static double NB_PAS_TOUR_BRAS = 400. ; // en demi pas
   private final static double NB_PAS_TOUR_MOTEUR = 400. ;//demi pas sans réducteur

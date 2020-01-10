@@ -147,7 +147,7 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
   {
     try
     {
-      int nbPosition =  -1 * ParametresSession.NB_POSITION;
+      int nbPosition =  -1 * Passeur.NB_POSITION;
       CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
       _LOG.debug("start carousel thread for turn to left");
       this.start(thread);
@@ -164,7 +164,7 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
   {
     try
     {
-      int nbPosition =  ParametresSession.NB_POSITION;
+      int nbPosition =  Passeur.NB_POSITION;
       CarouselRelativeThread thread = new CarouselRelativeThread(this, this._passeur, nbPosition);
       _LOG.debug("start carousel thread for turn to right");
       this.start(thread);

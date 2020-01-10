@@ -44,8 +44,6 @@ public class ParametresSession implements Closeable
   public final static DecimalFormatSymbols DECIMAL_SYMBOLS =
       new DecimalFormatSymbols(Locale.FRANCE);
   
-  public final static int NB_POSITION = 6 ;
-  
   public static boolean isAutomatedTest = false;
   
   private static ParametresSession _INSTANCE ;

@@ -113,12 +113,12 @@ public class ExtractionToolControl extends AbstractPausableToolControl
       if (sens >= 0)
       {
         //par la droite
-        passeur.moveCarrouselRelatif(ParametresSession.NB_POSITION) ;
+        passeur.moveCarrouselRelatif(Passeur.NB_POSITION) ;
       }
       else
       {
         //par la gauche
-        passeur.moveCarrouselRelatif( -1 * ParametresSession.NB_POSITION) ;
+        passeur.moveCarrouselRelatif( -1 * Passeur.NB_POSITION) ;
       }
 
       passeur.finMoveCarrousel();
