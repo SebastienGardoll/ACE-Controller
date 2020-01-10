@@ -62,7 +62,7 @@ public interface PumpController extends Closeable
   {
     _LOG.debug(String.format("computing the maxium rate based on the syringe diameter '%s'",
         diametreSeringue));
-    if (diametreSeringue <= 0)
+    if (diametreSeringue <= 0.)
     {
       String msg = String.format("the value of the syringe diameter '%s' cannot be negative or null",
                                  diametreSeringue) ;
