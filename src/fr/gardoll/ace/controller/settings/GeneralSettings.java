@@ -77,6 +77,8 @@ public class GeneralSettings extends Settings
     if(_INSTANCE == null)
     {
       _INSTANCE = new GeneralSettings();
+      String carouselFilePath = _INSTANCE.getPlateConfFilePath();
+      _INSTANCE._carouselSettings = new CarouselSettings(Paths.get(carouselFilePath));
     }
     
     return _INSTANCE;
