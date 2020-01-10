@@ -77,7 +77,7 @@ public class GeneralSettings extends Settings
     if(_INSTANCE == null)
     {
       _INSTANCE = new GeneralSettings();
-      String carouselFilePath = _INSTANCE.getPlateConfFilePath();
+      String carouselFilePath = _INSTANCE.getCarouselConfFilePath();
       _INSTANCE._carouselSettings = new CarouselSettings(Paths.get(carouselFilePath));
     }
     
@@ -132,11 +132,11 @@ public class GeneralSettings extends Settings
                   path);
   }
   
-  public void checkPlateConfFilePath(String path) throws ConfigurationException
+  public void checkCarouselConfFilePath(String path) throws ConfigurationException
   {
     if(path.isBlank())
     {
-      String msg = "plate conf file path is missing";
+      String msg = "carousel conf file path is missing";
       throw new ConfigurationException(msg);
     }
     
@@ -152,16 +152,16 @@ public class GeneralSettings extends Settings
     }
   }
   
-  public String getPlateConfFilePath() throws ConfigurationException
+  public String getCarouselConfFilePath() throws ConfigurationException
   {
     return (String) this.fetchValue(SEC_INFO_CARROUSEL,
                                     SIC_CLEF_CHEMIN_FICHIER_CARROUSEL,
                                     String.class);
   }
   
-  public void setPlateConfFilePath(String path) throws ConfigurationException
+  public void setCarouselConfFilePath(String path) throws ConfigurationException
   {
-    this.checkPlateConfFilePath(path);
+    this.checkCarouselConfFilePath(path);
     this.setValue(SEC_INFO_CARROUSEL,
                   SIC_CLEF_CHEMIN_FICHIER_CARROUSEL,
                   path);
