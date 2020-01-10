@@ -70,6 +70,9 @@ public class GeneralSettings extends Settings
   private GeneralSettings() throws InitializationException
   {
     super(_PROPERTY_FILE_PATH);
+    
+    String carouselFilePath = this.getCarouselConfFilePath();
+    this._carouselSettings = new CarouselSettings(Paths.get(carouselFilePath));
   }
   
   public static GeneralSettings instance() throws InitializationException
@@ -77,8 +80,6 @@ public class GeneralSettings extends Settings
     if(_INSTANCE == null)
     {
       _INSTANCE = new GeneralSettings();
-      String carouselFilePath = _INSTANCE.getCarouselConfFilePath();
-      _INSTANCE._carouselSettings = new CarouselSettings(Paths.get(carouselFilePath));
     }
     
     return _INSTANCE;
