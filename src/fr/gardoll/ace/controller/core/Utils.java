@@ -6,21 +6,12 @@ import java.net.URL ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
 import java.nio.file.Paths ;
-import java.util.List ;
-import java.util.Map ;
-import java.util.Map.Entry ;
 
 import javax.swing.JOptionPane ;
 
-import org.apache.commons.configuration2.INIConfiguration ;
-import org.apache.commons.configuration2.SubnodeConfiguration ;
-import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder ;
-import org.apache.commons.configuration2.builder.fluent.Configurations ;
-import org.apache.commons.lang3.tuple.Pair ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class Utils
@@ -182,102 +173,6 @@ public class Utils
     WINDOWS,
     UNIX,
     UNKNOWN;
-  }
-  
-  public static void persistPropertyData(Path propertyFilePath,
-                                         String section, String key,
-                                         String value)
-      throws ConfigurationException
-  {
-    try
-    {
-      Configurations configs = new Configurations();
-      FileBasedConfigurationBuilder<INIConfiguration> iniBuilder = configs.iniBuilder(propertyFilePath.toFile());
-      INIConfiguration iniConf = iniBuilder.getConfiguration();  
-      SubnodeConfiguration sectionNode = iniConf.getSection(section);
-      sectionNode.setProperty(key, value);
-      sectionNode.close();
-      iniBuilder.save();
-    }
-    catch(Exception e)
-    {
-      String msg = String.format("unable to persist section '%s' ; key '%s' ; value '%s' in '%s'",
-                                  section, key, value, propertyFilePath);
-      throw new ConfigurationException(msg, e);
-    }
-  }
-  
-  public static void persistPropertyData(Path propertyFilePath,
-                       Map<String, List<Pair<String, String>>> sectionKeyValues)
-                                  throws ConfigurationException
-  {
-    INIConfiguration iniConf = null;
-    FileBasedConfigurationBuilder<INIConfiguration> iniBuilder = null;
-    
-    try
-    {
-      Configurations configs = new Configurations();
-      iniBuilder = configs.iniBuilder(propertyFilePath.toFile());
-      iniConf = iniBuilder.getConfiguration();  
-    }
-    catch(Exception e)
-    {
-      String msg = String.format("unable to open property file '%s'", propertyFilePath);
-      throw new ConfigurationException(msg, e);
-    }
-    
-    for(Entry<String, List<Pair<String, String>>> sectionData: sectionKeyValues.entrySet())
-    {
-      String section = sectionData.getKey();
-      SubnodeConfiguration sectionNode = null; 
-      
-      try
-      {
-        sectionNode = iniConf.getSection(section);
-      }
-      catch(Exception e)
-      {
-        String msg = String.format("unable to open section '%s' in '%s'",
-                                    section, propertyFilePath);
-        throw new ConfigurationException(msg, e);
-      }
-      
-      for(Pair<String, String> keyValue: sectionData.getValue())
-      {
-        try
-        {
-          sectionNode.setProperty(keyValue.getKey(), keyValue.getValue());
-        }
-        catch (Exception e)
-        {
-          String msg = String.format("unable to set value '%s' for key '%s' in section '%s' for '%s'",
-              keyValue.getValue(), keyValue.getKey(), section, propertyFilePath);
-          throw new ConfigurationException(msg, e);
-        }
-      }
-      
-      try
-      {
-        sectionNode.close();
-      }
-      catch(Exception e)
-      {
-        String msg = String.format("unable to close section '%s' in '%s'",
-            section, propertyFilePath);
-        throw new ConfigurationException(msg, e);
-      }
-    }
-    
-    try
-    {
-      iniBuilder.save();
-    }
-    catch(Exception e)
-    {
-      String msg = String.format("unable to persist data in '%s'",
-                                  propertyFilePath);
-      throw new ConfigurationException(msg, e);
-    }
   }
   
   public static boolean isDividableBy250(double value)
