@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
 import org.junit.jupiter.api.TestMethodOrder ;
 
-import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.CloseableJPanelObserverStub ;
 
 @TestMethodOrder(OrderAnnotation.class)

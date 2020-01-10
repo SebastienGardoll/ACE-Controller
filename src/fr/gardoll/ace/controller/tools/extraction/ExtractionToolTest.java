@@ -18,9 +18,9 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ControlPanelAdapter ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.Names ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
+import fr.gardoll.ace.controller.settings.Names ;
+import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
 @TestMethodOrder(OrderAnnotation.class)

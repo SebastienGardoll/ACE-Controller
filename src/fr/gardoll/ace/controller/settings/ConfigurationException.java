@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.core;
+package fr.gardoll.ace.controller.settings;
 
 public class ConfigurationException extends RuntimeException
 {

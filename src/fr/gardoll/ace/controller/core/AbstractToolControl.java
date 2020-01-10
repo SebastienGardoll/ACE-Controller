@@ -6,6 +6,7 @@ import java.util.Set ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
 public abstract class AbstractToolControl implements ToolControl, Observable

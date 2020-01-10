@@ -3,9 +3,7 @@ package fr.gardoll.ace.controller.settings;
 import java.nio.file.Path ;
 import java.nio.file.Paths ;
 
-import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 

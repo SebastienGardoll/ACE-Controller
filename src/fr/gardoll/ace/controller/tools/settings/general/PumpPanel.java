@@ -4,9 +4,9 @@ import java.text.ParseException ;
 
 import javax.swing.SpinnerNumberModel ;
 
-import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.ui.TextFieldRealNumber ;
 

@@ -1,6 +1,8 @@
-package fr.gardoll.ace.controller.core;
+package fr.gardoll.ace.controller.settings;
 
 import java.nio.file.Path ;
+
+import fr.gardoll.ace.controller.core.Utils ;
 
 public class Names
 {

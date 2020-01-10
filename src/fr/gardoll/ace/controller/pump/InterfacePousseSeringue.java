@@ -16,8 +16,8 @@ import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
-import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class InterfacePousseSeringue  implements Closeable, PumpController

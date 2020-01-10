@@ -14,10 +14,10 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
+import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
 public class PumpToolControl extends AbstractPausableToolControl

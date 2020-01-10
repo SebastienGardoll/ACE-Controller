@@ -15,10 +15,10 @@ import javax.swing.filechooser.FileFilter ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
+import fr.gardoll.ace.controller.settings.Names ;
 
 public class ExtractionConfigurationDialog extends javax.swing.JDialog
 {

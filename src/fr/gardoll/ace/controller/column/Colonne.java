@@ -10,7 +10,7 @@ import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.commons.configuration2.ex.ConfigurationException ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.Names ;
+import fr.gardoll.ace.controller.settings.Names ;
 
 public abstract class Colonne
 {

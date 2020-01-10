@@ -20,6 +20,9 @@ import org.apache.commons.lang3.tuple.Pair ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.ParametresSession ;
+
 public class Utils
 {
   private static final Logger _LOG = LogManager.getLogger(Utils.class.getName());

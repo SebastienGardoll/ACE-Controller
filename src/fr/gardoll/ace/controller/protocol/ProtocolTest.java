@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.Test ;
 
 import fr.gardoll.ace.controller.column.TypeColonne ;
-import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.Names ;
 
 class ProtocolTest
 {

@@ -3,6 +3,8 @@ package fr.gardoll.ace.controller.core;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.settings.ParametresSession ;
+
 public abstract class AbstractPausableToolControl extends AbstractCancelableToolControl 
                                                           implements ToolControl
 {

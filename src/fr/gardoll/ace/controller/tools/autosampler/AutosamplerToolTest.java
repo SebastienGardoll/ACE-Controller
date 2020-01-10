@@ -14,8 +14,8 @@ import org.junit.jupiter.api.TestMethodOrder ;
 
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
-import fr.gardoll.ace.controller.core.Names ;
-import fr.gardoll.ace.controller.core.ParametresSession ;
+import fr.gardoll.ace.controller.settings.Names ;
+import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
 @TestMethodOrder(OrderAnnotation.class)

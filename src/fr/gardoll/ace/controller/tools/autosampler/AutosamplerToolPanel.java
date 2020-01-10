@@ -13,8 +13,8 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
-import fr.gardoll.ace.controller.core.Names ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.Names ;
 import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 
 public class AutosamplerToolPanel extends AbstractPausableJPanelObserver

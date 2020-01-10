@@ -3,7 +3,7 @@ package fr.gardoll.ace.controller.column;
 import java.nio.file.Path ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
-import fr.gardoll.ace.controller.core.Names ;
+import fr.gardoll.ace.controller.settings.Names ;
 
 public class CCylindre extends Colonne
 {

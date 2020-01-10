@@ -2,7 +2,7 @@ package fr.gardoll.ace.controller.ui;
 
 import javax.swing.JTextField ;
 
-import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 
 public class TextFieldRealNumber
 {

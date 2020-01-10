@@ -2,7 +2,6 @@ package fr.gardoll.ace.controller.settings;
 
 import java.nio.file.Path ;
 
-import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 
 class CarouselSettings extends Settings

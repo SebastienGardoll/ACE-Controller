@@ -13,7 +13,6 @@ import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 
 public abstract class Settings implements Closeable

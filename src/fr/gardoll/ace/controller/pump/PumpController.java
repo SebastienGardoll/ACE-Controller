@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.SerialComException ;
-import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public interface PumpController extends Closeable

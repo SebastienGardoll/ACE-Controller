@@ -1,6 +1,6 @@
 package fr.gardoll.ace.controller.tools.settings.general ;
 
-import fr.gardoll.ace.controller.core.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class MiscellaneousPanel extends javax.swing.JPanel implements Panel
