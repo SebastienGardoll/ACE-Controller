@@ -690,5 +690,6 @@ public class GeneralSettings extends Settings
   {
     this._carouselSettings.close();
     super.close();
+    GeneralSettings._INSTANCE = null;
   }
 }
