@@ -55,7 +55,7 @@ public abstract class Settings implements Closeable
   protected void setValue(String sectionName, String key, Object value)
       throws ConfigurationException
   {
-    _LOG.trace(String.format("set value '%s' for key '%s' in section '%s'",
+    _LOG.debug(String.format("set value '%s' for key '%s' in section '%s'",
         value, key, sectionName));
     
     SubnodeConfiguration sectionNode = fetchSection(sectionName);
