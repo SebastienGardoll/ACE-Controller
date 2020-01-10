@@ -16,10 +16,6 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.ConfigurationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 
-// TODO
-
-// - remove Names::computeGeneralSettingsFilePath
-
 public abstract class Settings implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(Settings.class.getName());
