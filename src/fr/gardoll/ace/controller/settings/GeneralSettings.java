@@ -98,7 +98,7 @@ public class GeneralSettings extends Settings
                                     String.class);
   }
   
-  public void set(String path) throws ConfigurationException
+  public void setAutosamplerConfPortPath(String path) throws ConfigurationException
   {
     this.checkAutosamplerConfPortPath(path);
     this.setValue(SEC_INFO_CARROUSEL,
