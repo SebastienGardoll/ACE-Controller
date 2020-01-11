@@ -52,6 +52,6 @@ public class SettingsFrame extends AbstractToolFrame
 
   public static SettingsFrame instantiate()
   {
-    return new SettingsFrame(new SettingsPanel());
+    return new SettingsFrame(new MainPanel());
   }
 }

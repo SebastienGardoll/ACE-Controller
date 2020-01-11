@@ -12,18 +12,18 @@ import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.UiUtils ;
 
-public class SettingsPanel extends javax.swing.JPanel
+public class MainPanel extends javax.swing.JPanel
 {
-  private static final Logger _LOG = LogManager.getLogger(SettingsPanel.class.getName());
+  private static final Logger _LOG = LogManager.getLogger(MainPanel.class.getName());
   
   private static final long serialVersionUID = 2498266605755338610L ;
 
   private final List<Panel> _panels = new ArrayList<Panel>() ;
 
   /**
-   * Creates new form SettingsPanel
+   * Creates new form MainPanel
    */
-  public SettingsPanel()
+  public MainPanel()
   {
     initComponents() ;
     initCustom() ;
