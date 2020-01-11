@@ -16,6 +16,7 @@ import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 import fr.gardoll.ace.controller.protocol.Sequence ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 
 public class ExtractionThreadControl extends AbstractThreadControl
 {
@@ -27,7 +28,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
   
   public ExtractionThreadControl(AbstractToolControl toolCtrl,
                                  InitSession initSession,
-                                 Commandes commandes) throws InitializationException
+                                 Commandes commandes)
   {
     super(toolCtrl, false) ;
     this._initSession = initSession;
@@ -36,7 +37,9 @@ public class ExtractionThreadControl extends AbstractThreadControl
   
   @Override
   protected void threadLogic() throws CancellationException,
-                                      InitializationException, Exception
+                                      InitializationException,
+                                      ConfigurationException,
+                                      Exception
   {
     {
       _LOG.info("starting session");

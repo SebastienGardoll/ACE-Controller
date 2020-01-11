@@ -14,6 +14,7 @@ import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.valves.Valves ;
@@ -33,7 +34,7 @@ class Commandes
   private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
 
   //requires colonne != NULL
-  Commandes (ToolControl toolCtrl, Colonne colonne) throws InitializationException
+  Commandes (ToolControl toolCtrl, Colonne colonne) throws InitializationException, ConfigurationException
   {
     this.colonne   = colonne;
     this._toolCtrl = toolCtrl;

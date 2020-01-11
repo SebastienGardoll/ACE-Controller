@@ -13,6 +13,7 @@ import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
@@ -62,7 +63,7 @@ public class PousseSeringue implements Closeable
   //requires volumeInitiale >= 0
   public PousseSeringue(PumpController interfacePousseSeringue,
                         Valves valves,
-                        double volumeInitiale) throws InitializationException
+                        double volumeInitiale) throws InitializationException, ConfigurationException
   {
     GeneralSettings settings = GeneralSettings.instance(); 
     

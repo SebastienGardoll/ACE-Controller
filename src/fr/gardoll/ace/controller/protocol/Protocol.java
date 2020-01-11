@@ -6,10 +6,9 @@ import java.nio.file.Path ;
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
-import org.apache.commons.configuration2.ex.ConfigurationException ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
-import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.Names ;
 
 public class Protocol
@@ -35,14 +34,14 @@ public class Protocol
   
   public final Path protocolFilePath;
   
-  public Protocol(Path cheminFichierProtocole) throws InitializationException
+  public Protocol(Path cheminFichierProtocole) throws ConfigurationException
   {
     if(false == Files.isReadable(cheminFichierProtocole) &&
        false == Files.isRegularFile(cheminFichierProtocole))
     {
       String msg = String.format("cannot read the protocol file '%s'",
                                  cheminFichierProtocole);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
     
     Configurations configs = new Configurations();
@@ -52,11 +51,11 @@ public class Protocol
     {
       iniConf = configs.ini(cheminFichierProtocole.toFile());
     }
-    catch (ConfigurationException e)
+    catch (Exception e)
     {
       String msg = String.format("unable to read the protocol specifications in '%s'",
                                  cheminFichierProtocole.toString());
-      throw new InitializationException(msg,e);
+      throw new ConfigurationException(msg,e);
     }
     
     // - 1 due à la section informations
@@ -84,7 +83,7 @@ public class Protocol
       {
         String msg = String.format("corrupted protocol metadata file '%s'",
                                    cheminFichierProtocole);
-        throw new InitializationException(msg);
+        throw new ConfigurationException(msg);
       }
       
       protocolMetadata.close();
@@ -124,7 +123,7 @@ public class Protocol
           pauseCode < 0)
       {
         String msg = String.format("unable to read the speficication of sequence '%s'", (i+1));
-        throw new InitializationException(msg);
+        throw new ConfigurationException(msg);
       }
       
       boolean pause = (pauseCode == 1)?true:false;

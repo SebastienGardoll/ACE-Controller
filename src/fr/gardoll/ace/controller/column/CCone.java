@@ -2,7 +2,7 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.Names ;
 
 public class CCone extends Colonne
@@ -18,7 +18,7 @@ public class CCone extends Colonne
   private final double _volumeReservoir ; //volume du réservoir en mL
     //en mL
   
-  public CCone(Path cheminFichierColonne) throws InitializationException
+  public CCone(Path cheminFichierColonne) throws ConfigurationException
   { 
     super(cheminFichierColonne, TypeColonne.CONE);
     
@@ -30,7 +30,7 @@ public class CCone extends Colonne
     {
       String msg = String.format("superior diameter '%s' must be greater than the inferior diameter '%s'",
           this.diametreSup, this.diametreInf);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
 
     if ( this.hauteurCone < 0. ||
@@ -38,7 +38,7 @@ public class CCone extends Colonne
          this.diametreInf < 0.    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
 
     a = Math.pow(this.diametreSup - this.diametreInf, 2.) / Math.pow (this.hauteurCone, 2.) ;

@@ -16,6 +16,7 @@ import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.valves.Valves ;
@@ -103,7 +104,9 @@ class PumpThread extends AbstractThreadControl
 
   @Override
   protected void threadLogic() throws CancellationException,
-                                      InitializationException, Exception
+                                      InitializationException,
+                                      ConfigurationException,
+                                      Exception
   {
     ParametresSession session = ParametresSession.getInstance() ;
     Passeur autosampler = session.getPasseur();

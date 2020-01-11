@@ -2,7 +2,7 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.Names ;
 
 public class CCylindre extends Colonne
@@ -14,7 +14,7 @@ public class CCylindre extends Colonne
   private final double _volumeReservoir ; //volume du réservoir en mL
     //en mL
   
-  public CCylindre(Path cheminFichierColonne ) throws InitializationException
+  public CCylindre(Path cheminFichierColonne ) throws ConfigurationException
   {
     super(cheminFichierColonne, TypeColonne.CYLINDRE);
     
@@ -25,7 +25,7 @@ public class CCylindre extends Colonne
         this.diametre        < 0.    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
 
     {

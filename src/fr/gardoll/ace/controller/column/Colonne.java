@@ -7,9 +7,8 @@ import java.nio.file.Paths ;
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
-import org.apache.commons.configuration2.ex.ConfigurationException ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.Names ;
 
 public abstract class Colonne
@@ -58,7 +57,7 @@ public abstract class Colonne
   
   public abstract double hauteurReservoir() ;
   
-  public Colonne(Path cheminFichierColonne, TypeColonne type) throws InitializationException
+  public Colonne(Path cheminFichierColonne, TypeColonne type) throws ConfigurationException
   {         
     // attention dans le fichier init la virgule des réels est : .
     
@@ -68,7 +67,7 @@ public abstract class Colonne
     if (! (Files.isReadable(this._fichierColonne) && Files.isRegularFile(this._fichierColonne)))
     {
       String msg = String.format("cannot read column configuration file '%s'", cheminFichierColonne);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
     
     Configurations configs = new Configurations();
@@ -84,11 +83,11 @@ public abstract class Colonne
       this._volumeCritique1          = this._colSection.getDouble(Names.SICOL_CLEF_VOL_CRITIQUE_1, -1.) ;
       this._volumeCritique2          = this._colSection.getDouble(Names.SICOL_CLEF_VOL_CRITIQUE_2, -1.) ;
     }
-    catch (ConfigurationException e)
+    catch (Exception e)
     {
       String msg = String.format("unable to read the column specifications in the file '%s'",
           this._fichierColonne.toString());
-      throw new RuntimeException(msg,e);
+      throw new ConfigurationException(msg,e);
     }
     
     if (this._hauteurColonne           < 0. ||
@@ -100,7 +99,7 @@ public abstract class Colonne
         this._volumeCritique2          < 0.    )
     {
       String msg = String.format("corrupted column metadata file '%s'", cheminFichierColonne);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
   }
   
@@ -119,19 +118,19 @@ public abstract class Colonne
     return this._fichierColonne;
   }
   
-  public static Colonne getInstance(String filePath) throws InitializationException
+  public static Colonne getInstance(String filePath) throws ConfigurationException
   {
     Path columnPath = Paths.get(filePath);
     return getInstance(columnPath);
   }
   
-  public static Colonne getInstance(Path columnPath) throws InitializationException
+  public static Colonne getInstance(Path columnPath) throws ConfigurationException
   {
     if (! (Files.isReadable(columnPath) &&
         Files.isRegularFile(columnPath)))
     {
       String msg = String.format("cannot read column configuration file '%s'", columnPath);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
     
     Configurations configs = new Configurations();
@@ -144,11 +143,11 @@ public abstract class Colonne
       int typeValue = section.getInteger(Names.SICOL_CLEF_TYPE, 0) ;
       type = TypeColonne.values()[typeValue];
     }
-    catch (ConfigurationException e)
+    catch (Exception e)
     {
       String msg = String.format("unable to read the column specifications in the file '%s'",
           columnPath);
-      throw new InitializationException(msg,e);
+      throw new ConfigurationException(msg,e);
     }
     finally
     {

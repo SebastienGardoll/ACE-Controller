@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
@@ -19,7 +20,7 @@ public class AutosamplerToolFrame extends AbstractToolFrame
   }
   
   public static AutosamplerToolFrame instantiate(ParametresSession parametresSession)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     AutosamplerToolControl ctrl = new AutosamplerToolControl(parametresSession);
     AutosamplerToolPanel toolPanel = new AutosamplerToolPanel(ctrl);

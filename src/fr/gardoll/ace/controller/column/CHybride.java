@@ -2,7 +2,8 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
+
 
 public class CHybride extends Colonne
 {
@@ -12,7 +13,7 @@ public class CHybride extends Colonne
   public double volumeRetard ; // volume retard = volume cylindre - volume cône pour la même hauteur  en mL
   // en mL
   
-  public CHybride(Path cheminFichierColonne) throws InitializationException
+  public CHybride(Path cheminFichierColonne) throws ConfigurationException
   {
     super(cheminFichierColonne, TypeColonne.HYBRIDE);
     this.cone = new CCone(cheminFichierColonne);

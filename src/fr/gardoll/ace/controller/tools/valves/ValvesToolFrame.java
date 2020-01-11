@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.AbstractJPanelObserver ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
@@ -21,7 +22,7 @@ public class ValvesToolFrame extends AbstractToolFrame
   }
   
   public static ValvesToolFrame instantiate(ParametresSession parametresSession) 
-     throws InitializationException
+     throws InitializationException, ConfigurationException
   {
     ValvesToolControl ctrl = new ValvesToolControl(parametresSession);
     ValvesToolPanel toolPanel = new ValvesToolPanel(ctrl);

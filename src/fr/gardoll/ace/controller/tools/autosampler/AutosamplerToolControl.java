@@ -15,6 +15,7 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
@@ -227,7 +228,10 @@ class CarouselRelativeThread extends AbstractThreadControl
   }
   
   @Override
-  protected void threadLogic() throws CancellationException, InitializationException, Exception
+  protected void threadLogic() throws CancellationException,
+                                      InitializationException,
+                                      ConfigurationException,
+                                      Exception
   {
     _LOG.debug("run CarouselRelativeThread");
     Action action = new Action(ActionType.CAROUSEL_RELATIVE_MOVING,
@@ -259,6 +263,7 @@ class CarouselThread extends AbstractThreadControl
   
   @Override
   protected void threadLogic() throws InitializationException,
+                                      ConfigurationException,
                                       CancellationException,
                                       Exception
   {
@@ -302,6 +307,7 @@ class ArmThread extends AbstractThreadControl
   @Override
   protected void threadLogic() throws CancellationException,
                                       InitializationException,
+                                      ConfigurationException,
                                       Exception
   {
     _LOG.debug(String.format("run ArmThread with order '%s'", this._choix)) ;

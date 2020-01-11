@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
 import org.junit.jupiter.api.TestMethodOrder ;
 
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
+
 @TestMethodOrder(OrderAnnotation.class)
 class AbstractThreadControlTest
 {
@@ -339,6 +341,7 @@ class SelfPausedThread extends AbstractThreadControl
   @Override
   protected void threadLogic() throws CancellationException,
                                       InitializationException,
+                                      ConfigurationException,
                                       Exception
   {
     _LOG.debug("trigger self pause");
@@ -358,6 +361,7 @@ class SleepingThread extends AbstractThreadControl
   @Override
   protected void threadLogic() throws CancellationException,
                                       InitializationException,
+                                      ConfigurationException,
                                       Exception
   {
     for(int i = 0 ; i < 20 ; i++)
@@ -384,6 +388,7 @@ class WaitingThread extends AbstractThreadControl
   @Override
   protected void threadLogic() throws CancellationException,
                                       InitializationException,
+                                      ConfigurationException,
                                       Exception
   {
     this.await(this._duration);

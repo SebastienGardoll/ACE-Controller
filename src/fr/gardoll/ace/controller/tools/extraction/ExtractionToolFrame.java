@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
@@ -19,7 +20,7 @@ public class ExtractionToolFrame extends AbstractToolFrame
   }
   
   public static ExtractionToolFrame instantiate(ParametresSession parametresSession)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     ExtractionToolControl ctrl = new ExtractionToolControl(parametresSession);
     ExtractionToolPanel toolPanel = new ExtractionToolPanel(ctrl);

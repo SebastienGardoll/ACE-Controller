@@ -9,6 +9,8 @@ import java.util.concurrent.locks.ReentrantLock ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
+
 public abstract class AbstractThreadControl extends Thread
                                             implements ThreadControl
 {
@@ -113,6 +115,10 @@ public abstract class AbstractThreadControl extends Thread
       {
         msg = "initialization has crashed";
       }
+      else if(e instanceof ConfigurationException)
+      {
+        msg = "operations have been interrupted";
+      }
       else if(e instanceof InterruptedException)
       {
         msg = "operations have been interrupted";
@@ -140,6 +146,7 @@ public abstract class AbstractThreadControl extends Thread
   
   protected abstract void threadLogic() throws CancellationException,
                                                InitializationException,
+                                               ConfigurationException,
                                                Exception;
 
   @Override
