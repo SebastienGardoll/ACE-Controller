@@ -70,11 +70,15 @@ public class GeneralSettings extends Settings
   private GeneralSettings() throws InitializationException
   {
     super(_PROPERTY_FILE_PATH);
-    
     String carouselFilePath = this.getCarouselConfFilePath();
-    this._carouselSettings = new CarouselSettings(Paths.get(carouselFilePath));
+    this.init(carouselFilePath);
   }
   
+  private void init(String filePath) throws InitializationException
+  {
+    this._carouselSettings = new CarouselSettings(Paths.get(filePath));
+  }
+
   public static GeneralSettings instance() throws InitializationException
   {
     if(_INSTANCE == null)
@@ -166,14 +170,8 @@ public class GeneralSettings extends Settings
     this.setValue(SEC_INFO_CARROUSEL,
                   SIC_CLEF_CHEMIN_FICHIER_CARROUSEL,
                   path);
-    try
-    {
-      this._carouselSettings = new CarouselSettings(Paths.get(path));
-    }
-    catch (InitializationException e)
-    {
-      throw new ConfigurationException(e);
-    }
+    
+    this.init(path);
   }  
   
   public void checkParaComConfPortPath(String path) throws ConfigurationException
