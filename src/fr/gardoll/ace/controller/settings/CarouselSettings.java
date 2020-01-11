@@ -2,8 +2,6 @@ package fr.gardoll.ace.controller.settings;
 
 import java.nio.file.Path ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
-
 class CarouselSettings extends Settings
 {
   private static final String SEC_INFO_CARROUSEL                = "informationsCarrousel";
@@ -17,7 +15,7 @@ class CarouselSettings extends Settings
   
   public static final int DEFAULT_MIN_NB_PAS_CARROUSEL = 0;
   
-  public CarouselSettings(Path configurationFilePath) throws InitializationException
+  public CarouselSettings(Path configurationFilePath) throws ConfigurationException
   {
     super(configurationFilePath);
   }

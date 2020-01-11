@@ -49,22 +49,14 @@ public class ParametresSession implements Closeable
 
   private final GeneralSettings _settings ;
 
-  public static ParametresSession getInstance()
+  public static ParametresSession getInstance() throws ConfigurationException
   {
-    try
+    if (ParametresSession._INSTANCE == null)
     {
-      if (ParametresSession._INSTANCE == null)
-      {
-        ParametresSession._INSTANCE = new ParametresSession(); 
-      }
-      
-      return ParametresSession._INSTANCE ;
+      ParametresSession._INSTANCE = new ParametresSession(); 
     }
-    catch (InitializationException e)
-    {
-      String msg = "error while initializing the session";
-      throw new RuntimeException(msg, e);
-    }
+    
+    return ParametresSession._INSTANCE ;
   }
   
   private ParametresSession()

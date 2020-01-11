@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.settings;
 import java.nio.file.Path ;
 import java.nio.file.Paths ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 
@@ -67,19 +66,19 @@ public class GeneralSettings extends Settings
 
   private CarouselSettings _carouselSettings ;
   
-  private GeneralSettings() throws InitializationException
+  private GeneralSettings() throws ConfigurationException
   {
     super(_PROPERTY_FILE_PATH);
     String carouselFilePath = this.getCarouselConfFilePath();
     this.init(carouselFilePath);
   }
   
-  private void init(String filePath) throws InitializationException
+  private void init(String filePath) throws ConfigurationException
   {
     this._carouselSettings = new CarouselSettings(Paths.get(filePath));
   }
 
-  public static GeneralSettings instance() throws InitializationException
+  public static GeneralSettings instance() throws ConfigurationException
   {
     if(_INSTANCE == null)
     {
@@ -146,15 +145,8 @@ public class GeneralSettings extends Settings
     }
     
     // Check the file existence.
-    try
-    {
-      CarouselSettings tmp = new CarouselSettings(Paths.get(path));
-      tmp.close();
-    }
-    catch (InitializationException e)
-    {
-      throw new ConfigurationException(e);
-    }
+    CarouselSettings tmp = new CarouselSettings(Paths.get(path));
+    tmp.close();
   }
   
   public String getCarouselConfFilePath() throws ConfigurationException

@@ -6,7 +6,6 @@ import java.util.List ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
@@ -178,16 +177,7 @@ public class MainPanel extends javax.swing.JPanel
         return;
       }
       
-      try
-      {
-        ParametresSession.getInstance().reset();
-      }
-      catch (InitializationException e)
-      {
-        String msg = "error while resetting";
-        _LOG.error(msg, e);
-        Utils.reportError(msg, e);
-      }
+      ParametresSession.getInstance().reset();
       
       UiUtils.getParentDialog(this).dispose();
     }

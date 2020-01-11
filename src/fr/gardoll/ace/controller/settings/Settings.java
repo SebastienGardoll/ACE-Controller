@@ -13,8 +13,6 @@ import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.InitializationException ;
-
 public abstract class Settings implements Closeable
 {
   private static final Logger _LOG = LogManager.getLogger(Settings.class.getName());
@@ -25,7 +23,7 @@ public abstract class Settings implements Closeable
   private final Map<String, SubnodeConfiguration> _sections = new HashMap<>();
   private final Path configurationFilePath ;
   
-  public Settings(Path configurationFilePath) throws InitializationException
+  public Settings(Path configurationFilePath) throws ConfigurationException
   {
     _LOG.debug(String.format("opening %s", configurationFilePath));
     
@@ -34,7 +32,7 @@ public abstract class Settings implements Closeable
     {
       String msg = String.format("unable to read the configuration file '%s'",
           configurationFilePath);
-      throw new InitializationException(msg);
+      throw new ConfigurationException(msg);
     }
     
     try
@@ -46,7 +44,7 @@ public abstract class Settings implements Closeable
     catch(org.apache.commons.configuration2.ex.ConfigurationException e)
     {
       String msg = String.format("unable to open property file '%s'", configurationFilePath);
-      throw new InitializationException(msg, e);
+      throw new ConfigurationException(msg, e);
     }
     
     this.configurationFilePath = configurationFilePath;
