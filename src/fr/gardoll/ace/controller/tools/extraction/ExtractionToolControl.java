@@ -11,6 +11,7 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class ExtractionToolControl extends AbstractPausableToolControl
@@ -18,7 +19,7 @@ public class ExtractionToolControl extends AbstractPausableToolControl
   private static final Logger _LOG = LogManager.getLogger(ExtractionToolControl.class.getName());
   
   public ExtractionToolControl(ParametresSession parametresSession)
-                            throws InitializationException
+                            throws InitializationException, ConfigurationException
   {
     super(parametresSession, true, true, true) ;
   }

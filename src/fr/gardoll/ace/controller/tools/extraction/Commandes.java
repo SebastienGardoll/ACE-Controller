@@ -52,7 +52,7 @@ class Commandes
   
   //rinçe la tuyauterie selon le volume de rinçage et le nombre de cycle de parametresSession
   //requires numEv <= pousseSeringue.nbEvMax()
-  void rincage(int numEv)
+  void rincage(int numEv) throws ConfigurationException
   { 
     if(numEv == Valves.NUM_EV_H2O)
     {
@@ -117,7 +117,7 @@ class Commandes
   
   //à la position de la poubelle , bras à l'intérieur de poubelle
   //le bras se retrouve dans la poubelle
-  void deplacementPasseurPoubelle()
+  void deplacementPasseurPoubelle() throws ConfigurationException
   {
     _LOG.info("moving the carousel to the trash position");
     Action action = new Action(ActionType.CAROUSEL_TO_TRASH, Optional.empty()) ;
@@ -139,7 +139,7 @@ class Commandes
   }
   
   //fixe l'origine du bras juste au dessus des colonne
-  void referencementBras()
+  void referencementBras() throws ConfigurationException
   { 
     _LOG.info("indexing the arm above the column");
     Action action = new Action(ActionType.INDEX_ARM, Optional.empty()) ;

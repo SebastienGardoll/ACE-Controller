@@ -27,7 +27,7 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
   // autorise la fermeture de la fenêtre ou non à cause des threads
   
   public AutosamplerToolControl(ParametresSession parametresSession)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     super(parametresSession, false, true, false);
   }

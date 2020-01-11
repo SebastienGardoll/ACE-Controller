@@ -11,6 +11,7 @@ import fr.gardoll.ace.controller.core.AbstractCloseableToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class ValvesToolControl extends AbstractCloseableToolControl
@@ -28,7 +29,7 @@ public class ValvesToolControl extends AbstractCloseableToolControl
   
   
   public ValvesToolControl(ParametresSession parametresSession)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     super(parametresSession, false, false, true) ;
   }

@@ -26,12 +26,12 @@ public class PumpToolControl extends AbstractPausableToolControl
   private static final Logger _LOG = LogManager.getLogger(PumpToolControl.class.getName());
   
   public PumpToolControl(ParametresSession parametresSession)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     super(parametresSession, true, true, true) ;
   }
   
-  void start(SortedSet<Integer> lines, int volume)
+  void start(SortedSet<Integer> lines, int volume) throws ConfigurationException
   {
     double volMax = GeneralSettings.instance().getVolumeMaxSeringue();
     

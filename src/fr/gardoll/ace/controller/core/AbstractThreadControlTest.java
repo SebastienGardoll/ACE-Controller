@@ -401,7 +401,7 @@ class TestToolControlOperations extends AbstractToolControl
   
   private ToolState _state = new RunningState(this);
   
-  public TestToolControlOperations() throws InitializationException
+  public TestToolControlOperations() throws InitializationException, ConfigurationException
   {
     super(null, false, false, false);
   }

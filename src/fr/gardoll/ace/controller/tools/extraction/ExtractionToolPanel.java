@@ -328,24 +328,33 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
 
     if (this._isStartEnable)
     {
-      ExtractionConfigurationDialog diag = new ExtractionConfigurationDialog(
-          UiUtils.getParentDialog(this), "extraction configuration", true) ;
-      diag.setVisible(true) ;
-
-      Optional<InitSession> initSession = diag.getInitSession() ;
-
-      if (initSession.isPresent())
+      try
       {
-        InitSession init = initSession.get() ;
+        ExtractionConfigurationDialog diag = new ExtractionConfigurationDialog(
+            UiUtils.getParentDialog(this), "extraction configuration", true) ;
+        diag.setVisible(true) ;
 
-        this._maxColumn = init.nbColonne ;
-        this._maxSequence = init.protocol.nbMaxSequence ;
+        Optional<InitSession> initSession = diag.getInitSession() ;
 
-        this._ctrl.start(init) ;
+        if (initSession.isPresent())
+        {
+          InitSession init = initSession.get() ;
+
+          this._maxColumn = init.nbColonne ;
+          this._maxSequence = init.protocol.nbMaxSequence ;
+
+          this._ctrl.start(init) ;
+        }
+        else
+        {
+          // Nothing to do.
+        }
       }
-      else
+      catch(Exception e)
       {
-        // Nothing to do.
+        String msg = "extraction dialog has crashed";
+        _LOG.fatal(msg, e);
+        this.reportError(msg, e);
       }
     }
     else

@@ -10,14 +10,15 @@ public class MiscellaneousPanel extends javax.swing.JPanel implements Panel
 
   /**
    * Creates new form MiscellaneousPanel
+   * @throws ConfigurationException 
    */
-  public MiscellaneousPanel()
+  public MiscellaneousPanel() throws ConfigurationException
   {
     initComponents() ;
     load();
   }
   
-  private void load()
+  private void load() throws ConfigurationException
   {
     GeneralSettings settings = GeneralSettings.instance();
     boolean isDebug = settings.isDebug();

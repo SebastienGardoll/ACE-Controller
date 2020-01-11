@@ -185,7 +185,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   // en mm requires diametre > 0
   @Override
-  public void dia(double diametre) throws SerialComException
+  public void dia(double diametre) throws SerialComException, ConfigurationException
   {
     _LOG.trace(String.format("setting the diameter to '%s'", diametre));
     

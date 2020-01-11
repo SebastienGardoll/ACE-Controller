@@ -148,7 +148,7 @@ public class PousseSeringue implements Closeable
 
   // aspiration d'un volume exprimé en en mL.
   // requires 0 <= numEv <= NBEV_MAX
-  public void aspiration(double volume, int numEv)
+  public void aspiration(double volume, int numEv) throws ConfigurationException
   { 
     _LOG.debug(String.format("withdrawing volume '%s' from valve '%s'",
         volume, numEv));
@@ -180,7 +180,7 @@ public class PousseSeringue implements Closeable
 
   //refoulement d'un volume exprimé en en mL.
   //requires 0 <= numEv <= NBEV_MAX
-  public void refoulement(double volume , int numEv)
+  public void refoulement(double volume , int numEv) throws ConfigurationException
   {
     _LOG.debug(String.format("infusing volume '%s' to the valve '%s'",
         volume, numEv));
@@ -188,7 +188,7 @@ public class PousseSeringue implements Closeable
     this.algoRefoulement(volume, numEv) ;
   }
 
-  public void algoAspiration(double volume, int numEv)
+  public void algoAspiration(double volume, int numEv) throws ConfigurationException
   { 
     _LOG.debug(String.format("running withdrawing subroutine for volume '%s' from valve '%s'",
         volume, numEv));
@@ -296,7 +296,7 @@ public class PousseSeringue implements Closeable
   // volume n'est pas divisé par nbSeringue !!!!!!!! 
   // spécialement pour l'aspiration d'un cycle de rinçage
   //volume n'est pas divisé par nbSeringue !!!
-  public void rincageAspiration(double volume, int numEv)
+  public void rincageAspiration(double volume, int numEv) throws ConfigurationException
   {
     _LOG.debug(String.format("rinsing with volume '%s' from valve '%s'",
         volume, numEv));
@@ -318,7 +318,7 @@ public class PousseSeringue implements Closeable
 
   //réglage du débit à l'aspiration en ml / min
   //requires debit <= _debitMaxPousseSeringue
-  public void setDebitAspiration(double debit)
+  public void setDebitAspiration(double debit) throws ConfigurationException
 
   { 
     _LOG.debug(String.format("setting the withdrawing rate to '%s'", debit)); 
@@ -359,7 +359,7 @@ public class PousseSeringue implements Closeable
 
   // réglage du débit au refoulement en ml / min.
   // requires debit <= _debitMaxPousseSeringue
-  public void setDebitRefoulement(double debit)
+  public void setDebitRefoulement(double debit) throws ConfigurationException
   {  
     _LOG.debug(String.format("setting the infusion rate to '%s'", debit));
     
@@ -556,7 +556,7 @@ public class PousseSeringue implements Closeable
   }
 
   // retourne le volume déjà délivré.
-  public double volumeDelivre()
+  public double volumeDelivre() throws ConfigurationException
   { 
     try
     {
@@ -580,7 +580,7 @@ public class PousseSeringue implements Closeable
   }
 
   // volume utile total des seringues.
-  public double volumeRestant()
+  public double volumeRestant() throws ConfigurationException
   { 
     double volumeUtile = PousseSeringue._volumeReel ;
 
@@ -620,7 +620,7 @@ public class PousseSeringue implements Closeable
 
   // renvoie le volume utile des n seringues moins VOL_SECU et VOL-AJUSTEMENT
   // par seringues.
-  public double volumeMaxSeringueUtile()
+  public double volumeMaxSeringueUtile() throws ConfigurationException
   {  
     GeneralSettings settings = GeneralSettings.instance();
     int nbSeringue = settings.getNbSeringue();

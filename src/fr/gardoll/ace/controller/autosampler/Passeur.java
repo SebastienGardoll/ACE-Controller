@@ -10,6 +10,7 @@ import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class Passeur implements Closeable
@@ -58,7 +59,7 @@ public class Passeur implements Closeable
   //require nbPasCarrousel > 0
   //require diametre > 0
   public Passeur(MotorController interfaceMoteur)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     GeneralSettings settings = GeneralSettings.instance();
     
@@ -97,7 +98,7 @@ public class Passeur implements Closeable
   // le numéro de la position. 0 => poubelle
   // modificateur => ajout d'un nombre de demi pas
   // modificateur ou en nombre de pas si position = 0
-  public void moveCarrousel(int position, int modificateur)
+  public void moveCarrousel(int position, int modificateur) throws ConfigurationException
   {
     _LOG.debug(String.format("move the carousel to the position %s with %s offset",
         position, modificateur));
@@ -135,7 +136,7 @@ public class Passeur implements Closeable
   
   // effectue un mouvement simultané
   // fait car problème de temps de réponse car halt fait par interface
-  public void moveCarrouselEtBras (int position, int nbPas)
+  public void moveCarrouselEtBras (int position, int nbPas) throws ConfigurationException
   {
     _LOG.debug(String.format("move the carousel to position %s and arm to position %s",
         position, nbPas));
@@ -185,7 +186,7 @@ public class Passeur implements Closeable
     }
   }
   
-  public void moveArmToTrash()
+  public void moveArmToTrash() throws ConfigurationException
   {
     _LOG.debug("move the arm to trash");
     
@@ -492,7 +493,7 @@ public class Passeur implements Closeable
   //converti une dimension exprimée en mm en nombre de demi pas pour le carrousel.
   //arrondi au demi pas inférieur
   //dimension en mm en rapport avec au carrousel !
-  public int convertCarrousel(double dimension)
+  public int convertCarrousel(double dimension) throws ConfigurationException
   {
     double rayon = GeneralSettings.instance().getDiametreCarrousel() / 2.  ;
     
@@ -546,7 +547,7 @@ public class Passeur implements Closeable
   
   //bouge de nbPosition
   //!= moveCarrousel où on précise le numéro de la position par rapport à 0 
-  public void moveCarrouselRelatif(int nbPosition)
+  public void moveCarrouselRelatif(int nbPosition) throws ConfigurationException
   {
      try
      {

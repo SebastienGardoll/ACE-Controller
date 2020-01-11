@@ -5,6 +5,7 @@ import java.util.Optional ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public abstract class AbstractCancelableToolControl extends AbstractCloseableToolControl implements ToolControl
@@ -14,7 +15,7 @@ public abstract class AbstractCancelableToolControl extends AbstractCloseableToo
   public AbstractCancelableToolControl(ParametresSession parametresSession,
                                   boolean hasPump, boolean hasAutosampler,
                                   boolean hasValves)
-      throws InitializationException
+      throws InitializationException, ConfigurationException
   {
     super(parametresSession, hasPump, hasAutosampler, hasValves);
   }

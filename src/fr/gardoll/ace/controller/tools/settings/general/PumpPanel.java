@@ -25,15 +25,16 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
 
   /**
    * Creates new form PumpPanel
+   * @throws ConfigurationException 
    */
-  public PumpPanel()
+  public PumpPanel() throws ConfigurationException
   {
     initComponents() ;
     initCustom() ;
     load() ;
   }
 
-  private void load()
+  private void load() throws ConfigurationException
   {
     GeneralSettings settings = GeneralSettings.instance();
     

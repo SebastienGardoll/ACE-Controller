@@ -1,7 +1,6 @@
 package fr.gardoll.ace.controller.settings;
 
 import java.io.Closeable ;
-import java.io.IOException ;
 import java.lang.reflect.Constructor ;
 import java.util.HashSet ;
 import java.util.Optional ;
@@ -59,7 +58,7 @@ public class ParametresSession implements Closeable
     return ParametresSession._INSTANCE ;
   }
   
-  private ParametresSession()
+  private ParametresSession() throws ConfigurationException 
   {
     this._settings = GeneralSettings.instance();
     _LOG.debug(String.format("isDebug returns %s", this._settings.isDebug()));
@@ -399,7 +398,7 @@ public class ParametresSession implements Closeable
       
       ParametresSession._INSTANCE = null;
     }
-    catch (IOException e)
+    catch (Exception e)
     {
       String msg = "error while closing the pump or the autosampler";
       _LOG.error(msg, e);
@@ -428,7 +427,7 @@ public class ParametresSession implements Closeable
         this._valves = null;
       }
     }
-    catch (IOException e)
+    catch (Exception e)
     {
       String msg = "error while closing the pump or the autosampler";
       _LOG.error(msg, e);

@@ -27,7 +27,7 @@ public interface PumpController extends Closeable
   public void stop() throws SerialComException;
   
   // en mm requires diametre > 0
-  public void dia(double diametre) throws SerialComException;
+  public void dia(double diametre) throws SerialComException, ConfigurationException;
   
   public boolean running() throws SerialComException;
   

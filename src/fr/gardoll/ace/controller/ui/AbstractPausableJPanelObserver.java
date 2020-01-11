@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ToolControl ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJPanelObserver
@@ -82,7 +83,7 @@ public abstract class AbstractPausableJPanelObserver extends AbstractCancelableJ
     }
   }
   
-  protected boolean cancelAndReinit()
+  protected boolean cancelAndReinit() throws ConfigurationException
   {
     int choice = JOptionPane.OK_OPTION;
     
