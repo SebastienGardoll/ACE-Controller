@@ -5,6 +5,7 @@ import java.nio.file.Paths ;
 
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.pump.PumpController ;
 
 public class GeneralSettings extends Settings
 {
@@ -425,7 +426,7 @@ public class GeneralSettings extends Settings
       throw new ConfigurationException(msg);
     }
     
-    int inherentPumpMaxRate = PousseSeringue.debitMaxIntrinseque(syringeDiameter);
+    int inherentPumpMaxRate = PumpController.debitMaxIntrinseque(syringeDiameter);
     
     if(pumpMaxRate > inherentPumpMaxRate)
     {
@@ -474,7 +475,7 @@ public class GeneralSettings extends Settings
       throw new ConfigurationException(msg);
     }
     
-    int inherentPumpMaxRate = PousseSeringue.debitMaxIntrinseque(syringeDiameter);
+    int inherentPumpMaxRate = PumpController.debitMaxIntrinseque(syringeDiameter);
     
     if(pumpMaxRate > inherentPumpMaxRate)
     {

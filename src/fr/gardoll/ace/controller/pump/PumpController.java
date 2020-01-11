@@ -56,6 +56,9 @@ public interface PumpController extends Closeable
 
   public void modeW() throws SerialComException;
   
+  // renvoie le débit max arrondi à l'inférieur.
+  // ce débit est indépendant des caractéristiques de la tuyauterie
+  // dépend uniquement du diamètre de la seringue
   public static int debitMaxIntrinseque(double diametreSeringue)
     throws ConfigurationException
   {

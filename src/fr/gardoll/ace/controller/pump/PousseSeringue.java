@@ -129,11 +129,11 @@ public class PousseSeringue implements Closeable
       String msg = String.format("the value of the maximum rate '%s' cannot be negative of null", debitMaxPousseSeringue);
       throw new InitializationException(msg);
     }
-    else if (debitMaxPousseSeringue > debitMaxIntrinseque(diametreSeringue))
+    else if (debitMaxPousseSeringue > PumpController.debitMaxIntrinseque(diametreSeringue))
     {
       String msg = String.format("the value of the maximum rate '%s' cannot be greater than %s",
                                  debitMaxPousseSeringue,
-                                 debitMaxIntrinseque(diametreSeringue));
+                                 PumpController.debitMaxIntrinseque(diametreSeringue));
       throw new InitializationException(msg);
     }
 
@@ -569,14 +569,6 @@ public class PousseSeringue implements Closeable
       String msg = "error while getting the delivered volume";
       throw new RuntimeException(msg, e);
     }
-  }
-
-  //renvoie le débit max arrondi à l'inférieur.
-  //ce débit est indépendant des caractéristiques de la tuyauterie
-  //dépend uniquement du diamètre de la seringue
-  public static int debitMaxIntrinseque ( double diametreSeringue )
-  {  
-    return  PumpController.debitMaxIntrinseque(diametreSeringue);
   }
 
   // volume utile total des seringues.
