@@ -179,7 +179,8 @@ public class MainPanel extends javax.swing.JPanel
       
       ParametresSession.getInstance().reset();
       
-      UiUtils.getParentDialog(this).dispose();
+      // DEBUG
+      // UiUtils.getParentDialog(this).dispose();
     }
   }
 
