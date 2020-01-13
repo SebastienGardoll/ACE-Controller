@@ -32,14 +32,14 @@ public class Utils
   
   // Enough to have 3 decimal digits for micro-liter.
   public static final double EPSILON = 0.000001 ;
-  public static final int DOUBLE_PRECISION = 6;
+  public static final int DOUBLE_SCALE = 6;
   
   public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP ;
   
   // This is quite the same implementation as Apache common's maths.
   public static double round(double value)
   {
-    return new BigDecimal(Double.toString(value)).setScale(DOUBLE_PRECISION, ROUNDING_MODE)
+    return new BigDecimal(Double.toString(value)).setScale(DOUBLE_SCALE, ROUNDING_MODE)
                                                  .doubleValue();
   }
   
