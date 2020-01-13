@@ -1,6 +1,8 @@
 package fr.gardoll.ace.controller.core;
 
 import java.io.FileNotFoundException ;
+import java.math.BigDecimal ;
+import java.math.RoundingMode ;
 import java.net.URISyntaxException ;
 import java.net.URL ;
 import java.nio.file.Files ;
@@ -11,7 +13,6 @@ import java.util.Map.Entry ;
 
 import javax.swing.JOptionPane ;
 
-import org.apache.commons.math3.util.Precision ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -20,7 +21,7 @@ import fr.gardoll.ace.controller.settings.ParametresSession ;
 public class Utils
 {
   private static final Logger _LOG = LogManager.getLogger(Utils.class.getName());
-  
+
   // Must be singleton as getRootDir must fetch the file of this class (or any
   // classes of this Java project).
   private static Utils _INSTANCE = null ;
@@ -29,13 +30,14 @@ public class Utils
   
   private Utils() {}
   
-  public static double EPSILON = 0.00001 ;
-  public static int DOUBLE_PRECISION = 10;
+  public static final double EPSILON = 0.00001 ;
+  public static final int DOUBLE_PRECISION = 10;
+  public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP ;
   
   public static double round(double value)
   {
-    // Rounding mode is halfup.
-    return Precision.round(value, DOUBLE_PRECISION);
+    return new BigDecimal(Double.toString(value)).setScale(DOUBLE_PRECISION, ROUNDING_MODE)
+                                                 .doubleValue();
   }
   
   // Warning: this is not thread safe !!!
