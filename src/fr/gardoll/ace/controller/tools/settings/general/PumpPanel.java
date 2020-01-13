@@ -68,10 +68,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     
     GeneralSettings settings = GeneralSettings.instance();
     settings.setNbRincage(nbRinse);
-    settings.setVolumeRincage(rinseVolume);
-    settings.setVolumeMaxSeringue(syringeVolume);
-    settings.setDiametreSeringue(syringeDiameter);
-    settings.setDebitMaxPousseSeringue(pumpMaxRate);
+    settings.setVolumeRincage(rinseVolume, syringeVolume);
+    settings.setVolumeMaxSeringue(syringeVolume, rinseVolume);
+    settings.setDiametreSeringue(syringeDiameter, pumpMaxRate);
+    settings.setDebitMaxPousseSeringue(pumpMaxRate, syringeDiameter);
     settings.setNbSeringue(nbSyringe);
   }
 
@@ -102,10 +102,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     
     GeneralSettings settings = GeneralSettings.instance();
     settings.checkNbRincage(nbRinse);
-    settings.checkVolumeRincage(rinseVolume);
-    settings.checkVolumeMaxSeringue(syringeVolume);
-    settings.checkDiametreSeringue(syringeDiameter);
-    settings.checkDebitMaxPousseSeringue(pumpMaxRate);
+    settings.checkVolumeRincage(rinseVolume, syringeVolume);
+    settings.checkVolumeMaxSeringue(syringeVolume, rinseVolume);
+    settings.checkDiametreSeringue(syringeDiameter, pumpMaxRate);
+    settings.checkDebitMaxPousseSeringue(pumpMaxRate, syringeDiameter);
     settings.checkNbSeringue(nbSyringe);
   }
 

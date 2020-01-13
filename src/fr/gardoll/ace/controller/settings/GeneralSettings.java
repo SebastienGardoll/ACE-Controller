@@ -319,11 +319,9 @@ public class GeneralSettings extends Settings
                   SIPS_CLEF_NB_RINCAGE,
                   nbRinse);
   }
-  
-  public void checkVolumeMaxSeringue(double syringeVolume) throws ConfigurationException
+
+  public void checkVolumeMaxSeringue(double syringeVolume, double rinseVolume) throws ConfigurationException
   {
-    double rinseVolume = this.getVolumeRincage();
-    
     if(syringeVolume <= MIN_SYRINGE_VOLUME)
     {
       String msg = String.format("the volume of the syringe (got '%s') must be greater than %s",
@@ -353,18 +351,16 @@ public class GeneralSettings extends Settings
                                     Double.class);
   }
   
-  public void setVolumeMaxSeringue(double syringeVolume) throws ConfigurationException
+  public void setVolumeMaxSeringue(double syringeVolume, double rinseVolume) throws ConfigurationException
   {
-    this.checkVolumeMaxSeringue(syringeVolume);
+    this.checkVolumeMaxSeringue(syringeVolume, rinseVolume);
     this.setValue(SEC_INFO_POUSSE_SERINGUE,
                   SIPS_CLEF_VOL_MAX,
                   syringeVolume);
   }
   
-  public void checkVolumeRincage(double rinseVolume) throws ConfigurationException
+  public void checkVolumeRincage(double rinseVolume, double syringeVolume) throws ConfigurationException
   {
-    double syringeVolume = this.getVolumeMaxSeringue();
-    
     if(rinseVolume < DEFAULT_MIN_RINSE_VOLUME)
     {
       String msg = String.format("the rinse volume (got '%s') cannot be less than %s",
@@ -400,18 +396,16 @@ public class GeneralSettings extends Settings
                                     Double.class);
   }
   
-  public void setVolumeRincage(double rinseVolume) throws ConfigurationException
+  public void setVolumeRincage(double rinseVolume, double syringeVolume) throws ConfigurationException
   {
-    this.checkVolumeRincage(rinseVolume);
+    this.checkVolumeRincage(rinseVolume, syringeVolume);
     this.setValue(SEC_INFO_POUSSE_SERINGUE,
                   SIPS_CLEF_VOL_RINCAGE,
                   rinseVolume);
   }
   
-  public void checkDiametreSeringue(double syringeDiameter) throws ConfigurationException
+  public void checkDiametreSeringue(double syringeDiameter, double pumpMaxRate) throws ConfigurationException
   {
-    double pumpMaxRate = this.getDebitMaxPousseSeringue();
-    
     if(syringeDiameter < DEFAULT_MIN_SYRINGE_DIAMETER)
     {
       String msg = String.format("the syringe diameter (got '%s') cannot be less than %s",
@@ -443,18 +437,16 @@ public class GeneralSettings extends Settings
                                     Double.class);
   }
   
-  public void setDiametreSeringue(double syringeDiameter) throws ConfigurationException
+  public void setDiametreSeringue(double syringeDiameter, double pumpMaxRate) throws ConfigurationException
   {
-    this.checkDiametreSeringue(syringeDiameter);
+    this.checkDiametreSeringue(syringeDiameter, pumpMaxRate);
     this.setValue(SEC_INFO_POUSSE_SERINGUE,
                   SIPS_CLEF_DIA_SERINGUE,
                   syringeDiameter);
   }
   
-  public void checkDebitMaxPousseSeringue(double pumpMaxRate) throws ConfigurationException
+  public void checkDebitMaxPousseSeringue(double pumpMaxRate, double syringeDiameter) throws ConfigurationException
   {
-    double syringeDiameter = this.getDiametreSeringue();
-    
     if(pumpMaxRate < DEFAULT_MIN_PUMP_MAX_RATE)
     {
       String msg = String.format("the pump maximum rate (got '%s') cannot be less than %s",
@@ -492,9 +484,9 @@ public class GeneralSettings extends Settings
                                     Double.class);
   }
   
-  public void setDebitMaxPousseSeringue(double pumpMaxRate) throws ConfigurationException
+  public void setDebitMaxPousseSeringue(double pumpMaxRate, double syringeDiameter) throws ConfigurationException
   {
-    this.checkDebitMaxPousseSeringue(pumpMaxRate);
+    this.checkDebitMaxPousseSeringue(pumpMaxRate, syringeDiameter);
     this.setValue(SEC_INFO_POUSSE_SERINGUE,
                   SIPS_CLEF_DEBIT_MAX,
                   pumpMaxRate);  
