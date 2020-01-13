@@ -34,6 +34,7 @@ public class Utils
   public static final int DOUBLE_PRECISION = 10;
   public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP ;
   
+  // This is quite the same implementation as Apache common's maths.
   public static double round(double value)
   {
     return new BigDecimal(Double.toString(value)).setScale(DOUBLE_PRECISION, ROUNDING_MODE)
