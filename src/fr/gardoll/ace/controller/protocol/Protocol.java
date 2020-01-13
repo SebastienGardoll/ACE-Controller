@@ -216,8 +216,6 @@ public class Protocol
       //volume total utilisé pour l'élution dans la séquence courante
       volume += sequence.volume * nbColumn ;
       
-      System.out.println(volume) ;
-      
       result.put(acidName, volume);
     }
     
