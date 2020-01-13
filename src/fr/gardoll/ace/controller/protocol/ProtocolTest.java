@@ -10,6 +10,7 @@ import java.util.HashMap ;
 import java.util.Map ;
 import java.util.Map.Entry ;
 
+import org.apache.commons.lang3.tuple.Pair ;
 import org.hamcrest.core.IsCollectionContaining ;
 import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.Test ;
@@ -120,5 +121,30 @@ class ProtocolTest
       assertThat(actualAcidVolums.entrySet(),
           IsCollectionContaining.hasItem(expectedEntry));
     }
+  }
+  
+  @Test
+  void test7()
+  {
+    Map<String, Double> expectedRinseVolumes = new HashMap<>();
+    
+    expectedRinseVolumes.put("HNO3 7N", 1.5);
+    expectedRinseVolumes.put("HNO3 0,05N", 3.);
+    expectedRinseVolumes.put("HCl 6N", 1.5);
+    expectedRinseVolumes.put("HNO3 2N", 3.);
+    
+    double expectedH2OVolume = 7.;
+    
+    Pair<Double, Map<String, Double>> data = _PROTOCOL.rinseVolume();
+    Map<String, Double> actualRinseVolumes = data.getRight();
+    double actualH2OVolume = data.getLeft();
+    
+    for(Entry<String, Double> expectedEntry: expectedRinseVolumes.entrySet())
+    {
+      assertThat(actualRinseVolumes.entrySet(),
+          IsCollectionContaining.hasItem(expectedEntry));
+    }
+    
+    assertEquals(expectedH2OVolume, actualH2OVolume);
   }
 }
