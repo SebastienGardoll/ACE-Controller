@@ -1,9 +1,16 @@
 package fr.gardoll.ace.controller.protocol;
 
+//import org.hamcrest.collection.IsMapContaining;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals ;
 
 import java.nio.file.Path ;
+import java.util.HashMap ;
+import java.util.Map ;
+import java.util.Map.Entry ;
 
+import org.hamcrest.core.IsCollectionContaining ;
 import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.Test ;
 
@@ -71,5 +78,47 @@ class ProtocolTest
     assertEquals(0.5, _PROTOCOL.sequence(numSequence).volume) ;
     assertEquals(480, _PROTOCOL.sequence(numSequence).temps) ;
     assertEquals(true, _PROTOCOL.sequence(numSequence).pause) ;
+  }
+  
+  @Test
+  void test5()
+  {
+    Map<String, Integer> expectedAcidList = new HashMap<>();
+    expectedAcidList.put("HNO3 7N", 5);
+    expectedAcidList.put("HNO3 0,05N", 2);
+    expectedAcidList.put("HCl 6N", 3);
+    expectedAcidList.put("HNO3 2N", 4);
+    
+    Map<String, Integer> actualAcidList = _PROTOCOL.getAcidList();
+    
+    assertThat(actualAcidList.size(), is(expectedAcidList.size()));
+
+    for(Entry<String, Integer> expectedEntry: expectedAcidList.entrySet())
+    {
+      assertThat(actualAcidList.entrySet(),
+          IsCollectionContaining.hasItem(expectedEntry));
+    }
+  }
+  
+  @Test
+  void test6()
+  {
+    int nbColumn = 2;
+    
+    Map<String, Double> expectedAcidVolums = new HashMap<>();
+    expectedAcidVolums.put("HNO3 7N", 1.5*nbColumn);
+    expectedAcidVolums.put("HNO3 0,05N", 5.*nbColumn);
+    expectedAcidVolums.put("HCl 6N", 1.*nbColumn);
+    expectedAcidVolums.put("HNO3 2N", 1.7*nbColumn);
+    
+    Map<String, Double> actualAcidVolums = _PROTOCOL.protocolVolume(nbColumn);
+    
+    assertThat(actualAcidVolums.size(), is(expectedAcidVolums.size()));
+    
+    for(Entry<String, Double> expectedEntry: expectedAcidVolums.entrySet())
+    {
+      assertThat(actualAcidVolums.entrySet(),
+          IsCollectionContaining.hasItem(expectedEntry));
+    }
   }
 }
