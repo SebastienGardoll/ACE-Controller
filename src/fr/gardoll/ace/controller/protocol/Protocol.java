@@ -216,10 +216,10 @@ public class Protocol
       
       //volume total utilisé pour l'élution dans la séquence courante
       volume += sequence.volume * nbColumn ;
-      volume = Utils.round(volume);
-      
       result.put(acidName, volume);
     }
+    
+    Utils.round(result);
     
     return result;
   }  
@@ -285,6 +285,9 @@ public class Protocol
     // Process the special operations for the last sequence.
     //pour le rinçage pour la fin de sequence
     totalVolumeRincageH2O += volumeRincageH2O  ;
+    
+    totalVolumeRincageH2O = Utils.round(totalVolumeRincageH2O);
+    Utils.round(acideVolumes);
     
     return new ImmutablePair<>(totalVolumeRincageH2O, acideVolumes);
   }

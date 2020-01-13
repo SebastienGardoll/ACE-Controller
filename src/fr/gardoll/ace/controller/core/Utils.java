@@ -6,6 +6,8 @@ import java.net.URL ;
 import java.nio.file.Files ;
 import java.nio.file.Path ;
 import java.nio.file.Paths ;
+import java.util.Map ;
+import java.util.Map.Entry ;
 
 import javax.swing.JOptionPane ;
 
@@ -36,6 +38,14 @@ public class Utils
     return Precision.round(value, DOUBLE_PRECISION);
   }
   
+  // Warning: this is not thread safe !!!
+  public static void round(Map<?, Double> map)
+  {
+    for(Entry<?, Double> entry: map.entrySet())
+    {
+      entry.setValue(Utils.round(entry.getValue()));
+    }
+  }
   public static boolean isNearZero(double value)
   {
     return (value <= EPSILON);
