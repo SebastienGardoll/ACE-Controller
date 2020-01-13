@@ -14,6 +14,7 @@ import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
+import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
@@ -215,6 +216,7 @@ public class Protocol
       
       //volume total utilisé pour l'élution dans la séquence courante
       volume += sequence.volume * nbColumn ;
+      volume = Utils.round(volume);
       
       result.put(acidName, volume);
     }

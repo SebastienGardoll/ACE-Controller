@@ -9,6 +9,7 @@ import java.nio.file.Paths ;
 
 import javax.swing.JOptionPane ;
 
+import org.apache.commons.math3.util.Precision ;
 import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
@@ -27,6 +28,13 @@ public class Utils
   private Utils() {}
   
   public static double EPSILON = 0.00001 ;
+  public static int DOUBLE_PRECISION = 10;
+  
+  public static double round(double value)
+  {
+    // Rounding mode is halfup.
+    return Precision.round(value, DOUBLE_PRECISION);
+  }
   
   public static boolean isNearZero(double value)
   {
