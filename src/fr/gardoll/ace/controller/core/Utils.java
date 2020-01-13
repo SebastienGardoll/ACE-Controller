@@ -30,8 +30,8 @@ public class Utils
   
   private Utils() {}
   
-  // Enough precision for volume in milliliter, rate in milliliter/min and time
-  // in seconds.
+  // Enough precision for volume in milliliter, rate in milliliter/min
+  // distance in millimeter and time in seconds.
   public static final double EPSILON = 0.000001 ;
   public static final int DOUBLE_SCALE = 6;
   
