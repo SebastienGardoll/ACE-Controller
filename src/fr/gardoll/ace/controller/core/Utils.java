@@ -30,8 +30,10 @@ public class Utils
   
   private Utils() {}
   
-  public static final double EPSILON = 0.00001 ;
-  public static final int DOUBLE_PRECISION = 10;
+  // Enough to have 3 decimal digits for micro-liter.
+  public static final double EPSILON = 0.000001 ;
+  public static final int DOUBLE_PRECISION = 6;
+  
   public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP ;
   
   // This is quite the same implementation as Apache common's maths.
