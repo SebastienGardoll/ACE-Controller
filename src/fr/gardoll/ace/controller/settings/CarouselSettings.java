@@ -2,6 +2,8 @@ package fr.gardoll.ace.controller.settings;
 
 import java.nio.file.Path ;
 
+// This class is not meant to be used outside of GeneralSettings.
+// This class is meant to be replaced by a future Carousel class.
 class CarouselSettings extends Settings
 {
   private static final String SEC_INFO_CARROUSEL                = "informationsCarrousel";
@@ -13,7 +15,11 @@ class CarouselSettings extends Settings
   private static final String SIC_CLEF_NB_DEMI_PAS              = "nombreDemiPas";
   private static final String SIC_CLEF_AJUSTEMENT               = "ajuste?";
   
-  public static final int DEFAULT_MIN_NB_PAS_CARROUSEL = 0;
+  public static final int DEFAULT_MIN_NB_PAS_CARROUSEL = 1;
+  public static final int DEFAULT_MIN_NB_MAX_COLUMN = 2 ;
+  public static final int DEFAULT_MIN_THICKNESS = 1 ;
+  public static final int DEFAULT_MIN_PLATE_DIAMETER = 1 ;
+  public static final int DEFAULT_MIN_REF_CAROUSEL = 1 ;
   
   public CarouselSettings(Path configurationFilePath) throws ConfigurationException
   {
@@ -70,8 +76,11 @@ class CarouselSettings extends Settings
   
   public void checkNbMaxColonne(int nbMaxColonne) throws ConfigurationException
   {
-    // TODO
-    // > 1
+    if(nbMaxColonne < DEFAULT_MIN_NB_MAX_COLUMN)
+    {
+      String msg = String.format("the maximum number of column cannot be less than %s", DEFAULT_MIN_NB_MAX_COLUMN);
+      throw new ConfigurationException(msg);
+    }
   }
   
   public int getNbMaxColonne() throws ConfigurationException
@@ -93,7 +102,11 @@ class CarouselSettings extends Settings
   
   public void checkEpaisseur(int epaisseur) throws ConfigurationException
   {
-    // TODO
+    if(epaisseur < DEFAULT_MIN_THICKNESS)
+    {
+      String msg = String.format("the thickness of the carousel's plate cannot be less than %s", DEFAULT_MIN_THICKNESS);
+      throw new ConfigurationException(msg);
+    }
   }
   
   public int getEpaisseur() throws ConfigurationException
@@ -113,7 +126,11 @@ class CarouselSettings extends Settings
   
   public void checkDiametreCarrousel(int diametreCarrousel) throws ConfigurationException
   {
-    // TODO
+    if(diametreCarrousel < DEFAULT_MIN_PLATE_DIAMETER)
+    {
+      String msg = String.format("the diameter of the carousel's plate cannot be less than %s", DEFAULT_MIN_PLATE_DIAMETER);
+      throw new ConfigurationException(msg);
+    }
   }
   
   public int getDiametreCarrousel() throws ConfigurationException
@@ -133,7 +150,11 @@ class CarouselSettings extends Settings
   
   public void checkRefCarrousel(int refCarrousel) throws ConfigurationException
   {
-    // TODO
+    if(refCarrousel < DEFAULT_MIN_REF_CAROUSEL)
+    {
+      String msg = String.format("the carousel's reference cannot be less than %s", DEFAULT_MIN_REF_CAROUSEL);
+      throw new ConfigurationException(msg);
+    }
   }
   
   public int getRefCarrousel() throws ConfigurationException
@@ -153,13 +174,11 @@ class CarouselSettings extends Settings
   
   public void checkNbPasCarrousel(int nbPasCarrousel) throws ConfigurationException
   {
-    if(nbPasCarrousel <= DEFAULT_MIN_NB_PAS_CARROUSEL)
+    if(nbPasCarrousel < DEFAULT_MIN_NB_PAS_CARROUSEL)
     {
-      String msg = "the number of carousel's steps must be greater than zero";
+      String msg = String.format("the number of carousel's steps cannot be less than %s", DEFAULT_MIN_NB_PAS_CARROUSEL);
       throw new ConfigurationException(msg);
     }
-    
-    // TODO
   }
   
   public int getNbPasCarrousel() throws ConfigurationException
