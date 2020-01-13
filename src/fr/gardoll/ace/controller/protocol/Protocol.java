@@ -2,17 +2,27 @@ package fr.gardoll.ace.controller.protocol;
 
 import java.nio.file.Files ;
 import java.nio.file.Path ;
+import java.util.HashMap ;
+import java.util.Map ;
 
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
+import org.apache.commons.lang3.tuple.ImmutablePair ;
+import org.apache.commons.lang3.tuple.Pair ;
+import org.apache.logging.log4j.LogManager ;
+import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
+import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.Names ;
 
 public class Protocol
 {
+  private static final Logger _LOG = LogManager.getLogger(Protocol.class.getName());
+  
   public static final String PROTOCOL_FILE_EXTENTION = "prt";
   
   // The insertion order is mandatory.
@@ -142,5 +152,140 @@ public class Protocol
   public Sequence sequence(int numSequence)
   {
     return this._tabSequence[numSequence-1]; //car 1er indice = 0 !!!
+  }
+  
+//  double _volumeRincageAcide ; //volume pour un cycle entier de rinçage
+
+//  double _volumeRincageH2O ; //idem sauf que le volume de sécurité n'est pas pris en compte.
+
+//  const char MODIFICATEUR_RINCAGE = 1 ; // rinçage seringue et/ou rinçage tuyauterie de refoulement
+
+//Returns the list of the procol's acids and their associated valve.
+ public Map<String, Integer> getAcidList() throws ConfigurationException
+ {
+   Map<String, Integer> result = new HashMap<>();
+   
+   for(int index = 1 ; index <= this.nbMaxSequence ; index++)
+   {
+     Sequence sequence = this.sequence(index);
+     
+     if(result.containsKey(sequence.nomAcide))
+     {
+       if(sequence.numEv != result.get(sequence.nomAcide))
+       {
+         String msg = String.format("sequence %s is not consistent about the valve id (got '%s')",
+             index, sequence.numEv);
+         throw new ConfigurationException(msg);
+       }
+       else
+       {
+         // Nothing to do.
+       }
+     }
+     else
+     {
+       result.put(sequence.nomAcide, sequence.numEv);
+     }
+   }
+   
+   return result;
+ }
+  
+  // Return the volume for each acid of the protocol without rinsing volume.
+  public Map<String, Double> protocolVolume(int nbColumn)
+  {
+    Map<String, Double> result = new HashMap<>();
+    
+    for(int index = 1 ; index <= this.nbMaxSequence ; index++)
+    {
+      Sequence sequence = this.sequence(index);
+      
+      String acidName = sequence.nomAcide;
+      
+      double volume = 0.;
+      
+      if(result.containsKey(acidName))
+      {
+        volume = result.get(acidName);
+      }
+      else
+      {
+        volume = 0.;
+      }
+      
+      //volume total utilisé pour l'élution dans la séquence courante
+      volume += sequence.volume * nbColumn ;
+      
+      System.out.println(volume) ;
+      
+      result.put(acidName, volume);
+    }
+    
+    return result;
+  }  
+ 
+  public Pair<Double, Map<String, Double>> rinseVolume() throws ConfigurationException
+  {
+    Map<String, Double> acideVolumes = new HashMap<>();
+    
+    _LOG.debug(String.format("analyzing the rince volume of the protocol %s", this.nomProtocole));
+    
+    GeneralSettings settings = GeneralSettings.instance();
+    
+    double totalVolumeRincageH2O = 0.;
+    
+    //car le volume n'est pas divisé par nbSeringue pour le rinçage !!!
+    double volumeRincageH2O =  settings.getNbRincage() * 
+                               settings.getNbSeringue() *
+              (settings.getVolumeRincage() + PousseSeringue.volumeAjustement());
+    
+    // à chaque rinçage perte du volume de sécurité qui a été aspiré pendant la distribution
+    // mais ce volume ne dépend pas du volume de rinçage mais est induit au fait du rinçage
+    // volume de sécurité n'est pas divisé par nbSeringue
+    double volumeRincageAcide =  volumeRincageH2O + 
+                   (PousseSeringue.volumeSecurite() * settings.getNbSeringue());
+    
+    for(int index = this.nbMaxSequence ; index > 1 ; index--)
+    {
+      Sequence currentSequence = this.sequence(index); 
+      Sequence previousSequence = this.sequence(index - 1);
+      
+      if(currentSequence.numEv != previousSequence.numEv)
+      {
+        double volume = 0.;
+        
+        if(acideVolumes.containsKey(currentSequence.nomAcide))
+        {
+          volume = acideVolumes.get(currentSequence.nomAcide);
+        }
+        
+        volume += volumeRincageAcide  ;
+        
+        acideVolumes.put(currentSequence.nomAcide, volume);
+        
+        // Rinçage H2O avant le Rinçage de l'acide suivant.
+        totalVolumeRincageH2O += volumeRincageH2O  ;
+      }
+      else
+      {
+        // Nothing to add.
+      }
+    }
+    
+    // Process the special operations for the first sequence.
+    double volume = 0.;
+    if(acideVolumes.containsKey(this.sequence(1).nomAcide))
+    {
+      volume = acideVolumes.get(this.sequence(1).nomAcide);
+    }
+    volume += volumeRincageAcide  ;
+    acideVolumes.put(this.sequence(1).nomAcide, volume);
+    totalVolumeRincageH2O += volumeRincageH2O  ;
+    
+    // Process the special operations for the last sequence.
+    //pour le rinçage pour la fin de sequence
+    totalVolumeRincageH2O += volumeRincageH2O  ;
+    
+    return new ImmutablePair<>(totalVolumeRincageH2O, acideVolumes);
   }
 }
