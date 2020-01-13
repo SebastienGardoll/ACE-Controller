@@ -1,15 +1,10 @@
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -19,7 +14,6 @@ Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1n - ******************** testArm1n arm go to top
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '0'
 Passeur::moveButeBras - move the arm to the top
 MotorControllerStub::movel - % arm already on top %
@@ -51,15 +45,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -69,7 +58,6 @@ Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2n - ******************** testArm2n arm go to trash
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '3'
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
@@ -109,15 +97,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -128,7 +111,6 @@ AutosamplerToolTest::testArm3n - ******************** testArm3n arm go to column
 AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
 AutosamplerToolControl::armGoColonne - start arm thread for go to column
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '2'
 Passeur::moveButeBras - move the arm to the top
 MotorControllerStub::movel - % arm already on top %
@@ -165,15 +147,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -184,7 +161,6 @@ AutosamplerToolTest::testArm4n - ******************** testArm4n arm free move up
 Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
 AutosamplerToolControl::armFreeMove - start arm thread for free move '100'
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '1'
 Passeur::moveBras - move the arm to the position 13334
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -215,15 +191,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -234,7 +205,6 @@ AutosamplerToolTest::testArm5n - ******************** testArm5n arm free move do
 Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
 AutosamplerToolControl::armFreeMove - start arm thread for free move '-100'
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '1'
 Passeur::moveBras - move the arm to the position -13333
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -259,21 +229,16 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
-AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 Passeur::close - closing the autosampler
+InitialState::close - set closed state
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -283,7 +248,6 @@ Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1c - ******************** testArm1c cancel arm go to top
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '0'
 Passeur::moveButeBras - move the arm to the top
 MotorControllerStub::movel - % arm already on top %
@@ -317,15 +281,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -335,7 +294,6 @@ Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2c - ******************** testArm2c cancel arm go to trash
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '3'
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
@@ -377,15 +335,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -396,7 +349,6 @@ AutosamplerToolTest::testArm3c - ******************** testArm3c cancel arm go to
 AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
 AutosamplerToolControl::armGoColonne - start arm thread for go to column
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '2'
 Passeur::moveButeBras - move the arm to the top
 MotorControllerStub::movel - % arm already on top %
@@ -435,15 +387,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -454,7 +401,6 @@ AutosamplerToolTest::testArm4c - ******************** testArm4c cancel arm free 
 Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
 AutosamplerToolControl::armFreeMove - start arm thread for free move '100'
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '1'
 Passeur::moveBras - move the arm to the position 13334
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -487,15 +433,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -506,7 +447,6 @@ AutosamplerToolTest::testArm5c - ******************** testArm5c cancel arm free 
 Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
 AutosamplerToolControl::armFreeMove - start arm thread for free move '-100'
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '1'
 Passeur::moveBras - move the arm to the position -13333
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -539,15 +479,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -557,7 +492,6 @@ Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1p - ******************** testArm1p pause arm go to top
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '0'
 Passeur::moveButeBras - move the arm to the top
 MotorControllerStub::movel - % arm already on top %
@@ -605,15 +539,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -623,7 +552,6 @@ Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2p - ******************** testArm2p pause arm go to trash
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '3'
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
@@ -679,15 +607,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -698,7 +621,6 @@ AutosamplerToolTest::testArm3p - ******************** testArm3p pause arm go to 
 AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
 AutosamplerToolControl::armGoColonne - start arm thread for go to column
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '2'
 Passeur::moveButeBras - move the arm to the top
 MotorControllerStub::movel - % arm already on top %
@@ -751,15 +673,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -770,7 +687,6 @@ AutosamplerToolTest::testArm4p - ******************** testArm4p pause arm free m
 Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
 AutosamplerToolControl::armFreeMove - start arm thread for free move '100'
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '1'
 Passeur::moveBras - move the arm to the position 13334
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -817,15 +733,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -836,7 +747,6 @@ AutosamplerToolTest::testArm5p - ******************** testArm5p pause arm free m
 Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
 AutosamplerToolControl::armFreeMove - start arm thread for free move '-100'
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '1'
 Passeur::moveBras - move the arm to the position -13333
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -883,15 +793,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -934,15 +839,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -985,15 +885,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1032,15 +927,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1086,15 +976,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1140,15 +1025,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1190,15 +1070,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1257,15 +1132,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1324,15 +1194,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1387,15 +1252,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1406,7 +1266,6 @@ AutosamplerToolTest::scriptedTest1 - ******************** scripted test 1
 AutosamplerToolTest::scriptedTest1 - * arm goes to trash ; carousel turns left ; pause ; resume ; carousel move to pos 14 ; reinit *
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
 InitialState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '3'
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
@@ -1478,15 +1337,10 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
 MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
@@ -1525,7 +1379,6 @@ Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
 ReadyState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '3'
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
@@ -1544,7 +1397,6 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
 ReadyState::start - set running state
-ArmThread::threadLogic - run ArmThread
 ArmThread::threadLogic - run ArmThread with order '3'
 Passeur::moveArmToTrash - move the arm to trash
 Passeur::moveArmToTrash - first reference the arm from the top
@@ -1562,12 +1414,11 @@ Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 ReadyState::start - set running state
-ArmThread::threadLogic - run ArmThread
-RunningState::askCancellation - waiting for cancellation
 ArmThread::threadLogic - run ArmThread with order '0'
-AbstractThreadControl::cancel - ask the thread to cancel
 Passeur::moveButeBras - move the arm to the top
+RunningState::askCancellation - waiting for cancellation
 Passeur::finMoveBras - waiting for the arm
+AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
 Passeur::cancel - cancelling the autosampler

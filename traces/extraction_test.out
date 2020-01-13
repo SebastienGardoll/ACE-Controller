@@ -1,15 +1,10 @@
 Passeur::convertBras - convert 50.0 millimeter into 6667 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -72,8 +67,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -81,7 +76,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -99,8 +94,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '3'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '3'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '3'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '3'
 Valves::ouvrir - openning the valve '3'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -108,7 +103,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -268,8 +263,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -277,7 +272,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -295,8 +290,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '2'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '2'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '2'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '2'
 Valves::ouvrir - openning the valve '2'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -304,7 +299,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -467,8 +462,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -476,7 +471,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -494,8 +489,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -503,7 +498,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -667,9 +662,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13635 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:39:24.455827Z
-AbstractThreadControl::await - waiting 13621 ms
+ExtractionThreadControl::threadLogic - wait 13645 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:04:22.358720Z
+AbstractThreadControl::await - waiting 13632 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -827,9 +822,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2956 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:39:48.415839Z
-AbstractThreadControl::await - waiting 2956 ms
+ExtractionThreadControl::processSequence - wait 2953 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:04:46.336784Z
+AbstractThreadControl::await - waiting 2953 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -952,8 +947,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -961,7 +956,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -979,8 +974,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '5'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '5'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '5'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '5'
 Valves::ouvrir - openning the valve '5'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -988,7 +983,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1161,8 +1156,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1170,7 +1165,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1178,9 +1173,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9455 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:40:59.389485Z
-AbstractThreadControl::await - waiting 9455 ms
+ExtractionThreadControl::threadLogic - wait 9435 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:05:57.324204Z
+AbstractThreadControl::await - waiting 9435 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1224,15 +1219,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -1295,8 +1285,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1304,7 +1294,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1322,8 +1312,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '3'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '3'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '3'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '3'
 Valves::ouvrir - openning the valve '3'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1331,7 +1321,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1421,8 +1411,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1430,7 +1420,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1448,8 +1438,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1457,7 +1447,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1623,8 +1613,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1632,7 +1622,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1682,15 +1672,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -1753,8 +1738,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1762,7 +1747,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1780,8 +1765,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1789,7 +1774,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1887,9 +1872,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 3754 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:42:44.941446Z
-AbstractThreadControl::await - waiting 3754 ms
+ExtractionThreadControl::threadLogic - wait 3758 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:07:42.848894Z
+AbstractThreadControl::await - waiting 3757 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -1988,9 +1973,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
-ExtractionThreadControl::processSequence - wait 3748 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:42:58.897890Z
-AbstractThreadControl::await - waiting 3748 ms
+ExtractionThreadControl::processSequence - wait 3745 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:07:56.796516Z
+AbstractThreadControl::await - waiting 3745 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -2054,8 +2039,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2063,7 +2048,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2071,9 +2056,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9528 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:43:22.337562Z
-AbstractThreadControl::await - waiting 9528 ms
+ExtractionThreadControl::threadLogic - wait 9532 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:08:20.248278Z
+AbstractThreadControl::await - waiting 9532 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -2117,15 +2102,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -2188,8 +2168,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2197,7 +2177,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2215,8 +2195,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2224,7 +2204,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2314,8 +2294,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2323,7 +2303,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2341,8 +2321,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '5'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '5'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '5'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '5'
 Valves::ouvrir - openning the valve '5'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2350,7 +2330,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2443,8 +2423,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2452,7 +2432,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2502,15 +2482,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -2573,8 +2548,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2582,7 +2557,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2600,8 +2575,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '2'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '2'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '2'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '2'
 Valves::ouvrir - openning the valve '2'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2609,7 +2584,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2877,8 +2852,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2886,7 +2861,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -2936,15 +2911,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -3007,8 +2977,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3016,7 +2986,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3034,8 +3004,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3043,7 +3013,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3168,8 +3138,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3177,7 +3147,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3195,8 +3165,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '5'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '5'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '5'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '5'
 Valves::ouvrir - openning the valve '5'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3204,7 +3174,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3367,8 +3337,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3376,7 +3346,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3426,15 +3396,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -3497,8 +3462,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3506,7 +3471,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3524,8 +3489,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3533,7 +3498,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3623,8 +3588,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3632,7 +3597,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3716,15 +3681,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -3787,8 +3747,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3796,7 +3756,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3814,8 +3774,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3823,7 +3783,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3913,8 +3873,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -3922,7 +3882,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4006,15 +3966,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4077,8 +4032,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4086,7 +4041,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4104,8 +4059,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4113,7 +4068,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4203,8 +4158,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4212,7 +4167,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4220,9 +4175,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4526 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:48:36.514915Z
-AbstractThreadControl::await - waiting 4526 ms
+ExtractionThreadControl::threadLogic - wait 4515 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:13:35.346339Z
+AbstractThreadControl::await - waiting 4515 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4257,7 +4212,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2396 ms
+AbstractThreadControl::await - waiting 2388 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4301,15 +4256,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4372,8 +4322,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4381,7 +4331,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4399,8 +4349,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4408,7 +4358,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4498,8 +4448,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4507,7 +4457,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4515,9 +4465,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4535 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:49:16.628428Z
-AbstractThreadControl::await - waiting 4535 ms
+ExtractionThreadControl::threadLogic - wait 4532 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:14:15.440435Z
+AbstractThreadControl::await - waiting 4532 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4552,7 +4502,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2399 ms
+AbstractThreadControl::await - waiting 2393 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4596,15 +4546,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4667,8 +4612,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4676,7 +4621,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4694,8 +4639,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4703,7 +4648,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4827,8 +4772,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4836,7 +4781,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4844,9 +4789,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4501 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:49:58.658920Z
-AbstractThreadControl::await - waiting 4501 ms
+ExtractionThreadControl::threadLogic - wait 4503 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:14:57.546295Z
+AbstractThreadControl::await - waiting 4503 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4890,15 +4835,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -4961,8 +4901,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4970,7 +4910,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4988,8 +4928,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -4997,7 +4937,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5008,8 +4948,8 @@ Passeur::vibration - vibrate the arm
 ExtractionThreadControl::processSequence - don't need to wait the next column
 Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
-RunningState::askPausing - waiting for pause
 Passeur::moveOrigineBras - move the arm to its origin
+RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
@@ -5121,8 +5061,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5130,7 +5070,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5138,9 +5078,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4446 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:50:40.927939Z
-AbstractThreadControl::await - waiting 4446 ms
+ExtractionThreadControl::threadLogic - wait 4505 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:15:39.597404Z
+AbstractThreadControl::await - waiting 4505 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -5184,15 +5124,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -5255,8 +5190,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5264,7 +5199,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5282,8 +5217,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5291,7 +5226,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5392,9 +5327,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8726 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:51:21.228647Z
-AbstractThreadControl::await - waiting 8726 ms
+ExtractionThreadControl::processSequence - wait 8750 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:16:19.752832Z
+AbstractThreadControl::await - waiting 8750 ms
 RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
@@ -5474,15 +5409,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -5545,8 +5475,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5554,7 +5484,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5572,8 +5502,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5581,7 +5511,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5682,10 +5612,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8706 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-08T16:51:55.809514Z
-AbstractThreadControl::await - waiting 8706 ms
+ExtractionThreadControl::processSequence - wait 8747 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-13T09:16:54.074440Z
 RunningState::askPausing - waiting for pause
+AbstractThreadControl::await - waiting 8747 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -5705,7 +5635,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8198 ms
+AbstractThreadControl::await - waiting 8236 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -5769,8 +5699,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '1.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '1'
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
 Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -5778,7 +5708,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '2.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')

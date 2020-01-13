@@ -1,15 +1,10 @@
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 PumpToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -95,15 +90,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -225,15 +215,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -323,15 +308,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -437,15 +417,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
@@ -484,9 +459,9 @@ PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
 PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
-Valves::ouvrir - openning the H2O valve
 RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
+Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
@@ -552,15 +527,10 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
-ParametresSession::load - load the basic configuration
-ParametresSession::load - fetch root dir
-ParametresSession::load - read ace controller configuration
-ParametresSession::load - isDebug returns true
-ParametresSession::load - isFullScreen returns false
-ParametresSession::load - read pump configuration
-ParametresSession::load - read autosampler configuration
-ParametresSession::load - read paracom configuration
-ParametresSession::load - performing data checking
+Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
+ParametresSession::<init> - isDebug returns true
+ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
 ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
