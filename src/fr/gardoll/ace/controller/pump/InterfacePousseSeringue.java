@@ -43,7 +43,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     for(int index=0 ; index < _DOUBLE_FORMATTERS.length ; index++)
     {
       _DOUBLE_FORMATTERS[index] = new DecimalFormat(formats[index]);
-      _DOUBLE_FORMATTERS[index].setRoundingMode(RoundingMode.FLOOR);
+      _DOUBLE_FORMATTERS[index].setRoundingMode(RoundingMode.HALF_UP);
       _DOUBLE_FORMATTERS[index].setDecimalSeparatorAlwaysShown(false);
       _DOUBLE_FORMATTERS[index].setDecimalFormatSymbols(DECIMAL_SYMBOLS);
     }
