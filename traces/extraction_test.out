@@ -122,7 +122,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -177,7 +177,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -212,7 +212,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -341,7 +341,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 18.43441712314792 millimeter into 2458 number of arm steps
+Passeur::convertBras - convert 18.434417 millimeter into 2458 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -2408
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -376,7 +376,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 18.43441712314792 millimeter into 2458 number of arm steps
+Passeur::convertBras - convert 18.434417 millimeter into 2458 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -2408
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -411,7 +411,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 18.43441712314792 millimeter into 2458 number of arm steps
+Passeur::convertBras - convert 18.434417 millimeter into 2458 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -2408
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -540,7 +540,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 8.544077600341971 millimeter into 1140 number of arm steps
+Passeur::convertBras - convert 8.544078 millimeter into 1140 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3726
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -573,7 +573,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 8.544077600341971 millimeter into 1140 number of arm steps
+Passeur::convertBras - convert 8.544078 millimeter into 1140 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3726
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -606,7 +606,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 8.544077600341971 millimeter into 1140 number of arm steps
+Passeur::convertBras - convert 8.544078 millimeter into 1140 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3726
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -647,8 +647,8 @@ ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
-Commandes::remplissageSeringue - withdraw 0.6000000000000001 mL from valve 4
-PousseSeringue::aspiration - withdrawing volume '0.6000000000000001' from valve '4'
+Commandes::remplissageSeringue - withdraw 0.6 mL from valve 4
+PousseSeringue::aspiration - withdrawing volume '0.6' from valve '4'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.1' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
@@ -662,9 +662,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13645 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:04:22.358720Z
-AbstractThreadControl::await - waiting 13632 ms
+ExtractionThreadControl::threadLogic - wait 13661 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:09:01.091784Z
+AbstractThreadControl::await - waiting 13652 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -701,14 +701,14 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 5.390029139290011 millimeter into 719 number of arm steps
+Passeur::convertBras - convert 5.390029 millimeter into 719 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.6000000000000001'
-PousseSeringue::volumeRestant - total raiming volume is '0.6000000000000001'
+PousseSeringue::volumeRestant - total raiming volume is '0.6'
+PousseSeringue::volumeRestant - total raiming volume is '0.6'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.2' to the valve '7'
@@ -732,14 +732,14 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 5.390029139290011 millimeter into 719 number of arm steps
+Passeur::convertBras - convert 5.390029 millimeter into 719 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.40000000000000013'
-PousseSeringue::volumeRestant - total raiming volume is '0.40000000000000013'
+PousseSeringue::volumeRestant - total raiming volume is '0.4'
+PousseSeringue::volumeRestant - total raiming volume is '0.4'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -764,14 +764,14 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 5.390029139290011 millimeter into 719 number of arm steps
+Passeur::convertBras - convert 5.390029 millimeter into 719 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.20000000000000018'
-PousseSeringue::volumeRestant - total raiming volume is '0.20000000000000018'
+PousseSeringue::volumeRestant - total raiming volume is '0.2'
+PousseSeringue::volumeRestant - total raiming volume is '0.2'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -801,11 +801,11 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
-PousseSeringue::volumeRestant - total raiming volume is '2.220446049250313E-16'
-PousseSeringue::volumeRestant - total raiming volume is '2.220446049250313E-16'
+PousseSeringue::volumeRestant - total raiming volume is '0.0'
+PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
-Commandes::remplissageSeringue - withdraw 0.30000000000000004 mL from valve 4
-PousseSeringue::aspiration - withdrawing volume '0.30000000000000004' from valve '4'
+Commandes::remplissageSeringue - withdraw 0.3 mL from valve 4
+PousseSeringue::aspiration - withdrawing volume '0.3' from valve '4'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '0.8' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
@@ -822,9 +822,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2953 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:04:46.336784Z
-AbstractThreadControl::await - waiting 2953 ms
+ExtractionThreadControl::processSequence - wait 2932 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:09:25.054633Z
+AbstractThreadControl::await - waiting 2932 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -837,14 +837,14 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 3.640160579191547 millimeter into 486 number of arm steps
+Passeur::convertBras - convert 3.640161 millimeter into 486 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.30000000000000027'
-PousseSeringue::volumeRestant - total raiming volume is '0.30000000000000027'
+PousseSeringue::volumeRestant - total raiming volume is '0.3'
+PousseSeringue::volumeRestant - total raiming volume is '0.3'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.1' to the valve '7'
@@ -868,14 +868,14 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 3.640160579191547 millimeter into 486 number of arm steps
+Passeur::convertBras - convert 3.640161 millimeter into 486 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.2000000000000003'
-PousseSeringue::volumeRestant - total raiming volume is '0.2000000000000003'
+PousseSeringue::volumeRestant - total raiming volume is '0.2'
+PousseSeringue::volumeRestant - total raiming volume is '0.2'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -900,14 +900,14 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 3.640160579191547 millimeter into 486 number of arm steps
+Passeur::convertBras - convert 3.640161 millimeter into 486 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.10000000000000031'
-PousseSeringue::volumeRestant - total raiming volume is '0.10000000000000031'
+PousseSeringue::volumeRestant - total raiming volume is '0.1'
+PousseSeringue::volumeRestant - total raiming volume is '0.1'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -1046,7 +1046,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 6.0627048501839464 millimeter into 809 number of arm steps
+Passeur::convertBras - convert 6.062705 millimeter into 809 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1077,7 +1077,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 6.0627048501839464 millimeter into 809 number of arm steps
+Passeur::convertBras - convert 6.062705 millimeter into 809 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1109,7 +1109,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 6.0627048501839464 millimeter into 809 number of arm steps
+Passeur::convertBras - convert 6.062705 millimeter into 809 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1173,9 +1173,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9435 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:05:57.324204Z
-AbstractThreadControl::await - waiting 9435 ms
+ExtractionThreadControl::threadLogic - wait 9410 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:10:36.074069Z
+AbstractThreadControl::await - waiting 9410 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1340,7 +1340,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1489,7 +1489,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1562,7 +1562,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1793,7 +1793,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1872,9 +1872,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 3758 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:07:42.848894Z
-AbstractThreadControl::await - waiting 3757 ms
+ExtractionThreadControl::threadLogic - wait 3745 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:12:21.674989Z
+AbstractThreadControl::await - waiting 3745 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -1911,7 +1911,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1973,9 +1973,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
-ExtractionThreadControl::processSequence - wait 3745 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:07:56.796516Z
-AbstractThreadControl::await - waiting 3745 ms
+ExtractionThreadControl::processSequence - wait 3747 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:12:35.619835Z
+AbstractThreadControl::await - waiting 3747 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -1988,7 +1988,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2056,9 +2056,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9532 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:08:20.248278Z
-AbstractThreadControl::await - waiting 9532 ms
+ExtractionThreadControl::threadLogic - wait 9544 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:12:59.060657Z
+AbstractThreadControl::await - waiting 9544 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -2223,7 +2223,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2372,7 +2372,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2603,7 +2603,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2658,7 +2658,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2731,7 +2731,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2766,7 +2766,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2801,7 +2801,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3032,7 +3032,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3087,7 +3087,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3216,7 +3216,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3251,7 +3251,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3286,7 +3286,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3517,7 +3517,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3802,7 +3802,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -4087,7 +4087,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -4175,9 +4175,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4515 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:13:35.346339Z
-AbstractThreadControl::await - waiting 4515 ms
+ExtractionThreadControl::threadLogic - wait 4532 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:18:13.664981Z
+AbstractThreadControl::await - waiting 4532 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4212,7 +4212,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2388 ms
+AbstractThreadControl::await - waiting 2406 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4377,7 +4377,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -4465,9 +4465,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4532 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:14:15.440435Z
-AbstractThreadControl::await - waiting 4532 ms
+ExtractionThreadControl::threadLogic - wait 4503 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:18:53.747297Z
+AbstractThreadControl::await - waiting 4503 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4502,7 +4502,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2393 ms
+AbstractThreadControl::await - waiting 2373 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4661,8 +4661,8 @@ Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
 Passeur::moveOrigineBras - move the arm to its origin
 RunningState::askPausing - waiting for pause
-MotorControllerStub::move - % carousel doesn't have to move %
 AbstractThreadControl::askPause - ask the thread to pause
+MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4701,7 +4701,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -4789,9 +4789,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4503 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:14:57.546295Z
-AbstractThreadControl::await - waiting 4503 ms
+ExtractionThreadControl::threadLogic - wait 4511 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:19:35.821301Z
+AbstractThreadControl::await - waiting 4511 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4949,10 +4949,10 @@ ExtractionThreadControl::processSequence - don't need to wait the next column
 Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
 Passeur::moveOrigineBras - move the arm to its origin
-RunningState::askPausing - waiting for pause
-AbstractThreadControl::askPause - ask the thread to pause
 MotorControllerStub::move - % carousel doesn't have to move %
+RunningState::askPausing - waiting for pause
 Passeur::finMoveBras - waiting for the arm
+AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -4990,7 +4990,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -5078,9 +5078,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4505 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:15:39.597404Z
-AbstractThreadControl::await - waiting 4505 ms
+ExtractionThreadControl::threadLogic - wait 4511 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:20:17.904854Z
+AbstractThreadControl::await - waiting 4511 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -5245,7 +5245,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -5327,9 +5327,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8750 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:16:19.752832Z
-AbstractThreadControl::await - waiting 8750 ms
+ExtractionThreadControl::processSequence - wait 8744 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:20:58.108195Z
+AbstractThreadControl::await - waiting 8744 ms
 RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
@@ -5530,7 +5530,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -5612,10 +5612,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8747 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-13T09:16:54.074440Z
+ExtractionThreadControl::processSequence - wait 8750 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:21:32.472462Z
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 8747 ms
+AbstractThreadControl::await - waiting 8750 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -5635,7 +5635,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8236 ms
+AbstractThreadControl::await - waiting 8241 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -5648,7 +5648,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
