@@ -459,9 +459,9 @@ PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
 PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
+Valves::ouvrir - openning the H2O valve
 RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
-Valves::ouvrir - openning the H2O valve
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves

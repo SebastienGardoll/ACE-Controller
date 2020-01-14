@@ -77,10 +77,10 @@ Valves::ouvrir - shutting all the valves
 ValvesToolTest::tearDown - ******************** teardown
 ParametresSession::close - closing parameter session
 Valves::close - closing the valves
-AbstractCloseableToolControl::run - running the close operations
 Valves::ouvrir - shutting all the valves
+AbstractCloseableToolControl::run - running the close operations
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
+InitialState::close - set closed state
 Valves::close - closing valves controller with paracom id 'stub'
 ParaComStub::close - stubbing close paracom
-InitialState::close - set closed state

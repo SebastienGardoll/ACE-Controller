@@ -229,10 +229,10 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
-ParametresSession::close - closing parameter session
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-Passeur::close - closing the autosampler
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
+Passeur::close - closing the autosampler
 MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
@@ -1416,8 +1416,8 @@ AutosamplerToolControl::armGoButee - start arm thread for go to top
 ReadyState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '0'
 Passeur::moveButeBras - move the arm to the top
-RunningState::askCancellation - waiting for cancellation
 Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
