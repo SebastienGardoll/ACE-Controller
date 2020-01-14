@@ -155,12 +155,6 @@ public class Protocol
     return this._tabSequence[numSequence-1]; //car 1er indice = 0 !!!
   }
   
-//  double _volumeRincageAcide ; //volume pour un cycle entier de rinçage
-
-//  double _volumeRincageH2O ; //idem sauf que le volume de sécurité n'est pas pris en compte.
-
-//  const char MODIFICATEUR_RINCAGE = 1 ; // rinçage seringue et/ou rinçage tuyauterie de refoulement
-
 //Returns the list of the procol's acids and their associated valve.
  public Map<String, Integer> getAcidList() throws ConfigurationException
  {
