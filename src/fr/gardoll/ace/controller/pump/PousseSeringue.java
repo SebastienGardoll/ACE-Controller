@@ -243,6 +243,8 @@ public class PousseSeringue implements Closeable
   public void algoRefoulement(double volume, int numEv)
 
   { 
+    volume = Utils.round(volume);
+    
     _LOG.debug(String.format("running the infusing subroutine for volume '%s' to the valve '%s'",
         volume, numEv));
     // attention un ordre comme voli ou volw 0 correspond à une aspi/infusion sans fin.
@@ -561,6 +563,7 @@ public class PousseSeringue implements Closeable
     try
     {
       double result = this.interfacePousseSeringue.deliver() * GeneralSettings.instance().getNbSeringue() ;
+      result = Utils.round(result);
       _LOG.trace(String.format("getting '%s' of delivered volume", result));
       return result ;
     }
@@ -582,6 +585,7 @@ public class PousseSeringue implements Closeable
     }
 
     double result = (volumeUtile  * GeneralSettings.instance().getNbSeringue()) ;
+    result = Utils.round(result);
     _LOG.debug(String.format("total raiming volume is '%s'", result));
     return result;                      
   }
@@ -620,6 +624,7 @@ public class PousseSeringue implements Closeable
     
     //volume Max utile pour les n seringues !
     double result = (nbSeringue * (volumeMaxSeringue - VOL_SECU - VOL_AJUSTEMENT ) );
+    result = Utils.round(result);
     _LOG.debug(String.format("computed the maximum util volume is '%s'", result));
     return  result ;
   }

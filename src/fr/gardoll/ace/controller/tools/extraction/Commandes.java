@@ -179,6 +179,8 @@ class Commandes
         vol_demande = this.pousseSeringue.volumeMaxSeringueUtile()
                       - this.pousseSeringue.volumeRestant() ;
       }
+      
+      vol_demande = Utils.round(vol_demande);
 
       String msg = String.format("withdraw %s mL from valve %s", vol_demande, numEv);
       _LOG.debug(msg);

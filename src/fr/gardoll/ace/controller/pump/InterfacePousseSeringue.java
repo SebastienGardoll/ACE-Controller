@@ -244,7 +244,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     
     // _LOG.trace(String.format("the delivered volume is %s", result));
     
-    return result;
+    return result; // The value is rounded in the method Pump::deliver.
   }
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque

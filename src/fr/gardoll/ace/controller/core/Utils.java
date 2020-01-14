@@ -37,9 +37,27 @@ public class Utils
   
   public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP ;
   
+  /*
+  About double precision and BigDecimal:
+  
+  double d = 5.6 + 5.8;
+  System.out.println(d) ; // returns 11.399999999999999 instead of 11.4
+    
+  BigDecimal d1 = new BigDecimal(5.6); // sysout d1.doubleValue() returns 5.6: ok
+  BigDecimal d2 = new BigDecimal(5.8); // sysout d2.doubleValue() returns 5.8: ok
+  BigDecimal d3 = d1.add(d2); // sysout d3.doubleValue() returns 11.399999999999999 !!!
+    
+  // Nevertheless  
+  
+  BigDecimal d4 = new BigDecimal("5.6");
+  BigDecimal d5 = new BigDecimal("5.8");
+  BigDecimal d6 = d4.add(d5); // sysout d6.doubleValue() returns 11.4 :)
+  */
   // This is quite the same implementation as Apache common's math.
   public static double round(double value)
   {
+    // It is absolutely necessary that the value is translated into string so as
+    // to get literal representation, not a double precision approximation.
     return new BigDecimal(Double.toString(value)).setScale(DOUBLE_SCALE, ROUNDING_MODE)
                                                  .doubleValue();
   }

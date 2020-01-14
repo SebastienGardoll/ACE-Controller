@@ -662,9 +662,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13661 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:09:01.091784Z
-AbstractThreadControl::await - waiting 13652 ms
+ExtractionThreadControl::threadLogic - wait 13656 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:53:18.847229Z
+AbstractThreadControl::await - waiting 13646 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -822,9 +822,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2932 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:09:25.054633Z
-AbstractThreadControl::await - waiting 2932 ms
+ExtractionThreadControl::processSequence - wait 2960 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:53:42.804597Z
+AbstractThreadControl::await - waiting 2960 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -939,7 +939,7 @@ ExtractionThreadControl::threadLogic - preparing the next sequence
 Commandes::rincage - rincing with H20
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5000000000000003' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1173,9 +1173,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9410 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:10:36.074069Z
-AbstractThreadControl::await - waiting 9410 ms
+ExtractionThreadControl::threadLogic - wait 9414 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:54:53.832660Z
+AbstractThreadControl::await - waiting 9414 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1872,9 +1872,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 3745 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:12:21.674989Z
-AbstractThreadControl::await - waiting 3745 ms
+ExtractionThreadControl::threadLogic - wait 3735 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:56:39.544402Z
+AbstractThreadControl::await - waiting 3735 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -1973,9 +1973,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
-ExtractionThreadControl::processSequence - wait 3747 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:12:35.619835Z
-AbstractThreadControl::await - waiting 3747 ms
+ExtractionThreadControl::processSequence - wait 3730 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:56:53.515209Z
+AbstractThreadControl::await - waiting 3730 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -2056,9 +2056,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9544 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:12:59.060657Z
-AbstractThreadControl::await - waiting 9544 ms
+ExtractionThreadControl::threadLogic - wait 9496 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T10:57:16.963031Z
+AbstractThreadControl::await - waiting 9496 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -4175,9 +4175,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4532 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:18:13.664981Z
-AbstractThreadControl::await - waiting 4532 ms
+ExtractionThreadControl::threadLogic - wait 4533 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T11:02:31.401216Z
+AbstractThreadControl::await - waiting 4533 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4212,7 +4212,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2406 ms
+AbstractThreadControl::await - waiting 2409 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4465,9 +4465,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4503 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:18:53.747297Z
-AbstractThreadControl::await - waiting 4503 ms
+ExtractionThreadControl::threadLogic - wait 4526 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T11:03:11.481060Z
+AbstractThreadControl::await - waiting 4526 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4502,7 +4502,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2373 ms
+AbstractThreadControl::await - waiting 2396 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4660,10 +4660,10 @@ ExtractionThreadControl::processSequence - don't need to wait the next column
 Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
 Passeur::moveOrigineBras - move the arm to its origin
-RunningState::askPausing - waiting for pause
-AbstractThreadControl::askPause - ask the thread to pause
 MotorControllerStub::move - % carousel doesn't have to move %
+RunningState::askPausing - waiting for pause
 Passeur::finMoveBras - waiting for the arm
+AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -4789,9 +4789,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4511 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:19:35.821301Z
-AbstractThreadControl::await - waiting 4511 ms
+ExtractionThreadControl::threadLogic - wait 4545 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T11:03:53.467352Z
+AbstractThreadControl::await - waiting 4545 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4949,10 +4949,10 @@ ExtractionThreadControl::processSequence - don't need to wait the next column
 Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
 Passeur::moveOrigineBras - move the arm to its origin
-MotorControllerStub::move - % carousel doesn't have to move %
 RunningState::askPausing - waiting for pause
-Passeur::finMoveBras - waiting for the arm
+MotorControllerStub::move - % carousel doesn't have to move %
 AbstractThreadControl::askPause - ask the thread to pause
+Passeur::finMoveBras - waiting for the arm
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -5078,9 +5078,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4511 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:20:17.904854Z
-AbstractThreadControl::await - waiting 4511 ms
+ExtractionThreadControl::threadLogic - wait 4505 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-14T11:04:35.456831Z
+AbstractThreadControl::await - waiting 4505 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -5327,10 +5327,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8744 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:20:58.108195Z
-AbstractThreadControl::await - waiting 8744 ms
+ExtractionThreadControl::processSequence - wait 8756 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T11:05:15.600745Z
 RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::await - waiting 8756 ms
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -5612,10 +5612,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8750 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:21:32.472462Z
+ExtractionThreadControl::processSequence - wait 8757 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-14T11:05:49.837596Z
+AbstractThreadControl::await - waiting 8757 ms
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 8750 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -5635,7 +5635,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8241 ms
+AbstractThreadControl::await - waiting 8253 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *

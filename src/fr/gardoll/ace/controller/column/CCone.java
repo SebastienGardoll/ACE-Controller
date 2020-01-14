@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
+import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.Names ;
 
@@ -47,7 +48,7 @@ public class CCone extends Colonne
 
     {
       double tmp = Math.PI * this.hauteurCone * (Math.pow (this.diametreSup/2., 2.) + (this.diametreSup * this.diametreInf)/4. + Math.pow (this.diametreInf/2., 2.)) / 3.; //en µL
-      this._volumeReservoir = tmp / 1000. ; //passage au mL
+      this._volumeReservoir = Utils.round(tmp / 1000.) ; //passage au mL
     }
     
     this.close();
@@ -72,7 +73,7 @@ public class CCone extends Colonne
 
     double X = Math.pow (-q , 0.33333333333333333333); // 1/3 marche mais résultats aberrant ( -2.714 ... )
 
-    return  X - (this.b / (3. * this.a)) ;
+    return Utils.round(X - (this.b / (3. * this.a)));
   }
   
   @Override
@@ -88,12 +89,12 @@ public class CCone extends Colonne
 
     volume *= 1000. ; // v en ml est traité en micro litre car dimension en mm.
 
-    return (0.25 * ( - this.diametreInf + Math.pow (-3. * this.diametreInf * this.diametreInf + (48. * volume )/( Math.PI * h), 0.5))) ;
+    return Utils.round((0.25 * ( - this.diametreInf + Math.pow (-3. * this.diametreInf * this.diametreInf + (48. * volume )/( Math.PI * h), 0.5))));
   }
   
   public double volumeEquivalentCylindre()
   {  
-    return ( Math.PI * Math.pow(this.diametreSup/2., 2.) * this.hauteurCone ) /1000.  ;//en mL
+    return Utils.round((Math.PI * Math.pow(this.diametreSup/2., 2.) * this.hauteurCone ) /1000.);//en mL
   }
 
   @Override

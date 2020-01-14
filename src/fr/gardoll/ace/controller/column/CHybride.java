@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
+import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 
 
@@ -13,25 +14,32 @@ public class CHybride extends Colonne
   public double volumeRetard ; // volume retard = volume cylindre - volume cône pour la même hauteur  en mL
   // en mL
   
+  private final double _volumeReservoir;
+  private final double _hauteurReservoir;
+    
   public CHybride(Path cheminFichierColonne) throws ConfigurationException
   {
     super(cheminFichierColonne, TypeColonne.HYBRIDE);
     this.cone = new CCone(cheminFichierColonne);
     this.cylindre = new CCylindre(cheminFichierColonne);
     this.volumeRetard = this.cone.volumeEquivalentCylindre() - this.cone.volumeReservoir() ;
+    
+    this._volumeReservoir = Utils.round((this.cone.volumeReservoir() + this.cylindre.volumeReservoir()));
+    this._hauteurReservoir = Utils.round((this.cone.hauteurReservoir() + this.cylindre.hauteurReservoir()));
+    
     this.close();
   }
   
   @Override
   public double volumeReservoir()
   { 
-    return (this.cone.volumeReservoir() + this.cylindre.volumeReservoir());
+    return this._volumeReservoir;
   }
   
   @Override
   public double hauteurReservoir()
   { 
-    return (this.cone.hauteurReservoir() + this.cylindre.hauteurReservoir()) ;
+    return this._hauteurReservoir ;
   }
   
   @Override
@@ -44,13 +52,17 @@ public class CHybride extends Colonne
   @Override
   public double calculsHauteur(double volume)
   { 
+    double result ;
+    
     if (volume > this.cone.volumeReservoir())
     {
-      return this.cylindre.calculsHauteur(volume + this.volumeRetard);
+      result = this.cylindre.calculsHauteur(volume + this.volumeRetard);
     }
     else
     {
-      return this.cone.calculsHauteur(volume );
+      result = this.cone.calculsHauteur(volume );
     }
+    
+    return Utils.round(result);
   }
 }

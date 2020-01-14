@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.column;
 
 import java.nio.file.Path ;
 
+import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.Names ;
 
@@ -30,7 +31,7 @@ public class CCylindre extends Colonne
 
     {
       double tmp =  Math.PI * Math.pow (this.diametre/2. , 2. ) * this.hauteurCylindre ;  //en µL
-      this._volumeReservoir = tmp / 1000. ; //passage au mL
+      this._volumeReservoir = Utils.round(tmp / 1000.) ; //passage au mL
     }
     
     this.close();
@@ -47,7 +48,7 @@ public class CCylindre extends Colonne
 
     volume *=1000. ;  // v en ml est traité en micro litre car dimension en mm.
 
-    return ((4. * volume) /  (Math.PI * Math.pow (this.diametre, 2.))) ;
+    return Utils.round(((4. * volume) /  (Math.PI * Math.pow (this.diametre, 2.))));
   }
 
   @Override

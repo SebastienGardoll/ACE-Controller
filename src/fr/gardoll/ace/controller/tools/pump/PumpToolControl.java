@@ -36,7 +36,7 @@ public class PumpToolControl extends AbstractPausableToolControl
     double volMax = GeneralSettings.instance().getVolumeMaxSeringue();
     
     if(volume > volMax ||
-       volume <= 0)
+       volume <= 0.)
     {
       String msg = String.format("volume must be greater than zero but less than %s, got '%s' mL", volMax, volume);
       _LOG.error(msg);
