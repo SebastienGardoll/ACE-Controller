@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.tools.autosampler;
 import java.nio.file.Path ;
 import java.util.Optional ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
@@ -15,13 +14,14 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class AutosamplerToolControl extends AbstractPausableToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(AutosamplerToolControl.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   private Colonne colonne = null;
   private boolean hasColumn = false ;
   // autorise la fermeture de la fenêtre ou non à cause des threads
@@ -215,7 +215,7 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
 
 class CarouselRelativeThread extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(CarouselRelativeThread.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   private final int _nbPosition ;
   private final Passeur _passeur ;
   
@@ -248,7 +248,7 @@ class CarouselRelativeThread extends AbstractThreadControl
 
 class CarouselThread extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(CarouselThread.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private final Passeur _passeur;
   private final int _position;
@@ -279,7 +279,7 @@ class CarouselThread extends AbstractThreadControl
 
 class ArmThread extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(ArmThread.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private final Passeur _passeur;
   private int _nbPas ;

@@ -4,16 +4,16 @@ import java.io.Closeable ;
 import java.text.DecimalFormatSymbols ;
 import java.util.Locale ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.SerialComException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public interface PumpController extends Closeable
 {
-  public static final Logger _LOG = LogManager.getLogger(PumpController.class.getName());
+  public static final Logger _LOG = Log.HIGH_LEVEL;
   
   // caractéristique du pousse seringue en m/min
   public final static double COURCE_LINEAIRE_MAX = 0.1269 ;

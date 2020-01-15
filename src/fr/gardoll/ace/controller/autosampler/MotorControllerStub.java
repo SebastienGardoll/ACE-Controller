@@ -3,14 +3,14 @@ package fr.gardoll.ace.controller.autosampler;
 import java.io.Closeable ;
 import java.io.IOException ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.SerialComException ;
+import fr.gardoll.ace.controller.core.Log ;
 
 public class MotorControllerStub implements MotorController, Closeable
 {
-  private static final Logger _LOG = LogManager.getLogger(MotorControllerStub.class.getName());
+  private static final Logger _LOG = Log.STUB;
   
   private int _currentCarouselPosition  = 0;
   private int _targetedCarouselPosition = 0;

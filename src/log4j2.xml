@@ -6,20 +6,31 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
-        <File name="File_Logging_Info" fileName="./log/output_info.log" append="false">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+        <File name="File_Logging_Info" fileName="./log/root_info.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_Debug" fileName="./log/output_debug.log" append="false">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+        <File name="File_Logging_Debug" fileName="./log/root_debug.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_All" fileName="./log/output_all.log" append="false">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+        <File name="File_Logging_All" fileName="./log/root_all.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_Diff" fileName="./log/output_diff.log" append="false">
-            <PatternLayout pattern="%logger{1}::%M - %msg%n"/>
+        
+        <File name="File_UI_Diff" fileName="./log/ui_diff.log" append="false">
+            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        
+        <File name="File_Stub_Diff" fileName="./log/stub_diff.log" append="false">
+            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        
+        <File name="File_High_Level_Diff" fileName="./log/high_level_diff.log" append="false">
+            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
@@ -29,7 +40,15 @@
             <AppenderRef ref="File_Logging_Info"/>
             <AppenderRef ref="File_Logging_Debug"/>
             <AppenderRef ref="File_Logging_All"/>
-            <AppenderRef ref="File_Logging_Diff"/>
         </Root>
+        <Logger name="UI_LOG" level="ALL">
+            <AppenderRef ref="File_UI_Diff"/>
+        </Logger>
+        <Logger name="STUB_LOG" level="ALL">
+            <AppenderRef ref="File_Stub_Diff"/>
+        </Logger>
+        <Logger name="HIGH_LEVEL_LOG" level="ALL">
+            <AppenderRef ref="File_High_Level_Diff"/>
+        </Logger>
     </Loggers>
 </Configuration>

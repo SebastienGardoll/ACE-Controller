@@ -5,7 +5,6 @@ import java.time.Instant ;
 import java.util.Optional ;
 
 import org.apache.commons.lang3.tuple.ImmutablePair ;
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
@@ -14,13 +13,14 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 import fr.gardoll.ace.controller.protocol.Sequence ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 
 public class ExtractionThreadControl extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(ExtractionThreadControl.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private final InitSession _initSession ;
 

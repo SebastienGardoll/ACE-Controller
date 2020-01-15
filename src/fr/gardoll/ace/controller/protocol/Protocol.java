@@ -10,10 +10,10 @@ import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
 import org.apache.commons.lang3.tuple.ImmutablePair ;
 import org.apache.commons.lang3.tuple.Pair ;
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
@@ -22,7 +22,7 @@ import fr.gardoll.ace.controller.settings.Names ;
 
 public class Protocol
 {
-  private static final Logger _LOG = LogManager.getLogger(Protocol.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public static final String PROTOCOL_FILE_EXTENTION = "prt";
   

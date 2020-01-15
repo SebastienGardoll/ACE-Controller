@@ -13,15 +13,10 @@ import java.util.Map.Entry ;
 
 import javax.swing.JOptionPane ;
 
-import org.apache.logging.log4j.LogManager ;
-import org.apache.logging.log4j.Logger ;
-
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class Utils
 {
-  private static final Logger _LOG = LogManager.getLogger(Utils.class.getName());
-
   // Must be singleton as getRootDir must fetch the file of this class (or any
   // classes of this Java project).
   private static Utils _INSTANCE = null ;
@@ -172,7 +167,7 @@ public class Utils
       displayedMsg = msg;
     }
      
-    _LOG.debug(String.format("displaying this message: '%s'", msg));
+    Log.UI.info(String.format("display '%s'", msg));
     
     if(false == ParametresSession.isAutomatedTest)
     {

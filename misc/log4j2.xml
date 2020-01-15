@@ -3,19 +3,29 @@
 <Configuration status="WARN">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
-        <File name="File_Logging_Info" fileName="./log/output_info_${date:dd-MM-yyyy_HHmm}.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+        <File name="File_Logging_Info" fileName="./log/${date:dd-MM-yyyy_HHmm}/root_info.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_Debug" fileName="./log/output_debug_${date:dd-MM-yyyy_HHmm}.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+        <File name="File_Logging_Debug" fileName="./log/${date:dd-MM-yyyy_HHmm}/root_debug.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        <File name="File_Logging_All" fileName="./log/output_all_${date:dd-MM-yyyy_HHmm}.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1}::%M - %msg%n"/>
+        <File name="File_Logging_All" fileName="./log/${date:dd-MM-yyyy_HHmm}/root_all.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        
+        <File name="File_UI" fileName="./log/${date:dd-MM-yyyy_HHmm}/ui.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        
+        <File name="File_Low_Level" fileName="./log/${date:dd-MM-yyyy_HHmm}/low_level.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
@@ -26,5 +36,11 @@
             <AppenderRef ref="File_Logging_Debug"/>
             <AppenderRef ref="File_Logging_All"/>
         </Root>
+        <Logger name="UI_LOG" level="ALL">
+            <AppenderRef ref="File_UI"/>
+        </Logger>
+        <Logger name="LOW_LEVEL_LOG" level="ALL">
+            <AppenderRef ref="File_Low_Level"/>
+        </Logger>
     </Loggers>
 </Configuration>

@@ -10,12 +10,13 @@ import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
+
+import fr.gardoll.ace.controller.core.Log ;
 
 public abstract class Settings implements Closeable
 {
-  private static final Logger _LOG = LogManager.getLogger(Settings.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   
   private final INIConfiguration _iniConf ;

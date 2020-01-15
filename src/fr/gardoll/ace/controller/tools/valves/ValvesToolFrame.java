@@ -1,9 +1,9 @@
 package fr.gardoll.ace.controller.tools.valves;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
@@ -14,7 +14,7 @@ public class ValvesToolFrame extends AbstractToolFrame
 {
   private static final long serialVersionUID = 9097813064524782984L ;
   
-  private static final Logger _LOG = LogManager.getLogger(ValvesToolFrame.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private ValvesToolFrame(AbstractJPanelObserver mainPanel)
   {

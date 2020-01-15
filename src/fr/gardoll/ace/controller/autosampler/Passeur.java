@@ -3,12 +3,12 @@ package fr.gardoll.ace.controller.autosampler;
 import java.io.Closeable ;
 import java.io.IOException ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
@@ -30,7 +30,7 @@ public class Passeur implements Closeable
   private final static long VIBRATION_TEMPS = 500l ; //temps en ms de vibration
   private final static int TRASH_POSITION = 0;
   
-  private static final Logger _LOG = LogManager.getLogger(Passeur.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private int x = 0; //nombre de demi pas pour l'axe carrousel
 

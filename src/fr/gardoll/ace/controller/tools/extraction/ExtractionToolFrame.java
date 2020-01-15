@@ -1,9 +1,9 @@
 package fr.gardoll.ace.controller.tools.extraction;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
@@ -12,7 +12,7 @@ import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 public class ExtractionToolFrame extends AbstractToolFrame
 {
   private static final long serialVersionUID = 1190173227128454971L ;
-  private static final Logger _LOG = LogManager.getLogger(ExtractionToolFrame.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private ExtractionToolFrame(ExtractionToolPanel toolPanel)
   {

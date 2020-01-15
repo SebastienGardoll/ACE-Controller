@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.pump;
 import java.io.Closeable ;
 import java.io.IOException ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.ArduinoParaCom ;
@@ -11,6 +10,7 @@ import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.ParaComException ;
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
@@ -36,7 +36,7 @@ public class PousseSeringue implements Closeable
   //Attention : static !!!! volume réel pour une seringue
   private static double _volumeReel = 0.;
   
-  private static final Logger _LOG = LogManager.getLogger(PousseSeringue.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private final PumpController interfacePousseSeringue ;
 

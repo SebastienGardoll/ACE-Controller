@@ -1,13 +1,13 @@
 package fr.gardoll.ace.controller.ui;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 
 public class CloseableJPanelObserverStub extends AbstractCloseableJPanelObserver
 {
-  private static final Logger _LOG = LogManager.getLogger(CloseableJPanelObserverStub.class.getName());
+  private static final Logger _LOG = Log.STUB;
   
   public CloseableJPanelObserverStub(ToolControl ctrl)
   {
@@ -19,7 +19,7 @@ public class CloseableJPanelObserverStub extends AbstractCloseableJPanelObserver
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    _LOG.trace(String.format("display '%s'", msg.strip()));
+    Log.UI.trace(String.format("display '%s'", msg.strip()));
   }
 
   @Override

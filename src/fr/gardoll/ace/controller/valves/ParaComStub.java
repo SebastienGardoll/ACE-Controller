@@ -1,14 +1,14 @@
 package fr.gardoll.ace.controller.valves;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.ParaCom ;
 import fr.gardoll.ace.controller.com.ParaComException ;
+import fr.gardoll.ace.controller.core.Log ;
 
 public class ParaComStub implements ParaCom
 {
-  private static final Logger _LOG = LogManager.getLogger(ParaComStub.class.getName());
+  private static final Logger _LOG = Log.STUB;
   
   public ParaComStub()
   {

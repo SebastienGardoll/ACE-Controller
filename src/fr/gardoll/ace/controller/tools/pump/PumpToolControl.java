@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.tools.pump;
 import java.util.Optional ;
 import java.util.SortedSet ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
@@ -14,6 +13,7 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ThreadControl ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
@@ -23,7 +23,7 @@ import fr.gardoll.ace.controller.valves.Valves ;
 
 public class PumpToolControl extends AbstractPausableToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(PumpToolControl.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public PumpToolControl(ParametresSession parametresSession)
       throws InitializationException, ConfigurationException
@@ -88,7 +88,7 @@ public class PumpToolControl extends AbstractPausableToolControl
 
 class PumpThread extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(PumpThread.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private int _volume ;
   private SortedSet<Integer> _lines ;

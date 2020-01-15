@@ -2,7 +2,6 @@ package fr.gardoll.ace.controller.tools.extraction;
 
 import java.nio.file.Path ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
@@ -18,6 +17,7 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ControlPanelAdapter ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
 import fr.gardoll.ace.controller.settings.Names ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
@@ -26,7 +26,7 @@ import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 @TestMethodOrder(OrderAnnotation.class)
 class ExtractionToolTest
 {
-  private static final Logger _LOG = LogManager.getLogger(ExtractionToolTest.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private static final long _PAUSE_DURATION = 500l;
   

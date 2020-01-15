@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.autosampler;
 import java.io.Closeable;
 import java.io.IOException;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.FlowControl ;
@@ -14,6 +13,7 @@ import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 
 public class InterfaceMoteur implements Closeable, MotorController
 {
@@ -22,7 +22,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   // nombre de signaux en sortis de l'interface.
   private final static int _NB_BITS = 7 ;
   
-  private static final Logger _LOG = LogManager.getLogger(InterfaceMoteur.class.getName());
+  private static final Logger _LOG = Log.LOW_LEVEL;
   
   private final SerialCom _port;
   

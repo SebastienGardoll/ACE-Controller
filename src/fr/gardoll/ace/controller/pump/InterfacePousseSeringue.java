@@ -6,7 +6,6 @@ import java.text.DecimalFormat ;
 import java.util.regex.Matcher ;
 import java.util.regex.Pattern ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.FlowControl ;
@@ -17,6 +16,7 @@ import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
@@ -27,7 +27,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   private static final Pattern _DELIVER_PATTERN = Pattern.compile("([0-9.]+)\\s+(u|m)l\\s+(:|>|<)");
   private static final Pattern _NA_PATTERN = Pattern.compile("NA\\s+(:|>|<)");
   
-  private static final Logger _LOG = LogManager.getLogger(InterfacePousseSeringue.class.getName());
+  private static final Logger _LOG = Log.LOW_LEVEL;
   
   private final static DecimalFormat[] _DOUBLE_FORMATTERS = new DecimalFormat[4];
   

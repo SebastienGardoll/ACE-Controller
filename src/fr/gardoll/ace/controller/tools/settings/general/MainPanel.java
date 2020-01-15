@@ -3,9 +3,9 @@ package fr.gardoll.ace.controller.tools.settings.general ;
 import java.util.ArrayList ;
 import java.util.List ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
@@ -13,7 +13,7 @@ import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class MainPanel extends javax.swing.JPanel
 {
-  private static final Logger _LOG = LogManager.getLogger(MainPanel.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private static final long serialVersionUID = 2498266605755338610L ;
 

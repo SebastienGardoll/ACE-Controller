@@ -1,6 +1,5 @@
 package fr.gardoll.ace.controller.core;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
@@ -8,7 +7,7 @@ import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public abstract class AbstractCloseableToolControl extends AbstractToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractCloseableToolControl.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public AbstractCloseableToolControl(ParametresSession parametresSession,
                                   boolean hasPump, boolean hasAutosampler,

@@ -4,19 +4,19 @@ import java.io.File ;
 import java.nio.charset.Charset;
 import java.util.AbstractMap.SimpleEntry;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortTimeoutException;
 
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 
 public class JSerialComm implements SerialCom
 {
   public static final Charset ASCII_CHARSET = Charset.forName("ASCII");
   
-  private static final Logger _LOG = LogManager.getLogger(JSerialComm.class.getName());
+  private static final Logger _LOG = Log.LOW_LEVEL;
   
   private final String _portPath ;
   private final String _id;

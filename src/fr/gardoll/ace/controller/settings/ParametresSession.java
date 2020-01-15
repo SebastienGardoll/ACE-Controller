@@ -6,7 +6,6 @@ import java.util.HashSet ;
 import java.util.Optional ;
 import java.util.Set ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import com.fazecast.jSerialComm.SerialPort ;
@@ -18,6 +17,7 @@ import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.com.ParaCom ;
 import fr.gardoll.ace.controller.com.SerialCom ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.core.Utils.OS ;
 import fr.gardoll.ace.controller.pump.InterfacePousseSeringue ;
@@ -29,7 +29,7 @@ import fr.gardoll.ace.controller.valves.Valves ;
 
 public class ParametresSession implements Closeable
 {
-  private static final Logger _LOG = LogManager.getLogger(ParametresSession.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public static boolean isAutomatedTest = false;
   

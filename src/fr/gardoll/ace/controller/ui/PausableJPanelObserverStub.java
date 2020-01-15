@@ -4,14 +4,14 @@ import java.util.concurrent.Semaphore ;
 
 import javax.swing.SwingUtilities ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 
 public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
 {
-  private static final Logger _LOG = LogManager.getLogger(PausableJPanelObserverStub.class.getName());
+  private static final Logger _LOG = Log.STUB;
   
   private final Semaphore _syncMove = new Semaphore(1);
   private final Semaphore _syncPause = new Semaphore(1);
@@ -90,7 +90,7 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    _LOG.trace(String.format("display '%s'", msg.strip()));
+    Log.UI.trace(String.format("display '%s'", msg.strip()));
   }
 
   @Override

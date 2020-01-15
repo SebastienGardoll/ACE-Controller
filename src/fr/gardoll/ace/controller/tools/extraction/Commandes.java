@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.tools.extraction;
 import java.util.Optional ;
 
 import org.apache.commons.lang3.tuple.ImmutablePair ;
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
@@ -11,6 +10,7 @@ import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
@@ -31,7 +31,7 @@ class Commandes
   
   private final ToolControl _toolCtrl ; 
   
-  private static final Logger _LOG = LogManager.getLogger(Commandes.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   //requires colonne != NULL
   Commandes (ToolControl toolCtrl, Colonne colonne) throws InitializationException, ConfigurationException

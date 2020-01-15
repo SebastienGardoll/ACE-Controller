@@ -3,9 +3,9 @@ package fr.gardoll.ace.controller.ui;
 import javax.swing.JOptionPane ;
 import javax.swing.SwingUtilities ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
@@ -14,7 +14,7 @@ public abstract class AbstractCloseableJPanelObserver extends AbstractJPanelObse
 {
   private static final long serialVersionUID = 6029765759371921962L ;
   
-  private static final Logger _LOG = LogManager.getLogger(AbstractCloseableJPanelObserver.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public AbstractCloseableJPanelObserver(ToolControl ctrl)
   {

@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit ;
 import java.util.concurrent.locks.Condition ;
 import java.util.concurrent.locks.ReentrantLock ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
@@ -14,7 +13,7 @@ import fr.gardoll.ace.controller.settings.ConfigurationException ;
 public abstract class AbstractThreadControl extends Thread
                                             implements ThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractThreadControl.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   // Fairness is on so as to yield the lock.
   private final ReentrantLock _sync = new ReentrantLock(true);

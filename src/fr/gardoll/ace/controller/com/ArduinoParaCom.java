@@ -1,15 +1,15 @@
 package fr.gardoll.ace.controller.com;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 
 public class ArduinoParaCom implements ParaCom
 {
   private static final long _OPENING_DELAY = 2000l;
   
-  private static final Logger _LOG = LogManager.getLogger(ArduinoParaCom.class.getName());
+  private static final Logger _LOG = Log.LOW_LEVEL;
   
   private final SerialCom _port;
 

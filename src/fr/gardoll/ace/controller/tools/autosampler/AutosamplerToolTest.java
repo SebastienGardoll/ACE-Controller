@@ -2,7 +2,6 @@ package fr.gardoll.ace.controller.tools.autosampler;
 
 import java.nio.file.Path ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
@@ -14,6 +13,7 @@ import org.junit.jupiter.api.TestMethodOrder ;
 
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.settings.Names ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
@@ -21,7 +21,7 @@ import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 @TestMethodOrder(OrderAnnotation.class)
 class AutosamplerToolTest
 {
-  private static final Logger _LOG = LogManager.getLogger(AutosamplerToolTest.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   // Milliseconds before triggering pause or cancel.
   private static final long _TRIGGER_DELAY = 500l;

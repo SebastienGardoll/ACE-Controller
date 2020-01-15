@@ -2,7 +2,6 @@ package fr.gardoll.ace.controller.tools.extraction;
 
 import java.util.Optional ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.autosampler.Passeur ;
@@ -11,12 +10,13 @@ import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class ExtractionToolControl extends AbstractPausableToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(ExtractionToolControl.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public ExtractionToolControl(ParametresSession parametresSession)
                             throws InitializationException, ConfigurationException

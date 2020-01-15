@@ -10,20 +10,21 @@ import javax.swing.JPanel ;
 import javax.swing.SwingUtilities ;
 
 import org.apache.commons.lang3.tuple.Pair ;
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.protocol.Sequence ;
+import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public abstract class AbstractJPanelObserver  extends JPanel implements ControlPanel
 {
   private static final long serialVersionUID = -6962722774816032530L ;
 
-  private static final Logger _LOG = LogManager.getLogger(AbstractJPanelObserver.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   protected static final SimpleDateFormat _DATE_FORMATTER = new SimpleDateFormat("HH:mm");
   
@@ -411,11 +412,16 @@ public abstract class AbstractJPanelObserver  extends JPanel implements ControlP
       
       default:
       {
-        _LOG.debug(String.format("nothing to do with action type '%s'", action.type));
+        _LOG.error(String.format("nothing to do with action type '%s'", action.type));
         return ;
       }
     }
     
-    this.displayToUserLogSys(String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg));
+    if(false == ParametresSession.isAutomatedTest)
+    {
+      msg = String.format("%s > %s\n", _DATE_FORMATTER.format(new Date()), msg);
+    }
+    
+    this.displayToUserLogSys(msg);
   }
 }

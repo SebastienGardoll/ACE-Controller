@@ -3,14 +3,14 @@ package fr.gardoll.ace.controller.pump;
 import java.io.Closeable ;
 import java.io.IOException ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.SerialComException ;
+import fr.gardoll.ace.controller.core.Log ;
 
 public class PumpControllerStub implements Closeable, PumpController
 {
-  private static final Logger _LOG = LogManager.getLogger(PumpControllerStub.class.getName());
+  private static final Logger _LOG = Log.STUB;
 
   private static final String _INFUSION    = "infusion" ;
   private static final String _WITHDRAWING = "withdrawing" ;

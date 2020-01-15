@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.core;
 import java.util.Optional ;
 import java.util.Set ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.settings.ParametresSession ;
@@ -53,7 +52,7 @@ interface ToolState extends ControlPanelHandler
 
 abstract class AbstractState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(AbstractState.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   protected AbstractToolControl _ctrl = null;
   protected static ThreadControl _CURRENT_THREAD = null;
@@ -232,7 +231,7 @@ abstract class AbstractState implements ToolState
 
 class CrashedState extends AbstractState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(CrashedState.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public CrashedState(AbstractToolControl ctrl)
   {
@@ -268,7 +267,7 @@ class CrashedState extends AbstractState implements ToolState
 
 class InitialState extends AbstractState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(InitialState.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public InitialState(AbstractToolControl ctrl)
   {
@@ -314,7 +313,7 @@ class InitialState extends AbstractState implements ToolState
 
 class ReadyState extends CloseableState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(ReadyState.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public ReadyState(AbstractToolControl ctrl)
   {
@@ -351,7 +350,7 @@ class ReadyState extends CloseableState implements ToolState
 
 class RunningState extends AbstractState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(RunningState.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public RunningState(AbstractToolControl ctrl)
   {
@@ -454,7 +453,7 @@ class RunningState extends AbstractState implements ToolState
 // Never get to this state if the thread is not really paused.
 class PausedState extends AbstractState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(PausedState.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public PausedState(AbstractToolControl ctrl)
   {
@@ -506,7 +505,7 @@ class PausedState extends AbstractState implements ToolState
 
 abstract class CloseableState extends AbstractState implements ToolState
 {
-  private static final Logger _LOG = LogManager.getLogger(CloseableState.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public CloseableState(AbstractToolControl ctrl)
   {

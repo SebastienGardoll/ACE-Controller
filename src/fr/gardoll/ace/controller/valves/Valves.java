@@ -3,13 +3,13 @@ package fr.gardoll.ace.controller.valves;
 import java.io.Closeable ;
 import java.io.IOException ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.ArduinoParaCom ;
 import fr.gardoll.ace.controller.com.JSerialComm ;
 import fr.gardoll.ace.controller.com.ParaCom ;
 import fr.gardoll.ace.controller.com.ParaComException ;
+import fr.gardoll.ace.controller.core.Log ;
 
 public class Valves implements Closeable
 {
@@ -34,7 +34,7 @@ public class Valves implements Closeable
   
   private static final long ATTENTE_EV = 200l ; // en milisecondes
   
-  private static final Logger _LOG = LogManager.getLogger(Valves.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public void ouvrir(int numEv) throws ParaComException
   {

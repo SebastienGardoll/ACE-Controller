@@ -1,6 +1,5 @@
 package fr.gardoll.ace.controller.tools.valves;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeAll ;
@@ -10,13 +9,14 @@ import org.junit.jupiter.api.Order ;
 import org.junit.jupiter.api.Test ;
 import org.junit.jupiter.api.TestMethodOrder ;
 
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.CloseableJPanelObserverStub ;
 
 @TestMethodOrder(OrderAnnotation.class)
 class ValvesToolTest
 {
-  private static final Logger _LOG = LogManager.getLogger(ValvesToolTest.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private ValvesToolControl _ctrl = null;
   private CloseableJPanelObserverStub _toolPanel = null;

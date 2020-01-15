@@ -4,19 +4,19 @@ import java.util.Optional ;
 
 import org.apache.commons.lang3.tuple.ImmutablePair ;
 import org.apache.commons.lang3.tuple.Pair ;
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.AbstractCloseableToolControl ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class ValvesToolControl extends AbstractCloseableToolControl
 {
-  private static final Logger _LOG = LogManager.getLogger(ValvesToolControl.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private final static int _DEFAULT_LAST_VALVE = -1;
   

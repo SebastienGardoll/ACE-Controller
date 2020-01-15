@@ -2,16 +2,16 @@ package fr.gardoll.ace.controller.tools.settings.general;
 
 import javax.swing.JPanel ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 
 public class SettingsFrame extends AbstractToolFrame
 {
-  private static final Logger _LOG = LogManager.getLogger(SettingsFrame.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   private static final long serialVersionUID = -5959896878773369661L ;
 
   public SettingsFrame(JPanel mainPanel)

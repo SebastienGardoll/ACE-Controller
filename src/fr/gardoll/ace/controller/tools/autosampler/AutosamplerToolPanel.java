@@ -8,11 +8,11 @@ import javax.swing.JFileChooser ;
 import javax.swing.filechooser.FileFilter ;
 import javax.swing.text.DefaultCaret ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.ControlPanel ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.Names ;
 import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
@@ -22,7 +22,7 @@ public class AutosamplerToolPanel extends AbstractPausableJPanelObserver
 {
   private static final long serialVersionUID = -3286878572452437372L ;
   
-  private static final Logger _LOG = LogManager.getLogger(AutosamplerToolPanel.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private final AutosamplerToolControl _ctrl ;
   
