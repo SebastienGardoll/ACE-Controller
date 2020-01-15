@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.SerialComException ;
 import fr.gardoll.ace.controller.core.Log ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class PumpControllerStub implements Closeable, PumpController
 {
@@ -35,9 +37,18 @@ public class PumpControllerStub implements Closeable, PumpController
 
   private double _currentRateW ;
   
-  public PumpControllerStub()
+  public PumpControllerStub() throws ConfigurationException
   {
     _LOG.debug("instanciating pump controller stub");
+    double diametreSeringue = GeneralSettings.instance().getDiametreSeringue();
+    try
+    {
+      this.dia(diametreSeringue);
+    }
+    catch (SerialComException e)
+    {
+      // Cannot happen.
+    }
   }
   
   @Override
