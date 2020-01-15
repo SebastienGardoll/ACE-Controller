@@ -22,7 +22,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   // nombre de signaux en sortis de l'interface.
   private final static int _NB_BITS = 7 ;
   
-  private static final Logger _LOG = Log.LOW_LEVEL;
+  private static final Logger _LOG = Log.CONTROLLER;
   
   private final SerialCom _port;
   

@@ -20,12 +20,12 @@
         </File>
         
         <File name="File_UI_Diff" fileName="./log/ui_diff.log" append="false">
-            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
+            <PatternLayout pattern="%msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
         
         <File name="File_Stub_Diff" fileName="./log/stub_diff.log" append="false">
-            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
+            <PatternLayout pattern="%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
         

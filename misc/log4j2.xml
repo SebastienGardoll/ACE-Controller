@@ -23,10 +23,18 @@
             <PatternLayout pattern="%msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
-        
-        <File name="File_Low_Level_Diff" fileName="./log/${date:dd-MM-yyyy_HHmm}/low_level_diff.log" append="false">
-            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
+        <File name="File_COM" fileName="./log/${date:dd-MM-yyyy_HHmm}/com.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="File_Controller_Diff" fileName="./log/${date:dd-MM-yyyy_HHmm}/controller_diff.log" append="false">
+            <PatternLayout pattern="%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        
+        <File name="File_High_Level_Diff" fileName="./log/${date:dd-MM-yyyy_HHmm}/high_level_diff.log" append="false">
+            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
     <Loggers>
@@ -39,8 +47,14 @@
         <Logger name="UI_LOG" level="ALL">
             <AppenderRef ref="File_UI"/>
         </Logger>
-        <Logger name="LOW_LEVEL_LOG" level="ALL">
-            <AppenderRef ref="File_Low_Level_Diff"/>
+        <Logger name="COM_LOG" level="ALL">
+            <AppenderRef ref="File_COM"/>
+        </Logger>
+        <Logger name="CONTROLLER_LOG" level="ALL">
+            <AppenderRef ref="File_Controller_Diff"/>
+        </Logger>
+        <Logger name="HIGH_LEVEL_LOG" level="ALL">
+            <AppenderRef ref="File_High_Level_Diff"/>
         </Logger>
     </Loggers>
 </Configuration>

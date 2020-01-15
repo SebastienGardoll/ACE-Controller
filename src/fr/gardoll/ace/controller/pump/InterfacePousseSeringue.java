@@ -27,7 +27,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   private static final Pattern _DELIVER_PATTERN = Pattern.compile("([0-9.]+)\\s+(u|m)l\\s+(:|>|<)");
   private static final Pattern _NA_PATTERN = Pattern.compile("NA\\s+(:|>|<)");
   
-  private static final Logger _LOG = Log.LOW_LEVEL;
+  private static final Logger _LOG = Log.CONTROLLER;
   
   private final static DecimalFormat[] _DOUBLE_FORMATTERS = new DecimalFormat[4];
   

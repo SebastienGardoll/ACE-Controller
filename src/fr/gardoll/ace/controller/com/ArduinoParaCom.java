@@ -11,7 +11,7 @@ public class ArduinoParaCom implements ParaCom
 {
   private static final long _OPENING_DELAY = 2000l;
   
-  private static final Logger _LOG = Log.LOW_LEVEL;
+  private static final Logger _LOG = Log.CONTROLLER;
   
   private final SerialCom _port;
 

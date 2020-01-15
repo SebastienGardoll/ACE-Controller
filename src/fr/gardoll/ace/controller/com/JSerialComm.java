@@ -16,7 +16,7 @@ public class JSerialComm implements SerialCom
 {
   public static final Charset ASCII_CHARSET = Charset.forName("ASCII");
   
-  private static final Logger _LOG = Log.LOW_LEVEL;
+  private static final Logger _LOG = Log.COM;
   
   private final String _portPath ;
   private final String _id;
