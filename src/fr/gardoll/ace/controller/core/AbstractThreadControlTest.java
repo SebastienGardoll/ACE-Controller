@@ -3,7 +3,6 @@ package fr.gardoll.ace.controller.core;
 import java.util.Collections ;
 import java.util.Set ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 import org.junit.jupiter.api.AfterEach ;
 import org.junit.jupiter.api.BeforeEach ;
@@ -19,7 +18,7 @@ class AbstractThreadControlTest
 {
   private TestToolControlOperations _ctrl = null;
   
-  private static final Logger _LOG = LogManager.getLogger(AbstractThreadControlTest.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   @BeforeEach
   void setUp() throws Exception
@@ -331,7 +330,7 @@ class AbstractThreadControlTest
 
 class SelfPausedThread extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(SelfPausedThread.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public SelfPausedThread(AbstractToolControl toolCtrl)
   {
@@ -351,7 +350,7 @@ class SelfPausedThread extends AbstractThreadControl
 
 class SleepingThread extends AbstractThreadControl
 {
-  private static final Logger _LOG = LogManager.getLogger(SleepingThread.class.getName());
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public SleepingThread(AbstractToolControl toolCtrl)
   {
@@ -397,7 +396,7 @@ class WaitingThread extends AbstractThreadControl
 
 class TestToolControlOperations extends AbstractToolControl
 {
-  private final Logger _LOG = LogManager.getLogger(TestToolControlOperations.class.getName());
+  private final Logger _LOG = Log.HIGH_LEVEL;
   
   private ToolState _state = new RunningState(this);
   
