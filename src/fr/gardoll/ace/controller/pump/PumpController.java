@@ -77,12 +77,13 @@ public interface PumpController extends Closeable
       throw new ConfigurationException (msg);
     }
     
-    double result = Math.pow(diametreSeringue/2. , 2.) * Math.PI * COURCE_LINEAIRE_MAX  ;
+    double rawResult = Math.pow(diametreSeringue/2. , 2.) * Math.PI * COURCE_LINEAIRE_MAX  ;
     // arrondi par à l'entier inférieur à cause spec du pousse seringue .
+    int result = (int) (rawResult);
     
-    _LOG.debug(String.format("getting '%s' rounded to '%s'", result, (int)result));
+    _LOG.debug(String.format("computed max rate is '%s' rounded to '%s'", rawResult, result));
     
-    return (int) (result) ;
+    return result ;
   }
 
   public String getPortPath() ;

@@ -69,9 +69,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void dia(double diametre)
       throws SerialComException
   {
-    double debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametre);
-    _LOG.trace(String.format("computed rate max is '%s'", debitMaxIntrinseque));
-    
+    PumpController.debitMaxIntrinseque(diametre);
     String formattedDiameter = InterfacePousseSeringue.formatage(diametre);
     _LOG.trace(String.format("command 'dia %s'", formattedDiameter));
   }

@@ -188,7 +188,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   {
     // contient le code de vérification.
     this._debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametre);
-    _LOG.trace(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
     
     String formattedDiameter = formatage(diametre);
     String ordre = String.format("dia %s\r", formattedDiameter) ;
