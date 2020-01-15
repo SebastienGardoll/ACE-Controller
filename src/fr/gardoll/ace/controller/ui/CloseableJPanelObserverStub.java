@@ -1,14 +1,10 @@
 package fr.gardoll.ace.controller.ui;
 
-import org.apache.logging.log4j.Logger ;
-
 import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 
 public class CloseableJPanelObserverStub extends AbstractCloseableJPanelObserver
 {
-  private static final Logger _LOG = Log.STUB;
-  
   public CloseableJPanelObserverStub(ToolControl ctrl)
   {
     super(ctrl) ;
@@ -25,12 +21,12 @@ public class CloseableJPanelObserverStub extends AbstractCloseableJPanelObserver
   @Override
   protected void enableCloseControl(boolean isEnable)
   {
-    _LOG.trace(String.format("close control set to %s", isEnable));
+    // Nothing to do.
   }
   
   @Override
   public void dispose()
   {
-    _LOG.trace("dispose");
+    // Nothing to do.
   }
 }

@@ -4,15 +4,11 @@ import java.util.concurrent.Semaphore ;
 
 import javax.swing.SwingUtilities ;
 
-import org.apache.logging.log4j.Logger ;
-
 import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 
 public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
 {
-  private static final Logger _LOG = Log.STUB;
-  
   private final Semaphore _syncMove = new Semaphore(1);
   private final Semaphore _syncPause = new Semaphore(1);
   
@@ -52,13 +48,13 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   protected void enablePauseControl(boolean isEnable)
   {
-    _LOG.trace(String.format("pause control set to %s", isEnable));
+    // Nothing to do.
   }
 
   @Override
   protected void enableResumeControl(boolean isEnable)
   {
-    _LOG.trace(String.format("resume control set to %s", isEnable));
+
     if(isEnable)
     {
       this._syncPause.release();
@@ -72,19 +68,19 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   protected void enableReinitControl(boolean isEnable)
   {
-    _LOG.trace(String.format("reinit control set to %s", isEnable));
+    // Nothing to do.
   }
 
   @Override
   protected void enableStartControl(boolean isEnable)
   {
-    _LOG.trace(String.format("start control set to %s", isEnable));
+    // Nothing to do.
   }
 
   @Override
   protected void enableCancelControl(boolean isEnable)
   {
-    _LOG.trace(String.format("cancel control set to %s", isEnable));
+    // Nothing to do.
   }
 
   @Override
@@ -96,8 +92,6 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   protected void enableCloseControl(boolean isEnable)
   {
-    _LOG.trace(String.format("close control set to %s", isEnable));
-    
     if(isEnable)
     {
       this._syncMove.release();
@@ -111,7 +105,7 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
   @Override
   protected void enableCarouselControl(boolean isEnable)
   {
-    _LOG.trace(String.format("carousel control set to %s", isEnable));
+    // Nothing to do.
   }
   
   @Override
@@ -124,7 +118,6 @@ public class PausableJPanelObserverStub extends AbstractPausableJPanelObserver
     // always after enableStartControl. 
     SwingUtilities.invokeLater(()->
     {
-      _LOG.trace("dispose");
       this._syncMove.release();
     });
   }
