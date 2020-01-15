@@ -131,7 +131,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   // transforme float en string mais
   // où , est transformée en .  (séparateur des réels)
   // et format le nombre pour qu'il n'y ait que 4 chiffres au plus.
-  private String formatage(double nombre)
+  public static String formatage(double nombre)
   {
     // le pousse seringue n'acceptant que des nombres à 4 chiffres au plus ,
     // sans compter le séparateur décimal
@@ -294,25 +294,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void voli(double volume) throws SerialComException
   {
-    if (volume <= 0.)
-    {
-      String msg = String.format("the value of the volume '%s' cannot be negative or null",
-                                 volume);
-      throw new RuntimeException(msg) ;
-    }
-
-    String ordre = null;
-
-    if (volume < 10.)
-    {
-      // permet le suivie du volume délivré si <1 ml voir la fonction deliver.
-      ordre = String.format("voli %s ul\r", formatage((volume * 1000))) ;
-    }
-    else
-    {
-      ordre = String.format("voli %s ml\r", formatage(volume));
-    }
-    
+    String ordre = forgeVolOrder("voli", volume);
     String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
     _LOG.trace(msg);
     this.traitementOrdre(ordre) ;
@@ -323,11 +305,20 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void volw(double volume) throws SerialComException
   {
+    String ordre = forgeVolOrder("volw", volume);
+    String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
+    _LOG.trace(msg);
+    this.traitementOrdre(ordre) ;
+  }
+  
+  public static String forgeVolOrder(String command, double volume)
+    throws ConfigurationException
+  {
     if (volume <= 0.)
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
                                  volume);
-      throw new RuntimeException(msg) ;
+      throw new ConfigurationException(msg) ;
     }
 
     String ordre = null;
@@ -335,16 +326,14 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     if (volume < 10.)
     {
       // permet le suivie du volume délivré si <1 ml voir la fonction deliver.
-      ordre = String.format("volw %s ul\r", formatage(volume * 1000));
+      ordre = String.format("%s %s ul\r", command, formatage(volume * 1000.));
     }
     else
     {
-      ordre = String.format("volw %s ml\r", formatage(volume));
+      ordre = String.format("%s %s ml\r", command, formatage(volume));
     }
     
-    String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
-    _LOG.trace(msg);
-    this.traitementOrdre(ordre) ;
+    return ordre;
   }
   
   @Override

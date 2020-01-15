@@ -61,7 +61,8 @@ public class PumpControllerStub implements Closeable, PumpController
     double debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametre);
     _LOG.trace(String.format("computed rate max is '%s'", debitMaxIntrinseque));
     
-    _LOG.trace(String.format("command 'dia %s'", diametre));
+    String formattedDiameter = InterfacePousseSeringue.formatage(diametre);
+    _LOG.trace(String.format("command 'dia %s'", formattedDiameter));
   }
 
   private double computeDeliveredVolume(double rate)
@@ -116,7 +117,8 @@ public class PumpControllerStub implements Closeable, PumpController
   public void ratei(double debit)
       throws SerialComException
   {
-    _LOG.trace(String.format("command 'ratei %s ml/m'", debit));
+    String formattedRate = InterfacePousseSeringue.formatage(debit);
+    _LOG.trace(String.format("command 'ratei %s ml/m'", formattedRate));
     this._currentRateI = debit;
   }
 
@@ -124,7 +126,8 @@ public class PumpControllerStub implements Closeable, PumpController
   public void ratew(double debit)
       throws SerialComException
   {
-    _LOG.trace(String.format("command 'ratew %s ml/m'", debit));
+    String formattedRate = InterfacePousseSeringue.formatage(debit);
+    _LOG.trace(String.format("command 'ratew %s ml/m'", formattedRate));
     this._currentRateW = debit;
   }
 
@@ -132,7 +135,9 @@ public class PumpControllerStub implements Closeable, PumpController
   public void voli(double volume)
       throws SerialComException
   {
-    _LOG.trace(String.format("command 'voli %s'", volume));
+    String ordre = InterfacePousseSeringue.forgeVolOrder("voli", volume);
+    String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
+    _LOG.trace(msg);
     this._currentVolI = volume;
   }
 
@@ -140,7 +145,9 @@ public class PumpControllerStub implements Closeable, PumpController
   public void volw(double volume)
       throws SerialComException
   {
-    _LOG.trace(String.format("command 'volw %s'", volume));
+    String ordre = InterfacePousseSeringue.forgeVolOrder("volw", volume);
+    String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
+    _LOG.trace(msg);
     this._currentVolW = volume;
   }
 
