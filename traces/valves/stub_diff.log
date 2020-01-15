@@ -1,5 +1,4 @@
 <init> - instanciating paracom stub
-enableCloseControl - close control set to true
 send - send order '[0]'
 send - send order '[1]'
 send - send order '[2]'
@@ -8,13 +7,11 @@ send - send order '[8]'
 send - send order '[16]'
 send - send order '[32]'
 send - send order '[64]'
-enableCloseControl - close control set to false
 send - send order '[0]'
 send - send order '[0]'
 close - stubbing close paracom
 dispose - dispose
 <init> - instanciating paracom stub
-enableCloseControl - close control set to true
 send - send order '[1]'
 send - send order '[0]'
 send - send order '[2]'
@@ -30,7 +27,6 @@ send - send order '[0]'
 send - send order '[64]'
 send - send order '[0]'
 send - send order '[0]'
-enableCloseControl - close control set to false
 send - send order '[0]'
 close - stubbing close paracom
 dispose - dispose
