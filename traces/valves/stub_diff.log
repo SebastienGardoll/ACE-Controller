@@ -10,7 +10,6 @@ send - send order '[64]'
 send - send order '[0]'
 send - send order '[0]'
 close - stubbing close paracom
-dispose - dispose
 <init> - instanciating paracom stub
 send - send order '[1]'
 send - send order '[0]'
@@ -29,4 +28,3 @@ send - send order '[0]'
 send - send order '[0]'
 send - send order '[0]'
 close - stubbing close paracom
-dispose - dispose

@@ -28,7 +28,6 @@ move - command 'move(0, 0)'
 close - stubbing close pump controller
 close - stubbing close motor controller
 send - send order '[0]'
-lambda$0 - dispose
 close - stubbing close paracom
 <init> - instanciating paracom stub
 <init> - instanciating pump controller stub
@@ -80,7 +79,6 @@ move - command 'move(0, 0)'
 close - stubbing close pump controller
 close - stubbing close motor controller
 send - send order '[0]'
-lambda$0 - dispose
 close - stubbing close paracom
 <init> - instanciating paracom stub
 <init> - instanciating pump controller stub
@@ -109,7 +107,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close pump controller
 close - stubbing close motor controller
 send - send order '[0]'
@@ -145,7 +142,6 @@ move - command 'move(0, 0)'
 close - stubbing close pump controller
 close - stubbing close motor controller
 send - send order '[0]'
-lambda$0 - dispose
 close - stubbing close paracom
 <init> - instanciating paracom stub
 <init> - instanciating pump controller stub
@@ -181,7 +177,6 @@ send - send order '[0]'
 movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
-lambda$0 - dispose
 close - stubbing close pump controller
 close - stubbing close motor controller
 send - send order '[0]'
@@ -217,5 +212,4 @@ move - command 'move(0, 0)'
 close - stubbing close pump controller
 close - stubbing close motor controller
 send - send order '[0]'
-lambda$0 - dispose
 close - stubbing close paracom

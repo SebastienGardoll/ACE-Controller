@@ -9,7 +9,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -23,7 +22,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -37,7 +35,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -48,7 +45,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -59,7 +55,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -68,7 +63,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -82,7 +76,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -96,7 +89,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -107,7 +99,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -118,7 +109,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -132,7 +122,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -148,7 +137,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -164,7 +152,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -177,7 +164,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -190,7 +176,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -202,7 +187,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -214,7 +198,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -224,7 +207,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -236,7 +218,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -249,7 +230,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -260,7 +240,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -275,7 +254,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -289,7 +267,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -301,7 +278,6 @@ where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
 close - stubbing close motor controller
-lambda$0 - dispose
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
 singleLine - command 'singleline (1)'
@@ -320,7 +296,6 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller
 <init> - instanciating motor controller stub with 640 number of steps by carousel position
 reset - command 'new'
@@ -346,5 +321,4 @@ movel - command 'movel(0, 1)'
 where - command 'where (1)'
 datum - command 'datum (1)'
 move - command 'move(0, 0)'
-lambda$0 - dispose
 close - stubbing close motor controller

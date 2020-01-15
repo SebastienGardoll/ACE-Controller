@@ -78,5 +78,5 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
-Valves::close - closing valves controller with paracom id 'stub'
 InitialState::close - set closed state
+Valves::close - closing valves controller with paracom id 'stub'

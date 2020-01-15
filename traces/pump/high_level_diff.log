@@ -77,8 +77,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 PumpToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -252,8 +252,8 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 RunningState::askCancellation - waiting for cancellation
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 AbstractThreadControl::cancel - ask the thread to cancel
 PousseSeringue::algoRefoulement - run the pump

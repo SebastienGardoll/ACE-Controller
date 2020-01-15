@@ -37,10 +37,10 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
-AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 Passeur::close - closing the autosampler
+InitialState::close - set closed state
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
@@ -87,8 +87,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
@@ -233,9 +233,9 @@ AutosamplerToolControl::armGoButee - start arm thread for go to top
 InitialState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '0'
 Passeur::moveButeBras - move the arm to the top
-RunningState::askCancellation - waiting for cancellation
 MotorControllerStub::movel - % arm already on top %
 Passeur::finMoveBras - waiting for the arm
+RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -502,8 +502,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
@@ -1176,8 +1176,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
@@ -1338,10 +1338,10 @@ RunningState::done - set ready state
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 ReadyState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '0'
-RunningState::askCancellation - waiting for cancellation
 Passeur::moveButeBras - move the arm to the top
-AbstractThreadControl::cancel - ask the thread to cancel
+RunningState::askCancellation - waiting for cancellation
 Passeur::finMoveBras - waiting for the arm
+AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
 Passeur::cancel - cancelling the autosampler
