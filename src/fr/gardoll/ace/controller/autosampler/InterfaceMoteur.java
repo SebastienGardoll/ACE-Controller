@@ -130,7 +130,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void move(int nbPas1 , int nbPas2) throws SerialComException
   { 
     String ordre = String.format("move (%s,%s)\r", nbPas1, nbPas2) ;
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command '%s'", ordre.substring(0, ordre.length()-1)));
     this.traitementOrdre (ordre) ;
   }
   
@@ -149,7 +149,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void movel(int axe1, int axe2) throws SerialComException
   {  
     String ordre = String.format("movel (%s,%s)\r", axe1, axe2);
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command '%s'", ordre.substring(0, ordre.length()-1)));
     this.traitementOrdre(ordre) ;
   }
   
@@ -159,7 +159,7 @@ public class InterfaceMoteur implements Closeable, MotorController
 
   {
     String order = "new\r";
-    _LOG.trace(String.format("send '%s'", order));
+    _LOG.trace("command 'new'");
     this._port.ecrire(order) ;
 
     // attente obligatoire à cause de la lenteur de l'interface
@@ -182,7 +182,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void preSecale(int denominateur) throws SerialComException
   {  
     String ordre = String.format("prescale (%s)\r", denominateur);
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command 'prescale (%s)'", denominateur));
     this.traitementOrdre (ordre) ;
   }
   
@@ -209,7 +209,7 @@ public class InterfaceMoteur implements Closeable, MotorController
       ordre = String.format("param (%s,%s,%s,%s,%s)\r", axe, base, top, accel, deaccel);
     }
     
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command '%s'", ordre.substring(0, ordre.length()-1)));
     
     // long traitement par l'interface
     this.traitementOrdre(ordre, 2000l) ;
@@ -220,7 +220,7 @@ public class InterfaceMoteur implements Closeable, MotorController
 
   {  
     String ordre = String.format("datum (%s)\r", axe);
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command 'datum (%s)'", axe));
     this.traitementOrdre (ordre) ;
   }
   
@@ -230,7 +230,7 @@ public class InterfaceMoteur implements Closeable, MotorController
     char convertion = (choix) ? '1':'2';
     
     String ordre = String.format("singleline (%s)\r", convertion);
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command 'singleline (%s)'", convertion));
     this.traitementOrdre (ordre) ;
   }
   
@@ -238,7 +238,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void stop() throws SerialComException
   { 
     String order = "stop ()\r";
-    _LOG.trace(String.format("send '%s'", order));
+    _LOG.trace("command 'stop ()'");
     this.traitementOrdre(order) ;
   }
   
@@ -246,7 +246,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public void manual() throws SerialComException
   {  
     String order = "manual ()\r";
-    _LOG.trace(String.format("send '%s'", order));
+    _LOG.trace("command 'manual ()'");
     this.traitementOrdre(order) ;
   }
 
@@ -256,7 +256,7 @@ public class InterfaceMoteur implements Closeable, MotorController
     // la temporisation dépend directement
     // de la vitesse de point et de la décéleration
     String order = "halt()\r";
-    _LOG.trace(String.format("send '%s'", order));
+    _LOG.trace("command 'halt()'");
     this.traitementOrdre (order , 1500l) ;
   } 
                                            
@@ -264,7 +264,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   public int where(TypeAxe axe) throws SerialComException
   {  
     String ordre = String.format("where (%s)\r", axe);
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command 'where (%s)'", axe));
     String response = this.traitementOrdre(ordre, 100l);
     return Integer.valueOf(response);
   }
@@ -277,7 +277,7 @@ public class InterfaceMoteur implements Closeable, MotorController
     if (octet <= 255 && octet <= 0)
     {
       String ordre = String.format("out(%s)\r", octet);
-      _LOG.trace(String.format("send '%s'", ordre));
+      _LOG.trace(String.format("command 'out(%s)'", octet));
       this.traitementOrdre(ordre);
     }
     else
@@ -302,7 +302,7 @@ public class InterfaceMoteur implements Closeable, MotorController
     char value = (isOn) ? '1' : '0';
     
     String ordre = String.format("out(%s,%s)\r", bitPosition, value);
-    _LOG.trace(String.format("send '%s'", ordre));
+    _LOG.trace(String.format("command 'out(%s, %s)'", bitPosition, value));
     this.traitementOrdre(ordre);
   }
   

@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.com;
 
+import java.util.Arrays ;
+
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
@@ -48,7 +50,10 @@ public class ArduinoParaCom implements ParaCom
   @Override
   public void send(byte[] order) throws ParaComException
   {
-    //_LOG.trace(String.format("sending order '%s'", order));
+    {
+      String msg = String.format("send order '%s'", Arrays.toString(order));
+      _LOG.trace(msg);
+    }
     
     try
     {

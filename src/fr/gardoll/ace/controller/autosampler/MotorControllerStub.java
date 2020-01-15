@@ -42,14 +42,14 @@ public class MotorControllerStub implements MotorController, Closeable
   @Override
   public void close() throws IOException
   {
-    _LOG.debug("stubbing 'close'");
+    _LOG.debug("stubbing close motor controller");
   }
 
   @Override
   public void move(int nbPas1, int nbPas2)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command 'move(%s, %s)'", nbPas1, nbPas2));
+    _LOG.trace(String.format("command 'move(%s, %s)'", nbPas1, nbPas2));
     
     // Translate from relative coordinates to absolute coordinates.
     nbPas1 = nbPas1 + this._carouselOrigin;
@@ -154,7 +154,7 @@ public class MotorControllerStub implements MotorController, Closeable
   public void movel(int axe1, int axe2)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command 'movel(%s, %s)'", axe1, axe2));
+    _LOG.trace(String.format("command 'movel(%s, %s)'", axe1, axe2));
     
     if(axe1 != 0)
     {
@@ -184,7 +184,7 @@ public class MotorControllerStub implements MotorController, Closeable
   @Override
   public void reset() throws SerialComException
   {
-    _LOG.debug("stubbing command 'reset'");
+    _LOG.debug("command 'new'");
     this._armOrigin                = 0;
     this._carouselOrigin           = 0;
     this._currentCarouselPosition  = 0;
@@ -199,7 +199,7 @@ public class MotorControllerStub implements MotorController, Closeable
   public void preSecale(int denominateur)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command 'preSecale %s'", denominateur));
+    _LOG.trace(String.format("command 'preSecale (%s)'", denominateur));
   }
 
   @Override
@@ -213,15 +213,14 @@ public class MotorControllerStub implements MotorController, Closeable
   public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command 'param(%s, %s, %s, %s, %s)'",
+    _LOG.trace(String.format("command 'param (%s, %s, %s, %s, %s)'",
         axe, base, top, accel, deaccel));
   }
 
   @Override
   public void datum(TypeAxe axe) throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command 'datum (%s)' for %s", axe,
-        axe.name()));
+    _LOG.trace(String.format("command 'datum (%s)'", axe));
     switch(axe)
     {
       case bras:
@@ -243,14 +242,13 @@ public class MotorControllerStub implements MotorController, Closeable
       throws SerialComException
   {
     char convertion = (choix) ? '1':'2';
-    _LOG.trace(String.format("stubbing command 'singleline (%s)'", convertion,
-        choix));
+    _LOG.trace(String.format("command 'singleline (%s)'", convertion));
   }
 
   @Override
   public void stop() throws SerialComException
   {
-    _LOG.trace("stubbing command 'stop'");
+    _LOG.trace("command 'stop ()'");
     this._isArmMoving      = false;
     this._isCarouselMoving = false;
   }
@@ -258,13 +256,13 @@ public class MotorControllerStub implements MotorController, Closeable
   @Override
   public void manual() throws SerialComException
   {
-    _LOG.trace("stubbing command 'manual'");
+    _LOG.trace("command 'manual ()'");
   }
 
   @Override
   public void halt() throws SerialComException
   {
-    _LOG.trace("stubbing command 'halt'");
+    _LOG.trace("command 'halt()'");
     this._isArmMoving      = false;
     this._isCarouselMoving = false;
   }
@@ -288,8 +286,7 @@ public class MotorControllerStub implements MotorController, Closeable
         break ;
       }
     }
-    _LOG.trace(String.format("stubbing command 'where (%s)' for %s: %s", axe, 
-        axe.name(), result));
+    _LOG.trace(String.format("command 'where (%s)'", axe));
     
     return result;
   }
@@ -297,7 +294,7 @@ public class MotorControllerStub implements MotorController, Closeable
   @Override
   public void out(int octet) throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command 'out(%s)'", octet));
+    _LOG.trace(String.format("command 'out(%s)'", octet));
   }
 
   @Override
@@ -305,7 +302,7 @@ public class MotorControllerStub implements MotorController, Closeable
       throws SerialComException
   {
     char value = (isOn) ? '1' : '0';
-    _LOG.trace(String.format("stubbing command 'out(%s, %s)'", bitPosition, value, isOn));
+    _LOG.trace(String.format("command 'out(%s, %s)'", bitPosition, value));
   }
 
   @Override

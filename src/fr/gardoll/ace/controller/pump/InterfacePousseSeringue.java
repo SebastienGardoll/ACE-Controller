@@ -163,7 +163,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     }
     
     String result = _DOUBLE_FORMATTERS[index].format(nombre);
-    _LOG.trace(String.format("formatting: from '%s' to '%s'", nombre, result));
     return result;
   }
   
@@ -171,7 +170,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void run() throws SerialComException
   {
-    _LOG.trace("running the pump");
+    _LOG.trace("command 'run'");
     this.traitementOrdre( "run\r" );
   }
   
@@ -179,7 +178,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void stop() throws SerialComException
   {
-    _LOG.trace("stopping the pump");
+    _LOG.trace("command 'stop'");
     this.traitementOrdre ("stop\r");
   }
   
@@ -187,14 +186,14 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void dia(double diametre) throws SerialComException, ConfigurationException
   {
-    _LOG.trace(String.format("setting the diameter to '%s'", diametre));
-    
     // contient le code de vérification.
     this._debitMaxIntrinseque = PumpController.debitMaxIntrinseque(diametre);
+    _LOG.trace(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
     
-    _LOG.debug(String.format("computed rate max is '%s'", this._debitMaxIntrinseque));
+    String formattedDiameter = formatage(diametre);
+    String ordre = String.format("dia %s\r", formattedDiameter) ;
     
-    String ordre = String.format("dia %s\r", formatage(diametre)) ;
+    _LOG.trace(String.format("command 'dia %s'", formattedDiameter));
     this.traitementOrdre (ordre);
   }
   
@@ -203,7 +202,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   {
     String ack = this.traitementOrdre("run?\r");
     boolean result = false == ack.equals(":") ;
-    _LOG.trace(String.format("is pump running: %s", result));
     return result;
   }
   
@@ -221,8 +219,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   private static double innerDeliver(String rawMessage) throws SerialComException
   {
-    // _LOG.trace(String.format("delivered raw msg: '%s'", rawMessage));
-    
     Matcher m = _DELIVER_PATTERN.matcher(rawMessage);
     
     double result = 0.;
@@ -242,8 +238,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       throw new SerialComException(msg);
     }
     
-    // _LOG.trace(String.format("the delivered volume is %s", result));
-    
     return result; // The value is rounded in the method Pump::deliver.
   }
   
@@ -251,7 +245,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void ratei(double debit) throws SerialComException
   {
-    _LOG.trace(String.format("setting the infusion rate to '%s'", debit));
     if (debit <= 0.)
     {
       String msg = String.format("the value of the rate '%s' cannot be negative or null",
@@ -265,7 +258,9 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       throw new RuntimeException(msg) ;
     }
     
-    String ordre = String.format("ratei %s ml/m\r", formatage(debit)) ;
+    String formattedRate = formatage(debit);
+    String ordre = String.format("ratei %s ml/m\r", formattedRate) ;
+    _LOG.trace(String.format("command 'ratei %s ml/m'", formattedRate));
     this.traitementOrdre(ordre) ;
   }
   
@@ -273,7 +268,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void ratew(double debit) throws SerialComException
   {
-    _LOG.trace(String.format("setting the withdrawing rate to '%s'", debit));
     if (debit <= 0.)
     {
       String msg = String.format(
@@ -288,7 +282,10 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
       throw new RuntimeException(msg) ;
     }
 
-    String ordre = String.format("ratew %s ml/m\r", formatage(debit));
+    String formattedRate = formatage(debit);
+    String ordre = String.format("ratew %s ml/m\r", formattedRate);
+    
+    _LOG.trace(String.format("command 'ratew %s ml/m'", formattedRate));
     this.traitementOrdre(ordre) ;
   }
   
@@ -297,7 +294,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void voli(double volume) throws SerialComException
   {
-    _LOG.trace(String.format("setting the infusion volume to '%s'", volume));
     if (volume <= 0.)
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
@@ -316,7 +312,9 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     {
       ordre = String.format("voli %s ml\r", formatage(volume));
     }
-
+    
+    String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
+    _LOG.trace(msg);
     this.traitementOrdre(ordre) ;
   }
   
@@ -325,7 +323,6 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   @Override
   public void volw(double volume) throws SerialComException
   {
-    _LOG.trace(String.format("setting the withdrawing volume to '%s'", volume));
     if (volume <= 0.)
     {
       String msg = String.format("the value of the volume '%s' cannot be negative or null",
@@ -344,21 +341,23 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
     {
       ordre = String.format("volw %s ml\r", formatage(volume));
     }
-
+    
+    String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
+    _LOG.trace(msg);
     this.traitementOrdre(ordre) ;
   }
   
   @Override
   public void modeI() throws SerialComException
   {
-    _LOG.trace("setting the infusion mode");
+    _LOG.trace("command 'mode i'");
     this.traitementOrdre("mode i\r") ; 
   }
   
   @Override
   public void modeW() throws SerialComException
   {
-    _LOG.trace("setting the withdrawing mode");
+    _LOG.trace("command 'mode w'");
     this.traitementOrdre("mode w\r") ;
   }
   

@@ -19,7 +19,6 @@ public class ParaComStub implements ParaCom
   @Override
   public String getId()
   {
-    _LOG.trace("stubbing getId");
     return "stub";
   }
 
@@ -32,7 +31,7 @@ public class ParaComStub implements ParaCom
   @Override
   public void send(byte[] order) throws ParaComException
   {
-    String msg = String.format("stubbing send order: %s", Arrays.toString(order));
+    String msg = String.format("send order '%s'", Arrays.toString(order));
     _LOG.trace(msg);
   }
   
