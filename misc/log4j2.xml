@@ -20,12 +20,12 @@
         </File>
         
         <File name="File_UI" fileName="./log/${date:dd-MM-yyyy_HHmm}/ui.log" append="false">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
+            <PatternLayout pattern="%msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
         
-        <File name="File_Low_Level" fileName="./log/${date:dd-MM-yyyy_HHmm}/low_level.log" append="false">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C{1}::%M - %msg%n"/>
+        <File name="File_Low_Level_Diff" fileName="./log/${date:dd-MM-yyyy_HHmm}/low_level_diff.log" append="false">
+            <PatternLayout pattern="%C{1}::%M - %msg%n"/>
             <LevelRangeFilter minLevel="FATAL" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
@@ -40,7 +40,7 @@
             <AppenderRef ref="File_UI"/>
         </Logger>
         <Logger name="LOW_LEVEL_LOG" level="ALL">
-            <AppenderRef ref="File_Low_Level"/>
+            <AppenderRef ref="File_Low_Level_Diff"/>
         </Logger>
     </Loggers>
 </Configuration>
