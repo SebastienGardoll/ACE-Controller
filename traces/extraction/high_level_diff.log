@@ -128,7 +128,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 3.0 mL from valve 3
 PousseSeringue::aspiration - withdrawing volume '3.0' from valve '3'
@@ -146,7 +145,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '3.0'
 PousseSeringue::volumeRestant - total raiming volume is '3.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -182,7 +180,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '2.0'
-PousseSeringue::volumeRestant - total raiming volume is '2.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -216,7 +213,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -307,7 +303,6 @@ PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
 ExtractionThreadControl::threadLogic - refill from valve 2
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 6.0 mL from valve 2
 PousseSeringue::aspiration - withdrawing volume '6.0' from valve '2'
@@ -346,7 +341,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '6.0'
-PousseSeringue::volumeRestant - total raiming volume is '6.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '2.0' to the valve '7'
@@ -381,7 +375,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '4.0'
-PousseSeringue::volumeRestant - total raiming volume is '4.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '2.0' to the valve '7'
@@ -415,7 +408,6 @@ Passeur::moveBras - move the arm to the position -2408
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '2.0'
 PousseSeringue::volumeRestant - total raiming volume is '2.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -506,7 +498,6 @@ PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.5 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.5' from valve '4'
@@ -545,7 +536,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '1.5'
-PousseSeringue::volumeRestant - total raiming volume is '1.5'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.5' to the valve '7'
@@ -577,7 +567,6 @@ Passeur::moveBras - move the arm to the position -3726
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -611,7 +600,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.5'
-PousseSeringue::volumeRestant - total raiming volume is '0.5'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.5' to the valve '7'
@@ -643,7 +631,6 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 0.6 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '0.6' from valve '4'
@@ -660,9 +647,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13649 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:12:49.527177Z
-AbstractThreadControl::await - waiting 13642 ms
+ExtractionThreadControl::threadLogic - wait 13646 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:10:09.489103Z
+AbstractThreadControl::await - waiting 13636 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -706,7 +693,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.6'
-PousseSeringue::volumeRestant - total raiming volume is '0.6'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.2' to the valve '7'
@@ -736,7 +722,6 @@ Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.4'
 PousseSeringue::volumeRestant - total raiming volume is '0.4'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -768,7 +753,6 @@ Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.2'
 PousseSeringue::volumeRestant - total raiming volume is '0.2'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -800,7 +784,6 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 0.3 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '0.3' from valve '4'
@@ -820,9 +803,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2961 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:13:13.481924Z
-AbstractThreadControl::await - waiting 2961 ms
+ExtractionThreadControl::processSequence - wait 2960 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:10:33.459539Z
+AbstractThreadControl::await - waiting 2960 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -841,7 +824,6 @@ Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.3'
 PousseSeringue::volumeRestant - total raiming volume is '0.3'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -873,7 +855,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.2'
-PousseSeringue::volumeRestant - total raiming volume is '0.2'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -904,7 +885,6 @@ Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.1'
 PousseSeringue::volumeRestant - total raiming volume is '0.1'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -991,7 +971,6 @@ PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
 ExtractionThreadControl::threadLogic - refill from valve 5
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 0.75 mL from valve 5
 PousseSeringue::aspiration - withdrawing volume '0.75' from valve '5'
@@ -1051,7 +1030,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.75'
-PousseSeringue::volumeRestant - total raiming volume is '0.75'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.25' to the valve '7'
@@ -1081,7 +1059,6 @@ Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.5'
 PousseSeringue::volumeRestant - total raiming volume is '0.5'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -1113,7 +1090,6 @@ Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.25'
 PousseSeringue::volumeRestant - total raiming volume is '0.25'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -1171,9 +1147,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9427 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:14:24.469029Z
-AbstractThreadControl::await - waiting 9427 ms
+ExtractionThreadControl::threadLogic - wait 9415 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:11:44.495208Z
+AbstractThreadControl::await - waiting 9415 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1341,7 +1317,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 3
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '3'
@@ -1359,7 +1334,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -1450,7 +1424,6 @@ PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -1489,7 +1462,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -1522,7 +1494,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
@@ -1561,7 +1532,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -1789,7 +1759,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -1807,7 +1776,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -1842,7 +1810,6 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -1861,7 +1828,7 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - wait 3754 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:16:09.902679Z
+AbstractThreadControl::await - wait until 2020-01-15T16:13:29.967368Z
 AbstractThreadControl::await - waiting 3754 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
@@ -1906,7 +1873,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -1940,7 +1906,6 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -1962,7 +1927,7 @@ ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
 ExtractionThreadControl::processSequence - wait 3754 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:16:23.855090Z
+AbstractThreadControl::await - wait until 2020-01-15T16:13:43.915330Z
 AbstractThreadControl::await - waiting 3754 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
@@ -1982,7 +1947,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -2044,9 +2008,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9531 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:16:47.286285Z
-AbstractThreadControl::await - waiting 9531 ms
+ExtractionThreadControl::threadLogic - wait 9538 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:14:07.353247Z
+AbstractThreadControl::await - waiting 9538 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -2079,9 +2043,9 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
+InitialState::close - set closed state
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
@@ -2214,7 +2178,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -2232,7 +2195,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -2323,7 +2285,6 @@ PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
 ExtractionThreadControl::threadLogic - refill from valve 5
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 5
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '5'
@@ -2361,7 +2322,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -2454,8 +2414,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -2589,7 +2549,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 2.0 mL from valve 2
 PousseSeringue::aspiration - withdrawing volume '2.0' from valve '2'
@@ -2607,7 +2566,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '2.0'
 PousseSeringue::volumeRestant - total raiming volume is '2.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -2643,7 +2601,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -2676,7 +2633,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 2
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 3.0 mL from valve 2
@@ -2716,7 +2672,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '3.0'
-PousseSeringue::volumeRestant - total raiming volume is '3.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -2751,7 +2706,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '2.0'
-PousseSeringue::volumeRestant - total raiming volume is '2.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -2785,7 +2739,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -3013,7 +2966,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 2.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '2.0' from valve '4'
@@ -3031,7 +2983,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '2.0'
 PousseSeringue::volumeRestant - total raiming volume is '2.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -3066,7 +3017,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -3157,7 +3107,6 @@ PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
 ExtractionThreadControl::threadLogic - refill from valve 5
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 3.0 mL from valve 5
 PousseSeringue::aspiration - withdrawing volume '3.0' from valve '5'
@@ -3196,7 +3145,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '3.0'
-PousseSeringue::volumeRestant - total raiming volume is '3.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -3231,7 +3179,6 @@ MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '2.0'
-PousseSeringue::volumeRestant - total raiming volume is '2.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
@@ -3265,7 +3212,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -3493,7 +3439,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -3511,7 +3456,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -3638,8 +3582,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -3773,7 +3717,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -3791,7 +3734,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -3918,8 +3860,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -4053,7 +3995,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -4071,7 +4012,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -4133,10 +4073,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4513 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:22:01.453129Z
+ExtractionThreadControl::threadLogic - wait 4526 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:19:21.603615Z
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 4513 ms
+AbstractThreadControl::await - waiting 4526 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4170,7 +4110,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2381 ms
+AbstractThreadControl::await - waiting 2399 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4338,7 +4278,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -4356,7 +4295,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -4418,10 +4356,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4548 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:22:41.563901Z
+ExtractionThreadControl::threadLogic - wait 4528 ms until the last column percolates
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 4548 ms
+AbstractThreadControl::await - wait until 2020-01-15T16:20:01.698848Z
+AbstractThreadControl::await - waiting 4528 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4455,7 +4393,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2417 ms
+AbstractThreadControl::await - waiting 2403 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4610,8 +4548,8 @@ Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel ste
 RunningState::askPausing - waiting for pause
 Passeur::moveOrigineBras - move the arm to its origin
 MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
 AbstractThreadControl::askPause - ask the thread to pause
+Passeur::finMoveBras - waiting for the arm
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -4657,7 +4595,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -4675,7 +4612,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -4737,9 +4673,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4534 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:23:23.549528Z
-AbstractThreadControl::await - waiting 4534 ms
+ExtractionThreadControl::threadLogic - wait 4527 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:20:43.678033Z
+AbstractThreadControl::await - waiting 4527 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4772,8 +4708,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -4894,8 +4830,8 @@ Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel ste
 RunningState::askPausing - waiting for pause
 Passeur::moveOrigineBras - move the arm to its origin
 MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
 AbstractThreadControl::askPause - ask the thread to pause
+Passeur::finMoveBras - waiting for the arm
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -4941,7 +4877,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -4959,7 +4894,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -5021,9 +4955,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4538 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:24:05.553979Z
-AbstractThreadControl::await - waiting 4538 ms
+ExtractionThreadControl::threadLogic - wait 4537 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:21:25.707857Z
+AbstractThreadControl::await - waiting 4537 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -5056,8 +4990,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -5191,7 +5125,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -5209,7 +5142,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -5244,7 +5176,6 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -5265,10 +5196,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8760 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:24:45.637091Z
+ExtractionThreadControl::processSequence - wait 8764 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:22:05.801803Z
 RunningState::askCancellation - waiting for cancellation
-AbstractThreadControl::await - waiting 8760 ms
+AbstractThreadControl::await - waiting 8764 ms
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -5471,7 +5402,6 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -5489,7 +5419,6 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
@@ -5524,7 +5453,6 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
 Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
 PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
@@ -5545,10 +5473,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8755 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T15:25:19.902501Z
+ExtractionThreadControl::processSequence - wait 8758 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-15T16:22:40.033899Z
+AbstractThreadControl::await - waiting 8758 ms
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 8755 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -5568,7 +5496,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8245 ms
+AbstractThreadControl::await - waiting 8252 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -5587,7 +5515,6 @@ Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
 PousseSeringue::volumeRestant - total raiming volume is '1.0'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'

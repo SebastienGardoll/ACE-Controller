@@ -163,7 +163,9 @@ class Commandes
   //requires numEv <= pousseSeringue.nbEvMax()                                                 
   void remplissageSeringue(double vol_demande, int numEv)
   {
-    if (vol_demande <= this.pousseSeringue.volumeRestant())
+    double volumeRestant = this.pousseSeringue.volumeRestant();
+    
+    if (vol_demande <= volumeRestant)
     {
       String msg = String.format("ask withdrawing %s mL from valve %s but pump has enough of it",
           vol_demande, numEv);
@@ -173,11 +175,11 @@ class Commandes
     else
     {
       //doit considéré le volume max utile !!
-      if (vol_demande + this.pousseSeringue.volumeRestant() > this.pousseSeringue
+      if (vol_demande + volumeRestant > this.pousseSeringue
           .volumeMaxSeringueUtile()) 
       {
         vol_demande = this.pousseSeringue.volumeMaxSeringueUtile()
-                      - this.pousseSeringue.volumeRestant() ;
+                      - volumeRestant ;
       }
       
       vol_demande = Utils.round(vol_demande);
@@ -274,10 +276,6 @@ class Commandes
       Action action = new Action(ActionType.COLUMN_DIST_START, Optional.of(numColonne)) ;
       this._toolCtrl.notifyAction(action) ;
     }
-    
-    double vol_deja_delivre = 0. ;
-
-    double vol_delivre ;
 
     this._toolCtrl.notifyAction(new Action(ActionType.CAROUSEL_MOVING,
         Optional.of(Integer.valueOf(numColonne))));
@@ -290,12 +288,14 @@ class Commandes
     this.passeur.moveBras(nbPasBrasAtteindre);
 
     this.passeur.finMoveBras();
-
+    
+    double vol_deja_delivre = 0. ;
     //évite volumeCible == 0
     //évite problème de comparaison de réels
     while ( ! Utils.isNearZero( volumeCible - vol_deja_delivre))
     {
-      if (Utils.isNearZero(pousseSeringue.volumeRestant()))
+      double volumeRestant = this.pousseSeringue.volumeRestant();
+      if (Utils.isNearZero(volumeRestant))
       { 
         this._toolCtrl.notifyAction(new Action(ActionType.WITHDRAWING, Optional.empty()));
 
@@ -311,10 +311,11 @@ class Commandes
       else
       {  
         this._toolCtrl.notifyAction(new Action(ActionType.INFUSING, Optional.empty()));
-
-        if (this.pousseSeringue.volumeRestant() < volumeCible - vol_deja_delivre)
+        
+        double vol_delivre ;
+        if (volumeRestant < volumeCible - vol_deja_delivre)
         { 
-          vol_delivre = this.pousseSeringue.volumeRestant()  ;
+          vol_delivre = volumeRestant;
           // avec attente de fin de distribution
           this.algoDistribution(vol_delivre, vol_deja_delivre);
           vol_deja_delivre += vol_delivre ;
