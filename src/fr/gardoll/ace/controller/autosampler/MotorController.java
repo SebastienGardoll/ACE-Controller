@@ -3,6 +3,7 @@ package fr.gardoll.ace.controller.autosampler;
 import java.io.Closeable ;
 
 import fr.gardoll.ace.controller.com.SerialComException ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 
 public interface MotorController extends Closeable
 {
@@ -36,9 +37,9 @@ public interface MotorController extends Closeable
   public int where(TypeAxe axe) throws SerialComException;
 
   // 0 <= octet <= 255
-  public void out(int octet) throws SerialComException;
+  public void out(int octet) throws SerialComException, ConfigurationException;
 
-  public void out(int bitPosition, boolean isOn) throws SerialComException;
+  public void out(int bitPosition, boolean isOn) throws SerialComException, ConfigurationException;
 
   public String getPortPath() ;
 }

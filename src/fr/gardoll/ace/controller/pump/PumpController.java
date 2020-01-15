@@ -39,18 +39,18 @@ public interface PumpController extends Closeable
   public double deliver() throws SerialComException;
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
-  public void ratei(double debit) throws SerialComException;
+  public void ratei(double debit) throws SerialComException, ConfigurationException;
   
   //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
-  public void ratew(double debit) throws SerialComException;
+  public void ratew(double debit) throws SerialComException, ConfigurationException;
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
-  public void voli(double volume) throws SerialComException;
+  public void voli(double volume) throws SerialComException, ConfigurationException;
   
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
-  public void volw(double volume) throws SerialComException;
+  public void volw(double volume) throws SerialComException, ConfigurationException;
   
   public void modeI() throws SerialComException;
 

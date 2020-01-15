@@ -14,6 +14,7 @@ import fr.gardoll.ace.controller.com.SerialMode ;
 import fr.gardoll.ace.controller.com.StopBit ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Log ;
+import fr.gardoll.ace.controller.settings.ConfigurationException ;
 
 public class InterfaceMoteur implements Closeable, MotorController
 {
@@ -272,7 +273,7 @@ public class InterfaceMoteur implements Closeable, MotorController
   //voir manuel de l'interface
   // 0 <= octet <= 255
   @Override
-  public void out(int octet) throws SerialComException
+  public void out(int octet) throws SerialComException, ConfigurationException
   { 
     if (octet <= 255 && octet <= 0)
     {
@@ -284,19 +285,19 @@ public class InterfaceMoteur implements Closeable, MotorController
     {
       String msg = String.format("the state of optocoupled outputs '%s' must be greater or equal than 0 but less or equal than 255)",
           octet);
-      throw new RuntimeException(msg);
+      throw new ConfigurationException(msg);
     }
   }
 
   //voir manuel de l'interface
   @Override
-  public void out(int bitPosition, boolean isOn) throws SerialComException
+  public void out(int bitPosition, boolean isOn) throws SerialComException, ConfigurationException
   { 
     if (bitPosition > _NB_BITS )
     {
       String msg = String.format("the position of the bit '%s' cannot be greater than %s",
           bitPosition, _NB_BITS);
-      throw new RuntimeException(msg);
+      throw new ConfigurationException(msg);
     }
     
     char value = (isOn) ? '1' : '0';

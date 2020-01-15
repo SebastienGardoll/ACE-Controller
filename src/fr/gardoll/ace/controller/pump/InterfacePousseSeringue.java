@@ -242,19 +242,19 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   // en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   @Override
-  public void ratei(double debit) throws SerialComException
+  public void ratei(double debit) throws SerialComException, ConfigurationException
   {
     if (debit <= 0.)
     {
       String msg = String.format("the value of the rate '%s' cannot be negative or null",
                                  debit);
-      throw new RuntimeException(msg) ;
+      throw new ConfigurationException(msg) ;
     }
     else if (debit > this._debitMaxIntrinseque)
     {
       String msg = String.format("the value of the rate '%s' cannot be greater than %s mL/min",
                                  debit, this._debitMaxIntrinseque);
-      throw new RuntimeException(msg) ;
+      throw new ConfigurationException(msg) ;
     }
     
     String formattedRate = formatage(debit);
@@ -265,20 +265,20 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   
   //en mL/min   requires 0 < debit <= _debitMaxIntrinseque
   @Override
-  public void ratew(double debit) throws SerialComException
+  public void ratew(double debit) throws SerialComException, ConfigurationException
   {
     if (debit <= 0.)
     {
       String msg = String.format(
           "the value of the rate '%s' cannot be negative or null", debit) ;
-      throw new RuntimeException(msg) ;
+      throw new ConfigurationException(msg) ;
     }
     else if (debit > this._debitMaxIntrinseque)
     {
       String msg = String.format(
           "the value of the rate '%s' cannot be greater than %s mL/min", debit,
           this._debitMaxIntrinseque) ;
-      throw new RuntimeException(msg) ;
+      throw new ConfigurationException(msg) ;
     }
 
     String formattedRate = formatage(debit);
@@ -291,7 +291,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
   @Override
-  public void voli(double volume) throws SerialComException
+  public void voli(double volume) throws SerialComException, ConfigurationException
   {
     String ordre = forgeVolOrder("voli", volume);
     String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
@@ -302,7 +302,7 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   // en mL seulement 4 caractères sans compter la virgule.
   // requires volume > 0
   @Override
-  public void volw(double volume) throws SerialComException
+  public void volw(double volume) throws SerialComException, ConfigurationException
   {
     String ordre = forgeVolOrder("volw", volume);
     String msg = String.format("command '%s'", ordre.substring(0, ordre.length()-1));
