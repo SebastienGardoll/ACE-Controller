@@ -1,5 +1,7 @@
 package fr.gardoll.ace.controller.valves;
 
+import java.util.Arrays ;
+
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.com.ParaCom ;
@@ -17,7 +19,7 @@ public class ParaComStub implements ParaCom
   @Override
   public String getId()
   {
-    _LOG.trace("stubbing method getId");
+    _LOG.trace("stubbing getId");
     return "stub";
   }
 
@@ -30,7 +32,8 @@ public class ParaComStub implements ParaCom
   @Override
   public void send(byte[] order) throws ParaComException
   {
-    _LOG.trace("stubbing send");
+    String msg = String.format("stubbing send order: %s", Arrays.toString(order));
+    _LOG.trace(msg);
   }
   
   @Override

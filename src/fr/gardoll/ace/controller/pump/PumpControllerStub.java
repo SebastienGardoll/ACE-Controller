@@ -43,14 +43,14 @@ public class PumpControllerStub implements Closeable, PumpController
   @Override
   public void run() throws SerialComException
   {
-    _LOG.trace("stubbing command run");
+    _LOG.trace("stubbing command 'run'");
     this._isRunning = true;
   }
 
   @Override
   public void stop() throws SerialComException
   {
-    _LOG.trace("stubbing command stop");
+    _LOG.trace("stubbing command 'stop'");
     this._isRunning = false;
   }
 
@@ -58,7 +58,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void dia(double diametre)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command dia %s", diametre));
+    _LOG.trace(String.format("stubbing command 'dia %s'", diametre));
   }
 
   private double computeDeliveredVolume(double rate)
@@ -98,16 +98,14 @@ public class PumpControllerStub implements Closeable, PumpController
         this._isRunning = true;
       }
     }
-    
-    //_LOG.trace(String.format("stubbing command running: %s", this._isRunning));
-    
+
     return this._isRunning;
   }
 
   @Override
   public double deliver() throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command deliver %s", this._delivered));
+    _LOG.trace("stubbing command 'deliver'");
     this.running(); // Simulates the pump.
     return this._delivered;
   }
@@ -116,7 +114,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void ratei(double debit)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command ratei %s", debit));
+    _LOG.trace(String.format("stubbing command 'ratei %s'", debit));
     this._currentRateI = debit;
   }
 
@@ -124,7 +122,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void ratew(double debit)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command ratew %s", debit));
+    _LOG.trace(String.format("stubbing command 'ratew %s'", debit));
     this._currentRateW = debit;
   }
 
@@ -132,7 +130,7 @@ public class PumpControllerStub implements Closeable, PumpController
   public void voli(double volume)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command volI %s", volume));
+    _LOG.trace(String.format("stubbing command 'voli %s'", volume));
     this._currentVolI = volume;
   }
 
@@ -140,14 +138,14 @@ public class PumpControllerStub implements Closeable, PumpController
   public void volw(double volume)
       throws SerialComException
   {
-    _LOG.trace(String.format("stubbing command volw %s", volume));
+    _LOG.trace(String.format("stubbing command 'volw %s'", volume));
     this._currentVolW = volume;
   }
 
   @Override
   public void modeI() throws SerialComException
   {
-    _LOG.trace("stubbing command modeI");
+    _LOG.trace("stubbing command 'mode i'");
     this._currentMode = _INFUSION;
     this._delivered = 0.;
   }
@@ -155,7 +153,7 @@ public class PumpControllerStub implements Closeable, PumpController
   @Override
   public void modeW() throws SerialComException
   {
-    _LOG.trace("stubbing command modeW");
+    _LOG.trace("stubbing command 'mode w'");
     this._currentMode = _WITHDRAWING;
     this._delivered = 0.;
   }
@@ -163,12 +161,12 @@ public class PumpControllerStub implements Closeable, PumpController
   @Override
   public void close() throws IOException
   {
-    _LOG.debug("stubbing command close");
+    _LOG.debug("stubbing command 'close'");
   }
 
   @Override
   public String getPortPath()
   {
-    return "sub_port";
+    return "stub_port";
   }
 }
