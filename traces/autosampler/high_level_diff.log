@@ -6,10 +6,8 @@ Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1n - ******************** testArm1n arm go to top
 AutosamplerToolControl::armGoButee - start arm thread for go to top
@@ -22,7 +20,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -43,17 +41,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2n - ******************** testArm2n arm go to trash
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
@@ -75,7 +70,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -95,17 +90,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm3n - ******************** testArm3n arm go to column
 AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
@@ -125,7 +117,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -145,17 +137,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm4n - ******************** testArm4n arm free move up
 Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
@@ -169,7 +158,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -189,17 +178,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm5n - ******************** testArm5n arm free move down
 Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
@@ -213,7 +199,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -233,26 +219,23 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1c - ******************** testArm1c cancel arm go to top
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 InitialState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '0'
 Passeur::moveButeBras - move the arm to the top
+RunningState::askCancellation - waiting for cancellation
 MotorControllerStub::movel - % arm already on top %
 Passeur::finMoveBras - waiting for the arm
-RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -274,22 +257,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2c - ******************** testArm2c cancel arm go to trash
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
@@ -328,22 +308,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm3c - ******************** testArm3c cancel arm go to column
 AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
@@ -380,22 +357,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm4c - ******************** testArm4c cancel arm free move up
 Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
@@ -426,22 +400,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm5c - ******************** testArm5c cancel arm free move down
 Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
@@ -472,22 +443,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1p - ******************** testArm1p pause arm go to top
 AutosamplerToolControl::armGoButee - start arm thread for go to top
@@ -516,7 +484,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -537,17 +505,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2p - ******************** testArm2p pause arm go to trash
 AutosamplerToolControl::armGoTrash - start arm thread for go to trash can
@@ -585,7 +550,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -605,17 +570,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm3p - ******************** testArm3p pause arm go to column
 AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
@@ -651,7 +613,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -671,17 +633,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm4p - ******************** testArm4p pause arm free move up
 Passeur::convertBras - convert 100.0 millimeter into 13334 number of arm steps
@@ -711,7 +670,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -731,17 +690,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm5p - ******************** testArm5p pause arm free move down
 Passeur::convertBras - convert -100.0 millimeter into -13333 number of arm steps
@@ -771,7 +727,7 @@ Passeur::finMoveBras - arm reached the position
 Passeur::setOrigineBras - setting the origin for the arm
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -791,17 +747,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel1n - ******************** testCarousel1n turn right
 AutosamplerToolControl::carouselTurnRight - start carousel thread for turn to right
@@ -817,7 +770,7 @@ Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -837,17 +790,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel2n - ******************** testCarousel2n turn left
 AutosamplerToolControl::carouselTurnLeft - start carousel thread for turn to left
@@ -863,7 +813,7 @@ Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -883,17 +833,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel3n - ******************** testCarousel3n go to position 10
 AutosamplerToolControl::carouselGoPosition - start carousel thread for go to position '10'
@@ -905,7 +852,7 @@ Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -925,17 +872,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel1c - ******************** testCarousel1c cancel turn right
 AutosamplerToolControl::carouselTurnRight - start carousel thread for turn to right
@@ -969,22 +913,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel2c - ******************** testCarousel2c cancel turn left
 AutosamplerToolControl::carouselTurnLeft - start carousel thread for turn to left
@@ -1018,22 +959,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel3c - ******************** testCarousel3c cancel go to position 10
 AutosamplerToolControl::carouselGoPosition - start carousel thread for go to position '10'
@@ -1063,22 +1001,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel1p - ******************** testCarousel1p pause turn right
 AutosamplerToolControl::carouselTurnRight - start carousel thread for turn to right
@@ -1110,7 +1045,7 @@ PausedState::resumeTransition - set running state
 Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -1130,17 +1065,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel2p - ******************** testCarousel2p pause turn left
 AutosamplerToolControl::carouselTurnLeft - start carousel thread for turn to left
@@ -1172,7 +1104,7 @@ PausedState::resumeTransition - set running state
 Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -1192,17 +1124,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel3p - ******************** testCarousel3p pause go to position 10
 AutosamplerToolControl::carouselGoPosition - start carousel thread for go to position '10'
@@ -1230,7 +1159,7 @@ PausedState::resumeTransition - set running state
 Passeur::finMoveCarrousel - carousel reached the position
 RunningState::done - set ready state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -1250,17 +1179,14 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::scriptedTest1 - ******************** scripted test 1
 AutosamplerToolTest::scriptedTest1 - * arm goes to trash ; carousel turns left ; pause ; resume ; carousel move to pos 14 ; reinit *
@@ -1330,22 +1256,19 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::scriptedTest2 - ******************** scripted test 2
 AutosamplerToolTest::scriptedTest2 - * carousel turns right ; pause ; resume ; arm to trash ; arm to trash ; arm to top ; cancel *
@@ -1415,10 +1338,10 @@ RunningState::done - set ready state
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 ReadyState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '0'
-Passeur::moveButeBras - move the arm to the top
-Passeur::finMoveBras - waiting for the arm
 RunningState::askCancellation - waiting for cancellation
+Passeur::moveButeBras - move the arm to the top
 AbstractThreadControl::cancel - ask the thread to cancel
+Passeur::finMoveBras - waiting for the arm
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
 Passeur::cancel - cancelling the autosampler
@@ -1437,9 +1360,8 @@ Passeur::finMoveCarrousel - carousel reached the position
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 AutosamplerToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close

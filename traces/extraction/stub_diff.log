@@ -1,0 +1,3077 @@
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[4]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[4]'
+modeW - command 'mode w'
+volw - command 'volw 4000 ul'
+run - command 'run'
+send - send order '[4]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[2]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[2]'
+modeW - command 'mode w'
+volw - command 'volw 7000 ul'
+run - command 'run'
+send - send order '[2]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -2408)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 2000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -2408)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 2000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -2408)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 2000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2500 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3726)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -3726)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -3726)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1100 ul'
+run - command 'run'
+ratei - command 'ratei 10 ml/m'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -4147)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 200 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -4147)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 200 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -4147)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 200 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 800 ul'
+run - command 'run'
+ratei - command 'ratei 10 ml/m'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -4380)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 100 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -4380)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 100 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -4380)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 100 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[16]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[16]'
+modeW - command 'mode w'
+volw - command 'volw 1750 ul'
+run - command 'run'
+send - send order '[16]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -4057)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 250 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -4057)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 250 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -4057)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 250 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+movel - command 'movel(0, 1)'
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+close - stubbing close motor controller
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[4]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[4]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[4]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1500 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+close - stubbing close motor controller
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1500 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1500 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+close - stubbing close motor controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[16]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[16]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[16]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+close - stubbing close motor controller
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[2]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -3274)'
+send - send order '[2]'
+modeW - command 'mode w'
+volw - command 'volw 3000 ul'
+run - command 'run'
+send - send order '[2]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[2]'
+modeW - command 'mode w'
+volw - command 'volw 3500 ul'
+run - command 'run'
+send - send order '[2]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+close - stubbing close pump controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+close - stubbing close motor controller
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 3000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[16]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[16]'
+modeW - command 'mode w'
+volw - command 'volw 4000 ul'
+run - command 'run'
+send - send order '[16]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1280, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1280, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(1920, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(1920, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+close - stubbing close pump controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+close - stubbing close motor controller
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+send - send order '[0]'
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enableResumeControl - resume control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(3840, 8400)'
+enableResumeControl - resume control set to true
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 8400)'
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+send - send order '[0]'
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+movel - command 'movel(0, 1)'
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+close - stubbing close pump controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+close - stubbing close motor controller
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+send - send order '[0]'
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enableResumeControl - resume control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(-3840, 8400)'
+enableResumeControl - resume control set to true
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 8400)'
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+send - send order '[0]'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+close - stubbing close motor controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+send - send order '[0]'
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enableResumeControl - resume control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(3840, 8400)'
+enableResumeControl - resume control set to true
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 8400)'
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+close - stubbing close pump controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+close - stubbing close motor controller
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enableResumeControl - resume control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(-3840, 8400)'
+enableResumeControl - resume control set to true
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 8400)'
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+close - stubbing close motor controller
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+move - command 'move(0, 0)'
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enableResumeControl - resume control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(3840, 8400)'
+enableResumeControl - resume control set to true
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 8400)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+move - command 'move(640, 0)'
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+close - stubbing close pump controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+close - stubbing close motor controller
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+move - command 'move(0, 0)'
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enableResumeControl - resume control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(-3840, 8400)'
+enableResumeControl - resume control set to true
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 8400)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+move - command 'move(640, 0)'
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+close - stubbing close motor controller
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+send - send order '[0]'
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1500 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -13000)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1500 ul'
+run - command 'run'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+movel - command 'movel(0, 1)'
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+close - stubbing close motor controller
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+send - send order '[0]'
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close paracom
+<init> - instanciating paracom stub
+<init> - instanciating pump controller stub
+dia - command 'dia 14.25'
+send - send order '[0]'
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+ratew - command 'ratew 10 ml/m'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 2000 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[8]'
+modeW - command 'mode w'
+volw - command 'volw 1500 ul'
+run - command 'run'
+send - send order '[8]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -7600)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 0)'
+move - command 'move(640, 0)'
+move - command 'move(640, -3274)'
+ratei - command 'ratei 1 ml/m'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+ratei - command 'ratei 3 ml/m'
+ratei - command 'ratei 10 ml/m'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+move - command 'move(640, 0)'
+move - command 'move(0, 0)'
+move - command 'move(0, -7600)'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 500 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[1]'
+modeW - command 'mode w'
+volw - command 'volw 1000 ul'
+run - command 'run'
+send - send order '[0]'
+send - send order '[64]'
+modeI - command 'mode i'
+voli - command 'voli 1000 ul'
+run - command 'run'
+send - send order '[0]'
+out - command 'out(2, 1)'
+out - command 'out(2, 0)'
+send - send order '[0]'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+movel - command 'movel(0, 1)'
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close pump controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+close - stubbing close motor controller
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+send - send order '[0]'
+close - stubbing close paracom

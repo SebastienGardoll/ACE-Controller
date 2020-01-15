@@ -4,5 +4,5 @@ src/Test.java
 .settings
 .classpath
 .project
-*.log
+log
 org.eclipse.jdt.core.prefs

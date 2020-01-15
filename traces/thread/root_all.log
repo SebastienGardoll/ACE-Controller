@@ -1,0 +1,238 @@
+14:50:23.589 [main] INFO  AbstractThreadControlTest::test1 - ######### TEST 1 #########
+14:50:23.601 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 0 ---
+14:50:24.107 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 1 ---
+14:50:24.613 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 2 ---
+14:50:25.119 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 3 ---
+14:50:25.606 [main] DEBUG AbstractThreadControlTest::test1 - *** calling pause on the running thread ****
+14:50:25.607 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:50:25.624 [Thread-0] INFO  TestToolControlOperations::pauseOperations - execute pause operations
+14:50:25.626 [Thread-0] DEBUG RunningState::pauseTransition - set paused state
+14:50:25.628 [Thread-0] DEBUG AbstractThreadControl::checkPause - the thead is paused
+14:50:26.121 [main] DEBUG AbstractThreadControlTest::test1 - *** state is: paused ***
+14:50:26.122 [main] DEBUG AbstractThreadControlTest::test1 - *** calling pause on the thread, again ****
+14:50:26.122 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:50:26.122 [main] DEBUG AbstractThreadControl::askPause - askPause: nothing to do
+14:50:26.123 [main] DEBUG AbstractThreadControlTest::test1 - *** it should not do anything ****
+14:50:26.123 [main] DEBUG AbstractThreadControlTest::test1 - *** calling check pause from main thread ****
+14:50:26.123 [main] DEBUG AbstractThreadControlTest::test1 - *** main thread unchanged ***
+14:50:26.124 [main] DEBUG AbstractThreadControlTest::test1 - *** calling check interruption from main thread ****
+14:50:26.124 [main] DEBUG AbstractThreadControlTest::test1 - *** main thread unchanged ***
+14:50:26.124 [main] DEBUG AbstractThreadControlTest::test1 - *** calling check cancel from main thread ****
+14:50:26.124 [main] DEBUG AbstractThreadControlTest::test1 - *** main thread unchanged ***
+14:50:26.125 [main] DEBUG AbstractThreadControlTest::test1 - *** unpause thread ***
+14:50:26.125 [main] DEBUG AbstractThreadControl::unPause - resuming the thread
+14:50:26.125 [main] DEBUG AbstractThreadControl::unPause - waking up the paused thread
+14:50:26.126 [Thread-0] DEBUG AbstractThreadControl::checkPause - the thread is resumed
+14:50:26.126 [Thread-0] INFO  TestToolControlOperations::resumeOperations - execute resume operations
+14:50:26.126 [Thread-0] DEBUG PausedState::resumeTransition - set running state
+14:50:26.127 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 4 ---
+14:50:26.632 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 5 ---
+14:50:27.136 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 6 ---
+14:50:27.640 [Thread-0] DEBUG SleepingThread::threadLogic - --- alive 7 ---
+14:50:28.131 [main] DEBUG AbstractThreadControlTest::test1 - *** state is: running ***
+14:50:28.132 [main] DEBUG AbstractThreadControlTest::test1 - *** calling interrupt on the running thread ****
+14:50:28.135 [Thread-0] FATAL AbstractThreadControl::run - operations have been interrupted
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:370) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:87) [bin/:?]
+14:50:28.150 [Thread-0] DEBUG AbstractState::crash - set crashed state
+14:50:28.637 [main] DEBUG AbstractThreadControlTest::test1 - *** state is: crashed ***
+14:50:28.642 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:50:28.648 [main] INFO  AbstractThreadControlTest::test2 - ######### TEST 2 #########
+14:50:28.648 [Thread-1] DEBUG SleepingThread::threadLogic - --- alive 0 ---
+14:50:29.154 [Thread-1] DEBUG SleepingThread::threadLogic - --- alive 1 ---
+14:50:29.658 [Thread-1] DEBUG SleepingThread::threadLogic - --- alive 2 ---
+14:50:30.160 [Thread-1] DEBUG SleepingThread::threadLogic - --- alive 3 ---
+14:50:30.653 [main] DEBUG AbstractThreadControlTest::test2 - *** calling pause on the running thread ****
+14:50:30.654 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:50:30.664 [Thread-1] INFO  TestToolControlOperations::pauseOperations - execute pause operations
+14:50:30.665 [Thread-1] DEBUG RunningState::pauseTransition - set paused state
+14:50:30.665 [Thread-1] DEBUG AbstractThreadControl::checkPause - the thead is paused
+14:50:31.158 [main] DEBUG AbstractThreadControlTest::test2 - *** state is: paused ***
+14:50:33.160 [main] DEBUG AbstractThreadControlTest::test2 - *** calling interrupt on the paused thread ****
+14:50:33.160 [Thread-1] FATAL AbstractThreadControl::run - operations have been interrupted
+java.lang.RuntimeException: java.lang.InterruptedException
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:313) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:373) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:87) [bin/:?]
+Caused by: java.lang.InterruptedException
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2056) ~[?:?]
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2090) ~[?:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:309) ~[bin/:?]
+	... 2 more
+14:50:33.162 [Thread-1] DEBUG AbstractState::crash - set crashed state
+14:50:33.664 [main] DEBUG AbstractThreadControlTest::test2 - *** state is: crashed ***
+14:50:33.665 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:50:33.668 [main] INFO  AbstractThreadControlTest::test3 - ######### TEST 3 #########
+14:50:33.668 [Thread-2] DEBUG SleepingThread::threadLogic - --- alive 0 ---
+14:50:34.174 [Thread-2] DEBUG SleepingThread::threadLogic - --- alive 1 ---
+14:50:34.677 [Thread-2] DEBUG SleepingThread::threadLogic - --- alive 2 ---
+14:50:35.183 [Thread-2] DEBUG SleepingThread::threadLogic - --- alive 3 ---
+14:50:35.668 [main] DEBUG AbstractThreadControlTest::test3 - *** calling cancel on the running thread ****
+14:50:35.680 [main] DEBUG AbstractThreadControl::cancel - ask the thread to cancel
+14:50:35.687 [Thread-2] DEBUG AbstractThreadControl::checkCancel - cancelling the thread
+14:50:35.687 [Thread-2] INFO  TestToolControlOperations::cancelOperations - execute cancel operations
+14:50:35.688 [Thread-2] DEBUG RunningState::cancelTransition - set initial state
+14:50:36.184 [main] DEBUG AbstractThreadControlTest::test3 - *** state is: initial ***
+14:50:38.187 [main] DEBUG AbstractThreadControlTest::test3 - *** calling cancel (again) on the cancelled thread ****
+14:50:38.187 [main] DEBUG AbstractThreadControl::cancel - ask the thread to cancel
+14:50:38.188 [main] DEBUG AbstractThreadControl::cancel - nothing to do
+14:50:38.188 [main] DEBUG AbstractThreadControlTest::test3 - *** it should not do anything ***
+14:50:38.189 [main] DEBUG AbstractThreadControlTest::test3 - *** state is: initial ***
+14:50:38.190 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:50:38.192 [main] INFO  AbstractThreadControlTest::test4 - ######### TEST 4 #########
+14:50:38.193 [Thread-3] DEBUG SleepingThread::threadLogic - --- alive 0 ---
+14:50:38.695 [Thread-3] DEBUG SleepingThread::threadLogic - --- alive 1 ---
+14:50:39.201 [Thread-3] DEBUG SleepingThread::threadLogic - --- alive 2 ---
+14:50:39.704 [Thread-3] DEBUG SleepingThread::threadLogic - --- alive 3 ---
+14:50:40.198 [main] DEBUG AbstractThreadControlTest::test4 - *** calling pause on the running thread ****
+14:50:40.198 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:50:40.209 [Thread-3] INFO  TestToolControlOperations::pauseOperations - execute pause operations
+14:50:40.210 [Thread-3] DEBUG RunningState::pauseTransition - set paused state
+14:50:40.210 [Thread-3] DEBUG AbstractThreadControl::checkPause - the thead is paused
+14:50:40.701 [main] DEBUG AbstractThreadControlTest::test4 - *** state is: paused ***
+14:50:42.706 [main] DEBUG AbstractThreadControlTest::test4 - *** calling cancel on the paused thread ****
+14:50:42.707 [main] DEBUG AbstractThreadControl::cancel - ask the thread to cancel
+14:50:42.708 [main] DEBUG AbstractThreadControl::cancel - nothing to do
+14:50:42.708 [main] DEBUG AbstractThreadControlTest::test4 - *** thread should not be cancelled ***
+14:50:42.708 [main] DEBUG AbstractThreadControlTest::test4 - *** state is: paused ***
+14:50:44.710 [main] DEBUG AbstractThreadControlTest::test4 - *** calling interrupt on the paused thread ****
+14:50:44.710 [Thread-3] FATAL AbstractThreadControl::run - operations have been interrupted
+java.lang.RuntimeException: java.lang.InterruptedException
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:313) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:373) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:87) [bin/:?]
+Caused by: java.lang.InterruptedException
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2056) ~[?:?]
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2090) ~[?:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.checkPause(AbstractThreadControl.java:309) ~[bin/:?]
+	... 2 more
+14:50:44.712 [Thread-3] DEBUG AbstractState::crash - set crashed state
+14:50:45.216 [main] DEBUG AbstractThreadControlTest::test4 - *** state is: crashed ***
+14:50:45.217 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:50:45.219 [main] INFO  AbstractThreadControlTest::test5 - ######### TEST 5 #########
+14:50:45.220 [Thread-4] DEBUG SleepingThread::threadLogic - --- alive 0 ---
+14:50:45.724 [Thread-4] DEBUG SleepingThread::threadLogic - --- alive 1 ---
+14:50:46.226 [Thread-4] DEBUG SleepingThread::threadLogic - --- alive 2 ---
+14:50:46.732 [Thread-4] DEBUG SleepingThread::threadLogic - --- alive 3 ---
+14:50:47.223 [main] DEBUG AbstractThreadControlTest::test5 - *** calling cancel on the running thread ****
+14:50:47.223 [main] DEBUG AbstractThreadControl::cancel - ask the thread to cancel
+14:50:47.234 [Thread-4] DEBUG AbstractThreadControl::checkCancel - cancelling the thread
+14:50:47.234 [Thread-4] INFO  TestToolControlOperations::cancelOperations - execute cancel operations
+14:50:47.235 [Thread-4] DEBUG RunningState::cancelTransition - set initial state
+14:50:47.727 [main] DEBUG AbstractThreadControlTest::test5 - *** state is: initial ***
+14:50:49.733 [main] DEBUG AbstractThreadControlTest::test5 - *** calling pause on the cancelled thread ****
+14:50:49.733 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:50:49.733 [main] DEBUG AbstractThreadControl::askPause - askPause: nothing to do
+14:50:49.734 [main] DEBUG AbstractThreadControlTest::test5 - *** it should not do anything ****
+14:50:50.234 [main] DEBUG AbstractThreadControlTest::test5 - *** state is: initial ***
+14:50:50.236 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:50:50.241 [main] INFO  AbstractThreadControlTest::test6 - ######### TEST 6 #########
+14:50:50.244 [Thread-5] DEBUG SleepingThread::threadLogic - --- alive 0 ---
+14:50:50.750 [Thread-5] DEBUG SleepingThread::threadLogic - --- alive 1 ---
+14:50:51.255 [Thread-5] DEBUG SleepingThread::threadLogic - --- alive 2 ---
+14:50:51.761 [Thread-5] DEBUG SleepingThread::threadLogic - --- alive 3 ---
+14:50:52.244 [main] DEBUG AbstractThreadControlTest::test6 - *** calling interrupt on the running thread ****
+14:50:52.246 [Thread-5] FATAL AbstractThreadControl::run - operations have been interrupted
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:370) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:87) [bin/:?]
+14:50:52.247 [Thread-5] DEBUG AbstractState::crash - set crashed state
+14:50:52.751 [main] DEBUG AbstractThreadControlTest::test6 - *** state is: crashed ***
+14:50:54.756 [main] DEBUG AbstractThreadControlTest::test6 - *** calling pause on the interrupted thread ****
+14:50:54.757 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:50:54.757 [main] DEBUG AbstractThreadControl::askPause - askPause: nothing to do
+14:50:54.758 [main] DEBUG AbstractThreadControlTest::test6 - *** it should not do anything ***
+14:50:55.260 [main] DEBUG AbstractThreadControlTest::test6 - *** state is: crashed ***
+14:50:55.261 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:50:55.264 [main] INFO  AbstractThreadControlTest::test7 - ######### TEST 7 #########
+14:50:55.265 [Thread-6] DEBUG SleepingThread::threadLogic - --- alive 0 ---
+14:50:55.767 [Thread-6] DEBUG SleepingThread::threadLogic - --- alive 1 ---
+14:50:56.271 [Thread-6] DEBUG SleepingThread::threadLogic - --- alive 2 ---
+14:50:56.773 [Thread-6] DEBUG SleepingThread::threadLogic - --- alive 3 ---
+14:50:57.269 [main] DEBUG AbstractThreadControlTest::test7 - *** calling interrupt on the running thread ****
+14:50:57.269 [Thread-6] FATAL AbstractThreadControl::run - operations have been interrupted
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:?]
+	at fr.gardoll.ace.controller.core.SleepingThread.threadLogic(AbstractThreadControlTest.java:370) ~[bin/:?]
+	at fr.gardoll.ace.controller.core.AbstractThreadControl.run(AbstractThreadControl.java:87) [bin/:?]
+14:50:57.270 [Thread-6] DEBUG AbstractState::crash - set crashed state
+14:50:57.774 [main] DEBUG AbstractThreadControlTest::test7 - *** state is: crashed ***
+14:50:59.778 [main] DEBUG AbstractThreadControlTest::test7 - *** calling cancelled on the interrupted thread ****
+14:50:59.779 [main] DEBUG AbstractThreadControl::cancel - ask the thread to cancel
+14:50:59.779 [main] DEBUG AbstractThreadControl::cancel - nothing to do
+14:50:59.779 [main] DEBUG AbstractThreadControlTest::test7 - *** it should not do anything ***
+14:51:00.285 [main] DEBUG AbstractThreadControlTest::test7 - *** state is: crashed ***
+14:51:00.286 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:51:00.288 [main] INFO  AbstractThreadControlTest::test8 - ######### TEST 8 #########
+14:51:00.293 [main] DEBUG AbstractThreadControlTest::test8 - *** just waiting for the thread ****
+14:51:00.302 [Thread-7] DEBUG AbstractThreadControl::await - wait until 2020-01-15T13:51:05.293335Z
+14:51:00.302 [Thread-7] DEBUG AbstractThreadControl::await - waiting 4991 ms
+14:51:05.296 [Thread-7] DEBUG AbstractThreadControl::await - wait done
+14:51:05.296 [Thread-7] DEBUG RunningState::done - set ready state
+14:51:05.299 [main] DEBUG AbstractThreadControlTest::test8 - *** state is: ready ***
+14:51:05.300 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:51:05.302 [main] INFO  AbstractThreadControlTest::test9 - ######### TEST 9 #########
+14:51:05.302 [Thread-8] DEBUG AbstractThreadControl::await - wait until 2020-01-15T13:51:10.302738Z
+14:51:05.303 [Thread-8] DEBUG AbstractThreadControl::await - waiting 5000 ms
+14:51:06.307 [main] DEBUG AbstractThreadControlTest::test9 - *** calling cancel on the awaiting thread ****
+14:51:06.309 [main] DEBUG AbstractThreadControl::cancel - ask the thread to cancel
+14:51:06.310 [Thread-8] DEBUG AbstractThreadControl::checkCancel - cancelling the thread
+14:51:06.310 [Thread-8] INFO  TestToolControlOperations::cancelOperations - execute cancel operations
+14:51:06.311 [Thread-8] DEBUG RunningState::cancelTransition - set initial state
+14:51:06.312 [main] DEBUG AbstractThreadControlTest::test9 - *** state is: initial ***
+14:51:06.312 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:51:06.314 [main] INFO  AbstractThreadControlTest::test10 - ######### TEST 10 #########
+14:51:06.315 [Thread-9] DEBUG AbstractThreadControl::await - wait until 2020-01-15T13:51:11.315087Z
+14:51:06.315 [Thread-9] DEBUG AbstractThreadControl::await - waiting 5000 ms
+14:51:07.317 [main] DEBUG AbstractThreadControlTest::test10 - *** calling pause on the awaiting thread ****
+14:51:07.317 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:51:07.317 [Thread-9] INFO  TestToolControlOperations::pauseOperations - execute pause operations
+14:51:07.318 [Thread-9] DEBUG RunningState::pauseTransition - set paused state
+14:51:07.318 [Thread-9] DEBUG AbstractThreadControl::checkPause - the thead is paused
+14:51:09.318 [main] DEBUG AbstractThreadControlTest::test10 - *** calling unpause before deadline meeting ****
+14:51:09.319 [main] DEBUG AbstractThreadControl::unPause - resuming the thread
+14:51:09.319 [main] DEBUG AbstractThreadControl::unPause - waking up the paused thread
+14:51:09.320 [Thread-9] DEBUG AbstractThreadControl::checkPause - the thread is resumed
+14:51:09.320 [Thread-9] INFO  TestToolControlOperations::resumeOperations - execute resume operations
+14:51:09.320 [Thread-9] DEBUG PausedState::resumeTransition - set running state
+14:51:09.321 [Thread-9] DEBUG AbstractThreadControl::await - waiting 1995 ms
+14:51:11.319 [Thread-9] DEBUG AbstractThreadControl::await - wait done
+14:51:11.319 [Thread-9] DEBUG RunningState::done - set ready state
+14:51:11.320 [main] DEBUG AbstractThreadControlTest::test10 - *** state is: ready ***
+14:51:11.320 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:51:11.322 [main] INFO  AbstractThreadControlTest::test11 - ######### TEST 11 #########
+14:51:11.323 [Thread-10] DEBUG AbstractThreadControl::await - wait until 2020-01-15T13:51:16.323576Z
+14:51:11.324 [Thread-10] DEBUG AbstractThreadControl::await - waiting 5000 ms
+14:51:12.328 [main] DEBUG AbstractThreadControlTest::test11 - *** calling pause on the awaiting thread ****
+14:51:12.329 [main] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:51:12.329 [Thread-10] INFO  TestToolControlOperations::pauseOperations - execute pause operations
+14:51:12.330 [Thread-10] DEBUG RunningState::pauseTransition - set paused state
+14:51:12.330 [Thread-10] DEBUG AbstractThreadControl::checkPause - the thead is paused
+14:51:17.330 [main] DEBUG AbstractThreadControlTest::test11 - *** calling unpause after deadline meeting ****
+14:51:17.330 [main] DEBUG AbstractThreadControl::unPause - resuming the thread
+14:51:17.330 [main] DEBUG AbstractThreadControl::unPause - waking up the paused thread
+14:51:17.331 [Thread-10] DEBUG AbstractThreadControl::checkPause - the thread is resumed
+14:51:17.331 [Thread-10] INFO  TestToolControlOperations::resumeOperations - execute resume operations
+14:51:17.332 [Thread-10] DEBUG PausedState::resumeTransition - set running state
+14:51:17.332 [Thread-10] DEBUG AbstractThreadControl::await - wait done
+14:51:17.332 [Thread-10] DEBUG RunningState::done - set ready state
+14:51:17.333 [main] DEBUG AbstractThreadControlTest::test11 - *** state is: ready ***
+14:51:17.333 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***
+14:51:17.335 [main] INFO  AbstractThreadControlTest::test12 - ######### TEST 12 #########
+14:51:17.340 [Thread-11] DEBUG SelfPausedThread::threadLogic - trigger self pause
+14:51:17.340 [Thread-11] DEBUG AbstractThreadControl::askPause - ask the thread to pause
+14:51:17.340 [Thread-11] INFO  TestToolControlOperations::pauseOperations - execute pause operations
+14:51:17.341 [Thread-11] DEBUG RunningState::pauseTransition - set paused state
+14:51:17.341 [Thread-11] DEBUG AbstractThreadControl::checkPause - the thead is paused
+14:51:22.340 [main] DEBUG AbstractThreadControlTest::test12 - *** calling unpause on the selfpaused thread ****
+14:51:22.341 [main] DEBUG AbstractThreadControl::unPause - resuming the thread
+14:51:22.342 [main] DEBUG AbstractThreadControl::unPause - waking up the paused thread
+14:51:22.343 [Thread-11] DEBUG AbstractThreadControl::checkPause - the thread is resumed
+14:51:22.344 [Thread-11] INFO  TestToolControlOperations::resumeOperations - execute resume operations
+14:51:22.344 [Thread-11] DEBUG PausedState::resumeTransition - set running state
+14:51:22.345 [Thread-11] DEBUG RunningState::done - set ready state
+14:51:22.345 [main] DEBUG AbstractThreadControlTest::test12 - *** state is: ready ***
+14:51:22.346 [main] DEBUG AbstractThreadControlTest::teardown - *** end of test ***

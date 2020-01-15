@@ -6,20 +6,18 @@ Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test1n - ******************** test1n nominal sequence
 ExtractionToolControl::start - instantiate commandes
@@ -122,7 +120,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -177,7 +175,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -212,7 +210,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -341,7 +339,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 18.434417 millimeter into 2458 number of arm steps
+Passeur::convertBras - convert 18.43441712314792 millimeter into 2458 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -2408
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -376,7 +374,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 18.434417 millimeter into 2458 number of arm steps
+Passeur::convertBras - convert 18.43441712314792 millimeter into 2458 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -2408
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -411,7 +409,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 18.434417 millimeter into 2458 number of arm steps
+Passeur::convertBras - convert 18.43441712314792 millimeter into 2458 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -2408
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -540,7 +538,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 8.544078 millimeter into 1140 number of arm steps
+Passeur::convertBras - convert 8.544077600341971 millimeter into 1140 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3726
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -573,7 +571,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 8.544078 millimeter into 1140 number of arm steps
+Passeur::convertBras - convert 8.544077600341971 millimeter into 1140 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3726
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -606,7 +604,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 8.544078 millimeter into 1140 number of arm steps
+Passeur::convertBras - convert 8.544077600341971 millimeter into 1140 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3726
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -647,8 +645,8 @@ ExtractionThreadControl::threadLogic - refill from valve 4
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeRestant - total raiming volume is '0.0'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
-Commandes::remplissageSeringue - withdraw 0.6 mL from valve 4
-PousseSeringue::aspiration - withdrawing volume '0.6' from valve '4'
+Commandes::remplissageSeringue - withdraw 0.6000000000000001 mL from valve 4
+PousseSeringue::aspiration - withdrawing volume '0.6000000000000001' from valve '4'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.1' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
@@ -662,9 +660,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13656 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:53:18.847229Z
-AbstractThreadControl::await - waiting 13646 ms
+ExtractionThreadControl::threadLogic - wait 13644 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:31:46.069597Z
+AbstractThreadControl::await - waiting 13634 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -701,14 +699,14 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 5.390029 millimeter into 719 number of arm steps
+Passeur::convertBras - convert 5.390029139290011 millimeter into 719 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.6'
-PousseSeringue::volumeRestant - total raiming volume is '0.6'
+PousseSeringue::volumeRestant - total raiming volume is '0.6000000000000001'
+PousseSeringue::volumeRestant - total raiming volume is '0.6000000000000001'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.2' to the valve '7'
@@ -732,14 +730,14 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 5.390029 millimeter into 719 number of arm steps
+Passeur::convertBras - convert 5.390029139290011 millimeter into 719 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.4'
-PousseSeringue::volumeRestant - total raiming volume is '0.4'
+PousseSeringue::volumeRestant - total raiming volume is '0.40000000000000013'
+PousseSeringue::volumeRestant - total raiming volume is '0.40000000000000013'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -764,14 +762,14 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 5.390029 millimeter into 719 number of arm steps
+Passeur::convertBras - convert 5.390029139290011 millimeter into 719 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4147
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.2'
-PousseSeringue::volumeRestant - total raiming volume is '0.2'
+PousseSeringue::volumeRestant - total raiming volume is '0.20000000000000018'
+PousseSeringue::volumeRestant - total raiming volume is '0.20000000000000018'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -801,11 +799,11 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - preparing the next sequence
 ExtractionThreadControl::threadLogic - refill from valve 4
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
+PousseSeringue::volumeRestant - total raiming volume is '2.220446049250313E-16'
+PousseSeringue::volumeRestant - total raiming volume is '2.220446049250313E-16'
 PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
-Commandes::remplissageSeringue - withdraw 0.3 mL from valve 4
-PousseSeringue::aspiration - withdrawing volume '0.3' from valve '4'
+Commandes::remplissageSeringue - withdraw 0.30000000000000004 mL from valve 4
+PousseSeringue::aspiration - withdrawing volume '0.30000000000000004' from valve '4'
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '0.8' from valve '4'
 Valves::ouvrir - openning the valve '4'
 PousseSeringue::algoAspiration - run the pump
@@ -822,9 +820,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2960 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:53:42.804597Z
-AbstractThreadControl::await - waiting 2960 ms
+ExtractionThreadControl::processSequence - wait 2962 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:32:10.040191Z
+AbstractThreadControl::await - waiting 2962 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -837,14 +835,14 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 3.640161 millimeter into 486 number of arm steps
+Passeur::convertBras - convert 3.640160579191547 millimeter into 486 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.3'
-PousseSeringue::volumeRestant - total raiming volume is '0.3'
+PousseSeringue::volumeRestant - total raiming volume is '0.30000000000000027'
+PousseSeringue::volumeRestant - total raiming volume is '0.30000000000000027'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::refoulement - infusing volume '0.1' to the valve '7'
@@ -868,14 +866,14 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 3.640161 millimeter into 486 number of arm steps
+Passeur::convertBras - convert 3.640160579191547 millimeter into 486 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.2'
-PousseSeringue::volumeRestant - total raiming volume is '0.2'
+PousseSeringue::volumeRestant - total raiming volume is '0.2000000000000003'
+PousseSeringue::volumeRestant - total raiming volume is '0.2000000000000003'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -900,14 +898,14 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 3.640161 millimeter into 486 number of arm steps
+Passeur::convertBras - convert 3.640160579191547 millimeter into 486 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4380
 MotorControllerStub::move - % carousel doesn't have to move %
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.1'
-PousseSeringue::volumeRestant - total raiming volume is '0.1'
+PousseSeringue::volumeRestant - total raiming volume is '0.10000000000000031'
+PousseSeringue::volumeRestant - total raiming volume is '0.10000000000000031'
 Commandes::algoDistribution - set infusion rate min
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
 PousseSeringue::setDebitRefoulement - infusion rate is already at 1.0
@@ -939,7 +937,7 @@ ExtractionThreadControl::threadLogic - preparing the next sequence
 Commandes::rincage - rincing with H20
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
 PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5000000000000003' to the valve '7'
 Valves::ouvrir - openning the withdrawing valve
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -1046,7 +1044,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 6.062705 millimeter into 809 number of arm steps
+Passeur::convertBras - convert 6.0627048501839464 millimeter into 809 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1077,7 +1075,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 6.062705 millimeter into 809 number of arm steps
+Passeur::convertBras - convert 6.0627048501839464 millimeter into 809 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1109,7 +1107,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 6.062705 millimeter into 809 number of arm steps
+Passeur::convertBras - convert 6.0627048501839464 millimeter into 809 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -4057
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1173,9 +1171,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9414 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:54:53.832660Z
-AbstractThreadControl::await - waiting 9414 ms
+ExtractionThreadControl::threadLogic - wait 9450 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:33:21.048474Z
+AbstractThreadControl::await - waiting 9450 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1189,7 +1187,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -1211,33 +1209,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test2n - ******************** test2n rincing cases
 ExtractionToolControl::start - instantiate commandes
@@ -1340,7 +1333,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1489,7 +1482,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1562,7 +1555,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1642,7 +1635,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -1664,33 +1657,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test3n - ******************** test3n await tests
 ExtractionToolControl::start - instantiate commandes
@@ -1793,7 +1781,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1872,9 +1860,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 3735 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:56:39.544402Z
-AbstractThreadControl::await - waiting 3735 ms
+ExtractionThreadControl::threadLogic - wait 3755 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:35:06.528754Z
+AbstractThreadControl::await - waiting 3755 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -1911,7 +1899,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -1973,9 +1961,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
-ExtractionThreadControl::processSequence - wait 3730 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:56:53.515209Z
-AbstractThreadControl::await - waiting 3730 ms
+ExtractionThreadControl::processSequence - wait 3757 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:35:20.483577Z
+AbstractThreadControl::await - waiting 3757 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -1988,7 +1976,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2056,9 +2044,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9496 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T10:57:16.963031Z
-AbstractThreadControl::await - waiting 9496 ms
+ExtractionThreadControl::threadLogic - wait 9519 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:35:43.926761Z
+AbstractThreadControl::await - waiting 9519 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -2072,7 +2060,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -2094,33 +2082,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test4n - ******************** test4n resuming to sequence 2/3
 ExtractionToolControl::start - instantiate commandes
@@ -2223,7 +2206,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2372,7 +2355,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2452,7 +2435,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -2474,33 +2457,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test5n - ******************** test5n resuming to column 2/3
 ExtractionToolControl::start - instantiate commandes
@@ -2603,7 +2581,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2658,7 +2636,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2731,7 +2709,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2766,7 +2744,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2801,7 +2779,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -2881,7 +2859,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -2903,33 +2881,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test6n - ******************** test6n resuming to column 2/3 & sequence 2/3
 ExtractionToolControl::start - instantiate commandes
@@ -3032,7 +3005,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3087,7 +3060,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3216,7 +3189,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3251,7 +3224,7 @@ Passeur::moveCarrousel - move the carousel to the position 2 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3286,7 +3259,7 @@ Passeur::moveCarrousel - move the carousel to the position 3 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3366,7 +3339,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -3388,33 +3361,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test7n - ******************** test7n sequence pause and turn to the right
 ExtractionToolControl::start - instantiate commandes
@@ -3517,7 +3485,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3651,7 +3619,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -3673,33 +3641,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test8n - ******************** test8n sequence pause and turn to the left
 ExtractionToolControl::start - instantiate commandes
@@ -3802,7 +3765,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -3936,7 +3899,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -3958,33 +3921,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test9n - ******************** test9n turn to the right while waiting
 ExtractionToolControl::start - instantiate commandes
@@ -4087,7 +4045,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -4175,10 +4133,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4533 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T11:02:31.401216Z
-AbstractThreadControl::await - waiting 4533 ms
+ExtractionThreadControl::threadLogic - wait 4536 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:40:58.429268Z
 RunningState::askPausing - waiting for pause
+AbstractThreadControl::await - waiting 4536 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4212,7 +4170,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2409 ms
+AbstractThreadControl::await - waiting 2401 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4226,7 +4184,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -4248,33 +4206,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test10n - ******************** test10n turn to the left while waiting
 ExtractionToolControl::start - instantiate commandes
@@ -4377,7 +4330,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -4465,10 +4418,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4526 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T11:03:11.481060Z
-AbstractThreadControl::await - waiting 4526 ms
+ExtractionThreadControl::threadLogic - wait 4527 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:41:38.507729Z
 RunningState::askPausing - waiting for pause
+AbstractThreadControl::await - waiting 4527 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4502,7 +4455,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2396 ms
+AbstractThreadControl::await - waiting 2400 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4516,7 +4469,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -4538,33 +4491,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test11n - ******************** test11n turn to the right while usr pause
 ExtractionToolControl::start - instantiate commandes
@@ -4659,9 +4607,9 @@ Passeur::vibration - vibrate the arm
 ExtractionThreadControl::processSequence - don't need to wait the next column
 Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
+RunningState::askPausing - waiting for pause
 Passeur::moveOrigineBras - move the arm to its origin
 MotorControllerStub::move - % carousel doesn't have to move %
-RunningState::askPausing - waiting for pause
 Passeur::finMoveBras - waiting for the arm
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -4701,7 +4649,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -4789,9 +4737,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4545 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T11:03:53.467352Z
-AbstractThreadControl::await - waiting 4545 ms
+ExtractionThreadControl::threadLogic - wait 4540 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:42:20.529046Z
+AbstractThreadControl::await - waiting 4540 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4805,7 +4753,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -4827,33 +4775,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test12n - ******************** test12n turn to the left while usr pause
 ExtractionToolControl::start - instantiate commandes
@@ -4948,11 +4891,11 @@ Passeur::vibration - vibrate the arm
 ExtractionThreadControl::processSequence - don't need to wait the next column
 Commandes::distribution - * processing column 1 *
 Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
-Passeur::moveOrigineBras - move the arm to its origin
 RunningState::askPausing - waiting for pause
+Passeur::moveOrigineBras - move the arm to its origin
 MotorControllerStub::move - % carousel doesn't have to move %
-AbstractThreadControl::askPause - ask the thread to pause
 Passeur::finMoveBras - waiting for the arm
+AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -4990,7 +4933,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -5078,9 +5021,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4505 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-14T11:04:35.456831Z
-AbstractThreadControl::await - waiting 4505 ms
+ExtractionThreadControl::threadLogic - wait 4508 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:43:02.559752Z
+AbstractThreadControl::await - waiting 4508 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -5094,7 +5037,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -5116,33 +5059,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test1c - ******************** test1c cancel while awaiting
 ExtractionToolControl::start - instantiate commandes
@@ -5245,7 +5183,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -5327,10 +5265,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8756 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T11:05:15.600745Z
+ExtractionThreadControl::processSequence - wait 8742 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:43:42.681688Z
 RunningState::askCancellation - waiting for cancellation
-AbstractThreadControl::await - waiting 8756 ms
+AbstractThreadControl::await - waiting 8742 ms
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -5379,7 +5317,7 @@ Passeur::setOrigineBras - setting the origin for the arm
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -5401,33 +5339,28 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test1p - ******************** test1p pause while awaiting
 ExtractionToolControl::start - instantiate commandes
@@ -5530,7 +5463,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -5612,10 +5545,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8757 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-14T11:05:49.837596Z
-AbstractThreadControl::await - waiting 8757 ms
+ExtractionThreadControl::processSequence - wait 8743 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-15T13:44:16.999857Z
 RunningState::askPausing - waiting for pause
+AbstractThreadControl::await - waiting 8743 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -5635,7 +5568,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8253 ms
+AbstractThreadControl::await - waiting 8234 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -5648,7 +5581,7 @@ Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
 MotorControllerStub::move - % arm doesn't have to move %
 Passeur::finMoveCarrousel - waiting for the carousel
 Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert 11.93829699694811 millimeter into 1592 number of arm steps
 Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
 Passeur::moveBras - move the arm to the position -3274
 MotorControllerStub::move - % carousel doesn't have to move %
@@ -5728,7 +5661,7 @@ Passeur::finMoveBras - arm reached the position
 ExtractionThreadControl::threadLogic - session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -5750,10 +5683,7 @@ ExtractionToolControl::closeOperations - controller has nothing to do while clos
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom

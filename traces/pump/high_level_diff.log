@@ -6,20 +6,18 @@ Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test1n - ******************** test1n clean line 1
 PumpToolControl::start - starting pump thread
@@ -61,7 +59,7 @@ PumpThread::threadLogic - line 1 is clean
 PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -82,33 +80,28 @@ PumpToolControl::closeOperations - controller has nothing to do while closing th
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test2n - ******************** test2n clean line 1 to 3
 PumpToolControl::start - starting pump thread
@@ -186,7 +179,7 @@ PumpThread::threadLogic - line 3 is clean
 PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -207,33 +200,28 @@ PumpToolControl::closeOperations - controller has nothing to do while closing th
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test1c - ******************** test1c cancel while infusing
 PumpToolControl::start - starting pump thread
@@ -265,8 +253,8 @@ Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 PousseSeringue::vidange - draining the pump
 PousseSeringue::algoRefoulement - running the infusing subroutine for volume '5.5' to the valve '7'
-Valves::ouvrir - openning the withdrawing valve
 RunningState::askCancellation - waiting for cancellation
+Valves::ouvrir - openning the withdrawing valve
 AbstractThreadControl::cancel - ask the thread to cancel
 PousseSeringue::algoRefoulement - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -295,38 +283,33 @@ AbstractCancelableToolControl::reinitOperations - pump is already drained
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 PumpToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 PumpToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test1p - ******************** test1p pause while infusing
 PumpToolControl::start - starting pump thread
@@ -388,7 +371,7 @@ PumpThread::threadLogic - line 1 is clean
 PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -409,33 +392,28 @@ PumpToolControl::closeOperations - controller has nothing to do while closing th
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test2c - ******************** test2c cancel while withdrawing
 PumpToolControl::start - starting pump thread
@@ -458,9 +436,9 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
 PumpThread::threadLogic - begin to clean line 1
 PousseSeringue::rincageAspiration - rinsing with volume '5.0' from valve '1'
+RunningState::askCancellation - waiting for cancellation
 PousseSeringue::algoAspiration - running withdrawing subroutine for volume '5.5' from valve '1'
 Valves::ouvrir - openning the H2O valve
-RunningState::askCancellation - waiting for cancellation
 AbstractThreadControl::cancel - ask the thread to cancel
 PousseSeringue::algoAspiration - run the pump
 PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
@@ -514,38 +492,33 @@ Passeur::setOrigineBras - setting the origin for the arm
 AbstractCancelableToolControl::reinitOperations - reinitialisation done
 RunningState::cancelTransition - set initial state
 PumpToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 PumpToolControl::closeOperations - controller has nothing to do while closing the tool
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ParametresSession::getPousseSeringue - instantiating the pump
-PumpControllerStub::<init> - instanciating pump controller stub
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - getting '20.238635657016093' rounded to '20'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-MotorControllerStub::<init> - instanciating motor controller stub with 640 number of steps by carousel position
 Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
 Passeur::reset - resetting the autosampler interface
-MotorControllerStub::reset - stubbing command reset
 Passeur::setModeDirect - setting the ack single line mode
 PumpToolTest::test2p - ******************** test2p pause while withdrawing
 PumpToolControl::start - starting pump thread
@@ -607,7 +580,7 @@ PumpThread::threadLogic - line 1 is clean
 PumpThread::threadLogic - end
 RunningState::done - set ready state
 PumpToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl::run - running the close operations
+AbstractCloseableToolControl$1::run - running the close operations
 CloseableState::close - reinit before closing
 AbstractCancelableToolControl::reinitOperations - reinitializing all devices
 Passeur::reinit - reinitializing the autosampler
@@ -628,10 +601,7 @@ PumpToolControl::closeOperations - controller has nothing to do while closing th
 InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-PumpControllerStub::close - stubbing command close
 Passeur::close - closing the autosampler
-MotorControllerStub::close - stubbing method close
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom

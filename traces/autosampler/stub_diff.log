@@ -1,0 +1,1841 @@
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+movel - command 'movel(0, 1)'
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+close - stubbing close motor controller
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -13000)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+close - stubbing close motor controller
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+move - command 'move(0, 13334)'
+enableCarouselControl - carousel control set to false
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -13333)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -13000)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 13334)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+move - command 'move(0, -13333)'
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+datum - command 'datum (1)'
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -13000)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -13000)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -8400)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -8400)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+movel - command 'movel(0, 1)'
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 13334)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, 13334)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -13333)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(0, -13333)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(3840, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(-3840, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+close - stubbing close motor controller
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(6400, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+move - command 'move(3840, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+move - command 'move(-3840, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(6400, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+move - command 'move(3840, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(3840, 0)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+movel - command 'movel(0, 1)'
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+move - command 'move(-3840, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(-3840, 0)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+movel - command 'movel(0, 1)'
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(6400, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(6400, 0)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+close - stubbing close motor controller
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, -13000)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+move - command 'move(-3840, 13000)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(8960, 13000)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller
+<init> - instanciating motor controller stub with 640 number of steps by carousel position
+reset - command 'new'
+singleLine - command 'singleline (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+movel - command 'movel(0, 1)'
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+where - command 'where (1)'
+move - command 'move(3840, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+halt - command 'halt()'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to true
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to true
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+move - command 'move(3840, 0)'
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(3840, -13000)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(3840, -13000)'
+datum - command 'datum (1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to true
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to true
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to true
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+halt - command 'halt()'
+enableCarouselControl - carousel control set to false
+movel - command 'movel(0, 1)'
+where - command 'where (1)'
+datum - command 'datum (1)'
+move - command 'move(0, 0)'
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to true
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to true
+enableCarouselControl - carousel control set to false
+enablePauseControl - pause control set to false
+enableResumeControl - resume control set to false
+enableStartControl - start control set to false
+enableCancelControl - cancel control set to false
+enableReinitControl - reinit control set to false
+enableCloseControl - close control set to false
+enableCarouselControl - carousel control set to false
+lambda$0 - dispose
+close - stubbing close motor controller

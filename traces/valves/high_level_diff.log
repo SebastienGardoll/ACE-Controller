@@ -4,7 +4,6 @@ Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ValvesToolTest::scriptedTest1 - ******************** scripted test1
@@ -27,21 +26,19 @@ ValvesToolControl::handleValve - closing valve 6, openning valve 7
 Valves::ouvrir - openning the withdrawing valve
 ValvesToolTest::tearDown - ******************** teardown
 ParametresSession::close - closing parameter session
+AbstractCloseableToolControl$1::run - running the close operations
 Valves::close - closing the valves
-AbstractCloseableToolControl::run - running the close operations
 Valves::ouvrir - shutting all the valves
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
 InitialState::close - set closed state
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
 ValvesToolTest::setUp - ******************** setup
 Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
 ParametresSession::getValves - instantiating the valves
-ParaComStub::<init> - instanciating paracom stub
 ParametresSession::getValves - instantiating valves
 Valves::<init> - instanciating valves
 ValvesToolTest::scriptedTest2 - ******************** scripted test2
@@ -76,11 +73,10 @@ ValvesToolControl::handleValve - closing valve 7
 Valves::ouvrir - shutting all the valves
 ValvesToolTest::tearDown - ******************** teardown
 ParametresSession::close - closing parameter session
+AbstractCloseableToolControl$1::run - running the close operations
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
-AbstractCloseableToolControl::run - running the close operations
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
-InitialState::close - set closed state
 Valves::close - closing valves controller with paracom id 'stub'
-ParaComStub::close - stubbing close paracom
+InitialState::close - set closed state
