@@ -1,13 +1,10 @@
 package fr.gardoll.ace.controller.core;
 
-import java.io.FileNotFoundException ;
 import java.math.BigDecimal ;
 import java.math.RoundingMode ;
 import java.net.URISyntaxException ;
 import java.net.URL ;
-import java.nio.file.Files ;
 import java.nio.file.Path ;
-import java.nio.file.Paths ;
 import java.util.Map ;
 import java.util.Map.Entry ;
 
@@ -78,29 +75,6 @@ public class Utils
     }
     
     return _INSTANCE;
-  }
-  
-  // Resolve the given string parameter to a system dependent absolute path. 
-  public Path resolvePath(String path) throws FileNotFoundException
-  {
-    Path p = Paths.get(path);
-    Path result = null;
-    if(p.isAbsolute())
-    {
-      result = p;
-    }
-    else
-    {
-      Path rootDir = this.getRootDir() ;
-      result = rootDir.resolve(p);
-    }
-    
-    if(false == Files.exists(result))
-    {
-      throw new FileNotFoundException(String.format("'%s' does not exist", result));
-    }
-    
-    return result;
   }
   
   // Return the path of the directory of the application (not the current
