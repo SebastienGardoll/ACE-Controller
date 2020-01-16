@@ -124,22 +124,6 @@ public class Utils
     return _ROOT_DIR;
   }
   
-  public static String toString(byte[] value, String separator)
-  {
-    StringBuilder sb = new StringBuilder();
-    
-    for(byte b: value)
-    {
-      sb.append(b);
-      sb.append(separator);
-    }
-    
-    // Remove the last separator.
-    sb.setLength(sb.length()-separator.length());
-    
-    return sb.toString();
-  }
-  
   public static Path rootDirRelativize(Path p)
   {
     Path rootDir = Utils.getInstance().getRootDir();

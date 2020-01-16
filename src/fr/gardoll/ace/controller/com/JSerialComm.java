@@ -3,6 +3,7 @@ package fr.gardoll.ace.controller.com;
 import java.io.File ;
 import java.nio.charset.Charset;
 import java.util.AbstractMap.SimpleEntry;
+import java.util.Arrays ;
 
 import org.apache.logging.log4j.Logger;
 
@@ -10,7 +11,6 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortTimeoutException;
 
 import fr.gardoll.ace.controller.core.Log ;
-import fr.gardoll.ace.controller.core.Utils ;
 
 public class JSerialComm implements SerialCom
 {
@@ -336,7 +336,7 @@ public class JSerialComm implements SerialCom
   @Override
   public void write(byte[] ordre) throws SerialComException
   {
-    String orderString = Utils.toString(ordre, ", ");
+    String orderString = Arrays.toString(ordre);
     //_LOG.trace(String.format("writing '%s' on port '%s'", orderString, this._id)) ;
     try
     {
