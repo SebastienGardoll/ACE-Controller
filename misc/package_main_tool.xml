@@ -6,7 +6,7 @@
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="${dir.buildfile}/../.."/>
     <property name="dir.jarfile" value="${user.home}/tmp"/>
-    <property name="tool_name" value="main_tool"/>
+    <property name="tool_name" value="ace_controller"/>
 	  <property name="file.version" value="version.properties"/>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/${tool_name}.jar" filesetmanifest="mergewithoutmain">
