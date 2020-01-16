@@ -11,7 +11,7 @@ import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.UiUtils ;
 
-public class MainPanel extends javax.swing.JPanel
+public class SettingsMainPanel extends javax.swing.JPanel
 {
   private static final Logger _LOG = Log.HIGH_LEVEL;
   
@@ -20,10 +20,11 @@ public class MainPanel extends javax.swing.JPanel
   private final List<Panel> _panels = new ArrayList<Panel>() ;
 
   /**
-   * Creates new form MainPanel
+   * Creates new form SettingsMainPanel
    */
-  public MainPanel()
+  public SettingsMainPanel()
   {
+    _LOG.info("starting the settings panel");
     initComponents() ;
     initCustom() ;
   }

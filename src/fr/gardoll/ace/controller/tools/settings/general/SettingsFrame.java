@@ -21,8 +21,6 @@ public class SettingsFrame extends AbstractToolFrame
   
   public static void main(String[] args)
   {
-    _LOG.info("start the tool");
-    
     try
     {
       SettingsFrame settings = SettingsFrame.instantiate();
@@ -52,6 +50,6 @@ public class SettingsFrame extends AbstractToolFrame
 
   public static SettingsFrame instantiate()
   {
-    return new SettingsFrame(new MainPanel());
+    return new SettingsFrame(new SettingsMainPanel());
   }
 }
