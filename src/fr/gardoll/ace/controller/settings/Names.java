@@ -8,41 +8,12 @@ public class Names
 {
   private Names() {}
   
-  public static Path computeProtocolFilePath(String protocolFileName)
-  {
-    Path rootDir = Utils.getInstance().getRootDir();
-    Path protocolFilePath = rootDir.resolve(Names.CONFIG_DIRNAME)
-                                   .resolve(Names.PROTOCOL_DIRNAME)
-                                   .resolve(protocolFileName);
-    return protocolFilePath;
-  }
-  
-  public static Path computeColumnFilePath(String columnFileName)
-  {
-    Path rootDir = Utils.getInstance().getRootDir();
-    Path filePath = rootDir.resolve(Names.CONFIG_DIRNAME)
-                           .resolve(Names.COLUMN_DIRNAME)
-                           .resolve(columnFileName);
-    return filePath;
-  }
-  
-  public final static Path COLUMN_DIR_PATH = 
-      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.COLUMN_DIRNAME);
-  
-  public final static Path PROTOCOL_DIR_PATH = 
-      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.PROTOCOL_DIRNAME);
-  
-  public final static Path CAROUSEL_DIR_PATH = 
-      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.CAROUSEL_DIRNAME);
-  
   public static final String CONFIG_DIRNAME    = "conf";
   public static final String CONFIG_FILENAME   = "configuration.ini";
   
-  public static final String LOG_DIRNAME       = "log"; 
-  public static final String PROTOCOL_DIRNAME  = "protocoles";
-  public static final String COLUMN_DIRNAME    = "columns";
+  public final static Path CAROUSEL_DIR_PATH = 
+      Utils.getInstance().getRootDir().resolve(Names.CONFIG_DIRNAME).resolve(Names.CAROUSEL_DIRNAME);
   public static final String CAROUSEL_DIRNAME  = "carousel";
-  
   public static final String CAROUSEL_FILE_EXTENTION = "crl";
   
   public static final String TRUE  = "true";

@@ -19,7 +19,6 @@ import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
-import fr.gardoll.ace.controller.settings.Names ;
 
 public class ExtractionConfigurationDialog extends javax.swing.JDialog
 {
@@ -82,7 +81,7 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
     this.numSequenceSpinner.setModel(numSequenceModel) ;
 
     this._fileChooser.setDialogTitle("select column file") ;
-    this._fileChooser.setCurrentDirectory(Names.PROTOCOL_DIR_PATH.toFile()) ;
+    this._fileChooser.setCurrentDirectory(Protocol.PROTOCOL_DIR_PATH.toFile()) ;
     this._fileChooser.setMultiSelectionEnabled(false) ;
     this._fileChooser.setFileFilter(new FileFilter()
     {

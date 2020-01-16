@@ -18,8 +18,8 @@ import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.ControlPanelAdapter ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Log ;
+import fr.gardoll.ace.controller.protocol.Protocol ;
 import fr.gardoll.ace.controller.pump.PumpControllerStub ;
-import fr.gardoll.ace.controller.settings.Names ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
@@ -143,7 +143,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "nominal_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -184,7 +184,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "rincing_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -202,7 +202,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "await_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -242,7 +242,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 2;
     String protocolFileName = "resuming_test_seq.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -260,7 +260,7 @@ class ExtractionToolTest
     int numColumn = 2;
     int numSequence = 1;
     String protocolFileName = "resuming_test_col.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -278,7 +278,7 @@ class ExtractionToolTest
     int numColumn = 2;
     int numSequence = 2;
     String protocolFileName = "resuming_test_seq.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -296,7 +296,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "solo_sequence_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -342,7 +342,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "solo_sequence_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -388,7 +388,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "solo_sequence_no_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -440,7 +440,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "solo_sequence_no_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -492,7 +492,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "solo_sequence_no_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -544,7 +544,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "solo_sequence_no_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
    
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence,
                                               protocolFilePath);
@@ -596,7 +596,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "await_cancel_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
     
@@ -653,7 +653,7 @@ class ExtractionToolTest
     int numColumn = 1;
     int numSequence = 1;
     String protocolFileName = "await_cancel_pause_test.prt";
-    Path protocolFilePath = Names.computeProtocolFilePath(protocolFileName);
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName);
     
     InitSession initSession = new InitSession(nbColumn, numColumn, numSequence, protocolFilePath);
     

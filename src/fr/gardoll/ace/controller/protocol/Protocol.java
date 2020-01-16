@@ -25,6 +25,9 @@ public class Protocol
   private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public static final String PROTOCOL_FILE_EXTENTION = "prt";
+  public static final String PROTOCOL_DIRNAME  = "protocoles";
+  public static final Path PROTOCOL_DIR_PATH = 
+      Utils.getInstance().getRootDir().resolve(Names.CONFIG_DIRNAME).resolve(PROTOCOL_DIRNAME);
   
   // The insertion order is mandatory.
   private final Sequence[] _tabSequence;
@@ -284,5 +287,14 @@ public class Protocol
     Utils.round(acideVolumes);
     
     return new ImmutablePair<>(totalVolumeRincageH2O, acideVolumes);
+  }
+  
+  public static Path computeProtocolFilePath(String protocolFileName)
+  {
+    Path rootDir = Utils.getInstance().getRootDir();
+    Path protocolFilePath = rootDir.resolve(Names.CONFIG_DIRNAME)
+                                   .resolve(Protocol.PROTOCOL_DIRNAME)
+                                   .resolve(protocolFileName);
+    return protocolFilePath;
   }
 }

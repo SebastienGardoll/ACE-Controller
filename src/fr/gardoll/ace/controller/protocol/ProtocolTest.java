@@ -16,8 +16,6 @@ import org.junit.jupiter.api.BeforeAll ;
 import org.junit.jupiter.api.Test ;
 
 import fr.gardoll.ace.controller.column.TypeColonne ;
-import fr.gardoll.ace.controller.core.Utils ;
-import fr.gardoll.ace.controller.settings.Names ;
 
 class ProtocolTest
 {
@@ -27,12 +25,7 @@ class ProtocolTest
   static void setUpBeforeClass() throws Exception
   {
     String protocolFileName = "sr-spec.prt";
-    
-    Path rootDir = Utils.getInstance().getRootDir();
-    Path protocolFilePath = rootDir.resolve(Names.CONFIG_DIRNAME)
-                             .resolve(Names.PROTOCOL_DIRNAME)
-                             .resolve(protocolFileName);
-    
+    Path protocolFilePath = Protocol.computeProtocolFilePath(protocolFileName); 
     _PROTOCOL = new Protocol(protocolFilePath);
   }
 

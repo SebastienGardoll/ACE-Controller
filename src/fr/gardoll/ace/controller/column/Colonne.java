@@ -8,12 +8,16 @@ import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
 import org.apache.commons.configuration2.builder.fluent.Configurations ;
 
+import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.Names ;
 
 public abstract class Colonne
 {
   public static final String COLUMN_FILE_EXTENTION = "cln";
+  public static final String COLUMN_DIRNAME    = "columns";
+  public static final Path COLUMN_DIR_PATH = 
+      Utils.getInstance().getRootDir().resolve(Names.CONFIG_DIRNAME).resolve(COLUMN_DIRNAME);
   
   protected final Path _fichierColonne ;
   protected final SubnodeConfiguration _colSection;
@@ -166,5 +170,14 @@ public abstract class Colonne
     }
     
     return colonne;
+  }
+  
+  public static Path computeColumnFilePath(String columnFileName)
+  {
+    Path rootDir = Utils.getInstance().getRootDir();
+    Path filePath = rootDir.resolve(Names.CONFIG_DIRNAME)
+                           .resolve(COLUMN_DIRNAME)
+                           .resolve(columnFileName);
+    return filePath;
   }
 }

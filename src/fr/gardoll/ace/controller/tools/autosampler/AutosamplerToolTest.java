@@ -13,8 +13,8 @@ import org.junit.jupiter.api.TestMethodOrder ;
 
 import fr.gardoll.ace.controller.autosampler.MotorControllerStub ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
+import fr.gardoll.ace.controller.column.Colonne ;
 import fr.gardoll.ace.controller.core.Log ;
-import fr.gardoll.ace.controller.settings.Names ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.PausableJPanelObserverStub ;
 
@@ -64,7 +64,7 @@ class AutosamplerToolTest
   {
     String columnFileName = "nouvelle colonne.cln";
     
-    Path columnFilePath = Names.computeColumnFilePath(columnFileName);
+    Path columnFilePath = Colonne.computeColumnFilePath(columnFileName);
     
     this._ctrl.openColumn(columnFilePath);
   }
