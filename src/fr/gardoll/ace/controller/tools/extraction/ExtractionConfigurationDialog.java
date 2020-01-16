@@ -28,8 +28,6 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
   private static int _DEFAULT_MAX_SEQUENCES = 99 ;
   private static int _DEFAULT_MIN_SEQUENCES = 1 ;
   private static int _DEFAULT_SEQUENCE_VALUE = 1 ;
-  private static int _DEFAULT_MIN_COLUMNS = 1 ;
-  private static int _DEFAULT_COLUMN_VALUE = 1 ;
   private static int _DEFAULT_STEP = 1 ;
 
   private static final long serialVersionUID = -1634098099578213468L ;
@@ -66,13 +64,13 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
     int maxColumnUtil = GeneralSettings.instance().getNbMaxColonne();
 
     SpinnerNumberModel nbColumnModel = new SpinnerNumberModel(
-        _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, maxColumnUtil,
-        _DEFAULT_STEP) ;
+        GeneralSettings.DEFAULT_MIN_COLUMN, GeneralSettings.DEFAULT_MIN_COLUMN,
+        maxColumnUtil, _DEFAULT_STEP) ;
     this.nbColumnSpinner.setModel(nbColumnModel) ;
 
     SpinnerNumberModel numColumnModel = new SpinnerNumberModel(
-        _DEFAULT_COLUMN_VALUE, _DEFAULT_MIN_COLUMNS, maxColumnUtil,
-        _DEFAULT_STEP) ;
+        GeneralSettings.DEFAULT_MIN_COLUMN, GeneralSettings.DEFAULT_MIN_COLUMN,
+        maxColumnUtil, _DEFAULT_STEP) ;
     this.numColumnSpinner.setModel(numColumnModel) ;
 
     SpinnerNumberModel numSequenceModel = new SpinnerNumberModel(

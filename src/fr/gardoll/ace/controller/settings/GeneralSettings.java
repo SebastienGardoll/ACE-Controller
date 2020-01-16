@@ -40,7 +40,7 @@ public class GeneralSettings extends Settings
   public static final double MIN_SYRINGE_VOLUME = 
       PousseSeringue.volumeAjustement() + PousseSeringue.volumeSecurite() ;
   
-  
+  public static int DEFAULT_MIN_COLUMN = 1 ;
   
   private static final String SEC_ACE_CONTROLLER                = "ace_controller_settings";
   private static final String SAC_IS_DEBUG                      = "is_debug";
