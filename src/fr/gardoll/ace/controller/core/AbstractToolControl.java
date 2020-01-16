@@ -42,9 +42,12 @@ public abstract class AbstractToolControl implements ToolControl, Observable
                              boolean hasValves)
                          throws InitializationException, ConfigurationException
   {
-    String msg = String.format("starting %s tool with general settings:\n\n%s\n",
-        this.getToolName(), GeneralSettings.instance().toString());
-    Log.HIGH_LEVEL.info(msg);
+    if(false == ParametresSession.isAutomatedTest)
+    {
+      String msg = String.format("starting %s tool with general settings:\n\n%s\n",
+          this.getToolName(), GeneralSettings.instance().toString());
+      Log.HIGH_LEVEL.info(msg);
+    }
     
     this._hasAutosampler = hasAutosampler;
     this._hasPump = hasPump;
