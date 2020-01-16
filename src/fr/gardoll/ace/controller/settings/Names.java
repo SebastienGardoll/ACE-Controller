@@ -32,6 +32,9 @@ public class Names
   public final static Path PROTOCOL_DIR_PATH = 
       Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.PROTOCOL_DIRNAME);
   
+  public final static Path CAROUSEL_DIR_PATH = 
+      Utils.getInstance().getRootDir().toAbsolutePath().resolve(Names.CONFIG_DIRNAME).resolve(Names.CAROUSEL_DIRNAME);
+  
   public static final String CONFIG_DIRNAME    = "conf";
   public static final String CONFIG_FILENAME   = "configuration.ini";
   
@@ -39,6 +42,8 @@ public class Names
   public static final String PROTOCOL_DIRNAME  = "protocoles";
   public static final String COLUMN_DIRNAME    = "columns";
   public static final String CAROUSEL_DIRNAME  = "carousel";
+  
+  public static final String CAROUSEL_FILE_EXTENTION = "crl";
   
   public static final String TRUE  = "true";
   public static final String FALSE = "false";

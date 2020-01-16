@@ -34,6 +34,10 @@ public class MainPanel extends javax.swing.JPanel
     this.settingsTabbedPanel.add(generalPanel, "Pump") ;
     this._panels.add(generalPanel) ;
     
+    CarouselPanel carouselPanel = new CarouselPanel();
+    this.settingsTabbedPanel.add(carouselPanel, "Carousel") ;
+    this._panels.add(carouselPanel) ;
+    
     MiscellaneousPanel miscPanel = new MiscellaneousPanel();
     this.settingsTabbedPanel.add(miscPanel, "Misc") ;
     this._panels.add(miscPanel) ;
