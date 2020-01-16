@@ -139,6 +139,12 @@ public class Utils
     
     return sb.toString();
   }
+  
+  public static Path rootDirRelativize(Path p)
+  {
+    Path rootDir = Utils.getInstance().getRootDir();
+    return rootDir.relativize(p);
+  }
    
   // May return empty String object.
   public static String getFileExtention(String fileName)

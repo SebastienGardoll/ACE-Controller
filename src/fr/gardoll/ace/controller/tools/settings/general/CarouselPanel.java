@@ -1,6 +1,7 @@
 package fr.gardoll.ace.controller.tools.settings.general ;
 
 import java.io.File ;
+import java.nio.file.Path ;
 
 import javax.swing.JFileChooser ;
 import javax.swing.filechooser.FileFilter ;
@@ -147,7 +148,9 @@ public class CarouselPanel extends javax.swing.JPanel implements Panel
     if (returnValue == JFileChooser.APPROVE_OPTION)
     {
       File file = this._fileChooser.getSelectedFile();
-      this.carouselFilePathTextField.setText(file.toString());
+      // Must keep all the paths relatives so as to keep this software movable.
+      Path relativeFilePath = Utils.rootDirRelativize(file.toPath());
+      this.carouselFilePathTextField.setText(relativeFilePath.toString());
     }
   }                                          
   
