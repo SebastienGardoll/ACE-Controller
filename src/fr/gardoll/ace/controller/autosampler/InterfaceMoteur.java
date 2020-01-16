@@ -29,8 +29,9 @@ public class InterfaceMoteur implements Closeable, MotorController
   
   public InterfaceMoteur(SerialCom port) throws InitializationException
   {
-    _LOG.debug(String.format("initializing the autosampler interface with the serial port %s",
+    _LOG.debug(String.format("initializing the autosampler controller with the serial port %s",
         port.getId()));
+    
     this._port = port ;
     try
     {

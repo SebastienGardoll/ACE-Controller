@@ -312,7 +312,7 @@ public class ExtractionConfigurationDialog extends javax.swing.JDialog
     {
       File file = this._fileChooser.getSelectedFile().getAbsoluteFile() ;
       _LOG.info(String.format("selected protocol file is '%s'", file)) ;
-      Path protocolPath = file.toPath() ;
+      Path protocolPath = Utils.rootDirRelativize(file.toPath());
       this._protocolPath = Optional.of(file.toPath()) ;
       Path filename = protocolPath.getFileName() ;
       this.protocolTextField.setText(filename.toString()) ;

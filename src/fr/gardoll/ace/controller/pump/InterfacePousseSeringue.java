@@ -53,10 +53,11 @@ public class InterfacePousseSeringue  implements Closeable, PumpController
   public InterfacePousseSeringue(SerialCom port)
       throws InitializationException, ConfigurationException
   {
+    _LOG.debug(String.format("initializing the pump controller with the serial port %s",
+        port.getId()));
+    
     double diametreSeringue = GeneralSettings.instance().getDiametreSeringue();
     
-    _LOG.debug(String.format("initializing the pump interface with the serial port %s and the syringe diameter %s",
-        port.getId(), diametreSeringue));
     this._port = port ;
     
     // Initializing the serial port (already opened).

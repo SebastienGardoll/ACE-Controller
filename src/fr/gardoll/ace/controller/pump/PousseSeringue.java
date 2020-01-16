@@ -65,6 +65,8 @@ public class PousseSeringue implements Closeable
                         Valves valves,
                         double volumeInitiale) throws InitializationException, ConfigurationException
   {
+    _LOG.debug("initializing the pump");
+    
     GeneralSettings settings = GeneralSettings.instance(); 
     
     int nombreSeringue = settings.getNbSeringue();
@@ -72,9 +74,6 @@ public class PousseSeringue implements Closeable
     double volumeMaxSeringue = settings.getVolumeMaxSeringue();
     double debitMaxPousseSeringue = settings.getDebitMaxPousseSeringue();
     
-    _LOG.debug(String.format("initializing the pump with %s number of syringe, %s syringe diameter, %s syringe max volume, %s max rate, %s initial volume",
-        nombreSeringue, diametreSeringue, volumeMaxSeringue, debitMaxPousseSeringue,
-        volumeInitiale));
     this.interfacePousseSeringue = interfacePousseSeringue ;
     this.valves = valves ;
     // attention les débits sont par défaut ceux en mémoire du pousse seringue.

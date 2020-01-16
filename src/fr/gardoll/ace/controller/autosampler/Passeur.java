@@ -61,13 +61,13 @@ public class Passeur implements Closeable
   public Passeur(MotorController interfaceMoteur)
       throws InitializationException, ConfigurationException
   {
+    _LOG.debug("initializing the autosampler");
+    
     GeneralSettings settings = GeneralSettings.instance();
     
     int diametre = settings.getDiametreCarrousel();
     int nbPasCarrousel = settings.getNbPasCarrousel();
     
-    _LOG.debug(String.format("initializing the autosampler with %s number of carousel steps and %s diameter",
-        nbPasCarrousel, diametre));
     this.interfaceMoteur = interfaceMoteur;
     
     this.reset() ;

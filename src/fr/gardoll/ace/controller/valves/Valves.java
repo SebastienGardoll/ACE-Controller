@@ -28,7 +28,7 @@ public class Valves implements Closeable
   
   public Valves(ParaCom paraCom)
   {
-    _LOG.debug("instanciating valves");
+    _LOG.debug("initializing the valves");
     this._paracom = paraCom;
   }
   

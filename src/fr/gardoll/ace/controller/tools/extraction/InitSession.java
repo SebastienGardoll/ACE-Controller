@@ -77,9 +77,10 @@ public class InitSession
   @Override
   public String toString()
   {
-    String result = String.format("initialization: nbColumn=%s ; numColumn=%s ; numSequence=%s ; protocol=%s",
+    String result = String.format("extraction settings:\n\nnbColumn=%s ; numColumn=%s ; numSequence=%s\nprotocol=%s\ncolumn=%s\n",
         this.nbColonne, this.numColonne, this.numSequence,
-        this.protocol.protocolFilePath.toAbsolutePath());
+        this.protocol.protocolFilePath,
+        this.protocol.colonne.getColumnFilePath());
     
     return result;
   }
