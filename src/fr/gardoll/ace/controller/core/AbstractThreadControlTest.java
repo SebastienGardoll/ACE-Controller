@@ -400,9 +400,17 @@ class TestToolControlOperations extends AbstractToolControl
   
   private ToolState _state = new RunningState(this);
   
+  public static final String TOOL_NAME = "test";
+  
   public TestToolControlOperations() throws InitializationException, ConfigurationException
   {
     super(null, false, false, false);
+  }
+  
+  @Override
+  protected String getToolName()
+  {
+    return TOOL_NAME;
   }
   
   @Override

@@ -25,10 +25,18 @@ public class PumpToolControl extends AbstractPausableToolControl
 {
   private static final Logger _LOG = Log.HIGH_LEVEL;
   
+  public static final String TOOL_NAME = "pump";
+  
   public PumpToolControl(ParametresSession parametresSession)
       throws InitializationException, ConfigurationException
   {
     super(parametresSession, true, true, true) ;
+  }
+  
+  @Override
+  protected String getToolName()
+  {
+    return TOOL_NAME;
   }
   
   void start(SortedSet<Integer> lines, int volume) throws ConfigurationException

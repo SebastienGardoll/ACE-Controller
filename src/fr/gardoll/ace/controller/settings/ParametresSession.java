@@ -61,8 +61,6 @@ public class ParametresSession implements Closeable
   private ParametresSession() throws ConfigurationException 
   {
     this._settings = GeneralSettings.instance();
-    _LOG.debug(String.format("isDebug returns %s", this._settings.isDebug()));
-    _LOG.debug(String.format("isFullScreen returns %s", this._settings.isFullScreen()));
   }
 
   private SerialCom instantiateSerialCom(String classPath, String portPath) throws InitializationException
@@ -407,6 +405,8 @@ public class ParametresSession implements Closeable
 
   public void reset()
   {
+    _LOG.debug("*** resetting all the session ***");
+    
     try
     {
       if(this._pump != null)

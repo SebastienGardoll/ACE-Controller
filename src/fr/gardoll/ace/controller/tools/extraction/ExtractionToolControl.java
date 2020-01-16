@@ -16,12 +16,20 @@ import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class ExtractionToolControl extends AbstractPausableToolControl
 {
+  public static final String TOOL_NAME = "extraction";
+  
   private static final Logger _LOG = Log.HIGH_LEVEL;
   
   public ExtractionToolControl(ParametresSession parametresSession)
                             throws InitializationException, ConfigurationException
   {
     super(parametresSession, true, true, true) ;
+  }
+  
+  @Override
+  protected String getToolName()
+  {
+    return TOOL_NAME;
   }
 
   void start(InitSession initSession)

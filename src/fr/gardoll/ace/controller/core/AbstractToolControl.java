@@ -7,6 +7,7 @@ import java.util.Set ;
 import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
+import fr.gardoll.ace.controller.settings.GeneralSettings ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
@@ -34,11 +35,17 @@ public abstract class AbstractToolControl implements ToolControl, Observable
   
   abstract void resumeOperations();
   
+  protected abstract String getToolName();
+  
   public AbstractToolControl(ParametresSession parametresSession,
                              boolean hasPump, boolean hasAutosampler,
                              boolean hasValves)
                          throws InitializationException, ConfigurationException
   {
+    String msg = String.format("starting %s tool with general settings:\n\n%s\n",
+        this.getToolName(), GeneralSettings.instance().toString());
+    Log.HIGH_LEVEL.info(msg);
+    
     this._hasAutosampler = hasAutosampler;
     this._hasPump = hasPump;
     this._hasValves = hasValves;

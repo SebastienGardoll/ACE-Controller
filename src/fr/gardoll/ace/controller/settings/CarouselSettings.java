@@ -6,14 +6,14 @@ import java.nio.file.Path ;
 // This class is meant to be replaced by a future Carousel class.
 class CarouselSettings extends Settings
 {
-  private static final String SEC_INFO_CARROUSEL                = "informationsCarrousel";
-  private static final String SIC_CLEF_NOM_CARROUSEL            = "nomCarrousel";
-  private static final String SIC_CLEF_DIA                      = "diametre";
-  private static final String SIC_CLEF_NB_COL                   = "nombreColonne";
-  private static final String SIC_CLEF_REF_CARROUSEL            = "referenceCarrousel";
-  private static final String SIC_CLEF_EPAISSEUR                = "epaisseur";
-  private static final String SIC_CLEF_NB_DEMI_PAS              = "nombreDemiPas";
-  private static final String SIC_CLEF_AJUSTEMENT               = "ajuste?";
+  static final String SEC_INFO_CARROUSEL                = "informationsCarrousel";
+  static final String SIC_CLEF_NOM_CARROUSEL            = "nomCarrousel";
+  static final String SIC_CLEF_DIA                      = "diametre";
+  static final String SIC_CLEF_NB_COL                   = "nombreColonne";
+  static final String SIC_CLEF_REF_CARROUSEL            = "referenceCarrousel";
+  static final String SIC_CLEF_EPAISSEUR                = "epaisseur";
+  static final String SIC_CLEF_NB_DEMI_PAS              = "nombreDemiPas";
+  static final String SIC_CLEF_AJUSTEMENT               = "ajuste?";
   
   public static final int DEFAULT_MIN_NB_PAS_CARROUSEL = 1;
   public static final int DEFAULT_MIN_NB_MAX_COLUMN = 2 ;

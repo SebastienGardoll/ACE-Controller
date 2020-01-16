@@ -16,6 +16,8 @@ import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class ValvesToolControl extends AbstractCloseableToolControl
 {
+  public static final String TOOL_NAME = "valves";
+  
   private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private final static int _DEFAULT_LAST_VALVE = -1;
@@ -32,6 +34,12 @@ public class ValvesToolControl extends AbstractCloseableToolControl
       throws InitializationException, ConfigurationException
   {
     super(parametresSession, false, false, true) ;
+  }
+  
+  @Override
+  protected String getToolName()
+  {
+    return TOOL_NAME;
   }
   
   @Override

@@ -677,4 +677,103 @@ public class GeneralSettings extends Settings
     super.close();
     GeneralSettings._INSTANCE = null;
   }
+  
+  @Override
+  public String toString()
+  {
+    StringBuilder sb = new StringBuilder();
+    
+    sb.append('[');
+    sb.append(SEC_ACE_CONTROLLER);
+    sb.append(']');
+    sb.append('\n');
+    
+    sb.append(SAC_IS_DEBUG);
+    sb.append(": ");
+    sb.append(this.isDebug());
+    sb.append('\n');
+    
+    sb.append(SAC_IS_FULL_SCREEN);
+    sb.append(": ");
+    sb.append(this.isFullScreen());
+    sb.append('\n');
+    sb.append('\n');
+    
+    sb.append('[');
+    sb.append(SEC_INFO_POUSSE_SERINGUE);
+    sb.append(']');
+    sb.append('\n');
+    
+    sb.append(SIPS_CLEF_VOL_MAX);
+    sb.append(": ");
+    sb.append(this.getVolumeMaxSeringue());
+    sb.append('\n');
+    
+    sb.append(SIPS_CLEF_DEBIT_MAX);
+    sb.append(": ");
+    sb.append(this.getDebitMaxPousseSeringue());
+    sb.append('\n');
+    
+    sb.append(SIPS_CLEF_VOL_RINCAGE);
+    sb.append(": ");
+    sb.append(this.getVolumeRincage());
+    sb.append('\n');
+    
+    sb.append(SIPS_CLEF_DIA_SERINGUE);
+    sb.append(": ");
+    sb.append(this.getDiametreSeringue());
+    sb.append('\n');
+    
+    sb.append(SIPS_CLEF_NB_RINCAGE);
+    sb.append(": ");
+    sb.append(this.getNbRincage());
+    sb.append('\n');
+    
+    sb.append(SIPS_CLEF_NB_SERINGUE);
+    sb.append(": ");
+    sb.append(this.getNbRincage());
+    sb.append('\n');
+    sb.append('\n');
+    
+    sb.append('[');
+    sb.append(SEC_INFO_CARROUSEL);
+    sb.append(']');
+    sb.append('\n');
+    
+    sb.append(SIC_CLEF_CHEMIN_FICHIER_CARROUSEL);
+    sb.append(": ");
+    sb.append(this.getCarouselConfFilePath());
+    sb.append('\n');
+    
+    sb.append(CarouselSettings.SIC_CLEF_DIA);
+    sb.append(": ");
+    sb.append(this.getDiametreCarrousel());
+    sb.append('\n');
+    
+    sb.append(CarouselSettings.SIC_CLEF_NB_COL);
+    sb.append(": ");
+    sb.append(this.getNbMaxColonne()+1);
+    sb.append('\n');
+    
+    sb.append(CarouselSettings.SIC_CLEF_REF_CARROUSEL);
+    sb.append(": ");
+    sb.append(this.getRefCarrousel());
+    sb.append('\n');
+    
+    sb.append(CarouselSettings.SIC_CLEF_EPAISSEUR);
+    sb.append(": ");
+    sb.append(this.getEpaisseur());
+    sb.append('\n');
+    
+    sb.append(CarouselSettings.SIC_CLEF_NB_DEMI_PAS);
+    sb.append(": ");
+    sb.append(this.getNbPasCarrousel());
+    sb.append('\n');
+    
+    sb.append(CarouselSettings.SIC_CLEF_AJUSTEMENT);
+    sb.append(": ");
+    sb.append(this.isCarouselTweaked());
+    
+    return sb.toString();
+  }
 }

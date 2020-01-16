@@ -21,6 +21,8 @@ import fr.gardoll.ace.controller.settings.ParametresSession ;
 
 public class AutosamplerToolControl extends AbstractPausableToolControl
 {
+  public static final String TOOL_NAME = "autosampler";
+  
   private static final Logger _LOG = Log.HIGH_LEVEL;
   private Colonne colonne = null;
   private boolean hasColumn = false ;
@@ -30,6 +32,12 @@ public class AutosamplerToolControl extends AbstractPausableToolControl
       throws InitializationException, ConfigurationException
   {
     super(parametresSession, false, true, false);
+  }
+  
+  @Override
+  protected String getToolName()
+  {
+    return TOOL_NAME;
   }
   
   @Override
