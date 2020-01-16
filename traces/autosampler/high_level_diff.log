@@ -2,11 +2,9 @@ Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1n - ******************** testArm1n arm go to top
@@ -42,12 +40,10 @@ AutosamplerToolControl::closeOperations - controller has nothing to do while clo
 Passeur::close - closing the autosampler
 InitialState::close - set closed state
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2n - ******************** testArm2n arm go to trash
@@ -91,16 +87,14 @@ ParametresSession::close - closing parameter session
 InitialState::close - set closed state
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm3n - ******************** testArm3n arm go to column
-AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
+AutosamplerToolControl::openColumn - openning column file conf/columns/nouvelle colonne.cln
 AutosamplerToolControl::armGoColonne - start arm thread for go to column
 InitialState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '2'
@@ -138,12 +132,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm4n - ******************** testArm4n arm free move up
@@ -179,12 +171,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm5n - ******************** testArm5n arm free move down
@@ -220,12 +210,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1c - ******************** testArm1c cancel arm go to top
@@ -263,12 +251,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2c - ******************** testArm2c cancel arm go to trash
@@ -314,16 +300,14 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm3c - ******************** testArm3c cancel arm go to column
-AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
+AutosamplerToolControl::openColumn - openning column file conf/columns/nouvelle colonne.cln
 AutosamplerToolControl::armGoColonne - start arm thread for go to column
 InitialState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '2'
@@ -363,12 +347,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm4c - ******************** testArm4c cancel arm free move up
@@ -406,12 +388,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm5c - ******************** testArm5c cancel arm free move down
@@ -449,12 +429,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm1p - ******************** testArm1p pause arm go to top
@@ -502,16 +480,14 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 AutosamplerToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm2p - ******************** testArm2p pause arm go to trash
@@ -571,16 +547,14 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm3p - ******************** testArm3p pause arm go to column
-AutosamplerToolControl::openColumn - openning column file /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/columns/nouvelle colonne.cln
+AutosamplerToolControl::openColumn - openning column file conf/columns/nouvelle colonne.cln
 AutosamplerToolControl::armGoColonne - start arm thread for go to column
 InitialState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '2'
@@ -634,12 +608,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm4p - ******************** testArm4p pause arm free move up
@@ -691,12 +663,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testArm5p - ******************** testArm5p pause arm free move down
@@ -748,12 +718,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel1n - ******************** testCarousel1n turn right
@@ -791,12 +759,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel2n - ******************** testCarousel2n turn left
@@ -834,12 +800,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel3n - ******************** testCarousel3n go to position 10
@@ -873,12 +837,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel1c - ******************** testCarousel1c cancel turn right
@@ -919,12 +881,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel2c - ******************** testCarousel2c cancel turn left
@@ -965,12 +925,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel3c - ******************** testCarousel3c cancel go to position 10
@@ -1007,12 +965,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel1p - ******************** testCarousel1p pause turn right
@@ -1066,12 +1022,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel2p - ******************** testCarousel2p pause turn left
@@ -1125,12 +1079,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::testCarousel3p - ******************** testCarousel3p pause go to position 10
@@ -1180,12 +1132,10 @@ ParametresSession::close - closing parameter session
 InitialState::close - set closed state
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::scriptedTest1 - ******************** scripted test 1
@@ -1262,12 +1212,10 @@ InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 AutosamplerToolTest::scriptedTest2 - ******************** scripted test 2
@@ -1338,10 +1286,10 @@ RunningState::done - set ready state
 AutosamplerToolControl::armGoButee - start arm thread for go to top
 ReadyState::start - set running state
 ArmThread::threadLogic - run ArmThread with order '0'
-Passeur::moveButeBras - move the arm to the top
 RunningState::askCancellation - waiting for cancellation
-Passeur::finMoveBras - waiting for the arm
+Passeur::moveButeBras - move the arm to the top
 AbstractThreadControl::cancel - ask the thread to cancel
+Passeur::finMoveBras - waiting for the arm
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
 Passeur::cancel - cancelling the autosampler

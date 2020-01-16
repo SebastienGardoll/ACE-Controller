@@ -1,11 +1,9 @@
 ValvesToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ValvesToolTest::scriptedTest1 - ******************** scripted test1
 ValvesToolTest::scriptedTest1 - * open sequentially every valve *
 ValvesToolControl::handleValve - openning valve 0
@@ -34,13 +32,11 @@ Valves::ouvrir - shutting all the valves
 InitialState::close - set closed state
 Valves::close - closing valves controller with paracom id 'stub'
 ValvesToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ValvesToolTest::scriptedTest2 - ******************** scripted test2
 ValvesToolTest::scriptedTest2 - * open and shut sequentially every valve *
 ValvesToolControl::handleValve - openning valve 1
@@ -78,5 +74,5 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 ValvesToolControl::closeOperations - closing all the valves
 Valves::ouvrir - shutting all the valves
-InitialState::close - set closed state
 Valves::close - closing valves controller with paracom id 'stub'
+InitialState::close - set closed state

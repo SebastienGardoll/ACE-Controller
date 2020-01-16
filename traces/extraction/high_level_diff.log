@@ -2,21 +2,19 @@ Passeur::convertBras - convert 50.0 millimeter into 6667 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test1n - ******************** test1n nominal sequence
@@ -25,7 +23,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=3 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/nominal_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=3 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/nominal_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HCl 6N (3) waiting 20s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -647,9 +650,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13646 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:10:09.489103Z
-AbstractThreadControl::await - waiting 13636 ms
+ExtractionThreadControl::threadLogic - wait 13631 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:35:06.527741Z
+AbstractThreadControl::await - waiting 13622 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -803,9 +806,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2960 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:10:33.459539Z
-AbstractThreadControl::await - waiting 2960 ms
+ExtractionThreadControl::processSequence - wait 2948 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:35:30.495763Z
+AbstractThreadControl::await - waiting 2948 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -1147,9 +1150,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9415 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:11:44.495208Z
-AbstractThreadControl::await - waiting 9415 ms
+ExtractionThreadControl::threadLogic - wait 9429 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:36:41.512155Z
+AbstractThreadControl::await - waiting 9429 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1190,22 +1193,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test2n - ******************** test2n rincing cases
@@ -1214,7 +1215,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/rincing_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/rincing_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HCl 6N (3) waiting 1s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -1632,22 +1638,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test3n - ******************** test3n await tests
@@ -1656,7 +1660,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/await_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/await_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 10s (with pause) ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -1827,9 +1836,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 3754 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:13:29.967368Z
-AbstractThreadControl::await - waiting 3754 ms
+ExtractionThreadControl::threadLogic - wait 3749 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:38:27.041852Z
+AbstractThreadControl::await - waiting 3749 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -1926,9 +1935,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
-ExtractionThreadControl::processSequence - wait 3754 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:13:43.915330Z
-AbstractThreadControl::await - waiting 3754 ms
+ExtractionThreadControl::processSequence - wait 3755 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:38:41.006972Z
+AbstractThreadControl::await - waiting 3755 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -2009,7 +2018,7 @@ Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
 ExtractionThreadControl::threadLogic - wait 9538 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:14:07.353247Z
+AbstractThreadControl::await - wait until 2020-01-16T11:39:04.440836Z
 AbstractThreadControl::await - waiting 9538 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
@@ -2043,30 +2052,28 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
+InitialState::close - set closed state
 ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
-InitialState::close - set closed state
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test4n - ******************** test4n resuming to sequence 2/3
@@ -2075,7 +2082,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=2 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/resuming_test_seq.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=2
+protocol=conf/protocoles/resuming_test_seq.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 2 (resuming): 1.0 mL of HNO3 2N (4) waiting 1s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -2422,22 +2434,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test5n - ******************** test5n resuming to column 2/3
@@ -2446,7 +2456,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=3 ; numColumn=2 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/resuming_test_col.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=3 ; numColumn=2 ; numSequence=1
+protocol=conf/protocoles/resuming_test_col.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1 (resuming): 1.0 mL of HNO3 0,05N (2) waiting 1s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -2839,22 +2854,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test6n - ******************** test6n resuming to column 2/3 & sequence 2/3
@@ -2863,7 +2876,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=3 ; numColumn=2 ; numSequence=2 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/resuming_test_seq.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=3 ; numColumn=2 ; numSequence=2
+protocol=conf/protocoles/resuming_test_seq.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 2 (resuming): 1.0 mL of HNO3 2N (4) waiting 1s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -3312,22 +3330,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test7n - ******************** test7n sequence pause and turn to the right
@@ -3336,7 +3352,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/solo_sequence_pause_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/solo_sequence_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 1s (with pause) ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -3582,30 +3603,28 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test8n - ******************** test8n sequence pause and turn to the left
@@ -3614,7 +3633,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/solo_sequence_pause_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/solo_sequence_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 1s (with pause) ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -3868,22 +3892,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test9n - ******************** test9n turn to the right while waiting
@@ -3892,7 +3914,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/solo_sequence_no_pause_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -4073,10 +4100,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4526 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:19:21.603615Z
+ExtractionThreadControl::threadLogic - wait 4519 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:44:18.762112Z
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 4526 ms
+AbstractThreadControl::await - waiting 4519 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4110,7 +4137,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2399 ms
+AbstractThreadControl::await - waiting 2378 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4143,30 +4170,28 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test10n - ******************** test10n turn to the left while waiting
@@ -4175,7 +4200,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/solo_sequence_no_pause_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -4356,10 +4386,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4528 ms until the last column percolates
+ExtractionThreadControl::threadLogic - wait 4514 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:44:58.903784Z
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - wait until 2020-01-15T16:20:01.698848Z
-AbstractThreadControl::await - waiting 4528 ms
+AbstractThreadControl::await - waiting 4514 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4393,7 +4423,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2403 ms
+AbstractThreadControl::await - waiting 2389 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4426,30 +4456,28 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test11n - ******************** test11n turn to the right while usr pause
@@ -4458,7 +4486,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/solo_sequence_no_pause_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -4673,9 +4706,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4527 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:20:43.678033Z
-AbstractThreadControl::await - waiting 4527 ms
+ExtractionThreadControl::threadLogic - wait 4505 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:45:40.948615Z
+AbstractThreadControl::await - waiting 4505 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4716,22 +4749,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test12n - ******************** test12n turn to the left while usr pause
@@ -4740,7 +4771,12 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/solo_sequence_no_pause_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -4830,8 +4866,8 @@ Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel ste
 RunningState::askPausing - waiting for pause
 Passeur::moveOrigineBras - move the arm to its origin
 MotorControllerStub::move - % carousel doesn't have to move %
-AbstractThreadControl::askPause - ask the thread to pause
 Passeur::finMoveBras - waiting for the arm
+AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -4955,9 +4991,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4537 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:21:25.707857Z
-AbstractThreadControl::await - waiting 4537 ms
+ExtractionThreadControl::threadLogic - wait 4535 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:46:23.009541Z
+AbstractThreadControl::await - waiting 4535 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4998,22 +5034,20 @@ Valves::close - closing the valves
 Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
+Valves::<init> - initializing the valves
 ParametresSession::getPousseSeringue - instantiating the pump
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
+PousseSeringue::<init> - initializing the pump
 Valves::ouvrir - shutting all the valves
 PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
 PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
 ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
+Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
 Passeur::setModeDirect - setting the ack single line mode
 ExtractionToolTest::test1c - ******************** test1c cancel while awaiting
@@ -5022,7 +5056,292 @@ PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
 ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/await_cancel_pause_test.prt
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/await_cancel_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
+ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
+ExtractionThreadControl::processSequence - preparing the extraction
+Commandes::referencementBras - indexing the arm above the column
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::convertBras - convert -63.0 millimeter into -8400 number of arm steps
+Passeur::moveBras - move the arm to the position -8400
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Commandes::deplacementPasseurPoubelle - moving the carousel to the trash position
+Passeur::moveOrigineBras - move the arm to its origin
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+Passeur::convertBras - convert 57.0 millimeter into 7600 number of arm steps
+Passeur::moveBras - move the arm to the position -7600
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Commandes::rincage - rincing with H20
+PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
+PousseSeringue::vidange - draining the pump
+PousseSeringue::vidange - % the pump is already drained %
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+Commandes::rincage - start rince cycle 0
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
+Valves::ouvrir - openning the H2O valve
+PousseSeringue::algoAspiration - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+PousseSeringue::vidange - draining the pump
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
+Valves::ouvrir - openning the withdrawing valve
+PousseSeringue::algoRefoulement - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+Passeur::vibration - vibrate the arm
+Commandes::rincage - rincing with valve 4
+PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
+PousseSeringue::setDebitRefoulement - infusion rate is already at 10.0
+PousseSeringue::vidange - draining the pump
+PousseSeringue::vidange - % the pump is already drained %
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+Commandes::rincage - start rince cycle 0
+PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
+Valves::ouvrir - openning the valve '4'
+PousseSeringue::algoAspiration - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+PousseSeringue::vidange - draining the pump
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
+Valves::ouvrir - openning the withdrawing valve
+PousseSeringue::algoRefoulement - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+Passeur::vibration - vibrate the arm
+ExtractionThreadControl::processSequence - don't need to wait the next column
+Commandes::distribution - * processing column 1 *
+Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
+Passeur::moveOrigineBras - move the arm to its origin
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
+Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
+Passeur::moveBras - move the arm to the position -3274
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+PousseSeringue::volumeRestant - total raiming volume is '0.0'
+PousseSeringue::volumeRestant - total raiming volume is '0.0'
+PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
+Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
+PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
+Valves::ouvrir - openning the valve '4'
+PousseSeringue::algoAspiration - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - pump completed
+PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
+PousseSeringue::setDebitRefoulement - infusion rate is already at 10.0
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5' to the valve '4'
+Valves::ouvrir - openning the valve '4'
+PousseSeringue::algoRefoulement - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+PousseSeringue::volumeRestant - total raiming volume is '1.0'
+Commandes::algoDistribution - set infusion rate min
+PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
+PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
+Valves::ouvrir - openning the withdrawing valve
+PousseSeringue::algoRefoulement - run the pump
+Commandes::algoDistribution - set infusion rate inter
+PousseSeringue::setDebitRefoulement - setting the infusion rate to '3.0'
+Commandes::algoDistribution - set infusion rate max
+PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+Passeur::vibration - vibrate the arm
+Commandes::distribution - * column 1 completed *
+Commandes::deplacementPasseurPoubelle - moving the carousel to the trash position
+Passeur::moveOrigineBras - move the arm to its origin
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+Passeur::convertBras - convert 57.0 millimeter into 7600 number of arm steps
+Passeur::moveBras - move the arm to the position -7600
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+ExtractionThreadControl::threadLogic - preparing the next sequence
+ExtractionThreadControl::threadLogic - refill from valve 4
+PousseSeringue::volumeRestant - total raiming volume is '0.0'
+PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
+Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
+PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
+PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.5' from valve '4'
+Valves::ouvrir - openning the valve '4'
+PousseSeringue::algoAspiration - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
+PousseSeringue::finPompage - pump completed
+PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
+PousseSeringue::setDebitRefoulement - infusion rate is already at 10.0
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5' to the valve '4'
+Valves::ouvrir - openning the valve '4'
+PousseSeringue::algoRefoulement - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+ExtractionThreadControl::threadLogic - sequence 1 is completed
+ExtractionThreadControl::threadLogic - the current sequence has not pause
+ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
+ExtractionThreadControl::processSequence - wait 8757 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-16T11:47:03.196026Z
+RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::await - waiting 8757 ms
+AbstractThreadControl::cancel - ask the thread to cancel
+AbstractThreadControl::checkCancel - cancelling the thread
+AbstractCancelableToolControl::cancelOperations - running cancel procedure
+Passeur::cancel - cancelling the autosampler
+Passeur::cancel - the autosampler is already halted
+PousseSeringue::cancel - cancelling the pump
+PousseSeringue::cancel - the pump is already stopped
+AbstractCancelableToolControl::cancelOperations - thread is cancelled
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+Passeur::moveArmToTrash - move the arm to trash
+Passeur::moveArmToTrash - first reference the arm from the top
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveArmToTrash - then get the arm to the trash
+Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
+Passeur::moveBras - move the arm to the position -13000
+MotorControllerStub::move - % carousel doesn't have to move %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+PousseSeringue::reinit - reinitializing the pump
+PousseSeringue::vidange - draining the pump
+PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.5' to the valve '7'
+Valves::ouvrir - openning the withdrawing valve
+PousseSeringue::algoRefoulement - run the pump
+PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
+PousseSeringue::fermetureEv - closing the valves
+Valves::ouvrir - shutting all the valves
+PousseSeringue::finPompage - pump completed
+Passeur::moveButeBras - move the arm to the top
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+RunningState::cancelTransition - set done state
+ExtractionToolTest::tearDown - ******************** teardown
+AbstractCloseableToolControl$1::run - running the close operations
+CloseableState::close - reinit before closing
+AbstractCancelableToolControl::reinitOperations - reinitializing all devices
+Passeur::reinit - reinitializing the autosampler
+Passeur::moveButeBras - move the arm to the top
+MotorControllerStub::movel - % arm already on top %
+Passeur::finMoveBras - waiting for the arm
+Passeur::finMoveBras - arm reached the position
+Passeur::setOrigineBras - setting the origin for the arm
+Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
+MotorControllerStub::move - % carousel doesn't have to move %
+MotorControllerStub::move - % arm doesn't have to move %
+Passeur::finMoveCarrousel - waiting for the carousel
+Passeur::finMoveCarrousel - carousel reached the position
+AbstractCancelableToolControl::reinitOperations - pump is already drained
+AbstractCancelableToolControl::reinitOperations - reinitialisation done
+CloseableState::reinit - set initial state
+CloseableState::close - closing after reinit
+ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
+ParametresSession::close - closing parameter session
+InitialState::close - set closed state
+PousseSeringue::close - closing the pump
+Passeur::close - closing the autosampler
+Valves::close - closing the valves
+Valves::ouvrir - shutting all the valves
+Valves::close - closing valves controller with paracom id 'stub'
+ExtractionToolTest::setUp - ******************** setup
+Settings::<init> - opening conf/configuration.ini
+Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+ParametresSession::getValves - instantiating the valves
+ParametresSession::getValves - instantiating valves
+Valves::<init> - initializing the valves
+ParametresSession::getPousseSeringue - instantiating the pump
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
+PousseSeringue::<init> - initializing the pump
+Valves::ouvrir - shutting all the valves
+PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
+PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
+ParametresSession::getPasseur - instantiating the autosampler
+Passeur::<init> - initializing the autosampler
+Passeur::reset - resetting the autosampler interface
+Passeur::setModeDirect - setting the ack single line mode
+ExtractionToolTest::test1p - ******************** test1p pause while awaiting
+ExtractionToolControl::start - instantiate commandes
+PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
+ExtractionToolControl::start - starting extraction thread
+InitialState::start - set running state
+ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - extraction settings:
+
+nbColumn=1 ; numColumn=1 ; numSequence=1
+protocol=conf/protocoles/await_cancel_pause_test.prt
+column=./conf/columns/nouvelle colonne.cln
+
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
 ExtractionThreadControl::processSequence - preparing the extraction
 Commandes::referencementBras - indexing the arm above the column
@@ -5197,285 +5516,8 @@ ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
 ExtractionThreadControl::processSequence - wait 8764 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:22:05.801803Z
-RunningState::askCancellation - waiting for cancellation
+AbstractThreadControl::await - wait until 2020-01-16T11:47:37.473872Z
 AbstractThreadControl::await - waiting 8764 ms
-AbstractThreadControl::cancel - ask the thread to cancel
-AbstractThreadControl::checkCancel - cancelling the thread
-AbstractCancelableToolControl::cancelOperations - running cancel procedure
-Passeur::cancel - cancelling the autosampler
-Passeur::cancel - the autosampler is already halted
-PousseSeringue::cancel - cancelling the pump
-PousseSeringue::cancel - the pump is already stopped
-AbstractCancelableToolControl::cancelOperations - thread is cancelled
-AbstractCancelableToolControl::reinitOperations - reinitializing all devices
-Passeur::reinit - reinitializing the autosampler
-Passeur::moveButeBras - move the arm to the top
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::setOrigineBras - setting the origin for the arm
-Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
-MotorControllerStub::move - % carousel doesn't have to move %
-MotorControllerStub::move - % arm doesn't have to move %
-Passeur::finMoveCarrousel - waiting for the carousel
-Passeur::finMoveCarrousel - carousel reached the position
-Passeur::moveArmToTrash - move the arm to trash
-Passeur::moveArmToTrash - first reference the arm from the top
-Passeur::moveButeBras - move the arm to the top
-MotorControllerStub::movel - % arm already on top %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::setOrigineBras - setting the origin for the arm
-Passeur::moveArmToTrash - then get the arm to the trash
-Passeur::convertBras - convert -97.5 millimeter into -13000 number of arm steps
-Passeur::moveBras - move the arm to the position -13000
-MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-PousseSeringue::reinit - reinitializing the pump
-PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.5' to the valve '7'
-Valves::ouvrir - openning the withdrawing valve
-PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-Passeur::moveButeBras - move the arm to the top
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::setOrigineBras - setting the origin for the arm
-AbstractCancelableToolControl::reinitOperations - reinitialisation done
-RunningState::cancelTransition - set done state
-ExtractionToolTest::tearDown - ******************** teardown
-AbstractCloseableToolControl$1::run - running the close operations
-CloseableState::close - reinit before closing
-AbstractCancelableToolControl::reinitOperations - reinitializing all devices
-Passeur::reinit - reinitializing the autosampler
-Passeur::moveButeBras - move the arm to the top
-MotorControllerStub::movel - % arm already on top %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::setOrigineBras - setting the origin for the arm
-Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
-MotorControllerStub::move - % carousel doesn't have to move %
-MotorControllerStub::move - % arm doesn't have to move %
-Passeur::finMoveCarrousel - waiting for the carousel
-Passeur::finMoveCarrousel - carousel reached the position
-AbstractCancelableToolControl::reinitOperations - pump is already drained
-AbstractCancelableToolControl::reinitOperations - reinitialisation done
-CloseableState::reinit - set initial state
-CloseableState::close - closing after reinit
-ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
-ParametresSession::close - closing parameter session
-PousseSeringue::close - closing the pump
-Passeur::close - closing the autosampler
-Valves::close - closing the valves
-Valves::ouvrir - shutting all the valves
-Valves::close - closing valves controller with paracom id 'stub'
-ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
-Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
-ParametresSession::<init> - isDebug returns true
-ParametresSession::<init> - isFullScreen returns false
-ParametresSession::getValves - instantiating the valves
-ParametresSession::getValves - instantiating valves
-Valves::<init> - instanciating valves
-ParametresSession::getPousseSeringue - instantiating the pump
-PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-PousseSeringue::<init> - initializing the pump with 1 number of syringe, 14.25 syringe diameter, 10.0 syringe max volume, 10.0 max rate, 0.0 initial volume
-Valves::ouvrir - shutting all the valves
-PumpController::debitMaxIntrinseque - computing the maxium rate based on the syringe diameter '14.25'
-PumpController::debitMaxIntrinseque - computed max rate is '20.238635657016093' rounded to '20'
-ParametresSession::getPasseur - instantiating the autosampler
-Passeur::<init> - initializing the autosampler with 640 number of carousel steps and 360 diameter
-Passeur::reset - resetting the autosampler interface
-Passeur::setModeDirect - setting the ack single line mode
-ExtractionToolTest::test1p - ******************** test1p pause while awaiting
-ExtractionToolControl::start - instantiate commandes
-PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
-ExtractionToolControl::start - starting extraction thread
-InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
-ExtractionThreadControl::threadLogic - initialization: nbColumn=1 ; numColumn=1 ; numSequence=1 ; protocol=/Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/protocoles/await_cancel_pause_test.prt
-ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
-ExtractionThreadControl::processSequence - preparing the extraction
-Commandes::referencementBras - indexing the arm above the column
-Passeur::moveButeBras - move the arm to the top
-MotorControllerStub::movel - % arm already on top %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::setOrigineBras - setting the origin for the arm
-Passeur::convertBras - convert -63.0 millimeter into -8400 number of arm steps
-Passeur::moveBras - move the arm to the position -8400
-MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::setOrigineBras - setting the origin for the arm
-Commandes::deplacementPasseurPoubelle - moving the carousel to the trash position
-Passeur::moveOrigineBras - move the arm to its origin
-MotorControllerStub::move - % carousel doesn't have to move %
-MotorControllerStub::move - % arm doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
-MotorControllerStub::move - % carousel doesn't have to move %
-MotorControllerStub::move - % arm doesn't have to move %
-Passeur::finMoveCarrousel - waiting for the carousel
-Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 57.0 millimeter into 7600 number of arm steps
-Passeur::moveBras - move the arm to the position -7600
-MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Commandes::rincage - rincing with H20
-PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-PousseSeringue::vidange - draining the pump
-PousseSeringue::vidange - % the pump is already drained %
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '1'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '1'
-Valves::ouvrir - openning the H2O valve
-PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
-Valves::ouvrir - openning the withdrawing valve
-PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-Passeur::vibration - vibrate the arm
-Commandes::rincage - rincing with valve 4
-PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-PousseSeringue::setDebitRefoulement - infusion rate is already at 10.0
-PousseSeringue::vidange - draining the pump
-PousseSeringue::vidange - % the pump is already drained %
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-Commandes::rincage - start rince cycle 0
-PousseSeringue::rincageAspiration - rinsing with volume '0.5' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.0' from valve '4'
-Valves::ouvrir - openning the valve '4'
-PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-PousseSeringue::vidange - draining the pump
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
-Valves::ouvrir - openning the withdrawing valve
-PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-Passeur::vibration - vibrate the arm
-ExtractionThreadControl::processSequence - don't need to wait the next column
-Commandes::distribution - * processing column 1 *
-Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel steps
-Passeur::moveOrigineBras - move the arm to its origin
-MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::moveCarrousel - move the carousel to the position 1 with 0 offset
-MotorControllerStub::move - % arm doesn't have to move %
-Passeur::finMoveCarrousel - waiting for the carousel
-Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 11.938297 millimeter into 1592 number of arm steps
-Passeur::convertBras - convert -36.5 millimeter into -4866 number of arm steps
-Passeur::moveBras - move the arm to the position -3274
-MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
-Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
-PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '2.0' from valve '4'
-Valves::ouvrir - openning the valve '4'
-PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
-PousseSeringue::finPompage - pump completed
-PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-PousseSeringue::setDebitRefoulement - infusion rate is already at 10.0
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5' to the valve '4'
-Valves::ouvrir - openning the valve '4'
-PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-PousseSeringue::volumeRestant - total raiming volume is '1.0'
-Commandes::algoDistribution - set infusion rate min
-PousseSeringue::setDebitRefoulement - setting the infusion rate to '1.0'
-PousseSeringue::refoulement - infusing volume '1.0' to the valve '7'
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '1.0' to the valve '7'
-Valves::ouvrir - openning the withdrawing valve
-PousseSeringue::algoRefoulement - run the pump
-Commandes::algoDistribution - set infusion rate inter
-PousseSeringue::setDebitRefoulement - setting the infusion rate to '3.0'
-Commandes::algoDistribution - set infusion rate max
-PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-Passeur::vibration - vibrate the arm
-Commandes::distribution - * column 1 completed *
-Commandes::deplacementPasseurPoubelle - moving the carousel to the trash position
-Passeur::moveOrigineBras - move the arm to its origin
-MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-Passeur::moveCarrousel - move the carousel to the position 0 with 0 offset
-MotorControllerStub::move - % arm doesn't have to move %
-Passeur::finMoveCarrousel - waiting for the carousel
-Passeur::finMoveCarrousel - carousel reached the position
-Passeur::convertBras - convert 57.0 millimeter into 7600 number of arm steps
-Passeur::moveBras - move the arm to the position -7600
-MotorControllerStub::move - % carousel doesn't have to move %
-Passeur::finMoveBras - waiting for the arm
-Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - preparing the next sequence
-ExtractionThreadControl::threadLogic - refill from valve 4
-PousseSeringue::volumeRestant - total raiming volume is '0.0'
-PousseSeringue::volumeMaxSeringueUtile - computed the maximum util volume is '9.0'
-Commandes::remplissageSeringue - withdraw 1.0 mL from valve 4
-PousseSeringue::aspiration - withdrawing volume '1.0' from valve '4'
-PousseSeringue::algoAspiration - running withdrawing subroutine for volume '1.5' from valve '4'
-Valves::ouvrir - openning the valve '4'
-PousseSeringue::algoAspiration - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'false')
-PousseSeringue::finPompage - pump completed
-PousseSeringue::setDebitRefoulement - setting the infusion rate to '10.0'
-PousseSeringue::setDebitRefoulement - infusion rate is already at 10.0
-PousseSeringue::algoRefoulement - running the infusing subroutine for volume '0.5' to the valve '4'
-Valves::ouvrir - openning the valve '4'
-PousseSeringue::algoRefoulement - run the pump
-PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
-PousseSeringue::fermetureEv - closing the valves
-Valves::ouvrir - shutting all the valves
-PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - sequence 1 is completed
-ExtractionThreadControl::threadLogic - the current sequence has not pause
-ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8758 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-15T16:22:40.033899Z
-AbstractThreadControl::await - waiting 8758 ms
 RunningState::askPausing - waiting for pause
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
@@ -5496,7 +5538,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8252 ms
+AbstractThreadControl::await - waiting 8254 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -5607,8 +5649,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
