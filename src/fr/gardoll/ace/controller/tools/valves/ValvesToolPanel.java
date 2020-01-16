@@ -7,10 +7,10 @@ import javax.swing.ButtonModel ;
 import javax.swing.JToggleButton ;
 import javax.swing.text.DefaultCaret ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ControlPanel ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.ui.AbstractCloseableJPanelObserver ;
 
 public class ValvesToolPanel extends AbstractCloseableJPanelObserver
@@ -18,8 +18,7 @@ public class ValvesToolPanel extends AbstractCloseableJPanelObserver
 {
   private static final long serialVersionUID = -8374471632745316066L ;
 
-  private static final Logger _LOG = LogManager
-      .getLogger(ValvesToolPanel.class.getName()) ;
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private final ValvesToolControl _ctrl ;
 

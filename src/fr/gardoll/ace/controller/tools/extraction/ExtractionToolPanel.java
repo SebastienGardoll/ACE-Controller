@@ -7,18 +7,17 @@ import java.util.Optional ;
 import javax.swing.text.DefaultCaret ;
 
 import org.apache.commons.lang3.tuple.Pair ;
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.Action ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.protocol.Sequence ;
 import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class ExtractionToolPanel extends AbstractPausableJPanelObserver
 {
-  private static final Logger _LOG = LogManager
-      .getLogger(ExtractionToolPanel.class.getName()) ;
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private static final long serialVersionUID = -4485547824494200127L ;
 

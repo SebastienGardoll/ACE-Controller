@@ -8,10 +8,10 @@ import java.util.TreeSet ;
 import javax.swing.SpinnerNumberModel ;
 import javax.swing.text.DefaultCaret ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.ControlPanel ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.ui.AbstractPausableJPanelObserver ;
 
 public class PumpToolPanel extends AbstractPausableJPanelObserver
@@ -19,8 +19,7 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
 {
   private static final long serialVersionUID = -9036601240167321318L ;
 
-  private static final Logger _LOG = LogManager
-      .getLogger(PumpToolPanel.class.getName()) ;
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private static final int DEFAULT_VOL_VALUE = 0 ;
   private static final int DEFAULT_MIN_VOL = 0 ;

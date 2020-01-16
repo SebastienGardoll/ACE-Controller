@@ -12,9 +12,9 @@ import javax.swing.SpinnerNumberModel ;
 import javax.swing.WindowConstants ;
 import javax.swing.filechooser.FileFilter ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.protocol.Protocol ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
@@ -22,8 +22,7 @@ import fr.gardoll.ace.controller.settings.GeneralSettings ;
 
 public class ExtractionConfigurationDialog extends javax.swing.JDialog
 {
-  private static final Logger _LOG = LogManager
-      .getLogger(ExtractionConfigurationDialog.class.getName()) ;
+  private static final Logger _LOG = Log.HIGH_LEVEL;
 
   private static int _DEFAULT_MAX_SEQUENCES = 99 ;
   private static int _DEFAULT_MIN_SEQUENCES = 1 ;

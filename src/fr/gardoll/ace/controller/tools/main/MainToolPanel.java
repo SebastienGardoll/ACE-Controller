@@ -2,10 +2,10 @@ package fr.gardoll.ace.controller.tools.main ;
 
 import java.awt.Window ;
 
-import org.apache.logging.log4j.LogManager ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.InitializationException ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.tools.autosampler.AutosamplerToolFrame ;
@@ -17,8 +17,7 @@ import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class MainToolPanel extends javax.swing.JPanel
 {
-  private static final Logger _LOG = LogManager
-      .getLogger(MainToolPanel.class.getName()) ;
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   private static final long serialVersionUID = 1727861281958313483L ;
   private final ParametresSession _parametresSession ;
 
