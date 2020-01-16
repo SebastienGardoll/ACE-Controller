@@ -60,9 +60,8 @@ public class GeneralSettings extends Settings
   
   static
   {
-    Path rootDir = Utils.getInstance().getRootDir();
-    _PROPERTY_FILE_PATH = rootDir.resolve(Names.CONFIG_DIRNAME)
-                                 .resolve(Names.CONFIG_FILENAME);
+    _PROPERTY_FILE_PATH = Paths.get(Names.CONFIG_DIRNAME,
+                                    Names.CONFIG_FILENAME);
   }
 
   private CarouselSettings _carouselSettings ;

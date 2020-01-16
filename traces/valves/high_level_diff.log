@@ -1,5 +1,5 @@
 ValvesToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false

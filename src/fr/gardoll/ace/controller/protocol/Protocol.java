@@ -2,6 +2,7 @@ package fr.gardoll.ace.controller.protocol;
 
 import java.nio.file.Files ;
 import java.nio.file.Path ;
+import java.nio.file.Paths ;
 import java.util.HashMap ;
 import java.util.Map ;
 
@@ -27,7 +28,7 @@ public class Protocol
   public static final String PROTOCOL_FILE_EXTENTION = "prt";
   public static final String PROTOCOL_DIRNAME  = "protocoles";
   public static final Path PROTOCOL_DIR_PATH = 
-      Utils.getInstance().getRootDir().resolve(Names.CONFIG_DIRNAME).resolve(PROTOCOL_DIRNAME);
+      Paths.get(Names.CONFIG_DIRNAME, PROTOCOL_DIRNAME);
   
   // The insertion order is mandatory.
   private final Sequence[] _tabSequence;
@@ -291,10 +292,9 @@ public class Protocol
   
   public static Path computeProtocolFilePath(String protocolFileName)
   {
-    Path rootDir = Utils.getInstance().getRootDir();
-    Path protocolFilePath = rootDir.resolve(Names.CONFIG_DIRNAME)
-                                   .resolve(Protocol.PROTOCOL_DIRNAME)
-                                   .resolve(protocolFileName);
+    Path protocolFilePath = Paths.get(Names.CONFIG_DIRNAME,
+                                      Protocol.PROTOCOL_DIRNAME,
+                                      protocolFileName);
     return protocolFilePath;
   }
 }

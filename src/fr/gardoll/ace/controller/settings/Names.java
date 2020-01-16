@@ -1,8 +1,7 @@
 package fr.gardoll.ace.controller.settings;
 
 import java.nio.file.Path ;
-
-import fr.gardoll.ace.controller.core.Utils ;
+import java.nio.file.Paths ;
 
 public class Names
 {
@@ -12,7 +11,7 @@ public class Names
   public static final String CONFIG_FILENAME   = "configuration.ini";
   
   public final static Path CAROUSEL_DIR_PATH = 
-      Utils.getInstance().getRootDir().resolve(Names.CONFIG_DIRNAME).resolve(Names.CAROUSEL_DIRNAME);
+      Paths.get(Names.CONFIG_DIRNAME, Names.CAROUSEL_DIRNAME);
   public static final String CAROUSEL_DIRNAME  = "carousel";
   public static final String CAROUSEL_FILE_EXTENTION = "crl";
   

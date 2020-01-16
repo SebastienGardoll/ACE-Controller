@@ -67,7 +67,7 @@ public class Utils
     return (value <= EPSILON);
   }
   
-  public static Utils getInstance()
+  private static Utils getInstance()
   {
     if(_INSTANCE == null)
     {
@@ -79,7 +79,7 @@ public class Utils
   
   // Return the path of the directory of the application (not the current
   // directory !).
-  public Path getRootDir()
+  private Path getRootDir()
   {
     if(_ROOT_DIR == null)
     {

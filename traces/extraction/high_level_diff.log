@@ -1,7 +1,7 @@
 Passeur::convertBras - convert 50.0 millimeter into 6667 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 ExtractionToolTest::setUp - ******************** setup
-Settings::<init> - opening /Users/seb/Documents/eclipse-workspace/ACE-Controller/conf/configuration.ini
+Settings::<init> - opening conf/configuration.ini
 Settings::<init> - opening ./conf/carousel/carrousel_sr_spec.crl
 ParametresSession::<init> - isDebug returns true
 ParametresSession::<init> - isFullScreen returns false
