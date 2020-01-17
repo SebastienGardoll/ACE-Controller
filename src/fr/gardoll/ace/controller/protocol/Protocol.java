@@ -5,6 +5,9 @@ import java.nio.file.Path ;
 import java.nio.file.Paths ;
 import java.util.HashMap ;
 import java.util.Map ;
+import java.util.Map.Entry ;
+import java.util.SortedMap ;
+import java.util.TreeMap ;
 
 import org.apache.commons.configuration2.INIConfiguration ;
 import org.apache.commons.configuration2.SubnodeConfiguration ;
@@ -29,6 +32,8 @@ public class Protocol
   public static final String PROTOCOL_DIRNAME  = "protocoles";
   public static final Path PROTOCOL_DIR_PATH = 
       Paths.get(Names.CONFIG_DIRNAME, PROTOCOL_DIRNAME);
+
+  public static final String H20_LITERAL = "H2O" ;
   
   // The insertion order is mandatory.
   private final Sequence[] _tabSequence;
@@ -290,6 +295,45 @@ public class Protocol
     return new ImmutablePair<>(totalVolumeRincageH2O, acideVolumes);
   }
   
+  public SortedMap<String, Pair<Double, Double>> analysis(int nbColumn)
+      throws ConfigurationException
+  {
+    Map<String, Double> protocolVolumes = this.protocolVolume(nbColumn);
+    Double H2OVolume = null;
+    Map<String, Double> rinceVolumes = null;
+    {
+      Pair<Double, Map<String, Double>> pair = this.rinseVolume();
+      H2OVolume = pair.getLeft();
+      rinceVolumes = pair.getRight();
+    }
+    
+    SortedMap<String, Pair<Double, Double>> result = new TreeMap<>();
+    
+    if(protocolVolumes.containsKey(H20_LITERAL))
+    {
+      setAnalysisMap(result, H20_LITERAL, protocolVolumes.get(H20_LITERAL), H2OVolume);
+    }
+    else
+    {
+      setAnalysisMap(result, H20_LITERAL, 0., H2OVolume);
+    }
+    
+    for(Entry<String, Double> entry: protocolVolumes.entrySet())
+    {
+      String key = entry.getKey();
+      setAnalysisMap(result, key, protocolVolumes.get(key), rinceVolumes.get(key));
+    }
+    
+    return result;
+  }
+  
+  private void setAnalysisMap(SortedMap<String, Pair<Double, Double>> map, 
+      String key, Double protocolVolume, Double rinceVolume)
+  {
+    Pair<Double, Double> volumes = new ImmutablePair<>(protocolVolume, rinceVolume);
+    map.put(key, volumes);
+  }
+
   public static Path computeProtocolFilePath(String protocolFileName)
   {
     Path protocolFilePath = Paths.get(Names.CONFIG_DIRNAME,
