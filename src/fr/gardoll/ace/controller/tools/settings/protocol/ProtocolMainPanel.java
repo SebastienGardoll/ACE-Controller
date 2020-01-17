@@ -3,6 +3,7 @@ package fr.gardoll.ace.controller.tools.settings.protocol ;
 import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.Log ;
+import fr.gardoll.ace.controller.ui.UiUtils ;
 
 public class ProtocolMainPanel extends javax.swing.JPanel
 {
@@ -92,7 +93,7 @@ public class ProtocolMainPanel extends javax.swing.JPanel
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    UiUtils.getParentDialog(this).dispose();
   }
 
   // Variables declaration - do not modify
