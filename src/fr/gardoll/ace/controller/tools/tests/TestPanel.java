@@ -1,20 +1,56 @@
 package fr.gardoll.ace.controller.tools.tests ;
 
+import java.awt.Color ;
+import java.util.ArrayList ;
+import java.util.List ;
+
+import javax.swing.text.BadLocationException ;
+import javax.swing.text.DefaultHighlighter ;
+
+import org.apache.commons.lang3.tuple.ImmutablePair ;
+import org.apache.commons.lang3.tuple.Pair ;
+
+import fr.gardoll.ace.controller.core.Action ;
+import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.ToolControl ;
 import fr.gardoll.ace.controller.ui.AbstractCancelableJPanelObserver ;
 
 public class TestPanel extends AbstractCancelableJPanelObserver
 {
 
-    private static final long serialVersionUID = 3863282861526799243L ;
+  private static final long serialVersionUID = 3863282861526799243L ;
+  
+  private static final DefaultHighlighter.DefaultHighlightPainter _HIGHLIGHTER_PAINTER = 
+      new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
   
   private final ToolControl _ctrl;
+  private final List<Pair<Integer, Integer>> _highlightingData = new ArrayList<>();
   
-  public TestPanel(ToolControl ctrl)
+  public TestPanel(ToolControl ctrl, List<String> operations)
   {
     super(ctrl) ;
     this._ctrl = ctrl;
     initComponents() ;
+    initCustom(operations);
+  }
+
+  private void initCustom(List<String> operations)
+  {
+    StringBuilder sb = new StringBuilder();
+    int offset = 0;
+    
+    for(String operation: operations)
+    {
+      sb.append(operation);
+      sb.append('\n');
+      int start = offset;
+      int end = start + operation.length();
+      offset = end + 1;
+      Pair<Integer, Integer> p = new ImmutablePair<>(start, end);
+      this._highlightingData.add(p);
+    }
+    
+    this.operationTextPane.setText(sb.toString().stripTrailing());
   }
 
   /**
@@ -42,6 +78,7 @@ public class TestPanel extends AbstractCancelableJPanelObserver
     setPreferredSize(new java.awt.Dimension(780, 460)) ;
     setLayout(new java.awt.GridBagLayout()) ;
 
+    operationTextPane.setEditable(false);
     textScrollPanel.setViewportView(operationTextPane) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -147,8 +184,17 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   @Override
   protected void displayToUserLogSys(String msg)
   {
-    // TODO Auto-generated method stub
-    // ???
+    // Nothing to do.
+  }
+  
+  @Override
+  protected void processAction(Action action)
+  {
+    if(action.type == ActionType.TEST)
+    {
+      int index = (int) action.data.get();
+      this.highlightOperation(index);
+    }
   }
 
   @Override
@@ -156,5 +202,20 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   {
     // TODO Auto-generated method stub
     
+  }
+  
+  private void highlightOperation(int index)
+  {
+    try
+    {
+      Pair<Integer, Integer> p = this._highlightingData.get(index);
+      int start = p.getLeft();
+      int end = p.getRight();
+      this.operationTextPane.getHighlighter().addHighlight(start, end, _HIGHLIGHTER_PAINTER);
+    }
+    catch (BadLocationException e)
+    {
+      // Should never happen.
+    }
   }
 }
