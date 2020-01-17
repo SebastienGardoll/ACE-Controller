@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.tools.settings.general ;
+package fr.gardoll.ace.controller.tools.editors.settings ;
 
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;

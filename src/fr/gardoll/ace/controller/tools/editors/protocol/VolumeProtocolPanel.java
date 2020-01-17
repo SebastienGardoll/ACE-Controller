@@ -1,4 +1,4 @@
-package fr.gardoll.ace.controller.tools.settings.protocol ;
+package fr.gardoll.ace.controller.tools.editors.protocol ;
 
 import java.io.File ;
 import java.nio.file.Path ;
