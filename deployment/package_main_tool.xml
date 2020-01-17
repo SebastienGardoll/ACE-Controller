@@ -28,8 +28,8 @@
     </target>
     <target name="package_tool" depends="clean,create_run_jar,gen_version">
        <zip destfile="${dir.jarfile}/${tool_name}.zip">
-           <zipfileset dir="${dir.workspace}/ACE-Controller/conf_deployment" prefix="${tool_name}/conf"/>
-           <zipfileset file="${dir.workspace}/ACE-Controller/misc/log4j2.xml" prefix="${tool_name}"/>
+           <zipfileset dir="${dir.workspace}/ACE-Controller/deployment/conf_deployment" prefix="${tool_name}/conf"/>
+           <zipfileset file="${dir.workspace}/ACE-Controller/deployment/log4j2.xml" prefix="${tool_name}"/>
        	   <zipfileset file="${dir.jarfile}/${file.version}" prefix="${tool_name}"/>
            <zipfileset file="${dir.jarfile}/${tool_name}.jar" prefix="${tool_name}" />
        </zip>
