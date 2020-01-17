@@ -51,7 +51,6 @@ public class ProtocolFrame extends AbstractToolFrame
 
   public static ProtocolFrame instantiate()
   {
-    // TODO: complete the protocol settings.
     return new ProtocolFrame(new ProtocolMainPanel());
   }
 }
