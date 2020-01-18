@@ -3,28 +3,42 @@ package fr.gardoll.ace.controller.tools.tests;
 import java.util.ArrayList ;
 import java.util.List ;
 
-public class AutosamplerTest
+import fr.gardoll.ace.controller.autosampler.Passeur ;
+import fr.gardoll.ace.controller.pump.PousseSeringue ;
+import fr.gardoll.ace.controller.valves.Valves ;
+
+public class AutosamplerTest extends TestDriver
 {
+  public AutosamplerTest(String name)
+  {
+    super(name) ;
+  }
+
   public static void main(String[] args)
   {
-    String name = "autosampler";
-    List<Operation> operations = new ArrayList<>();
-    
-    
-    operations.add(new Operation("coucou", ()-> {
-      System.out.println("coucou");
-      Thread.sleep(1000);
-    }));
-    
-    operations.add(new Operation("hello", ()-> {
-      System.out.println("hello");
-      Thread.sleep(1000);
-    }));
-    
-    TestDriver driver = new TestDriver(name, operations);
+    AutosamplerTest driver = new AutosamplerTest("autosampler");
     boolean hasPump = false;
     boolean hasAutosampler = true;
     boolean hasValves = false;
     driver.run(hasPump, hasAutosampler, hasValves) ;
+  }
+
+  @Override
+  protected List<Operation> createOperations(Passeur autosampler,
+      PousseSeringue pump, Valves valves)
+  {
+    
+    List<Operation> operations = new ArrayList<>();
+    
+    operations.add(new Operation("- to trash", ()-> {
+      autosampler.moveArmToTrash();
+      autosampler.finMoveBras() ;
+    }));
+    
+    operations.add(new Operation("- reinit", ()-> {
+      autosampler.reinit();
+    }));
+    
+    return operations;
   }
 }

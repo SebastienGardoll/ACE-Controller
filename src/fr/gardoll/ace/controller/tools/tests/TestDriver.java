@@ -7,6 +7,7 @@ import javax.swing.JPanel ;
 
 import org.apache.logging.log4j.Logger ;
 
+import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.core.AbstractCancelableToolControl ;
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
 import fr.gardoll.ace.controller.core.AbstractToolControl ;
@@ -17,21 +18,26 @@ import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
+import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
+import fr.gardoll.ace.controller.valves.Valves ;
 
-public class TestDriver 
+public abstract class TestDriver 
 {
   private static final Logger _LOG = Log.HIGH_LEVEL;
   
-  private final List<Operation> _operations;
   public final String name;
 
-  public TestDriver(String name, List<Operation> operations)
+  private List<Operation> _operations = null;
+  
+  protected abstract List<Operation> createOperations(Passeur autosampler,
+      PousseSeringue pump, Valves valves);
+
+  public TestDriver(String name)
   {
     this.name = name;
-    this._operations = operations;
   }
   
   class TestFrame extends AbstractToolFrame
@@ -48,9 +54,16 @@ public class TestDriver
   {
     _LOG.info(String.format("starting the %s test", this.name));
     
-    try(ParametresSession parametresSession = ParametresSession.getInstance())
+    try(ParametresSession session = ParametresSession.getInstance())
     {
-      TestControl ctrl = new TestControl(parametresSession, hasPump, hasAutosampler, hasValves) ;
+      TestControl ctrl = new TestControl(session, hasPump, hasAutosampler, hasValves) ;
+      
+      Passeur autosampler = (hasAutosampler)?session.getPasseur():null;
+      PousseSeringue pump = (hasPump)?session.getPousseSeringue():null;
+      Valves valves = (hasValves)?session.getValves():null;
+      
+      this._operations = this.createOperations(autosampler, pump, valves);
+      
       TestPanel toolPanel = new TestPanel(ctrl, this._operations);
       ctrl.addControlPanel(toolPanel);
       TestFrame tool = new TestFrame(toolPanel);
