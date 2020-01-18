@@ -7,7 +7,7 @@ import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
-public class AutosamplerTest extends TestDriver
+public class AutosamplerTest extends AsbtractTest
 {
   public AutosamplerTest(String name)
   {
@@ -16,11 +16,11 @@ public class AutosamplerTest extends TestDriver
 
   public static void main(String[] args)
   {
-    AutosamplerTest driver = new AutosamplerTest("autosampler");
+    AutosamplerTest test = new AutosamplerTest("autosampler");
     boolean hasPump = false;
     boolean hasAutosampler = true;
     boolean hasValves = false;
-    driver.run(hasPump, hasAutosampler, hasValves) ;
+    test.run(hasPump, hasAutosampler, hasValves) ;
   }
 
   @Override

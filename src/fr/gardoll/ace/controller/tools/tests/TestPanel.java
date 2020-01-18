@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.Log ;
-import fr.gardoll.ace.controller.tools.tests.TestDriver.TestControl ;
+import fr.gardoll.ace.controller.tools.tests.AsbtractTest.TestControl ;
 import fr.gardoll.ace.controller.ui.AbstractCancelableJPanelObserver ;
 
 public class TestPanel extends AbstractCancelableJPanelObserver
