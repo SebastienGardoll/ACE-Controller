@@ -9,24 +9,26 @@ import javax.swing.text.DefaultHighlighter ;
 
 import org.apache.commons.lang3.tuple.ImmutablePair ;
 import org.apache.commons.lang3.tuple.Pair ;
+import org.apache.logging.log4j.Logger ;
 
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
-import fr.gardoll.ace.controller.core.ToolControl ;
+import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.ui.AbstractCancelableJPanelObserver ;
 
 public class TestPanel extends AbstractCancelableJPanelObserver
 {
-
   private static final long serialVersionUID = 3863282861526799243L ;
+  
+  private static final Logger _LOG = Log.HIGH_LEVEL;
   
   private static final DefaultHighlighter.DefaultHighlightPainter _HIGHLIGHTER_PAINTER = 
       new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
   
-  private final ToolControl _ctrl;
+  private final AbstractTestControl _ctrl;
   private final List<Pair<Integer, Integer>> _highlightingData = new ArrayList<>();
   
-  public TestPanel(ToolControl ctrl, List<String> operations)
+  public TestPanel(AbstractTestControl ctrl, List<String> operations)
   {
     super(ctrl) ;
     this._ctrl = ctrl;
@@ -144,12 +146,21 @@ public class TestPanel extends AbstractCancelableJPanelObserver
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    _LOG.debug("**** event close ****") ;
+    this.close() ;
   }
 
   private void runCancelButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
-    // TODO add your handling code here:
+    if (this._isStartEnable)
+    {
+      _LOG.debug("**** event run ****") ;
+      this._ctrl.start() ;
+    }
+    else
+    {
+      this._ctrl.cancel() ;
+    }
   }
 
   // Variables declaration - do not modify
@@ -170,15 +181,29 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   @Override
   protected void enableStartControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    runCancelButton.setEnabled(isEnable || this._isCancelEnable) ;
+    if (isEnable)
+    {
+      runCancelButton.setText("run") ;
+    }
+    else
+    {
+      runCancelButton.setText("cancel") ;
+    }
   }
 
   @Override
   protected void enableCancelControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    runCancelButton.setEnabled(isEnable || this._isStartEnable) ;
+    if (isEnable)
+    {
+      runCancelButton.setText("cancel") ;
+    }
+    else
+    {
+      runCancelButton.setText("run") ;
+    }
   }
 
   @Override
@@ -200,8 +225,7 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   @Override
   protected void enableCloseControl(boolean isEnable)
   {
-    // TODO Auto-generated method stub
-    
+    closeButton.setEnabled(isEnable) ;
   }
   
   private void highlightOperation(int index)

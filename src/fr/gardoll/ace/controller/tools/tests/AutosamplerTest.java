@@ -3,19 +3,14 @@ package fr.gardoll.ace.controller.tools.tests;
 import java.util.ArrayList ;
 import java.util.Iterator ;
 import java.util.List ;
-import java.util.Optional ;
 
 import javax.swing.JPanel ;
 
 import org.apache.logging.log4j.Logger ;
 
-import fr.gardoll.ace.controller.core.AbstractCancelableToolControl ;
 import fr.gardoll.ace.controller.core.AbstractThreadControl ;
 import fr.gardoll.ace.controller.core.AbstractToolControl ;
-import fr.gardoll.ace.controller.core.Action ;
-import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.CancellationException ;
-import fr.gardoll.ace.controller.core.ControlPanel ;
 import fr.gardoll.ace.controller.core.InitializationException ;
 import fr.gardoll.ace.controller.core.Log ;
 import fr.gardoll.ace.controller.core.Utils ;
@@ -45,7 +40,7 @@ public class AutosamplerTest extends AbstractToolFrame
     OPERATIONS.add("hello");
   }
   
-  static class AutosamplerControl extends AbstractCancelableToolControl
+  static class AutosamplerControl extends AbstractTestControl
   {
     public AutosamplerControl(ParametresSession parametresSession)
         throws InitializationException, ConfigurationException
@@ -54,25 +49,15 @@ public class AutosamplerTest extends AbstractToolFrame
     }
 
     @Override
-    protected void closeOperations()
-    {
-      // TODO
-      
-    }
-
-    @Override
     protected String getToolName()
     {
       return TOOL_NAME ;
     }
     
-    private void updateCurrentOperation(int index)
+    @Override
+    void start()
     {
-      for(ControlPanel panel: this.getCtrlPanels())
-      {
-        Action action = new Action(ActionType.TEST, Optional.of(index));
-        panel.majActionActuelle(action);
-      }
+      // TODO Auto-generated method stub
     }
     
     class AutosamplerTestThread extends AbstractThreadControl
