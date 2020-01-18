@@ -2,6 +2,9 @@ package fr.gardoll.ace.controller.settings;
 
 import java.nio.file.Path ;
 import java.nio.file.Paths ;
+import java.text.DecimalFormat ;
+import java.text.DecimalFormatSymbols ;
+import java.util.Locale ;
 
 import fr.gardoll.ace.controller.core.Utils ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
@@ -9,6 +12,12 @@ import fr.gardoll.ace.controller.pump.PumpController ;
 
 public class GeneralSettings extends Settings
 {
+  public static final Locale LOCALIZATION = Locale.US;
+  public static final DecimalFormatSymbols DECIMAL_SEPARATOR_SYMBOL =
+      new DecimalFormatSymbols(LOCALIZATION);
+  public static final DecimalFormat DECIMAL_FORMAT =
+      new DecimalFormat("#0.###", DECIMAL_SEPARATOR_SYMBOL);
+  
   private static GeneralSettings _INSTANCE = null;
   
   private static final Path _PROPERTY_FILE_PATH ;
@@ -62,6 +71,7 @@ public class GeneralSettings extends Settings
   {
     _PROPERTY_FILE_PATH = Paths.get(Names.CONFIG_DIRNAME,
                                     Names.CONFIG_FILENAME);
+    Locale.setDefault(LOCALIZATION);
   }
 
   private CarouselSettings _carouselSettings ;

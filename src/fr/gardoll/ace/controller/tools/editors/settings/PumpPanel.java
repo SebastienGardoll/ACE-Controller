@@ -1,33 +1,18 @@
 package fr.gardoll.ace.controller.tools.editors.settings ;
 
-import java.text.ParseException ;
-
 import javax.swing.SpinnerNumberModel ;
 
 import fr.gardoll.ace.controller.settings.ConfigurationException ;
 import fr.gardoll.ace.controller.settings.GeneralSettings ;
-import fr.gardoll.ace.controller.ui.TextFieldRealNumber ;
+import fr.gardoll.ace.controller.ui.UiUtils ;
 
-//TODO check syringe volume against rinse volume.
 public class PumpPanel extends javax.swing.JPanel implements Panel
 {
   private static final long serialVersionUID = -4086064621880324437L ;
-  
+
   public static final String NAME = "pump" ;
 
-  private TextFieldRealNumber syringeVolTextFieldRealNumber ;
-
-  private TextFieldRealNumber pumpMaxRateTextFieldRealNumber ;
-
-  private TextFieldRealNumber rinseVolTextFieldRealNumber ;
-
-  private TextFieldRealNumber syringeDiaTextFieldRealNumber ;
-
-  /**
-   * Creates new form PumpPanel
-   * @throws ConfigurationException 
-   */
-  public PumpPanel() throws ConfigurationException
+  public PumpPanel()
   {
     initComponents() ;
     initCustom() ;
@@ -36,43 +21,43 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
 
   private void load() throws ConfigurationException
   {
-    GeneralSettings settings = GeneralSettings.instance();
-    
-    String pumpMaxRateValue = String.valueOf(settings.getDebitMaxPousseSeringue());
-    this.pumpMaxRateTextField.setText(pumpMaxRateValue);
-    
-    this.oneSyringeRadioButton.setSelected(settings.getNbSeringue() == 1);
-    this.twoSyringeRadioButton.setSelected(settings.getNbSeringue() == 2);
-    
-    String rinseVolumeValue = String.valueOf(settings.getVolumeRincage());
-    this.rinseVolumeTextField.setText(rinseVolumeValue);
-    
-    this.rinseNumberSpinner.setValue(settings.getNbRincage());
-    
-    String syringeDiameterValue = String.valueOf(settings.getDiametreSeringue());
-    this.syringeDiameterTextField.setText(syringeDiameterValue);
-    
-    String syringeVolumeValue = String.valueOf(settings.getVolumeMaxSeringue());
-    this.syringeVolumeTextField.setText(syringeVolumeValue);
+    GeneralSettings settings = GeneralSettings.instance() ;
+
+    this.oneSyringeRadioButton.setSelected(settings.getNbSeringue() == 1) ;
+    this.twoSyringeRadioButton.setSelected(settings.getNbSeringue() == 2) ;
+
+    this.rinseNumberSpinner.setValue(settings.getNbRincage()) ;
+
+    this.pumpMaxRateFormattedTextField
+        .setValue(settings.getDebitMaxPousseSeringue()) ;
+    this.rinseVolumeFormattedTextField.setValue(settings.getVolumeRincage()) ;
+    this.syringeDiameterFormattedTextField
+        .setValue(settings.getDiametreSeringue()) ;
+    this.syringeVolumeFormattedTextField
+        .setValue(settings.getVolumeMaxSeringue()) ;
   }
 
   @Override
   public void set() throws ConfigurationException
   {
-    int nbRinse            = (int) this.rinseNumberSpinner.getValue();
-    double rinseVolume     =       this.rinseVolTextFieldRealNumber.parse();
-    double syringeVolume   =       this.syringeVolTextFieldRealNumber.parse();
-    double syringeDiameter =       this.syringeDiaTextFieldRealNumber.parse();
-    double pumpMaxRate     =       this.pumpMaxRateTextFieldRealNumber.parse();
-    int nbSyringe          =      (this.oneSyringeRadioButton.isSelected())?1:2;
-    
-    GeneralSettings settings = GeneralSettings.instance();
-    settings.setNbRincage(nbRinse);
-    settings.setVolumeRincage(rinseVolume, syringeVolume);
-    settings.setVolumeMaxSeringue(syringeVolume, rinseVolume);
-    settings.setDiametreSeringue(syringeDiameter, pumpMaxRate);
-    settings.setDebitMaxPousseSeringue(pumpMaxRate, syringeDiameter);
-    settings.setNbSeringue(nbSyringe);
+    int nbRinse = (int) this.rinseNumberSpinner.getValue() ;
+    double rinseVolume = ((Number) this.rinseVolumeFormattedTextField
+        .getValue()).doubleValue() ;
+    double syringeVolume = ((Number) this.syringeVolumeFormattedTextField
+        .getValue()).doubleValue() ;
+    double syringeDiameter = ((Number) this.syringeDiameterFormattedTextField
+        .getValue()).doubleValue() ;
+    double pumpMaxRate = ((Number) this.pumpMaxRateFormattedTextField
+        .getValue()).doubleValue() ;
+    int nbSyringe = (this.oneSyringeRadioButton.isSelected()) ? 1 : 2 ;
+
+    GeneralSettings settings = GeneralSettings.instance() ;
+    settings.setNbRincage(nbRinse) ;
+    settings.setVolumeRincage(rinseVolume, syringeVolume) ;
+    settings.setVolumeMaxSeringue(syringeVolume, rinseVolume) ;
+    settings.setDiametreSeringue(syringeDiameter, pumpMaxRate) ;
+    settings.setDebitMaxPousseSeringue(pumpMaxRate, syringeDiameter) ;
+    settings.setNbSeringue(nbSyringe) ;
   }
 
   @Override
@@ -86,27 +71,32 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
   {
     try
     {
-      this.rinseNumberSpinner.commitEdit();
+      this.rinseNumberSpinner.commitEdit() ;
     }
-    catch (ParseException e)
+    catch (Exception e)
     {
-      throw new ConfigurationException("failed to fetch the number of rincing", e);
+      throw new ConfigurationException("failed to fetch the number of rincing",
+          e) ;
     }
-    
-    int nbRinse            = (int) this.rinseNumberSpinner.getValue();
-    double rinseVolume     =       this.rinseVolTextFieldRealNumber.parse();
-    double syringeVolume   =       this.syringeVolTextFieldRealNumber.parse();
-    double syringeDiameter =       this.syringeDiaTextFieldRealNumber.parse();
-    double pumpMaxRate     =       this.pumpMaxRateTextFieldRealNumber.parse();
-    int nbSyringe          =      (this.oneSyringeRadioButton.isSelected())?1:2;
-    
-    GeneralSettings settings = GeneralSettings.instance();
-    settings.checkNbRincage(nbRinse);
-    settings.checkVolumeRincage(rinseVolume, syringeVolume);
-    settings.checkVolumeMaxSeringue(syringeVolume, rinseVolume);
-    settings.checkDiametreSeringue(syringeDiameter, pumpMaxRate);
-    settings.checkDebitMaxPousseSeringue(pumpMaxRate, syringeDiameter);
-    settings.checkNbSeringue(nbSyringe);
+
+    int nbRinse = (int) this.rinseNumberSpinner.getValue() ;
+    double rinseVolume = ((Number) this.rinseVolumeFormattedTextField
+        .getValue()).doubleValue() ;
+    double syringeVolume = ((Number) this.syringeVolumeFormattedTextField
+        .getValue()).doubleValue() ;
+    double syringeDiameter = ((Number) this.syringeDiameterFormattedTextField
+        .getValue()).doubleValue() ;
+    double pumpMaxRate = ((Number) this.pumpMaxRateFormattedTextField
+        .getValue()).doubleValue() ;
+    int nbSyringe = (this.oneSyringeRadioButton.isSelected()) ? 1 : 2 ;
+
+    GeneralSettings settings = GeneralSettings.instance() ;
+    settings.checkNbRincage(nbRinse) ;
+    settings.checkVolumeRincage(rinseVolume, syringeVolume) ;
+    settings.checkVolumeMaxSeringue(syringeVolume, rinseVolume) ;
+    settings.checkDiametreSeringue(syringeDiameter, pumpMaxRate) ;
+    settings.checkDebitMaxPousseSeringue(pumpMaxRate, syringeDiameter) ;
+    settings.checkNbSeringue(nbSyringe) ;
   }
 
   private void initCustom()
@@ -114,20 +104,14 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     this.syringebuttonGroup.add(this.oneSyringeRadioButton) ;
     this.syringebuttonGroup.add(this.twoSyringeRadioButton) ;
 
-    this.pumpMaxRateTextFieldRealNumber = new TextFieldRealNumber("pump max rate",
-        this.pumpMaxRateTextField) ;
+    this.pumpMaxRateFormattedTextField.setFormatterFactory(UiUtils.FORMATTER_FACTORY);
+    this.rinseVolumeFormattedTextField.setFormatterFactory(UiUtils.FORMATTER_FACTORY);
+    this.syringeDiameterFormattedTextField.setFormatterFactory(UiUtils.FORMATTER_FACTORY);
+    this.syringeVolumeFormattedTextField.setFormatterFactory(UiUtils.FORMATTER_FACTORY);
 
-    this.rinseVolTextFieldRealNumber = new TextFieldRealNumber("rinse volume",
-        this.rinseVolumeTextField) ;
-
-    this.syringeDiaTextFieldRealNumber = new TextFieldRealNumber("syringe diameter",
-        this.syringeDiameterTextField) ;
-    
-    this.syringeVolTextFieldRealNumber = new TextFieldRealNumber("syringe volume",
-        this.syringeVolumeTextField) ;
-    
-    SpinnerNumberModel nbRinseModel = new SpinnerNumberModel(
-        1, GeneralSettings.DEFAULT_MIN_RINSE_NB, GeneralSettings.DEFAULT_MAX_RINSE_NB, 1) ;
+    SpinnerNumberModel nbRinseModel = new SpinnerNumberModel(1,
+        GeneralSettings.DEFAULT_MIN_RINSE_NB,
+        GeneralSettings.DEFAULT_MAX_RINSE_NB, 1) ;
     this.rinseNumberSpinner.setModel(nbRinseModel) ;
   }
 
@@ -144,20 +128,20 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     syringebuttonGroup = new javax.swing.ButtonGroup() ;
     pumpSettingsPanel = new javax.swing.JPanel() ;
     pumpMaxRatePanel = new javax.swing.JPanel() ;
-    pumpMaxRateTextField = new javax.swing.JTextField() ;
+    pumpMaxRateFormattedTextField = new javax.swing.JFormattedTextField() ;
     pumpSyringePanel = new javax.swing.JPanel() ;
     oneSyringeRadioButton = new javax.swing.JRadioButton() ;
     twoSyringeRadioButton = new javax.swing.JRadioButton() ;
     rinseSettingsPanel = new javax.swing.JPanel() ;
     rinseVolumePanel = new javax.swing.JPanel() ;
-    rinseVolumeTextField = new javax.swing.JTextField() ;
+    rinseVolumeFormattedTextField = new javax.swing.JFormattedTextField() ;
     rinseNumberPanel = new javax.swing.JPanel() ;
     rinseNumberSpinner = new javax.swing.JSpinner() ;
     syringeSettingsPanel = new javax.swing.JPanel() ;
     syringeDiameterPanel = new javax.swing.JPanel() ;
-    syringeDiameterTextField = new javax.swing.JTextField() ;
+    syringeDiameterFormattedTextField = new javax.swing.JFormattedTextField() ;
     syringeVolumePanel = new javax.swing.JPanel() ;
-    syringeVolumeTextField = new javax.swing.JTextField() ;
+    syringeVolumeFormattedTextField = new javax.swing.JFormattedTextField() ;
 
     setPreferredSize(new java.awt.Dimension(780, 460)) ;
     setLayout(new java.awt.GridBagLayout()) ;
@@ -173,11 +157,10 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 0 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
-    gridBagConstraints.ipadx = 70 ;
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    pumpMaxRatePanel.add(pumpMaxRateTextField, gridBagConstraints) ;
+    pumpMaxRatePanel.add(pumpMaxRateFormattedTextField, gridBagConstraints) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
@@ -244,7 +227,7 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    rinseVolumePanel.add(rinseVolumeTextField, gridBagConstraints) ;
+    rinseVolumePanel.add(rinseVolumeFormattedTextField, gridBagConstraints) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
@@ -295,11 +278,11 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.gridx = 0 ;
     gridBagConstraints.gridy = 0 ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
-    gridBagConstraints.ipadx = 70 ;
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    syringeDiameterPanel.add(syringeDiameterTextField, gridBagConstraints) ;
+    syringeDiameterPanel.add(syringeDiameterFormattedTextField,
+        gridBagConstraints) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
@@ -318,7 +301,8 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    syringeVolumePanel.add(syringeVolumeTextField, gridBagConstraints) ;
+    syringeVolumePanel.add(syringeVolumeFormattedTextField,
+        gridBagConstraints) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
     gridBagConstraints.gridx = 0 ;
@@ -341,20 +325,20 @@ public class PumpPanel extends javax.swing.JPanel implements Panel
 
   // Variables declaration - do not modify
   private javax.swing.JRadioButton oneSyringeRadioButton ;
+  private javax.swing.JFormattedTextField pumpMaxRateFormattedTextField ;
   private javax.swing.JPanel pumpMaxRatePanel ;
-  private javax.swing.JTextField pumpMaxRateTextField ;
   private javax.swing.JPanel pumpSettingsPanel ;
   private javax.swing.JPanel pumpSyringePanel ;
   private javax.swing.JPanel rinseNumberPanel ;
   private javax.swing.JSpinner rinseNumberSpinner ;
   private javax.swing.JPanel rinseSettingsPanel ;
+  private javax.swing.JFormattedTextField rinseVolumeFormattedTextField ;
   private javax.swing.JPanel rinseVolumePanel ;
-  private javax.swing.JTextField rinseVolumeTextField ;
+  private javax.swing.JFormattedTextField syringeDiameterFormattedTextField ;
   private javax.swing.JPanel syringeDiameterPanel ;
-  private javax.swing.JTextField syringeDiameterTextField ;
   private javax.swing.JPanel syringeSettingsPanel ;
+  private javax.swing.JFormattedTextField syringeVolumeFormattedTextField ;
   private javax.swing.JPanel syringeVolumePanel ;
-  private javax.swing.JTextField syringeVolumeTextField ;
   private javax.swing.ButtonGroup syringebuttonGroup ;
   private javax.swing.JRadioButton twoSyringeRadioButton ;
   // End of variables declaration
