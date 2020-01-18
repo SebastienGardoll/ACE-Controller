@@ -54,7 +54,13 @@ public class TestPanel extends AbstractCancelableJPanelObserver
       this._highlightingData.add(p);
     }
     
-    this.operationTextPane.setText(sb.toString().stripTrailing());
+    sb.append("\nDONE");
+    int start = offset + 1;
+    int end = start + "DONE".length();
+    Pair<Integer, Integer> p = new ImmutablePair<>(start, end);
+    this._highlightingData.add(p);
+    
+    this.operationTextPane.setText(sb.toString());
   }
 
   /**
@@ -237,7 +243,12 @@ public class TestPanel extends AbstractCancelableJPanelObserver
       Highlighter highlighter = this.operationTextPane.getHighlighter();
       highlighter.removeAllHighlights();
       
-      if(index < this._highlightingData.size() && index >= 0)
+      if(index < 0) // Highlights the done marker.
+      {
+        index = this._highlightingData.size()-1;
+      }
+      
+      if(index < this._highlightingData.size())
       {
         Pair<Integer, Integer> p = this._highlightingData.get(index);
         int start = p.getLeft();

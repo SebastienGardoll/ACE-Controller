@@ -155,7 +155,7 @@ public class TestDriver
           _LOG.info(msg);
         }
         
-        // Disable highlighting.
+        // Triggering the end of the test.
         TestControl.this.updateCurrentOperation(-1);
       }
     }
