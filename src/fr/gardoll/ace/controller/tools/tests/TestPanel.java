@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger ;
 import fr.gardoll.ace.controller.core.Action ;
 import fr.gardoll.ace.controller.core.ActionType ;
 import fr.gardoll.ace.controller.core.Log ;
+import fr.gardoll.ace.controller.tools.tests.TestDriver.TestControl ;
 import fr.gardoll.ace.controller.ui.AbstractCancelableJPanelObserver ;
 
 public class TestPanel extends AbstractCancelableJPanelObserver
@@ -25,10 +26,10 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   private static final DefaultHighlighter.DefaultHighlightPainter _HIGHLIGHTER_PAINTER = 
       new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
   
-  private final AbstractTestControl _ctrl;
+  private final TestControl _ctrl;
   private final List<Pair<Integer, Integer>> _highlightingData = new ArrayList<>();
   
-  public TestPanel(AbstractTestControl ctrl, List<String> operations)
+  public TestPanel(TestControl ctrl, List<Operation> operations)
   {
     super(ctrl) ;
     this._ctrl = ctrl;
@@ -36,17 +37,17 @@ public class TestPanel extends AbstractCancelableJPanelObserver
     initCustom(operations);
   }
 
-  private void initCustom(List<String> operations)
+  private void initCustom(List<Operation> operations)
   {
     StringBuilder sb = new StringBuilder();
     int offset = 0;
     
-    for(String operation: operations)
+    for(Operation operation: operations)
     {
-      sb.append(operation);
+      sb.append(operation.name);
       sb.append('\n');
       int start = offset;
-      int end = start + operation.length();
+      int end = start + operation.name.length();
       offset = end + 1;
       Pair<Integer, Integer> p = new ImmutablePair<>(start, end);
       this._highlightingData.add(p);

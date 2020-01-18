@@ -42,7 +42,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
                                       Exception
   {
     {
-      _LOG.info("starting session");
+      _LOG.info("starting extraction session");
       Action action = new Action(ActionType.SESSION_START, Optional.empty()) ;
       this._toolCtrl.notifyAction(action) ;
       
@@ -227,7 +227,7 @@ public class ExtractionThreadControl extends AbstractThreadControl
     this._cmd.finSession();
     
     {
-      _LOG.info("session is completed");
+      _LOG.info("extraction session is completed");
       Action action = new Action(ActionType.SESSION_DONE, Optional.empty()) ;
       this._toolCtrl.notifyAction(action) ;
     }
