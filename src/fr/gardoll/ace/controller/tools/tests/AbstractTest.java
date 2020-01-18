@@ -24,7 +24,7 @@ import fr.gardoll.ace.controller.settings.ParametresSession ;
 import fr.gardoll.ace.controller.ui.AbstractToolFrame ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
-public abstract class AsbtractTest 
+public abstract class AbstractTest 
 {
   private static final Logger _LOG = Log.HIGH_LEVEL;
   
@@ -35,7 +35,7 @@ public abstract class AsbtractTest
   protected abstract List<Operation> createOperations(Passeur autosampler,
       PousseSeringue pump, Valves valves);
 
-  public AsbtractTest(String name)
+  public AbstractTest(String name)
   {
     this.name = name;
   }
@@ -103,7 +103,7 @@ public abstract class AsbtractTest
     @Override
     protected String getToolName()
     {
-      return AsbtractTest.this.name ;
+      return AbstractTest.this.name ;
     }
     
     protected void updateCurrentOperation(int index)
@@ -125,13 +125,13 @@ public abstract class AsbtractTest
     {
       try
       {
-        String msg = String.format("starting %s test thread", AsbtractTest.this.name);
+        String msg = String.format("starting %s test thread", AbstractTest.this.name);
         _LOG.debug(msg);
         this.start(new TestThread(this));
       }
       catch(Exception e)
       {
-        String msg = String.format("%s test thread start has crashed", AsbtractTest.this.name);
+        String msg = String.format("%s test thread start has crashed", AbstractTest.this.name);
         _LOG.fatal(msg, e);
         this.handleException(msg, e);
       }
@@ -149,13 +149,13 @@ public abstract class AsbtractTest
           InitializationException, ConfigurationException, Exception
       {
         {
-          String msg = String.format("starting %s test", AsbtractTest.this.name);
+          String msg = String.format("starting %s test", AbstractTest.this.name);
           _LOG.info(msg);
         }
         
         int index = 0;
         
-        for(Operation op: AsbtractTest.this._operations)
+        for(Operation op: AbstractTest.this._operations)
         {
           TestControl.this.updateCurrentOperation(index);
           _LOG.debug(String.format("executing %s", op.name));
@@ -164,7 +164,7 @@ public abstract class AsbtractTest
         }
         
         {
-          String msg = String.format("%s test is completed", AsbtractTest.this.name);
+          String msg = String.format("%s test is completed", AbstractTest.this.name);
           _LOG.info(msg);
         }
         

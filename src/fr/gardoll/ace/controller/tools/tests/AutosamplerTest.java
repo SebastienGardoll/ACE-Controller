@@ -7,7 +7,7 @@ import fr.gardoll.ace.controller.autosampler.Passeur ;
 import fr.gardoll.ace.controller.pump.PousseSeringue ;
 import fr.gardoll.ace.controller.valves.Valves ;
 
-public class AutosamplerTest extends AsbtractTest
+public class AutosamplerTest extends AbstractTest
 {
   public AutosamplerTest(String name)
   {
