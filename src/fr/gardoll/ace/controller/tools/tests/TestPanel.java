@@ -21,51 +21,47 @@ import fr.gardoll.ace.controller.ui.AbstractCancelableJPanelObserver ;
 public class TestPanel extends AbstractCancelableJPanelObserver
 {
   private static final long serialVersionUID = 3863282861526799243L ;
-  
-  private static final Logger _LOG = Log.HIGH_LEVEL;
-  
-  private static final DefaultHighlighter.DefaultHighlightPainter _HIGHLIGHTER_PAINTER = 
-      new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
-  
-  private final TestControl _ctrl;
-  private final List<Pair<Integer, Integer>> _highlightingData = new ArrayList<>();
-  
+
+  private static final Logger _LOG = Log.HIGH_LEVEL ;
+
+  private static final DefaultHighlighter.DefaultHighlightPainter _HIGHLIGHTER_PAINTER = new DefaultHighlighter.DefaultHighlightPainter(
+      Color.YELLOW) ;
+
+  private final TestControl _ctrl ;
+  private final List<Pair<Integer, Integer>> _highlightingData = new ArrayList<>() ;
+
   public TestPanel(TestControl ctrl, List<Operation> operations)
   {
     super(ctrl) ;
-    this._ctrl = ctrl;
+    this._ctrl = ctrl ;
     initComponents() ;
-    initCustom(operations);
+    initCustom(operations) ;
   }
 
   private void initCustom(List<Operation> operations)
   {
-    StringBuilder sb = new StringBuilder();
-    int offset = 0;
-    
-    for(Operation operation: operations)
-    {
-      sb.append(operation.name);
-      sb.append('\n');
-      int start = offset;
-      int end = start + operation.name.length();
-      offset = end + 1;
-      Pair<Integer, Integer> p = new ImmutablePair<>(start, end);
-      this._highlightingData.add(p);
-    }
-    
-    sb.append("\nDONE");
-    int start = offset + 1;
-    int end = start + "DONE".length();
-    Pair<Integer, Integer> p = new ImmutablePair<>(start, end);
-    this._highlightingData.add(p);
-    
-    this.operationTextPane.setText(sb.toString());
-  }
+    StringBuilder sb = new StringBuilder() ;
+    int offset = 0 ;
 
-  /**
-   * Creates new form TestPanel
-   */
+    for (Operation operation : operations)
+    {
+      sb.append(operation.name) ;
+      sb.append('\n') ;
+      int start = offset ;
+      int end = start + operation.name.length() ;
+      offset = end + 1 ;
+      Pair<Integer, Integer> p = new ImmutablePair<>(start, end) ;
+      this._highlightingData.add(p) ;
+    }
+
+    sb.append("\nDONE") ;
+    int start = offset + 1 ;
+    int end = start + "DONE".length() ;
+    Pair<Integer, Integer> p = new ImmutablePair<>(start, end) ;
+    this._highlightingData.add(p) ;
+
+    this.operationTextPane.setText(sb.toString()) ;
+  }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -77,6 +73,7 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   {
     java.awt.GridBagConstraints gridBagConstraints ;
 
+    operationPanel = new javax.swing.JPanel() ;
     textScrollPanel = new javax.swing.JScrollPane() ;
     operationTextPane = new javax.swing.JTextPane() ;
     controlPanel = new javax.swing.JPanel() ;
@@ -88,7 +85,11 @@ public class TestPanel extends AbstractCancelableJPanelObserver
     setPreferredSize(new java.awt.Dimension(780, 460)) ;
     setLayout(new java.awt.GridBagLayout()) ;
 
-    operationTextPane.setEditable(false);
+    operationPanel
+        .setBorder(javax.swing.BorderFactory.createTitledBorder("Operations")) ;
+    operationPanel.setLayout(new java.awt.GridBagLayout()) ;
+
+    operationTextPane.setEditable(false) ;
     textScrollPanel.setViewportView(operationTextPane) ;
 
     gridBagConstraints = new java.awt.GridBagConstraints() ;
@@ -98,7 +99,16 @@ public class TestPanel extends AbstractCancelableJPanelObserver
     gridBagConstraints.weightx = 1.0 ;
     gridBagConstraints.weighty = 1.0 ;
     gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
-    add(textScrollPanel, gridBagConstraints) ;
+    operationPanel.add(textScrollPanel, gridBagConstraints) ;
+
+    gridBagConstraints = new java.awt.GridBagConstraints() ;
+    gridBagConstraints.gridx = 0 ;
+    gridBagConstraints.gridy = 0 ;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH ;
+    gridBagConstraints.weightx = 1.0 ;
+    gridBagConstraints.weighty = 1.0 ;
+    gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2) ;
+    add(operationPanel, gridBagConstraints) ;
 
     controlPanel.setLayout(new java.awt.GridBagLayout()) ;
 
@@ -178,6 +188,7 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   private javax.swing.JTextPane operationTextPane ;
   private javax.swing.JButton runCancelButton ;
   private javax.swing.JScrollPane textScrollPanel ;
+  private javax.swing.JPanel operationPanel ;
   // End of variables declaration
 
   @Override
@@ -219,14 +230,14 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   {
     // Nothing to do.
   }
-  
+
   @Override
   protected void processAction(Action action)
   {
-    if(action.type == ActionType.TEST)
+    if (action.type == ActionType.TEST)
     {
-      int index = (int) action.data.get();
-      this.highlightOperation(index);
+      int index = (int) action.data.get() ;
+      this.highlightOperation(index) ;
     }
   }
 
@@ -235,25 +246,25 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   {
     closeButton.setEnabled(isEnable) ;
   }
-  
+
   private void highlightOperation(int index)
   {
     try
     {
-      Highlighter highlighter = this.operationTextPane.getHighlighter();
-      highlighter.removeAllHighlights();
-      
-      if(index < 0) // Highlights the done marker.
+      Highlighter highlighter = this.operationTextPane.getHighlighter() ;
+      highlighter.removeAllHighlights() ;
+
+      if (index < 0) // Highlights the done marker.
       {
-        index = this._highlightingData.size()-1;
+        index = this._highlightingData.size() - 1 ;
       }
-      
-      if(index < this._highlightingData.size())
+
+      if (index < this._highlightingData.size())
       {
-        Pair<Integer, Integer> p = this._highlightingData.get(index);
-        int start = p.getLeft();
-        int end = p.getRight();
-        highlighter.addHighlight(start, end, _HIGHLIGHTER_PAINTER);
+        Pair<Integer, Integer> p = this._highlightingData.get(index) ;
+        int start = p.getLeft() ;
+        int end = p.getRight() ;
+        highlighter.addHighlight(start, end, _HIGHLIGHTER_PAINTER) ;
       }
     }
     catch (BadLocationException e)
