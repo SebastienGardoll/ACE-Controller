@@ -76,7 +76,7 @@ public class AutosamplerTest extends AsbtractTest
       Thread.sleep(delay);
     }));
     
-    operations.add(new Operation("- referencing carousel (nothing should do)", () -> {
+    operations.add(new Operation("- referencing carousel (nothing should happen)", () -> {
       autosampler.setOrigineCarrousel();
       Thread.sleep(delay);
     })) ;
@@ -99,7 +99,7 @@ public class AutosamplerTest extends AsbtractTest
       Thread.sleep(delay);
     })) ;
 
-    operations.add(new Operation("- reinit", ()-> {
+    operations.add(new Operation("- reinit (nothing should happen)", ()-> {
       autosampler.reinit();
       Thread.sleep(delay);
     }));
