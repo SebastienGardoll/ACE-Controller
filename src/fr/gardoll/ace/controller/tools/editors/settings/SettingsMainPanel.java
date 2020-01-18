@@ -133,6 +133,8 @@ public class SettingsMainPanel extends javax.swing.JPanel
 
   private void okButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event ok ****");
+    
     boolean succeeded = true;
     
     for(Panel panel: this._panels)
@@ -190,6 +192,7 @@ public class SettingsMainPanel extends javax.swing.JPanel
 
   private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event cancel ****");
     UiUtils.getParentDialog(this).dispose();
   }
 

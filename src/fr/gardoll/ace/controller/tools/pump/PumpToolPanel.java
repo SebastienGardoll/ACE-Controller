@@ -373,6 +373,7 @@ public class PumpToolPanel extends AbstractPausableJPanelObserver
     }
     else
     {
+      _LOG.debug("**** event cancel ****");
       this._ctrl.cancel() ;
     }
   }

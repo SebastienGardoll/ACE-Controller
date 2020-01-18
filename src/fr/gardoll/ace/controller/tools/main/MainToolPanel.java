@@ -246,6 +246,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
   private void valvesButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event valves ****");
     try
     {
       ValvesToolFrame tool ;
@@ -272,6 +273,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
   private void pumpButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event pump ****");
     try
     {
       PumpToolFrame tool ;
@@ -298,6 +300,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
   private void autosamplerButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event autosampler ****");
     try
     {
       AutosamplerToolFrame tool ;
@@ -324,6 +327,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
   private void extractionButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event extraction ****");
     try
     {
       ExtractionToolFrame tool ;
@@ -350,6 +354,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event close ****");
     Window parent = UiUtils.getParentFrame(this) ;
     if (parent != null)
     {
@@ -361,6 +366,7 @@ public class MainToolPanel extends javax.swing.JPanel
   private void generalSettignsjButtonActionPerformed(
       java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event general settings ****");
     try
     {
       SettingsFrame frame ;
@@ -387,6 +393,7 @@ public class MainToolPanel extends javax.swing.JPanel
 
   private void protocolButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event protocol ****");
     try
     {
       ProtocolFrame frame ;

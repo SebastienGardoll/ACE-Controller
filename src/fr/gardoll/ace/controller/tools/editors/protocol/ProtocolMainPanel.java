@@ -93,6 +93,7 @@ public class ProtocolMainPanel extends javax.swing.JPanel
 
   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)
   {
+    _LOG.debug("**** event close ****");
     UiUtils.getParentDialog(this).dispose();
   }
 

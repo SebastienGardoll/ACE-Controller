@@ -358,6 +358,7 @@ public class ExtractionToolPanel extends AbstractPausableJPanelObserver
     }
     else
     {
+      _LOG.debug("**** event cancel ****");
       this._ctrl.cancel() ;
     }
   }
