@@ -6,6 +6,7 @@ import java.util.List ;
 
 import javax.swing.text.BadLocationException ;
 import javax.swing.text.DefaultHighlighter ;
+import javax.swing.text.Highlighter ;
 
 import org.apache.commons.lang3.tuple.ImmutablePair ;
 import org.apache.commons.lang3.tuple.Pair ;
@@ -233,10 +234,16 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   {
     try
     {
-      Pair<Integer, Integer> p = this._highlightingData.get(index);
-      int start = p.getLeft();
-      int end = p.getRight();
-      this.operationTextPane.getHighlighter().addHighlight(start, end, _HIGHLIGHTER_PAINTER);
+      Highlighter highlighter = this.operationTextPane.getHighlighter();
+      highlighter.removeAllHighlights();
+      
+      if(index < this._highlightingData.size() && index >= 0)
+      {
+        Pair<Integer, Integer> p = this._highlightingData.get(index);
+        int start = p.getLeft();
+        int end = p.getRight();
+        highlighter.addHighlight(start, end, _HIGHLIGHTER_PAINTER);
+      }
     }
     catch (BadLocationException e)
     {

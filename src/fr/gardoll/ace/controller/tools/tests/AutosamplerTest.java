@@ -12,11 +12,13 @@ public class AutosamplerTest
     
     
     operations.add(new Operation("coucou", ()-> {
-      System.out.println("coucou"); 
+      System.out.println("coucou");
+      Thread.sleep(1000);
     }));
     
     operations.add(new Operation("hello", ()-> {
-      System.out.println("hello"); 
+      System.out.println("hello");
+      Thread.sleep(1000);
     }));
     
     TestDriver driver = new TestDriver(name, operations);
