@@ -158,7 +158,7 @@ public abstract class AbstractTest
         for(Operation op: AbstractTest.this._operations)
         {
           TestControl.this.updateCurrentOperation(index);
-          _LOG.debug(String.format("executing %s", op.name));
+          _LOG.info(String.format("executing %s", op.name));
           op.execute();
           index++;
         }
