@@ -63,7 +63,7 @@ public class PumpTest extends AbstractTest
       Thread.sleep(delay);
     }));
     
-    operations.add(new Operation("- drain the pump (infusing 0.5 mL)", ()-> {
+    operations.add(new Operation("- reinit: drain the pump (infusing 0.5 mL)", ()-> {
       pump.reinit();
       Thread.sleep(delay);
     }));
