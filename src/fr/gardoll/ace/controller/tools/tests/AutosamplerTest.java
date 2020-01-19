@@ -35,6 +35,16 @@ public class AutosamplerTest extends AbstractTest
       Thread.sleep(delay);
     }));
     
+    operations.add(new Operation("- asking if the arm is moving (nothing should happen)", ()-> {
+      autosampler.finMoveBras();
+      Thread.sleep(delay);
+    }));
+    
+    operations.add(new Operation("- asking if the carousel is moving (nothing should happen)", ()-> {
+      autosampler.finMoveCarrousel();
+      Thread.sleep(delay);
+    }));
+    
     operations.add(new Operation("- arm goes down of 50 mm", ()-> {
       int nbStep = Passeur.convertBras(-50.);
       autosampler.moveBras(nbStep);
