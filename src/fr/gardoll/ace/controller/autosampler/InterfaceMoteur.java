@@ -181,43 +181,6 @@ public class InterfaceMoteur implements Closeable, MotorController
   }
   
   @Override
-  public void preSecale(int denominateur) throws SerialComException
-  {  
-    String ordre = String.format("prescale (%s)\r", denominateur);
-    _LOG.trace(String.format("command 'prescale (%s)'", denominateur));
-    this.traitementOrdre (ordre) ;
-  }
-  
-  @Override
-  public void param(TypeAxe axe, int base, int top, int accel)
-                                                       throws SerialComException
-  {
-    this.param(axe, base, top, accel, 0);
-  }
-  
-  @Override
-  public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
-                                                       throws SerialComException
-
-  {  
-    String ordre = null;
-
-    if (deaccel == 0)
-    {
-      ordre = String.format("param (%s,%s,%s,%s)\r", axe, base, top, accel);
-    }
-    else
-    {
-      ordre = String.format("param (%s,%s,%s,%s,%s)\r", axe, base, top, accel, deaccel);
-    }
-    
-    _LOG.trace(String.format("command '%s'", ordre.substring(0, ordre.length()-1)));
-    
-    // long traitement par l'interface
-    this.traitementOrdre(ordre, 2000l) ;
-  }
-
-  @Override
   public void datum(TypeAxe axe) throws SerialComException
 
   {  
@@ -269,25 +232,6 @@ public class InterfaceMoteur implements Closeable, MotorController
     _LOG.trace(String.format("command 'where (%s)'", axe));
     String response = this.traitementOrdre(ordre, 100l);
     return Integer.valueOf(response);
-  }
-
-  //voir manuel de l'interface
-  // 0 <= octet <= 255
-  @Override
-  public void out(int octet) throws SerialComException, ConfigurationException
-  { 
-    if (octet <= 255 && octet <= 0)
-    {
-      String ordre = String.format("out(%s)\r", octet);
-      _LOG.trace(String.format("command 'out(%s)'", octet));
-      this.traitementOrdre(ordre);
-    }
-    else
-    {
-      String msg = String.format("the state of optocoupled outputs '%s' must be greater or equal than 0 but less or equal than 255)",
-          octet);
-      throw new ConfigurationException(msg);
-    }
   }
 
   //voir manuel de l'interface

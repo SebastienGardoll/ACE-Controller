@@ -15,15 +15,6 @@ public interface MotorController extends Closeable
   
   public void reset() throws SerialComException;
   
-  public void preSecale(int denominateur) 
-      throws SerialComException;
-  
-  public void param(TypeAxe axe, int base, int top, int accel)
-                                throws SerialComException;
-  
-  public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
-                                throws SerialComException;
-
   public void datum(TypeAxe axe) throws SerialComException;
   
   public void singleLine(boolean choix) throws SerialComException;
@@ -35,9 +26,6 @@ public interface MotorController extends Closeable
   public void halt() throws SerialComException;
                                            
   public int where(TypeAxe axe) throws SerialComException;
-
-  // 0 <= octet <= 255
-  public void out(int octet) throws SerialComException, ConfigurationException;
 
   public void out(int bitPosition, boolean isOn) throws SerialComException, ConfigurationException;
 

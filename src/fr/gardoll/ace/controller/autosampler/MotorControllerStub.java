@@ -196,28 +196,6 @@ public class MotorControllerStub implements MotorController, Closeable
   }
 
   @Override
-  public void preSecale(int denominateur)
-      throws SerialComException
-  {
-    _LOG.trace(String.format("command 'preSecale (%s)'", denominateur));
-  }
-
-  @Override
-  public void param(TypeAxe axe, int base, int top, int accel)
-      throws SerialComException
-  {
-    this.param(axe, base, top, accel, 0);
-  }
-
-  @Override
-  public void param(TypeAxe axe, int base, int top, int accel, int deaccel)
-      throws SerialComException
-  {
-    _LOG.trace(String.format("command 'param (%s, %s, %s, %s, %s)'",
-        axe, base, top, accel, deaccel));
-  }
-
-  @Override
   public void datum(TypeAxe axe) throws SerialComException
   {
     _LOG.trace(String.format("command 'datum (%s)'", axe));
@@ -289,12 +267,6 @@ public class MotorControllerStub implements MotorController, Closeable
     _LOG.trace(String.format("command 'where (%s)'", axe));
     
     return result;
-  }
-
-  @Override
-  public void out(int octet) throws SerialComException
-  {
-    _LOG.trace(String.format("command 'out(%s)'", octet));
   }
 
   @Override
