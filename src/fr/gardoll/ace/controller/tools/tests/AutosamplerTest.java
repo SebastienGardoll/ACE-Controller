@@ -86,6 +86,11 @@ public class AutosamplerTest extends AbstractTest
       Thread.sleep(delay);
     }));
     
+    operations.add(new Operation("- arm vibrating", ()-> {
+      autosampler.vibration();
+      Thread.sleep(delay);
+    }));
+    
     operations.add(new Operation("- referencing carousel (nothing should happen)", () -> {
       autosampler.setOrigineCarrousel();
       Thread.sleep(delay);
