@@ -157,6 +157,7 @@ public abstract class AbstractTest
         
         for(Operation op: AbstractTest.this._operations)
         {
+          this.checkCancel();
           TestControl.this.updateCurrentOperation(index);
           _LOG.info(String.format("executing %s", op.name));
           op.execute();
