@@ -2,6 +2,7 @@
 
 ## Automated Chromatographic Extractions
 
-Automate réalisant des séparations chromatographiques (isolation et récupération d’éléments chimiques provenant d’une matrice naturelle - roches, boues, etc. - mise en solution). Cet automate est une pièce unique utilisée en routine lors d’analyses de rapports isotopiques de marqueurs géochimiques (Sr, Nd, Pb, Zn, Cu, Fe, etc.). Il a contribué à l’amélioration de la qualité et du rendement des analyses.
+Automaton that performs chromatographic extractions (isolation and collection of chemical elements from solubilized natural matrices such as rock, mud, etc.). This automaton, unique of its kind, is used routinely for the analysis of isotopic ratios of geochemical markers (Sr, Nd, Pb, Zn, Cu, Fe, etc.). It has contributed to improving the quality and yield of the analyses.
+
 
 ![ace](misc/ace.jpg)
