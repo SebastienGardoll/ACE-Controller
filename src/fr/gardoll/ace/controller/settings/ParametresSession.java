@@ -263,7 +263,7 @@ public class ParametresSession implements Closeable
     {
       Object instance = instantiator.instantiate(portPath);
       result = Optional.of(instance);
-      String msg = String.format("instantiation successed with port path '%s'", portPath);
+      String msg = String.format("instantiation succeeded with port path '%s'", portPath);
       _LOG.debug(msg);
     }
     catch(Exception e)
