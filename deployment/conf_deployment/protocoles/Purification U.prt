@@ -41,21 +41,21 @@ temps=400
 pause?=0
 
 [6]
-acide=Ac�tone + HCl 6 N
+acide=Acetone + HCl 6 N
 numeroEv=6
 volume=0.6
 temps=400
 pause?=0
 
 [7]
-acide=Ac�tone + HCl 6 N
+acide=Acetone + HCl 6 N
 numeroEv=6
 volume=0.6
 temps=400
 pause?=0
 
 [8]
-acide=Ac�tone + HCl 6 N
+acide=Acetone + HCl 6 N
 numeroEv=6
 volume=4
 temps=2500
