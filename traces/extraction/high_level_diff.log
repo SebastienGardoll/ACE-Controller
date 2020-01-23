@@ -22,7 +22,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=3 ; numColumn=1 ; numSequence=1
@@ -650,9 +650,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 13631 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:35:06.527741Z
-AbstractThreadControl::await - waiting 13622 ms
+ExtractionThreadControl::threadLogic - wait 13623 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:12:22.005357Z
+AbstractThreadControl::await - waiting 13613 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -806,9 +806,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 4 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 5: 0.1 mL of HNO3 2N (4) waiting 20s (with pause) ***
-ExtractionThreadControl::processSequence - wait 2948 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:35:30.495763Z
-AbstractThreadControl::await - waiting 2948 ms
+ExtractionThreadControl::processSequence - wait 2839 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:12:45.974133Z
+AbstractThreadControl::await - waiting 2839 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -1150,9 +1150,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9429 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:36:41.512155Z
-AbstractThreadControl::await - waiting 9429 ms
+ExtractionThreadControl::threadLogic - wait 9407 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:15:09.802461Z
+AbstractThreadControl::await - waiting 9407 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 6 is completed
@@ -1163,7 +1163,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -1214,7 +1214,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -1608,7 +1608,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -1630,8 +1630,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -1659,7 +1659,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -1836,9 +1836,9 @@ PousseSeringue::finPompage - waiting for the pump (close flag is 'true')
 PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
-ExtractionThreadControl::threadLogic - wait 3749 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:38:27.041852Z
-AbstractThreadControl::await - waiting 3749 ms
+ExtractionThreadControl::threadLogic - wait 3738 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:18:20.777214Z
+AbstractThreadControl::await - waiting 3738 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -1935,9 +1935,9 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 2 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 3: 1.0 mL of HNO3 2N (4) waiting 20s ***
-ExtractionThreadControl::processSequence - wait 3755 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:38:41.006972Z
-AbstractThreadControl::await - waiting 3755 ms
+ExtractionThreadControl::processSequence - wait 3733 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:18:34.725250Z
+AbstractThreadControl::await - waiting 3733 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -2017,9 +2017,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 9538 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:39:04.440836Z
-AbstractThreadControl::await - waiting 9538 ms
+ExtractionThreadControl::threadLogic - wait 9499 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:18:58.185680Z
+AbstractThreadControl::await - waiting 9499 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 3 is completed
@@ -2030,7 +2030,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -2081,7 +2081,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=2
@@ -2404,7 +2404,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -2426,8 +2426,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -2455,7 +2455,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=3 ; numColumn=2 ; numSequence=1
@@ -2824,7 +2824,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -2875,7 +2875,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=3 ; numColumn=2 ; numSequence=2
@@ -3300,7 +3300,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -3351,7 +3351,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -3581,7 +3581,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -3632,7 +3632,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -3862,7 +3862,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -3884,8 +3884,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -3913,7 +3913,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -4100,10 +4100,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4519 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:44:18.762112Z
+ExtractionThreadControl::threadLogic - wait 4492 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:32:03.124387Z
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 4519 ms
+AbstractThreadControl::await - waiting 4492 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4137,7 +4137,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2378 ms
+AbstractThreadControl::await - waiting 2359 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4148,7 +4148,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -4170,8 +4170,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -4199,7 +4199,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -4386,10 +4386,10 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4514 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:44:58.903784Z
+ExtractionThreadControl::threadLogic - wait 4467 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:32:43.263306Z
 RunningState::askPausing - waiting for pause
-AbstractThreadControl::await - waiting 4514 ms
+AbstractThreadControl::await - waiting 4467 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -4423,7 +4423,7 @@ Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 2389 ms
+AbstractThreadControl::await - waiting 2298 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4434,7 +4434,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -4456,8 +4456,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-InitialState::close - set closed state
 ParametresSession::close - closing parameter session
+InitialState::close - set closed state
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -4485,7 +4485,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -4581,8 +4581,8 @@ Passeur::convertCarrousel - convert 0.0 millimeter into 0 number of carousel ste
 RunningState::askPausing - waiting for pause
 Passeur::moveOrigineBras - move the arm to its origin
 MotorControllerStub::move - % carousel doesn't have to move %
-AbstractThreadControl::askPause - ask the thread to pause
 Passeur::finMoveBras - waiting for the arm
+AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
 PousseSeringue::pause - the pump is already stopped
@@ -4706,9 +4706,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4505 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:45:40.948615Z
-AbstractThreadControl::await - waiting 4505 ms
+ExtractionThreadControl::threadLogic - wait 4521 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:34:04.897228Z
+AbstractThreadControl::await - waiting 4521 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -4719,7 +4719,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -4770,7 +4770,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -4991,9 +4991,9 @@ PousseSeringue::fermetureEv - closing the valves
 Valves::ouvrir - shutting all the valves
 PousseSeringue::finPompage - pump completed
 Passeur::vibration - vibrate the arm
-ExtractionThreadControl::threadLogic - wait 4535 ms until the last column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:46:23.009541Z
-AbstractThreadControl::await - waiting 4535 ms
+ExtractionThreadControl::threadLogic - wait 4502 ms until the last column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:34:46.988055Z
+AbstractThreadControl::await - waiting 4502 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::threadLogic - wait done
 ExtractionThreadControl::threadLogic - sequence 1 is completed
@@ -5004,7 +5004,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
@@ -5055,7 +5055,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -5235,10 +5235,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8757 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:47:03.196026Z
+ExtractionThreadControl::processSequence - wait 8740 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:35:27.103919Z
+AbstractThreadControl::await - waiting 8740 ms
 RunningState::askCancellation - waiting for cancellation
-AbstractThreadControl::await - waiting 8757 ms
 AbstractThreadControl::cancel - ask the thread to cancel
 AbstractThreadControl::checkCancel - cancelling the thread
 AbstractCancelableToolControl::cancelOperations - running cancel procedure
@@ -5306,8 +5306,8 @@ AbstractCancelableToolControl::reinitOperations - reinitialisation done
 CloseableState::reinit - set initial state
 CloseableState::close - closing after reinit
 ExtractionToolControl::closeOperations - controller has nothing to do while closing the tool
-ParametresSession::close - closing parameter session
 InitialState::close - set closed state
+ParametresSession::close - closing parameter session
 PousseSeringue::close - closing the pump
 Passeur::close - closing the autosampler
 Valves::close - closing the valves
@@ -5335,7 +5335,7 @@ ExtractionToolControl::start - instantiate commandes
 PousseSeringue::setDebitAspiration - setting the withdrawing rate to '10.0'
 ExtractionToolControl::start - starting extraction thread
 InitialState::start - set running state
-ExtractionThreadControl::threadLogic - starting session
+ExtractionThreadControl::threadLogic - starting extraction session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
@@ -5515,10 +5515,10 @@ PousseSeringue::finPompage - pump completed
 ExtractionThreadControl::threadLogic - sequence 1 is completed
 ExtractionThreadControl::threadLogic - the current sequence has not pause
 ExtractionThreadControl::threadLogic - *** begin sequence 2: 1.0 mL of HNO3 2N (4) waiting 1s ***
-ExtractionThreadControl::processSequence - wait 8764 ms until the next column percolates
-AbstractThreadControl::await - wait until 2020-01-16T11:47:37.473872Z
-AbstractThreadControl::await - waiting 8764 ms
+ExtractionThreadControl::processSequence - wait 8751 ms until the next column percolates
+AbstractThreadControl::await - wait until 2020-01-23T18:37:00.772126Z
 RunningState::askPausing - waiting for pause
+AbstractThreadControl::await - waiting 8751 ms
 AbstractThreadControl::askPause - ask the thread to pause
 AbstractPausableToolControl::pauseOperations - running pause operations
 PousseSeringue::pause - pausing the pump
@@ -5538,7 +5538,7 @@ MotorControllerStub::move - % carousel doesn't have to move %
 MotorControllerStub::move - % arm doesn't have to move %
 PousseSeringue::reprise - the pump has nothing to resume
 PausedState::resumeTransition - set running state
-AbstractThreadControl::await - waiting 8254 ms
+AbstractThreadControl::await - waiting 8241 ms
 AbstractThreadControl::await - wait done
 ExtractionThreadControl::processSequence - wait done, processing the next column
 Commandes::distribution - * processing column 1 *
@@ -5627,7 +5627,7 @@ Valves::ouvrir - shutting all the valves
 Passeur::moveButeBras - move the arm to the top
 Passeur::finMoveBras - waiting for the arm
 Passeur::finMoveBras - arm reached the position
-ExtractionThreadControl::threadLogic - session is completed
+ExtractionThreadControl::threadLogic - extraction session is completed
 RunningState::done - set done state
 ExtractionToolTest::tearDown - ******************** teardown
 AbstractCloseableToolControl$1::run - running the close operations
