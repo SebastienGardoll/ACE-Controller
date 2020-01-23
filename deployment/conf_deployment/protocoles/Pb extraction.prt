@@ -3,7 +3,7 @@ nomProtocole=Extraction Pb 150 uL
 auteur=Seb GARDOLL
 date=15/09/2006
 cheminFichierColonne=./conf/columns/nouvelle colonne.cln
-commentaires=protocole de purification du Pb dans des colonnes de 150 ul. Temps verifi�s. base 1380 s pour 1mL. Non proportionnelle en dessous de 1mL. Le temps est tres dependant du volume de resine.
+commentaires=protocole de purification du Pb dans des colonnes de 150 ul. Temps verifies. base 1380 s pour 1mL. Non proportionnelle en dessous de 1mL. Le temps est tres dependant du volume de resine.
 
 [1]
 acide=HBr 0,5N
