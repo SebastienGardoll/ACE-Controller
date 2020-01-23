@@ -12,7 +12,7 @@ public class Names
   
   public final static Path CAROUSEL_DIR_PATH = 
       Paths.get(Names.CONFIG_DIRNAME, Names.CAROUSEL_DIRNAME);
-  public static final String CAROUSEL_DIRNAME  = "carousel";
+  public static final String CAROUSEL_DIRNAME  = "carousels";
   public static final String CAROUSEL_FILE_EXTENTION = "crl";
   
   public static final String TRUE  = "true";

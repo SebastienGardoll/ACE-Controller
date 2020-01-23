@@ -25,7 +25,7 @@ import fr.gardoll.ace.controller.settings.Names ;
 public class Protocol
 {
   public static final String PROTOCOL_FILE_EXTENTION = "prt";
-  public static final String PROTOCOL_DIRNAME  = "protocoles";
+  public static final String PROTOCOL_DIRNAME  = "protocols";
   public static final Path PROTOCOL_DIR_PATH = 
       Paths.get(Names.CONFIG_DIRNAME, PROTOCOL_DIRNAME);
 

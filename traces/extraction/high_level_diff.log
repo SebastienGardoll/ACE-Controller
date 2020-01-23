@@ -2,7 +2,7 @@ Passeur::convertBras - convert 50.0 millimeter into 6667 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -26,7 +26,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=3 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/nominal_test.prt
+protocol=conf/protocols/nominal_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HCl 6N (3) waiting 20s ***
@@ -1194,7 +1194,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -1218,7 +1218,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/rincing_test.prt
+protocol=conf/protocols/rincing_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HCl 6N (3) waiting 1s ***
@@ -1639,7 +1639,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -1663,7 +1663,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/await_test.prt
+protocol=conf/protocols/await_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 10s (with pause) ***
@@ -2061,7 +2061,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -2085,7 +2085,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=2
-protocol=conf/protocoles/resuming_test_seq.prt
+protocol=conf/protocols/resuming_test_seq.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 2 (resuming): 1.0 mL of HNO3 2N (4) waiting 1s ***
@@ -2435,7 +2435,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -2459,7 +2459,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=3 ; numColumn=2 ; numSequence=1
-protocol=conf/protocoles/resuming_test_col.prt
+protocol=conf/protocols/resuming_test_col.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1 (resuming): 1.0 mL of HNO3 0,05N (2) waiting 1s ***
@@ -2855,7 +2855,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -2879,7 +2879,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=3 ; numColumn=2 ; numSequence=2
-protocol=conf/protocoles/resuming_test_seq.prt
+protocol=conf/protocols/resuming_test_seq.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 2 (resuming): 1.0 mL of HNO3 2N (4) waiting 1s ***
@@ -3331,7 +3331,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -3355,7 +3355,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/solo_sequence_pause_test.prt
+protocol=conf/protocols/solo_sequence_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 1s (with pause) ***
@@ -3612,7 +3612,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -3636,7 +3636,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/solo_sequence_pause_test.prt
+protocol=conf/protocols/solo_sequence_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 1s (with pause) ***
@@ -3893,7 +3893,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -3917,7 +3917,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+protocol=conf/protocols/solo_sequence_no_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
@@ -4179,7 +4179,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -4203,7 +4203,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+protocol=conf/protocols/solo_sequence_no_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
@@ -4465,7 +4465,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -4489,7 +4489,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+protocol=conf/protocols/solo_sequence_no_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
@@ -4750,7 +4750,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -4774,7 +4774,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/solo_sequence_no_pause_test.prt
+protocol=conf/protocols/solo_sequence_no_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
@@ -5035,7 +5035,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -5059,7 +5059,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/await_cancel_pause_test.prt
+protocol=conf/protocols/await_cancel_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***
@@ -5315,7 +5315,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 ExtractionToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -5339,7 +5339,7 @@ ExtractionThreadControl::threadLogic - starting session
 ExtractionThreadControl::threadLogic - extraction settings:
 
 nbColumn=1 ; numColumn=1 ; numSequence=1
-protocol=conf/protocoles/await_cancel_pause_test.prt
+protocol=conf/protocols/await_cancel_pause_test.prt
 column=./conf/columns/nouvelle colonne.cln
 
 ExtractionThreadControl::threadLogic - *** begin sequence 1: 1.0 mL of HNO3 2N (4) waiting 15s ***

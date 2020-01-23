@@ -2,7 +2,7 @@ Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -41,7 +41,7 @@ Passeur::close - closing the autosampler
 InitialState::close - set closed state
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -88,7 +88,7 @@ InitialState::close - set closed state
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -133,7 +133,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -172,7 +172,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -211,7 +211,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -252,7 +252,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -301,7 +301,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -348,7 +348,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -389,7 +389,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -430,7 +430,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -485,7 +485,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -548,7 +548,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -609,7 +609,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -664,7 +664,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -719,7 +719,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -760,7 +760,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -801,7 +801,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -838,7 +838,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -882,7 +882,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -926,7 +926,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -966,7 +966,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -1023,7 +1023,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -1080,7 +1080,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -1133,7 +1133,7 @@ InitialState::close - set closed state
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface
@@ -1213,7 +1213,7 @@ ParametresSession::close - closing parameter session
 Passeur::close - closing the autosampler
 AutosamplerToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getPasseur - instantiating the autosampler
 Passeur::<init> - initializing the autosampler
 Passeur::reset - resetting the autosampler interface

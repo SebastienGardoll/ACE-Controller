@@ -2,7 +2,7 @@ Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 Passeur::convertBras - convert 10.0 millimeter into 1334 number of arm steps
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -84,7 +84,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -202,7 +202,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -288,7 +288,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -390,7 +390,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
@@ -493,7 +493,7 @@ Valves::ouvrir - shutting all the valves
 Valves::close - closing valves controller with paracom id 'stub'
 PumpToolTest::setUp - ******************** setup
 Settings::<init> - opening conf/configuration.ini
-Settings::<init> - opening conf/carousel/carrousel_sr_spec.crl
+Settings::<init> - opening conf/carousels/carrousel_sr_spec.crl
 ParametresSession::getValves - instantiating the valves
 ParametresSession::getValves - instantiating valves
 Valves::<init> - initializing the valves
