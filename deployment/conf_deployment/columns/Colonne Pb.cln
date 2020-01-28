@@ -1,14 +1,17 @@
 [informationsColonne]
-nomColonne=Cu_Fe_Zn_column
-hauteurColonne=50
+nomColonne=colonne Pb
+hauteurColonne=42
 hauteurMenisque=3.5
 pousseSeringueDebitMax=10
 pousseSeringueDebitInter=3
 pousseSeringueDebitMin=1
 volumeClef1=0.25
 volumeClef2=0.5
-type=0
-date=16/04/2019
-hauteurCylindre=50
-diametre=10
+type=2
+date=02/09/2010
+hauteurCylindre=30
+diametre=14
+diametreSup=14
+diametreInf=5
+hauteurCone=10
 

@@ -1,7 +1,7 @@
 [informationsColonne]
 nomColonne=biorad 2ml
 hauteurColonne=66
-hauteurMenisque=1
+hauteurMenisque=5
 pousseSeringueDebitMax=10
 pousseSeringueDebitInter=3
 pousseSeringueDebitMin=1
