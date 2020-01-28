@@ -1,0 +1,14 @@
+[informationsProtocole]
+nomProtocole=Calibration test 2 (3ml H2O)
+auteur=Aiman
+date=19/04/2019
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Test : 15h30
+
+[1]
+acide=H2O MQ
+numeroEv=1
+volume=3.6
+temps=15
+pause?=1
+

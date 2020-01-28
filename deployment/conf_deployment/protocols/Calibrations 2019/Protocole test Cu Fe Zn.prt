@@ -1,0 +1,147 @@
+[informationsProtocole]
+nomProtocole=Protocole test Cu/Fe/Zn
+auteur=Aiman
+date=14/05/2019
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Protocoles test pour la recupération des 3 élements. Cu, Fe, et Zn
+
+[1]
+acide=H2O MQ
+numeroEv=1
+volume=3.6
+temps=2200
+pause?=0
+
+[2]
+acide=HCl 9N
+numeroEv=3
+volume=3.75
+temps=2400
+pause?=1
+
+[3]
+acide=HCl 9N
+numeroEv=3
+volume=2.5
+temps=1920
+pause?=1
+
+[4]
+acide=HCl 9N
+numeroEv=3
+volume=2.5
+temps=1920
+pause?=1
+
+[5]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1200
+pause?=1
+
+[6]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1200
+pause?=1
+
+[7]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1200
+pause?=1
+
+[8]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1200
+pause?=1
+
+[9]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1200
+pause?=1
+
+[10]
+acide=HCl 9N
+numeroEv=3
+volume=0.625
+temps=560
+pause?=1
+
+[11]
+acide=HCl 5N
+numeroEv=4
+volume=3.6
+temps=2400
+pause?=1
+
+[12]
+acide=HCl 5N
+numeroEv=4
+volume=3.6
+temps=2400
+pause?=1
+
+[13]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=500
+pause?=1
+
+[14]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=500
+pause?=1
+
+[15]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=500
+pause?=1
+
+[16]
+acide=HCl 1N
+numeroEv=5
+volume=0.4
+temps=500
+pause?=1
+
+[17]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=500
+pause?=1
+
+[18]
+acide=H2O MQ
+numeroEv=1
+volume=1.2
+temps=1100
+pause?=1
+
+[19]
+acide=H2O MQ
+numeroEv=1
+volume=1.2
+temps=1100
+pause?=1
+
+[20]
+acide=H2O MQ
+numeroEv=1
+volume=1.2
+temps=1100
+pause?=1
+

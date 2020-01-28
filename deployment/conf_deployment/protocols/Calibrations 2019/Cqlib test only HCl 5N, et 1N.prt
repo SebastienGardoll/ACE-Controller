@@ -1,0 +1,21 @@
+[informationsProtocole]
+nomProtocole=New proc only 5N et 1N
+auteur=Aiman
+date=12/04/2019
+cheminFichierColonne=conf/columns/nouvelle colonne.cln
+commentaires=Vos Commentaires
+
+[1]
+acide=HCl 5N
+numeroEv=4
+volume=0.6
+temps=10
+pause?=1
+
+[2]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=10
+pause?=1
+

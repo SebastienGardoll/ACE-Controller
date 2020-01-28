@@ -1,9 +1,9 @@
 [informationsProtocole]
-nomProtocole=Zn_v1
+nomProtocole=Cu_Fe_Zn_v1
 auteur=Henry Manuel
 date=19/03/2019
-cheminFichierColonne=./conf/columns/Cu_Fe_Zn_column.cln
-commentaires=Chimie "maison" SB GET v1 : recuperation du Zn seulement
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Chimie "maison" SB GET v1 : récupération des trois éléments (Cu, Fe et Zn)
 
 [1]
 acide=H2O MQ
@@ -31,7 +31,7 @@ acide=HCl 9N
 numeroEv=2
 volume=2.5
 temps=1500
-pause?=0
+pause?=1
 
 [5]
 acide=HCl 9N
@@ -45,7 +45,7 @@ acide=HCl 9N
 numeroEv=2
 volume=2.25
 temps=1500
-pause?=0
+pause?=1
 
 [7]
 acide=HCl 5N
@@ -59,7 +59,7 @@ acide=HCl 5N
 numeroEv=3
 volume=3
 temps=1500
-pause?=0
+pause?=1
 
 [9]
 acide=HCl 1N

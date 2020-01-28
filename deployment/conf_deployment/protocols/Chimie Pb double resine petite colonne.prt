@@ -1,0 +1,77 @@
+[informationsProtocole]
+nomProtocole=Chimie du Pb
+auteur=Jonathan PRUNIER
+date=29/01/2013
+cheminFichierColonne=conf/columns/Colonne Pb.cln
+commentaires=Extraction du Pb selon le protocole mis au point par Mathieu Benoît (DTP) avec une double résine (CG71C et Sr-Spec).
+
+[1]
+acide=HF 0.5 N
+numeroEv=6
+volume=2.5
+temps=1600
+pause?=0
+
+[2]
+acide=HNO3 3 N
+numeroEv=4
+volume=2.5
+temps=1600
+pause?=0
+
+[3]
+acide=HNO3 0.05 N
+numeroEv=2
+volume=2.5
+temps=1600
+pause?=0
+
+[4]
+acide=HCl 6 N
+numeroEv=3
+volume=2.5
+temps=1600
+pause?=0
+
+[5]
+acide=HCl 6 N
+numeroEv=3
+volume=2.5
+temps=1600
+pause?=0
+
+[6]
+acide=HNO3 0.5 N
+numeroEv=5
+volume=1
+temps=750
+pause?=1
+
+[7]
+acide=HNO3 3 N
+numeroEv=4
+volume=3
+temps=2000
+pause?=0
+
+[8]
+acide=HNO3 0.05 N
+numeroEv=2
+volume=2
+temps=1500
+pause?=1
+
+[9]
+acide=HCl 6 N
+numeroEv=3
+volume=2
+temps=1500
+pause?=0
+
+[10]
+acide=HCl 6 N
+numeroEv=3
+volume=2
+temps=1500
+pause?=0
+

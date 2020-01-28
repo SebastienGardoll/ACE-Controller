@@ -1,9 +1,9 @@
 [informationsProtocole]
-nomProtocole=Separation de U-Th
+nomProtocole=Séparation de U-Th
 auteur=Jonathan PRUNIER
-date=26/04/2010
-cheminFichierColonne=./conf/columns/biorad 0.6 ml.cln
-commentaires=Temps d'attente pour l'elution a modifier car pas calibrer
+date=25/08/2010
+cheminFichierColonne=conf/columns/biorad 0.6 ml.cln
+commentaires=Temps d'attente pour l'élution à modifier car pas calibrer
 
 [1]
 acide=HNO3 0.25 N
@@ -101,5 +101,5 @@ acide=HCl 0.5 N
 numeroEv=4
 volume=5
 temps=3500
-pause?=1
+pause?=0
 

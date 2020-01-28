@@ -1,0 +1,147 @@
+[informationsProtocole]
+nomProtocole=Cu_Fe_Zn_v1
+auteur=Henry Manuel
+date=18/06/2019
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Chimie "maison" SB GET v1 : récupération des trois éléments (Cu, Fe et Zn)
+
+[1]
+acide=H2O MQ
+numeroEv=1
+volume=3.6
+temps=3000
+pause?=0
+
+[2]
+acide=HCl 9N
+numeroEv=3
+volume=3.75
+temps=3600
+pause?=1
+
+[3]
+acide=HCl 9N
+numeroEv=3
+volume=2.5
+temps=2400
+pause?=1
+
+[4]
+acide=HCl 9N
+numeroEv=3
+volume=2.5
+temps=2400
+pause?=1
+
+[5]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1600
+pause?=1
+
+[6]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1600
+pause?=1
+
+[7]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1600
+pause?=1
+
+[8]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1600
+pause?=1
+
+[9]
+acide=HCl 9N
+numeroEv=3
+volume=1.25
+temps=1600
+pause?=1
+
+[10]
+acide=HCl 9N
+numeroEv=3
+volume=0.625
+temps=900
+pause?=1
+
+[11]
+acide=HCl 5N
+numeroEv=4
+volume=3.6
+temps=2800
+pause?=1
+
+[12]
+acide=HCl 5N
+numeroEv=4
+volume=3.6
+temps=2800
+pause?=1
+
+[13]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=800
+pause?=1
+
+[14]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=800
+pause?=1
+
+[15]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=800
+pause?=1
+
+[16]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=800
+pause?=1
+
+[17]
+acide=HCl 1N
+numeroEv=5
+volume=0.6
+temps=800
+pause?=1
+
+[18]
+acide=H2O MQ
+numeroEv=1
+volume=1.2
+temps=1400
+pause?=1
+
+[19]
+acide=H2O MQ
+numeroEv=1
+volume=1.2
+temps=1400
+pause?=1
+
+[20]
+acide=H2O MQ
+numeroEv=1
+volume=1.2
+temps=1400
+pause?=1
+

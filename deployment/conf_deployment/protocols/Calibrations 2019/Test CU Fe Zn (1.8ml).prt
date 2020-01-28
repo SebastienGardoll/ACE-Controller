@@ -1,0 +1,35 @@
+[informationsProtocole]
+nomProtocole=Calibration test 3 (1.8ml )
+auteur=Aiman
+date=29/04/2019
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Test pour tous eluants
+
+[1]
+acide=HCl 9N
+numeroEv=3
+volume=1.8
+temps=10
+pause?=1
+
+[2]
+acide=HCl 5N
+numeroEv=4
+volume=1.8
+temps=10
+pause?=1
+
+[3]
+acide=HCl 1N
+numeroEv=5
+volume=1.8
+temps=10
+pause?=1
+
+[4]
+acide=H2O MQ
+numeroEv=1
+volume=1.8
+temps=10
+pause?=0
+

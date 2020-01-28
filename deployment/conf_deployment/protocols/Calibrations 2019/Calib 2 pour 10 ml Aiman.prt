@@ -1,0 +1,14 @@
+[informationsProtocole]
+nomProtocole=Calibration 2 pour 10ml
+auteur=Aiman
+date=14/06/2019
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Vos Commentaires
+
+[1]
+acide=HCl 9N
+numeroEv=3
+volume=10
+temps=10
+pause?=1
+

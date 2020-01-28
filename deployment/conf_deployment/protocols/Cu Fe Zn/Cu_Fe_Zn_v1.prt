@@ -2,8 +2,8 @@
 nomProtocole=Cu_Fe_Zn_v1
 auteur=Henry Manuel
 date=19/03/2019
-cheminFichierColonne=./conf/columns/Cu_Fe_Zn_column.cln
-commentaires=Chimie "maison" SB GET v1 : recuperation des trois elements (Cu, Fe et Zn)
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Chimie "maison" SB GET v1 : récupération des trois éléments (Cu, Fe et Zn)
 
 [1]
 acide=H2O MQ

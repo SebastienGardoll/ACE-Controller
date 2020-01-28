@@ -1,0 +1,91 @@
+[informationsProtocole]
+nomProtocole=Zn_v1
+auteur=Henry Manuel
+date=19/03/2019
+cheminFichierColonne=conf/columns/Cu_Fe_Zn_column.cln
+commentaires=Chimie "maison" SB GET v1 : récupération du Zn seulement
+
+[1]
+acide=H2O MQ
+numeroEv=1
+volume=3
+temps=1000
+pause?=0
+
+[2]
+acide=HCl 9N
+numeroEv=2
+volume=3
+temps=1500
+pause?=1
+
+[3]
+acide=HCl 9N
+numeroEv=2
+volume=2.5
+temps=1500
+pause?=0
+
+[4]
+acide=HCl 9N
+numeroEv=2
+volume=2.5
+temps=1500
+pause?=0
+
+[5]
+acide=HCl 9N
+numeroEv=2
+volume=2.25
+temps=1500
+pause?=0
+
+[6]
+acide=HCl 9N
+numeroEv=2
+volume=2.25
+temps=1500
+pause?=0
+
+[7]
+acide=HCl 5N
+numeroEv=3
+volume=3
+temps=1500
+pause?=0
+
+[8]
+acide=HCl 5N
+numeroEv=3
+volume=3
+temps=1500
+pause?=0
+
+[9]
+acide=HCl 1N
+numeroEv=4
+volume=1
+temps=600
+pause?=0
+
+[10]
+acide=HCl 1N
+numeroEv=4
+volume=1
+temps=600
+pause?=1
+
+[11]
+acide=HCl 1N
+numeroEv=4
+volume=0.5
+temps=300
+pause?=0
+
+[12]
+acide=H2O MQ
+numeroEv=1
+volume=3
+temps=1000
+pause?=0
+

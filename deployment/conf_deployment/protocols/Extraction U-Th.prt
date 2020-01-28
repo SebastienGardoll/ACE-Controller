@@ -1,9 +1,9 @@
 [informationsProtocole]
 nomProtocole=U-Th
 auteur=Jonathan PRUNIER
-date=23/04/2010
-cheminFichierColonne=./conf/columns/biorad 2 ml.cln
-commentaires=Extraction de l'Uranium et du Th de la matrice (temps d'attente a definir plus exactement). Il n'y a pas les lavages de la resine qui sont effectues dans ce protocole. A voir si on les ajoute ou non
+date=19/08/2010
+cheminFichierColonne=conf/columns/biorad 2 ml.cln
+commentaires=Extraction de l'Uranium et du Th de la matrice (temps d'attente à définir plus exactement). Il n'y a pas les lavages de la résine qui sont effectués dans ce protocole. A voir si on les ajoute ou non
 
 [1]
 acide=HNO3 0,25N
@@ -115,5 +115,12 @@ acide=HCl 6N
 numeroEv=3
 volume=5
 temps=2520
+pause?=1
+
+[17]
+acide=HCl 6N
+numeroEv=3
+volume=9
+temps=3600
 pause?=1
 
