@@ -30,6 +30,10 @@ public class TestPanel extends AbstractCancelableJPanelObserver
   private final TestControl _ctrl ;
   private final List<Pair<Integer, Integer>> _highlightingData = new ArrayList<>() ;
 
+  private int _cancelled_index;
+  private int _cancelling_index;
+  private int _done_index;
+
   public TestPanel(TestControl ctrl, List<Operation> operations)
   {
     super(ctrl) ;
@@ -53,12 +57,44 @@ public class TestPanel extends AbstractCancelableJPanelObserver
       Pair<Integer, Integer> p = new ImmutablePair<>(start, end) ;
       this._highlightingData.add(p) ;
     }
-
-    sb.append("\nDONE") ;
-    int start = offset + 1 ;
-    int end = start + "DONE".length() ;
-    Pair<Integer, Integer> p = new ImmutablePair<>(start, end) ;
-    this._highlightingData.add(p) ;
+    
+    int count = this._highlightingData.size() - 1;
+    
+    {
+      count++;
+      this._done_index = count;
+      String operationName = "\nDONE\n";
+      sb.append(operationName) ;
+      int start = offset + 1 ;
+      int end = start + operationName.length() -2;
+      offset = end + 1;
+      Pair<Integer, Integer> p = new ImmutablePair<>(start, end) ;
+      this._highlightingData.add(p) ;
+    }
+    
+    {
+      count++;
+      this._cancelling_index = count;
+      String operationName = "CANCELLING\n";
+      sb.append(operationName) ;
+      int start = offset;
+      int end = start + operationName.length() -1;
+      offset = end + 1;
+      Pair<Integer, Integer> p = new ImmutablePair<>(start, end) ;
+      this._highlightingData.add(p) ;
+    }
+    
+    {
+      count++;
+      this._cancelled_index = count;
+      String operationName = "CANCELLED";
+      sb.append(operationName) ;
+      int start = offset;
+      int end = start + operationName.length() ;
+      offset = end + 1;
+      Pair<Integer, Integer> p = new ImmutablePair<>(start, end) ;
+      this._highlightingData.add(p) ;
+    }
 
     this.operationTextPane.setText(sb.toString()) ;
   }
@@ -239,6 +275,16 @@ public class TestPanel extends AbstractCancelableJPanelObserver
       int index = (int) action.data.get() ;
       this.highlightOperation(index) ;
     }
+    
+    if (action.type == ActionType.CANCELING)
+    {
+      this.highlightOperation(this._cancelling_index) ;
+    }
+    
+    if (action.type == ActionType.CANCEL_DONE)
+    {
+      this.highlightOperation(this._cancelled_index) ;
+    }
   }
 
   @Override
@@ -256,7 +302,7 @@ public class TestPanel extends AbstractCancelableJPanelObserver
 
       if (index < 0) // Highlights the done marker.
       {
-        index = this._highlightingData.size() - 1 ;
+        index = _done_index ;
       }
 
       if (index < this._highlightingData.size())
